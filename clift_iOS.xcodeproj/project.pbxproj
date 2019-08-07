@@ -14,6 +14,16 @@
 		4672A89922F88F27001F374F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4672A89722F88F27001F374F /* LaunchScreen.storyboard */; };
 		4672A8A422F88F27001F374F /* clift_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672A8A322F88F27001F374F /* clift_iOSTests.swift */; };
 		4672A8AF22F88F27001F374F /* clift_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672A8AE22F88F27001F374F /* clift_iOSUITests.swift */; };
+		46987D9922FA10AD007B2C78 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9522FA10AD007B2C78 /* Poppins-Medium.ttf */; };
+		46987D9A22FA10AD007B2C78 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9622FA10AD007B2C78 /* Poppins-SemiBold.ttf */; };
+		46987D9B22FA10AD007B2C78 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9722FA10AD007B2C78 /* Poppins-Bold.ttf */; };
+		46987D9C22FA10AD007B2C78 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9822FA10AD007B2C78 /* Poppins-Regular.ttf */; };
+		46987D9F22FA10C5007B2C78 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9D22FA10C4007B2C78 /* OpenSans-SemiBold.ttf */; };
+		46987DA022FA10C5007B2C78 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9E22FA10C5007B2C78 /* OpenSans-Regular.ttf */; };
+		46A2DD9222FB6CC60051DCA6 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A2DD9122FB6CC60051DCA6 /* Session.swift */; };
+		46A2DD9422FB723D0051DCA6 /* EmptyObjectWithErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A2DD9322FB723D0051DCA6 /* EmptyObjectWithErrors.swift */; };
+		46E85B5022FB5ECF004FA3FE /* CliftApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E85B4F22FB5ECF004FA3FE /* CliftApi.swift */; };
+		46E85B5222FB5ED9004FA3FE /* CliftApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E85B5122FB5ED9004FA3FE /* CliftApiManager.swift */; };
 		85D1161D2D04F9B25477BAE8 /* Pods_clift_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */; };
 		A9D3728582D9B5913F8C5C14 /* Pods_clift_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */; };
 		FB69CC8CE945481E9839D8BF /* Pods_clift_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */; };
@@ -53,6 +63,16 @@
 		4672A8AA22F88F27001F374F /* clift_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = clift_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4672A8AE22F88F27001F374F /* clift_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clift_iOSUITests.swift; sourceTree = "<group>"; };
 		4672A8B022F88F27001F374F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46987D9522FA10AD007B2C78 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		46987D9622FA10AD007B2C78 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-SemiBold.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		46987D9722FA10AD007B2C78 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Bold.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		46987D9822FA10AD007B2C78 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Regular.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		46987D9D22FA10C4007B2C78 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBold.ttf"; path = "../../../../../../../../Downloads/Open_Sans/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		46987D9E22FA10C5007B2C78 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../../../../../../../../Downloads/Open_Sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		46A2DD9122FB6CC60051DCA6 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		46A2DD9322FB723D0051DCA6 /* EmptyObjectWithErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyObjectWithErrors.swift; sourceTree = "<group>"; };
+		46E85B4F22FB5ECF004FA3FE /* CliftApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliftApi.swift; sourceTree = "<group>"; };
+		46E85B5122FB5ED9004FA3FE /* CliftApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliftApiManager.swift; sourceTree = "<group>"; };
 		63E2F7BED90D17510D41F45C /* Pods-clift_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		692982E91D6BF3F5E0781046 /* Pods-clift_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B1E86386FC9F3A216AD6DBB /* Pods-clift_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -124,8 +144,11 @@
 		4672A88D22F88F25001F374F /* clift_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				46A2DD9022FB6CBA0051DCA6 /* Models */,
+				46E85B4E22FB5E93004FA3FE /* ViewControllers */,
+				46E85B4D22FB5DAB004FA3FE /* Network */,
+				46C691A322FA0FC200E01E0F /* Fonts */,
 				4672A88E22F88F25001F374F /* AppDelegate.swift */,
-				4672A89022F88F25001F374F /* ViewController.swift */,
 				4672A89222F88F25001F374F /* Main.storyboard */,
 				4672A89522F88F27001F374F /* Assets.xcassets */,
 				4672A89722F88F27001F374F /* LaunchScreen.storyboard */,
@@ -152,6 +175,45 @@
 			path = clift_iOSUITests;
 			sourceTree = "<group>";
 		};
+		46A2DD9022FB6CBA0051DCA6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				46A2DD9322FB723D0051DCA6 /* EmptyObjectWithErrors.swift */,
+				46A2DD9122FB6CC60051DCA6 /* Session.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		46C691A322FA0FC200E01E0F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				46987D9E22FA10C5007B2C78 /* OpenSans-Regular.ttf */,
+				46987D9D22FA10C4007B2C78 /* OpenSans-SemiBold.ttf */,
+				46987D9722FA10AD007B2C78 /* Poppins-Bold.ttf */,
+				46987D9522FA10AD007B2C78 /* Poppins-Medium.ttf */,
+				46987D9822FA10AD007B2C78 /* Poppins-Regular.ttf */,
+				46987D9622FA10AD007B2C78 /* Poppins-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		46E85B4D22FB5DAB004FA3FE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				46E85B4F22FB5ECF004FA3FE /* CliftApi.swift */,
+				46E85B5122FB5ED9004FA3FE /* CliftApiManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		46E85B4E22FB5E93004FA3FE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4672A89022F88F25001F374F /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		AC214C0E4A7509E2E3ABFDFF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +238,8 @@
 				4672A88722F88F25001F374F /* Sources */,
 				4672A88822F88F25001F374F /* Frameworks */,
 				4672A88922F88F25001F374F /* Resources */,
+				E3498C06711FD586DA720EEB /* [CP] Embed Pods Frameworks */,
+				E0C18DCA36A485893B85676F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -272,8 +336,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46987D9A22FA10AD007B2C78 /* Poppins-SemiBold.ttf in Resources */,
+				46987D9B22FA10AD007B2C78 /* Poppins-Bold.ttf in Resources */,
+				46987D9C22FA10AD007B2C78 /* Poppins-Regular.ttf in Resources */,
 				4672A89922F88F27001F374F /* LaunchScreen.storyboard in Resources */,
+				46987D9F22FA10C5007B2C78 /* OpenSans-SemiBold.ttf in Resources */,
+				46987D9922FA10AD007B2C78 /* Poppins-Medium.ttf in Resources */,
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
+				46987DA022FA10C5007B2C78 /* OpenSans-Regular.ttf in Resources */,
 				4672A89422F88F25001F374F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +431,74 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E0C18DCA36A485893B85676F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3498C06711FD586DA720EEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GSMessages/GSMessages.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya-ObjectMapper/Moya_ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GSMessages.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya_ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextField_Shake.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -368,8 +506,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46A2DD9222FB6CC60051DCA6 /* Session.swift in Sources */,
 				4672A89122F88F25001F374F /* ViewController.swift in Sources */,
+				46E85B5022FB5ECF004FA3FE /* CliftApi.swift in Sources */,
 				4672A88F22F88F25001F374F /* AppDelegate.swift in Sources */,
+				46E85B5222FB5ED9004FA3FE /* CliftApiManager.swift in Sources */,
+				46A2DD9422FB723D0051DCA6 /* EmptyObjectWithErrors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,7 +688,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7Y68XG462A;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -564,7 +708,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7Y68XG462A;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
