@@ -7,15 +7,40 @@
 //
 
 import UIKit
+import SideMenu
+import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                print("User has not signed in before or they have since signed out")
+            } else {
+                print("\(error.localizedDescription)")
+            }
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: nil)
+            return
+        }
+        let userId = user.userID
+        let idToken = user.authentication.idToken
+        let email = user.profile.email
+        
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: ["statusText": "Signed in with email \n \(email!)"])
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "ToggleAuthUINotification"), object: nil, userInfo: ["statusText": "User has disconnected."])
+    }
 
     var window: UIWindow?
-
+   
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        GIDSignIn.sharedInstance()?.clientID = "659271946310-ab43ccokoq7uijrd53rgcojp0o07n9ch.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance()?.delegate = self
+        
         return true
     }
 
@@ -40,7 +65,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    func userHasSuccesfullySignedIn() {
+        var view: UIViewController?
+        
+        view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UserRootView")
+        self.window?.rootViewController = view
+        self.window?.makeKeyAndVisible()
+    }
+    
+    func showCreateSessionFlow() {
+        var view: UIViewController?
+        
+        view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController")
+        self.window?.rootViewController = view
+        self.window?.makeKeyAndVisible()
+    }
 }
 
