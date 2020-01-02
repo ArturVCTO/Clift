@@ -1,15 +1,15 @@
 //
-//  customProgressView.swift
+//  customImageView.swift
 //  clift_iOS
 //
-//  Created by Juan Carlos Garza on 10/23/19.
+//  Created by Juan Carlos Garza on 8/22/19.
 //  Copyright © 2019 Clift. All rights reserved.
 //
 
 import Foundation
 import UIKit
-@IBDesignable class customProgressView: UIProgressView {
-    
+
+@IBDesignable class customImageView: UIImageView {
     @IBInspectable var cornerRadius: CGFloat = 5.0 {
         didSet {
             layer.cornerRadius = cornerRadius
@@ -43,17 +43,4 @@ import UIKit
             layer.shadowOpacity = shadowOpacity
         }
     }
-    
-    @IBInspectable var barHeight : CGFloat {
-          get {
-              return transform.d * 2.0
-          }
-          set {
-              // 2.0 Refers to the default height of 2
-              let heightScale = newValue / 2.0
-              let c = center
-            transform = CGAffineTransform(scaleX: 1.0, y: heightScale)
-              center = c
-          }
-      }
 }
