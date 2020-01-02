@@ -216,6 +216,24 @@ protocol ApiCalls {
     func getEventPools(event: Event, completion: @escaping([EventPool]?, Response?) -> Void)
     
     func getEventSummary(event: Event, completion: @escaping([EventRegistrySummary]?, Response?) -> Void)
+    
+    func getInvitationTemplates(event: Event, completion: @escaping([InvitationTemplate]?, Response?) -> Void)
+    
+    func getGuests(event: Event,filters: [String : Any], completion: @escaping([EventGuest]?, Response?) -> Void)
+    
+    func createInvitation(event: Event, invitationTemplate: InvitationTemplate,invitation: Invitation, completion: @escaping(Invitation?,Response?) -> Void)
+    
+    func updateInvitation(event: Event,invitation: Invitation, completion: @escaping(Invitation?,Response?) -> Void)
+    
+    func addGuest(event: Event, guest: EventGuest, completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
+    
+    func addGuests(event: Event, guest: [EventGuest], completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
+    
+    func updateGuests(event: Event, isConfirmed: Int, guests: [String], completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
+    
+    func getGuestAnalytics(event: Event, completion: @escaping(EventGuestAnalytics?,Response?) -> Void)
+    
+    func sendInvitation(event: Event, email: String, completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -333,5 +351,41 @@ extension CliftApiManager: ApiCalls {
     
     func getEventSummary(event: Event, completion: @escaping ([EventRegistrySummary]?, Response?) -> Void) {
         requestArrayWithResponse(.getEventSummary(event: event), type: EventRegistrySummary.self, completion: completion, wrapper: "summary")
+    }
+    
+    func getInvitationTemplates(event: Event, completion: @escaping ([InvitationTemplate]?, Response?) -> Void) {
+        requestArrayWithResponse(.getInvitationTemplates(event: event), type: InvitationTemplate.self, completion: completion, wrapper: "invitation_template")
+    }
+    
+    func getGuests(event: Event, filters: [String : Any], completion: @escaping ([EventGuest]?, Response?) -> Void) {
+        requestArrayWithResponse(.getGuests(event: event,filters: filters), type: EventGuest.self, completion: completion, wrapper: "guests")
+    }
+    
+    func createInvitation(event: Event, invitationTemplate: InvitationTemplate, invitation: Invitation, completion: @escaping (Invitation?, Response?) -> Void) {
+        requestObjectWithResponse(.createInvitation(event: event, invitationTemplate: invitationTemplate, invitation: invitation), type: Invitation.self, completion: completion, wrapper: "invitation")
+    }
+    
+    func updateInvitation(event: Event, invitation: Invitation, completion: @escaping (Invitation?, Response?) -> Void) {
+        requestObjectWithResponse(.updateInvitation(event: event, invitation: invitation), type: Invitation.self, completion: completion, wrapper: "invitation")
+    }
+    
+    func addGuest(event: Event, guest: EventGuest, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.addGuest(event: event, guest: guest), completion: completion)
+    }
+    
+    func addGuests(event: Event, guest: [EventGuest], completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.addGuests(event: event, guests: guest), completion: completion)
+    }
+    
+    func updateGuests(event: Event, isConfirmed: Int, guests: [String], completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.updateGuests(event: event, isConfirmed: isConfirmed, guests: guests), completion: completion)
+    }
+    
+    func getGuestAnalytics(event: Event, completion: @escaping (EventGuestAnalytics?, Response?) -> Void) {
+        requestObjectWithResponse(.getGuestAnalytics(event: event), type: EventGuestAnalytics.self, completion: completion, wrapper: "analytics")
+    }
+    
+    func sendInvitation(event: Event, email: String, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.sendInvitation(event: event, email: email), completion: completion)
     }
 }
