@@ -6,7 +6,7 @@ target 'clift_iOS' do
   use_frameworks!
 
   # Pods for clift_iOS
-  
+
   pod 'RealmSwift'
   pod 'Moya/RxSwift', '~> 11.0'
   pod 'ObjectMapper+Realm'
@@ -16,7 +16,14 @@ target 'clift_iOS' do
   pod 'Kingfisher' , '~> 5.0'
   pod 'GSMessages'
   pod 'GoogleMaps'
-  
+  pod 'DropDown'
+  pod 'SideMenu'
+  pod 'SwiftSoup'
+  pod 'ImageSlideshow', '~> 1.8'
+  pod 'GoogleSignIn'
+
+
+
   target 'clift_iOSTests' do
     inherit! :search_paths
     # Pods for testing
