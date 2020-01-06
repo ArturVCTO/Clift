@@ -7,3 +7,51 @@
 //
 
 import Foundation
+import UIKit
+import ObjectMapper
+import ObjectMapper_Realm
+import RealmSwift
+
+class ExternalProduct: Mappable {
+    var id = ""
+    var name = ""
+    var price = ""
+    var note = ""
+    var quantity = 0
+    var shopName = ""
+    var image: UIImage? = nil
+    var imageUrl = ""
+    var isImportant = Bool()
+    var isCollaborative = Bool()
+    var redirectToUrl = Bool()
+    var url = ""
+    var wishableType = "ExternalProduct"
+    
+    var errors: [String] = []
+    
+    convenience required init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+        price <- map["price"]
+        note <- map["note"]
+        quantity <- map["quantity"]
+        shopName <- map["shop_name"]
+        imageUrl <- map["image_url"]
+        image <- map["image"]
+        isImportant <- map["is_important"]
+        isCollaborative <- map["is_collaborative"]
+        redirectToUrl <- map["redirect_to_url"]
+        wishableType <- map["wishable_type"]
+        url <- map["url"]
+        
+        if let unwrappedErrors = map.JSON["errors"] as? [String] {
+            for error in unwrappedErrors {
+                errors.append(error)
+            }
+        }
+    }
+}

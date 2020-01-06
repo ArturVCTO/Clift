@@ -30,6 +30,9 @@
         <array key="Poppins-SemiBold.ttf">
             <string>Poppins-SemiBold</string>
         </array>
+        <array key="TimesNewRoman.ttf">
+            <string>.SFUI-Regular</string>
+        </array>
         <array key="Tinos-Bold.ttf">
             <string>Tinos-Bold</string>
         </array>
@@ -3921,14 +3924,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kqE-KO-PcC">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1030"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBs-hw-v43" customClass="customButton" customModule="clift_iOS" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBs-hw-v43" customClass="customButton" customModule="clift_iOS" customModuleProvider="target">
                                                 <rect key="frame" x="16" y="437" width="343" height="32"/>
                                                 <color key="backgroundColor" red="0.69411764710000001" green="0.82745098039999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="lK0-xo-GdP"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="14"/>
-                                                <state key="normal" title="No has configurado un método de pago &gt;">
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                <inset key="titleEdgeInsets" minX="-100" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="320" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Asociar una cuenta de banco" image="arrowright">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -3941,8 +3946,8 @@
                                                 <rect key="frame" x="16" y="485" width="343" height="119"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has acumulado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khx-bM-LyL">
-                                                        <rect key="frame" x="128" y="8" width="87" height="14"/>
-                                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
+                                                        <rect key="frame" x="128" y="8" width="87" height="13.5"/>
+                                                        <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -4386,7 +4391,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wnQ-gv-RBu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13590" y="-533"/>
+            <point key="canvasLocation" x="19393" y="1244"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="i3U-0W-DoW">
@@ -5014,10 +5019,10 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZD-fJ-kaw">
-                                                        <rect key="frame" x="309" y="16" width="34" height="24"/>
+                                                        <rect key="frame" x="301" y="16" width="42" height="24"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowright" translatesAutoresizingMaskIntoConstraints="NO" id="gGR-ir-dAF">
-                                                                <rect key="frame" x="9" y="7" width="16" height="10"/>
+                                                                <rect key="frame" x="9" y="7" width="24" height="10"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -10947,7 +10952,7 @@ agradecimiento</string>
         <image name="arrowd" width="12" height="8"/>
         <image name="arrowdown" width="12" height="12"/>
         <image name="arrowleft" width="12" height="12"/>
-        <image name="arrowright" width="8" height="12"/>
+        <image name="arrowright" width="12" height="12"/>
         <image name="bitmap" width="375" height="158"/>
         <image name="blackfilter" width="20" height="20"/>
         <image name="brand_logo" width="129" height="41"/>

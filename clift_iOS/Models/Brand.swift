@@ -1,20 +1,22 @@
 //
-//  EventRegistrySummary.swift
+//  Brand.swift
 //  clift_iOS
 //
-//  Created by Juan Carlos Garza on 11/11/19.
+//  Created by Juan Carlos Garza on 9/12/19.
 //  Copyright © 2019 Clift. All rights reserved.
 //
 
 import Foundation
-import UIKit
 import ObjectMapper
 import ObjectMapper_Realm
 import RealmSwift
 
-class EventRegistrySummary: Mappable {
+class Brand: Mappable {
+    
+    var id = ""
     var name = ""
-    var total = 0
+    var imageUrl = ""
+    var products: [Product] = []
     
     var errors: [String] = []
     
@@ -23,9 +25,10 @@ class EventRegistrySummary: Mappable {
     }
     
     func mapping(map: Map) {
+        id <- map["id"]
         name <- map["name"]
-        total <- map["total"]
-    
+        products <- map["products"]
+        imageUrl <- map["image_url"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {
