@@ -13,7 +13,7 @@ class ProductSubcategoryCollectionViewCell: UICollectionViewCell {
  
     @IBOutlet weak var subcategoryNameLabel: UILabel!
     
-    func setup(subcategory: Subcategory) {
-        self.subcategoryNameLabel.text = subcategory.name
+    func setup(group: Group) {
+        self.subcategoryNameLabel.text = group.name
     }
 }

@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import UIKit
+
+class ShopFilterTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var shopNameLabel: UILabel!
+    func setup(shop: Shop) {
+        self.shopNameLabel.text = shop.name
+    }
+}

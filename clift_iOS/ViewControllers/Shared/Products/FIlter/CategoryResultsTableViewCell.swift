@@ -11,4 +11,5 @@ import UIKit
 
 class CategoryResultsTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var categoryNameLabel: UILabel!
 }

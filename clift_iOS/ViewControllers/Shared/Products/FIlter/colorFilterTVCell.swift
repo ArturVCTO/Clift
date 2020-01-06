@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import UIKit
+
+class ColorFilterTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var colorNameLabel: UILabel!
+    func setup(color: CliftColor) {
+        self.colorNameLabel.text = color.name
+    }
+}

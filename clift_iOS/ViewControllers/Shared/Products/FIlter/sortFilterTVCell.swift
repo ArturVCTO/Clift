@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import UIKit
+
+class SortFilterTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var sortNameLabel: UILabel!
+    func setup(sort: String) {
+        self.sortNameLabel.text = sort
+    }
+}
