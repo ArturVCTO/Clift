@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+class EventProductShopCell: UITableViewCell {
+    
+    @IBOutlet weak var shopNameLabel: UILabel!
+    
+    func setup(shop: Shop) {
+        self.shopNameLabel.text = shop.name
+    }
+}

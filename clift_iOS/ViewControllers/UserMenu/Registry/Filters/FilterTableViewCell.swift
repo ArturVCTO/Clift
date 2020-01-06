@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import UIKit
+
+class FilterTableViewCell: UITableViewCell {
+    @IBOutlet weak var filterTitleLabel: UILabel!
+    
+    func setup(title: String) {
+        self.filterTitleLabel.text = title
+    }
+}

@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+class EventProductBrandCell: UITableViewCell {
+    
+    @IBOutlet weak var brandNameLabel: UILabel!
+    
+    func setup(brand: Brand) {
+        self.brandNameLabel.text = brand.name
+    }
+}

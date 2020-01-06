@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import UIKit
+
+class CollaborativeCell: UITableViewCell {
+    
+    @IBOutlet weak var collaborativeLabel: UILabel!
+}
