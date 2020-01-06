@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import UIKit
+
+class MainInvitationTemplateCVCell: UICollectionViewCell {
+    
+    @IBOutlet weak var templateNameLabel: UILabel!
+    func setup(invitationTemplate: InvitationTemplate) {
+        self.templateNameLabel.text = invitationTemplate.name
+    }
+}

@@ -6,4 +6,7 @@
 //  Copyright © 2019 Clift. All rights reserved.
 //
 
-import Foundation
+protocol DiscardChangesViewDeleagate: class {
+    func stayButtonTapped()
+    func discardChangesButtonTapped()
+}
