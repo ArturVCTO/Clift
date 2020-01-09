@@ -53,6 +53,7 @@ enum CliftApi {
     case addGuests(event: Event, guests: [EventGuest])
     case updateGuests(event: Event,isConfirmed: Int,guests: [String])
     case sendInvitation(event: Event, email: String)
+    case addAddress(address: Address)
 }
 
 extension CliftApi: TargetType {
@@ -139,12 +140,14 @@ extension CliftApi: TargetType {
             return "events/\(event.id)/guests"
         case .sendInvitation(_,_):
             return "events_sender"
+        case .addAddress(_):
+            return "address"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation:
+        case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation, .addAddress:
             return .post
         case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics:
             return .get
@@ -223,6 +226,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         case .sendInvitation(let event,let email):
             return .requestParameters(parameters: ["email": email,"event": event.id], encoding: JSONEncoding.default)
+        case .addAddress(let address):
+            return .requestParameters(parameters: ["address": address], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }
