@@ -7,3 +7,22 @@
 //
 
 import Foundation
+import UIKit
+import ObjectMapper
+import ObjectMapper_Realm
+import RealmSwift
+
+class AddressState: Mappable {
+    var id = ""
+    var name = ""
+    
+    var errors: [String] = []
+    
+    convenience required init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        
+    }
+}
