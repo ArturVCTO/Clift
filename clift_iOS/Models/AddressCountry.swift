@@ -15,7 +15,6 @@ import RealmSwift
 class AddressCountry: Mappable {
     var id = ""
     var name = ""
-    
     var errors: [String] = []
     
     convenience required init?(map: Map) {
@@ -23,6 +22,13 @@ class AddressCountry: Mappable {
     }
     
     func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
         
+        if let unwrappedErrors = map.JSON["errors"] as? [String] {
+            for error in unwrappedErrors {
+                errors.append(error)
+            }
+        }
     }
 }
