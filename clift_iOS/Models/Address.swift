@@ -20,7 +20,6 @@ class Address: Mappable {
     var city = AddressCity()
     var state = AddressState()
     var country = AddressCountry()
-    
     var errors: [String] = []
     
     convenience required init?(map: Map) {
@@ -33,6 +32,13 @@ class Address: Mappable {
         name <- map["name"]
         street1 <- map["street_1"]
         city <- map["city"]
+        state <- map["state"]
+        country <- map["country"]
         
+        if let unwrappedErrors = map.JSON["errors"] as? [String] {
+            for error in unwrappedErrors {
+                errors.append(error)
+            }
+        }
     }
 }

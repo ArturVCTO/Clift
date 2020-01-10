@@ -119,6 +119,10 @@
 		46B5F75323845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */; };
 		46B5F75423845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */; };
 		46C42AEB23295D9800D5A72F /* MainStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C42AEA23295D9800D5A72F /* MainStoreViewController.swift */; };
+		46C724CF23C7D9B300F12924 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C724CE23C7D9B300F12924 /* Address.swift */; };
+		46C724D123C7DA0B00F12924 /* AddressCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C724D023C7DA0B00F12924 /* AddressCity.swift */; };
+		46C724D323C7DA6000F12924 /* AddressState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C724D223C7DA6000F12924 /* AddressState.swift */; };
+		46C724D523C7DA7700F12924 /* AddressCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C724D423C7DA7700F12924 /* AddressCountry.swift */; };
 		46D377682391CF74004BE93E /* DiscardChangesAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D377672391CF74004BE93E /* DiscardChangesAlertView.swift */; };
 		46D3776B2391D8A1004BE93E /* DiscardChangesViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3776A2391D8A1004BE93E /* DiscardChangesViewDelegate.swift */; };
 		46D3776D2395783D004BE93E /* AddGuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3776C2395783D004BE93E /* AddGuestsViewController.swift */; };
@@ -282,6 +286,10 @@
 		46B5F74023845BB500AFF425 /* Tinos-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-Regular.ttf"; path = "../../../../../../../../Downloads/Tinos-Regular.ttf"; sourceTree = "<group>"; };
 		46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-RegularItalic 2.ttf"; path = "../../../../../../../../Downloads/Tinos-RegularItalic 2.ttf"; sourceTree = "<group>"; };
 		46C42AEA23295D9800D5A72F /* MainStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStoreViewController.swift; sourceTree = "<group>"; };
+		46C724CE23C7D9B300F12924 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		46C724D023C7DA0B00F12924 /* AddressCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCity.swift; sourceTree = "<group>"; };
+		46C724D223C7DA6000F12924 /* AddressState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressState.swift; sourceTree = "<group>"; };
+		46C724D423C7DA7700F12924 /* AddressCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCountry.swift; sourceTree = "<group>"; };
 		46D377672391CF74004BE93E /* DiscardChangesAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscardChangesAlertView.swift; sourceTree = "<group>"; };
 		46D3776A2391D8A1004BE93E /* DiscardChangesViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscardChangesViewDelegate.swift; sourceTree = "<group>"; };
 		46D3776C2395783D004BE93E /* AddGuestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGuestsViewController.swift; sourceTree = "<group>"; };
@@ -635,6 +643,10 @@
 				46D3776E23970684004BE93E /* EventGuest.swift */,
 				46D3777023972DDD004BE93E /* Invitation.swift */,
 				4637826C23A72CBE0027FCD6 /* EventGuestAnalytics.swift */,
+				46C724CE23C7D9B300F12924 /* Address.swift */,
+				46C724D023C7DA0B00F12924 /* AddressCity.swift */,
+				46C724D223C7DA6000F12924 /* AddressState.swift */,
+				46C724D423C7DA7700F12924 /* AddressCountry.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1071,6 +1083,7 @@
 				465C82142361087400DAC090 /* CustomAlertController.swift in Sources */,
 				46E12882233ACFB000354DB9 /* Shop.swift in Sources */,
 				46D3777123972DDD004BE93E /* Invitation.swift in Sources */,
+				46C724D123C7DA0B00F12924 /* AddressCity.swift in Sources */,
 				462EB0C12316D4250084C3C7 /* MyEventsTableViewController.swift in Sources */,
 				462EB0B1231484FF0084C3C7 /* PaymentsViewController.swift in Sources */,
 				462EB0B72315E26D0084C3C7 /* FadeScrollView.swift in Sources */,
@@ -1084,6 +1097,7 @@
 				46029C56232804B7008A8EAE /* PriceRangeTableViewCell.swift in Sources */,
 				46167736232AFB7000A6CAB9 /* ProductSubcategoryCollectionViewCell.swift in Sources */,
 				460836AB23873E0B0052E73A /* InvitationTemplateCollectionViewCell.swift in Sources */,
+				46C724D523C7DA7700F12924 /* AddressCountry.swift in Sources */,
 				46E128802333F02300354DB9 /* CliftStoresCollectionViewCell.swift in Sources */,
 				465FED152373BB510038D557 /* EventPool.swift in Sources */,
 				46D3776D2395783D004BE93E /* AddGuestsViewController.swift in Sources */,
@@ -1098,6 +1112,7 @@
 				46E85B5022FB5ECF004FA3FE /* CliftApi.swift in Sources */,
 				46D377682391CF74004BE93E /* DiscardChangesAlertView.swift in Sources */,
 				46DE69CA235D6944002C2BB8 /* shopFilterTVCell.swift in Sources */,
+				46C724D323C7DA6000F12924 /* AddressState.swift in Sources */,
 				462EB0BB2316C6C30084C3C7 /* Progress.swift in Sources */,
 				465FED172373DE1A0038D557 /* ExternalProduct.swift in Sources */,
 				462F9F32230EE8870014CD9E /* customImageView.swift in Sources */,
@@ -1127,6 +1142,7 @@
 				465FED0D2368C1620038D557 /* ProductInfoByUrlViewController.swift in Sources */,
 				465FED0F236B8B730038D557 /* EventProductCell.swift in Sources */,
 				462A6B4422FCB8090045C94E /* RootOnboardingPageViewController.swift in Sources */,
+				46C724CF23C7D9B300F12924 /* Address.swift in Sources */,
 				462F9F30230DAC990014CD9E /* DateFormatter.swift in Sources */,
 				4604A339230331A60041F9AA /* Event.swift in Sources */,
 				4604A33122FE18C30041F9AA /* LastStepOnboardingViewController.swift in Sources */,

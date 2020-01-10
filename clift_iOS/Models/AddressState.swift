@@ -15,7 +15,6 @@ import RealmSwift
 class AddressState: Mappable {
     var id = ""
     var name = ""
-    
     var errors: [String] = []
     
     convenience required init?(map: Map) {
