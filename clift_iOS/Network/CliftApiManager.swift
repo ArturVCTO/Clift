@@ -238,6 +238,8 @@ protocol ApiCalls {
     func addAddress(address: Address, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
     
     func getAddresses(completion: @escaping([Address]?, Response?) -> Void)
+    
+    func getAddress(addressId: String, completion: @escaping(Address?, Response?) -> Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -398,6 +400,10 @@ extension CliftApiManager: ApiCalls {
     }
     
     func getAddresses(completion: @escaping([Address]?, Response?) -> Void) {
-        requestArrayWithResponse(.getAddresses, type: Address.self, completion: completion, wrapper: "addresses")
+        requestArrayWithResponse(.getAddresses, type: Address.self, completion: completion, wrapper: "shipping_addresses")
+    }
+    
+    func getAddress(addressId: String, completion: @escaping (Address?, Response?) -> Void) {
+        requestObjectWithResponse(.getAddress(addressId: addressId), type: Address.self, completion: completion, wrapper: "shipping_address")
     }
 }
