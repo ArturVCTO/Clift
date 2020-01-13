@@ -15,11 +15,14 @@ import RealmSwift
 class Address: Mappable {
     var id = ""
     var isDefault = false
-    var name = ""
-    var street1 = ""
+    var firstName: String? = ""
+    var lastName: String? = ""
+    var streetAndNumber: String? = ""
     var city = AddressCity()
     var state = AddressState()
     var country = AddressCountry()
+    var zipCode: String? = ""
+    var suburb: String? = ""
     var errors: [String] = []
     
     convenience required init?(map: Map) {
@@ -29,11 +32,14 @@ class Address: Mappable {
     func mapping(map: Map) {
         id <- map["id"]
         isDefault <- map["is_default"]
-        name <- map["name"]
-        street1 <- map["street_1"]
+        firstName <- map["first_name"]
+        lastName <- map["last_name"]
+        streetAndNumber <- map["street_and_number"]
         city <- map["city"]
         state <- map["state"]
         country <- map["country"]
+        zipCode <- map["zip_code"]
+        suburb <- map["suburb"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {
