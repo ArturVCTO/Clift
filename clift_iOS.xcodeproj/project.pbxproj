@@ -26,6 +26,8 @@
 		460A1D912373E85400311876 /* EventProductFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A1D902373E85400311876 /* EventProductFilterViewController.swift */; };
 		460A1D932375EB2900311876 /* EventPoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A1D922375EB2800311876 /* EventPoolCell.swift */; };
 		460C0E7C23C393BD00D2043B /* Mihan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 460C0E7B23C393BD00D2043B /* Mihan-Regular.ttf */; };
+		46153CE223C8F6AC005CD395 /* AddressesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46153CE123C8F6AC005CD395 /* AddressesTableViewController.swift */; };
+		46153CE423C8F6F3005CD395 /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46153CE323C8F6F3005CD395 /* AddAddressViewController.swift */; };
 		46167727232AE5F700A6CAB9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46167726232AE5F700A6CAB9 /* Category.swift */; };
 		46167729232AE76100A6CAB9 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46167728232AE76100A6CAB9 /* Product.swift */; };
 		4616772B232AE7C300A6CAB9 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4616772A232AE7C300A6CAB9 /* Group.swift */; };
@@ -91,6 +93,7 @@
 		4672A8AF22F88F27001F374F /* clift_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672A8AE22F88F27001F374F /* clift_iOSUITests.swift */; };
 		46792371239EBB92005103F2 /* PreviewInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46792370239EBB92005103F2 /* PreviewInvitationViewController.swift */; };
 		468258162307261C00D3D49C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468258152307261C00D3D49C /* LoginViewController.swift */; };
+		469823C023C9376500671731 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469823BF23C9376500671731 /* AddressCell.swift */; };
 		46987D9922FA10AD007B2C78 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9522FA10AD007B2C78 /* Poppins-Medium.ttf */; };
 		46987D9A22FA10AD007B2C78 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9622FA10AD007B2C78 /* Poppins-SemiBold.ttf */; };
 		46987D9B22FA10AD007B2C78 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9722FA10AD007B2C78 /* Poppins-Bold.ttf */; };
@@ -197,6 +200,8 @@
 		460A1D902373E85400311876 /* EventProductFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProductFilterViewController.swift; sourceTree = "<group>"; };
 		460A1D922375EB2800311876 /* EventPoolCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPoolCell.swift; sourceTree = "<group>"; };
 		460C0E7B23C393BD00D2043B /* Mihan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mihan-Regular.ttf"; path = "../../../../../../../../Downloads/Mihan-Regular.ttf"; sourceTree = "<group>"; };
+		46153CE123C8F6AC005CD395 /* AddressesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesTableViewController.swift; sourceTree = "<group>"; };
+		46153CE323C8F6F3005CD395 /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		46167726232AE5F700A6CAB9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		46167728232AE76100A6CAB9 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		4616772A232AE7C300A6CAB9 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -268,6 +273,7 @@
 		4672A8B022F88F27001F374F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46792370239EBB92005103F2 /* PreviewInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewInvitationViewController.swift; sourceTree = "<group>"; };
 		468258152307261C00D3D49C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		469823BF23C9376500671731 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		46987D9522FA10AD007B2C78 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		46987D9622FA10AD007B2C78 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-SemiBold.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		46987D9722FA10AD007B2C78 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Bold.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-Bold.ttf"; sourceTree = "<group>"; };
@@ -383,6 +389,16 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		46153CE023C8F696005CD395 /* Addresses */ = {
+			isa = PBXGroup;
+			children = (
+				46153CE123C8F6AC005CD395 /* AddressesTableViewController.swift */,
+				46153CE323C8F6F3005CD395 /* AddAddressViewController.swift */,
+				469823BF23C9376500671731 /* AddressCell.swift */,
+			);
+			path = Addresses;
+			sourceTree = "<group>";
+		};
 		46167734232AFB4400A6CAB9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +448,7 @@
 		462F9F35230F02540014CD9E /* UserSettings */ = {
 			isa = PBXGroup;
 			children = (
+				46153CE023C8F696005CD395 /* Addresses */,
 				469D8C27230F02A0000D447E /* ProfileViewController.swift */,
 				469D8C29230F02AB000D447E /* EditProfileViewController.swift */,
 			);
@@ -1098,6 +1115,7 @@
 				46167736232AFB7000A6CAB9 /* ProductSubcategoryCollectionViewCell.swift in Sources */,
 				460836AB23873E0B0052E73A /* InvitationTemplateCollectionViewCell.swift in Sources */,
 				46C724D523C7DA7700F12924 /* AddressCountry.swift in Sources */,
+				469823C023C9376500671731 /* AddressCell.swift in Sources */,
 				46E128802333F02300354DB9 /* CliftStoresCollectionViewCell.swift in Sources */,
 				465FED152373BB510038D557 /* EventPool.swift in Sources */,
 				46D3776D2395783D004BE93E /* AddGuestsViewController.swift in Sources */,
@@ -1113,6 +1131,7 @@
 				46D377682391CF74004BE93E /* DiscardChangesAlertView.swift in Sources */,
 				46DE69CA235D6944002C2BB8 /* shopFilterTVCell.swift in Sources */,
 				46C724D323C7DA6000F12924 /* AddressState.swift in Sources */,
+				46153CE423C8F6F3005CD395 /* AddAddressViewController.swift in Sources */,
 				462EB0BB2316C6C30084C3C7 /* Progress.swift in Sources */,
 				465FED172373DE1A0038D557 /* ExternalProduct.swift in Sources */,
 				462F9F32230EE8870014CD9E /* customImageView.swift in Sources */,
@@ -1148,6 +1167,7 @@
 				4604A33122FE18C30041F9AA /* LastStepOnboardingViewController.swift in Sources */,
 				469D8C28230F02A0000D447E /* ProfileViewController.swift in Sources */,
 				46A2DD9722FB7EFC0051DCA6 /* LocationPageControl.swift in Sources */,
+				46153CE223C8F6AC005CD395 /* AddressesTableViewController.swift in Sources */,
 				463A30502321790200C42347 /* ProductViewController.swift in Sources */,
 				462A6B4222FC88170045C94E /* FirstStepOnboardingViewController.swift in Sources */,
 				460A1D932375EB2900311876 /* EventPoolCell.swift in Sources */,
