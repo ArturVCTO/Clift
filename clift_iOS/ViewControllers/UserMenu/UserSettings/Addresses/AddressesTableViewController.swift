@@ -28,6 +28,16 @@ class AddressesTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func addAddressesButtonTapped(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+           let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "addAddressVC") as! AddAddressViewController
+           self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+           let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addAddressVC") as! AddAddressViewController
+           self.navigationController?.pushViewController(vc, animated: true)
+       }
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.addresses.count
     }
