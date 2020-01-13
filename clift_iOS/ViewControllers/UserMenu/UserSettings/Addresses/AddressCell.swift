@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
+class AddressCell: UITableViewCell {
+    @IBOutlet weak var defaultAddressView: customView!
+    @IBOutlet weak var addressNameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    func setup(address: Address) {
+        self.addressNameLabel.text = address.name
+        self.addressLabel.text = "\(address.street1) \(address.city.name) \(address.state.name) \(address.country.name)"
+    }
+}
