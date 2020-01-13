@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+class AddressesTableViewController: UITableViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
