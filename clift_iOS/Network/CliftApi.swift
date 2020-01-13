@@ -54,6 +54,7 @@ enum CliftApi {
     case updateGuests(event: Event,isConfirmed: Int,guests: [String])
     case sendInvitation(event: Event, email: String)
     case addAddress(address: Address)
+    case getAddresses
 }
 
 extension CliftApi: TargetType {
@@ -142,6 +143,8 @@ extension CliftApi: TargetType {
             return "events_sender"
         case .addAddress(_):
             return "address"
+        case .getAddresses:
+            return "addresses"
         }
     }
     
@@ -149,7 +152,7 @@ extension CliftApi: TargetType {
         switch self {
         case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation, .addAddress:
             return .post
-        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics:
+        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses:
             return .get
         case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests:
             return .put
