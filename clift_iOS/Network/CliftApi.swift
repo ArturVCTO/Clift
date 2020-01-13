@@ -56,6 +56,8 @@ enum CliftApi {
     case addAddress(address: Address)
     case getAddresses
     case getAddress(addressId: String)
+    case updateAddress(address: Address)
+    case setDefaultAddress(address: Address)
 }
 
 extension CliftApi: TargetType {
@@ -148,6 +150,10 @@ extension CliftApi: TargetType {
             return "addresses"
         case .getAddress(let addressId):
             return "shipping_addresses/\(addressId)"
+        case .updateAddress(let address):
+            return "shipping_addresses/\(address.id)"
+        case .setDefaultAddress(let address):
+            return "shipping_addresses/\(address.id)/set_default"
         }
     }
     
@@ -157,7 +163,7 @@ extension CliftApi: TargetType {
             return .post
         case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses,.getAddress:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress:
             return .put
         case .deleteLogoutSession,.deleteProductFromRegistry:
             return .delete
@@ -234,6 +240,10 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["email": email,"event": event.id], encoding: JSONEncoding.default)
         case .addAddress(let address):
             return .requestParameters(parameters: ["address": address], encoding: JSONEncoding.default)
+        case .updateAddress(let address):
+            return .requestParameters(parameters: ["shipping_address": address], encoding: JSONEncoding.default)
+        case .setDefaultAddress(let address):
+            return .requestParameters(parameters: ["shipping_address": address.toJSON()], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }
