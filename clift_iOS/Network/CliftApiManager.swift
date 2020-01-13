@@ -240,6 +240,10 @@ protocol ApiCalls {
     func getAddresses(completion: @escaping([Address]?, Response?) -> Void)
     
     func getAddress(addressId: String, completion: @escaping(Address?, Response?) -> Void)
+    
+    func updateAddress(address: Address, completion: @escaping(Address?, Response?) -> Void)
+    
+    func setDefaultAddress(address: Address, completion: @escaping(Address? , Response?) -> Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -405,5 +409,13 @@ extension CliftApiManager: ApiCalls {
     
     func getAddress(addressId: String, completion: @escaping (Address?, Response?) -> Void) {
         requestObjectWithResponse(.getAddress(addressId: addressId), type: Address.self, completion: completion, wrapper: "shipping_address")
+    }
+    
+    func updateAddress(address: Address, completion: @escaping (Address?, Response?) -> Void) {
+        requestObjectWithResponse(.updateAddress(address: address), type: Address.self, completion: completion, wrapper: "shipping_address")
+    }
+    
+    func setDefaultAddress(address: Address, completion: @escaping (Address?, Response?) -> Void) {
+        requestObjectWithResponse(.setDefaultAddress(address: address), type: Address.self, completion: completion, wrapper: "shipping_address")
     }
 }
