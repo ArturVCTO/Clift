@@ -11531,7 +11531,11 @@ agradecimiento</string>
                     </view>
                     <navigationItem key="navigationItem" title="Modificar dirección" id="Ip5-ht-ScQ">
                         <barButtonItem key="leftBarButtonItem" title="Cancelar" id="7xG-Oe-dhZ"/>
-                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="oDj-ag-jKp"/>
+                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="oDj-ag-jKp">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="fcX-6K-VXK" id="0Z9-nr-BhX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addressTextField" destination="UpG-zI-u1z" id="5sx-mn-hXj"/>
