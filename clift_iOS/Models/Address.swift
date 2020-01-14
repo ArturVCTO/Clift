@@ -17,6 +17,8 @@ class Address: Mappable {
     var isDefault = false
     var firstName: String? = ""
     var lastName: String? = ""
+    var email: String = ""
+    var cellPhoneNumber: String? = ""
     var streetAndNumber: String? = ""
     var city = AddressCity()
     var state = AddressState()
