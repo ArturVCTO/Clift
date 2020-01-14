@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import TextFieldEffects
+import DropDown
 
 class AddAddressViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: HoshiTextField!
@@ -21,6 +22,9 @@ class AddAddressViewController: UIViewController {
     @IBOutlet weak var stateButton: UIButton!
     @IBOutlet weak var cityButton: UIButton!
     @IBOutlet weak var zipcodeTextField: UITextField!
+    var cityDropDown = DropDown()
+    var stateDropDown = DropDown()
+    var countryDropDown = DropDown()
     var address: Address? = Address()
     
     override func viewDidLoad() {
