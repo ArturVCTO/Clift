@@ -23,13 +23,19 @@ class AddAddressViewController: UIViewController {
     @IBOutlet weak var stateButton: UIButton!
     @IBOutlet weak var cityButton: UIButton!
     @IBOutlet weak var zipcodeTextField: UITextField!
+    var addressesTableVC: AddressesTableViewController!
     var cityDropDown = DropDown()
     var stateDropDown = DropDown()
     var countryDropDown = DropDown()
     var address: Address? = Address()
+    var cities: [AddressCity] = []
+    var states: [AddressState] = []
+    var country: [AddressCountry] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupDropDownStyle()
+        self.setupDropDowns()
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
         self.cellphoneTextField.delegate = self
@@ -43,6 +49,7 @@ class AddAddressViewController: UIViewController {
         sharedApiManager.addAddress(address: address) { (createdAddress, result) in
             if let response = result {
                 if (response.isSuccess()) {
+                    self.addressesTableVC.getAddresses()
                     self.navigationController?.popViewController(animated: true)
                 } else {
                     self.showMessage("\(createdAddress!.errors.first ?? "Error en forma")", type: .error)
@@ -51,24 +58,56 @@ class AddAddressViewController: UIViewController {
         }
     }
     
+    func setupDropDownStyle() {
+      let appearance = DropDown.appearance()
+      appearance.cornerRadius = 4
+      appearance.cellHeight = 40
+    }
+    
+    func setupDropDowns() {
+        setupCityDropDown()
+        setupStateDropDown()
+        setupCountryDropDown()
+    }
+    
     func setupCountryDropDown() {
         countryDropDown.anchorView = self.countryButton
         countryDropDown.dataSource = ["Mexico"]
         countryDropDown.bottomOffset = CGPoint(x: 0, y: countryButton.bounds.height)
+        let mexico = AddressCountry()
+        mexico.name = "Mexico"
+        mexico.code = "1"
+        countryDropDown.selectionAction = { [weak self] (index, item) in
+            self?.countryButton.setTitle(item, for: .normal)
+            self?.address?.country = mexico
+        }
     }
     
     func setupStateDropDown() {
         stateDropDown.anchorView = self.stateButton
         stateDropDown.dataSource = ["Nuevo León"]
         stateDropDown.bottomOffset = CGPoint(x: 0, y: stateButton.bounds.height)
+        let nuevoLeon = AddressState()
+        nuevoLeon.name = "Nuevo León"
+        nuevoLeon.code = "1"
+        stateDropDown.selectionAction = { [weak self] (index, item) in
+            self?.stateButton.setTitle(item, for: .normal)
+            self?.address?.state = nuevoLeon
+        }
     }
     
     func setupCityDropDown() {
         cityDropDown.anchorView = self.cityButton
         cityDropDown.dataSource = ["Monterrey"]
         cityDropDown.bottomOffset = CGPoint(x: 0, y: cityButton.bounds.height)
+        let monterrey = AddressCity()
+        monterrey.name = "Monterrey"
+        monterrey.code = "1"
+        cityDropDown.selectionAction = { [weak self] (index, item) in
+            self?.cityButton.setTitle(item, for: .normal)
+            self?.address?.city = monterrey
+        }
     }
-    
    
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
