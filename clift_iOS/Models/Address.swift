@@ -36,6 +36,8 @@ class Address: Mappable {
         isDefault <- map["is_default"]
         firstName <- map["first_name"]
         lastName <- map["last_name"]
+        email <- map["email"]
+        cellPhoneNumber <- map["cell_phone_number"]
         streetAndNumber <- map["street_and_number"]
         city <- map["city"]
         state <- map["state"]
