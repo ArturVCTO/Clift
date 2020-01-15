@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import TextFieldEffects
 import DropDown
+import GSMessages
 
 class AddAddressViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: HoshiTextField!
@@ -31,6 +32,7 @@ class AddAddressViewController: UIViewController {
         super.viewDidLoad()
         self.firstNameTextField.delegate = self
         self.lastNameTextField.delegate = self
+        self.cellphoneTextField.delegate = self
         self.emailTextField.delegate = self
         self.addressTextField.delegate = self
         self.districtTextField.delegate = self
@@ -38,37 +40,76 @@ class AddAddressViewController: UIViewController {
     }
     
     func addAddress(address: Address) {
-        sharedApiManager.addAddress(address: address) { (address, result) in
+        sharedApiManager.addAddress(address: address) { (createdAddress, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.showMessage("\(createdAddress!.errors.first ?? "Error en forma")", type: .error)
                 }
             }
         }
+    }
+    
+    func setupCountryDropDown() {
+        countryDropDown.anchorView = self.countryButton
+        countryDropDown.dataSource = ["Mexico"]
+        countryDropDown.bottomOffset = CGPoint(x: 0, y: countryButton.bounds.height)
+    }
+    
+    func setupStateDropDown() {
+        stateDropDown.anchorView = self.stateButton
+        stateDropDown.dataSource = ["Nuevo León"]
+        stateDropDown.bottomOffset = CGPoint(x: 0, y: stateButton.bounds.height)
+    }
+    
+    func setupCityDropDown() {
+        cityDropDown.anchorView = self.cityButton
+        cityDropDown.dataSource = ["Monterrey"]
+        cityDropDown.bottomOffset = CGPoint(x: 0, y: cityButton.bounds.height)
+    }
+    
+   
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let address = self.address else { return }
         self.addAddress(address: address)
     }
+    
+    @IBAction func countryButtonTapped(_ sender: Any) {
+        self.countryDropDown.show()
+    }
+    
+    @IBAction func stateButtonTapped(_ sender: Any) {
+        self.stateDropDown.show()
+    }
+    
+    @IBAction func cityButtonTapped(_ sender: Any) {
+        self.cityDropDown.show()
+    }
 }
 extension AddAddressViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
-        case textField == firstNameTextField:
+        case firstNameTextField:
             self.address?.firstName = self.firstNameTextField.text!
-        case textField == lastNameTextField:
+        case lastNameTextField:
             self.address?.lastName = self.lastNameTextField.text!
-        case textField == cellphoneTextField:
+        case cellphoneTextField:
             self.address?.cellPhoneNumber = self.cellphoneTextField.text!
-        case textField == emailTextField:
+        case emailTextField:
             self.address?.email = self.emailTextField.text!
-        case textField == addressTextField:
+        case addressTextField:
             self.address?.streetAndNumber = self.addressTextField.text!
-        case textField == districtTextField:
+        case districtTextField:
             self.address?.suburb = self.addressTextField.text!
-        case textField == zipcodeTextField:
+        case zipcodeTextField:
             self.address?.zipCode = self.zipcodeTextField.text!
+        default:
+            return
         }
     }
 }
