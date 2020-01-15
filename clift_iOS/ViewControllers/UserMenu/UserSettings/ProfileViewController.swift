@@ -42,6 +42,13 @@ class ProfileViewController: UIViewController {
         self.navigationController?.pushViewController(editProfileVC, animated: true)
     }
     
+    @IBAction func myAddressesButtonTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let addressTableVC = storyboard.instantiateViewController(withIdentifier: "addressesTableVC") as! AddressesTableViewController
+        self.navigationController?.pushViewController(addressTableVC, animated: true)
+    }
+    
+    
     @IBAction func logoutButtonTapped(_ sender: Any) {
         sharedApiManager.deleteLogoutSession() { (emptyObjectWithErrors, result) in
             if let response = result {
