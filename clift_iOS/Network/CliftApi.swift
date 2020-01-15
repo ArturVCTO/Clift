@@ -239,7 +239,7 @@ extension CliftApi: TargetType {
         case .sendInvitation(let event,let email):
             return .requestParameters(parameters: ["email": email,"event": event.id], encoding: JSONEncoding.default)
         case .addAddress(let address):
-            return .requestParameters(parameters: ["shipping_address": address], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["shipping_address": address.toJSON()], encoding: JSONEncoding.default)
         case .updateAddress(let address):
             return .requestParameters(parameters: ["shipping_address": address], encoding: JSONEncoding.default)
         case .setDefaultAddress(let address):
