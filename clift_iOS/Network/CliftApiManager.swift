@@ -404,7 +404,7 @@ extension CliftApiManager: ApiCalls {
     }
     
     func getAddresses(completion: @escaping([Address]?, Response?) -> Void) {
-        requestArrayWithResponse(.getAddresses, type: Address.self, completion: completion, wrapper: "shipping_addresses")
+        requestArrayWithResponse(.getAddresses, type: Address.self, completion: completion, wrapper: "shipping_address")
     }
     
     func getAddress(addressId: String, completion: @escaping (Address?, Response?) -> Void) {
