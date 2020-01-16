@@ -25,7 +25,6 @@
 		460836AD238867B10052E73A /* InvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460836AC238867B10052E73A /* InvitationViewController.swift */; };
 		460A1D912373E85400311876 /* EventProductFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A1D902373E85400311876 /* EventProductFilterViewController.swift */; };
 		460A1D932375EB2900311876 /* EventPoolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460A1D922375EB2800311876 /* EventPoolCell.swift */; };
-		460C0E7C23C393BD00D2043B /* Mihan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 460C0E7B23C393BD00D2043B /* Mihan-Regular.ttf */; };
 		46153CE223C8F6AC005CD395 /* AddressesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46153CE123C8F6AC005CD395 /* AddressesTableViewController.swift */; };
 		46153CE423C8F6F3005CD395 /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46153CE323C8F6F3005CD395 /* AddAddressViewController.swift */; };
 		46167727232AE5F700A6CAB9 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46167726232AE5F700A6CAB9 /* Category.swift */; };
@@ -63,6 +62,7 @@
 		463A78A42385F3F100985674 /* GuestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A78A32385F3F100985674 /* GuestListViewController.swift */; };
 		463A78A62386E9EC00985674 /* Invitee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A78A52386E9EC00985674 /* Invitee.swift */; };
 		463A78A92386F33400985674 /* GuestListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A78A82386F33400985674 /* GuestListTableViewCell.swift */; };
+		46441B7723CE852C00F5FCD2 /* Mihan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46441B7623CE852B00F5FCD2 /* Mihan-Regular.ttf */; };
 		46462BE223A9296200516A60 /* GradientFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46462BE123A9296200516A60 /* GradientFontExtension.swift */; };
 		464C12A223A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C12A123A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift */; };
 		464C12A423A6F72B00A690C4 /* MainInvitationTemplateCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C12A323A6F72B00A690C4 /* MainInvitationTemplateCVCell.swift */; };
@@ -199,7 +199,6 @@
 		460836AC238867B10052E73A /* InvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationViewController.swift; sourceTree = "<group>"; };
 		460A1D902373E85400311876 /* EventProductFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProductFilterViewController.swift; sourceTree = "<group>"; };
 		460A1D922375EB2800311876 /* EventPoolCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPoolCell.swift; sourceTree = "<group>"; };
-		460C0E7B23C393BD00D2043B /* Mihan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Mihan-Regular.ttf"; path = "../../../../../../../../Downloads/Mihan-Regular.ttf"; sourceTree = "<group>"; };
 		46153CE123C8F6AC005CD395 /* AddressesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressesTableViewController.swift; sourceTree = "<group>"; };
 		46153CE323C8F6F3005CD395 /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		46167726232AE5F700A6CAB9 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -237,6 +236,7 @@
 		463A78A32385F3F100985674 /* GuestListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.swift; sourceTree = "<group>"; };
 		463A78A52386E9EC00985674 /* Invitee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitee.swift; sourceTree = "<group>"; };
 		463A78A82386F33400985674 /* GuestListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListTableViewCell.swift; sourceTree = "<group>"; };
+		46441B7623CE852B00F5FCD2 /* Mihan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mihan-Regular.ttf"; sourceTree = "<group>"; };
 		46462BE123A9296200516A60 /* GradientFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientFontExtension.swift; sourceTree = "<group>"; };
 		464C12A123A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChosenInvitationCVCell.swift; sourceTree = "<group>"; };
 		464C12A323A6F72B00A690C4 /* MainInvitationTemplateCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInvitationTemplateCVCell.swift; sourceTree = "<group>"; };
@@ -693,7 +693,7 @@
 		46C691A322FA0FC200E01E0F /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				460C0E7B23C393BD00D2043B /* Mihan-Regular.ttf */,
+				46441B7623CE852B00F5FCD2 /* Mihan-Regular.ttf */,
 				46B5F73F23845BB400AFF425 /* Tinos-Bold.ttf */,
 				46B5F73E23845BB400AFF425 /* Tinos-BoldItalic.ttf */,
 				46B5F74023845BB500AFF425 /* Tinos-Regular.ttf */,
@@ -899,7 +899,7 @@
 				46987D9F22FA10C5007B2C78 /* OpenSans-SemiBold.ttf in Resources */,
 				46B5F74C23845BB600AFF425 /* Tinos-Regular.ttf in Resources */,
 				46987D9922FA10AD007B2C78 /* Poppins-Medium.ttf in Resources */,
-				460C0E7C23C393BD00D2043B /* Mihan-Regular.ttf in Resources */,
+				46441B7723CE852C00F5FCD2 /* Mihan-Regular.ttf in Resources */,
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
 				46B5F74623845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */,
 				46B5F74923845BB600AFF425 /* Tinos-Bold.ttf in Resources */,

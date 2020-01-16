@@ -71,6 +71,7 @@ class AddAddressViewController: UIViewController {
     }
     
     func setupCountryDropDown() {
+//      JC:  Pending to see client initial data for countries
         countryDropDown.anchorView = self.countryButton
         countryDropDown.dataSource = ["Mexico"]
         countryDropDown.bottomOffset = CGPoint(x: 0, y: countryButton.bounds.height)
@@ -84,6 +85,7 @@ class AddAddressViewController: UIViewController {
     }
     
     func setupStateDropDown() {
+//      JC:  Pending to see client initial data for states
         stateDropDown.anchorView = self.stateButton
         stateDropDown.dataSource = ["Nuevo León"]
         stateDropDown.bottomOffset = CGPoint(x: 0, y: stateButton.bounds.height)
@@ -97,6 +99,7 @@ class AddAddressViewController: UIViewController {
     }
     
     func setupCityDropDown() {
+//      JC:  Pending to see client initial data for cities
         cityDropDown.anchorView = self.cityButton
         cityDropDown.dataSource = ["Monterrey"]
         cityDropDown.bottomOffset = CGPoint(x: 0, y: cityButton.bounds.height)
