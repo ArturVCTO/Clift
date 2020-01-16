@@ -58,6 +58,7 @@ enum CliftApi {
     case getAddress(addressId: String)
     case updateAddress(address: Address)
     case setDefaultAddress(address: Address)
+    case deleteAddress(address: Address)
 }
 
 extension CliftApi: TargetType {
@@ -154,6 +155,8 @@ extension CliftApi: TargetType {
             return "shipping_addresses/\(address.id)"
         case .setDefaultAddress(let address):
             return "shipping_addresses/\(address.id)/set_default"
+        case .deleteAddress(let address):
+            return "shipping_addresses/\(address.id)/delete"
         }
     }
     
@@ -163,7 +166,7 @@ extension CliftApi: TargetType {
             return .post
         case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses,.getAddress:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress:
             return .put
         case .deleteLogoutSession,.deleteProductFromRegistry:
             return .delete

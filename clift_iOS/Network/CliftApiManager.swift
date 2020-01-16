@@ -244,6 +244,8 @@ protocol ApiCalls {
     func updateAddress(address: Address, completion: @escaping(Address?, Response?) -> Void)
     
     func setDefaultAddress(address: Address, completion: @escaping(Address? , Response?) -> Void)
+    
+    func deleteAddress(address: Address, completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -417,5 +419,9 @@ extension CliftApiManager: ApiCalls {
     
     func setDefaultAddress(address: Address, completion: @escaping (Address?, Response?) -> Void) {
         requestObjectWithResponse(.setDefaultAddress(address: address), type: Address.self, completion: completion, wrapper: "shipping_address")
+    }
+    
+    func deleteAddress(address: Address, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.deleteAddress(address: address), completion: completion)
     }
 }
