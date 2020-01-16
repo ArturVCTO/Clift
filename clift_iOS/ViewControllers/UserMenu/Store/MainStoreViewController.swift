@@ -96,6 +96,15 @@ class MainStoreViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func checkoutButtonTapped(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "checkoutVC") as! CheckoutViewController
+         self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
+         self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 extension MainStoreViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
