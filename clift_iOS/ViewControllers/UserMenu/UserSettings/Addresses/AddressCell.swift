@@ -15,7 +15,12 @@ class AddressCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     
     func setup(address: Address) {
-        self.addressNameLabel.text = address.name
-        self.addressLabel.text = "\(address.street1) \(address.city.name) \(address.state.name) \(address.country.name)"
+        if address.isDefault {
+            self.defaultAddressView.isHidden = false
+        } else {
+            self.defaultAddressView.isHidden = true
+        }
+        self.addressNameLabel.text = "\(address.firstName ?? "") \(address.lastName ?? "")"
+        self.addressLabel.text = "\(address.streetAndNumber ?? "") \(address.city.name ?? "") \(address.state.name ?? "") \(address.country.name ?? "") \(address.zipCode ?? "")"
     }
 }
