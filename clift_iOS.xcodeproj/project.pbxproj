@@ -121,6 +121,7 @@
 		46B5F75223845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */; };
 		46B5F75323845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */; };
 		46B5F75423845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */; };
+		46BFA8C023D0EFEC008D6B72 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */; };
 		46C42AEB23295D9800D5A72F /* MainStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C42AEA23295D9800D5A72F /* MainStoreViewController.swift */; };
 		46C724CF23C7D9B300F12924 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C724CE23C7D9B300F12924 /* Address.swift */; };
 		46C724D123C7DA0B00F12924 /* AddressCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C724D023C7DA0B00F12924 /* AddressCity.swift */; };
@@ -291,6 +292,7 @@
 		46B5F73F23845BB400AFF425 /* Tinos-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-Bold.ttf"; path = "../../../../../../../../Downloads/Tinos-Bold.ttf"; sourceTree = "<group>"; };
 		46B5F74023845BB500AFF425 /* Tinos-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-Regular.ttf"; path = "../../../../../../../../Downloads/Tinos-Regular.ttf"; sourceTree = "<group>"; };
 		46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-RegularItalic 2.ttf"; path = "../../../../../../../../Downloads/Tinos-RegularItalic 2.ttf"; sourceTree = "<group>"; };
+		46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		46C42AEA23295D9800D5A72F /* MainStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStoreViewController.swift; sourceTree = "<group>"; };
 		46C724CE23C7D9B300F12924 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		46C724D023C7DA0B00F12924 /* AddressCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCity.swift; sourceTree = "<group>"; };
@@ -535,6 +537,7 @@
 			children = (
 				46EC9DA52333EF7200950139 /* Cells */,
 				46C42AEA23295D9800D5A72F /* MainStoreViewController.swift */,
+				46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -1121,6 +1124,7 @@
 				46D3776D2395783D004BE93E /* AddGuestsViewController.swift in Sources */,
 				465C82172362157100DAC090 /* AddManualProductViewController.swift in Sources */,
 				462EB0BF2316C9170084C3C7 /* RecentActivity.swift in Sources */,
+				46BFA8C023D0EFEC008D6B72 /* CheckoutViewController.swift in Sources */,
 				46A2DD9222FB6CC60051DCA6 /* Session.swift in Sources */,
 				4672A89122F88F25001F374F /* ViewController.swift in Sources */,
 				46DE69CE235D6965002C2BB8 /* colorFilterTVCell.swift in Sources */,
