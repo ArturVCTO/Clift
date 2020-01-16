@@ -41,6 +41,19 @@ class AddressesTableViewController: UITableViewController {
         }
     }
     
+    func deleteAddress(address: Address) {
+          sharedApiManager.deleteAddress(address: address) { (emptyObject, result) in
+              if let response = result {
+                  if (response.isSuccess()) {
+                      self.getAddresses()
+                      self.tableView.reloadData()
+                  } else {
+                      self.showMessage("\(emptyObject!.errors.first ?? "Error al actualizar")", type: .error)
+                  }
+              }
+          }
+      }
+    
     @IBAction func addAddressesButtonTapped(_ sender: Any) {
         if #available(iOS 13.0, *) {
            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "addAddressVC") as! AddAddressViewController
@@ -74,7 +87,7 @@ class AddressesTableViewController: UITableViewController {
         
         let deleteAction = UITableViewRowAction(style: .destructive,
           title: deleteTitle) { (action, indexPath) in
-            self.updateDefaultAddress(address: self.addresses[indexPath.row])
+            self.deleteAddress(address: self.addresses[indexPath.row])
         }
         
         return [makeDefaultAction, deleteAction]
