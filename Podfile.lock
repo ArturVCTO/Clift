@@ -54,6 +54,7 @@ PODS:
   - Result (3.2.4)
   - RxSwift (4.5.0)
   - SideMenu (6.1.4)
+  - Stripe (18.4.0)
   - SwiftSoup (2.2.1)
   - TextFieldEffects (1.6.0)
   - "UITextField+Shake (1.2.1)"
@@ -70,12 +71,13 @@ DEPENDENCIES:
   - "ObjectMapper+Realm"
   - RealmSwift
   - SideMenu
+  - Stripe
   - SwiftSoup
   - TextFieldEffects
   - "UITextField+Shake (~> 1.2)"
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AppAuth
     - DropDown
@@ -98,6 +100,8 @@ SPEC REPOS:
     - SwiftSoup
     - TextFieldEffects
     - "UITextField+Shake"
+  trunk:
+    - Stripe
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -119,10 +123,11 @@ SPEC CHECKSUMS:
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SideMenu: 7e7f16f229c8d160830e5449308f6562821d762d
+  Stripe: fa837c60f0644b488c994024ce7d9b001ea4e97c
   SwiftSoup: a91d3c96ecb6f8f13005552ef60f9075aae4a7f3
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 38aef3376f21f296e7e8fa924ba2ade587ee49b9
+PODFILE CHECKSUM: 678774d191fb0c80dd158600ed208538f2433ce7
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

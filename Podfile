@@ -21,7 +21,7 @@ target 'clift_iOS' do
   pod 'SwiftSoup'
   pod 'ImageSlideshow', '~> 1.8'
   pod 'GoogleSignIn'
-
+  pod 'Stripe'
 
 
   target 'clift_iOSTests' do
