@@ -7,3 +7,17 @@
 //
 
 import Foundation
+import UIKit
+
+class CheckoutProductCell: UITableViewCell {
+    @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet weak var productImageView: UIImageView!
+    @IBOutlet weak var productCostLabel: UILabel!
+    @IBOutlet weak var productQuantityLabel: UILabel!
+    
+     func configure(with product: MockProduct) {
+        self.productNameLabel.text = product.name
+        self.productImageView.image = product.image
+        self.productCostLabel.text = "\(product.price)"
+    }
+}
