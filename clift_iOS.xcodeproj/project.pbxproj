@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -122,6 +122,9 @@
 		46B5F75323845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */; };
 		46B5F75423845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */; };
 		46BFA8C023D0EFEC008D6B72 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */; };
+		46BFA8C223D120F3008D6B72 /* CartProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BFA8C123D120F3008D6B72 /* CartProduct.swift */; };
+		46C07A1823D228C70091CDDA /* CheckoutProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C07A1723D228C70091CDDA /* CheckoutProductCell.swift */; };
+		46C07A1A23D26E460091CDDA /* StripeApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C07A1923D26E460091CDDA /* StripeApiClient.swift */; };
 		46C42AEB23295D9800D5A72F /* MainStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C42AEA23295D9800D5A72F /* MainStoreViewController.swift */; };
 		46C724CF23C7D9B300F12924 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C724CE23C7D9B300F12924 /* Address.swift */; };
 		46C724D123C7DA0B00F12924 /* AddressCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C724D023C7DA0B00F12924 /* AddressCity.swift */; };
@@ -293,6 +296,9 @@
 		46B5F74023845BB500AFF425 /* Tinos-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-Regular.ttf"; path = "../../../../../../../../Downloads/Tinos-Regular.ttf"; sourceTree = "<group>"; };
 		46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-RegularItalic 2.ttf"; path = "../../../../../../../../Downloads/Tinos-RegularItalic 2.ttf"; sourceTree = "<group>"; };
 		46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		46BFA8C123D120F3008D6B72 /* CartProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
+		46C07A1723D228C70091CDDA /* CheckoutProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutProductCell.swift; sourceTree = "<group>"; };
+		46C07A1923D26E460091CDDA /* StripeApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeApiClient.swift; sourceTree = "<group>"; };
 		46C42AEA23295D9800D5A72F /* MainStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStoreViewController.swift; sourceTree = "<group>"; };
 		46C724CE23C7D9B300F12924 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		46C724D023C7DA0B00F12924 /* AddressCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCity.swift; sourceTree = "<group>"; };
@@ -538,6 +544,7 @@
 				46EC9DA52333EF7200950139 /* Cells */,
 				46C42AEA23295D9800D5A72F /* MainStoreViewController.swift */,
 				46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */,
+				46C07A1723D228C70091CDDA /* CheckoutProductCell.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -667,6 +674,7 @@
 				46C724D023C7DA0B00F12924 /* AddressCity.swift */,
 				46C724D223C7DA6000F12924 /* AddressState.swift */,
 				46C724D423C7DA7700F12924 /* AddressCountry.swift */,
+				46BFA8C123D120F3008D6B72 /* CartProduct.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -739,6 +747,7 @@
 			children = (
 				46E85B4F22FB5ECF004FA3FE /* CliftApi.swift */,
 				46E85B5122FB5ED9004FA3FE /* CliftApiManager.swift */,
+				46C07A1923D26E460091CDDA /* StripeApiClient.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1132,9 +1141,11 @@
 				46EC9DA22331493D00950139 /* ProductCollectionViewCell.swift in Sources */,
 				46DE69882358175F002C2BB8 /* ColorExtension.swift in Sources */,
 				4604A346230473E20041F9AA /* OnboardingInterestCell.swift in Sources */,
+				46BFA8C223D120F3008D6B72 /* CartProduct.swift in Sources */,
 				4616772B232AE7C300A6CAB9 /* Group.swift in Sources */,
 				46E12884233AD24200354DB9 /* Subgroup.swift in Sources */,
 				465E09B123130858006776D1 /* customView.swift in Sources */,
+				46C07A1A23D26E460091CDDA /* StripeApiClient.swift in Sources */,
 				463A304E2321785A00C42347 /* ProductInformationTableViewController.swift in Sources */,
 				465C82192362159D00DAC090 /* AddProductByUrlViewController.swift in Sources */,
 				4604A3372303319F0041F9AA /* Spouse.swift in Sources */,
@@ -1146,6 +1157,7 @@
 				462F9F2C230C628A0014CD9E /* FifthStepOnboardingViewController.swift in Sources */,
 				46167729232AE76100A6CAB9 /* Product.swift in Sources */,
 				46029C5A23284527008A8EAE /* RangeSliderTrackLayer.swift in Sources */,
+				46C07A1823D228C70091CDDA /* CheckoutProductCell.swift in Sources */,
 				46029C5823281270008A8EAE /* RangeSlider.swift in Sources */,
 				46D3776B2391D8A1004BE93E /* DiscardChangesViewDelegate.swift in Sources */,
 				46EC9D9E232BF33B00950139 /* ProductsCollectionViewLayout.swift in Sources */,
