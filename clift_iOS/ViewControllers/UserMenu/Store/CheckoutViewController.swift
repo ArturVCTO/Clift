@@ -12,7 +12,7 @@ import Stripe
 
 //  This struct is for mock purposes only
 struct MockProduct {
-    let price: Int
+    let price: Double
     let name: String
     let image: UIImage
     let quantity: Int
@@ -39,11 +39,27 @@ class CheckoutViewController: UIViewController {
         self.checkoutProductTableView.dataSource = self
         self.checkoutProductTableView.translatesAutoresizingMaskIntoConstraints = false
         self.checkoutProductTableView.reloadData()
+        self.getTotalAmountAndSubtotal(cartItems: cartItems)
+    }
+    
+    func getPriceStringFormat(value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+              
+        return formatter.string(from: NSNumber(value: value))!
     }
     
     func tableViewSetup() {
         self.checkoutProductTableView.separatorStyle = .singleLine
         self.checkoutProductTableView.rowHeight = 134
+    }
+    
+    func getTotalAmountAndSubtotal(cartItems: [MockProduct]) {
+        let totalAmount = cartItems.reduce(0) { result, product in
+            return result + product.price
+        }
+        self.totalAmountLabel.text = "\(self.getPriceStringFormat(value:totalAmount))"
+        self.subtotalLabel.text = "\(self.getPriceStringFormat(value:totalAmount))"
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
