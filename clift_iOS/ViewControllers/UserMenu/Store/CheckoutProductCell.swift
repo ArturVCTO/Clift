@@ -18,6 +18,14 @@ class CheckoutProductCell: UITableViewCell {
      func configure(with product: MockProduct) {
         self.productNameLabel.text = product.name
         self.productImageView.image = product.image
-        self.productCostLabel.text = "\(product.price)"
+        self.productCostLabel.text = "\(self.getPriceStringFormat(value: product.price))"
+        self.productQuantityLabel.text = "\(product.quantity)"
+    }
+    
+    func getPriceStringFormat(value: Double) -> String {
+      let formatter = NumberFormatter()
+      formatter.numberStyle = .currency
+      
+      return formatter.string(from: NSNumber(value: value))!
     }
 }
