@@ -9,6 +9,7 @@
 import UIKit
 import SideMenu
 import GoogleSignIn
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
@@ -40,7 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         // Override point for customization after application launch.
         GIDSignIn.sharedInstance()?.clientID = "659271946310-ab43ccokoq7uijrd53rgcojp0o07n9ch.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self
-        
+        STPPaymentConfiguration.shared().publishableKey = Bundle.main.infoDictionary!["STRIPE_PUBLISHABLE_KEY"] as! String
+
         return true
     }
 
