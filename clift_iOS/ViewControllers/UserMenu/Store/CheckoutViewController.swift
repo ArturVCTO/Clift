@@ -56,7 +56,7 @@ class CheckoutViewController: UIViewController {
     
     func getTotalAmountAndSubtotal(cartItems: [MockProduct]) {
         let totalAmount = cartItems.reduce(0) { result, product in
-            return result + product.price
+            return result + (product.price * Double(product.quantity))
         }
         self.totalAmountLabel.text = "\(self.getPriceStringFormat(value:totalAmount))"
         self.subtotalLabel.text = "\(self.getPriceStringFormat(value:totalAmount))"
@@ -67,6 +67,13 @@ class CheckoutViewController: UIViewController {
     }
     
     @IBAction func goToPaymentCheckoutVC(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "paymentCheckoutVC") as! PaymentCheckoutViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "paymentCheckoutVC") as! PaymentCheckoutViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 extension CheckoutViewController: UITableViewDataSource, UITableViewDelegate {
