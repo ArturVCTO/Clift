@@ -9,7 +9,7 @@
 import Foundation
 import Stripe
 
-class StripeApiClient: NSObject, STPCustomerEphemeralKeyProvider {
+class MyStripeApiClient: NSObject, STPCustomerEphemeralKeyProvider {
     enum APIError: Error {
         case unknown
         
@@ -21,7 +21,7 @@ class StripeApiClient: NSObject, STPCustomerEphemeralKeyProvider {
         }
     }
     
-     static let sharedClient = StripeApiClient()
+     static let sharedClient = MyStripeApiClient()
        var baseURLString: String? = nil
        var baseURL: URL {
            if let urlString = self.baseURLString, let url = URL(string: urlString) {
@@ -31,20 +31,13 @@ class StripeApiClient: NSObject, STPCustomerEphemeralKeyProvider {
            }
        }
        
-       func createPaymentIntent(cartProduct: [MockProduct], shippingMethod: PKShippingMethod?, country: String? = nil, completion: @escaping ((Result<String, Error>) -> Void)) {
+       func createPaymentIntent(cartProduct: [MockProduct], shippingMethod: Address?, country: String? = nil, completion: @escaping ((Result<String, Error>) -> Void)) {
            let url = self.baseURL.appendingPathComponent("create_payment_intent")
-           var params: [String: Any] = [
-               "metadata": [
-                   // example-ios-backend allows passing metadata through to Stripe
-                   "payment_request_id": "B3E611D1-5FA1-4410-9CEC-00958A5126CB",
-               ],
-           ]
+            var params: [String: Any] = [:]
            params["products"] = cartProduct.map({ (p) -> String in
                 return p.name
            })
-           if let shippingMethod = shippingMethod {
-               params["shipping"] = shippingMethod.identifier
-           }
+           
            params["country"] = "MX"
            let jsonData = try? JSONSerialization.data(withJSONObject: params)
            var request = URLRequest(url: url)
