@@ -34,6 +34,8 @@
 		46167731232AE9C700A6CAB9 /* SubcategoryCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46167730232AE9C700A6CAB9 /* SubcategoryCollectionViewController.swift */; };
 		46167733232AECC700A6CAB9 /* ProductCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46167732232AECC700A6CAB9 /* ProductCollectionViewController.swift */; };
 		46167736232AFB7000A6CAB9 /* ProductSubcategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46167735232AFB7000A6CAB9 /* ProductSubcategoryCollectionViewCell.swift */; };
+		461C423523DA3B3E00486D80 /* DiscountCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461C423423DA3B3E00486D80 /* DiscountCodeViewController.swift */; };
+		461C423823DA3CF400486D80 /* ShippingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461C423723DA3CF400486D80 /* ShippingTableViewController.swift */; };
 		461C5C4B2360B544005FA273 /* ProductsRegistryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461C5C4A2360B544005FA273 /* ProductsRegistryViewController.swift */; };
 		462A289D238C51CD002ECAF3 /* InvitationEditFormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A289C238C51CD002ECAF3 /* InvitationEditFormTableViewController.swift */; };
 		462A6B3F22FC820B0045C94E /* customButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 462A6B3E22FC820B0045C94E /* customButton.swift */; };
@@ -93,6 +95,7 @@
 		4672A8AF22F88F27001F374F /* clift_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672A8AE22F88F27001F374F /* clift_iOSUITests.swift */; };
 		46792371239EBB92005103F2 /* PreviewInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46792370239EBB92005103F2 /* PreviewInvitationViewController.swift */; };
 		468258162307261C00D3D49C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468258152307261C00D3D49C /* LoginViewController.swift */; };
+		46831C0E23DA4079004BAAC1 /* PaymentConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46831C0D23DA4079004BAAC1 /* PaymentConfirmationViewController.swift */; };
 		469823C023C9376500671731 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469823BF23C9376500671731 /* AddressCell.swift */; };
 		46987D9922FA10AD007B2C78 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9522FA10AD007B2C78 /* Poppins-Medium.ttf */; };
 		46987D9A22FA10AD007B2C78 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9622FA10AD007B2C78 /* Poppins-SemiBold.ttf */; };
@@ -153,6 +156,7 @@
 		46E12882233ACFB000354DB9 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E12881233ACFB000354DB9 /* Shop.swift */; };
 		46E12884233AD24200354DB9 /* Subgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E12883233AD24200354DB9 /* Subgroup.swift */; };
 		46E4D77323D7BB48004FC798 /* PaymentCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E4D77223D7BB48004FC798 /* PaymentCheckoutViewController.swift */; };
+		46E4D77523D8C130004FC798 /* PaymentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E4D77423D8C130004FC798 /* PaymentTableViewController.swift */; };
 		46E85B5022FB5ECF004FA3FE /* CliftApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E85B4F22FB5ECF004FA3FE /* CliftApi.swift */; };
 		46E85B5222FB5ED9004FA3FE /* CliftApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E85B5122FB5ED9004FA3FE /* CliftApiManager.swift */; };
 		46EC9D9E232BF33B00950139 /* ProductsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9D9D232BF33B00950139 /* ProductsCollectionViewLayout.swift */; };
@@ -213,6 +217,8 @@
 		46167730232AE9C700A6CAB9 /* SubcategoryCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryCollectionViewController.swift; sourceTree = "<group>"; };
 		46167732232AECC700A6CAB9 /* ProductCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewController.swift; sourceTree = "<group>"; };
 		46167735232AFB7000A6CAB9 /* ProductSubcategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSubcategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		461C423423DA3B3E00486D80 /* DiscountCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCodeViewController.swift; sourceTree = "<group>"; };
+		461C423723DA3CF400486D80 /* ShippingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingTableViewController.swift; sourceTree = "<group>"; };
 		461C5C4A2360B544005FA273 /* ProductsRegistryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRegistryViewController.swift; sourceTree = "<group>"; };
 		462A289C238C51CD002ECAF3 /* InvitationEditFormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationEditFormTableViewController.swift; sourceTree = "<group>"; };
 		462A6B3E22FC820B0045C94E /* customButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customButton.swift; sourceTree = "<group>"; };
@@ -278,6 +284,7 @@
 		4672A8B022F88F27001F374F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46792370239EBB92005103F2 /* PreviewInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewInvitationViewController.swift; sourceTree = "<group>"; };
 		468258152307261C00D3D49C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		46831C0D23DA4079004BAAC1 /* PaymentConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationViewController.swift; sourceTree = "<group>"; };
 		469823BF23C9376500671731 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		46987D9522FA10AD007B2C78 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		46987D9622FA10AD007B2C78 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-SemiBold.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -328,6 +335,7 @@
 		46E12881233ACFB000354DB9 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		46E12883233AD24200354DB9 /* Subgroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subgroup.swift; sourceTree = "<group>"; };
 		46E4D77223D7BB48004FC798 /* PaymentCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCheckoutViewController.swift; sourceTree = "<group>"; };
+		46E4D77423D8C130004FC798 /* PaymentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewController.swift; sourceTree = "<group>"; };
 		46E85B4F22FB5ECF004FA3FE /* CliftApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliftApi.swift; sourceTree = "<group>"; };
 		46E85B5122FB5ED9004FA3FE /* CliftApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliftApiManager.swift; sourceTree = "<group>"; };
 		46EC9D9D232BF33B00950139 /* ProductsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewLayout.swift; sourceTree = "<group>"; };
@@ -417,6 +425,14 @@
 				46EC9DA323314FFA00950139 /* SubcategoryCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		461C423623DA3CD600486D80 /* Shipping */ = {
+			isa = PBXGroup;
+			children = (
+				461C423723DA3CF400486D80 /* ShippingTableViewController.swift */,
+			);
+			path = Shipping;
 			sourceTree = "<group>";
 		};
 		462A6B3D22FC81FF0045C94E /* View Extensions */ = {
@@ -543,11 +559,15 @@
 		465E09B32313943C006776D1 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				461C423623DA3CD600486D80 /* Shipping */,
 				46EC9DA52333EF7200950139 /* Cells */,
 				46C42AEA23295D9800D5A72F /* MainStoreViewController.swift */,
 				46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */,
 				46C07A1723D228C70091CDDA /* CheckoutProductCell.swift */,
 				46E4D77223D7BB48004FC798 /* PaymentCheckoutViewController.swift */,
+				46E4D77423D8C130004FC798 /* PaymentTableViewController.swift */,
+				461C423423DA3B3E00486D80 /* DiscountCodeViewController.swift */,
+				46831C0D23DA4079004BAAC1 /* PaymentConfirmationViewController.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -1060,11 +1080,13 @@
 			files = (
 				46E034BD2326E522001143BC /* CategoryResultsTableViewCell.swift in Sources */,
 				465167AE237A7D1500755077 /* CollaborativeCell.swift in Sources */,
+				461C423523DA3B3E00486D80 /* DiscountCodeViewController.swift in Sources */,
 				46167733232AECC700A6CAB9 /* ProductCollectionViewController.swift in Sources */,
 				469D8C2A230F02AB000D447E /* EditProfileViewController.swift in Sources */,
 				465C82142361087400DAC090 /* CustomAlertController.swift in Sources */,
 				46E12882233ACFB000354DB9 /* Shop.swift in Sources */,
 				46D3777123972DDD004BE93E /* Invitation.swift in Sources */,
+				46831C0E23DA4079004BAAC1 /* PaymentConfirmationViewController.swift in Sources */,
 				46C724D123C7DA0B00F12924 /* AddressCity.swift in Sources */,
 				462EB0C12316D4250084C3C7 /* MyEventsTableViewController.swift in Sources */,
 				462EB0B1231484FF0084C3C7 /* PaymentsViewController.swift in Sources */,
@@ -1087,6 +1109,7 @@
 				465C82172362157100DAC090 /* AddManualProductViewController.swift in Sources */,
 				462EB0BF2316C9170084C3C7 /* RecentActivity.swift in Sources */,
 				46BFA8C023D0EFEC008D6B72 /* CheckoutViewController.swift in Sources */,
+				46E4D77523D8C130004FC798 /* PaymentTableViewController.swift in Sources */,
 				46A2DD9222FB6CC60051DCA6 /* Session.swift in Sources */,
 				4672A89122F88F25001F374F /* ViewController.swift in Sources */,
 				46DE69CE235D6965002C2BB8 /* colorFilterTVCell.swift in Sources */,
@@ -1123,6 +1146,7 @@
 				46462BE223A9296200516A60 /* GradientFontExtension.swift in Sources */,
 				46E1287E2333EFF700354DB9 /* MainStoreBrandCollectionViewCell.swift in Sources */,
 				462EB0AF2314816D0084C3C7 /* GiftsViewController.swift in Sources */,
+				461C423823DA3CF400486D80 /* ShippingTableViewController.swift in Sources */,
 				465167B4237A7D9700755077 /* EventProductShopCell.swift in Sources */,
 				465FED0D2368C1620038D557 /* ProductInfoByUrlViewController.swift in Sources */,
 				465FED0F236B8B730038D557 /* EventProductCell.swift in Sources */,
@@ -1313,6 +1337,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "mx.com.clift.clift-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1436,6 +1461,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "mx.com.clift.clift-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIPE_PUBLISHABLE_KEY = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1614,6 +1640,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "mx.com.clift.clift-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1635,6 +1662,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "mx.com.clift.clift-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIPE_PUBLISHABLE_KEY = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
