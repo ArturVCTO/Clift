@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+class ShippingTableViewController: UITableViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
