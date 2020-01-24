@@ -155,7 +155,6 @@
 		46E128802333F02300354DB9 /* CliftStoresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E1287F2333F02300354DB9 /* CliftStoresCollectionViewCell.swift */; };
 		46E12882233ACFB000354DB9 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E12881233ACFB000354DB9 /* Shop.swift */; };
 		46E12884233AD24200354DB9 /* Subgroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E12883233AD24200354DB9 /* Subgroup.swift */; };
-		46E4D77323D7BB48004FC798 /* PaymentCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E4D77223D7BB48004FC798 /* PaymentCheckoutViewController.swift */; };
 		46E4D77523D8C130004FC798 /* PaymentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E4D77423D8C130004FC798 /* PaymentTableViewController.swift */; };
 		46E85B5022FB5ECF004FA3FE /* CliftApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E85B4F22FB5ECF004FA3FE /* CliftApi.swift */; };
 		46E85B5222FB5ED9004FA3FE /* CliftApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E85B5122FB5ED9004FA3FE /* CliftApiManager.swift */; };
@@ -334,7 +333,6 @@
 		46E1287F2333F02300354DB9 /* CliftStoresCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliftStoresCollectionViewCell.swift; sourceTree = "<group>"; };
 		46E12881233ACFB000354DB9 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		46E12883233AD24200354DB9 /* Subgroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subgroup.swift; sourceTree = "<group>"; };
-		46E4D77223D7BB48004FC798 /* PaymentCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCheckoutViewController.swift; sourceTree = "<group>"; };
 		46E4D77423D8C130004FC798 /* PaymentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentTableViewController.swift; sourceTree = "<group>"; };
 		46E85B4F22FB5ECF004FA3FE /* CliftApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliftApi.swift; sourceTree = "<group>"; };
 		46E85B5122FB5ED9004FA3FE /* CliftApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliftApiManager.swift; sourceTree = "<group>"; };
@@ -564,7 +562,6 @@
 				46C42AEA23295D9800D5A72F /* MainStoreViewController.swift */,
 				46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */,
 				46C07A1723D228C70091CDDA /* CheckoutProductCell.swift */,
-				46E4D77223D7BB48004FC798 /* PaymentCheckoutViewController.swift */,
 				46E4D77423D8C130004FC798 /* PaymentTableViewController.swift */,
 				461C423423DA3B3E00486D80 /* DiscountCodeViewController.swift */,
 				46831C0D23DA4079004BAAC1 /* PaymentConfirmationViewController.swift */,
@@ -1156,7 +1153,6 @@
 				4604A339230331A60041F9AA /* Event.swift in Sources */,
 				4604A33122FE18C30041F9AA /* LastStepOnboardingViewController.swift in Sources */,
 				469D8C28230F02A0000D447E /* ProfileViewController.swift in Sources */,
-				46E4D77323D7BB48004FC798 /* PaymentCheckoutViewController.swift in Sources */,
 				46A2DD9722FB7EFC0051DCA6 /* LocationPageControl.swift in Sources */,
 				46153CE223C8F6AC005CD395 /* AddressesTableViewController.swift in Sources */,
 				463A30502321790200C42347 /* ProductViewController.swift in Sources */,
