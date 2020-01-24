@@ -68,10 +68,10 @@ class CheckoutViewController: UIViewController {
     
     @IBAction func goToPaymentCheckoutVC(_ sender: Any) {
         if #available(iOS 13.0, *) {
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "paymentCheckoutVC") as! PaymentCheckoutViewController
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "paymentTableVC") as! PaymentTableViewController
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "paymentCheckoutVC") as! PaymentCheckoutViewController
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "paymentTableVC") as! PaymentTableViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
