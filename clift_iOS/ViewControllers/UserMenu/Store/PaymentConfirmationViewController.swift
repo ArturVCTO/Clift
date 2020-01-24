@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+class PaymentConfirmationViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
