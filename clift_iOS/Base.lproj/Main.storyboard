@@ -1201,7 +1201,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1250"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2u-2u-1vi" customClass="customButton" customModule="clift_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="440" width="343" height="32"/>
+                                                <rect key="frame" x="16" y="457" width="343" height="32"/>
                                                 <color key="backgroundColor" red="0.69411764710000001" green="0.82745098039999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="Q6T-ms-WDg"/>
@@ -1217,10 +1217,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="alQ-i6-WgS" customClass="customView" customModule="clift_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="496" width="118" height="118"/>
+                                                <rect key="frame" x="16" y="513" width="118" height="118"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Has recibido" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6X-ru-elb">
-                                                        <rect key="frame" x="24" y="8" width="70" height="16.5"/>
+                                                        <rect key="frame" x="24" y="8" width="70" height="14"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                         <color key="textColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1236,7 +1236,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regalos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNH-93-ESF">
-                                                        <rect key="frame" x="37" y="93.5" width="44" height="16.5"/>
+                                                        <rect key="frame" x="37" y="96" width="44" height="14"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                         <color key="textColor" red="0.34509803919999998" green="0.34509803919999998" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1267,10 +1267,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c11-Ib-co5" customClass="customView" customModule="clift_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="150" y="496" width="209" height="118"/>
+                                                <rect key="frame" x="150" y="513" width="209" height="118"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Actividad más reciente" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jB4-z0-qxt">
-                                                        <rect key="frame" x="8" y="8" width="193" height="19.5"/>
+                                                        <rect key="frame" x="8" y="8" width="193" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="14"/>
                                                         <color key="textColor" red="0.1803921568627451" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1317,31 +1317,31 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checklist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OxD-jC-IBO">
-                                                <rect key="frame" x="16" y="654" width="343" height="31"/>
+                                                <rect key="frame" x="16" y="671" width="343" height="26"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="22"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complementa tu mesa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iu-1y-pfb">
-                                                <rect key="frame" x="16" y="690" width="343" height="16.5"/>
+                                                <rect key="frame" x="16" y="702" width="343" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                 <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTD-gO-jdL" customClass="customView" customModule="clift_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="887" width="343" height="149"/>
+                                                <rect key="frame" x="16" y="893.5" width="343" height="149"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="regalos" translatesAutoresizingMaskIntoConstraints="NO" id="ZK0-JA-XAv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="134" height="149"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="268" height="149"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mi lista de regalos" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziv-kY-aV3">
-                                                        <rect key="frame" x="150" y="24" width="169" height="56"/>
+                                                        <rect key="frame" x="150" y="24" width="169" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enamórate de tus regalos, descubre nuevos productos." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtY-Tf-lYn">
-                                                        <rect key="frame" x="150" y="92.5" width="176" height="35.5"/>
+                                                        <rect key="frame" x="150" y="97.5" width="176" height="30.5"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
                                                         <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1387,20 +1387,20 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIT-cd-lpb" customClass="customView" customModule="clift_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="1108.5" width="343" height="108"/>
+                                                <rect key="frame" x="16" y="1115" width="343" height="101.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="regalosCopy" translatesAutoresizingMaskIntoConstraints="NO" id="H43-oy-Wcy">
                                                         <rect key="frame" x="0.0" y="0.0" width="134" height="107"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Novedades" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4x-bT-hmb">
-                                                        <rect key="frame" x="151" y="27" width="127" height="28"/>
+                                                        <rect key="frame" x="151" y="27" width="127" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Qué esta pasando en tu mesa?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASw-am-Ick">
-                                                        <rect key="frame" x="151" y="63" width="172" height="14"/>
+                                                        <rect key="frame" x="151" y="58.5" width="172" height="12"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
                                                         <color key="textColor" red="0.42745098039215684" green="0.44705882352941173" blue="0.47058823529411764" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1429,7 +1429,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TMR-8o-FoD">
-                                                <rect key="frame" x="16" y="395" width="343" height="32"/>
+                                                <rect key="frame" x="16" y="390" width="343" height="54"/>
                                                 <segments>
                                                     <segment title="Regalos"/>
                                                     <segment title="Invitados"/>
@@ -1487,13 +1487,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Boda - Evento Privado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BpF-s2-33d">
-                                                <rect key="frame" x="16" y="248" width="343" height="16.5"/>
+                                                <rect key="frame" x="16" y="248" width="343" height="14"/>
                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                 <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="US0-Xf-865">
-                                                <rect key="frame" x="89" y="355" width="196" height="28.5"/>
+                                                <rect key="frame" x="89" y="352.5" width="196" height="26"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8N-8y-l14" customClass="customView" customModule="clift_iOS" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="196" height="1"/>
@@ -1512,13 +1512,13 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡PARA TU GRAN DÍA!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hw4-S9-ba7">
-                                                        <rect key="frame" x="39.5" y="6" width="117" height="16.5"/>
+                                                        <rect key="frame" x="40" y="6" width="116" height="14"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-SemiBold" family="Open Sans" pointSize="12"/>
                                                         <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUQ-HC-dYD" customClass="customView" customModule="clift_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="27.5" width="196" height="1"/>
+                                                        <rect key="frame" x="0.0" y="25" width="196" height="1"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="196" id="6C1-o9-HSs"/>
@@ -1536,19 +1536,19 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="hcN-gj-gm0">
-                                                <rect key="frame" x="96" y="265.5" width="182" height="84"/>
+                                                <rect key="frame" x="96" y="263" width="182" height="84"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LSW-Yl-ezp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="38.5" height="84"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="84"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wcw-oN-PcQ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="38.5" height="70"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="41" height="70"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="48"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="MESES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPG-Va-DMO">
-                                                                <rect key="frame" x="0.0" y="70" width="38.5" height="14"/>
+                                                                <rect key="frame" x="0.0" y="70" width="41" height="14"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                                 <color key="textColor" red="0.70196078431372544" green="0.70196078431372544" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -1556,7 +1556,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="inF-CQ-ZfN" customClass="customView" customModule="clift_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="53.5" y="0.0" width="1" height="84"/>
+                                                        <rect key="frame" x="56" y="0.0" width="1" height="84"/>
                                                         <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="84" id="0t7-eJ-Qj1"/>
@@ -1572,7 +1572,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cJF-nR-wSu">
-                                                        <rect key="frame" x="69.5" y="0.0" width="55" height="84"/>
+                                                        <rect key="frame" x="72" y="0.0" width="55" height="84"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ejf-kI-OPP">
                                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="67.5"/>
@@ -1589,7 +1589,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eP6-LS-IYN" customClass="customView" customModule="clift_iOS" customModuleProvider="target">
-                                                        <rect key="frame" x="139.5" y="0.0" width="1" height="84"/>
+                                                        <rect key="frame" x="142" y="0.0" width="1" height="84"/>
                                                         <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="1" id="2pn-mb-ymy"/>
@@ -1605,16 +1605,16 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Y7-fz-Uzs">
-                                                        <rect key="frame" x="155.5" y="0.0" width="26.5" height="84"/>
+                                                        <rect key="frame" x="158" y="0.0" width="24" height="84"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jm-Eq-o2X">
-                                                                <rect key="frame" x="0.0" y="0.0" width="26.5" height="67.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="24" height="67.5"/>
                                                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="48"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="DÍAS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4f-QF-LDW">
-                                                                <rect key="frame" x="0.0" y="67.5" width="26.5" height="16.5"/>
+                                                                <rect key="frame" x="0.0" y="67.5" width="24" height="16.5"/>
                                                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                                                                 <color key="textColor" red="0.70196078429999997" green="0.70196078429999997" blue="0.70196078429999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -1624,7 +1624,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D6h-ME-ens">
-                                                <rect key="frame" x="16" y="723.5" width="112" height="139.5"/>
+                                                <rect key="frame" x="16" y="733" width="112" height="136.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="geT-Ep-q3r" customClass="customView" customModule="clift_iOS" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="112" height="112"/>
@@ -1657,7 +1657,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Experiencias" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pau-kA-fXX">
-                                                        <rect key="frame" x="12" y="119" width="88" height="20.5"/>
+                                                        <rect key="frame" x="12" y="119" width="88" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                                                         <color key="textColor" red="0.1803921568627451" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1675,7 +1675,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJb-2C-q4t" customClass="customButton" customModule="clift_iOS" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="1056" width="343" height="32"/>
+                                                <rect key="frame" x="16" y="1062.5" width="343" height="32"/>
                                                 <color key="backgroundColor" red="0.69411764710000001" green="0.82745098039999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="uXR-u3-G09"/>
