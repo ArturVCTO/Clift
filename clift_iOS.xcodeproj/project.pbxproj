@@ -96,6 +96,9 @@
 		46792371239EBB92005103F2 /* PreviewInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46792370239EBB92005103F2 /* PreviewInvitationViewController.swift */; };
 		468258162307261C00D3D49C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468258152307261C00D3D49C /* LoginViewController.swift */; };
 		46831C0E23DA4079004BAAC1 /* PaymentConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46831C0D23DA4079004BAAC1 /* PaymentConfirmationViewController.swift */; };
+		46831C1023DB9752004BAAC1 /* SummaryGiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46831C0F23DB9751004BAAC1 /* SummaryGiftsViewController.swift */; };
+		46831C1223DB9D0F004BAAC1 /* GiftSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46831C1123DB9D0F004BAAC1 /* GiftSummaryCell.swift */; };
+		46831C1423DBAEEF004BAAC1 /* ThankGuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46831C1323DBAEEF004BAAC1 /* ThankGuestViewController.swift */; };
 		469823C023C9376500671731 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469823BF23C9376500671731 /* AddressCell.swift */; };
 		46987D9922FA10AD007B2C78 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9522FA10AD007B2C78 /* Poppins-Medium.ttf */; };
 		46987D9A22FA10AD007B2C78 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46987D9622FA10AD007B2C78 /* Poppins-SemiBold.ttf */; };
@@ -133,6 +136,7 @@
 		46C724D123C7DA0B00F12924 /* AddressCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C724D023C7DA0B00F12924 /* AddressCity.swift */; };
 		46C724D323C7DA6000F12924 /* AddressState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C724D223C7DA6000F12924 /* AddressState.swift */; };
 		46C724D523C7DA7700F12924 /* AddressCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C724D423C7DA7700F12924 /* AddressCountry.swift */; };
+		46CDF77123DE073800F01CEC /* ThankMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46CDF77023DE073800F01CEC /* ThankMessage.swift */; };
 		46D377682391CF74004BE93E /* DiscardChangesAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D377672391CF74004BE93E /* DiscardChangesAlertView.swift */; };
 		46D3776B2391D8A1004BE93E /* DiscardChangesViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3776A2391D8A1004BE93E /* DiscardChangesViewDelegate.swift */; };
 		46D3776D2395783D004BE93E /* AddGuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3776C2395783D004BE93E /* AddGuestsViewController.swift */; };
@@ -284,6 +288,9 @@
 		46792370239EBB92005103F2 /* PreviewInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewInvitationViewController.swift; sourceTree = "<group>"; };
 		468258152307261C00D3D49C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		46831C0D23DA4079004BAAC1 /* PaymentConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationViewController.swift; sourceTree = "<group>"; };
+		46831C0F23DB9751004BAAC1 /* SummaryGiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryGiftsViewController.swift; sourceTree = "<group>"; };
+		46831C1123DB9D0F004BAAC1 /* GiftSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSummaryCell.swift; sourceTree = "<group>"; };
+		46831C1323DBAEEF004BAAC1 /* ThankGuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankGuestViewController.swift; sourceTree = "<group>"; };
 		469823BF23C9376500671731 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		46987D9522FA10AD007B2C78 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		46987D9622FA10AD007B2C78 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-SemiBold.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -311,6 +318,7 @@
 		46C724D023C7DA0B00F12924 /* AddressCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCity.swift; sourceTree = "<group>"; };
 		46C724D223C7DA6000F12924 /* AddressState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressState.swift; sourceTree = "<group>"; };
 		46C724D423C7DA7700F12924 /* AddressCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCountry.swift; sourceTree = "<group>"; };
+		46CDF77023DE073800F01CEC /* ThankMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankMessage.swift; sourceTree = "<group>"; };
 		46D377672391CF74004BE93E /* DiscardChangesAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscardChangesAlertView.swift; sourceTree = "<group>"; };
 		46D3776A2391D8A1004BE93E /* DiscardChangesViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscardChangesViewDelegate.swift; sourceTree = "<group>"; };
 		46D3776C2395783D004BE93E /* AddGuestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGuestsViewController.swift; sourceTree = "<group>"; };
@@ -591,6 +599,8 @@
 				461C5C4A2360B544005FA273 /* ProductsRegistryViewController.swift */,
 				465FED102370896B0038D557 /* SummaryRegistryViewController.swift */,
 				460A1D902373E85400311876 /* EventProductFilterViewController.swift */,
+				46831C0F23DB9751004BAAC1 /* SummaryGiftsViewController.swift */,
+				46831C1323DBAEEF004BAAC1 /* ThankGuestViewController.swift */,
 			);
 			path = Registry;
 			sourceTree = "<group>";
@@ -695,6 +705,7 @@
 				46C724D223C7DA6000F12924 /* AddressState.swift */,
 				46C724D423C7DA7700F12924 /* AddressCountry.swift */,
 				46BFA8C123D120F3008D6B72 /* CartProduct.swift */,
+				46CDF77023DE073800F01CEC /* ThankMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -717,6 +728,7 @@
 				465FED0E236B8B720038D557 /* EventProductCell.swift */,
 				465FED1223708B7B0038D557 /* SummaryRegistryTableViewCell.swift */,
 				460A1D922375EB2800311876 /* EventPoolCell.swift */,
+				46831C1123DB9D0F004BAAC1 /* GiftSummaryCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1135,6 +1147,7 @@
 				462EB0AD2314811D0084C3C7 /* InvitationsViewController.swift in Sources */,
 				46DE69D0235DCD9B002C2BB8 /* EventProduct.swift in Sources */,
 				463A78A42385F3F100985674 /* GuestListViewController.swift in Sources */,
+				46831C1423DBAEEF004BAAC1 /* ThankGuestViewController.swift in Sources */,
 				46E85B5222FB5ED9004FA3FE /* CliftApiManager.swift in Sources */,
 				468258162307261C00D3D49C /* LoginViewController.swift in Sources */,
 				4604A32F22FE18900041F9AA /* FourthStepOnboardingViewController.swift in Sources */,
@@ -1149,11 +1162,13 @@
 				465FED0F236B8B730038D557 /* EventProductCell.swift in Sources */,
 				462A6B4422FCB8090045C94E /* RootOnboardingPageViewController.swift in Sources */,
 				46C724CF23C7D9B300F12924 /* Address.swift in Sources */,
+				46831C1023DB9752004BAAC1 /* SummaryGiftsViewController.swift in Sources */,
 				462F9F30230DAC990014CD9E /* DateFormatter.swift in Sources */,
 				4604A339230331A60041F9AA /* Event.swift in Sources */,
 				4604A33122FE18C30041F9AA /* LastStepOnboardingViewController.swift in Sources */,
 				469D8C28230F02A0000D447E /* ProfileViewController.swift in Sources */,
 				46A2DD9722FB7EFC0051DCA6 /* LocationPageControl.swift in Sources */,
+				46831C1223DB9D0F004BAAC1 /* GiftSummaryCell.swift in Sources */,
 				46153CE223C8F6AC005CD395 /* AddressesTableViewController.swift in Sources */,
 				463A30502321790200C42347 /* ProductViewController.swift in Sources */,
 				462A6B4222FC88170045C94E /* FirstStepOnboardingViewController.swift in Sources */,
@@ -1182,6 +1197,7 @@
 				46167729232AE76100A6CAB9 /* Product.swift in Sources */,
 				46029C5A23284527008A8EAE /* RangeSliderTrackLayer.swift in Sources */,
 				46C07A1823D228C70091CDDA /* CheckoutProductCell.swift in Sources */,
+				46CDF77123DE073800F01CEC /* ThankMessage.swift in Sources */,
 				46029C5823281270008A8EAE /* RangeSlider.swift in Sources */,
 				46D3776B2391D8A1004BE93E /* DiscardChangesViewDelegate.swift in Sources */,
 				46EC9D9E232BF33B00950139 /* ProductsCollectionViewLayout.swift in Sources */,
