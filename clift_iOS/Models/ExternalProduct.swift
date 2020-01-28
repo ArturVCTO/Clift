@@ -15,7 +15,7 @@ import RealmSwift
 class ExternalProduct: Mappable {
     var id = ""
     var name = ""
-    var price = ""
+    var price = 0
     var note = ""
     var quantity = 0
     var shopName = ""
