@@ -15,7 +15,7 @@ class Product: Mappable {
     
     var id = ""
     var name = ""
-    var price = ""
+    var price = 0
     var brand = Brand()
     var sku = ""
     var description = ""
