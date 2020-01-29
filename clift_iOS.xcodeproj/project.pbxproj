@@ -68,6 +68,7 @@
 		46403A8D23E0A054007866B8 /* GiftShippingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46403A8C23E0A054007866B8 /* GiftShippingCell.swift */; };
 		46403A8F23E0A425007866B8 /* GiftShippingConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46403A8E23E0A425007866B8 /* GiftShippingConfirmationViewController.swift */; };
 		46403A9123E0A686007866B8 /* GiftShippingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46403A9023E0A686007866B8 /* GiftShippingTableViewController.swift */; };
+		46403A9323E1FC09007866B8 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46403A9223E1FC09007866B8 /* ShoppingCart.swift */; };
 		46441B7723CE852C00F5FCD2 /* Mihan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46441B7623CE852B00F5FCD2 /* Mihan-Regular.ttf */; };
 		46462BE223A9296200516A60 /* GradientFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46462BE123A9296200516A60 /* GradientFontExtension.swift */; };
 		464C12A223A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C12A123A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift */; };
@@ -258,6 +259,7 @@
 		46403A8C23E0A054007866B8 /* GiftShippingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShippingCell.swift; sourceTree = "<group>"; };
 		46403A8E23E0A425007866B8 /* GiftShippingConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShippingConfirmationViewController.swift; sourceTree = "<group>"; };
 		46403A9023E0A686007866B8 /* GiftShippingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShippingTableViewController.swift; sourceTree = "<group>"; };
+		46403A9223E1FC09007866B8 /* ShoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		46441B7623CE852B00F5FCD2 /* Mihan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mihan-Regular.ttf"; sourceTree = "<group>"; };
 		46462BE123A9296200516A60 /* GradientFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientFontExtension.swift; sourceTree = "<group>"; };
 		464C12A123A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChosenInvitationCVCell.swift; sourceTree = "<group>"; };
@@ -734,6 +736,7 @@
 				46C724D423C7DA7700F12924 /* AddressCountry.swift */,
 				46BFA8C123D120F3008D6B72 /* CartProduct.swift */,
 				46CDF77023DE073800F01CEC /* ThankMessage.swift */,
+				46403A9223E1FC09007866B8 /* ShoppingCart.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1162,6 +1165,7 @@
 				462EB0BB2316C6C30084C3C7 /* Progress.swift in Sources */,
 				465FED172373DE1A0038D557 /* ExternalProduct.swift in Sources */,
 				462F9F32230EE8870014CD9E /* customImageView.swift in Sources */,
+				46403A9323E1FC09007866B8 /* ShoppingCart.swift in Sources */,
 				461C5C4B2360B544005FA273 /* ProductsRegistryViewController.swift in Sources */,
 				4604A335230331890041F9AA /* User.swift in Sources */,
 				4604A33B230346C30041F9AA /* Interest.swift in Sources */,
