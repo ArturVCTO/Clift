@@ -35,7 +35,7 @@ class EventProductCell: UICollectionViewCell {
         }
         if (eventProduct.wishableType == "Product") {
             self.eventProductName.text = eventProduct.product.name
-            self.productPrice.text = "\(self.getPriceStringFormat(value: Double(eventProduct.product.price)!))"
+            self.productPrice.text = "\(self.getPriceStringFormat(value: Double(eventProduct.product.price) as! Double))"
             self.paidAmount.barHeight = 0.0
             self.shopProductName.text = eventProduct.product.shop.name
             self.brandProductName.text = eventProduct.product.brand.name
@@ -63,7 +63,7 @@ class EventProductCell: UICollectionViewCell {
             
         } else {
             self.eventProductName.text = eventProduct.externalProduct.name
-            self.productPrice.text = "\(self.getPriceStringFormat(value: Double(eventProduct.externalProduct.price)!))"
+            self.productPrice.text = "\(self.getPriceStringFormat(value: Double(eventProduct.externalProduct.price)))"
             if let imageURL = URL(string:"\(eventProduct.externalProduct.imageUrl)") {
                 self.eventProductImageView.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
             }
@@ -93,10 +93,10 @@ class EventProductCell: UICollectionViewCell {
         self.eventProductQuantityLabel.text = "Necesita: \(eventProduct.quantity)"
     }
     
-    func isGifted(price: String,paidAmount: String) -> Bool {
+    func isGifted(price: Int,paidAmount: String) -> Bool {
         var bool = Bool()
         
-        if paidAmount == price {
+        if paidAmount == "\(price)" {
             bool = true
         } else {
             bool = false
