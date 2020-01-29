@@ -248,6 +248,8 @@ protocol ApiCalls {
     func deleteAddress(address: Address, completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
     
     func sendThankMessage(thankMessage: ThankMessage, event: Event, eventProduct: EventProduct, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
+    
+    func addItemToCart(cartItem: CartItem, product: Product, completion: @escaping(CartItem?,Response?) -> Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -429,5 +431,9 @@ extension CliftApiManager: ApiCalls {
     
     func sendThankMessage(thankMessage: ThankMessage, event: Event, eventProduct: EventProduct, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
         requestEmptyObject(.sendThankMessage(thankMessage: thankMessage, event: event, eventProduct: eventProduct), completion: completion)
+    }
+    
+    func addItemToCart(cartItem: CartItem, product: Product, completion: @escaping (CartItem?, Response?) -> Void) {
+        requestObjectWithResponse(.addItemToCart(cartItem: cartItem, product: product), type: CartItem.self, completion: completion, wrapper: "shopping_cart_item")
     }
 }

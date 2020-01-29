@@ -60,6 +60,7 @@ enum CliftApi {
     case setDefaultAddress(address: Address)
     case deleteAddress(address: Address)
     case sendThankMessage(thankMessage: ThankMessage,event: Event,eventProduct: EventProduct)
+    case addItemToCart(cartItem: CartItem,product: Product)
 }
 
 extension CliftApi: TargetType {
@@ -160,6 +161,8 @@ extension CliftApi: TargetType {
             return "shipping_addresses/\(address.id)/delete"
         case .sendThankMessage(_,let event,let eventProduct):
             return "events/\(event.id)/thank_message/\(eventProduct.id)"
+        case .addItemToCart(_,let product):
+            return "cart/\(product.id)/add_item"
         }
     }
     
@@ -169,7 +172,7 @@ extension CliftApi: TargetType {
             return .post
         case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses,.getAddress:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart:
             return .put
         case .deleteLogoutSession,.deleteProductFromRegistry:
             return .delete
@@ -252,6 +255,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["shipping_address": address.toJSON()], encoding: JSONEncoding.default)
         case .sendThankMessage(let thankMessage,_,_):
             return .requestParameters(parameters: ["message": thankMessage.toJSON()], encoding: JSONEncoding.default)
+        case .addItemToCart(let cartItem,_):
+            return .requestParameters(parameters: ["shopping_cart_item": cartItem.toJSON()], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }
