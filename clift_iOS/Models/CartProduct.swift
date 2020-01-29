@@ -12,9 +12,10 @@ import ObjectMapper
 import ObjectMapper_Realm
 import RealmSwift
 
-class CartProduct: Mappable {
+class CartItem: Mappable {
     var id: String? = ""
     var name: String? = ""
+    var wishableType: String? = ""
     var quantity: Int? = 0
     var productCost: Int? = 0
     var availableStatus: Bool? = false
