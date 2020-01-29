@@ -14,4 +14,8 @@ class GiftShippingConfirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func backToRootButtonTapped(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 }
