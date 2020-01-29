@@ -61,6 +61,7 @@ enum CliftApi {
     case deleteAddress(address: Address)
     case sendThankMessage(thankMessage: ThankMessage,event: Event,eventProduct: EventProduct)
     case addItemToCart(cartItem: CartItem,product: Product)
+    case getCartItems
 }
 
 extension CliftApi: TargetType {
@@ -163,6 +164,8 @@ extension CliftApi: TargetType {
             return "events/\(event.id)/thank_message/\(eventProduct.id)"
         case .addItemToCart(_,let product):
             return "cart/\(product.id)/add_item"
+        case .getCartItems:
+            return "cart/get_items"
         }
     }
     
@@ -170,7 +173,7 @@ extension CliftApi: TargetType {
         switch self {
         case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation, .addAddress:
             return .post
-        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses,.getAddress:
+        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses,.getAddress,.getCartItems:
             return .get
         case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart:
             return .put
