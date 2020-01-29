@@ -14,7 +14,7 @@ import RealmSwift
 
 class ThankMessage: Mappable {
     var id: String? = ""
-    var text: String? = ""
+    var thankMessage: String? = ""
     var email: String? = ""
     
     convenience required init?(map: Map) {
@@ -23,7 +23,7 @@ class ThankMessage: Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-        text <- map["text"]
+        thankMessage <- map["thank_message"]
         email <- map["email"]
     }
 }
