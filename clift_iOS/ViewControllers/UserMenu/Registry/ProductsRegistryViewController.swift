@@ -24,12 +24,12 @@ class ProductsRegistryViewController: UIViewController {
     var totalProductsCount = Int()
     @IBOutlet weak var addProductsToRegistryButton: customButton!
     @IBOutlet weak var actionButton: customButton!
-    
+    var productRegistryGiftedProduct = EventProduct()
     @IBOutlet weak var totalProductsCountLabel: UILabel!
     @IBOutlet weak var eventProductsCollectionView: UICollectionView!
     @IBOutlet weak var filterButton: UIButton!
-    
     @IBOutlet weak var registrySegment: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.eventProductsCollectionView.delegate = self
@@ -63,6 +63,7 @@ class ProductsRegistryViewController: UIViewController {
       
         
     }
+    
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
         self.totalProductsCount = 0
         if registrySegment.selectedSegmentIndex == 0 {
@@ -106,10 +107,10 @@ class ProductsRegistryViewController: UIViewController {
         self.registrySegment.backgroundColor = .white
         self.registrySegment.tintColor = .clear
         self.registrySegment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "OpenSans-Regular",size: 15)!,NSAttributedString
-            .Key.foregroundColor: UIColor(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0)], for: .normal)
-        self.registrySegment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "OpenSans-Regular", size: 17)!, NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 117/255, green: 126/255, blue: 106/255, alpha: 1.0)], for: .selected)
+            .Key.foregroundColor: UIColor(displayP3Red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0)], for: .normal)
+        self.registrySegment.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "OpenSans-Regular", size: 17)!, NSAttributedString.Key.foregroundColor: UIColor(displayP3Red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0)], for: .selected)
         buttonBar.translatesAutoresizingMaskIntoConstraints = false
-        buttonBar.backgroundColor = UIColor(displayP3Red: 117/255, green: 126/255, blue: 106/255, alpha: 1.0)
+        buttonBar.backgroundColor = UIColor(displayP3Red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0)
 //        view.addSubview(buttonBar)
 //        buttonBar.topAnchor.constraint(equalTo: self.registrySegment.bottomAnchor).isActive = true
 //        buttonBar.heightAnchor.constraint(equalToConstant: 2).isActive = true
