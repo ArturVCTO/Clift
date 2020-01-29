@@ -19,7 +19,6 @@ class SummaryRegistryViewController: UIViewController {
     var currentEvent = Event()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
         self.loadEvent()
         self.summaryTableView.delegate = self
         self.summaryTableView.dataSource = self
@@ -30,7 +29,6 @@ class SummaryRegistryViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
           super.viewWillDisappear(true)
-          self.navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 117/255, green: 126/255, blue: 106/255, alpha: 1.0)
     }
     
     func loadEvent() {
@@ -56,6 +54,15 @@ class SummaryRegistryViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func goToSummaryGiftsTapped(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "summaryGiftsVC") as! SummaryGiftsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "summaryGiftsVC") as! SummaryGiftsViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
 extension SummaryRegistryViewController: UITableViewDelegate, UITableViewDataSource {
