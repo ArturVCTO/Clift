@@ -135,7 +135,7 @@ class ProductInfoByUrlViewController: UIViewController {
         self.productNameTextField.text = self.productName
         self.productPriceTextField.text = self.productPrice
         self.externalProduct.name = self.productName
-        self.externalProduct.price = self.productPrice
+        self.externalProduct.price = Int(self.productPrice)!
         self.externalProduct.url = self.productUrl
         self.externalProduct.image = productImageView.image
         self.productUrlLabel.setTitle(self.productUrl, for: .normal)
@@ -204,7 +204,7 @@ extension ProductInfoByUrlViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == productPriceTextField {
-            self.externalProduct.price = self.productPriceTextField.text!
+            self.externalProduct.price = Int(self.productPriceTextField.text!)!
         }
         
       if textField == productNoteTextField {
