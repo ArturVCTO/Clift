@@ -64,6 +64,7 @@ enum CliftApi {
     case getCartItems
     case createShoppingCart
     case updateCartQuantity(cartItem: CartItem,quantity: Int)
+    case deleteItemFromCart(cartItem: CartItem)
 }
 
 extension CliftApi: TargetType {
@@ -172,6 +173,8 @@ extension CliftApi: TargetType {
             return "shopping_carts"
         case .updateCartQuantity(let cartItem,_):
             return "cart/\(cartItem.id)/update"
+        case .deleteItemFromCart(let cartItem):
+            return "cart/\(cartItem.id)/remove_item"
         }
     }
     
@@ -183,7 +186,7 @@ extension CliftApi: TargetType {
             return .get
         case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity:
             return .put
-        case .deleteLogoutSession,.deleteProductFromRegistry:
+        case .deleteLogoutSession,.deleteProductFromRegistry,.deleteItemFromCart:
             return .delete
         }
     }
