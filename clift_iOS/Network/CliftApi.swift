@@ -62,6 +62,8 @@ enum CliftApi {
     case sendThankMessage(thankMessage: ThankMessage,event: Event,eventProduct: EventProduct)
     case addItemToCart(cartItem: CartItem,product: Product)
     case getCartItems
+    case createShoppingCart
+    case updateCartQuantity(cartItem: CartItem,quantity: Int)
 }
 
 extension CliftApi: TargetType {
@@ -166,6 +168,10 @@ extension CliftApi: TargetType {
             return "cart/\(product.id)/add_item"
         case .getCartItems:
             return "cart/get_items"
+        case .createShoppingCart:
+            return "shopping_carts"
+        case .updateCartQuantity(let cartItem,_):
+            return "cart/\(cartItem.id)/update"
         }
     }
     
@@ -173,9 +179,9 @@ extension CliftApi: TargetType {
         switch self {
         case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation, .addAddress:
             return .post
-        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses,.getAddress,.getCartItems:
+        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses,.getAddress,.getCartItems,.createShoppingCart:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity:
             return .put
         case .deleteLogoutSession,.deleteProductFromRegistry:
             return .delete
@@ -260,6 +266,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["message": thankMessage.toJSON()], encoding: JSONEncoding.default)
         case .addItemToCart(let cartItem,_):
             return .requestParameters(parameters: ["shopping_cart_item": cartItem.toJSON()], encoding: JSONEncoding.default)
+        case .updateCartQuantity(_, let quantity):
+            return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity]], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }

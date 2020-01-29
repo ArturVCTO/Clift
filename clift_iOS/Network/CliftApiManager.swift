@@ -252,6 +252,10 @@ protocol ApiCalls {
     func addItemToCart(cartItem: CartItem, product: Product, completion: @escaping(CartItem?,Response?) -> Void)
     
     func getCartItems(completion: @escaping([CartItem]?, Response?) -> Void)
+    
+    func createShoppingCart(completion: @escaping(ShoppingCart?, Response?) -> Void)
+    
+    func updateCartQuantity(cartItem: CartItem, quantity: Int, completion: @escaping(CartItem?,Response?) -> Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -441,5 +445,13 @@ extension CliftApiManager: ApiCalls {
     
     func getCartItems(completion: @escaping ([CartItem]?, Response?) -> Void) {
         requestArrayWithResponse(.getCartItems, type: CartItem.self, completion: completion, wrapper: "cart_items")
+    }
+    
+    func createShoppingCart(completion: @escaping (ShoppingCart?, Response?) -> Void) {
+        requestObjectWithResponse(.createShoppingCart, type: ShoppingCart.self, completion: completion, wrapper: "shopping_cart")
+    }
+    
+    func updateCartQuantity(cartItem: CartItem, quantity: Int, completion: @escaping (CartItem?, Response?) -> Void) {
+        requestObjectWithResponse(.updateCartQuantity(cartItem: cartItem, quantity: quantity), type: CartItem.self, completion: completion, wrapper: "shopping_cart_item")
     }
 }
