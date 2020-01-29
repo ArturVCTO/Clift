@@ -59,6 +59,7 @@ enum CliftApi {
     case updateAddress(address: Address)
     case setDefaultAddress(address: Address)
     case deleteAddress(address: Address)
+    case sendThankMessage(thankMessage: ThankMessage,event: Event,eventProduct: EventProduct)
 }
 
 extension CliftApi: TargetType {
@@ -157,6 +158,8 @@ extension CliftApi: TargetType {
             return "shipping_addresses/\(address.id)/set_default"
         case .deleteAddress(let address):
             return "shipping_addresses/\(address.id)/delete"
+        case .sendThankMessage(_,let event,let eventProduct):
+            return "events/\(event.id)/thank_message/\(eventProduct.id)"
         }
     }
     
@@ -166,7 +169,7 @@ extension CliftApi: TargetType {
             return .post
         case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses,.getAddress:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage:
             return .put
         case .deleteLogoutSession,.deleteProductFromRegistry:
             return .delete
@@ -247,6 +250,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["shipping_address": address], encoding: JSONEncoding.default)
         case .setDefaultAddress(let address):
             return .requestParameters(parameters: ["shipping_address": address.toJSON()], encoding: JSONEncoding.default)
+        case .sendThankMessage(let thankMessage,_,_):
+            return .requestParameters(parameters: ["message": thankMessage.toJSON()], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }
