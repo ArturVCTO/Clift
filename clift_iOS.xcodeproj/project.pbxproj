@@ -64,6 +64,10 @@
 		463A78A42385F3F100985674 /* GuestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A78A32385F3F100985674 /* GuestListViewController.swift */; };
 		463A78A62386E9EC00985674 /* Invitee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A78A52386E9EC00985674 /* Invitee.swift */; };
 		463A78A92386F33400985674 /* GuestListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463A78A82386F33400985674 /* GuestListTableViewCell.swift */; };
+		46403A8A23E09E34007866B8 /* InitialGiftShippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46403A8923E09E34007866B8 /* InitialGiftShippingViewController.swift */; };
+		46403A8D23E0A054007866B8 /* GiftShippingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46403A8C23E0A054007866B8 /* GiftShippingCell.swift */; };
+		46403A8F23E0A425007866B8 /* GiftShippingConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46403A8E23E0A425007866B8 /* GiftShippingConfirmationViewController.swift */; };
+		46403A9123E0A686007866B8 /* GiftShippingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46403A9023E0A686007866B8 /* GiftShippingTableViewController.swift */; };
 		46441B7723CE852C00F5FCD2 /* Mihan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46441B7623CE852B00F5FCD2 /* Mihan-Regular.ttf */; };
 		46462BE223A9296200516A60 /* GradientFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46462BE123A9296200516A60 /* GradientFontExtension.swift */; };
 		464C12A223A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C12A123A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift */; };
@@ -250,6 +254,10 @@
 		463A78A32385F3F100985674 /* GuestListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListViewController.swift; sourceTree = "<group>"; };
 		463A78A52386E9EC00985674 /* Invitee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitee.swift; sourceTree = "<group>"; };
 		463A78A82386F33400985674 /* GuestListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestListTableViewCell.swift; sourceTree = "<group>"; };
+		46403A8923E09E34007866B8 /* InitialGiftShippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialGiftShippingViewController.swift; sourceTree = "<group>"; };
+		46403A8C23E0A054007866B8 /* GiftShippingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShippingCell.swift; sourceTree = "<group>"; };
+		46403A8E23E0A425007866B8 /* GiftShippingConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShippingConfirmationViewController.swift; sourceTree = "<group>"; };
+		46403A9023E0A686007866B8 /* GiftShippingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShippingTableViewController.swift; sourceTree = "<group>"; };
 		46441B7623CE852B00F5FCD2 /* Mihan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mihan-Regular.ttf"; sourceTree = "<group>"; };
 		46462BE123A9296200516A60 /* GradientFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientFontExtension.swift; sourceTree = "<group>"; };
 		464C12A123A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChosenInvitationCVCell.swift; sourceTree = "<group>"; };
@@ -529,6 +537,25 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		46403A8823E09E1E007866B8 /* Gift Shipping */ = {
+			isa = PBXGroup;
+			children = (
+				46403A8B23E0A047007866B8 /* Cell */,
+				46403A8923E09E34007866B8 /* InitialGiftShippingViewController.swift */,
+				46403A8E23E0A425007866B8 /* GiftShippingConfirmationViewController.swift */,
+				46403A9023E0A686007866B8 /* GiftShippingTableViewController.swift */,
+			);
+			path = "Gift Shipping";
+			sourceTree = "<group>";
+		};
+		46403A8B23E0A047007866B8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				46403A8C23E0A054007866B8 /* GiftShippingCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		465167AC237A7CF200755077 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +614,7 @@
 		465E09B523139455006776D1 /* Registry */ = {
 			isa = PBXGroup;
 			children = (
+				46403A8823E09E1E007866B8 /* Gift Shipping */,
 				463A78A22385F3C600985674 /* Invitations */,
 				465167AC237A7CF200755077 /* Filters */,
 				465C82152362155B00DAC090 /* Add Products */,
@@ -1096,6 +1124,7 @@
 				46E12882233ACFB000354DB9 /* Shop.swift in Sources */,
 				46D3777123972DDD004BE93E /* Invitation.swift in Sources */,
 				46831C0E23DA4079004BAAC1 /* PaymentConfirmationViewController.swift in Sources */,
+				46403A8F23E0A425007866B8 /* GiftShippingConfirmationViewController.swift in Sources */,
 				46C724D123C7DA0B00F12924 /* AddressCity.swift in Sources */,
 				462EB0C12316D4250084C3C7 /* MyEventsTableViewController.swift in Sources */,
 				462EB0B1231484FF0084C3C7 /* PaymentsViewController.swift in Sources */,
@@ -1158,10 +1187,12 @@
 				462EB0AF2314816D0084C3C7 /* GiftsViewController.swift in Sources */,
 				461C423823DA3CF400486D80 /* ShippingTableViewController.swift in Sources */,
 				465167B4237A7D9700755077 /* EventProductShopCell.swift in Sources */,
+				46403A8A23E09E34007866B8 /* InitialGiftShippingViewController.swift in Sources */,
 				465FED0D2368C1620038D557 /* ProductInfoByUrlViewController.swift in Sources */,
 				465FED0F236B8B730038D557 /* EventProductCell.swift in Sources */,
 				462A6B4422FCB8090045C94E /* RootOnboardingPageViewController.swift in Sources */,
 				46C724CF23C7D9B300F12924 /* Address.swift in Sources */,
+				46403A9123E0A686007866B8 /* GiftShippingTableViewController.swift in Sources */,
 				46831C1023DB9752004BAAC1 /* SummaryGiftsViewController.swift in Sources */,
 				462F9F30230DAC990014CD9E /* DateFormatter.swift in Sources */,
 				4604A339230331A60041F9AA /* Event.swift in Sources */,
@@ -1198,6 +1229,7 @@
 				46029C5A23284527008A8EAE /* RangeSliderTrackLayer.swift in Sources */,
 				46C07A1823D228C70091CDDA /* CheckoutProductCell.swift in Sources */,
 				46CDF77123DE073800F01CEC /* ThankMessage.swift in Sources */,
+				46403A8D23E0A054007866B8 /* GiftShippingCell.swift in Sources */,
 				46029C5823281270008A8EAE /* RangeSlider.swift in Sources */,
 				46D3776B2391D8A1004BE93E /* DiscardChangesViewDelegate.swift in Sources */,
 				46EC9D9E232BF33B00950139 /* ProductsCollectionViewLayout.swift in Sources */,
