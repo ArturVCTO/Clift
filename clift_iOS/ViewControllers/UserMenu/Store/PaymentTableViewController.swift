@@ -23,6 +23,10 @@ class PaymentTableViewController: UITableViewController {
           return cardTextField
     }()
     @IBOutlet weak var stripeContentView: UIView!
+    @IBOutlet weak var subtotalLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    var totalAmount: Double?
+    var subtotalAmount: Double?
     
     init() {
         if let backendBaseURL = UserDefaults.standard.string(forKey: "StripeBackendBaseURL") {
@@ -38,6 +42,7 @@ class PaymentTableViewController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
         self.paymentContext?.delegate = self
         self.paymentContext?.hostViewController = self
+        self.loadTotalAndSubtotal()
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -51,6 +56,11 @@ class PaymentTableViewController: UITableViewController {
         startCheckout()
         cardTextField.frame = CGRect(x: 8, y: 48, width: self.stripeContentView.frame.maxX - 16, height: 40)
         stripeContentView.addSubview(cardTextField)
+    }
+    
+    func loadTotalAndSubtotal() {
+        self.subtotalLabel.text = "\(subtotalAmount ?? 0)"
+        self.totalLabel.text = "\(totalAmount ?? 0)"
     }
     
     func startCheckout() {
@@ -135,6 +145,11 @@ class PaymentTableViewController: UITableViewController {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "discountCodeVC") as! DiscountCodeViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 
