@@ -52,7 +52,7 @@ class AddManualProductViewController: UIViewController {
     func productLoader() {
         self.productNoteTextField.text = externalProduct.note
         self.productNameTextField.text = externalProduct.name
-        self.productPriceTextField.text = externalProduct.price
+        self.productPriceTextField.text = "\(externalProduct.price)"
     }
     
     func loadEvent() {
@@ -188,7 +188,7 @@ extension AddManualProductViewController: UITextFieldDelegate {
           }
           
           if textField == productPriceTextField {
-              self.externalProduct.price = self.productPriceTextField.text!
+            self.externalProduct.price = Int(self.productPriceTextField.text!)!
           }
           
         if textField == productNoteTextField {
