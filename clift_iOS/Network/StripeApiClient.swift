@@ -31,11 +31,11 @@ class MyStripeApiClient: NSObject, STPCustomerEphemeralKeyProvider {
            }
        }
        
-       func createPaymentIntent(cartProduct: [MockProduct], shippingMethod: Address?, country: String? = nil, completion: @escaping ((Result<String, Error>) -> Void)) {
+       func createPaymentIntent(cartProduct: [CartItem], shippingMethod: Address?, country: String? = nil, completion: @escaping ((Result<String, Error>) -> Void)) {
            let url = self.baseURL.appendingPathComponent("create_payment_intent")
             var params: [String: Any] = [:]
            params["products"] = cartProduct.map({ (p) -> String in
-                return p.name
+            return p.product!.name
            })
            
            params["country"] = "MX"

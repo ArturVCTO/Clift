@@ -60,7 +60,7 @@ enum CliftApi {
     case setDefaultAddress(address: Address)
     case deleteAddress(address: Address)
     case sendThankMessage(thankMessage: ThankMessage,event: Event,eventProduct: EventProduct)
-    case addItemToCart(cartItem: CartItem,product: Product)
+    case addItemToCart(quantity: Int,product: Product)
     case getCartItems
     case createShoppingCart
     case updateCartQuantity(cartItem: CartItem,quantity: Int)
@@ -267,8 +267,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["shipping_address": address.toJSON()], encoding: JSONEncoding.default)
         case .sendThankMessage(let thankMessage,_,_):
             return .requestParameters(parameters: ["message": thankMessage.toJSON()], encoding: JSONEncoding.default)
-        case .addItemToCart(let cartItem,_):
-            return .requestParameters(parameters: ["shopping_cart_item": cartItem.toJSON()], encoding: JSONEncoding.default)
+        case .addItemToCart(let quantity,_):
+            return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity, "wishable_type": "Product"]], encoding: JSONEncoding.default)
         case .updateCartQuantity(_, let quantity):
             return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity]], encoding: JSONEncoding.default)
         default:
