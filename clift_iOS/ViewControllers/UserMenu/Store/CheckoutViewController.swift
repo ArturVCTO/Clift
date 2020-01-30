@@ -10,26 +10,15 @@ import Foundation
 import UIKit
 import Stripe
 
-//  This struct is for mock purposes only
-struct MockProduct {
-    let price: Double
-    let name: String
-    let image: UIImage
-    let quantity: Int
-}
-
 class CheckoutViewController: UIViewController {
     @IBOutlet weak var checkoutProductTableView: UITableView!
     @IBOutlet weak var subtotalLabel: UILabel!
     @IBOutlet weak var totalShopsShippingLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
     @IBOutlet weak var totalProductsLabel: UILabel!
-//    This variable object is for mock purposes only
-    var cartItems: [MockProduct] = [
-        MockProduct(price: 2000, name: "Licuadora SmartPower ™ Duet de 500 vatios.",image: UIImage(named: "15")!, quantity: 1),
-        MockProduct(price: 2500, name: "1.5 Qt Fruit Scoop Máquina de postres congelados.",image: UIImage(named: "15")!, quantity: 1),
-        MockProduct(price: 2750, name: "Banco de almacenamiento de zapatos tapizado en cuero.",image: UIImage(named: "15")!, quantity: 1)
-    ]
+    var cartItems: [CartItem] = []
+    var totalAmount: Int?
+    var subTotalAmount: Int?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +28,37 @@ class CheckoutViewController: UIViewController {
         self.checkoutProductTableView.dataSource = self
         self.checkoutProductTableView.translatesAutoresizingMaskIntoConstraints = false
         self.checkoutProductTableView.reloadData()
-        self.getTotalAmountAndSubtotal(cartItems: cartItems)
+        self.getCartItems()
+    }
+    
+    func getCartItems() {
+        sharedApiManager.getCartItems() { (cartItems, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    if let optCartItems = cartItems {
+                        self.cartItems = optCartItems
+                        self.getTotalAmountAndSubtotal(cartItems: optCartItems)
+                        self.checkoutProductTableView.reloadData()
+                    }
+                } else if (response.isClientError()) {
+                    self.showMessage("Hubo un error cargando el carrito de compras.", type: .error)
+                } else {
+                    self.showMessage("Hubo un error cargando el carrito de compras.", type: .error)
+                }
+            }
+        }
+    }
+    
+    func deleteCartItem(cartItem: CartItem) {
+        sharedApiManager.deleteItemFromCart(cartItem: cartItem) { (emptyObject, result) in
+            if let response = result {
+                if response.isSuccess() {
+                    self.showMessage("Producto borrado del carrito.", type: .error)
+                    self.getCartItems()
+                    self.checkoutProductTableView.reloadData()
+                }
+            }
+        }
     }
     
     func getPriceStringFormat(value: Double) -> String {
@@ -54,12 +73,18 @@ class CheckoutViewController: UIViewController {
         self.checkoutProductTableView.rowHeight = 134
     }
     
-    func getTotalAmountAndSubtotal(cartItems: [MockProduct]) {
-        let totalAmount = cartItems.reduce(0) { result, product in
-            return result + (product.price * Double(product.quantity))
+    func getTotalAmountAndSubtotal(cartItems: [CartItem]) {
+        var newResult = Int()
+        let totalAmount = cartItems.reduce(0) { result, cartItem in
+            if let quantity = cartItem.quantity, let productPrice = cartItem.product?.price {
+                newResult = result + (productPrice * quantity)
+            }
+            return newResult
         }
-        self.totalAmountLabel.text = "\(self.getPriceStringFormat(value:totalAmount))"
-        self.subtotalLabel.text = "\(self.getPriceStringFormat(value:totalAmount))"
+        self.totalAmountLabel.text = "\(self.getPriceStringFormat(value: Double(totalAmount)))"
+        self.subtotalLabel.text = "\(self.getPriceStringFormat(value: Double(totalAmount)))"
+        self.totalAmount = totalAmount
+        self.subTotalAmount = totalAmount
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -69,9 +94,16 @@ class CheckoutViewController: UIViewController {
     @IBAction func goToPaymentCheckoutVC(_ sender: Any) {
         if #available(iOS 13.0, *) {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "paymentTableVC") as! PaymentTableViewController
+            vc.products = self.cartItems
+            vc.totalAmount = self.totalAmount
+            vc.subtotalAmount = self.subTotalAmount
+
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "paymentTableVC") as! PaymentTableViewController
+            vc.products = self.cartItems
+            vc.totalAmount = self.totalAmount
+            vc.subtotalAmount = self.subTotalAmount
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -86,7 +118,19 @@ extension CheckoutViewController: UITableViewDataSource, UITableViewDelegate {
             return UITableViewCell()
         }
         let product = self.cartItems[indexPath.row]
+        cell.vc = self
         cell.configure(with: product)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+         let deleteTitle = NSLocalizedString("Borrar", comment: "Delete action")
+         
+         let deleteAction = UITableViewRowAction(style: .destructive,
+           title: deleteTitle) { (action, indexPath) in
+            self.deleteCartItem(cartItem: self.cartItems[indexPath.row])
+         }
+         
+         return [deleteAction]
+     }
 }
