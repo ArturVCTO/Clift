@@ -16,11 +16,13 @@ class GiftShippingCell: UITableViewCell {
     @IBOutlet weak var giftBrand: UILabel!
     @IBOutlet weak var giftQuantity: UILabel!
     
-    func configure(cell: MockGiftedProduct) {
-        self.giftImageView.image = cell.image
+    func configure(cell: EventProduct) {
+        if let imageURL = URL(string:"\(cell.product.imageUrl)") {
+            self.giftImageView.kf.setImage(with: imageURL)
+        }
         self.giftName.text = cell.name
-        self.giftShop.text = cell.shop
-        self.giftBrand.text = cell.brand
+        self.giftShop.text = cell.product.shop.name
+        self.giftBrand.text = cell.product.brand.name
         self.giftQuantity.text = "\(cell.quantity)"
     }
 }
