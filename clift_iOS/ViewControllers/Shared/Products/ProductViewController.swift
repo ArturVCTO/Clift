@@ -76,6 +76,11 @@ class ProductViewController: UIViewController {
         }
     }
     
+    @IBAction func addProductToShoppingCartTapped(_ sender: Any) {
+        self.addProductToCart(quantity: self.quantity, product: self.product)
+    }
+    
+    
     func removeProductButtonPressed(alert: UIAlertAction) {
         self.removeProductFromRegistry(product: self.product, event: self.currentEvent)
     }
@@ -94,6 +99,19 @@ class ProductViewController: UIViewController {
                     }
                 } else {
                     self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
+                }
+            }
+        }
+    }
+    
+    func addProductToCart(quantity: Int, product: Product) {
+        sharedApiManager.addItemToCart(quantity: self.quantity, product: product) { (cartItem, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: "Login Error"),type: .success)
+                } else if (response.isClientError()) {
+                    self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
+
                 }
             }
         }
