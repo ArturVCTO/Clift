@@ -13,7 +13,6 @@ import ObjectMapper_Realm
 import RealmSwift
 
 class EventProduct: Mappable {
-    
     var id = ""
     var name = ""
     var event = Event()
@@ -26,6 +25,9 @@ class EventProduct: Mappable {
     var setCollaborative = Bool()
     var isCollaborative = false
     var wishableType = ""
+    var hasBeenThanked = false
+    var hasBeenPaid = false
+    var thankMessage = ""
     
     var errors: [String] = []
     
@@ -46,6 +48,9 @@ class EventProduct: Mappable {
         setCollaborative <- map["set_collaborative"]
         isCollaborative <- map["is_collaborative"]
         wishableType <- map["wishable_type"]
+        hasBeenPaid <- map["has_been_paid"]
+        hasBeenThanked <- map["has_been_thanked"]
+        thankMessage <- map["thank_message"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {
