@@ -289,7 +289,7 @@ extension AddCashFundViewController: UITextFieldDelegate {
         }
         
         if textField == totalMountTextField {
-            self.eventPool.amount = self.totalMountTextField.text!
+            self.eventPool.amount = Int(self.totalMountTextField.text!)!
         }
         
         if textField == cashFundNoteTextField {
