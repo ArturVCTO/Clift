@@ -9,20 +9,9 @@
 import Foundation
 import UIKit
 
-struct MockGiftedProduct {
-    let brand: String
-    let name: String
-    let image: UIImage
-    let quantity: Int
-    let shop: String
-}
-
 class InitialGiftShippingViewController: UIViewController {
     @IBOutlet weak var giftTableViewController: UITableView!
-    var eventProducts: [MockGiftedProduct] = [
-        MockGiftedProduct(brand: "CUSINART", name: "Licuadora SmartPower ™ Duet de 500 vatios / Procesador de alimentos.", image: UIImage(named: "15")!,quantity: 1, shop: "Liverpool"),
-        MockGiftedProduct(brand: "CUSINART", name: "1.5 Qt Fruit Scoop Máquina de postres congelados.", image: UIImage(named: "10")!,quantity: 1, shop: "GANT")
-    ]
+    var eventProducts: [EventProduct] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +20,15 @@ class InitialGiftShippingViewController: UIViewController {
         self.giftTableViewController.reloadData()
     }
     
-    
     @IBAction func goToShippingMethodButtonTapped(_ sender: Any) {
         if #available(iOS 13.0, *) {
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "giftShippingTableVC") as! GiftShippingTableViewController
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "giftShippingAddressesTableVC") as! AddressesTableViewController
+            vc.initialGiftShippingVC = self
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
           // Fallback on earlier versions
-          let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "giftShippingTableVC") as! GiftShippingTableViewController
+          let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "giftShippingAddressesTableVC") as! AddressesTableViewController
+            vc.initialGiftShippingVC = self
           self.navigationController?.pushViewController(vc, animated: true)
       }
     }
@@ -46,6 +36,10 @@ class InitialGiftShippingViewController: UIViewController {
     func removeEventProductsFromCart(row: Int) {
         self.eventProducts.remove(at: row)
         self.giftTableViewController.reloadData()
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }
 extension InitialGiftShippingViewController: UITableViewDelegate,UITableViewDataSource {
