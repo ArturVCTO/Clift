@@ -11,6 +11,7 @@ import UIKit
 
 class AddressesTableViewController: UITableViewController {
     var addresses: [Address] = []
+    var initialGiftShippingVC: InitialGiftShippingViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,20 @@ class AddressesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "addressTVCell", for: indexPath) as! AddressCell
         cell.setup(address: addresses[indexPath.row])
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if initialGiftShippingVC != nil {
+            if #available(iOS 13.0, *) {
+                    let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "giftShippingTableVC") as! GiftShippingTableViewController
+                vc.address = self.addresses[indexPath.row]
+                    self.navigationController?.pushViewController(vc, animated: true)
+                 } else {
+                    let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "giftShippingTableVC") as! GiftShippingTableViewController
+                vc.address = self.addresses[indexPath.row]
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+        }
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
