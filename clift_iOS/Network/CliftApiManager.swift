@@ -258,6 +258,10 @@ protocol ApiCalls {
     func updateCartQuantity(cartItem: CartItem, quantity: Int, completion: @escaping(CartItem?,Response?) -> Void)
     
     func deleteItemFromCart(cartItem: CartItem, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
+    
+    func getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, completion: @escaping([EventProduct]?, Response?) -> Void)
+    
+    func requestGifts(event: Event, ids: [String], completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -459,5 +463,13 @@ extension CliftApiManager: ApiCalls {
     
     func deleteItemFromCart(cartItem: CartItem, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
         requestEmptyObject(.deleteItemFromCart(cartItem: cartItem), completion: completion)
+    }
+    
+    func getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, completion: @escaping ([EventProduct]?, Response?) -> Void) {
+        requestArrayWithResponse(.getGiftThanksSummary(event: event, hasBeenThanked: hasBeenThanked, hasBeenPaid: hasBeenPaid), type: EventProduct.self, completion: completion, wrapper: "registries")
+    }
+    
+    func requestGifts(event: Event, ids: [String], completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.requestGifts(event: event, ids: ids), completion: completion)
     }
 }
