@@ -19,7 +19,7 @@ class ThankGuestViewController: UIViewController {
     @IBOutlet weak var giftButton: UIButton!
     @IBOutlet weak var giftMessageTextField: HoshiTextField!
     var thankMessage: ThankMessage? = nil
-    var gift: MockGift?
+    var gift: EventProduct?
     var emailersDropDown = DropDown()
     
     override func viewDidLoad() {
@@ -44,12 +44,12 @@ class ThankGuestViewController: UIViewController {
         }
     }
     
-    func getGiftInformation(gift: MockGift) {
-        self.giftImage.image = gift.image
-        self.giftName.text = gift.giftName
-        self.giftShop.text = gift.shop
-        self.giftPrice.text = "\(gift.giftPrice)"
-        self.loadDropDownInfo(string: gift.giftersEmail)
+    func getGiftInformation(gift: EventProduct) {
+//        self.giftImage.image = gift.image
+//        self.giftName.text = gift.giftName
+//        self.giftShop.text = gift.shop
+//        self.giftPrice.text = "\(gift.giftPrice)"
+//        self.loadDropDownInfo(string: gift.giftersEmail)
     }
     
     func sendThankMessage(thankMessage: ThankMessage, event: Event,eventProduct: EventProduct) {
