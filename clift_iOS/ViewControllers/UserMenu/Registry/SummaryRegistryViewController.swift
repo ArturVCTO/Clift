@@ -57,9 +57,11 @@ class SummaryRegistryViewController: UIViewController {
     @IBAction func goToSummaryGiftsTapped(_ sender: Any) {
         if #available(iOS 13.0, *) {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "summaryGiftsVC") as! SummaryGiftsViewController
+            vc.event = currentEvent
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "summaryGiftsVC") as! SummaryGiftsViewController
+            vc.event = currentEvent
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -75,7 +77,4 @@ extension SummaryRegistryViewController: UITableViewDelegate, UITableViewDataSou
         cell.setup(category: self.categories[indexPath.row])
         return cell
     }
-    
-    
-    
 }
