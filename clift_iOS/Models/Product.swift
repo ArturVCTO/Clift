@@ -28,6 +28,7 @@ class Product: Mappable {
     var shippingCost = 0
     var shipping = false
     var shop = Shop()
+    var categories: [Category] = []
     
     var errors: [String] = []
     
@@ -50,6 +51,7 @@ class Product: Mappable {
         color <- map["color"]
         inStock <- map["in_stock"]
         isInEvent <- map["is_in_event"]
+        categories <- map["categories"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {
