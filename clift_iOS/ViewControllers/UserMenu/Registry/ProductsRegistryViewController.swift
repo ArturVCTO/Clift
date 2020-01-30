@@ -211,23 +211,41 @@ class ProductsRegistryViewController: UIViewController {
              }
     }
     
+    func requestGift(alert: UIAlertAction) {
+        var requestedGifts: [EventProduct] = []
+        
+        for indexPath in selectedIndexPaths {
+            requestedGifts.append(self.eventProducts[indexPath.row])
+        }
+        
+        if #available(iOS 13.0, *) {
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "initialGiftShippingVC") as! InitialGiftShippingViewController
+            vc.eventProducts = requestedGifts
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "initialGiftShippingVC") as! InitialGiftShippingViewController
+            vc.eventProducts = requestedGifts
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     @IBAction func actionButtonTapped(_ sender: Any) {
         let sheet = UIAlertController(title: "Acciones", message: nil, preferredStyle: .actionSheet)
         let setAsImportant = UIAlertAction(title: "Marcar como lo más importante", style: .default, handler: importantActionButtonPressed(alert:))
+        let requestGift = UIAlertAction(title: "Solicitar envio", style: .default,handler: requestGift(alert:))
             
-               let buyAction = UIAlertAction(title: "Comprar", style: .default)
                let removeFromRegistry = UIAlertAction(title: "Quitar de mesa", style: .default)
         let makeCollaborativeGift = UIAlertAction(title: "Convertir a regalo grupal", style: .default, handler: collaborativeActionButtonPressed(alert:))
                let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
                
               setAsImportant.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-                buyAction.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
                removeFromRegistry.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+        requestGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
         makeCollaborativeGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-               cancelAction.setValue(UIColor.init(displayP3Red: 117/255, green: 126/255, blue: 106/255, alpha: 1.0), forKey: "titleTextColor")
+               cancelAction.setValue(UIColor.init(displayP3Red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0), forKey: "titleTextColor")
         
                sheet.addAction(setAsImportant)
-               sheet.addAction(buyAction)
+                sheet.addAction(requestGift)
                sheet.addAction(removeFromRegistry)
                 sheet.addAction(makeCollaborativeGift)
                sheet.addAction(cancelAction)
