@@ -9,32 +9,54 @@
 import Foundation
 import UIKit
 
-struct MockGift{
-    let category: String
-    let giftersEmail: [String]
-    let image: UIImage
-    let dateGifted: String
-    let giftName: String
-    let giftPrice: Int
-    let isThanked: Bool
-    let shop: String
-}
-
-class SummaryGiftsViewController: UIViewController {
+class SummaryGiftsViewController: UIViewController,UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
+    
+    func filterContentForSearchText(_ searchText: String,
+                                    name: EventProduct? = nil) {
+      filteredProducts = eventProducts.filter { (eventProduct: EventProduct) -> Bool in
+        return eventProduct.name.lowercased().contains(searchText.lowercased())
+      }
+      
+      giftsTableView.reloadData()
+    }
+    
     @IBOutlet weak var thankedGiftsSegment: UISegmentedControl!
     @IBOutlet weak var barView1: UIView!
     @IBOutlet weak var barView2: UIView!
     @IBOutlet weak var giftsTableView: UITableView!
+    var filteredProducts: [EventProduct] = []
+    let searchController = UISearchController(searchResultsController: nil)
+    var eventProducts: [EventProduct] = []
+    var event: Event?
+    @IBOutlet weak var searchHeaderView: UIView!
     
-//  Mock purposes only
-    var mockGifts: [MockGift] = [
-        MockGift(category: "Cocina", giftersEmail: ["j.garza@email.com"], image: UIImage(named: "15")!, dateGifted: "26 Junio de 2019",giftName: "1.5 Qt Fruit Scoop Máquina de postres congelados.",giftPrice: 2500,isThanked: true, shop: "Liverpool"),
-        MockGift(category: "Cocina", giftersEmail: ["k.garza@email.com","o.garza@email.com","p.garza@email.com"], image: UIImage(named: "15")!, dateGifted: "26 Junio de 2019",giftName: "1.5 Qt Fruit Scoop Máquina de postres congelados.", giftPrice: 2500,isThanked: true, shop: "Liverpool"),
-        MockGift(category: "Cocina", giftersEmail: ["l.garza@email.com"], image: UIImage(named: "15")!, dateGifted: "26 Junio de 2019", giftName: "1.5 Qt Fruit Scoop Máquina de postres congelados.", giftPrice: 2500,isThanked: false, shop: "Gant"),
-    ]
+    var isSearchBarEmpty: Bool {
+         return searchController.searchBar.text?.isEmpty ?? true
+       }
+       
+    var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.giftsTableView.tableHeaderView = self.searchController.searchBar
+           self.searchController.searchBar.sizeToFit()
+           self.searchController.searchBar.searchBarStyle = .minimal
+           searchController.searchResultsUpdater = self
+           // 2
+           searchController.hidesNavigationBarDuringPresentation = true
+           searchController.obscuresBackgroundDuringPresentation = false
+           // 3
+         
+          
+           // 4
+           // 5
+           definesPresentationContext = true
         self.giftsTableView.delegate = self
         self.giftsTableView.dataSource = self
     }
@@ -43,27 +65,62 @@ class SummaryGiftsViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func thankedSegment(_ sender: Any) {
+    func loadGiftedNotThanked() {
+        sharedApiManager.getGiftThanksSummary(event: self.event!, hasBeenThanked: false, hasBeenPaid: true) {(eventProducts, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.eventProducts = eventProducts!
+                    self.giftsTableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func loadGiftedAndThanked() {
+        sharedApiManager.getGiftThanksSummary(event: self.event!, hasBeenThanked: true, hasBeenPaid: true) {(eventProducts, result) in
+           if let response = result {
+               if (response.isSuccess()) {
+                   self.eventProducts = eventProducts!
+                   self.giftsTableView.reloadData()
+               }
+           }
+       }
+    }
+    
+    @IBAction func thankedSegment(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            self.loadGiftedNotThanked()
+            self.barView1.backgroundColor = UIColor(red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0)
+            self.barView2.backgroundColor = UIColor(red: 123/255, green: 123/255,blue: 130/255, alpha: 0.16)
+        } else {
+            self.loadGiftedNotThanked()
+            self.barView2.backgroundColor = UIColor(red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0)
+            self.barView1.backgroundColor = UIColor(red: 123/255, green: 123/255,blue: 130/255, alpha: 0.16)
+        }
     }
 }
 extension SummaryGiftsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mockGifts.count
+        return eventProducts.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if #available(iOS 13.0, *) {
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "thankGuestVC") as! ThankGuestViewController
-            vc.gift = mockGifts[indexPath.row]
-            self.navigationController?.pushViewController(vc, animated: true)
+        if (thankedGiftsSegment.selectedSegmentIndex == 0) {
+            if #available(iOS 13.0, *) {
+                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "thankGuestVC") as! ThankGuestViewController
+                vc.gift = eventProducts[indexPath.row]
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "thankGuestVC") as! ThankGuestViewController
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         } else {
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "thankGuestVC") as! ThankGuestViewController
-            self.navigationController?.pushViewController(vc, animated: true)
+            self.showMessage("No puedes seleccionar un regalo ya agradecido.", type: .error)
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = giftsTableView.dequeueReusableCell(withIdentifier: "giftSummaryCell", for: indexPath) as! GiftSummaryCell
-        cell.configure(with: mockGifts[indexPath.row])
+        cell.configure(with: eventProducts[indexPath.row])
         return cell
     }
 }
