@@ -16,7 +16,7 @@ class EventPool: Mappable {
     
     var id = ""
     var name = ""
-    var amount = ""
+    var amount = 0
     var note = ""
     var suggestedAmount = ""
     var image: UIImage? = nil
