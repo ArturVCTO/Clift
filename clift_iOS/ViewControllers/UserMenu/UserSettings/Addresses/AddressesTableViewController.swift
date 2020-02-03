@@ -12,9 +12,11 @@ import UIKit
 class AddressesTableViewController: UITableViewController {
     var addresses: [Address] = []
     var initialGiftShippingVC: InitialGiftShippingViewController?
+    var currentEvent: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getEvent()
         self.getAddresses()
     }
     
@@ -24,6 +26,18 @@ class AddressesTableViewController: UITableViewController {
                 if (response.isSuccess()) {
                     self.addresses = addresses!
                     self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    func getEvent() {
+        sharedApiManager.getEvents() { (events, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    if let events = events {
+                        self.currentEvent = events.first
+                    }
                 }
             }
         }
@@ -40,6 +54,10 @@ class AddressesTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func deleteAddress(address: Address) {
@@ -82,10 +100,12 @@ class AddressesTableViewController: UITableViewController {
             if #available(iOS 13.0, *) {
                     let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "giftShippingTableVC") as! GiftShippingTableViewController
                 vc.address = self.addresses[indexPath.row]
+                vc.currentEvent = self.currentEvent!
                     self.navigationController?.pushViewController(vc, animated: true)
                  } else {
                     let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "giftShippingTableVC") as! GiftShippingTableViewController
                 vc.address = self.addresses[indexPath.row]
+                vc.currentEvent = self.currentEvent!
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
         }
