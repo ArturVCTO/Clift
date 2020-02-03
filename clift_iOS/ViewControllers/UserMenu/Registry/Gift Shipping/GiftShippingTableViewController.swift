@@ -23,6 +23,7 @@ class GiftShippingTableViewController: UITableViewController {
     @IBOutlet weak var countryButtonDropdown: UIButton!
     @IBOutlet weak var stateButtonDropdown: UIButton!
     @IBOutlet weak var cityButtonDropdown: UIButton!
+    var currentEvent = Event()
     
     override func viewDidLoad() {
         self.loadAddress()
@@ -45,20 +46,37 @@ class GiftShippingTableViewController: UITableViewController {
     }
     
     @IBAction func acceptButtonTapped(_ sender: Any) {
-        
         let alert = UIAlertController(title: "Solicitud de envio.", message: "¿Desea continuar?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Sí", comment: "Default action"), style: .default, handler: { _ in
-        NSLog("The \"OK\" alert occured.")
+            self.sendShippingRequest()
         }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
-//        if #available(iOS 13.0, *) {
-//              let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "giftShippingConfirmationVC") as! GiftShippingConfirmationViewController
-//              self.navigationController?.pushViewController(vc, animated: true)
-//          } else {
-//            // Fallback on earlier versions
-//            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "giftShippingConfirmationVC") as! GiftShippingConfirmationViewController
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }
+    }
+    
+    func segueToGiftShippingConfirmation() {
+         if #available(iOS 13.0, *) {
+              let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "giftShippingConfirmationVC") as! GiftShippingConfirmationViewController
+              self.navigationController?.pushViewController(vc, animated: true)
+          } else {
+            // Fallback on earlier versions
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "giftShippingConfirmationVC") as! GiftShippingConfirmationViewController
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func sendShippingRequest() {
+        sharedApiManager.requestGifts(event: self.currentEvent, ids: []) { (emptyObject, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.segueToGiftShippingConfirmation()
+                } else if (response.isClientError()) {
+                    self.showMessage("\(emptyObject?.errors.first)", type: .error)
+                } else {
+                    self.showMessage("Error de servidor, intente de nuevo más tarde.", type: .error)
+                }
+            }
+        }
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
