@@ -43,10 +43,11 @@ class EventProductCell: UICollectionViewCell {
                 self.eventProductImageView.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
             }
             var isProductGifted = self.isGifted(price: eventProduct.product.price, paidAmount: eventProduct.paidAmount)
-            if isProductGifted {
+            if eventProduct.hasBeenPaid {
                 self.giftedLabel.text = "Regalado"
                 self.giftCollaborators.isHidden = false
                 self.quantityImageView.isHidden = false
+                self.giftCollaborators.text = "\(eventProduct.thankYouUser?.name ?? "") \(eventProduct.thankYouUser?.lastName ?? "")"
 
                 self.giftedCheckmark.isHidden = false
             } else {
@@ -89,7 +90,6 @@ class EventProductCell: UICollectionViewCell {
                 self.sentImageView.isHidden = true
             }
         }
-        
         self.eventProductQuantityLabel.text = "Necesita: \(eventProduct.quantity)"
     }
     
