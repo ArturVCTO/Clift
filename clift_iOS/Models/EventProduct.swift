@@ -28,6 +28,7 @@ class EventProduct: Mappable {
     var hasBeenThanked = false
     var hasBeenPaid = false
     var thankMessage = ""
+    var thankYouUser: ThankYouUser?
     
     var errors: [String] = []
     
@@ -51,6 +52,7 @@ class EventProduct: Mappable {
         hasBeenPaid <- map["has_been_paid"]
         hasBeenThanked <- map["has_been_thanked"]
         thankMessage <- map["thank_message"]
+        thankYouUser <- map["user"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {
