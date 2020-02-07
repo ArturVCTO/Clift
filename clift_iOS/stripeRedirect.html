@@ -1,17 +1,30 @@
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <body>
+        <div class="payment-block">
+            <button id="submit">Pagar</button>
+        </div>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh');
+    </script>
+    <style>
+        #submit {
+            background-color: #b1d3f6;
+            color: white;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            vertical-align: middle;
+            height: 35px;
+            padding: 0px 16px;
+        }
+    
+        .payment-block {
+            width: 100%
+            text-align: center;
+        }
+    </style>
+    </body>
 </html>
-<script src="https://js.stripe.com/v3/"></script>
-<script>
-var stripe = Stripe('pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh');
 
-stripe.redirectToCheckout({
-  // Make the id field from the Checkout Session creation API response
-  // available to this file, so you can provide it as parameter here
-  // instead of the {{CHECKOUT_SESSION_ID}} placeholder.
-  sessionId: ''
-}).then(function (result) {
-  // If `redirectToCheckout` fails due to a browser or network
-  // error, display the localized error message to your customer
-  // using `result.error.message`.
-});
-</script>
