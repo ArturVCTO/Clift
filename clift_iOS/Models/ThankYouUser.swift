@@ -7,3 +7,25 @@
 //
 
 import Foundation
+import UIKit
+import ObjectMapper
+import ObjectMapper_Realm
+import RealmSwift
+
+class ThankYouUser: Mappable {
+    var id: String? = ""
+    var email: String? = ""
+    var lastName: String? = ""
+    var name: String? = ""
+    
+    convenience required init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        email <- map["email"]
+        lastName <- map["last_name"]
+        name <- map["name"]
+    }
+}

@@ -17,7 +17,7 @@ class ProductViewController: UIViewController {
     var productAddedToRegistry = false
     var product = Product()
     var currentEvent = Event()
-    var quantity = Int()
+    var quantity = 1
     var group = Group()
     var brand = Brand()
     var shop = Shop()

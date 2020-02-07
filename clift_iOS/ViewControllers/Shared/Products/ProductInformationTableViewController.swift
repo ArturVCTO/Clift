@@ -33,6 +33,7 @@ class ProductInformationTableViewController: UITableViewController {
     }
     
     @IBAction func quantityStepperTapped(_ sender: UIStepper) {
+        
         self.quantityProductLabel.text = "Cantidad: \(Int(sender.value))"
         self.productVC.quantity = Int(sender.value)
     }
