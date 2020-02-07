@@ -12,31 +12,17 @@ import Stripe
 import GSMessages
 
 class PaymentTableViewController: UITableViewController {
-    var paymentIntentClientSecret: String?
-    var paymentContext: STPPaymentContext?
     var products: [CartItem] = []
-    let country = String()
-    @IBOutlet weak var paymentLabel: UILabel!
-    var backendBaseURL: String? = "https://stripe-demo-clift.herokuapp.com/"
-//    lazy var cardTextField: STPPaymentCardTextField = {
-//          let cardTextField = STPPaymentCardTextField()
-//          return cardTextField
-//    }()
-    @IBOutlet weak var stripeContentView: UIView!
+    var checkoutObject = Checkout()
+    var userData = CheckoutUserData()
     @IBOutlet weak var subtotalLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     var totalAmount: Int?
     var subtotalAmount: Int?
+    var currentEvent = Event()
+    var hasAddressSet = false
     
     init() {
-        if let backendBaseURL = UserDefaults.standard.string(forKey: "StripeBackendBaseURL") {
-                   self.backendBaseURL = backendBaseURL
-               }
-        let backendBaseURL = self.backendBaseURL
-        
-        assert(backendBaseURL != nil, "You must set your backend base url at the top of CheckoutViewController.swift to run this app.")
-        MyStripeApiClient.sharedClient.baseURLString = self.backendBaseURL
-        
         super.init(nibName: nil, bundle: nil)
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -48,10 +34,8 @@ class PaymentTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let customerContext = STPCustomerContext(keyProvider: MyStripeApiClient.sharedClient)
-        let paymentContext = STPPaymentContext(customerContext: customerContext)
-        self.paymentContext = paymentContext
         self.loadTotalAndSubtotal()
+        self.getEvent()
         startCheckout()
     }
     
@@ -68,28 +52,61 @@ class PaymentTableViewController: UITableViewController {
     }
     
     func startCheckout() {
-
+        for product in products {
+            self.checkoutObject.cartItemIds.append(product.id)
+        }
+        self.checkoutObject.userData = self.userData
     }
         
     func pay() {
-  
+        sharedApiManager.stripeCheckout(event: self.currentEvent , checkout: self.checkoutObject) { (stripe, result) in
+            if let response = result {
+                if response.isSuccess() {
+                    if #available(iOS 13.0, *) {
+                        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "stripeCheckoutVC") as! StripeCheckoutViewController
+                        vc.checkoutSessionId = stripe!.id!
+                        vc.successUrl = stripe!.successUrl!
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    } else {
+                        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "stripeCheckoutVC") as! StripeCheckoutViewController
+                        vc.checkoutSessionId = stripe!.id!
+                        vc.successUrl = stripe!.successUrl!
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            }
+        }
     }
     
-    
-    @IBAction func addPaymentInformationTapped(_ sender: Any) {
-        self.paymentContext!.pushPaymentOptionsViewController()
-    }
+    func getEvent() {
+          sharedApiManager.getEvents() { (events, result) in
+              if let response = result {
+                  if (response.isSuccess()) {
+                      if let events = events {
+                        self.currentEvent = events.first!
+                      }
+                  }
+              }
+          }
+      }
     
     @IBAction func completePaymentButtonTapped(_ sender: Any) {
-        self.pay()
+        if hasAddressSet {
+            self.pay()
+        }
+        else {
+            self.showMessage("No has seleccionado dirección para enviar.", type: .error)
+        }
     }
     
     @IBAction func addShippingButtonTapped(_ sender: Any) {
         if #available(iOS 13.0, *) {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "shippingTableVC") as! ShippingTableViewController
+            vc.paymentTableVC = self
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "shippingTableVC") as! ShippingTableViewController
+            vc.paymentTableVC = self
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
