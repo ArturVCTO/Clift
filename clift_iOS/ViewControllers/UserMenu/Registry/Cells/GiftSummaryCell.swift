@@ -19,12 +19,7 @@ class GiftSummaryCell: UITableViewCell {
         if let imageURL = URL(string:"\(gift.product.imageUrl)") {
             self.giftImageView.kf.setImage(with: imageURL)
         }
-//        if gift.giftersEmail.count > 1 {
-//            self.gifterEmailLabel.text = "\(gift.giftersEmail.first ?? ""), +\(gift.giftersEmail.count - 1)"
-//        } else {
-//            self.gifterEmailLabel.text = gift.giftersEmail.first
-//        }
-//        self.gifterDateLabel.text = gift.product.
+        self.gifterEmailLabel.text = gift.thankYouUser?.email
         self.giftCategoryLabel.text = gift.product.categories.first?.name
     }
 }
