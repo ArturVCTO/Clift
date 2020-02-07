@@ -71,7 +71,7 @@ class ProductsRegistryViewController: UIViewController {
               }else if registrySegment.selectedSegmentIndex == 1 {
                  self.getEventProducts(event: self.currentEvent, available: self.currentEvent.id, gifted: "", filters: [:])
               } else {
-                   self.getEventProducts(event: self.currentEvent, available: "", gifted: self.currentEvent.id, filters: [:])
+                self.loadGiftedAndThanked()
               }
     }
     
@@ -317,6 +317,17 @@ class ProductsRegistryViewController: UIViewController {
             }
         }
     }
+    
+    func loadGiftedAndThanked() {
+          sharedApiManager.getGiftThanksSummary(event: self.currentEvent, hasBeenThanked: false, hasBeenPaid: true) {(eventProducts, result) in
+             if let response = result {
+                 if (response.isSuccess()) {
+                     self.eventProducts = eventProducts!
+                     self.eventProductsCollectionView.reloadData()
+                 }
+             }
+         }
+      }
     
     func deselectItems() {
         for indexPath in self.eventProductsCollectionView.indexPathsForSelectedItems! {
