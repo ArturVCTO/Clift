@@ -13,9 +13,12 @@ class AddressesTableViewController: UITableViewController {
     var addresses: [Address] = []
     var initialGiftShippingVC: InitialGiftShippingViewController?
     var currentEvent: Event?
+    var requestshippingEventProducts: [EventProduct] = []
+    var eventProductIds: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getEventProductIds(eventProducts: requestshippingEventProducts)
         self.getEvent()
         self.getAddresses()
     }
@@ -29,6 +32,10 @@ class AddressesTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    func getEventProductIds(eventProducts: [EventProduct]) {
+        
     }
     
     func getEvent() {
@@ -57,6 +64,10 @@ class AddressesTableViewController: UITableViewController {
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func backButtonFromShippingTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -99,11 +110,13 @@ class AddressesTableViewController: UITableViewController {
         if initialGiftShippingVC != nil {
             if #available(iOS 13.0, *) {
                     let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "giftShippingTableVC") as! GiftShippingTableViewController
+                vc.requestshippingEventProducts = self.requestshippingEventProducts
                 vc.address = self.addresses[indexPath.row]
                 vc.currentEvent = self.currentEvent!
                     self.navigationController?.pushViewController(vc, animated: true)
                  } else {
                     let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "giftShippingTableVC") as! GiftShippingTableViewController
+                vc.requestshippingEventProducts = self.requestshippingEventProducts
                 vc.address = self.addresses[indexPath.row]
                 vc.currentEvent = self.currentEvent!
                     self.navigationController?.pushViewController(vc, animated: true)

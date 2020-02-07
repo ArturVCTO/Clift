@@ -147,7 +147,7 @@ extension AddAddressViewController: UITextFieldDelegate {
         case addressTextField:
             self.address?.streetAndNumber = self.addressTextField.text!
         case districtTextField:
-            self.address?.suburb = self.addressTextField.text!
+            self.address?.suburb = self.districtTextField.text!
         case zipcodeTextField:
             self.address?.zipCode = self.zipcodeTextField.text!
         default:
