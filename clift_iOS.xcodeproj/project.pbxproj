@@ -147,6 +147,12 @@
 		46D3776D2395783D004BE93E /* AddGuestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3776C2395783D004BE93E /* AddGuestsViewController.swift */; };
 		46D3776F23970684004BE93E /* EventGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3776E23970684004BE93E /* EventGuest.swift */; };
 		46D3777123972DDD004BE93E /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46D3777023972DDD004BE93E /* Invitation.swift */; };
+		46DC795023E92D8F0013C306 /* StripeCheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC794F23E92D8F0013C306 /* StripeCheckoutViewController.swift */; };
+		46DC795223E943400013C306 /* ThankYouUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC795123E943400013C306 /* ThankYouUser.swift */; };
+		46DC795423E99CE10013C306 /* Checkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC795323E99CE10013C306 /* Checkout.swift */; };
+		46DC795623E99D550013C306 /* CheckoutUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC795523E99D550013C306 /* CheckoutUserData.swift */; };
+		46DC795823E9A0770013C306 /* StripeCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DC795723E9A0770013C306 /* StripeCheckout.swift */; };
+		46DC795A23EA0DD60013C306 /* stripeRedirect.html in Resources */ = {isa = PBXBuildFile; fileRef = 46DC795923EA0DD50013C306 /* stripeRedirect.html */; };
 		46DD3DC323060A19008F789A /* OnboardingEventTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DD3DC223060A19008F789A /* OnboardingEventTypeViewController.swift */; };
 		46DE698623574857002C2BB8 /* CliftColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE698523574857002C2BB8 /* CliftColor.swift */; };
 		46DE69882358175F002C2BB8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46DE69872358175F002C2BB8 /* ColorExtension.swift */; };
@@ -334,6 +340,12 @@
 		46D3776C2395783D004BE93E /* AddGuestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGuestsViewController.swift; sourceTree = "<group>"; };
 		46D3776E23970684004BE93E /* EventGuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGuest.swift; sourceTree = "<group>"; };
 		46D3777023972DDD004BE93E /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
+		46DC794F23E92D8F0013C306 /* StripeCheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCheckoutViewController.swift; sourceTree = "<group>"; };
+		46DC795123E943400013C306 /* ThankYouUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankYouUser.swift; sourceTree = "<group>"; };
+		46DC795323E99CE10013C306 /* Checkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkout.swift; sourceTree = "<group>"; };
+		46DC795523E99D550013C306 /* CheckoutUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUserData.swift; sourceTree = "<group>"; };
+		46DC795723E9A0770013C306 /* StripeCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeCheckout.swift; sourceTree = "<group>"; };
+		46DC795923EA0DD50013C306 /* stripeRedirect.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = stripeRedirect.html; sourceTree = "<group>"; };
 		46DD3DC223060A19008F789A /* OnboardingEventTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEventTypeViewController.swift; sourceTree = "<group>"; };
 		46DE698523574857002C2BB8 /* CliftColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliftColor.swift; sourceTree = "<group>"; };
 		46DE69872358175F002C2BB8 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -602,6 +614,7 @@
 				46E4D77423D8C130004FC798 /* PaymentTableViewController.swift */,
 				461C423423DA3B3E00486D80 /* DiscountCodeViewController.swift */,
 				46831C0D23DA4079004BAAC1 /* PaymentConfirmationViewController.swift */,
+				46DC794F23E92D8F0013C306 /* StripeCheckoutViewController.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -660,6 +673,7 @@
 		4672A88D22F88F25001F374F /* clift_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				46DC795923EA0DD50013C306 /* stripeRedirect.html */,
 				462A6B3D22FC81FF0045C94E /* View Extensions */,
 				46A2DD9522FB7EE40051DCA6 /* Extensions */,
 				46A2DD9022FB6CBA0051DCA6 /* Models */,
@@ -737,6 +751,10 @@
 				46BFA8C123D120F3008D6B72 /* CartProduct.swift */,
 				46CDF77023DE073800F01CEC /* ThankMessage.swift */,
 				46403A9223E1FC09007866B8 /* ShoppingCart.swift */,
+				46DC795123E943400013C306 /* ThankYouUser.swift */,
+				46DC795323E99CE10013C306 /* Checkout.swift */,
+				46DC795523E99D550013C306 /* CheckoutUserData.swift */,
+				46DC795723E9A0770013C306 /* StripeCheckout.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -981,6 +999,7 @@
 				46B5F75223845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */,
 				46987DA022FA10C5007B2C78 /* OpenSans-Regular.ttf in Resources */,
 				4672A89422F88F25001F374F /* Main.storyboard in Resources */,
+				46DC795A23EA0DD60013C306 /* stripeRedirect.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1166,6 +1185,7 @@
 				465FED172373DE1A0038D557 /* ExternalProduct.swift in Sources */,
 				462F9F32230EE8870014CD9E /* customImageView.swift in Sources */,
 				46403A9323E1FC09007866B8 /* ShoppingCart.swift in Sources */,
+				46DC795423E99CE10013C306 /* Checkout.swift in Sources */,
 				461C5C4B2360B544005FA273 /* ProductsRegistryViewController.swift in Sources */,
 				4604A335230331890041F9AA /* User.swift in Sources */,
 				4604A33B230346C30041F9AA /* Interest.swift in Sources */,
@@ -1181,12 +1201,14 @@
 				46DE69D0235DCD9B002C2BB8 /* EventProduct.swift in Sources */,
 				463A78A42385F3F100985674 /* GuestListViewController.swift in Sources */,
 				46831C1423DBAEEF004BAAC1 /* ThankGuestViewController.swift in Sources */,
+				46DC795223E943400013C306 /* ThankYouUser.swift in Sources */,
 				46E85B5222FB5ED9004FA3FE /* CliftApiManager.swift in Sources */,
 				468258162307261C00D3D49C /* LoginViewController.swift in Sources */,
 				4604A32F22FE18900041F9AA /* FourthStepOnboardingViewController.swift in Sources */,
 				464C12A223A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift in Sources */,
 				46167731232AE9C700A6CAB9 /* SubcategoryCollectionViewController.swift in Sources */,
 				46462BE223A9296200516A60 /* GradientFontExtension.swift in Sources */,
+				46DC795823E9A0770013C306 /* StripeCheckout.swift in Sources */,
 				46E1287E2333EFF700354DB9 /* MainStoreBrandCollectionViewCell.swift in Sources */,
 				462EB0AF2314816D0084C3C7 /* GiftsViewController.swift in Sources */,
 				461C423823DA3CF400486D80 /* ShippingTableViewController.swift in Sources */,
@@ -1232,6 +1254,7 @@
 				46167729232AE76100A6CAB9 /* Product.swift in Sources */,
 				46029C5A23284527008A8EAE /* RangeSliderTrackLayer.swift in Sources */,
 				46C07A1823D228C70091CDDA /* CheckoutProductCell.swift in Sources */,
+				46DC795623E99D550013C306 /* CheckoutUserData.swift in Sources */,
 				46CDF77123DE073800F01CEC /* ThankMessage.swift in Sources */,
 				46403A8D23E0A054007866B8 /* GiftShippingCell.swift in Sources */,
 				46029C5823281270008A8EAE /* RangeSlider.swift in Sources */,
@@ -1240,6 +1263,7 @@
 				465167B2237A7D7500755077 /* FilterTableViewCell.swift in Sources */,
 				462EB0B923163F100084C3C7 /* EditRegistryViewController.swift in Sources */,
 				46792371239EBB92005103F2 /* PreviewInvitationViewController.swift in Sources */,
+				46DC795023E92D8F0013C306 /* StripeCheckoutViewController.swift in Sources */,
 				464C12A423A6F72B00A690C4 /* MainInvitationTemplateCVCell.swift in Sources */,
 				463A78A92386F33400985674 /* GuestListTableViewCell.swift in Sources */,
 				465C8212236100A100DAC090 /* customProgressView.swift in Sources */,
