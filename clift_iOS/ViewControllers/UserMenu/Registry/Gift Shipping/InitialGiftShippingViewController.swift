@@ -23,11 +23,13 @@ class InitialGiftShippingViewController: UIViewController {
     @IBAction func goToShippingMethodButtonTapped(_ sender: Any) {
         if #available(iOS 13.0, *) {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "giftShippingAddressesTableVC") as! AddressesTableViewController
+            vc.requestshippingEventProducts = self.eventProducts
             vc.initialGiftShippingVC = self
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
           // Fallback on earlier versions
           let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "giftShippingAddressesTableVC") as! AddressesTableViewController
+            vc.requestshippingEventProducts = self.eventProducts
             vc.initialGiftShippingVC = self
           self.navigationController?.pushViewController(vc, animated: true)
       }
