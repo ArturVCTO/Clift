@@ -13,7 +13,6 @@ import RealmSwift
 import GSMessages
 
 class SummaryRegistryViewController: UIViewController {
-    
     var categories = [EventRegistrySummary]()
     @IBOutlet weak var summaryTableView: UITableView!
     var currentEvent = Event()

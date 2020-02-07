@@ -18,9 +18,12 @@ class ThankGuestViewController: UIViewController {
     @IBOutlet weak var giftPrice: UILabel!
     @IBOutlet weak var giftButton: UIButton!
     @IBOutlet weak var giftMessageTextField: HoshiTextField!
-    var thankMessage: ThankMessage? = nil
+    var thankMessage = ThankMessage()
     var gift: EventProduct?
+    var event: Event?
     var emailersDropDown = DropDown()
+    var selectedFilter = 0
+    var summaryGiftsVC: SummaryGiftsViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,28 +31,37 @@ class ThankGuestViewController: UIViewController {
         self.getGiftInformation(gift: self.gift!)
     }
     
-    func loadDropDownInfo(string: [String]) {
+    func loadDropDownInfo(gifters: [String]) {
         var dataSourceDropdown = [String]()
         emailersDropDown.anchorView = self.giftButton
         
-        for string in string {
-            dataSourceDropdown.append(string)
+        for gifter in gifters {
+            dataSourceDropdown.append(gifter)
         }
         emailersDropDown.dataSource = dataSourceDropdown
         emailersDropDown.bottomOffset = CGPoint(x: 0, y: giftButton.bounds.height)
         
         emailersDropDown.selectionAction = { [weak self] (index, item) in
             self!.giftButton.setTitle(item, for: .normal)
-            self?.thankMessage?.email = string[index]
+            self?.thankMessage.email = gifters[index]
         }
     }
     
+    func getPriceStringFormat(value: Double) -> String {
+       let formatter = NumberFormatter()
+       formatter.numberStyle = .currency
+       
+       return formatter.string(from: NSNumber(value: value))!
+     }
+    
     func getGiftInformation(gift: EventProduct) {
-//        self.giftImage.image = gift.image
-//        self.giftName.text = gift.giftName
-//        self.giftShop.text = gift.shop
-//        self.giftPrice.text = "\(gift.giftPrice)"
-//        self.loadDropDownInfo(string: gift.giftersEmail)
+       if let imageURL = URL(string:"\(gift.product.imageUrl)") {
+            self.giftImage.kf.setImage(with: imageURL)
+        }
+        self.giftName.text = gift.product.name
+        self.giftShop.text = gift.product.shop.name
+        self.giftPrice.text = "\(getPriceStringFormat(value: Double(gift.product.price)))"
+        self.loadDropDownInfo(gifters: [gift.thankYouUser!.email!])
     }
     
     func sendThankMessage(thankMessage: ThankMessage, event: Event,eventProduct: EventProduct) {
@@ -57,6 +69,7 @@ class ThankGuestViewController: UIViewController {
             if let response = result {
                 if response.isSuccess() {
                     self.navigationController?.popViewController(animated: true)
+                    self.summaryGiftsVC.loadGiftedNotThanked()
                     self.navigationController!.showMessage("Mensaje enviado con éxito", type: .success)
                 } else if response.isClientError() {
                     self.showMessage("Hubo un error enviando el correo.", type: .error)
@@ -68,7 +81,7 @@ class ThankGuestViewController: UIViewController {
     }
     
     @IBAction func sendMessageTapped(_ sender: Any) {
-        
+        self.sendThankMessage(thankMessage: self.thankMessage, event: (self.event)!, eventProduct: self.gift!)
     }
     
     @IBAction func giftersEmailButtonTapped(_ sender: Any) {
@@ -81,7 +94,7 @@ class ThankGuestViewController: UIViewController {
 }
 extension ThankGuestViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.thankMessage?.thankMessage = giftMessageTextField.text
+        self.thankMessage.thankMessage = giftMessageTextField.text
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
