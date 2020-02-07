@@ -262,6 +262,8 @@ protocol ApiCalls {
     func getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, completion: @escaping([EventProduct]?, Response?) -> Void)
     
     func requestGifts(event: Event, ids: [String], completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
+    
+    func stripeCheckout(event: Event, checkout: Checkout, completion: @escaping(StripeCheckout?, Response?) -> Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -471,5 +473,9 @@ extension CliftApiManager: ApiCalls {
     
     func requestGifts(event: Event, ids: [String], completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
         requestEmptyObject(.requestGifts(event: event, ids: ids), completion: completion)
+    }
+    
+    func stripeCheckout(event: Event, checkout: Checkout, completion: @escaping (StripeCheckout?, Response?) -> Void) {
+        requestObjectWithResponse(.stripeCheckout(event: event, checkout: checkout), type: StripeCheckout.self, completion: completion, wrapper: "")
     }
 }

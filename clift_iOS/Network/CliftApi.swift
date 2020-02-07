@@ -67,6 +67,7 @@ enum CliftApi {
     case deleteItemFromCart(cartItem: CartItem)
     case getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool)
     case requestGifts(event: Event, ids: [String])
+    case stripeCheckout(event: Event,checkout: Checkout)
 }
 
 extension CliftApi: TargetType {
@@ -178,19 +179,21 @@ extension CliftApi: TargetType {
         case .deleteItemFromCart(let cartItem):
             return "cart/\(cartItem.id)/remove_item"
         case .getGiftThanksSummary(let event,_,_):
-            return "event_registries/\(event.id)"
+            return "events/\(event.id)/registries"
         case .requestGifts(let event,_):
             return "events/\(event.id)/request_gifts"
+        case.stripeCheckout(let event,_):
+            return "checkout/create/\(event.id)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation, .addAddress,.requestGifts:
+        case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation, .addAddress,.stripeCheckout:
             return .post
         case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
             return .put
         case .deleteLogoutSession,.deleteProductFromRegistry,.deleteItemFromCart:
             return .delete
@@ -279,11 +282,13 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity]], encoding: JSONEncoding.default)
         case .getGiftThanksSummary(_,let hasBeenThanked, let hasBeenPaid):
             var parameters = [String: Any]()
-            parameters["has_been_paid"] = hasBeenPaid
-            parameters["has_been_thanked"] = hasBeenThanked
+            parameters["gifted"] = hasBeenPaid
+            parameters["thanked"] = hasBeenThanked
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         case .requestGifts(_,let ids):
             return .requestParameters(parameters: ["ids": [ids]], encoding: JSONEncoding.default)
+        case .stripeCheckout(_,let checkout):
+            return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }
