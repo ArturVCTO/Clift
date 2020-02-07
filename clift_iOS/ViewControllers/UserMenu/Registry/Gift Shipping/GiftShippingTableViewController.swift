@@ -24,9 +24,18 @@ class GiftShippingTableViewController: UITableViewController {
     @IBOutlet weak var stateButtonDropdown: UIButton!
     @IBOutlet weak var cityButtonDropdown: UIButton!
     var currentEvent = Event()
+    var requestshippingEventProducts: [EventProduct] = []
+    var eventProductIds: [String] = []
     
     override func viewDidLoad() {
         self.loadAddress()
+        self.getEventProductIds(eventProducts: requestshippingEventProducts)
+    }
+    
+    func getEventProductIds(eventProducts: [EventProduct]) {
+        for eventProduct in eventProducts {
+            self.eventProductIds.append(eventProduct.id)
+        }
     }
     
     func loadAddress() {
@@ -66,7 +75,7 @@ class GiftShippingTableViewController: UITableViewController {
     }
     
     func sendShippingRequest() {
-        sharedApiManager.requestGifts(event: self.currentEvent, ids: []) { (emptyObject, result) in
+        sharedApiManager.requestGifts(event: self.currentEvent, ids: self.eventProductIds) { (emptyObject, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.segueToGiftShippingConfirmation()
