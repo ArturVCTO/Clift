@@ -69,6 +69,7 @@
 		46403A8F23E0A425007866B8 /* GiftShippingConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46403A8E23E0A425007866B8 /* GiftShippingConfirmationViewController.swift */; };
 		46403A9123E0A686007866B8 /* GiftShippingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46403A9023E0A686007866B8 /* GiftShippingTableViewController.swift */; };
 		46403A9323E1FC09007866B8 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46403A9223E1FC09007866B8 /* ShoppingCart.swift */; };
+		46438FCA24081B73002FAB06 /* StripeAccountToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46438FC924081B73002FAB06 /* StripeAccountToken.swift */; };
 		46441B7723CE852C00F5FCD2 /* Mihan-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46441B7623CE852B00F5FCD2 /* Mihan-Regular.ttf */; };
 		46462BE223A9296200516A60 /* GradientFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46462BE123A9296200516A60 /* GradientFontExtension.swift */; };
 		464C12A223A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C12A123A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift */; };
@@ -99,6 +100,7 @@
 		4672A8A422F88F27001F374F /* clift_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672A8A322F88F27001F374F /* clift_iOSTests.swift */; };
 		4672A8AF22F88F27001F374F /* clift_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672A8AE22F88F27001F374F /* clift_iOSUITests.swift */; };
 		46792371239EBB92005103F2 /* PreviewInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46792370239EBB92005103F2 /* PreviewInvitationViewController.swift */; };
+		467A08D82406E6DE007D18DF /* AssociateStripeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467A08D72406E6DE007D18DF /* AssociateStripeAccountViewController.swift */; };
 		468258162307261C00D3D49C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468258152307261C00D3D49C /* LoginViewController.swift */; };
 		46831C0E23DA4079004BAAC1 /* PaymentConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46831C0D23DA4079004BAAC1 /* PaymentConfirmationViewController.swift */; };
 		46831C1023DB9752004BAAC1 /* SummaryGiftsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46831C0F23DB9751004BAAC1 /* SummaryGiftsViewController.swift */; };
@@ -117,6 +119,7 @@
 		46A2DD9422FB723D0051DCA6 /* EmptyObjectWithErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A2DD9322FB723D0051DCA6 /* EmptyObjectWithErrors.swift */; };
 		46A2DD9722FB7EFC0051DCA6 /* LocationPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A2DD9622FB7EFC0051DCA6 /* LocationPageControl.swift */; };
 		46ABCB2E2318669500857046 /* MyEventsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ABCB2D2318669500857046 /* MyEventsCell.swift */; };
+		46B2E6182408335B00635CF9 /* ConfigurartionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E6172408335B00635CF9 /* ConfigurartionViewController.swift */; };
 		46B5F74323845BB600AFF425 /* Tinos-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F73D23845BB400AFF425 /* Tinos-RegularItalic.ttf */; };
 		46B5F74423845BB600AFF425 /* Tinos-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F73D23845BB400AFF425 /* Tinos-RegularItalic.ttf */; };
 		46B5F74523845BB600AFF425 /* Tinos-RegularItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F73D23845BB400AFF425 /* Tinos-RegularItalic.ttf */; };
@@ -266,6 +269,7 @@
 		46403A8E23E0A425007866B8 /* GiftShippingConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShippingConfirmationViewController.swift; sourceTree = "<group>"; };
 		46403A9023E0A686007866B8 /* GiftShippingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftShippingTableViewController.swift; sourceTree = "<group>"; };
 		46403A9223E1FC09007866B8 /* ShoppingCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
+		46438FC924081B73002FAB06 /* StripeAccountToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeAccountToken.swift; sourceTree = "<group>"; };
 		46441B7623CE852B00F5FCD2 /* Mihan-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mihan-Regular.ttf"; sourceTree = "<group>"; };
 		46462BE123A9296200516A60 /* GradientFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientFontExtension.swift; sourceTree = "<group>"; };
 		464C12A123A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChosenInvitationCVCell.swift; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 		4672A8AE22F88F27001F374F /* clift_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clift_iOSUITests.swift; sourceTree = "<group>"; };
 		4672A8B022F88F27001F374F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46792370239EBB92005103F2 /* PreviewInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewInvitationViewController.swift; sourceTree = "<group>"; };
+		467A08D72406E6DE007D18DF /* AssociateStripeAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociateStripeAccountViewController.swift; sourceTree = "<group>"; };
 		468258152307261C00D3D49C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		46831C0D23DA4079004BAAC1 /* PaymentConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentConfirmationViewController.swift; sourceTree = "<group>"; };
 		46831C0F23DB9751004BAAC1 /* SummaryGiftsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryGiftsViewController.swift; sourceTree = "<group>"; };
@@ -320,6 +325,7 @@
 		46A2DD9322FB723D0051DCA6 /* EmptyObjectWithErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyObjectWithErrors.swift; sourceTree = "<group>"; };
 		46A2DD9622FB7EFC0051DCA6 /* LocationPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPageControl.swift; sourceTree = "<group>"; };
 		46ABCB2D2318669500857046 /* MyEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsCell.swift; sourceTree = "<group>"; };
+		46B2E6172408335B00635CF9 /* ConfigurartionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurartionViewController.swift; sourceTree = "<group>"; };
 		46B5F73D23845BB400AFF425 /* Tinos-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-RegularItalic.ttf"; path = "../../../../../../../../Downloads/Tinos-RegularItalic.ttf"; sourceTree = "<group>"; };
 		46B5F73E23845BB400AFF425 /* Tinos-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-BoldItalic.ttf"; path = "../../../../../../../../Downloads/Tinos-BoldItalic.ttf"; sourceTree = "<group>"; };
 		46B5F73F23845BB400AFF425 /* Tinos-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-Bold.ttf"; path = "../../../../../../../../Downloads/Tinos-Bold.ttf"; sourceTree = "<group>"; };
@@ -505,6 +511,8 @@
 				46153CE023C8F696005CD395 /* Addresses */,
 				469D8C27230F02A0000D447E /* ProfileViewController.swift */,
 				469D8C29230F02AB000D447E /* EditProfileViewController.swift */,
+				467A08D72406E6DE007D18DF /* AssociateStripeAccountViewController.swift */,
+				46B2E6172408335B00635CF9 /* ConfigurartionViewController.swift */,
 			);
 			path = UserSettings;
 			sourceTree = "<group>";
@@ -755,6 +763,7 @@
 				46DC795323E99CE10013C306 /* Checkout.swift */,
 				46DC795523E99D550013C306 /* CheckoutUserData.swift */,
 				46DC795723E9A0770013C306 /* StripeCheckout.swift */,
+				46438FC924081B73002FAB06 /* StripeAccountToken.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1151,6 +1160,7 @@
 				462EB0C12316D4250084C3C7 /* MyEventsTableViewController.swift in Sources */,
 				462EB0B1231484FF0084C3C7 /* PaymentsViewController.swift in Sources */,
 				462EB0B72315E26D0084C3C7 /* FadeScrollView.swift in Sources */,
+				46B2E6182408335B00635CF9 /* ConfigurartionViewController.swift in Sources */,
 				462EB0BD2316C8460084C3C7 /* EventAnalytics.swift in Sources */,
 				462F9F2E230C6AE20014CD9E /* StringExtensions.swift in Sources */,
 				465FED1323708B7B0038D557 /* SummaryRegistryTableViewCell.swift in Sources */,
@@ -1213,6 +1223,7 @@
 				462EB0AF2314816D0084C3C7 /* GiftsViewController.swift in Sources */,
 				461C423823DA3CF400486D80 /* ShippingTableViewController.swift in Sources */,
 				465167B4237A7D9700755077 /* EventProductShopCell.swift in Sources */,
+				46438FCA24081B73002FAB06 /* StripeAccountToken.swift in Sources */,
 				46403A8A23E09E34007866B8 /* InitialGiftShippingViewController.swift in Sources */,
 				465FED0D2368C1620038D557 /* ProductInfoByUrlViewController.swift in Sources */,
 				465FED0F236B8B730038D557 /* EventProductCell.swift in Sources */,
@@ -1277,6 +1288,7 @@
 				46DE69C8235D671A002C2BB8 /* sortFilterTVCell.swift in Sources */,
 				46E034BB2326E50D001143BC /* CategoryTableViewCell.swift in Sources */,
 				465C821B236215BF00DAC090 /* AddCashFundViewController.swift in Sources */,
+				467A08D82406E6DE007D18DF /* AssociateStripeAccountViewController.swift in Sources */,
 				46D3776F23970684004BE93E /* EventGuest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
