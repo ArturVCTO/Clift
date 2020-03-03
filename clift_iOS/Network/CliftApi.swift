@@ -68,6 +68,7 @@ enum CliftApi {
     case getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool)
     case requestGifts(event: Event, ids: [String])
     case stripeCheckout(event: Event,checkout: Checkout)
+    case postStripeAccountToken(token: StripeAccountToken)
 }
 
 extension CliftApi: TargetType {
@@ -184,12 +185,14 @@ extension CliftApi: TargetType {
             return "events/\(event.id)/request_gifts"
         case.stripeCheckout(let event,_):
             return "checkout/create/\(event.id)"
+        case .postStripeAccountToken:
+            return "stripe_account_mobile"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation, .addAddress,.stripeCheckout:
+        case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation, .addAddress,.stripeCheckout,.postStripeAccountToken:
             return .post
         case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary:
             return .get
@@ -289,6 +292,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["ids": [ids]], encoding: JSONEncoding.default)
         case .stripeCheckout(_,let checkout):
             return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
+        case .postStripeAccountToken(let token):
+            return .requestParameters(parameters: ["token": token], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }
