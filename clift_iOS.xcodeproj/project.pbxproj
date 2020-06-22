@@ -74,6 +74,18 @@
 		46462BE223A9296200516A60 /* GradientFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46462BE123A9296200516A60 /* GradientFontExtension.swift */; };
 		464C12A223A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C12A123A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift */; };
 		464C12A423A6F72B00A690C4 /* MainInvitationTemplateCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464C12A323A6F72B00A690C4 /* MainInvitationTemplateCVCell.swift */; };
+		464D1CC4241012EC00CBC546 /* clabe.json in Resources */ = {isa = PBXBuildFile; fileRef = 464D1CC3241012EB00CBC546 /* clabe.json */; };
+		464D1CC62410130200CBC546 /* BankAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D1CC52410130200CBC546 /* BankAccount.swift */; };
+		464D1CCC2410137600CBC546 /* BankAccountFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D1CC82410137500CBC546 /* BankAccountFormViewController.swift */; };
+		464D1CCD2410137600CBC546 /* CashOutConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D1CC92410137500CBC546 /* CashOutConfirmationViewController.swift */; };
+		464D1CCE2410137600CBC546 /* CashOutFundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D1CCA2410137500CBC546 /* CashOutFundsViewController.swift */; };
+		464D1CCF2410137600CBC546 /* LinkBankAccountEmptyStateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D1CCB2410137600CBC546 /* LinkBankAccountEmptyStateVC.swift */; };
+		464D1CD12410173F00CBC546 /* MyCreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D1CD02410173F00CBC546 /* MyCreditsViewController.swift */; };
+		464D1CD42410181100CBC546 /* ShopCreditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D1CD32410181100CBC546 /* ShopCreditCell.swift */; };
+		464D1CD62410194C00CBC546 /* ShopCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D1CD52410194C00CBC546 /* ShopCredit.swift */; };
+		464D1CD82410494B00CBC546 /* CreditMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D1CD72410494B00CBC546 /* CreditMovement.swift */; };
+		464D1CDA24104E1A00CBC546 /* CreditMovementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D1CD924104E1A00CBC546 /* CreditMovementCell.swift */; };
+		464D1CDC24104E3800CBC546 /* CreditMovementTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464D1CDB24104E3800CBC546 /* CreditMovementTableViewController.swift */; };
 		465167AB237A178F00755077 /* EventRegistrySummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465167AA237A178F00755077 /* EventRegistrySummary.swift */; };
 		465167AE237A7D1500755077 /* CollaborativeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465167AD237A7D1400755077 /* CollaborativeCell.swift */; };
 		465167B0237A7D3300755077 /* EventProductBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465167AF237A7D3300755077 /* EventProductBrandCell.swift */; };
@@ -92,6 +104,8 @@
 		465FED1323708B7B0038D557 /* SummaryRegistryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465FED1223708B7B0038D557 /* SummaryRegistryTableViewCell.swift */; };
 		465FED152373BB510038D557 /* EventPool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465FED142373BB500038D557 /* EventPool.swift */; };
 		465FED172373DE1A0038D557 /* ExternalProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465FED162373DE190038D557 /* ExternalProduct.swift */; };
+		466E99DD2469F3CD009E94E3 /* AddressOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466E99DC2469F3CD009E94E3 /* AddressOnboardingViewController.swift */; };
+		466E99DF246DA62A009E94E3 /* OnboardingShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466E99DE246DA62A009E94E3 /* OnboardingShippingAddress.swift */; };
 		4672A88F22F88F25001F374F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672A88E22F88F25001F374F /* AppDelegate.swift */; };
 		4672A89122F88F25001F374F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672A89022F88F25001F374F /* ViewController.swift */; };
 		4672A89422F88F25001F374F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4672A89222F88F25001F374F /* Main.storyboard */; };
@@ -99,6 +113,7 @@
 		4672A89922F88F27001F374F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4672A89722F88F27001F374F /* LaunchScreen.storyboard */; };
 		4672A8A422F88F27001F374F /* clift_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672A8A322F88F27001F374F /* clift_iOSTests.swift */; };
 		4672A8AF22F88F27001F374F /* clift_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4672A8AE22F88F27001F374F /* clift_iOSUITests.swift */; };
+		4677DA132415D0F800A2CE28 /* VerifiedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4677DA122415D0F800A2CE28 /* VerifiedResponse.swift */; };
 		46792371239EBB92005103F2 /* PreviewInvitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46792370239EBB92005103F2 /* PreviewInvitationViewController.swift */; };
 		467A08D82406E6DE007D18DF /* AssociateStripeAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 467A08D72406E6DE007D18DF /* AssociateStripeAccountViewController.swift */; };
 		468258162307261C00D3D49C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 468258152307261C00D3D49C /* LoginViewController.swift */; };
@@ -274,6 +289,18 @@
 		46462BE123A9296200516A60 /* GradientFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientFontExtension.swift; sourceTree = "<group>"; };
 		464C12A123A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainChosenInvitationCVCell.swift; sourceTree = "<group>"; };
 		464C12A323A6F72B00A690C4 /* MainInvitationTemplateCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInvitationTemplateCVCell.swift; sourceTree = "<group>"; };
+		464D1CC3241012EB00CBC546 /* clabe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = clabe.json; sourceTree = "<group>"; };
+		464D1CC52410130200CBC546 /* BankAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankAccount.swift; sourceTree = "<group>"; };
+		464D1CC82410137500CBC546 /* BankAccountFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankAccountFormViewController.swift; sourceTree = "<group>"; };
+		464D1CC92410137500CBC546 /* CashOutConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashOutConfirmationViewController.swift; sourceTree = "<group>"; };
+		464D1CCA2410137500CBC546 /* CashOutFundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashOutFundsViewController.swift; sourceTree = "<group>"; };
+		464D1CCB2410137600CBC546 /* LinkBankAccountEmptyStateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkBankAccountEmptyStateVC.swift; sourceTree = "<group>"; };
+		464D1CD02410173F00CBC546 /* MyCreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCreditsViewController.swift; sourceTree = "<group>"; };
+		464D1CD32410181100CBC546 /* ShopCreditCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCreditCell.swift; sourceTree = "<group>"; };
+		464D1CD52410194C00CBC546 /* ShopCredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCredit.swift; sourceTree = "<group>"; };
+		464D1CD72410494B00CBC546 /* CreditMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditMovement.swift; sourceTree = "<group>"; };
+		464D1CD924104E1A00CBC546 /* CreditMovementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditMovementCell.swift; sourceTree = "<group>"; };
+		464D1CDB24104E3800CBC546 /* CreditMovementTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditMovementTableViewController.swift; sourceTree = "<group>"; };
 		465167AA237A178F00755077 /* EventRegistrySummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRegistrySummary.swift; sourceTree = "<group>"; };
 		465167AD237A7D1400755077 /* CollaborativeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaborativeCell.swift; sourceTree = "<group>"; };
 		465167AF237A7D3300755077 /* EventProductBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventProductBrandCell.swift; sourceTree = "<group>"; };
@@ -292,7 +319,9 @@
 		465FED1223708B7B0038D557 /* SummaryRegistryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryRegistryTableViewCell.swift; sourceTree = "<group>"; };
 		465FED142373BB500038D557 /* EventPool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventPool.swift; sourceTree = "<group>"; };
 		465FED162373DE190038D557 /* ExternalProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalProduct.swift; sourceTree = "<group>"; };
-		4672A88B22F88F25001F374F /* clift_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = clift_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		466E99DC2469F3CD009E94E3 /* AddressOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressOnboardingViewController.swift; sourceTree = "<group>"; };
+		466E99DE246DA62A009E94E3 /* OnboardingShippingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingShippingAddress.swift; sourceTree = "<group>"; };
+		4672A88B22F88F25001F374F /* CLIFT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CLIFT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4672A88E22F88F25001F374F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4672A89022F88F25001F374F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4672A89322F88F25001F374F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -305,6 +334,7 @@
 		4672A8AA22F88F27001F374F /* clift_iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = clift_iOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4672A8AE22F88F27001F374F /* clift_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = clift_iOSUITests.swift; sourceTree = "<group>"; };
 		4672A8B022F88F27001F374F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4677DA122415D0F800A2CE28 /* VerifiedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifiedResponse.swift; sourceTree = "<group>"; };
 		46792370239EBB92005103F2 /* PreviewInvitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewInvitationViewController.swift; sourceTree = "<group>"; };
 		467A08D72406E6DE007D18DF /* AssociateStripeAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssociateStripeAccountViewController.swift; sourceTree = "<group>"; };
 		468258152307261C00D3D49C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -501,6 +531,7 @@
 				46DD3DC223060A19008F789A /* OnboardingEventTypeViewController.swift */,
 				462F9F2B230C628A0014CD9E /* FifthStepOnboardingViewController.swift */,
 				462F3AA9231CDE3400FC9048 /* PostOnboardingViewController.swift */,
+				466E99DC2469F3CD009E94E3 /* AddressOnboardingViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -511,7 +542,6 @@
 				46153CE023C8F696005CD395 /* Addresses */,
 				469D8C27230F02A0000D447E /* ProfileViewController.swift */,
 				469D8C29230F02AB000D447E /* EditProfileViewController.swift */,
-				467A08D72406E6DE007D18DF /* AssociateStripeAccountViewController.swift */,
 				46B2E6172408335B00635CF9 /* ConfigurartionViewController.swift */,
 			);
 			path = UserSettings;
@@ -578,6 +608,38 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		464D1CC2241012D800CBC546 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				464D1CC3241012EB00CBC546 /* clabe.json */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		464D1CC72410133300CBC546 /* Payments */ = {
+			isa = PBXGroup;
+			children = (
+				464D1CD2241017FF00CBC546 /* Cells */,
+				464D1CC82410137500CBC546 /* BankAccountFormViewController.swift */,
+				464D1CC92410137500CBC546 /* CashOutConfirmationViewController.swift */,
+				464D1CCA2410137500CBC546 /* CashOutFundsViewController.swift */,
+				464D1CCB2410137600CBC546 /* LinkBankAccountEmptyStateVC.swift */,
+				464D1CD02410173F00CBC546 /* MyCreditsViewController.swift */,
+				467A08D72406E6DE007D18DF /* AssociateStripeAccountViewController.swift */,
+				464D1CDB24104E3800CBC546 /* CreditMovementTableViewController.swift */,
+			);
+			path = Payments;
+			sourceTree = "<group>";
+		};
+		464D1CD2241017FF00CBC546 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				464D1CD32410181100CBC546 /* ShopCreditCell.swift */,
+				464D1CD924104E1A00CBC546 /* CreditMovementCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		465167AC237A7CF200755077 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
@@ -637,6 +699,7 @@
 		465E09B523139455006776D1 /* Registry */ = {
 			isa = PBXGroup;
 			children = (
+				464D1CC72410133300CBC546 /* Payments */,
 				46403A8823E09E1E007866B8 /* Gift Shipping */,
 				463A78A22385F3C600985674 /* Invitations */,
 				465167AC237A7CF200755077 /* Filters */,
@@ -671,7 +734,7 @@
 		4672A88C22F88F25001F374F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4672A88B22F88F25001F374F /* clift_iOS.app */,
+				4672A88B22F88F25001F374F /* CLIFT.app */,
 				4672A89F22F88F27001F374F /* clift_iOSTests.xctest */,
 				4672A8AA22F88F27001F374F /* clift_iOSUITests.xctest */,
 			);
@@ -681,6 +744,7 @@
 		4672A88D22F88F25001F374F /* clift_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				464D1CC2241012D800CBC546 /* Support Files */,
 				46DC795923EA0DD50013C306 /* stripeRedirect.html */,
 				462A6B3D22FC81FF0045C94E /* View Extensions */,
 				46A2DD9522FB7EE40051DCA6 /* Extensions */,
@@ -764,6 +828,11 @@
 				46DC795523E99D550013C306 /* CheckoutUserData.swift */,
 				46DC795723E9A0770013C306 /* StripeCheckout.swift */,
 				46438FC924081B73002FAB06 /* StripeAccountToken.swift */,
+				464D1CC52410130200CBC546 /* BankAccount.swift */,
+				464D1CD52410194C00CBC546 /* ShopCredit.swift */,
+				464D1CD72410494B00CBC546 /* CreditMovement.swift */,
+				4677DA122415D0F800A2CE28 /* VerifiedResponse.swift */,
+				466E99DE246DA62A009E94E3 /* OnboardingShippingAddress.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -904,7 +973,7 @@
 			);
 			name = clift_iOS;
 			productName = clift_iOS;
-			productReference = 4672A88B22F88F25001F374F /* clift_iOS.app */;
+			productReference = 4672A88B22F88F25001F374F /* CLIFT.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4672A89E22F88F27001F374F /* clift_iOSTests */ = {
@@ -1001,6 +1070,7 @@
 				46987D9F22FA10C5007B2C78 /* OpenSans-SemiBold.ttf in Resources */,
 				46B5F74C23845BB600AFF425 /* Tinos-Regular.ttf in Resources */,
 				46987D9922FA10AD007B2C78 /* Poppins-Medium.ttf in Resources */,
+				464D1CC4241012EC00CBC546 /* clabe.json in Resources */,
 				46441B7723CE852C00F5FCD2 /* Mihan-Regular.ttf in Resources */,
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
 				46B5F74623845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */,
@@ -1146,6 +1216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				464D1CD62410194C00CBC546 /* ShopCredit.swift in Sources */,
 				46E034BD2326E522001143BC /* CategoryResultsTableViewCell.swift in Sources */,
 				465167AE237A7D1500755077 /* CollaborativeCell.swift in Sources */,
 				461C423523DA3B3E00486D80 /* DiscountCodeViewController.swift in Sources */,
@@ -1156,8 +1227,10 @@
 				46D3777123972DDD004BE93E /* Invitation.swift in Sources */,
 				46831C0E23DA4079004BAAC1 /* PaymentConfirmationViewController.swift in Sources */,
 				46403A8F23E0A425007866B8 /* GiftShippingConfirmationViewController.swift in Sources */,
+				464D1CCE2410137600CBC546 /* CashOutFundsViewController.swift in Sources */,
 				46C724D123C7DA0B00F12924 /* AddressCity.swift in Sources */,
 				462EB0C12316D4250084C3C7 /* MyEventsTableViewController.swift in Sources */,
+				464D1CCF2410137600CBC546 /* LinkBankAccountEmptyStateVC.swift in Sources */,
 				462EB0B1231484FF0084C3C7 /* PaymentsViewController.swift in Sources */,
 				462EB0B72315E26D0084C3C7 /* FadeScrollView.swift in Sources */,
 				46B2E6182408335B00635CF9 /* ConfigurartionViewController.swift in Sources */,
@@ -1168,6 +1241,7 @@
 				460836A92386FF890052E73A /* InvitationTemplatesViewController.swift in Sources */,
 				4604A32B22FCDA4B0041F9AA /* SecondStepOnboardingViewController.swift in Sources */,
 				462A289D238C51CD002ECAF3 /* InvitationEditFormTableViewController.swift in Sources */,
+				464D1CC62410130200CBC546 /* BankAccount.swift in Sources */,
 				46029C56232804B7008A8EAE /* PriceRangeTableViewCell.swift in Sources */,
 				46167736232AFB7000A6CAB9 /* ProductSubcategoryCollectionViewCell.swift in Sources */,
 				460836AB23873E0B0052E73A /* InvitationTemplateCollectionViewCell.swift in Sources */,
@@ -1200,12 +1274,14 @@
 				4604A335230331890041F9AA /* User.swift in Sources */,
 				4604A33B230346C30041F9AA /* Interest.swift in Sources */,
 				4672A88F22F88F25001F374F /* AppDelegate.swift in Sources */,
+				4677DA132415D0F800A2CE28 /* VerifiedResponse.swift in Sources */,
 				462A6B3F22FC820B0045C94E /* customButton.swift in Sources */,
 				462EB0B523148AC90084C3C7 /* MainRegistryViewController.swift in Sources */,
 				46167727232AE5F700A6CAB9 /* Category.swift in Sources */,
 				462EB0C32316E4640084C3C7 /* EventRecommendation.swift in Sources */,
 				46DD3DC323060A19008F789A /* OnboardingEventTypeViewController.swift in Sources */,
 				460836AD238867B10052E73A /* InvitationViewController.swift in Sources */,
+				464D1CD12410173F00CBC546 /* MyCreditsViewController.swift in Sources */,
 				462F3AAA231CDE3400FC9048 /* PostOnboardingViewController.swift in Sources */,
 				462EB0AD2314811D0084C3C7 /* InvitationsViewController.swift in Sources */,
 				46DE69D0235DCD9B002C2BB8 /* EventProduct.swift in Sources */,
@@ -1223,6 +1299,7 @@
 				462EB0AF2314816D0084C3C7 /* GiftsViewController.swift in Sources */,
 				461C423823DA3CF400486D80 /* ShippingTableViewController.swift in Sources */,
 				465167B4237A7D9700755077 /* EventProductShopCell.swift in Sources */,
+				464D1CCD2410137600CBC546 /* CashOutConfirmationViewController.swift in Sources */,
 				46438FCA24081B73002FAB06 /* StripeAccountToken.swift in Sources */,
 				46403A8A23E09E34007866B8 /* InitialGiftShippingViewController.swift in Sources */,
 				465FED0D2368C1620038D557 /* ProductInfoByUrlViewController.swift in Sources */,
@@ -1235,6 +1312,7 @@
 				4604A339230331A60041F9AA /* Event.swift in Sources */,
 				4604A33122FE18C30041F9AA /* LastStepOnboardingViewController.swift in Sources */,
 				469D8C28230F02A0000D447E /* ProfileViewController.swift in Sources */,
+				464D1CDA24104E1A00CBC546 /* CreditMovementCell.swift in Sources */,
 				46A2DD9722FB7EFC0051DCA6 /* LocationPageControl.swift in Sources */,
 				46831C1223DB9D0F004BAAC1 /* GiftSummaryCell.swift in Sources */,
 				46153CE223C8F6AC005CD395 /* AddressesTableViewController.swift in Sources */,
@@ -1253,6 +1331,7 @@
 				46E12884233AD24200354DB9 /* Subgroup.swift in Sources */,
 				465E09B123130858006776D1 /* customView.swift in Sources */,
 				46C07A1A23D26E460091CDDA /* StripeApiClient.swift in Sources */,
+				466E99DF246DA62A009E94E3 /* OnboardingShippingAddress.swift in Sources */,
 				463A304E2321785A00C42347 /* ProductInformationTableViewController.swift in Sources */,
 				465C82192362159D00DAC090 /* AddProductByUrlViewController.swift in Sources */,
 				4604A3372303319F0041F9AA /* Spouse.swift in Sources */,
@@ -1265,6 +1344,7 @@
 				46167729232AE76100A6CAB9 /* Product.swift in Sources */,
 				46029C5A23284527008A8EAE /* RangeSliderTrackLayer.swift in Sources */,
 				46C07A1823D228C70091CDDA /* CheckoutProductCell.swift in Sources */,
+				464D1CCC2410137600CBC546 /* BankAccountFormViewController.swift in Sources */,
 				46DC795623E99D550013C306 /* CheckoutUserData.swift in Sources */,
 				46CDF77123DE073800F01CEC /* ThankMessage.swift in Sources */,
 				46403A8D23E0A054007866B8 /* GiftShippingCell.swift in Sources */,
@@ -1275,10 +1355,14 @@
 				462EB0B923163F100084C3C7 /* EditRegistryViewController.swift in Sources */,
 				46792371239EBB92005103F2 /* PreviewInvitationViewController.swift in Sources */,
 				46DC795023E92D8F0013C306 /* StripeCheckoutViewController.swift in Sources */,
+				464D1CD42410181100CBC546 /* ShopCreditCell.swift in Sources */,
 				464C12A423A6F72B00A690C4 /* MainInvitationTemplateCVCell.swift in Sources */,
+				464D1CDC24104E3800CBC546 /* CreditMovementTableViewController.swift in Sources */,
 				463A78A92386F33400985674 /* GuestListTableViewCell.swift in Sources */,
 				465C8212236100A100DAC090 /* customProgressView.swift in Sources */,
+				464D1CD82410494B00CBC546 /* CreditMovement.swift in Sources */,
 				46C42AEB23295D9800D5A72F /* MainStoreViewController.swift in Sources */,
+				466E99DD2469F3CD009E94E3 /* AddressOnboardingViewController.swift in Sources */,
 				4616772D232AE8AD00A6CAB9 /* Brand.swift in Sources */,
 				460A1D912373E85400311876 /* EventProductFilterViewController.swift in Sources */,
 				4604A32D22FCDA700041F9AA /* ThirdStepOnboardingViewController.swift in Sources */,
@@ -1412,18 +1496,20 @@
 				API_BASE_URL_ENDPOINT = "http://api.clift.axented.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Y68XG462A;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mx.com.clift.clift-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
+				PRODUCT_NAME = CLIFT;
 				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Canary;
 		};
@@ -1536,18 +1622,20 @@
 				API_BASE_URL_ENDPOINT = "https://ezmock.herokuapp.com/api/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Y68XG462A;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mx.com.clift.clift-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
+				PRODUCT_NAME = CLIFT;
 				STRIPE_PUBLISHABLE_KEY = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Mock;
 		};
@@ -1715,18 +1803,20 @@
 				API_BASE_URL_ENDPOINT = "http://api.clift.axented.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Y68XG462A;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mx.com.clift.clift-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
+				PRODUCT_NAME = CLIFT;
 				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1734,21 +1824,23 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20C0FCDBF82262C61E2BFDDB /* Pods-clift_iOS.release.xcconfig */;
 			buildSettings = {
-				API_BASE_URL_ENDPOINT = "";
+				API_BASE_URL_ENDPOINT = "https://api.cliftapp.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7Y68XG462A;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "mx.com.clift.clift-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIPE_PUBLISHABLE_KEY = "";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
+				PRODUCT_NAME = CLIFT;
+				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

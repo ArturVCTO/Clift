@@ -22,8 +22,10 @@ class User: Mappable {
     var image: UIImage? = nil
     var event = Event()
     var spouse = Spouse()
+    var onboardingShippingAddress = OnboardingShippingAddress()
     var password = ""
     var errors: [String] = []
+    var stripeAccount = ""
     
     convenience required init?(map: Map) {
         self.init()
@@ -40,6 +42,8 @@ class User: Mappable {
         password <- map["password"]
         imageUrl <- map["image_url"]
         image <- map["image"]
+        stripeAccount <- map["stripe_account"]
+        onboardingShippingAddress <- map["shipping_address"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {

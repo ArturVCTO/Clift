@@ -21,4 +21,19 @@ public extension String {
         let date = dateFormatter.date(from: self)
         return date!
     }
+    
+    func fullStringToDate() -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let newDate = dateFormatter.date(from: self)
+        return newDate!
+    }
+    
+     func createdAtStringToDate() -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        let newDate = dateFormatter.date(from: self)
+        return newDate!
+    }
+
 }

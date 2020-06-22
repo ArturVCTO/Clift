@@ -383,11 +383,7 @@ extension InvitationEditFormTableViewController: UITextFieldDelegate {
         } else if textField == yourCoupleNameTextField {
             yourCoupleWSIWYGLabel.text = yourCoupleNameTextField.text!
             self.invitationVC.invitation.spouseName = yourCoupleNameTextField.text!
-            if (self.yourCoupleNameTextField.text!.count > 33) {
-                
-            } else {
-                
-            }
+        
         } else if textField == ceremonyAddressTextField {
             ceremonyAddressWYSIWYGLabel.text = ceremonyAddressTextField.text!
             self.invitationVC.invitation.locationCeremonyUrl = ceremonyAddressTextField.text!
@@ -413,6 +409,16 @@ extension InvitationEditFormTableViewController: UITextFieldDelegate {
             coupleMotherLabel.text = coupleMotherTextField.text!
             self.invitationVC.invitation.relativeFour = coupleMotherTextField.text!
         }
+        return true
+    }
+    
+    func hideKeyboard(textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        hideKeyboard(textField: textField)
+        
         return true
     }
 }

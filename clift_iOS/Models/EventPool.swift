@@ -15,9 +15,10 @@ import RealmSwift
 class EventPool: Mappable {
     
     var id = ""
-    var name = ""
+    var description = ""
     var amount = 0
     var note = ""
+    var goal = ""
     var suggestedAmount = ""
     var image: UIImage? = nil
     var imageUrl = ""
@@ -31,9 +32,10 @@ class EventPool: Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-        name <- map["name"]
+        description <- map["description"]
         amount <- map["amount"]
         note <- map["note"]
+        goal <- map["goal"]
         suggestedAmount <- map["suggested_amount"]
         imageUrl <- map["image_url"]
         image <- map["image"]

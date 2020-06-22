@@ -11,6 +11,7 @@ import Moya
 import RxSwift
 import ObjectMapper
 import Moya_ObjectMapper
+import Stripe
 
 let sharedApiManager: CliftApiManager = CliftApiManager()
 
@@ -235,6 +236,16 @@ protocol ApiCalls {
     
     func sendInvitation(event: Event, email: String, completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
     
+    func createBankAccount(bankAccount: BankAccount, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
+    
+    func getBankAccounts(completion: @escaping([BankAccount]?, Response?) -> Void)
+    
+    func getBankAccount(bankAccount: BankAccount, completion: @escaping(BankAccount?, Response?) -> Void)
+    
+    func updateBankAccount(bankAccount: BankAccount, completion: @escaping(BankAccount?,Response?) -> Void)
+    
+    func deleteBankAccount(bankAccount: BankAccount, completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
+    
     func addAddress(address: Address, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
     
     func getAddresses(completion: @escaping([Address]?, Response?) -> Void)
@@ -264,6 +275,18 @@ protocol ApiCalls {
     func requestGifts(event: Event, ids: [String], completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
     
     func stripeCheckout(event: Event, checkout: Checkout, completion: @escaping(StripeCheckout?, Response?) -> Void)
+    
+    func getCredits(event: Event, completion: @escaping([ShopCredit]?,Response?) -> Void)
+    
+    func getCreditMovements(event: String, shop: String, completion: @escaping([CreditMovement]?, Response?) -> Void)
+    
+    func completeStripeAccount(account: String, params: STPConnectAccountIndividualParams, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
+    
+    func verifyEventPool(event: Event, completion: @escaping(VerifiedResponse?, Response?) -> Void)
+    
+    func getCities(stateId: String, completion: @escaping([AddressCity]?, Response?) -> Void)
+    
+    func getStates(completion: @escaping([AddressState]?, Response?) -> Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -419,6 +442,26 @@ extension CliftApiManager: ApiCalls {
         requestEmptyObject(.sendInvitation(event: event, email: email), completion: completion)
     }
     
+    func createBankAccount(bankAccount: BankAccount, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.createBankAccount(bankAccount: bankAccount), completion: completion)
+    }
+    
+    func getBankAccounts(completion: @escaping ([BankAccount]?, Response?) -> Void) {
+        requestArrayWithResponse(.getBankAccounts, type: BankAccount.self, completion: completion, wrapper: "bank_account")
+    }
+    
+    func getBankAccount(bankAccount: BankAccount, completion: @escaping (BankAccount?, Response?) -> Void) {
+        requestObjectWithResponse(.getBankAccount(bankAccount: bankAccount), type: BankAccount.self, completion: completion, wrapper: "bank_account")
+    }
+    
+    func updateBankAccount(bankAccount: BankAccount, completion: @escaping (BankAccount?, Response?) -> Void) {
+        requestObjectWithResponse(.updateBankAccount(bankAccount: bankAccount), type: BankAccount.self, completion: completion, wrapper: "bank_account")
+    }
+    
+    func deleteBankAccount(bankAccount: BankAccount, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.deleteBankAccount(bankAccount: bankAccount), completion: completion)
+    }
+    
     func addAddress(address: Address, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
         requestEmptyObject(.addAddress(address: address), completion: completion)
     }
@@ -477,5 +520,29 @@ extension CliftApiManager: ApiCalls {
     
     func stripeCheckout(event: Event, checkout: Checkout, completion: @escaping (StripeCheckout?, Response?) -> Void) {
         requestObjectWithResponse(.stripeCheckout(event: event, checkout: checkout), type: StripeCheckout.self, completion: completion, wrapper: "")
+    }
+    
+    func getCredits(event: Event, completion: @escaping ([ShopCredit]?, Response?) -> Void) {
+        requestArrayWithResponse(.getCredits(event: event), type: ShopCredit.self, completion: completion, wrapper: "credit_movements")
+    }
+    
+    func getCreditMovements(event: String, shop: String, completion: @escaping ([CreditMovement]?, Response?) -> Void) {
+        requestArrayWithResponse(.getCreditMovements(event: event, shop: shop), type: CreditMovement.self, completion: completion, wrapper: "credit_movements")
+    }
+    
+    func completeStripeAccount(account: String, params: STPConnectAccountIndividualParams, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.completeStripeAccount(account: account, params: params), completion: completion)
+    }
+    
+    func verifyEventPool(event: Event, completion: @escaping (VerifiedResponse?, Response?) -> Void) {
+        requestObjectWithResponse(.verifyEventPool(event: event), type: VerifiedResponse.self, completion: completion, wrapper: "verified")
+    }
+    
+    func getCities(stateId: String, completion: @escaping ([AddressCity]?, Response?) -> Void) {
+        requestArrayWithResponse(.getCities(stateId: stateId), type: AddressCity.self, completion: completion, wrapper: "cities")
+    }
+    
+    func getStates(completion: @escaping ([AddressState]?, Response?) -> Void) {
+        requestArrayWithResponse(.getStates, type: AddressState.self, completion: completion, wrapper: "states")
     }
 }

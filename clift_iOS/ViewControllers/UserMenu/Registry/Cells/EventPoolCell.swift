@@ -22,7 +22,7 @@ class EventPoolCell: UICollectionViewCell {
     
     
     func setup(eventPool: EventPool) {
-        self.poolNameLabel.text = eventPool.name
+        self.poolNameLabel.text = eventPool.description
         self.poolPriceLabel.text = "\(self.getPriceStringFormat(value: Double(eventPool.amount)))"
         if let imageURL = URL(string:"\(eventPool.imageUrl)") {
             self.eventPoolImageView.kf.setImage(with: imageURL)

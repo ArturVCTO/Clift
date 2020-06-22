@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4672A88A22F88F25001F374F"
-               BuildableName = "clift_iOS.app"
+               BuildableName = "CLIFT.app"
                BlueprintName = "clift_iOS"
                ReferencedContainer = "container:clift_iOS.xcodeproj">
             </BuildableReference>
@@ -27,6 +27,15 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4672A88A22F88F25001F374F"
+            BuildableName = "CLIFT.app"
+            BlueprintName = "clift_iOS"
+            ReferencedContainer = "container:clift_iOS.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -49,20 +58,9 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4672A88A22F88F25001F374F"
-            BuildableName = "clift_iOS.app"
-            BlueprintName = "clift_iOS"
-            ReferencedContainer = "container:clift_iOS.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -76,13 +74,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4672A88A22F88F25001F374F"
-            BuildableName = "clift_iOS.app"
+            BuildableName = "CLIFT.app"
             BlueprintName = "clift_iOS"
             ReferencedContainer = "container:clift_iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -95,7 +91,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4672A88A22F88F25001F374F"
-            BuildableName = "clift_iOS.app"
+            BuildableName = "CLIFT.app"
             BlueprintName = "clift_iOS"
             ReferencedContainer = "container:clift_iOS.xcodeproj">
          </BuildableReference>

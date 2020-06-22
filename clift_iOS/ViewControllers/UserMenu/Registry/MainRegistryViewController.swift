@@ -119,23 +119,15 @@ class MainRegistryViewController: UIViewController{
     @IBAction func optionsButtonTapped(_ sender: Any) {
         let sheet = UIAlertController(title: "Opciones de mesa", message: nil, preferredStyle: .actionSheet)
         let editAction = UIAlertAction(title: "Editar", style: .default, handler: editButtonPressed(alert:))
-        let shareAction = UIAlertAction(title: "Compartir", style: .default)
-        let addAdminAction = UIAlertAction(title: "Agregar administrador", style: .default)
-        let seeAsGuestAction = UIAlertAction(title: "Ver como invitado", style: .default)
+        let shareAction = UIAlertAction(title: "Compartir", style: .default, handler: shareButtonPressed(alert:))
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
         
        editAction.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
         
         shareAction.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-        
-        addAdminAction.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-        
-        seeAsGuestAction.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-         cancelAction.setValue(UIColor.init(displayP3Red: 117/255, green: 126/255, blue: 106/255, alpha: 1.0), forKey: "titleTextColor")
+        cancelAction.setValue(UIColor.init(displayP3Red: 117/255, green: 126/255, blue: 106/255, alpha: 1.0), forKey: "titleTextColor")
         sheet.addAction(editAction)
         sheet.addAction(shareAction)
-        sheet.addAction(addAdminAction)
-        sheet.addAction(seeAsGuestAction)
         sheet.addAction(cancelAction)
         
         present(sheet, animated: true, completion: nil)
@@ -150,6 +142,16 @@ class MainRegistryViewController: UIViewController{
         editRegistryVC.paymentsVC = paymentsViewController
         
         self.navigationController?.pushViewController(editRegistryVC, animated: true)
+    }
+    
+    func shareButtonPressed(alert: UIAlertAction) {
+        if let link = NSURL(string: "http://cliftapp.com/gift-table?id=\(self.event.id)")
+        {
+            let objectsToShare = [link] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
+            self.present(activityVC, animated: true, completion: nil)
+        }
     }
     
     func getEvents() {

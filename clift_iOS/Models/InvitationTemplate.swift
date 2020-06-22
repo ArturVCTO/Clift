@@ -31,7 +31,7 @@ class InvitationTemplate: Mappable {
         name <- map["name"]
         id <- map["id"]
         imageUrl <- map["image_url"]
-        thumbnailUrl <- map["thumbnail_url"]
+        thumbnailUrl <- map["thumbnail_ur"]
         eventType <- map["event_type"]
         templateArrangement <- map["template_arrangement"]
     }

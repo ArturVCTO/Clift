@@ -17,6 +17,7 @@ class EventProgress: Object, Mappable {
     var invitationHasBeenChosen = false
     var guestsHaveBeenInvited = false
     var visibilityHasBeenSet = false
+    var accountHasBeenAssociated = true
     
     convenience required init?(map: Map) {
         self.init()

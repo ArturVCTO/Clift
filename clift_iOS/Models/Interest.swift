@@ -27,7 +27,7 @@ class Interest: Object, Mappable {
         id <- map["id"]
         interestId <- map["interest_id"]
         imageUrl <- map["image_url"]
-        name <- map["name.es"]
+        name <- map["name"]
         isActive <- map["is_active"]
     }
 }

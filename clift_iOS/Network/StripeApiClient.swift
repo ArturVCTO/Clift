@@ -22,23 +22,18 @@ class MyStripeApiClient: NSObject, STPCustomerEphemeralKeyProvider {
     }
     
      static let sharedClient = MyStripeApiClient()
-       var baseURLString: String? = nil
-       var baseURL: URL {
-           if let urlString = self.baseURLString, let url = URL(string: urlString) {
-               return url
-           } else {
-               fatalError()
-           }
-       }
+      var baseURL: URL {
+             return URL(string: Bundle.main.infoDictionary!["API_BASE_URL_ENDPOINT"]
+                 as! String)!
+         }
        
        func createPaymentIntent(cartProduct: [CartItem], shippingMethod: Address?, country: String? = nil, completion: @escaping ((Result<String, Error>) -> Void)) {
-           let url = self.baseURL.appendingPathComponent("create_payment_intent")
+           let url = self.baseURL.appendingPathComponent("")
             var params: [String: Any] = [:]
            params["products"] = cartProduct.map({ (p) -> String in
             return p.product!.name
            })
            
-           params["country"] = "MX"
            let jsonData = try? JSONSerialization.data(withJSONObject: params)
            var request = URLRequest(url: url)
            request.httpMethod = "POST"
@@ -57,6 +52,42 @@ class MyStripeApiClient: NSObject, STPCustomerEphemeralKeyProvider {
            })
            task.resume()
        }
+    
+    func completeAccount(accountId: String,accountParams: [String: Any],token: String,completion: @escaping((Result <String, Error>) -> Void)) {
+        let url = self.baseURL.appendingPathComponent("complete_account_mobile")
+        let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        var request = URLRequest(url: urlComponents.url!)
+        var params: [String: Any] = [:]
+        var nestedParams: [String: Any] = [:]
+        var headers: [String: String] = [:]
+        nestedParams["account_id"] = accountId
+        nestedParams["account_params"] = accountParams
+        params["stripe_account"] = nestedParams
+        headers["Content-Type"] = "application/json"
+        headers["X-Client"] = "app"
+        headers["Accept"] = "application/vnd.cft.v1+json"
+        headers["Authorization"] = "\(token)"
+//        request.setValue("app", forHTTPHeaderField: "X-Client")
+//        request.setValue("applicaton/vnd.cft.v1+json", forHTTPHeaderField: "Accept")
+//        request.setValue("\(token)", forHTTPHeaderField: "Authorization")
+        let jsonData = try? JSONSerialization.data(withJSONObject: params)
+        request.httpMethod = "PUT"
+        request.allHTTPHeaderFields = headers
+        request.httpBody = jsonData
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200,
+                let data = data,
+                let json = ((try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]) as [String : Any]??),
+                let secret = json?["secret"] as? String else {
+                    completion(.failure(error ?? APIError.unknown))
+                    return
+            }
+            completion(.success(secret))
+        })
+        task.resume()
+
+    }
 
        func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
            let url = self.baseURL.appendingPathComponent("ephemeral_keys")

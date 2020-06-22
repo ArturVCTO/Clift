@@ -29,6 +29,7 @@ class RootOnboardViewController: UIViewController {
         let firstStepVC = storyboard.instantiateViewController(withIdentifier: "firstStepVC") as! FirstStepOnboardingViewController
         let secondStepVC = storyboard.instantiateViewController(withIdentifier: "secondStepVC") as! SecondStepOnboardingViewController
         let thirdStepVC = storyboard.instantiateViewController(withIdentifier: "thirdStepVC") as! ThirdStepOnboardingViewController
+        let addressStepVC = storyboard.instantiateViewController(withIdentifier: "addressOnboardingVC") as! AddressOnboardingViewController
         let fourthStepVC = storyboard.instantiateViewController(withIdentifier: "fourthStepVC") as! FourthStepOnboardingViewController
         let fifthStepVC = storyboard.instantiateViewController(withIdentifier: "fifthStepVC") as! FifthStepOnboardingViewController
         let lastStepVC = storyboard.instantiateViewController(withIdentifier: "lastStepVC") as! LastStepOnboardingViewController
@@ -36,11 +37,13 @@ class RootOnboardViewController: UIViewController {
         firstStepVC.rootParentVC = self
         secondStepVC.rootParentVC = self
         thirdStepVC.rootParentVC = self
+        addressStepVC.rootParentVC = self
         fourthStepVC.rootParentVC = self
         fifthStepVC.rootParentVC = self
         lastStepVC.rootParentVC = self
         
-        viewControllers.append(contentsOf: [firstStepVC,secondStepVC,thirdStepVC,fourthStepVC,fifthStepVC,lastStepVC])
+//        Please refer to this appended array for the order.
+        viewControllers.append(contentsOf: [firstStepVC,secondStepVC,thirdStepVC,addressStepVC,fourthStepVC,fifthStepVC,lastStepVC])
         
         return viewControllers
     }()
@@ -84,8 +87,13 @@ class RootOnboardViewController: UIViewController {
             if let response = result {
                 if (response.isSuccess()) {
                     print(user!)
+                    let postOnboardingVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "postOnboardVC") as! PostOnboardingViewController
+                    postOnboardingVC.onboardingEmail = self.onboardingUser.email
+                    postOnboardingVC.onboardingPassword = self.onboardingUser.password
+                    self.navigationController?.pushViewController(postOnboardingVC, animated: true)
                 } else if (response.isClientError()) {
                     self.showMessage(NSLocalizedString("\(user!.errors.first!)", comment: "Account Error"),type: .error)
+                    
                 }
             }
         }
@@ -113,14 +121,12 @@ class RootOnboardViewController: UIViewController {
     @IBAction func startButtonTapped(_ sender: Any) {
         self.createAccount(user: self.onboardingUser)
         
-        let postOnboardingVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "postOnboardVC") as! PostOnboardingViewController
-        postOnboardingVC.onboardingEmail = self.onboardingUser.email
-        postOnboardingVC.onboardingPassword = self.onboardingUser.password
-        self.present(postOnboardingVC, animated: true, completion: nil)
+       
     }
     
 }
 extension RootOnboardViewController: UIPageViewControllerDataSource {
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let viewControllerIndex = onboardingViewControllers.firstIndex(of: viewController) else {
             return nil

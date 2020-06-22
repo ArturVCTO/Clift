@@ -27,6 +27,8 @@ class ShippingTableViewController: UITableViewController {
     var cityDropDown = DropDown()
     var stateDropDown = DropDown()
     var countryDropDown = DropDown()
+    var selectedStateId = ""
+    var selectedCityId = ""
     var address: Address? = Address()
     var cities: [AddressCity] = []
     var states: [AddressState] = []
@@ -41,7 +43,23 @@ class ShippingTableViewController: UITableViewController {
         self.streetAndNumberTextField.delegate = self
         self.districtTextField.delegate = self
         self.zipCodeTextField.delegate = self
+        self.countryButton.setTitle("México", for: .normal)
         self.setupDropDowns()
+        self.getStates()
+    }
+    
+    func getStates() {
+          sharedApiManager.getStates() { (states, result) in
+              if let response = result {
+                  if(response.isSuccess()) {
+                      self.setupStateDropDown(states: states!)
+                  }
+              }
+          }
+    }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func addAddress(address: Address) {
@@ -59,8 +77,6 @@ class ShippingTableViewController: UITableViewController {
     
     func setupDropDowns() {
         self.setupCountryDropDown()
-        self.setupStateDropDown()
-        self.setupCityDropDown()
     }
     
     func setupCountryDropDown() {
@@ -77,17 +93,20 @@ class ShippingTableViewController: UITableViewController {
             }
         }
         
-        func setupStateDropDown() {
+    func setupStateDropDown(states: [AddressState]) {
     //      JC:  Pending to see client initial data for states
-            stateDropDown.anchorView = self.stateButton
-            stateDropDown.dataSource = ["Nuevo León"]
+           stateDropDown.anchorView = self.stateButton
+            var stateNameArray = [String]()
+            for state in states {
+                stateNameArray.append(state.name!)
+            }
+            stateDropDown.dataSource = stateNameArray
             stateDropDown.bottomOffset = CGPoint(x: 0, y: stateButton.bounds.height)
-            let nuevoLeon = AddressState()
-            nuevoLeon.name = "Nuevo León"
-            nuevoLeon.code = "1"
             stateDropDown.selectionAction = { [weak self] (index, item) in
                 self?.stateButton.setTitle(item, for: .normal)
-                self?.address?.state = nuevoLeon
+                self?.selectedStateId = states[index].id
+                
+                self?.getCities(stateId: states[index].id)
             }
         }
         
@@ -104,6 +123,31 @@ class ShippingTableViewController: UITableViewController {
                 self?.address?.city = monterrey
             }
         }
+    
+    func setupCitiesDropDown(cities: [AddressCity]) {
+        cityDropDown.anchorView = self.cityButton
+        var cityNameArray = [String]()
+        for city in cities {
+            cityNameArray.append(city.name!)
+        }
+        cityDropDown.dataSource = cityNameArray
+        cityDropDown.bottomOffset = CGPoint(x: 0, y: stateButton.bounds.height)
+        cityDropDown.selectionAction = { [weak self] (index, item) in
+            self?.cityButton.setTitle(item, for: .normal)
+            
+            self?.selectedCityId = cities[index].id
+        }
+    }
+    
+    func getCities(stateId: String) {
+         sharedApiManager.getCities(stateId: stateId) { (cities, result) in
+             if let response = result {
+                 if (response.isSuccess()) {
+                     self.setupCitiesDropDown(cities: cities!)
+                 }
+             }
+         }
+     }
     
     @IBAction func countryButtonTapped(_ sender: Any) {
         self.countryDropDown.show()
@@ -144,4 +188,40 @@ extension ShippingTableViewController: UITextFieldDelegate {
             return
         }
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+         var bool = false
+         
+         if (nameTextField == textField) {
+             hideKeyBoard(textField: nameTextField)
+             bool = true
+         } else if (lastNameTextField == textField) {
+             hideKeyBoard(textField: lastNameTextField)
+             bool = true
+         } else if (zipCodeTextField == textField) {
+             hideKeyBoard(textField: zipCodeTextField)
+             bool = true
+         } else if ( cellphoneTextField == textField) {
+            hideKeyBoard(textField: cellphoneTextField)
+            bool = true
+         } else if (emailTextField == textField) {
+            hideKeyBoard(textField: emailTextField)
+            bool = true
+         } else if (streetAndNumberTextField == textField) {
+            hideKeyBoard(textField: streetAndNumberTextField)
+            
+            bool = true
+         } else if (districtTextField == textField) {
+            hideKeyBoard(textField: districtTextField)
+            
+            bool = true
+        } 
+         
+         return bool
+     }
+    
+    func hideKeyBoard(textField: UITextField) {
+        textField.resignFirstResponder()
+    }
+    
 }

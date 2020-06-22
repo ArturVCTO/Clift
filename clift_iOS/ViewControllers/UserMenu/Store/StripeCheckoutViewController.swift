@@ -25,6 +25,7 @@ class StripeCheckoutViewController: UIViewController,WKUIDelegate, WKNavigationD
                             script.type = 'text/javascript';
                             document.getElementById("submit").innerHTML = "IR A PAGO";
                             document.querySelector('#submit').addEventListener('click', function(evt) { stripe.redirectToCheckout({sessionId: '\(checkoutSessionId)'}).then(function(result) {});});
+                            document.addEventListener('DOMContentLoaded',function(event){ stripe.redirectToCheckout({sessionId: '\(checkoutSessionId)'}).then(function(result) {})});
                             document.getElementsByTagName('head')[0].appendChild(script);
                             """
             let userScript = WKUserScript(source: script, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
@@ -46,6 +47,7 @@ class StripeCheckoutViewController: UIViewController,WKUIDelegate, WKNavigationD
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         print(navigationAction.request.url!)
+        print("hello")
         decisionHandler(.allow)
         if ( self.webView!.url?.absoluteString == "https://clift.axented.com" || self.webView!.url?.absoluteString == successUrl)
         {

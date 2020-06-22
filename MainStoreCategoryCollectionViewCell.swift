@@ -10,9 +10,13 @@ import UIKit
 
 class MainStoreCategoryCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var categoryImageView: customImageView!
     @IBOutlet weak var categoryNameLabel: UILabel!
     
     func setup(category: Category) {
         self.categoryNameLabel.text = category.name
+        if let imageURL = URL(string:"\(category.imageUrl)") {
+                   self.categoryImageView.kf.setImage(with: imageURL)
+        }
     }
 }

@@ -12,8 +12,12 @@ import UIKit
 class CliftStoresCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var shopNameLabel: UILabel!
+    @IBOutlet weak var shopImageUrl: customImageView!
     
     func setup(shop: Shop) {
         self.shopNameLabel.text = shop.name
+        if let imageURL = URL(string:"\(shop.imageURL)") {
+                   self.shopImageUrl.kf.setImage(with: imageURL)
+        }
     }
 }

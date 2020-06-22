@@ -9,8 +9,12 @@
 import Foundation
 import UIKit
 
+import Foundation
+import UIKit
+
 class PaymentsViewController: UIViewController {
-    
+    @IBOutlet weak var seeMyCreditsButton: customButton!
+    @IBOutlet weak var cashOutFundsButton: customButton!
     @IBOutlet weak var eventImageView: customImageView!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var eventNameLabel: UILabel!
@@ -20,7 +24,7 @@ class PaymentsViewController: UIViewController {
     @IBOutlet weak var daysCountDownLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     var pageRefreshControl = UIRefreshControl()
-
+    var currentEvent = Event()
     
     var containerView: UIView!
     var mainRegistryVC: MainRegistryViewController!
@@ -127,8 +131,28 @@ class PaymentsViewController: UIViewController {
                 if (response.isSuccess()) {
                     print("\(events!.first!.id)")
                     self.showEvent(id: events!.first!.id)
+                    self.currentEvent = (events?.first)!
+                    self.bankAccountAssociatedValidator(event: events!.first!)
                 }
             }
+        }
+    }
+    
+    func bankAccountAssociatedValidator(event: Event) {
+        if event.eventProgress.accountHasBeenAssociated {
+            self.seeMyCreditsButton.isEnabled = true
+            self.cashOutFundsButton.backgroundColor = UIColor(red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0)
+            self.cashOutFundsButton.setTitleColor(.white, for: .normal)
+            self.cashOutFundsButton.isEnabled = true
+            self.seeMyCreditsButton.backgroundColor = UIColor(red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0)
+            self.seeMyCreditsButton.setTitleColor(.white, for: .normal)
+        } else {
+            self.seeMyCreditsButton.isEnabled = false
+            self.cashOutFundsButton.isEnabled = false
+            self.cashOutFundsButton.backgroundColor = UIColor(red: 123/255, green: 123/255, blue: 130/255, alpha: 0.24)
+            self.seeMyCreditsButton.backgroundColor = UIColor(red: 123/255, green: 123/255, blue: 130/255, alpha: 0.24)
+            self.seeMyCreditsButton.setTitleColor(UIColor(red: 123/255, green: 123/255, blue: 130/255, alpha: 1.0), for: .normal)
+            self.cashOutFundsButton.setTitleColor(UIColor(red: 123/255, green: 123/255, blue: 130/255, alpha: 1.0), for: .normal)
         }
     }
     
@@ -197,5 +221,43 @@ class PaymentsViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func associateBankAccountButtonTapped(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "bankAccountEmptyStateVC") as! LinkBankAccountEmptyStateVC
+            self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
+                       
+                     } else {
+                       // Fallback on earlier versions
+            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "bankAccountEmptyStateVC") as! LinkBankAccountEmptyStateVC
+            self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    @IBAction func cashOutFundsButtonTapped(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+                  let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "associateStripeVC") as! AssociateStripeAccountViewController
+                  self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
+                             
+                           } else {
+                             // Fallback on earlier versions
+                  let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "associateStripeVC") as! AssociateStripeAccountViewController
+                  self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
+              }
+    }
+    
+    @IBAction func seeCreditsButtonTapped(_ sender: Any) {
+        if #available(iOS 13.0, *) {
+          let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "myCreditsVC") as! MyCreditsViewController
+            vc.currentEvent = self.currentEvent
+          self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
+                     
+           } else {
+                     // Fallback on earlier versions
+          let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "myCreditsVC") as! MyCreditsViewController
+            vc.currentEvent = self.currentEvent
+          self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
+      }
     }
 }

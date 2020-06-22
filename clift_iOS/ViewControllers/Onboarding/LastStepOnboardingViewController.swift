@@ -15,14 +15,18 @@ class LastStepOnboardingViewController: UIViewController,UITextFieldDelegate {
     var rootParentVC: RootOnboardViewController!
     @IBOutlet weak var userEmailTextField: HoshiTextField!
     @IBOutlet weak var userPasswordTextField: HoshiTextField!
+    @IBOutlet weak var cellPhoneTextField: HoshiTextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userEmailTextField.delegate = self
         self.userPasswordTextField.delegate = self
+        self.cellPhoneTextField.delegate = self
+         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         print(self.rootParentVC.onboardingUser.toJSON())
     }
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -36,6 +40,25 @@ class LastStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         super.viewWillDisappear(true)
         self.startButtonDisappears()
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        if (self.userEmailTextField.isEditing) {
+            return
+        } else {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+            }
+        }
+    }
+
+       @objc func keyboardWillHide(notification: NSNotification) {
+           if self.view.frame.origin.y != 0 {
+               self.view.frame.origin.y = 0
+           }
+       }
     
     func updateCurrentPageSelector() {
         self.rootParentVC.pageControlSelector.currentPage = 5
@@ -63,6 +86,10 @@ class LastStepOnboardingViewController: UIViewController,UITextFieldDelegate {
             shouldAbortNextButton = false
         }
         
+        if (self.cellPhoneTextField.text == "") {
+            shouldAbortNextButton = false
+        }
+        
     
         if (shouldAbortNextButton) {
             return
@@ -70,6 +97,8 @@ class LastStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         
         self.rootParentVC.onboardingUser.email = self.userEmailTextField.text!
         self.rootParentVC.onboardingUser.password = self.userPasswordTextField.text!
+        self.rootParentVC.onboardingUser.cellPhoneNumber = self.cellPhoneTextField.text!
+        self.rootParentVC.onboardingUser.onboardingShippingAddress.cellPhoneNumber = self.cellPhoneTextField.text!
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

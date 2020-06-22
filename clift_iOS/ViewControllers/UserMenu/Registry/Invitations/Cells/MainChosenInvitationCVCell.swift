@@ -11,8 +11,12 @@ import UIKit
 
 class MainChosenInvitationCVCell: UICollectionViewCell {
     
+    @IBOutlet weak var templateImageView: customImageView!
     @IBOutlet weak var invitationNameLabel: UILabel!
     func setup(invitation: Invitation) {
         self.invitationNameLabel.text = invitation.invitationTemplate?.name
+        if let imageURL = URL(string:"\(invitation.invitationTemplate!.thumbnailUrl)") {
+            self.templateImageView.kf.setImage(with: imageURL)
+        }
     }
 }

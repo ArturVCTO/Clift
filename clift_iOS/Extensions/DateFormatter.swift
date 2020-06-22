@@ -25,4 +25,12 @@ public extension Date {
         return formattedDateInString
     }
     
+    func expirationDateFormatter() -> (String) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let formattedDateInString = formatter.string(from: self)
+        
+        return formattedDateInString
+    }
+    
 }

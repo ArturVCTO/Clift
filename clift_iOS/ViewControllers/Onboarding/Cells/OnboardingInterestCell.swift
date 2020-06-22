@@ -29,6 +29,7 @@ class OnboardingInterestCell: UICollectionViewCell {
         self.interestId = interest.id
         self.interestName.text = interest.name
     }
+    
     @IBAction func interestButtonTapped(_ sender: Any) {
         let onboardingUser = self.parentVC.rootParentVC.onboardingUser
         

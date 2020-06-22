@@ -17,5 +17,8 @@ class SubcategoryCollectionViewCell: UICollectionViewCell {
     
     func setup(group: Group) {
         self.groupNameLabel.text = group.name
+        if let imageURL = URL(string:"\(group.imageUrl)") {
+                   self.subcategoryImageView.kf.setImage(with: imageURL)
+        }
     }
 }

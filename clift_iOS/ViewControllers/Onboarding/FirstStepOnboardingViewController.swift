@@ -22,9 +22,29 @@ class FirstStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         self.nameTextField.delegate = self
         self.lastNameTextField.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.initialSettings()
         self.updateCurrentPageSelector()
     }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if nameTextField.isEditing {
+            return
+        } else {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= keyboardSize.height
+                }
+            }
+        }
+     }
+
+     @objc func keyboardWillHide(notification: NSNotification) {
+         if self.view.frame.origin.y != 0 {
+             self.view.frame.origin.y = 0
+         }
+     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

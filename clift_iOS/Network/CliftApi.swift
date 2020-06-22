@@ -10,6 +10,7 @@ import Foundation
 import Realm
 import RealmSwift
 import Moya
+import Stripe
 
 var apiVersion = 1
 
@@ -53,6 +54,11 @@ enum CliftApi {
     case addGuests(event: Event, guests: [EventGuest])
     case updateGuests(event: Event,isConfirmed: Int,guests: [String])
     case sendInvitation(event: Event, email: String)
+    case createBankAccount(bankAccount: BankAccount)
+    case getBankAccounts
+    case getBankAccount(bankAccount: BankAccount)
+    case updateBankAccount(bankAccount: BankAccount)
+    case deleteBankAccount(bankAccount: BankAccount)
     case addAddress(address: Address)
     case getAddresses
     case getAddress(addressId: String)
@@ -68,7 +74,12 @@ enum CliftApi {
     case getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool)
     case requestGifts(event: Event, ids: [String])
     case stripeCheckout(event: Event,checkout: Checkout)
-    case postStripeAccountToken(token: StripeAccountToken)
+    case getCredits(event: Event)
+    case getCreditMovements(event: String, shop: String)
+    case completeStripeAccount(account: String,params: STPConnectAccountIndividualParams)
+    case verifyEventPool(event: Event)
+    case getStates
+    case getCities(stateId: String)
 }
 
 extension CliftApi: TargetType {
@@ -155,6 +166,16 @@ extension CliftApi: TargetType {
             return "events/\(event.id)/guests"
         case .sendInvitation(_,_):
             return "events_sender"
+        case .createBankAccount:
+            return "bank_accounts"
+        case .getBankAccounts:
+            return "bank_accounts"
+        case .getBankAccount(let bankAccount):
+            return "bank_accounts/\(bankAccount.id)"
+        case .updateBankAccount(let bankAccount):
+            return "bank_accounts/\(bankAccount.id)"
+        case .deleteBankAccount(let bankAccount):
+            return "bank_accounts/\(bankAccount.id)"
         case .addAddress(_):
             return "shipping_addresses"
         case .getAddresses:
@@ -185,20 +206,30 @@ extension CliftApi: TargetType {
             return "events/\(event.id)/request_gifts"
         case.stripeCheckout(let event,_):
             return "checkout/create/\(event.id)"
-        case .postStripeAccountToken:
-            return "stripe_account_mobile"
+        case .getCredits(let event):
+            return "events/\(event.id)/credits"
+        case .getCreditMovements(let event, let shop):
+            return "events/\(event)/credit_movements/\(shop)"
+        case .completeStripeAccount:
+            return "complete_account_mobile"
+        case .verifyEventPool(let event):
+            return "events/\(event.id)/verify_account"
+        case .getStates:
+            return "states"
+        case .getCities(let stateId):
+            return "cities/\(stateId)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation, .addAddress,.stripeCheckout,.postStripeAccountToken:
+        case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.stripeCheckout,.completeStripeAccount:
             return .post
-        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary:
+        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
             return .put
-        case .deleteLogoutSession,.deleteProductFromRegistry,.deleteItemFromCart:
+        case .deleteLogoutSession,.deleteProductFromRegistry,.deleteBankAccount,.deleteItemFromCart:
             return .delete
         }
     }
@@ -271,6 +302,10 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         case .sendInvitation(let event,let email):
             return .requestParameters(parameters: ["email": email,"event": event.id], encoding: JSONEncoding.default)
+        case .createBankAccount(let bankAccount):
+            return .requestParameters(parameters: ["bank_account" : bankAccount.toJSON()], encoding: JSONEncoding.default)
+        case .updateBankAccount(let bankAccount):
+            return .requestParameters(parameters: ["bank_account": bankAccount.toJSON()], encoding: JSONEncoding.default)
         case .addAddress(let address):
             return .requestParameters(parameters: ["shipping_address": address.toJSON()], encoding: JSONEncoding.default)
         case .updateAddress(let address):
@@ -292,8 +327,6 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["ids": [ids]], encoding: JSONEncoding.default)
         case .stripeCheckout(_,let checkout):
             return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
-        case .postStripeAccountToken(let token):
-            return .requestParameters(parameters: ["token": token], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }

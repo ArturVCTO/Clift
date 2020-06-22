@@ -20,6 +20,7 @@ class AddCashFundViewController: UIViewController {
     @IBOutlet weak var cashFundImageView: UIImageView!
     @IBOutlet weak var hideTotalSwitch: UISwitch!
     @IBOutlet weak var markAsImportantSwitch: UISwitch!
+    @IBOutlet weak var goalTextField: HoshiTextField!
     
     @IBOutlet weak var designLineView: UIView!
     @IBOutlet weak var designLineView2: UIView!
@@ -39,6 +40,7 @@ class AddCashFundViewController: UIViewController {
     @IBOutlet weak var totalMountToNotesConstraintQT0: NSLayoutConstraint!
     var productsRegistryVC: ProductsRegistryViewController!
     var eventPool = EventPool()
+    var goal = Double()
     var mount = Double()
     var currentEvent = Event()
     @IBOutlet weak var detailsToMostImportantConstraint: NSLayoutConstraint!
@@ -48,17 +50,16 @@ class AddCashFundViewController: UIViewController {
         super.viewDidLoad()
         self.loadInitialSwitchesValue()
         self.loadEvent()
-        self.mountTextField.delegate = self
         self.totalMountTextField.delegate = self
         self.cashFundNameTextField.delegate = self
         self.cashFundNoteTextField.delegate = self
-        self.loadCurrentQuantityType()
+        self.goalTextField.delegate = self
         self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
     
    override func viewWillDisappear(_ animated: Bool) {
        super.viewWillDisappear(true)
-       self.navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 117/255, green: 126/255, blue: 106/255, alpha: 1.0)
+       self.navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0)
    }
     
     func loadEvent() {
@@ -184,6 +185,10 @@ class AddCashFundViewController: UIViewController {
         cashFundNoteTextField.resignFirstResponder()
     }
     
+    func hideKeyBoardForGoalTextField() {
+        goalTextField.resignFirstResponder()
+    }
+    
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -236,22 +241,20 @@ class AddCashFundViewController: UIViewController {
     func getCashFundMultipart() -> [MultipartFormData] {
         var multipartFormData: [MultipartFormData] = []
         
-        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.name.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[name]"))
+        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.description.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[description]"))
         
         multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.note.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[note]"))
-        
-        if quantityTypeSegmentControl.selectedSegmentIndex == 0 {
-          multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.amount.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[amount]"))
-        } else {
-            multipartFormData.append(MultipartFormData(provider: .data(((self.totalPoolAmountLabel.text!.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[amount]"))
-        }
         
         
         multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.suggestedAmount.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[suggested_amount]"))
         
         multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.isImportant.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[is_important]"))
         
+        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.goal.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[goal]"))
+        
         multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.isPriceVisible.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[is_price_visible]"))
+        
+        
         
         if (self.eventPool.image != nil) {
                   multipartFormData.append(MultipartFormData(provider: .data((self.eventPool.image?.jpegData(compressionQuality: 1.0))!), name: "event_pool[image]", fileName: "image.jpeg", mimeType: "image/jpeg"))
@@ -277,6 +280,9 @@ extension AddCashFundViewController: UITextFieldDelegate {
         } else if textField == cashFundNoteTextField {
             hideKeyBoardForNoteTextField()
             bool = true
+        } else if textField == goalTextField {
+            hideKeyBoardForGoalTextField()
+            bool = true
         }
         
         return bool
@@ -289,14 +295,19 @@ extension AddCashFundViewController: UITextFieldDelegate {
         }
         
         if textField == totalMountTextField {
-            self.eventPool.amount = Int(self.totalMountTextField.text!)!
+            self.eventPool.suggestedAmount = self.totalMountTextField.text!
         }
         
         if textField == cashFundNoteTextField {
             self.eventPool.note = cashFundNoteTextField.text!
         }
         if textField == cashFundNameTextField {
-            self.eventPool.name = cashFundNameTextField.text!
+            self.eventPool.description = cashFundNameTextField.text!
+        }
+        
+        if textField == goalTextField {
+            self.goal = Double(self.goalTextField.text!) as! Double
+            self.eventPool.goal = goalTextField.text!
         }
         
     }
