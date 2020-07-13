@@ -51,7 +51,6 @@
 @property (nonatomic) STPPaymentConfiguration *configuration;
 @property (nonatomic) STPAddress *shippingAddress;
 @property (nonatomic) BOOL hasUsedShippingAddress;
-@property (nonatomic) STPAPIClient *apiClient;
 @property (nonatomic, weak) UIImageView *cardImageView;
 @property (nonatomic) UIBarButtonItem *doneItem;
 @property (nonatomic) STPSectionHeaderView *cardHeaderView;
@@ -91,7 +90,7 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     _configuration = configuration;
     _shippingAddress = nil;
     _hasUsedShippingAddress = NO;
-    _apiClient = [[STPAPIClient alloc] initWithConfiguration:configuration];
+    _apiClient = [STPAPIClient sharedClient];
     _addressViewModel = [[STPAddressViewModel alloc] initWithRequiredBillingFields:configuration.requiredBillingAddressFields availableCountries:configuration._availableCountries];
     _addressViewModel.delegate = self;
     self.title = STPLocalizedString(@"Add a Card", @"Title for Add a Card view");
@@ -116,6 +115,11 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
 
     STPPaymentCardTextFieldCell *paymentCell = [[STPPaymentCardTextFieldCell alloc] init];
     paymentCell.paymentField.delegate = self;
+    if (self.configuration.requiredBillingAddressFields == STPBillingAddressFieldsPostalCode) {
+        // If postal code collection is enabled, move the postal code field into the card entry field.
+        // Otherwise, this will be picked up by the billing address fields below.
+        paymentCell.paymentField.postalCodeEntryEnabled = YES;
+    }
     self.paymentCell = paymentCell;
     
     self.activityIndicator = [[STPPaymentActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20.0f, 20.0f)];
@@ -280,10 +284,16 @@ typedef NS_ENUM(NSUInteger, STPPaymentCardSection) {
     }
     // Create and return a Payment Method
     STPPaymentMethodBillingDetails *billingDetails = [[STPPaymentMethodBillingDetails alloc] init];
-    billingDetails.address = [[STPPaymentMethodAddress alloc] initWithAddress:self.addressViewModel.address];
-    billingDetails.email = self.addressViewModel.address.email;
-    billingDetails.name = self.addressViewModel.address.name;
-    billingDetails.phone = self.addressViewModel.address.phone;
+    if (self.configuration.requiredBillingAddressFields == STPBillingAddressFieldsPostalCode) {
+        STPAddress *address = [[STPAddress alloc] init];
+        address.postalCode = self.paymentCell.paymentField.postalCode;
+        billingDetails.address = [[STPPaymentMethodAddress alloc] initWithAddress:address];
+    } else {
+        billingDetails.address = [[STPPaymentMethodAddress alloc] initWithAddress:self.addressViewModel.address];
+        billingDetails.email = self.addressViewModel.address.email;
+        billingDetails.name = self.addressViewModel.address.name;
+        billingDetails.phone = self.addressViewModel.address.phone;
+    }
     STPPaymentMethodParams *paymentMethodParams = [STPPaymentMethodParams paramsWithCard:cardParams
                                                                           billingDetails:billingDetails
                                                                                 metadata:nil];

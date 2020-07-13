@@ -40,13 +40,13 @@ Table of contents
 **Native UI**: We provide native screens and elements to collect payment and shipping details. For example, [STPPaymentCardTextField](https://stripe.dev/stripe-ios/docs/Classes/STPPaymentCardTextField.html) is a UIView that collects and validates card details:
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/stripe/stripe-ios/a87e2fb12ce1ba6b45a075ee22e0da5072a54279/card-field.gif" width="300" height="56" alt="STPPaymentCardTextField" align="center">
+<img src="https://raw.githubusercontent.com/stripe/stripe-ios/11d293baa9b753234816367a5bbdc4ac5ad04af6/card-field.gif" width="300" height="56" alt="STPPaymentCardTextField" align="center">
 </p>
 
 You can use these individually, or take all of the prebuilt UI in one flow by following the [Basic Integration guide](https://stripe.com/docs/mobile/ios/basic).
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/stripe/stripe-ios/a87e2fb12ce1ba6b45a075ee22e0da5072a54279/add-card-vc.png" width="200" alt="STPAddCardViewController" hspace="20"><img src="https://raw.githubusercontent.com/stripe/stripe-ios/a87e2fb12ce1ba6b45a075ee22e0da5072a54279/payment-options.png" width="200" alt="STPPaymentOptionsViewController" hspace="20"><img src="https://raw.githubusercontent.com/stripe/stripe-ios/a87e2fb12ce1ba6b45a075ee22e0da5072a54279/shipping-address.png" width="200" alt="STPShippingAddressViewController" hspace="20">
+<img src="https://raw.githubusercontent.com/stripe/stripe-ios/11d293baa9b753234816367a5bbdc4ac5ad04af6/add-card-vc.png" width="200" alt="STPAddCardViewController" hspace="20"><img src="https://raw.githubusercontent.com/stripe/stripe-ios/11d293baa9b753234816367a5bbdc4ac5ad04af6/payment-options.png" width="200" alt="STPPaymentOptionsViewController" hspace="20"><img src="https://raw.githubusercontent.com/stripe/stripe-ios/11d293baa9b753234816367a5bbdc4ac5ad04af6/shipping-address.png" width="200" alt="STPShippingAddressViewController" hspace="20">
 </p>
 
 From left to right: [STPAddCardViewController](https://stripe.dev/stripe-ios/docs/Classes/STPAddCardViewController.html), [STPPaymentOptionsViewController](https://stripe.dev/stripe-ios/docs/Classes/STPPaymentOptionsViewController.html), [STPShippingAddressViewController](https://stripe.dev/stripe-ios/docs/Classes/STPShippingAddressViewController.html)
@@ -58,7 +58,7 @@ From left to right: [STPAddCardViewController](https://stripe.dev/stripe-ios/doc
 We recommend installing the Stripe iOS SDK using a package manager such as Cocoapods or Carthage. If you link the library manually, use a version from our [releases](https://github.com/stripe/stripe-ios/releases) page.
 
 If you're reading this on GitHub.com, please make sure you are looking at the [tagged version](https://github.com/stripe/stripe-ios/tags) that corresponds to the release you have installed. Otherwise, the instructions and example code may be mismatched with your copy. You can read the latest tagged version of this README and browse the associated code on GitHub using
-[this link](https://github.com/stripe/stripe-ios/tree/v18.4.0).
+[this link](https://github.com/stripe/stripe-ios/tree/v19.0.1).
 
 ## Requirements
 
@@ -75,11 +75,11 @@ Get started with our [📚 integration guides](https://stripe.com/docs/payments)
 
 There are 3 example apps included in the repository:
 
-- [UI Examples](https://github.com/stripe/stripe-ios/tree/v18.4.0/Example/UI%20Examples).
+- [UI Examples](https://github.com/stripe/stripe-ios/tree/v19.0.1/Example/UI%20Examples).
   - This example lets you quickly try out the SDK's prebuilt UI components using a mock backend—just build and run!
-- [Basic Integration](https://github.com/stripe/stripe-ios/tree/v18.4.0/Example/Basic%20Integration)
+- [Basic Integration](https://github.com/stripe/stripe-ios/tree/v19.0.1/Example/Basic%20Integration)
   - This example demonstrates how to build a payment flow using our prebuilt UI component integration (`STPPaymentContext`).
-- [Non-Card Payment Examples](https://github.com/stripe/stripe-ios/tree/v18.4.0/Example/Non-Card%20Payment%20Examples)
+- [Non-Card Payment Examples](https://github.com/stripe/stripe-ios/tree/v19.0.1/Example/Non-Card%20Payment%20Examples)
   - This example demonstrates how to use `STPAPIClient` to accept various non-card payment methods.
 
 Check out [stripe-samples](https://github.com/stripe-samples/) for more, including:
@@ -93,7 +93,7 @@ Check out [stripe-samples](https://github.com/stripe-samples/) for more, includi
 
 To add card scanning capabilities to our prebuilt UI components, [install card.io](https://github.com/card-io/card.io-iOS-SDK#setup) alongside our SDK. You'll also need to set `NSCameraUsageDescription` in your application's plist, and provide a reason for accessing the camera (e.g. "To scan cards").
 
-Demo this in our [Basic Integration example app](https://github.com/stripe/stripe-ios/tree/v18.4.0/Example/Basic&20Integration) by running `./install_cardio.rb`, which will download and install card.io in the project. Now, when you run the example app on a device, you'll see a "Scan Card" button when adding a new card.
+Demo this in our [Basic Integration example app](https://github.com/stripe/stripe-ios/tree/v19.0.1/Example/Basic&20Integration) by running `./install_cardio.rb`, which will download and install card.io in the project. Now, when you run the example app on a device, you'll see a "Scan Card" button when adding a new card.
 
 ## Contributing
 

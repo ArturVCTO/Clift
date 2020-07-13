@@ -84,7 +84,7 @@
                                                    [client setApiUsage:[client.apiUsage setByAddingObject:NSStringFromClass([STPAddCardViewController class])]];
                                                } error:nil];
         
-        [STPPaymentOptionsViewController stp_aspect_hookSelector:@selector(initWithConfiguration:apiAdapter:loadingPromise:theme:shippingAddress:delegate:)
+        [STPPaymentOptionsViewController stp_aspect_hookSelector:@selector(initWithConfiguration:apiAdapter:apiClient:loadingPromise:theme:shippingAddress:delegate:)
                                                      withOptions:STPAspectPositionAfter
                                                       usingBlock:^{
                                                           STPAnalyticsClient *client = [self sharedClient];
@@ -410,7 +410,7 @@
 
 + (NSDictionary *)serializeConfiguration:(STPPaymentConfiguration *)configuration {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    dictionary[@"publishable_key"] = configuration.publishableKey ?: @"unknown";
+    dictionary[@"publishable_key"] = [STPAPIClient sharedClient].publishableKey ?: @"unknown";
     
     if (configuration.additionalPaymentOptions == STPPaymentOptionTypeDefault) {
         dictionary[@"additional_payment_methods"] = @"default";
@@ -431,7 +431,7 @@
     switch (configuration.requiredBillingAddressFields) {
         case STPBillingAddressFieldsNone:
             dictionary[@"required_billing_address_fields"] = @"none";
-        case STPBillingAddressFieldsZip:
+        case STPBillingAddressFieldsPostalCode:
             dictionary[@"required_billing_address_fields"] = @"zip";
         case STPBillingAddressFieldsFull:
             dictionary[@"required_billing_address_fields"] = @"full";

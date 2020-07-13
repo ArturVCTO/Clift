@@ -141,9 +141,6 @@
 		46B5F74623845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F73E23845BB400AFF425 /* Tinos-BoldItalic.ttf */; };
 		46B5F74723845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F73E23845BB400AFF425 /* Tinos-BoldItalic.ttf */; };
 		46B5F74823845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F73E23845BB400AFF425 /* Tinos-BoldItalic.ttf */; };
-		46B5F74923845BB600AFF425 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F73F23845BB400AFF425 /* Tinos-Bold.ttf */; };
-		46B5F74A23845BB600AFF425 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F73F23845BB400AFF425 /* Tinos-Bold.ttf */; };
-		46B5F74B23845BB600AFF425 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F73F23845BB400AFF425 /* Tinos-Bold.ttf */; };
 		46B5F74C23845BB600AFF425 /* Tinos-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F74023845BB500AFF425 /* Tinos-Regular.ttf */; };
 		46B5F74D23845BB600AFF425 /* Tinos-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F74023845BB500AFF425 /* Tinos-Regular.ttf */; };
 		46B5F74E23845BB600AFF425 /* Tinos-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 46B5F74023845BB500AFF425 /* Tinos-Regular.ttf */; };
@@ -196,6 +193,9 @@
 		46EC9DA423314FFA00950139 /* SubcategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9DA323314FFA00950139 /* SubcategoryCollectionViewCell.swift */; };
 		85D1161D2D04F9B25477BAE8 /* Pods_clift_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */; };
 		A9D3728582D9B5913F8C5C14 /* Pods_clift_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */; };
+		CE8D41C424BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
+		CE8D41C524BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
+		CE8D41C624BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
 		FB69CC8CE945481E9839D8BF /* Pods_clift_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -343,12 +343,12 @@
 		46831C1123DB9D0F004BAAC1 /* GiftSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSummaryCell.swift; sourceTree = "<group>"; };
 		46831C1323DBAEEF004BAAC1 /* ThankGuestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankGuestViewController.swift; sourceTree = "<group>"; };
 		469823BF23C9376500671731 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
-		46987D9522FA10AD007B2C78 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-Medium.ttf"; sourceTree = "<group>"; };
-		46987D9622FA10AD007B2C78 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-SemiBold.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
-		46987D9722FA10AD007B2C78 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Bold.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-Bold.ttf"; sourceTree = "<group>"; };
-		46987D9822FA10AD007B2C78 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Regular.ttf"; path = "../../../../../../../../Downloads/Poppins/Poppins-Regular.ttf"; sourceTree = "<group>"; };
-		46987D9D22FA10C4007B2C78 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-SemiBold.ttf"; path = "../../../../../../../../Downloads/Open_Sans/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		46987D9E22FA10C5007B2C78 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OpenSans-Regular.ttf"; path = "../../../../../../../../Downloads/Open_Sans/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		46987D9522FA10AD007B2C78 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		46987D9622FA10AD007B2C78 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		46987D9722FA10AD007B2C78 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		46987D9822FA10AD007B2C78 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		46987D9D22FA10C4007B2C78 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		46987D9E22FA10C5007B2C78 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		469D8C27230F02A0000D447E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		469D8C29230F02AB000D447E /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		46A2DD9122FB6CC60051DCA6 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -356,11 +356,10 @@
 		46A2DD9622FB7EFC0051DCA6 /* LocationPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPageControl.swift; sourceTree = "<group>"; };
 		46ABCB2D2318669500857046 /* MyEventsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsCell.swift; sourceTree = "<group>"; };
 		46B2E6172408335B00635CF9 /* ConfigurartionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurartionViewController.swift; sourceTree = "<group>"; };
-		46B5F73D23845BB400AFF425 /* Tinos-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-RegularItalic.ttf"; path = "../../../../../../../../Downloads/Tinos-RegularItalic.ttf"; sourceTree = "<group>"; };
-		46B5F73E23845BB400AFF425 /* Tinos-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-BoldItalic.ttf"; path = "../../../../../../../../Downloads/Tinos-BoldItalic.ttf"; sourceTree = "<group>"; };
-		46B5F73F23845BB400AFF425 /* Tinos-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-Bold.ttf"; path = "../../../../../../../../Downloads/Tinos-Bold.ttf"; sourceTree = "<group>"; };
-		46B5F74023845BB500AFF425 /* Tinos-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-Regular.ttf"; path = "../../../../../../../../Downloads/Tinos-Regular.ttf"; sourceTree = "<group>"; };
-		46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Tinos-RegularItalic 2.ttf"; path = "../../../../../../../../Downloads/Tinos-RegularItalic 2.ttf"; sourceTree = "<group>"; };
+		46B5F73D23845BB400AFF425 /* Tinos-RegularItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-RegularItalic.ttf"; sourceTree = "<group>"; };
+		46B5F73E23845BB400AFF425 /* Tinos-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-BoldItalic.ttf"; sourceTree = "<group>"; };
+		46B5F74023845BB500AFF425 /* Tinos-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-Regular.ttf"; sourceTree = "<group>"; };
+		46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-RegularItalic 2.ttf"; sourceTree = "<group>"; };
 		46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		46BFA8C123D120F3008D6B72 /* CartProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartProduct.swift; sourceTree = "<group>"; };
 		46C07A1723D228C70091CDDA /* CheckoutProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutProductCell.swift; sourceTree = "<group>"; };
@@ -411,6 +410,7 @@
 		8B1E86386FC9F3A216AD6DBB /* Pods-clift_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A9E9B21D2B9B464893AAAFB0 /* Pods-clift_iOS.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.canary.xcconfig"; sourceTree = "<group>"; };
 		C249504948AE023D846380FD /* Pods-clift_iOS.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.mock.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.mock.xcconfig"; sourceTree = "<group>"; };
+		CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-Bold.ttf"; sourceTree = "<group>"; };
 		CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.canary.xcconfig"; sourceTree = "<group>"; };
 		F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -864,7 +864,7 @@
 			isa = PBXGroup;
 			children = (
 				46441B7623CE852B00F5FCD2 /* Mihan-Regular.ttf */,
-				46B5F73F23845BB400AFF425 /* Tinos-Bold.ttf */,
+				CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */,
 				46B5F73E23845BB400AFF425 /* Tinos-BoldItalic.ttf */,
 				46B5F74023845BB500AFF425 /* Tinos-Regular.ttf */,
 				46B5F74223845BB500AFF425 /* Tinos-RegularItalic 2.ttf */,
@@ -1063,6 +1063,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46987D9A22FA10AD007B2C78 /* Poppins-SemiBold.ttf in Resources */,
+				CE8D41C424BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */,
 				46987D9B22FA10AD007B2C78 /* Poppins-Bold.ttf in Resources */,
 				46987D9C22FA10AD007B2C78 /* Poppins-Regular.ttf in Resources */,
 				46B5F74323845BB600AFF425 /* Tinos-RegularItalic.ttf in Resources */,
@@ -1074,7 +1075,6 @@
 				46441B7723CE852C00F5FCD2 /* Mihan-Regular.ttf in Resources */,
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
 				46B5F74623845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */,
-				46B5F74923845BB600AFF425 /* Tinos-Bold.ttf in Resources */,
 				46B5F75223845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */,
 				46987DA022FA10C5007B2C78 /* OpenSans-Regular.ttf in Resources */,
 				4672A89422F88F25001F374F /* Main.storyboard in Resources */,
@@ -1086,7 +1086,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46B5F74A23845BB600AFF425 /* Tinos-Bold.ttf in Resources */,
+				CE8D41C524BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */,
 				46B5F74D23845BB600AFF425 /* Tinos-Regular.ttf in Resources */,
 				46B5F74423845BB600AFF425 /* Tinos-RegularItalic.ttf in Resources */,
 				46B5F75323845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */,
@@ -1098,7 +1098,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46B5F74B23845BB600AFF425 /* Tinos-Bold.ttf in Resources */,
+				CE8D41C624BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */,
 				46B5F74E23845BB600AFF425 /* Tinos-Regular.ttf in Resources */,
 				46B5F74523845BB600AFF425 /* Tinos-RegularItalic.ttf in Resources */,
 				46B5F75423845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */,
@@ -1497,7 +1497,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 5MDCA888Q7;
+				DEVELOPMENT_TEAM = C565M49C65;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1505,7 +1505,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.cliftlizz;
 				PRODUCT_NAME = CLIFT;
 				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;
@@ -1623,7 +1623,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 5MDCA888Q7;
+				DEVELOPMENT_TEAM = C565M49C65;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1631,7 +1631,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.cliftlizz;
 				PRODUCT_NAME = CLIFT;
 				STRIPE_PUBLISHABLE_KEY = "";
 				SWIFT_VERSION = 5.0;
@@ -1804,7 +1804,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 5MDCA888Q7;
+				DEVELOPMENT_TEAM = C565M49C65;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1812,7 +1812,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.cliftlizz;
 				PRODUCT_NAME = CLIFT;
 				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;
@@ -1828,7 +1828,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 5MDCA888Q7;
+				DEVELOPMENT_TEAM = C565M49C65;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1836,7 +1836,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.cliftlizz;
 				PRODUCT_NAME = CLIFT;
 				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;
