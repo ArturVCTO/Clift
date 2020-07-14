@@ -21,6 +21,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         self.emailSignInTextField.delegate = self
         self.passwordSignInTextField.delegate = self
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnClickOutside))
+        view.addGestureRecognizer(tap)
     }
     
     func postLoginSession() {
@@ -44,6 +46,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     func hideKeyBoardForEmail() {
         emailSignInTextField.resignFirstResponder()
+    }
+    
+    @IBAction func hideKeyboardOnClickOutside(){
+        view.endEditing(true)
     }
     
     func hidePasswordKeyBoard() {

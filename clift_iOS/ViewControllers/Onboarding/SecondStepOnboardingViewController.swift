@@ -30,6 +30,9 @@ class SecondStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.initialSettings()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnClickOutside))
+        view.addGestureRecognizer(tap)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -38,7 +41,7 @@ class SecondStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         } else {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= keyboardSize.height
+                    self.view.frame.origin.y -= (keyboardSize.height)/3
                 }
             }
         }
@@ -54,6 +57,10 @@ class SecondStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         super.viewWillAppear(true)
         self.nextButtonValidator()
         self.updateCurrentPageSelector()
+    }
+    
+    @IBAction func hideKeyboardOnClickOutside(){
+        view.endEditing(true)
     }
     
     func initialSettings() {
@@ -131,6 +138,7 @@ class SecondStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         self.rootParentVC.onboardingUser.spouse.cellPhoneNumber = self.spouseCellPhoneTextField.text!
         
         nextButtonValidator()
+        
     }
 }
 

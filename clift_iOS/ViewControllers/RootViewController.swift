@@ -14,7 +14,6 @@ import Realm
 class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let realm = try! Realm()
         let users = realm.objects(Session.self)
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

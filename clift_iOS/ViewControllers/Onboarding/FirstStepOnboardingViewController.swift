@@ -19,6 +19,9 @@ class FirstStepOnboardingViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var lastNameTextField: IsaoTextField!
     
     override func viewDidLoad() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnClickOutside))
+        view.addGestureRecognizer(tap)
+        
         super.viewDidLoad()
         self.nameTextField.delegate = self
         self.lastNameTextField.delegate = self
@@ -34,7 +37,7 @@ class FirstStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         } else {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= keyboardSize.height
+                    self.view.frame.origin.y -= (keyboardSize.height)/3
                 }
             }
         }
@@ -46,9 +49,14 @@ class FirstStepOnboardingViewController: UIViewController,UITextFieldDelegate {
          }
      }
     
+    @IBAction func hideKeyboardOnClickOutside(){
+        view.endEditing(true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.updateCurrentPageSelector()
+        auxTextFieldDidEndEditing()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -89,6 +97,10 @@ class FirstStepOnboardingViewController: UIViewController,UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        auxTextFieldDidEndEditing()
+    }
+    
+    func auxTextFieldDidEndEditing(){
         var shouldAbortNextButton = false
         
         if (self.nameTextField.text == "") {
@@ -109,5 +121,6 @@ class FirstStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         self.rootParentVC.nextButton.isEnabled = true
         self.rootParentVC.nextButton.alpha = 1.0
         print(self.rootParentVC.onboardingUser)
+        
     }
 }
