@@ -24,7 +24,7 @@ class LastStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         self.userPasswordTextField.delegate = self
         self.cellPhoneTextField.delegate = self
          NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        print(self.rootParentVC.onboardingUser.toJSON())
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     
@@ -48,7 +48,7 @@ class LastStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         } else {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= keyboardSize.height
+                    self.view.frame.origin.y -= (keyboardSize.height)/2
                 }
             }
         }

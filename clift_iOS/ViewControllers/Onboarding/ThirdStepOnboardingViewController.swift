@@ -31,5 +31,4 @@ class ThirdStepOnboardingViewController: UIViewController {
     @IBAction func datePickerChanged(_ sender: Any) {
         self.rootParentVC.onboardingUser.event.date = eventDatePicker.date.eventDateFormatter()
     }
-    
 }

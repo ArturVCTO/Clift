@@ -19,8 +19,6 @@ class FirstStepOnboardingViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var lastNameTextField: IsaoTextField!
     
     override func viewDidLoad() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnClickOutside))
-        view.addGestureRecognizer(tap)
         
         super.viewDidLoad()
         self.nameTextField.delegate = self
@@ -37,7 +35,7 @@ class FirstStepOnboardingViewController: UIViewController,UITextFieldDelegate {
         } else {
             if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 if self.view.frame.origin.y == 0 {
-                    self.view.frame.origin.y -= (keyboardSize.height)/3
+                    self.view.frame.origin.y -= (keyboardSize.height)/2
                 }
             }
         }
@@ -48,10 +46,6 @@ class FirstStepOnboardingViewController: UIViewController,UITextFieldDelegate {
              self.view.frame.origin.y = 0
          }
      }
-    
-    @IBAction func hideKeyboardOnClickOutside(){
-        view.endEditing(true)
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

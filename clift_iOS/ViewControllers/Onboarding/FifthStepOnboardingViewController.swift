@@ -14,12 +14,14 @@ class FifthStepOnboardingViewController: UIViewController, UITextFieldDelegate {
     
     var rootParentVC: RootOnboardViewController!
     @IBOutlet weak var eventNameTextField: HoshiTextField!
+    var boolShowPlaceHolder:Bool = true
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.eventNameTextField.delegate = self
         self.updateCurrentPageSelector()
+        self.eventNameTextField.text = "Ej. Boda de Jimena & Carlos"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +39,7 @@ class FifthStepOnboardingViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         var shouldAbortNextButton = false
         
-        if (self.eventNameTextField.text == "") {
+        if (self.eventNameTextField.text == "" || boolShowPlaceHolder) {
             shouldAbortNextButton = true
         }
         
@@ -49,12 +51,19 @@ class FifthStepOnboardingViewController: UIViewController, UITextFieldDelegate {
         self.rootParentVC.nextButton.isEnabled = true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if (boolShowPlaceHolder) {
+            self.eventNameTextField.text = ""
+        }
+        boolShowPlaceHolder = false
+    }
+    
     func hideKeyBoard() {
         self.eventNameTextField.resignFirstResponder()
     }
     
     func nextButtonValidator() {
-        if (eventNameTextField.text?.isEmpty == false) {
+        if (eventNameTextField.text?.isEmpty == false && !boolShowPlaceHolder) {
             self.rootParentVC.nextButton.isEnabled = true
             self.rootParentVC.nextButton.alpha = 1.0
         } else {
