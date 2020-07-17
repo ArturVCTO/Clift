@@ -86,7 +86,6 @@ class RootOnboardViewController: UIViewController {
         sharedApiManager.postUsers(user: user) {(user,result) in
             if let response = result {
                 if (response.isSuccess()) {
-                    print("Entre a post onboarding")
                     let postOnboardingVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "postOnboardVC") as! PostOnboardingViewController
                     postOnboardingVC.onboardingEmail = self.onboardingUser.email
                     postOnboardingVC.onboardingPassword = self.onboardingUser.password
