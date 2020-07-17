@@ -86,11 +86,10 @@ class RootOnboardViewController: UIViewController {
         sharedApiManager.postUsers(user: user) {(user,result) in
             if let response = result {
                 if (response.isSuccess()) {
-                    print(user!)
                     let postOnboardingVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "postOnboardVC") as! PostOnboardingViewController
                     postOnboardingVC.onboardingEmail = self.onboardingUser.email
                     postOnboardingVC.onboardingPassword = self.onboardingUser.password
-                    self.navigationController?.pushViewController(postOnboardingVC, animated: true)
+                    self.show(postOnboardingVC, sender: self)
                 } else if (response.isClientError()) {
                     self.showMessage(NSLocalizedString("\(user!.errors.first!)", comment: "Account Error"),type: .error)
                     
