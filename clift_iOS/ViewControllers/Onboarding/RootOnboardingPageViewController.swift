@@ -12,8 +12,10 @@ import UIKit
 class RootOnboardingPageViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.gestureRecognizers = []
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnClickOutside))
         view.addGestureRecognizer(tap)
+        
         }
 }
 

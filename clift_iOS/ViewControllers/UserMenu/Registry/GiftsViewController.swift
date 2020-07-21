@@ -14,6 +14,7 @@ class GiftsViewController: UIViewController {
     
     @IBOutlet weak var giftsScrollView: UIScrollView!
     @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventTypeAndVisibilityLabel: UILabel!
     @IBOutlet weak var monthCountDownLabel: UILabel!
     @IBOutlet weak var weekCountDownLabel: UILabel!
@@ -140,6 +141,13 @@ class GiftsViewController: UIViewController {
         var eventTypeString = String()
 
         self.eventNameLabel.text = event.name
+        self.eventDateLabel.text = event.date
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "es_MX")
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        self.eventDateLabel.text = dateFormatter.string(from: event.date.stringToDate())
+        
         self.countDownCalendar(eventDate: event.date.stringToDate())
         
         switch event.visibility {
@@ -195,7 +203,7 @@ class GiftsViewController: UIViewController {
 //        let eventDateComponents = calendar.dateComponents([.month,.weekOfYear,.day], from: eventDate)
         
         let difference = calendar.dateComponents([.year,.month,.weekOfMonth,.day], from: currentDate!, to: eventDate)
-       self.monthCountDownLabel.text = "\(difference.month ?? 0)"
+        self.monthCountDownLabel.text = "\( (difference.month ?? 0) + ( difference.year ?? 0)*12)"
         self.weekCountDownLabel.text = "\(difference.weekOfMonth ?? 0)"
         self.dayCountDownLabel.text = "\(difference.day ?? 0)"
     }
