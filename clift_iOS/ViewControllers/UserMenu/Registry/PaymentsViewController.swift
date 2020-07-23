@@ -17,6 +17,7 @@ class PaymentsViewController: UIViewController {
     @IBOutlet weak var cashOutFundsButton: customButton!
     @IBOutlet weak var eventImageView: customImageView!
     @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventTypeAndVisibilityLabel: UILabel!
     @IBOutlet weak var monthCountDownLabel: UILabel!
@@ -159,8 +160,13 @@ class PaymentsViewController: UIViewController {
     func loadEventInformation(event: Event) {
         var eventVisibilityString = String()
         var eventTypeString = String()
-        
         self.eventNameLabel.text = event.name
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "es_MX")
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        self.eventDateLabel.text = dateFormatter.string(from: event.date.stringToDate())
+        
         self.countDownCalendar(eventDate: event.date.stringToDate())
         
         switch event.visibility {
@@ -207,7 +213,7 @@ class PaymentsViewController: UIViewController {
         //        let eventDateComponents = calendar.dateComponents([.month,.weekOfYear,.day], from: eventDate)
         
         let difference = calendar.dateComponents([.year,.month,.weekOfMonth,.day], from: currentDate!, to: eventDate)
-        self.monthCountDownLabel.text = "\(difference.month ?? 0)"
+        self.monthCountDownLabel.text = "\( (difference.month ?? 0) + ( difference.year ?? 0)*12)"
         self.weekCountDownLabel.text = "\(difference.weekOfMonth ?? 0)"
         self.daysCountDownLabel.text = "\(difference.day ?? 0)"
     }

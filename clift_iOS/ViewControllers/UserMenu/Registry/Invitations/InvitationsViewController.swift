@@ -21,6 +21,7 @@ class InvitationsViewController: UIViewController,CNContactPickerDelegate{
     @IBOutlet weak var chosenInvitationCollectionView: UICollectionView!
     @IBOutlet weak var invitationTemplatesCollectionView: UICollectionView!
     @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventTypeAndVisibilityLabel: UILabel!
     @IBOutlet weak var monthCountDownLabel: UILabel!
     @IBOutlet weak var weeksCountDownLabel: UILabel!
@@ -173,7 +174,15 @@ class InvitationsViewController: UIViewController,CNContactPickerDelegate{
         var eventTypeString = String()
         
         self.eventNameLabel.text = event.name
+        self.eventDateLabel.text = event.date
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "es_MX")
+        dateFormatter.dateFormat = "dd MMMM yyyy"
+        self.eventDateLabel.text = dateFormatter.string(from: event.date.stringToDate())
+        
         self.countDownCalendar(eventDate: event.date.stringToDate())
+        
         switch event.visibility {
         case 0:
             eventVisibilityString = "Evento Privado"
@@ -244,7 +253,7 @@ class InvitationsViewController: UIViewController,CNContactPickerDelegate{
         //        let eventDateComponents = calendar.dateComponents([.month,.weekOfYear,.day], from: eventDate)
         
         let difference = calendar.dateComponents([.year,.month,.weekOfMonth,.day], from: currentDate!, to: eventDate)
-        self.monthCountDownLabel.text = "\(difference.month ?? 0)"
+        self.monthCountDownLabel.text = "\( (difference.month ?? 0) + ( difference.year ?? 0)*12)"
         self.weeksCountDownLabel.text = "\(difference.weekOfMonth ?? 0)"
         self.daysCountDownLabel.text = "\(difference.day ?? 0)"
     }
