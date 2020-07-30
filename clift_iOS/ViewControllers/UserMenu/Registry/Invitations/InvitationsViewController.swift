@@ -214,26 +214,11 @@ class InvitationsViewController: UIViewController,CNContactPickerDelegate{
 //        } else {
 //            self.guestsHaveBeenInvitedProgressButton.isHidden = true
 //        }
-        
-        if event.eventProgress.guestsHaveBeenInvited {
-            self.inviteesGuestListAnalyticsSV.isHidden = false
-            self.totalGuestsAndRecentActivitySV.isHidden = false
-            self.guestListButton.isHidden = false
-            self.emptySpaceHaveNotInvitedView.isHidden = true
-            
-        } else {
-            self.inviteesGuestListAnalyticsSV.isHidden = true
-            self.totalGuestsAndRecentActivitySV.isHidden = true
-            self.guestListButton.isHidden = true
-            self.emptySpaceHaveNotInvitedView.isHidden = false
-        }
-        
         if event.eventProgress.invitationHasBeenChosen {
             self.myInvitationStackView.isHidden = false
         } else {
             self.myInvitationStackView.isHidden = true
         }
-        
         
         if let imageURL = URL(string:"\(event.eventImageUrl)") {
             self.eventImageView.kf.setImage(with: imageURL)
@@ -271,6 +256,8 @@ class InvitationsViewController: UIViewController,CNContactPickerDelegate{
                     } else {
                         return
                     }
+                    
+                    
                 }
             }
         }
@@ -291,6 +278,21 @@ class InvitationsViewController: UIViewController,CNContactPickerDelegate{
         self.willAssistAnalytics.text = "\(analytics.willAttend)"
         self.pendingAssistAnalytics.text = "\(analytics.pending)"
         self.totalAssistAnalytics.text = "\(analytics.total)"
+        
+        if analytics.total > 0 {
+            self.inviteesGuestListAnalyticsSV.isHidden = false
+            self.totalGuestsAndRecentActivitySV.isHidden = false
+            self.guestListButton.isHidden = false
+            self.emptySpaceHaveNotInvitedView.isHidden = true
+            
+        } else {
+            self.inviteesGuestListAnalyticsSV.isHidden = true
+            self.totalGuestsAndRecentActivitySV.isHidden = true
+            self.guestListButton.isHidden = true
+            self.emptySpaceHaveNotInvitedView.isHidden = false
+        }
+        
+
     }
     
     @IBAction func seeGuestListButtonTapped(_ sender: Any) {

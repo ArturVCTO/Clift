@@ -211,21 +211,21 @@ class GuestListViewController: UIViewController, CNContactPickerDelegate,UISearc
             self.getGuests(event: self.currentEvent, filters: currentFilters)
         }
         else if sender.selectedSegmentIndex == 1 {
-            searchAndFilterView.isHidden = true
+            searchAndFilterView.isHidden = false
             sentInvitationGuestStatusSegment.isHidden = false
             self.barView2.backgroundColor = UIColor(red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0)
             self.barView1.backgroundColor = UIColor(red: 123/255, green: 123/255,blue: 130/255, alpha: 0.16)
             
             if sentInvitationGuestStatusSegment.selectedSegmentIndex == 0 {
-                self.currentFilters["is_confirmed"] = [4,6,7]
+                self.currentFilters["is_confirmed"] = [3]
                 self.getGuests(event: self.currentEvent, filters: self.currentFilters)
                 self.currentFilters.removeAll()
             } else if sentInvitationGuestStatusSegment.selectedSegmentIndex == 1 {
-                self.currentFilters["is_confirmed"] = [1,3]
+                self.currentFilters["is_confirmed"] = [1]
                 self.getGuests(event: self.currentEvent, filters: self.currentFilters)
                 self.currentFilters.removeAll()
             } else  if sentInvitationGuestStatusSegment.selectedSegmentIndex == 2 {
-                self.currentFilters["is_confirmed"] = [2,5]
+                self.currentFilters["is_confirmed"] = [2]
                 self.getGuests(event: self.currentEvent, filters: self.currentFilters)
                 self.currentFilters.removeAll()
             }
@@ -241,15 +241,15 @@ class GuestListViewController: UIViewController, CNContactPickerDelegate,UISearc
     @IBAction func assistSegmentControlChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
                     self.currentFilters.removeAll()
-                    self.currentFilters["is_confirmed"] = [4,6,7]
+                    self.currentFilters["is_confirmed"] = [3]
                     self.getGuests(event: self.currentEvent, filters: self.currentFilters)
                    } else if sender.selectedSegmentIndex == 1 {
                     self.currentFilters.removeAll()
-                    self.currentFilters["is_confirmed"] = [1,3]
+                    self.currentFilters["is_confirmed"] = [1]
                     self.getGuests(event: self.currentEvent, filters: self.currentFilters)
                    } else  if sender.selectedSegmentIndex == 2 {
                         self.currentFilters.removeAll()
-                        self.currentFilters["is_confirmed"] = [2,5]
+                        self.currentFilters["is_confirmed"] = [2]
                         self.getGuests(event: self.currentEvent, filters: self.currentFilters)
                    }
     }
@@ -268,10 +268,14 @@ extension GuestListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.currentEvent = self.currentEvent
         cell.currentFilters = self.currentFilters
         cell.vc = self
+        cell.guestListAssitingStatusImageView?.image = nil
+        cell.guestListAssitingStatusStackView.isHidden = false
         if isFiltering {
             cell.setup(eventGuest: self.filteredGuests[indexPath.row])
+            cell.setupMenuDropDown()
         } else {
             cell.setup(eventGuest: self.eventGuests[indexPath.row])
+            cell.setupMenuDropDown()
         }
         return cell
     }

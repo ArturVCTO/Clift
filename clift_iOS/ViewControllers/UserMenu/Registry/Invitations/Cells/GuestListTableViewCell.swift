@@ -17,6 +17,11 @@ class GuestListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         self.setupDropDownStyle()
         self.setupMenuDropDown()
+        print(self.email)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
     }
     
     func setupDropDownStyle() {
@@ -26,31 +31,56 @@ class GuestListTableViewCell: UITableViewCell {
     }
     
     func setupMenuDropDown() {
-        let actions = ["Modificar +1"]
+        
+        var actions = [""]
+        
+        //invitation not sent with plus one
+        if isConfirmedStatus == "invitation_not_sent" && plusOneStatus {
+            actions = ["Quitar +1","Información"]
+        }
+        //invitation not sent without plus one
+        else if isConfirmedStatus == "invitation_not_sent" && !plusOneStatus{
+            actions = ["Agregar +1","Información"]
+        }
+        //pending not sent with plus one
+        else if isConfirmedStatus == "pending" && plusOneStatus {
+            actions = ["Quitar +1","Información"]
+        }
+        //pending without plus one
+        else if isConfirmedStatus == "pending" && !plusOneStatus{
+            actions = ["Agregar +1","Información"]
+        }//not attending or will attend with or without plus one
+        else{
+            actions = ["Información"]
+        }
         menuDropDown.anchorView = self.menuButton
         menuDropDown.dataSource = actions
         menuDropDown.bottomOffset = CGPoint(x: 0, y: self.menuButton.bounds.height)
         
         menuDropDown.selectionAction = { [weak self] (index, item) in
-            if self?.isConfirmedStatus == "pending" {
+            //Pending without plus one
+            if self?.isConfirmedStatus == "pending" && !self!.plusOneStatus {
                 self!.guestsId.removeAll()
                 self?.guestsId.append(self!.guestId)
                 self!.updateGuest(event: self!.currentEvent, isConfirmed: 3, id: self!.guestsId)
                 self!.vc.getGuests(event: self!.currentEvent, filters: self!.vc.currentFilters)
                 self!.guestsId.removeAll()
-            } else if self!.isConfirmedStatus == "pending_with_plus_one" {
+            //Pending with plus one
+            } else if (self!.isConfirmedStatus == "pending" && self!.plusOneStatus) {
                 self!.guestsId.removeAll()
                 self?.guestsId.append(self!.guestId)
                 self!.updateGuest(event: self!.currentEvent, isConfirmed: 1, id: self!.guestsId)
                 self!.vc.getGuests(event: self!.currentEvent, filters: self!.vc.currentFilters)
                 self!.guestsId.removeAll()
-            } else if self!.isConfirmedStatus == "invitation_not_sent_with_plus_one" {
+            //Invitation not sent with plus one
+            } else if (self!.isConfirmedStatus == "invitation_not_sent" && self!.plusOneStatus) {
                 self!.guestsId.removeAll()
                self?.guestsId.append(self!.guestId)
                self!.updateGuest(event: self!.currentEvent, isConfirmed: 0, id: self!.guestsId)
                self!.vc.getGuests(event: self!.currentEvent, filters: self!.vc.currentFilters)
                self!.guestsId.removeAll()
-            } else if self!.isConfirmedStatus == "invitation_not_sent" {
+            //Invitation not sent without plus o
+            } else if self!.isConfirmedStatus == "invitation_not_sent" && !self!.plusOneStatus{
                 self!.guestsId.removeAll()
                self?.guestsId.append(self!.guestId)
                self!.updateGuest(event: self!.currentEvent, isConfirmed: 8, id: self!.guestsId)
@@ -68,6 +98,7 @@ class GuestListTableViewCell: UITableViewCell {
     var guestId = ""
     var email = ""
     var isConfirmedStatus = ""
+    var plusOneStatus = false
     @IBOutlet weak var inviteButton: customButton!
     @IBOutlet weak var guestListNameLabel: UILabel!
     @IBOutlet weak var guestLIstEmailLabel: UILabel!
@@ -75,6 +106,9 @@ class GuestListTableViewCell: UITableViewCell {
     @IBOutlet weak var guestListStatusLabel: UILabel!
     @IBOutlet weak var guestListStackView: UIStackView!
     @IBOutlet weak var guestListStatusImageView: UIImageView!
+    @IBOutlet weak var guestListAssitingStatusStackView: UIStackView!
+    @IBOutlet weak var guestListAssitingStatusLabel: UILabel!
+    @IBOutlet weak var guestListAssitingStatusImageView: UIImageView!
     @IBOutlet weak var guestListPlus1StatusLabel: UILabel!
     @IBOutlet weak var menuButton: UIButton!
     var vc: GuestListViewController!
@@ -107,40 +141,41 @@ class GuestListTableViewCell: UITableViewCell {
     
     func setup(eventGuest: EventGuest) {
         self.isConfirmedStatus = eventGuest.isConfirmed
+        self.plusOneStatus = eventGuest.has_plus_one
         self.guestId = eventGuest.id
         self.email = eventGuest.email
         self.guestListNameLabel.text = eventGuest.name
         self.guestLIstEmailLabel.text = eventGuest.email
         self.guestListTelephoneLabel.text = eventGuest.cellPhoneNumber
-        if eventGuest.status {
-            self.inviteButton.isHidden = true
-        } else {
+        self.inviteButton.isHidden = true
+        self.guestListStatusLabel.isHidden = true
+        self.guestListStackView.isHidden = true
+        
+        if eventGuest.isConfirmed == "invitation_not_sent"{
+            self.guestListAssitingStatusStackView.isHidden = true
             self.inviteButton.isHidden = false
         }
-        if eventGuest.isConfirmed == "not_attending_with_plus_one" || eventGuest.isConfirmed == "not_attending"{
-            self.guestListStatusLabel.isHidden = true
-            self.guestListStackView.isHidden = true
-            self.menuButton.isHidden = true
-        } else if eventGuest.isConfirmed == "invitation_not_sent_with_plus_one" || eventGuest.isConfirmed == "pending_with_plus_one" || eventGuest.isConfirmed == "confirmed_with_plus_one" || eventGuest.isConfirmed == "confirmed_and_rejected_plus_one"{
-            self.menuButton.isHidden = false
-            if eventGuest.isConfirmed == "confirmed_and_rejected_plus_one" {
-                self.guestListPlus1StatusLabel.text = "Rechazo +1"
-                self.guestListStatusImageView.image = UIImage(named: "icnotassisting")
-                self.guestListStackView.isHidden = false
-                self.guestListStatusLabel.isHidden = false
-            } else if eventGuest.isConfirmed == "confirmed_with_plus_one" {
-                self.guestListPlus1StatusLabel.text = "Usó +1"
-                self.guestListStatusImageView.image = UIImage(named: "icassisting")
-                self.guestListStackView.isHidden = false
-                self.guestListStatusLabel.isHidden = false
-            } else {
-                self.guestListStackView.isHidden = true
-                self.guestListStatusLabel.isHidden = false
-            }
-        } else {
-            self.menuButton.isHidden = false
-            self.guestListStatusLabel.isHidden = true
-            self.guestListStackView.isHidden = true
+        else if eventGuest.isConfirmed == "pending"{
+            self.guestListAssitingStatusImageView.image = UIImage(named: "icpending")
+            self.guestListAssitingStatusLabel.text = "Pendiente"
+            
         }
+        else if eventGuest.isConfirmed == "not_attending"{
+            self.guestListAssitingStatusImageView.image = UIImage(named: "icnotassisting")
+            self.guestListAssitingStatusLabel.text = "No Asistirá"
+            
+        }
+        else if eventGuest.isConfirmed == "will_attend"{
+            self.guestListAssitingStatusImageView.image = UIImage(named: "icassisting")
+            self.guestListAssitingStatusLabel.text = "Asistirá"
+        }
+        
+        if plusOneStatus{
+            self.guestListStatusLabel.isHidden = false
+            if isConfirmedStatus == "will_attend"{
+                self.guestListStackView.isHidden = false
+            }
+        }
+        
     }
 }

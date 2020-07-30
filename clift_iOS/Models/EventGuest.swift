@@ -23,6 +23,7 @@ class EventGuest: Mappable {
     var cellPhoneNumber = ""
     var eventId = ""
     var userId = ""
+    var has_plus_one = false
     
     var errors: [String] = []
 
@@ -40,6 +41,7 @@ class EventGuest: Mappable {
         cellPhoneNumber <- map["cell_phone_number"]
         eventId <- map["event_id"]
         userId <- map["user_id"]
+        has_plus_one <- map["has_plus_one"]
         
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
