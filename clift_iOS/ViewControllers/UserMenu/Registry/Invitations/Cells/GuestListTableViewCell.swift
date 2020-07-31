@@ -59,6 +59,25 @@ class GuestListTableViewCell: UITableViewCell {
         
         menuDropDown.selectionAction = { [weak self] (index, item) in
             //Pending without plus one
+            if item == "Información"{
+                let guestInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "guestInfoVC") as!
+                 GuestInfoViewController
+                self?.vc.parent?.addChild(guestInfoVC)
+                guestInfoVC.view.frame = self?.vc.parent?.view.frame as! CGRect
+                self?.vc.parent?.view.addSubview(guestInfoVC.view)
+                guestInfoVC.didMove(toParent: self?.vc.parent)
+                guestInfoVC.guestNameLabel.text = self?.guestListNameLabel.text
+                guestInfoVC.guestEmailLabel.text = self?.guestLIstEmailLabel.text
+                guestInfoVC.guestPhoneLabel.text = self?.guestListTelephoneLabel.text
+                if(self!.plusOneStatus){
+                    guestInfoVC.guestPlusOneLabel.text = self?.companionName
+                }else{
+                    guestInfoVC.guestPlusOneLabel.text = "Sin Acompañante"
+                }
+                guestInfoVC.guestAddressLabel.text = self?.address
+                
+            }
+            else{
             if self?.isConfirmedStatus == "pending" && !self!.plusOneStatus {
                 self!.guestsId.removeAll()
                 self?.guestsId.append(self!.guestId)
@@ -87,6 +106,7 @@ class GuestListTableViewCell: UITableViewCell {
                self!.vc.getGuests(event: self!.currentEvent, filters: self!.vc.currentFilters)
                self!.guestsId.removeAll()
             }
+        }
             
         }
     }
@@ -99,6 +119,8 @@ class GuestListTableViewCell: UITableViewCell {
     var email = ""
     var isConfirmedStatus = ""
     var plusOneStatus = false
+    var companionName = ""
+    var address = ""
     @IBOutlet weak var inviteButton: customButton!
     @IBOutlet weak var guestListNameLabel: UILabel!
     @IBOutlet weak var guestLIstEmailLabel: UILabel!
@@ -147,6 +169,8 @@ class GuestListTableViewCell: UITableViewCell {
         self.guestListNameLabel.text = eventGuest.name
         self.guestLIstEmailLabel.text = eventGuest.email
         self.guestListTelephoneLabel.text = eventGuest.cellPhoneNumber
+        self.companionName = eventGuest.companion_name
+        self.address = eventGuest.address
         self.inviteButton.isHidden = true
         self.guestListStatusLabel.isHidden = true
         self.guestListStackView.isHidden = true
