@@ -193,6 +193,7 @@
 		46EC9DA423314FFA00950139 /* SubcategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9DA323314FFA00950139 /* SubcategoryCollectionViewCell.swift */; };
 		85D1161D2D04F9B25477BAE8 /* Pods_clift_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */; };
 		A9D3728582D9B5913F8C5C14 /* Pods_clift_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */; };
+		CE1BC9F324D3766C003D49BE /* GuestInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BC9F224D3766C003D49BE /* GuestInfoViewController.swift */; };
 		CE8D41C424BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
 		CE8D41C524BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
 		CE8D41C624BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
@@ -410,6 +411,7 @@
 		8B1E86386FC9F3A216AD6DBB /* Pods-clift_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A9E9B21D2B9B464893AAAFB0 /* Pods-clift_iOS.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.canary.xcconfig"; sourceTree = "<group>"; };
 		C249504948AE023D846380FD /* Pods-clift_iOS.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.mock.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.mock.xcconfig"; sourceTree = "<group>"; };
+		CE1BC9F224D3766C003D49BE /* GuestInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestInfoViewController.swift; sourceTree = "<group>"; };
 		CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-Bold.ttf"; sourceTree = "<group>"; };
 		CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.canary.xcconfig"; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 			isa = PBXGroup;
 			children = (
 				463A78A82386F33400985674 /* GuestListTableViewCell.swift */,
+				CE1BC9F224D3766C003D49BE /* GuestInfoViewController.swift */,
 				460836AA23873E0B0052E73A /* InvitationTemplateCollectionViewCell.swift */,
 				464C12A123A6F6FC00A690C4 /* MainChosenInvitationCVCell.swift */,
 				464C12A323A6F72B00A690C4 /* MainInvitationTemplateCVCell.swift */,
@@ -790,49 +793,49 @@
 		46A2DD9022FB6CBA0051DCA6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				46A2DD9322FB723D0051DCA6 /* EmptyObjectWithErrors.swift */,
-				46A2DD9122FB6CC60051DCA6 /* Session.swift */,
-				4604A334230331890041F9AA /* User.swift */,
-				4604A3362303319F0041F9AA /* Spouse.swift */,
-				4604A338230331A60041F9AA /* Event.swift */,
-				4604A33A230346C30041F9AA /* Interest.swift */,
-				462EB0BA2316C6C30084C3C7 /* Progress.swift */,
-				462EB0BC2316C8460084C3C7 /* EventAnalytics.swift */,
-				462EB0BE2316C9160084C3C7 /* RecentActivity.swift */,
-				462EB0C22316E4630084C3C7 /* EventRecommendation.swift */,
-				46167726232AE5F700A6CAB9 /* Category.swift */,
-				46167728232AE76100A6CAB9 /* Product.swift */,
-				4616772A232AE7C300A6CAB9 /* Group.swift */,
-				4616772C232AE8AD00A6CAB9 /* Brand.swift */,
-				46E12881233ACFB000354DB9 /* Shop.swift */,
-				46E12883233AD24200354DB9 /* Subgroup.swift */,
-				46DE698523574857002C2BB8 /* CliftColor.swift */,
-				46DE69CF235DCD9A002C2BB8 /* EventProduct.swift */,
-				465FED142373BB500038D557 /* EventPool.swift */,
-				465FED162373DE190038D557 /* ExternalProduct.swift */,
-				465167AA237A178F00755077 /* EventRegistrySummary.swift */,
-				463A78A52386E9EC00985674 /* Invitee.swift */,
-				465BC5262391A042000975C1 /* InvitationTemplate.swift */,
-				46D3776E23970684004BE93E /* EventGuest.swift */,
-				46D3777023972DDD004BE93E /* Invitation.swift */,
-				4637826C23A72CBE0027FCD6 /* EventGuestAnalytics.swift */,
 				46C724CE23C7D9B300F12924 /* Address.swift */,
 				46C724D023C7DA0B00F12924 /* AddressCity.swift */,
-				46C724D223C7DA6000F12924 /* AddressState.swift */,
 				46C724D423C7DA7700F12924 /* AddressCountry.swift */,
+				46C724D223C7DA6000F12924 /* AddressState.swift */,
+				464D1CC52410130200CBC546 /* BankAccount.swift */,
+				4616772C232AE8AD00A6CAB9 /* Brand.swift */,
 				46BFA8C123D120F3008D6B72 /* CartProduct.swift */,
-				46CDF77023DE073800F01CEC /* ThankMessage.swift */,
-				46403A9223E1FC09007866B8 /* ShoppingCart.swift */,
-				46DC795123E943400013C306 /* ThankYouUser.swift */,
+				46167726232AE5F700A6CAB9 /* Category.swift */,
 				46DC795323E99CE10013C306 /* Checkout.swift */,
 				46DC795523E99D550013C306 /* CheckoutUserData.swift */,
-				46DC795723E9A0770013C306 /* StripeCheckout.swift */,
-				46438FC924081B73002FAB06 /* StripeAccountToken.swift */,
-				464D1CC52410130200CBC546 /* BankAccount.swift */,
-				464D1CD52410194C00CBC546 /* ShopCredit.swift */,
+				46DE698523574857002C2BB8 /* CliftColor.swift */,
 				464D1CD72410494B00CBC546 /* CreditMovement.swift */,
-				4677DA122415D0F800A2CE28 /* VerifiedResponse.swift */,
+				46A2DD9322FB723D0051DCA6 /* EmptyObjectWithErrors.swift */,
+				4604A338230331A60041F9AA /* Event.swift */,
+				462EB0BC2316C8460084C3C7 /* EventAnalytics.swift */,
+				46D3776E23970684004BE93E /* EventGuest.swift */,
+				4637826C23A72CBE0027FCD6 /* EventGuestAnalytics.swift */,
+				465FED142373BB500038D557 /* EventPool.swift */,
+				46DE69CF235DCD9A002C2BB8 /* EventProduct.swift */,
+				462EB0C22316E4630084C3C7 /* EventRecommendation.swift */,
+				465167AA237A178F00755077 /* EventRegistrySummary.swift */,
+				465FED162373DE190038D557 /* ExternalProduct.swift */,
+				4616772A232AE7C300A6CAB9 /* Group.swift */,
+				4604A33A230346C30041F9AA /* Interest.swift */,
+				46D3777023972DDD004BE93E /* Invitation.swift */,
+				465BC5262391A042000975C1 /* InvitationTemplate.swift */,
+				463A78A52386E9EC00985674 /* Invitee.swift */,
 				466E99DE246DA62A009E94E3 /* OnboardingShippingAddress.swift */,
+				46167728232AE76100A6CAB9 /* Product.swift */,
+				462EB0BA2316C6C30084C3C7 /* Progress.swift */,
+				462EB0BE2316C9160084C3C7 /* RecentActivity.swift */,
+				46A2DD9122FB6CC60051DCA6 /* Session.swift */,
+				46E12881233ACFB000354DB9 /* Shop.swift */,
+				464D1CD52410194C00CBC546 /* ShopCredit.swift */,
+				46403A9223E1FC09007866B8 /* ShoppingCart.swift */,
+				4604A3362303319F0041F9AA /* Spouse.swift */,
+				46438FC924081B73002FAB06 /* StripeAccountToken.swift */,
+				46DC795723E9A0770013C306 /* StripeCheckout.swift */,
+				46E12883233AD24200354DB9 /* Subgroup.swift */,
+				46CDF77023DE073800F01CEC /* ThankMessage.swift */,
+				46DC795123E943400013C306 /* ThankYouUser.swift */,
+				4604A334230331890041F9AA /* User.swift */,
+				4677DA122415D0F800A2CE28 /* VerifiedResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1325,6 +1328,7 @@
 				465167AB237A178F00755077 /* EventRegistrySummary.swift in Sources */,
 				46EC9DA22331493D00950139 /* ProductCollectionViewCell.swift in Sources */,
 				46DE69882358175F002C2BB8 /* ColorExtension.swift in Sources */,
+				CE1BC9F324D3766C003D49BE /* GuestInfoViewController.swift in Sources */,
 				4604A346230473E20041F9AA /* OnboardingInterestCell.swift in Sources */,
 				46BFA8C223D120F3008D6B72 /* CartProduct.swift in Sources */,
 				4616772B232AE7C300A6CAB9 /* Group.swift in Sources */,
@@ -1828,7 +1832,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = C565M49C65;
+				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1836,7 +1840,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift.0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
 				PRODUCT_NAME = CLIFT;
 				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;

@@ -52,7 +52,7 @@ enum CliftApi {
     case updateInvitation(event: Event, invitation: Invitation)
     case addGuest(event: Event, guest: EventGuest)
     case addGuests(event: Event, guests: [EventGuest])
-    case updateGuests(event: Event,isConfirmed: Int,guests: [String])
+    case updateGuests(event: Event,guests: [String], plusOne: Bool)
     case sendInvitation(event: Event, email: String)
     case createBankAccount(bankAccount: BankAccount)
     case getBankAccounts
@@ -163,7 +163,7 @@ extension CliftApi: TargetType {
         case .addGuests(let event, _):
             return "events/\(event.id)/guests"
         case .updateGuests(let event, _,_):
-            return "events/\(event.id)/guests"
+            return "events/\(event.id)/guests/plus_one"
         case .sendInvitation(_,_):
             return "events_sender"
         case .createBankAccount:
@@ -294,8 +294,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["guests": [guest.toJSON()]], encoding: JSONEncoding.default)
         case .addGuests(_, let guests):
             return .requestParameters(parameters: ["guests": guests.toJSON()], encoding: JSONEncoding.default)
-        case .updateGuests(_,let isConfirmed, let ids):
-            return .requestParameters(parameters: ["guests": ["is_confirmed": isConfirmed, "ids": ids]], encoding: JSONEncoding.default)
+        case .updateGuests(_,let ids, let plusOne):
+            return .requestParameters(parameters: ["guests": ["has_plus_one": plusOne, "ids": ids]], encoding: JSONEncoding.default)
         case .getGuests(_,var filters):
             var parameters = filters
             

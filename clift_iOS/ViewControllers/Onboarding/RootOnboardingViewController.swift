@@ -45,6 +45,8 @@ class RootOnboardViewController: UIViewController {
 //        Please refer to this appended array for the order.
         viewControllers.append(contentsOf: [firstStepVC,secondStepVC,thirdStepVC,addressStepVC,fourthStepVC,fifthStepVC,lastStepVC])
         
+        
+        
         return viewControllers
     }()
     
@@ -52,6 +54,8 @@ class RootOnboardViewController: UIViewController {
         super.viewDidLoad()
         self.setupEventType()
         self.setupInitialPageControl()
+        view.gestureRecognizers = []
+
     }
     
     func setupEventType() {
@@ -70,6 +74,11 @@ class RootOnboardViewController: UIViewController {
             pageViewController.dataSource = self
             pageViewController.delegate = self
             pageViewController.setViewControllers([onboardingViewControllers.first!], direction: .forward, animated: true, completion: nil)
+            for view in self.pageViewController!.view.subviews{
+                if let subView = view as? UIScrollView{
+                    subView.isScrollEnabled = false
+                }
+            }
         }
     }
     
