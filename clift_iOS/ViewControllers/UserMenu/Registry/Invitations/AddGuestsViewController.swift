@@ -10,9 +10,15 @@ import Foundation
 import UIKit
 import GoogleSignIn
 import TextFieldEffects
+import GSMessages
+
+protocol updateNewGuestDelegate{
+    func updateNewGuest()
+}
 
 class AddGuestsViewController: UIViewController{
     
+    var delegate:updateNewGuestDelegate!
     
     @IBOutlet weak var signInButton: GIDSignInButton!
     @IBOutlet weak var statusText: UILabel!
@@ -21,6 +27,7 @@ class AddGuestsViewController: UIViewController{
     @IBOutlet weak var guestNameTextField: HoshiTextField!
     @IBOutlet weak var guestEmailTextField: HoshiTextField!
     @IBOutlet weak var guestTelephoneTextField: HoshiTextField!
+    var vc: GuestListViewController!
     var newGuest = EventGuest()
     var currentEvent = Event()
     override func viewDidLoad() {
@@ -37,6 +44,8 @@ class AddGuestsViewController: UIViewController{
 
            statusText.text = "Initialized Swift app..."
            toggleAuthUI()
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnClickOutside))
+        view.addGestureRecognizer(tap)
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -75,10 +84,17 @@ class AddGuestsViewController: UIViewController{
         sharedApiManager.addGuest(event: event, guest: guest) { (emptyObject, result) in
             if let response = result {
                 if response.isSuccess() {
-                    print("Guest added.")
+                    self.parent?.showMessage(NSLocalizedString("El invitado ha sido registrado", comment: "Add success"),type: .success)
+                    self.delegate?.updateNewGuest()
+                    self.navigationController?.popViewController(animated: true)
+                    
                 }
             }
         }
+    }
+    
+    @IBAction func hideKeyboardOnClickOutside(){
+        view.endEditing(true)
     }
     
     

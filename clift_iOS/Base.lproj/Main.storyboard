@@ -8117,7 +8117,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="¿Olvidaste tu contraseña?">
                                         <attributes>
-                                            <font key="NSFont" metaFont="label" size="13"/>
+                                            <font key="NSFont" metaFont="system"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>

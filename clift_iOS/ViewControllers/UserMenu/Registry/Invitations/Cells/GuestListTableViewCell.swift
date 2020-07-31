@@ -140,6 +140,7 @@ class GuestListTableViewCell: UITableViewCell {
                 if response.isSuccess() {
                      self.vc.getGuests(event: self.currentEvent, filters: self.vc.currentFilters)
                      self.guestsId.removeAll()
+                    self.vc.showMessage(NSLocalizedString("+1 de Invitado ha sido modificado", comment: "Update success"),type: .success)
                 }
             }
         }
@@ -187,4 +188,6 @@ class GuestListTableViewCell: UITableViewCell {
         }
         
     }
+    
+    
 }

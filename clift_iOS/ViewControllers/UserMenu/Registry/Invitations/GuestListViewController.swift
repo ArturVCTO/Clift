@@ -13,8 +13,9 @@ import RealmSwift
 import Realm
 import Contacts
 import ContactsUI
+import GSMessages
 
-class GuestListViewController: UIViewController, CNContactPickerDelegate,UISearchResultsUpdating {
+class GuestListViewController: UIViewController, CNContactPickerDelegate,UISearchResultsUpdating, updateNewGuestDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
         filterContentForSearchText(searchBar.text!)
@@ -191,14 +192,20 @@ class GuestListViewController: UIViewController, CNContactPickerDelegate,UISearc
            if #available(iOS 13.0, *) {
                       let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "addGuestsVC") as! AddGuestsViewController
             vc.currentEvent = self.currentEvent
+            vc.delegate = self
                      self.navigationController?.pushViewController(vc, animated: true)
                   } else {
                     // Fallback on earlier versions
                     let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addGuestsVC") as! AddGuestsViewController
             vc.currentEvent = self.currentEvent
+            vc.delegate = self
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
        }
+    
+    func updateNewGuest() {
+        self.getGuests(event: self.currentEvent, filters: self.currentFilters)
+    }
     
     @IBAction func guestStatusSegmentChanged(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0 {
