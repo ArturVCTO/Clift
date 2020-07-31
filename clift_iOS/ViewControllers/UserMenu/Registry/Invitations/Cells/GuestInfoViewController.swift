@@ -16,6 +16,7 @@ class GuestInfoViewController: UIViewController {
     @IBOutlet weak var guestPhoneLabel: UILabel!
     @IBOutlet weak var guestPlusOneLabel: UILabel!
     @IBOutlet weak var guestAddressLabel: UILabel!
+    @IBOutlet weak var guestStatus: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,7 +40,8 @@ class GuestInfoViewController: UIViewController {
         }, completion: {
             (finished : Bool) in
             if (finished){
-                self.view.removeFromSuperview()
+                //self.view.removeFromSuperview()
+                self.navigationController?.popViewController(animated: false)
             }
         })
         

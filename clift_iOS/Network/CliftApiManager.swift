@@ -230,7 +230,7 @@ protocol ApiCalls {
     
     func addGuests(event: Event, guest: [EventGuest], completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
     
-    func updateGuests(event: Event, isConfirmed: Int, guests: [String], completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
+    func updateGuests(event: Event, guests: [String], plusOne: Bool, completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
     
     func getGuestAnalytics(event: Event, completion: @escaping(EventGuestAnalytics?,Response?) -> Void)
     
@@ -430,8 +430,8 @@ extension CliftApiManager: ApiCalls {
         requestEmptyObject(.addGuests(event: event, guests: guest), completion: completion)
     }
     
-    func updateGuests(event: Event, isConfirmed: Int, guests: [String], completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
-        requestEmptyObject(.updateGuests(event: event, isConfirmed: isConfirmed, guests: guests), completion: completion)
+    func updateGuests(event: Event, guests: [String], plusOne: Bool, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.updateGuests(event: event, guests: guests, plusOne: plusOne), completion: completion)
     }
     
     func getGuestAnalytics(event: Event, completion: @escaping (EventGuestAnalytics?, Response?) -> Void) {

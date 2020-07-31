@@ -270,6 +270,7 @@ extension GuestListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.vc = self
         cell.guestListAssitingStatusImageView?.image = nil
         cell.guestListAssitingStatusStackView.isHidden = false
+        cell.indexCell = indexPath
         if isFiltering {
             cell.setup(eventGuest: self.filteredGuests[indexPath.row])
             cell.setupMenuDropDown()
