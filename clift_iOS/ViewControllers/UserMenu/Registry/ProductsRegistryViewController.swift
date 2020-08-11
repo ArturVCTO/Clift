@@ -49,28 +49,15 @@ class ProductsRegistryViewController: UIViewController {
         self.totalProductsCount = 0
     }
     
-    @IBAction func segmentValueChanged(_ sender: Any) {
-       
-//        if self.registrySegment.selectedSegmentIndex == 1 {
-//            self.addProductsToRegistryButton.isHidden = true
-//            self.actionButton.isHidden = false
-//            self.filterButton.isHidden = true
-//        } else {
-//            self.addProductsToRegistryButton.isHidden = false
-//            self.actionButton.isHidden = true
-//            self.filterButton.isHidden = false
-//        }
-      
-        
-    }
-    
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
         self.totalProductsCount = 0
         if registrySegment.selectedSegmentIndex == 0 {
                   self.getEventProducts(event: self.currentEvent, available: "", gifted: "", filters: [:])
               }else if registrySegment.selectedSegmentIndex == 1 {
+                 print("Entre a segmented control 1")
                  self.getEventProducts(event: self.currentEvent, available: self.currentEvent.id, gifted: "", filters: [:])
               } else {
+            print("Entre a segmented control 2 ")
                 self.loadGiftedAndThanked()
               }
     }
@@ -322,8 +309,15 @@ class ProductsRegistryViewController: UIViewController {
           sharedApiManager.getGiftThanksSummary(event: self.currentEvent, hasBeenThanked: false, hasBeenPaid: true) {(eventProducts, result) in
              if let response = result {
                  if (response.isSuccess()) {
-                     self.eventProducts = eventProducts!
-                     self.eventProductsCollectionView.reloadData()
+                    var gifted:[EventProduct] = []
+                    for gift in eventProducts!
+                    {
+                        if gift.hasBeenPaid || gift.guestData!["user_info"]!.count > 0{
+                            gifted.append(gift)
+                        }
+                    }
+                    self.eventProducts = gifted
+                    self.eventProductsCollectionView.reloadData()
                  }
              }
          }
@@ -349,8 +343,23 @@ extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventProductCell", for: indexPath) as! EventProductCell
+            cell.paidAmount.barHeight = 10
+           
+            //icons initialization
+            cell.creditedIcon.isHidden = true
+            cell.deliveredIcon.isHidden = true
+            cell.thankedIcon.isHidden = true
             
-            cell.setup(eventProduct: self.eventProducts[indexPath.row])
+            cell.creditedIcon.image = nil
+            cell.deliveredIcon.image = nil
+            cell.thankedIcon.image = nil
+            
+             cell.setup(eventProduct: self.eventProducts[indexPath.row])
+            
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.shadowOpacity = 0.5
+            cell.layer.shadowRadius = 2.0
+            cell.layer.shadowOffset = CGSize(width: 20, height: 30)
             return cell
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventPoolCell", for: indexPath) as! EventPoolCell

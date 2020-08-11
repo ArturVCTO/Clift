@@ -17,6 +17,7 @@ class ThankYouUser: Mappable {
     var email: String? = ""
     var lastName: String? = ""
     var name: String? = ""
+    var note: String? = ""
     
     convenience required init?(map: Map) {
         self.init()
@@ -27,5 +28,6 @@ class ThankYouUser: Mappable {
         email <- map["email"]
         lastName <- map["last_name"]
         name <- map["name"]
+        note <- map["note"]
     }
 }

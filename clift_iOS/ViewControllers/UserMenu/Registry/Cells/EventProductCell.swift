@@ -18,79 +18,107 @@ class EventProductCell: UICollectionViewCell {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var eventProductQuantityLabel: UILabel!
     @IBOutlet weak var paidAmount: customProgressView!
-    @IBOutlet weak var giftCollaborators: UILabel!
     @IBOutlet weak var topPriorityView: customView!
+    @IBOutlet weak var thankedIcon: UIImageView!
+    @IBOutlet weak var creditedIcon: UIImageView!
+    @IBOutlet weak var deliveredIcon: UIImageView!
     @IBOutlet weak var giftedLabel: UILabel!
-    @IBOutlet weak var sentImageView: UIImageView!
-    @IBOutlet weak var quantityImageView: UIImageView!
     @IBOutlet weak var giftedCheckmark: UIImageView!
+    @IBOutlet weak var collaboratorsLeftLabel: UILabel!
     
     func setup(eventProduct: EventProduct) {
-        var fulfilled = false
         
         if (eventProduct.isImportant == true) {
             topPriorityView.isHidden = false
-        } else {
+        }
+        else {
             topPriorityView.isHidden = true
         }
-        if (eventProduct.wishableType == "Product") {
+        
+        if (eventProduct.wishableType == "Product")
+        {
+            self.eventProductQuantityLabel.layer.masksToBounds = true
+            self.eventProductQuantityLabel.layer.cornerRadius = 5
             self.eventProductName.text = eventProduct.product.name
-            self.productPrice.text = "\(self.getPriceStringFormat(value: Double(eventProduct.product.price) as! Double))"
-            self.paidAmount.barHeight = 0.0
+            var string = self.getPriceStringFormat(value: Double(eventProduct.product.price))
+            let substring = string.suffix(string.count-1)
+            self.productPrice.text = "\u{24}\(substring) MXN"
+            
             self.shopProductName.text = eventProduct.product.shop.name
-            self.brandProductName.text = eventProduct.product.brand.name
-            if let imageURL = URL(string:"\(eventProduct.product.imageUrl)") {
+            self.brandProductName.text = eventProduct.product.brand_name
+            
+            if let imageURL = URL(string:"\(eventProduct.product.imageUrl)"){
                 self.eventProductImageView.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
             }
             var isProductGifted = self.isGifted(price: eventProduct.product.price, paidAmount: eventProduct.paidAmount)
+            
+            if eventProduct.hasBeenThanked{
+                self.thankedIcon.isHidden = false
+                self.thankedIcon.image = UIImage(named: "icthankgreen")
+            }
+            
+            if eventProduct.status == "credit"{
+                self.creditedIcon.isHidden = false
+                self.creditedIcon.image = UIImage(named: "iccreditgreen")
+            }
+            
+            if eventProduct.status == "requested"{
+                self.deliveredIcon.isHidden = false
+                self.deliveredIcon.image = UIImage(named: "icdeliveredgreen")
+            }
+            
             if eventProduct.hasBeenPaid {
                 self.giftedLabel.text = "Regalado"
-                self.giftCollaborators.isHidden = false
-                self.quantityImageView.isHidden = false
-                self.giftCollaborators.text = "\(eventProduct.thankYouUser?.name ?? "") \(eventProduct.thankYouUser?.lastName ?? "")"
-
                 self.giftedCheckmark.isHidden = false
-            } else {
+                if eventProduct.status == "pending"{
+                    self.creditedIcon.isHidden = false
+                    self.creditedIcon.image = UIImage(named: "iccreditblack")
+                    self.deliveredIcon.isHidden = false
+                    self.deliveredIcon.image = UIImage(named: "icdeliverblack")
+                }
+                if !eventProduct.hasBeenThanked{
+                    self.thankedIcon.isHidden = false
+                    self.thankedIcon.image = UIImage(named: "icthankblack")
+                }
+            }
+            else{ //has_been_paid = false
+                self.thankedIcon.isHidden = true
+                self.creditedIcon.isHidden = true
+                self.deliveredIcon.isHidden = true
                 self.giftedLabel.text = "Disponible"
-                self.giftCollaborators.isHidden = true
-                self.quantityImageView.isHidden = true
-                self.giftedCheckmark.isHidden = true
-            }
-            if fulfilled {
-                self.sentImageView.isHidden = false
-            } else {
-                self.sentImageView.isHidden = true
-            }
-            
-        } else {
-            self.eventProductName.text = eventProduct.externalProduct.name
-            self.productPrice.text = "\(self.getPriceStringFormat(value: Double(eventProduct.externalProduct.price)))"
-            if let imageURL = URL(string:"\(eventProduct.externalProduct.imageUrl)") {
-                self.eventProductImageView.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
-            }
-            
-            self.paidAmount.barHeight = 0.0
-            
-            var isProductGifted = self.isGifted(price: eventProduct.externalProduct.price, paidAmount: eventProduct.paidAmount)
-            if isProductGifted {
-                self.giftedLabel.text = "Regalado"
-                self.giftCollaborators.isHidden = false
-                self.quantityImageView.isHidden = false
-                self.giftedCheckmark.isHidden = false
-            } else {
-                self.giftedLabel.text = "Disponible"
-                self.giftCollaborators.isHidden = true
-                self.quantityImageView.isHidden = true
                 self.giftedCheckmark.isHidden = true
             }
             
-            if fulfilled {
-                self.sentImageView.isHidden = false
-            } else {
-                self.sentImageView.isHidden = true
-            }
+          } else { //Productos externos
+                self.eventProductName.text = eventProduct.externalProduct.name
+                self.productPrice.text = "\(self.getPriceStringFormat(value: Double(eventProduct.externalProduct.price)))"
+                if let imageURL = URL(string:"\(eventProduct.externalProduct.imageUrl)") {
+                    self.eventProductImageView.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
+                }
+               
+                if(eventProduct.collaborators == 0){
+                    self.paidAmount.barHeight = 0.0
+                }
+                
+                var isProductGifted = self.isGifted(price: eventProduct.externalProduct.price, paidAmount: eventProduct.paidAmount)
+                if isProductGifted {
+                    self.giftedLabel.text = "Regalado"
+                    self.giftedCheckmark.isHidden = false
+                } else {
+                    self.giftedLabel.text = "Disponible"
+                    self.giftedCheckmark.isHidden = true
+                }
         }
-        self.eventProductQuantityLabel.text = "Necesita: \(eventProduct.quantity)"
+        if(eventProduct.collaborators > 0){ //Es un producto colaborativo
+            self.eventProductQuantityLabel.text = "\(eventProduct.guestData?["user_info"]?.count ?? 0)/\(eventProduct.collaborators)"
+            self.collaboratorsLeftLabel.isHidden = false
+            self.collaboratorsLeftLabel.text = "Faltan: \(eventProduct.collaborators - eventProduct.gifted_quantity) colaboracion(es)"
+            self.paidAmount.progress = Float(eventProduct.gifted_quantity) / Float(eventProduct.collaborators)
+        }else{
+            self.eventProductQuantityLabel.text = "\(eventProduct.gifted_quantity)/\(eventProduct.quantity)"
+            self.paidAmount.barHeight = 0.0
+            self.collaboratorsLeftLabel.isHidden = true
+        }
     }
     
     func isGifted(price: Int,paidAmount: String) -> Bool {

@@ -139,7 +139,7 @@ extension CliftApiManager {
         provider.rx.request(token)
             .debug()
             .map{ response -> Response in
-                print(try response.mapJSON())
+                 print(try response.mapJSON())
                 savedResponse = response
                 return response.removeWrapper(wrapper: wrapper)
             }

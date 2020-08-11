@@ -201,7 +201,7 @@ extension CliftApi: TargetType {
         case .deleteItemFromCart(let cartItem):
             return "cart/\(cartItem.id)/remove_item"
         case .getGiftThanksSummary(let event,_,_):
-            return "events/\(event.id)/registries"
+            return "events/\(event.id)/gift_summary"
         case .requestGifts(let event,_):
             return "events/\(event.id)/request_gifts"
         case.stripeCheckout(let event,_):
@@ -319,10 +319,10 @@ extension CliftApi: TargetType {
         case .updateCartQuantity(_, let quantity):
             return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity]], encoding: JSONEncoding.default)
         case .getGiftThanksSummary(_,let hasBeenThanked, let hasBeenPaid):
-            var parameters = [String: Any]()
-            parameters["gifted"] = hasBeenPaid
-            parameters["thanked"] = hasBeenThanked
-            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+            //var parameters = [String: Any]()
+            //parameters["gifted"] = hasBeenPaid
+            //parameters["thanked"] = hasBeenThanked
+            return .requestParameters(parameters: ["":""], encoding: URLEncoding.default)
         case .requestGifts(_,let ids):
             return .requestParameters(parameters: ["ids": [ids]], encoding: JSONEncoding.default)
         case .stripeCheckout(_,let checkout):
