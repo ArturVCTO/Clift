@@ -50,16 +50,14 @@ class ProductsRegistryViewController: UIViewController {
     }
     
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
-        self.totalProductsCount = 0
         if registrySegment.selectedSegmentIndex == 0 {
-                  self.getEventProducts(event: self.currentEvent, available: "", gifted: "", filters: [:])
-              }else if registrySegment.selectedSegmentIndex == 1 {
-                 print("Entre a segmented control 1")
-                 self.getEventProducts(event: self.currentEvent, available: self.currentEvent.id, gifted: "", filters: [:])
-              } else {
-            print("Entre a segmented control 2 ")
-                self.loadGiftedAndThanked()
-              }
+            self.getEventProducts(event: self.currentEvent, available: "", gifted: "", filters: [:])
+            
+        }else if registrySegment.selectedSegmentIndex == 1{
+            self.loadGiftedAndThanked()
+        }else{
+            self.getEventPoolsTab(event: self.currentEvent)
+        }
     }
     
     @IBAction func changeBarAnimation(_ sender: Any) {
@@ -281,13 +279,20 @@ class ProductsRegistryViewController: UIViewController {
     }
     
     func getEventProducts(event: Event,available: String, gifted: String, filters: [String : Any]) {
+        self.registrySegment.isEnabled = false
+        self.totalProductsCount = 0
+        self.eventProducts = []
+        self.eventProductsCollectionView.reloadData()
+        self.totalProductsCountLabel.text = "Cargando..."
         sharedApiManager.getEventProducts(event: event, available: available, gifted: gifted, filters: filters) { (eventProducts, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.eventProducts = eventProducts!
                     self.totalProductsCount += eventProducts!.count
                     self.getEventPools(event: self.currentEvent)
+                    self.loadTotalProducts()
                 }
+                self.registrySegment.isEnabled = true
             }
         }
     }
@@ -298,14 +303,39 @@ class ProductsRegistryViewController: UIViewController {
                 if (response.isSuccess()) {
                     self.eventPools = pools!
                     self.totalProductsCount += pools!.count
-                    self.loadTotalProducts()
                     self.eventProductsCollectionView.reloadData()
                 }
             }
         }
     }
     
+    func getEventPoolsTab(event: Event) {
+        self.registrySegment.isEnabled = false
+        self.totalProductsCount = 0
+        self.eventProducts = []
+        self.eventPools = []
+        self.eventProductsCollectionView.reloadData()
+        self.totalProductsCountLabel.text = "Cargando..."
+        sharedApiManager.getEventPools(event: event) {(pools, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.eventPools = pools!
+                    self.totalProductsCount += pools!.count
+                    self.eventProductsCollectionView.reloadData()
+                    self.loadTotalProducts()
+                }
+            self.registrySegment.isEnabled = true
+            }
+        }
+    }
+    
     func loadGiftedAndThanked() {
+        self.registrySegment.isEnabled = false
+        self.totalProductsCount = 0
+        self.eventProducts = []
+        self.eventPools = []
+        self.eventProductsCollectionView.reloadData()
+        self.totalProductsCountLabel.text = "Cargando..."
           sharedApiManager.getGiftThanksSummary(event: self.currentEvent, hasBeenThanked: false, hasBeenPaid: true) {(eventProducts, result) in
              if let response = result {
                  if (response.isSuccess()) {
@@ -313,12 +343,16 @@ class ProductsRegistryViewController: UIViewController {
                     for gift in eventProducts!
                     {
                         if gift.hasBeenPaid || gift.guestData!["user_info"]!.count > 0{
+                            self.totalProductsCount += 1
                             gifted.append(gift)
                         }
                     }
+                    
                     self.eventProducts = gifted
                     self.eventProductsCollectionView.reloadData()
+                    self.loadTotalProducts()
                  }
+                self.registrySegment.isEnabled = true
              }
          }
       }
