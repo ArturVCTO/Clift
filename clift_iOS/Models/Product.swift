@@ -17,6 +17,7 @@ class Product: Mappable {
     var name = ""
     var price = 0
     var brand = Brand()
+    var brand_name = ""
     var sku = ""
     var description = ""
     var specs = ""
@@ -52,6 +53,7 @@ class Product: Mappable {
         inStock <- map["in_stock"]
         isInEvent <- map["is_in_event"]
         categories <- map["categories"]
+        brand_name <- map["brand_name"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {

@@ -14,6 +14,12 @@ public extension String {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: self)
     }
+
+    func isValidPhone() -> Bool {
+        let phoneRegex = "[0-9]{8,10}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phoneTest.evaluate(with: self)
+    }
     
     func stringToDate() -> Date {
         let dateFormatter = DateFormatter()

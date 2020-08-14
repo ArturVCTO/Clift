@@ -20,7 +20,7 @@ class ProductsRegistryViewController: UIViewController {
     var giftedSelected = ""
     var availableSelected = ""
     let buttonBar = UIView()
-    var selectedIndexPaths = [IndexPath]()
+    var selectedIndexPath = IndexPath()
     var totalProductsCount = Int()
     @IBOutlet weak var addProductsToRegistryButton: customButton!
     @IBOutlet weak var actionButton: customButton!
@@ -49,30 +49,15 @@ class ProductsRegistryViewController: UIViewController {
         self.totalProductsCount = 0
     }
     
-    @IBAction func segmentValueChanged(_ sender: Any) {
-       
-//        if self.registrySegment.selectedSegmentIndex == 1 {
-//            self.addProductsToRegistryButton.isHidden = true
-//            self.actionButton.isHidden = false
-//            self.filterButton.isHidden = true
-//        } else {
-//            self.addProductsToRegistryButton.isHidden = false
-//            self.actionButton.isHidden = true
-//            self.filterButton.isHidden = false
-//        }
-      
-        
-    }
-    
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
-        self.totalProductsCount = 0
         if registrySegment.selectedSegmentIndex == 0 {
-                  self.getEventProducts(event: self.currentEvent, available: "", gifted: "", filters: [:])
-              }else if registrySegment.selectedSegmentIndex == 1 {
-                 self.getEventProducts(event: self.currentEvent, available: self.currentEvent.id, gifted: "", filters: [:])
-              } else {
-                self.loadGiftedAndThanked()
-              }
+            self.getEventProducts(event: self.currentEvent, available: "", gifted: "", filters: [:])
+            
+        }else if registrySegment.selectedSegmentIndex == 1{
+            self.loadGiftedAndThanked()
+        }else{
+            self.getEventPoolsTab(event: self.currentEvent)
+        }
     }
     
     @IBAction func changeBarAnimation(_ sender: Any) {
@@ -196,27 +181,27 @@ class ProductsRegistryViewController: UIViewController {
     }
     
     func importantActionButtonPressed(alert: UIAlertAction) {
-        for indexPath in selectedIndexPaths {
-            let eventProductImportantBool = self.eventProducts[indexPath.row].isImportant
-            
-            self.updateEventProductToImportant(eventProduct: self.eventProducts[indexPath.row],importantBool: !eventProductImportantBool)
+        loadEvent()
+        if registrySegment.selectedSegmentIndex == 2 || selectedIndexPath.section == 1{
+            let eventPoolImportantBool = self.eventPools[selectedIndexPath.row].isImportant
+            self.updateEventPoolToImportant(event: self.currentEvent, eventPool: self.eventPools[selectedIndexPath.row],importantBool: !eventPoolImportantBool)
+        }
+        else{
+            let eventProductImportantBool = self.eventProducts[selectedIndexPath.row].isImportant
+            self.updateEventProductToImportant(eventProduct: self.eventProducts[selectedIndexPath.row],importantBool: !eventProductImportantBool)
         }
     }
     
     func collaborativeActionButtonPressed(alert: UIAlertAction) {
-        for indexPath in selectedIndexPaths {
-                 let eventProductCollaborativeBool = self.eventProducts[indexPath.row].isCollaborative
-                 
-                 self.updateEventProductToCollaborative(eventProduct: self.eventProducts[indexPath.row],collaborativeBool:  !eventProductCollaborativeBool)
-             }
+           let eventProductCollaborativeBool = self.eventProducts[selectedIndexPath.row].isCollaborative
+           
+           self.updateEventProductToCollaborative(eventProduct: self.eventProducts[selectedIndexPath.row],collaborativeBool:  !eventProductCollaborativeBool)
     }
     
     func requestGift(alert: UIAlertAction) {
         var requestedGifts: [EventProduct] = []
         
-        for indexPath in selectedIndexPaths {
-            requestedGifts.append(self.eventProducts[indexPath.row])
-        }
+        requestedGifts.append(self.eventProducts[selectedIndexPath.row])
         
         if #available(iOS 13.0, *) {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "initialGiftShippingVC") as! InitialGiftShippingViewController
@@ -263,9 +248,29 @@ class ProductsRegistryViewController: UIViewController {
                     } else {
                         self.showMessage(NSLocalizedString("Producto desmarcado como importante", comment: "Update success"),type: .success)
                     }
-                    self.getEventProducts(event: self.currentEvent,available: self.availableSelected, gifted: self.giftedSelected, filters: [:])
-                    self.deselectItems()
-                    self.eventProductsCollectionView.reloadData()
+                    self.eventProducts[self.selectedIndexPath.row].isImportant = eventProduct!.isImportant
+                    let cell = self.eventProductsCollectionView.cellForItem(at: self.selectedIndexPath) as! EventProductCell
+                    cell.topPriorityView.isHidden = !cell.topPriorityView.isHidden
+                    
+                }
+            }
+        }
+    }
+    
+    func updateEventPoolToImportant(event: Event, eventPool: EventPool, importantBool: Bool) {
+        print(event.id)
+        sharedApiManager.updateEventPoolAsImportant(event: event, eventPool: eventPool,setImportant: importantBool) { (eventPool,result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.totalProductsCount = 0
+                    if eventPool!.isImportant {
+                        self.showMessage(NSLocalizedString("Sobre marcado como importante", comment: "Update success"),type: .success)
+                    } else {
+                        self.showMessage(NSLocalizedString("Sobre desmarcado como importante", comment: "Update success"),type: .success)
+                    }
+                    self.eventPools[self.selectedIndexPath.row].isImportant = eventPool!.isImportant
+                    let cell = self.eventProductsCollectionView.cellForItem(at: self.selectedIndexPath) as! EventPoolCell
+                    cell.isPriorityImageView.isHidden = !cell.isPriorityImageView.isHidden
                 }
             }
         }
@@ -294,37 +299,81 @@ class ProductsRegistryViewController: UIViewController {
     }
     
     func getEventProducts(event: Event,available: String, gifted: String, filters: [String : Any]) {
+        self.registrySegment.isEnabled = false
+        self.totalProductsCount = 0
+        self.eventProducts = []
+        self.eventProductsCollectionView.reloadData()
+        self.totalProductsCountLabel.text = "Cargando..."
         sharedApiManager.getEventProducts(event: event, available: available, gifted: gifted, filters: filters) { (eventProducts, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.eventProducts = eventProducts!
                     self.totalProductsCount += eventProducts!.count
                     self.getEventPools(event: self.currentEvent)
+                    self.loadTotalProducts()
                 }
+                self.registrySegment.isEnabled = true
             }
         }
     }
     
     func getEventPools(event: Event) {
+        print(event.id)
         sharedApiManager.getEventPools(event: event) {(pools, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.eventPools = pools!
                     self.totalProductsCount += pools!.count
-                    self.loadTotalProducts()
                     self.eventProductsCollectionView.reloadData()
                 }
             }
         }
     }
     
+    func getEventPoolsTab(event: Event) {
+        self.registrySegment.isEnabled = false
+        self.totalProductsCount = 0
+        self.eventProducts = []
+        self.eventPools = []
+        self.eventProductsCollectionView.reloadData()
+        self.totalProductsCountLabel.text = "Cargando..."
+        sharedApiManager.getEventPools(event: event) {(pools, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.eventPools = pools!
+                    self.totalProductsCount += pools!.count
+                    self.eventProductsCollectionView.reloadData()
+                    self.loadTotalProducts()
+                }
+            self.registrySegment.isEnabled = true
+            }
+        }
+    }
+    
     func loadGiftedAndThanked() {
+        self.registrySegment.isEnabled = false
+        self.totalProductsCount = 0
+        self.eventProducts = []
+        self.eventPools = []
+        self.eventProductsCollectionView.reloadData()
+        self.totalProductsCountLabel.text = "Cargando..."
           sharedApiManager.getGiftThanksSummary(event: self.currentEvent, hasBeenThanked: false, hasBeenPaid: true) {(eventProducts, result) in
              if let response = result {
                  if (response.isSuccess()) {
-                     self.eventProducts = eventProducts!
-                     self.eventProductsCollectionView.reloadData()
+                    var gifted:[EventProduct] = []
+                    for gift in eventProducts!
+                    {
+                        if gift.hasBeenPaid || gift.guestData!["user_info"]!.count > 0{
+                            self.totalProductsCount += 1
+                            gifted.append(gift)
+                        }
+                    }
+                    
+                    self.eventProducts = gifted
+                    self.eventProductsCollectionView.reloadData()
+                    self.loadTotalProducts()
                  }
+                self.registrySegment.isEnabled = true
              }
          }
       }
@@ -333,7 +382,7 @@ class ProductsRegistryViewController: UIViewController {
         for indexPath in self.eventProductsCollectionView.indexPathsForSelectedItems! {
             self.eventProductsCollectionView.deselectItem(at: indexPath, animated: true)
         }
-        self.selectedIndexPaths.removeAll()
+        self.selectedIndexPath.removeLast()
         self.checkIfSelectedCells()
     }
     
@@ -349,11 +398,52 @@ extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventProductCell", for: indexPath) as! EventProductCell
+            cell.paidAmount.barHeight = 10
+           
+            //icons initialization
+            cell.creditedIcon.isHidden = true
+            cell.deliveredIcon.isHidden = true
+            cell.thankedIcon.isHidden = true
+            cell.topPriorityView.isHidden = true
+            cell.eventProductImageView.image =  UIImage(named: "cliftplaceholder")!
             
-            cell.setup(eventProduct: self.eventProducts[indexPath.row])
+            cell.creditedIcon.image = nil
+            cell.deliveredIcon.image = nil
+            cell.thankedIcon.image = nil
+            
+            if !cell.isSelected{
+                cell.layer.borderColor = UIColor.clear.cgColor
+                cell.layer.cornerRadius = 4
+                cell.layer.borderWidth = 0
+                cell.isSelected = false
+            }else{
+                cell.layer.cornerRadius = 4
+                cell.layer.borderColor = UIColor.green.cgColor
+                cell.layer.borderWidth = 1
+                cell.isSelected = true
+            }
+            
+             cell.setup(eventProduct: self.eventProducts[indexPath.row])
+            
             return cell
         } else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "eventPoolCell", for: indexPath) as! EventPoolCell
+            
+            cell.eventPoolImageView.image = UIImage(named: "cliftplaceholder")!
+            cell.isPriorityImageView.isHidden = true
+            
+            if !cell.isSelected{
+                cell.layer.borderColor = UIColor.clear.cgColor
+                cell.layer.cornerRadius = 4
+                cell.layer.borderWidth = 0
+                cell.isSelected = false
+            }else{
+                cell.layer.cornerRadius = 4
+                cell.layer.borderColor = UIColor.green.cgColor
+                cell.layer.borderWidth = 1
+                cell.isSelected = true
+            }
+            
             cell.setup(eventPool: self.eventPools[indexPath.row])
             return cell
         } else {
@@ -367,7 +457,7 @@ extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedIndexPaths.append(indexPath)
+        self.selectedIndexPath = indexPath
         self.checkIfSelectedCells()
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.layer.cornerRadius = 4
@@ -375,7 +465,7 @@ extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionV
         cell?.layer.borderWidth = 1
         cell?.isSelected = true
         print("selected")
-        print(self.selectedIndexPaths)
+        print(self.selectedIndexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -387,7 +477,7 @@ extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionV
         cell?.isSelected = false
         print("deselected")
         self.eventProductsCollectionView.deselectItem(at: indexPath, animated: true)
-        self.selectedIndexPaths = self.selectedIndexPaths.dropLast()
+        self.selectedIndexPath = self.selectedIndexPath.dropLast()
     }
     
     func checkIfSelectedCells() {

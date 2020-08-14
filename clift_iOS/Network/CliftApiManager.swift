@@ -139,7 +139,7 @@ extension CliftApiManager {
         provider.rx.request(token)
             .debug()
             .map{ response -> Response in
-                print(try response.mapJSON())
+                 print(try response.mapJSON())
                 savedResponse = response
                 return response.removeWrapper(wrapper: wrapper)
             }
@@ -211,6 +211,8 @@ protocol ApiCalls {
     func createExternalProduct(event: Event, externalProduct: [MultipartFormData], completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
     
     func updateEventProductAsImportant(eventProduct: EventProduct, setImportant: Bool, completion: @escaping(EventProduct?, Response?) -> Void)
+
+    func updateEventPoolAsImportant(event: Event, eventPool: EventPool, setImportant: Bool, completion: @escaping(EventPool?, Response?) -> Void)
     
     func updateEventProductAsCollaborative(eventProduct: EventProduct, setCollaborative: Bool, completion: @escaping(EventProduct?, Response?) -> Void)
     
@@ -392,6 +394,10 @@ extension CliftApiManager: ApiCalls {
     
     func updateEventProductAsImportant(eventProduct: EventProduct,setImportant: Bool, completion: @escaping (EventProduct?, Response?) -> Void) {
         requestObjectWithResponse(.updateEventProductAsImportant(eventProduct: eventProduct,setImportant: setImportant), type: EventProduct.self, completion: completion, wrapper: "event_product")
+    }
+
+    func updateEventPoolAsImportant(event: Event, eventPool: EventPool,setImportant: Bool, completion: @escaping (EventPool?, Response?) -> Void) {
+        requestObjectWithResponse(.updateEventPoolAsImportant(event: event, eventPool: eventPool,setImportant: setImportant), type: EventPool.self, completion: completion, wrapper: "event_product")
     }
     
     func updateEventProductAsCollaborative(eventProduct: EventProduct, setCollaborative: Bool, completion: @escaping (EventProduct?, Response?) -> Void) {

@@ -42,6 +42,7 @@ enum CliftApi {
     case createExternalProducts(event: Event,externalProduct: [MultipartFormData])
     case createEventPools(event: Event,pool: [MultipartFormData])
     case updateEventProductAsImportant(eventProduct: EventProduct,setImportant: Bool)
+    case updateEventPoolAsImportant(event: Event, eventPool: EventPool,setImportant: Bool)
     case updateEventProductAsCollaborative(eventProduct: EventProduct,setCollaborative: Bool)
     case getEventPools(event: Event)
     case getEventSummary(event: Event)
@@ -142,6 +143,8 @@ extension CliftApi: TargetType {
             return "events/\(event.id)/event_pools"
         case .updateEventProductAsImportant(let eventProduct,_):
             return "event_products/\(eventProduct.id)/set_important"
+        case .updateEventPoolAsImportant(let event, let eventPool,_):
+            return "events/\(event.id)/event_pools/\(eventPool.id)"
         case .updateEventProductAsCollaborative(let eventProduct,_):
             return "event_products/\(eventProduct.id)/set_collaborative"
         case .getEventPools(let event):
@@ -201,7 +204,7 @@ extension CliftApi: TargetType {
         case .deleteItemFromCart(let cartItem):
             return "cart/\(cartItem.id)/remove_item"
         case .getGiftThanksSummary(let event,_,_):
-            return "events/\(event.id)/registries"
+            return "events/\(event.id)/gift_summary"
         case .requestGifts(let event,_):
             return "events/\(event.id)/request_gifts"
         case.stripeCheckout(let event,_):
@@ -227,7 +230,7 @@ extension CliftApi: TargetType {
             return .post
         case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
             return .put
         case .deleteLogoutSession,.deleteProductFromRegistry,.deleteBankAccount,.deleteItemFromCart:
             return .delete
@@ -279,6 +282,8 @@ extension CliftApi: TargetType {
             return .uploadMultipart(externalProduct)
         case .updateEventProductAsImportant(_,let setImportant):
             return .requestParameters(parameters: ["event_product": ["set_important" : setImportant]], encoding: JSONEncoding.default)
+         case .updateEventPoolAsImportant(_, _,let isImportant):
+            return .requestParameters(parameters: ["event_pool": ["is_important" : isImportant]], encoding: JSONEncoding.default)
         case .updateEventProductAsCollaborative(_,let setCollaborative):
             return .requestParameters(parameters: ["event_product": ["set_collaborative" : setCollaborative]], encoding: JSONEncoding.default)
         case .getEventProducts(_,let available,let gifted, var filters):
@@ -319,10 +324,10 @@ extension CliftApi: TargetType {
         case .updateCartQuantity(_, let quantity):
             return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity]], encoding: JSONEncoding.default)
         case .getGiftThanksSummary(_,let hasBeenThanked, let hasBeenPaid):
-            var parameters = [String: Any]()
-            parameters["gifted"] = hasBeenPaid
-            parameters["thanked"] = hasBeenThanked
-            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+            //var parameters = [String: Any]()
+            //parameters["gifted"] = hasBeenPaid
+            //parameters["thanked"] = hasBeenThanked
+            return .requestParameters(parameters: ["":""], encoding: URLEncoding.default)
         case .requestGifts(_,let ids):
             return .requestParameters(parameters: ["ids": [ids]], encoding: JSONEncoding.default)
         case .stripeCheckout(_,let checkout):
