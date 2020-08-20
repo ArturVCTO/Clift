@@ -206,6 +206,8 @@ protocol ApiCalls {
     
     func getEventProducts(event: Event, available: String, gifted: String, filters: [String : Any] ,completion: @escaping([EventProduct]?, Response?) -> Void)
     
+    func getEventProductsPagination(event: Event, available: String, gifted: String, filters: [String : Any] ,completion: @escaping(Pagination?, Response?) -> Void)
+    
     func createEventPool(event: Event, pool: [MultipartFormData], completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
     
     func createExternalProduct(event: Event, externalProduct: [MultipartFormData], completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
@@ -217,6 +219,8 @@ protocol ApiCalls {
     func updateEventProductAsCollaborative(eventProduct: EventProduct, setCollaborative: Bool, completion: @escaping(EventProduct?, Response?) -> Void)
     
     func getEventPools(event: Event, completion: @escaping([EventPool]?, Response?) -> Void)
+    
+    func getEventPoolsPagination(event: Event, completion: @escaping(Pagination?, Response?) -> Void)
     
     func getEventSummary(event: Event, completion: @escaping([EventRegistrySummary]?, Response?) -> Void)
     
@@ -272,7 +276,9 @@ protocol ApiCalls {
     
     func deleteItemFromCart(cartItem: CartItem, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
     
-    func getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, completion: @escaping([EventProduct]?, Response?) -> Void)
+    func getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, filters: [String:Any], completion: @escaping([EventProduct]?, Response?) -> Void)
+    
+    func getGiftThanksSummaryPagination(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, filters: [String:Any], completion: @escaping(Pagination?, Response?) -> Void)
     
     func requestGifts(event: Event, ids: [String], completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
     
@@ -384,6 +390,11 @@ extension CliftApiManager: ApiCalls {
         requestArrayWithResponse(.getEventProducts(event: event,available: available, gifted: gifted, filters: filters), type: EventProduct.self, completion: completion, wrapper: "registries")
     }
     
+    func getEventProductsPagination(event: Event, available: String, gifted: String, filters: [String : Any ], completion: @escaping(Pagination?, Response?) -> Void) {
+        requestObjectWithResponse(.getEventProductsPagination(event: event,available: available, gifted: gifted, filters: filters), type: Pagination.self, completion: completion, wrapper: "meta")
+    }
+    
+    
     func createEventPool(event: Event, pool: [MultipartFormData], completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
         requestEmptyObject(.createEventPools(event: event, pool: pool), completion: completion)
     }
@@ -406,6 +417,10 @@ extension CliftApiManager: ApiCalls {
     
     func getEventPools(event: Event, completion: @escaping ([EventPool]?, Response?) -> Void) {
         requestArrayWithResponse(.getEventPools(event: event), type: EventPool.self, completion: completion, wrapper: "event_pools")
+    }
+    
+    func getEventPoolsPagination(event: Event, completion: @escaping (Pagination?, Response?) -> Void) {
+        requestObjectWithResponse(.getEventPools(event: event), type: Pagination.self, completion: completion, wrapper: "meta")
     }
     
     func getEventSummary(event: Event, completion: @escaping ([EventRegistrySummary]?, Response?) -> Void) {
@@ -516,8 +531,12 @@ extension CliftApiManager: ApiCalls {
         requestEmptyObject(.deleteItemFromCart(cartItem: cartItem), completion: completion)
     }
     
-    func getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, completion: @escaping ([EventProduct]?, Response?) -> Void) {
-        requestArrayWithResponse(.getGiftThanksSummary(event: event, hasBeenThanked: hasBeenThanked, hasBeenPaid: hasBeenPaid), type: EventProduct.self, completion: completion, wrapper: "registries")
+    func getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, filters: [String:Any], completion: @escaping ([EventProduct]?, Response?) -> Void) {
+        requestArrayWithResponse(.getGiftThanksSummary(event: event, hasBeenThanked: hasBeenThanked, hasBeenPaid: hasBeenPaid, filters: filters), type: EventProduct.self, completion: completion, wrapper: "registries")
+    }
+    
+    func getGiftThanksSummaryPagination(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, filters: [String:Any], completion: @escaping (Pagination?, Response?) -> Void) {
+        requestObjectWithResponse(.getGiftThanksSummary(event: event, hasBeenThanked: hasBeenThanked, hasBeenPaid: hasBeenPaid, filters: filters), type: Pagination.self, completion: completion, wrapper: "meta")
     }
     
     func requestGifts(event: Event, ids: [String], completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {

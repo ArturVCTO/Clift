@@ -194,6 +194,7 @@
 		85D1161D2D04F9B25477BAE8 /* Pods_clift_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */; };
 		A9D3728582D9B5913F8C5C14 /* Pods_clift_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */; };
 		CE1BC9F324D3766C003D49BE /* GuestInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BC9F224D3766C003D49BE /* GuestInfoViewController.swift */; };
+		CE66B16824EC3AB200AE91C7 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE66B16724EC3AB200AE91C7 /* Pagination.swift */; };
 		CE8D41C424BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
 		CE8D41C524BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
 		CE8D41C624BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
@@ -412,6 +413,7 @@
 		A9E9B21D2B9B464893AAAFB0 /* Pods-clift_iOS.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.canary.xcconfig"; sourceTree = "<group>"; };
 		C249504948AE023D846380FD /* Pods-clift_iOS.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.mock.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.mock.xcconfig"; sourceTree = "<group>"; };
 		CE1BC9F224D3766C003D49BE /* GuestInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestInfoViewController.swift; sourceTree = "<group>"; };
+		CE66B16724EC3AB200AE91C7 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-Bold.ttf"; sourceTree = "<group>"; };
 		CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.canary.xcconfig"; sourceTree = "<group>"; };
@@ -836,6 +838,7 @@
 				46DC795123E943400013C306 /* ThankYouUser.swift */,
 				4604A334230331890041F9AA /* User.swift */,
 				4677DA122415D0F800A2CE28 /* VerifiedResponse.swift */,
+				CE66B16724EC3AB200AE91C7 /* Pagination.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1336,6 +1339,7 @@
 				465E09B123130858006776D1 /* customView.swift in Sources */,
 				46C07A1A23D26E460091CDDA /* StripeApiClient.swift in Sources */,
 				466E99DF246DA62A009E94E3 /* OnboardingShippingAddress.swift in Sources */,
+				CE66B16824EC3AB200AE91C7 /* Pagination.swift in Sources */,
 				463A304E2321785A00C42347 /* ProductInformationTableViewController.swift in Sources */,
 				465C82192362159D00DAC090 /* AddProductByUrlViewController.swift in Sources */,
 				4604A3372303319F0041F9AA /* Spouse.swift in Sources */,
@@ -1500,8 +1504,8 @@
 				API_BASE_URL_ENDPOINT = "http://api.clift.axented.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C565M49C65;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1626,8 +1630,8 @@
 				API_BASE_URL_ENDPOINT = "https://ezmock.herokuapp.com/api/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C565M49C65;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1807,8 +1811,8 @@
 				API_BASE_URL_ENDPOINT = "http://api.clift.axented.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = C565M49C65;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1831,7 +1835,7 @@
 				API_BASE_URL_ENDPOINT = "https://api.cliftapp.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;

@@ -62,7 +62,7 @@ class SummaryGiftsViewController: UIViewController,UISearchResultsUpdating {
     }
     
     func loadGiftedNotThanked() {
-        sharedApiManager.getGiftThanksSummary(event: self.event!, hasBeenThanked: false, hasBeenPaid: true) {(eventProducts, result) in
+        sharedApiManager.getGiftThanksSummary(event: self.event!, hasBeenThanked: false, hasBeenPaid: true, filters: [:]) {(eventProducts, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.eventProducts = eventProducts!
@@ -73,7 +73,7 @@ class SummaryGiftsViewController: UIViewController,UISearchResultsUpdating {
     }
     
     func loadGiftedAndThanked() {
-        sharedApiManager.getGiftThanksSummary(event: self.event!, hasBeenThanked: true, hasBeenPaid: true) {(eventProducts, result) in
+        sharedApiManager.getGiftThanksSummary(event: self.event!, hasBeenThanked: true, hasBeenPaid: true, filters: [:]) {(eventProducts, result) in
            if let response = result {
                if (response.isSuccess()) {
                    self.eventProducts = eventProducts!

@@ -15,6 +15,7 @@ import GSMessages
 class ProductsRegistryViewController: UIViewController {
     
     var currentEvent = Event()
+    var pagination = Pagination()
     var eventProducts = [EventProduct]()
     var eventPools = [EventPool]()
     var giftedSelected = ""
@@ -22,14 +23,21 @@ class ProductsRegistryViewController: UIViewController {
     let buttonBar = UIView()
     var selectedIndexPath = IndexPath()
     var totalProductsCount = Int()
+    var filters = Dictionary<String,Any>()
+    
+    @IBOutlet weak var navigationView: UIView!
     @IBOutlet weak var addProductsToRegistryButton: customButton!
     @IBOutlet weak var actionButton: customButton!
     var productRegistryGiftedProduct = EventProduct()
     @IBOutlet weak var totalProductsCountLabel: UILabel!
     @IBOutlet weak var eventProductsCollectionView: UICollectionView!
     @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var firstPageButton: UIButton!
+    @IBOutlet weak var currentPageLabel: UILabel!
+    @IBOutlet weak var backPageButton: UIButton!
+    @IBOutlet weak var nextPageButton: UIButton!
+    @IBOutlet weak var lastPageButton: UIButton!
     @IBOutlet weak var registrySegment: UISegmentedControl!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.eventProductsCollectionView.delegate = self
@@ -37,7 +45,9 @@ class ProductsRegistryViewController: UIViewController {
         self.eventProductsCollectionView.allowsMultipleSelection = false
         self.styleSegmentControl()
         self.loadEvent()
-        self.getEventProducts(event: currentEvent, available: availableSelected, gifted: giftedSelected, filters: [:])
+        self.getEventProducts(event: currentEvent, available: availableSelected, gifted: giftedSelected, filters: ["page": 1])
+        self.navigationView.layer.cornerRadius = 20
+        self.navigationView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     func loadTotalProducts() {
@@ -49,10 +59,69 @@ class ProductsRegistryViewController: UIViewController {
         self.totalProductsCount = 0
     }
     
+    @IBAction func firstPageButton(_ sender: UIButton) {
+        self.filters["page"] = 1
+        if(registrySegment.selectedSegmentIndex == 0){
+            self.getEventProducts(event: self.currentEvent, available: availableSelected, gifted: giftedSelected, filters: self.filters)
+        }
+        else if(registrySegment.selectedSegmentIndex == 1){
+            self.loadGiftedAndThanked()
+        }
+        else{
+            self.getEventPoolsTab(event: self.currentEvent)
+        }
+        
+    }
+    @IBAction func backPageButton(_ sender: UIButton) {
+        self.filters["page"] = self.pagination.currentPage - 1
+        if((self.filters["page"] as! Int) < 1){
+            self.filters["page"] = 1
+        }
+        
+        if(registrySegment.selectedSegmentIndex == 0){
+            self.getEventProducts(event: self.currentEvent, available: availableSelected, gifted: giftedSelected, filters: self.filters)
+        }
+        else if(registrySegment.selectedSegmentIndex == 1){
+            self.loadGiftedAndThanked()
+        }
+        else{
+            self.getEventPoolsTab(event: self.currentEvent)
+        }
+    }
+    
+    @IBAction func nextPageButton(_ sender: UIButton) {
+        self.filters["page"] = self.pagination.currentPage + 1
+        if(self.filters["page"] as! Int > self.pagination.totalPages){
+            self.filters["page"] = self.pagination.totalPages
+        }
+        if(registrySegment.selectedSegmentIndex == 0){
+            self.getEventProducts(event: self.currentEvent, available: availableSelected, gifted: giftedSelected, filters: self.filters)
+        }
+        else if(registrySegment.selectedSegmentIndex == 1){
+            self.loadGiftedAndThanked()
+        }
+        else{
+            self.getEventPoolsTab(event: self.currentEvent)
+        }
+    }
+    @IBAction func lastPageButton(_ sender: UIButton) {
+        self.filters["page"] = self.pagination.totalPages
+        if(registrySegment.selectedSegmentIndex == 0){
+            self.getEventProducts(event: self.currentEvent, available: availableSelected, gifted: giftedSelected, filters: self.filters)
+        }
+        else if(registrySegment.selectedSegmentIndex == 1){
+            self.loadGiftedAndThanked()
+        }
+        else{
+            self.getEventPoolsTab(event: self.currentEvent)
+        }
+    }
+    
+    
     @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
+        self.filters["page"] = 1
         if registrySegment.selectedSegmentIndex == 0 {
             self.getEventProducts(event: self.currentEvent, available: "", gifted: "", filters: [:])
-            
         }else if registrySegment.selectedSegmentIndex == 1{
             self.loadGiftedAndThanked()
         }else{
@@ -65,7 +134,6 @@ class ProductsRegistryViewController: UIViewController {
           self.buttonBar.frame.origin.x = (self.registrySegment.frame.width / CGFloat(self.registrySegment.numberOfSegments)) * CGFloat(self.registrySegment.selectedSegmentIndex)
         }
     }
-    
     
     func loadEvent() {
         let realm = try! Realm()
@@ -298,18 +366,35 @@ class ProductsRegistryViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func getEventProducts(event: Event,available: String, gifted: String, filters: [String : Any]) {
+    func prepareForRestartSegment(){
         self.registrySegment.isEnabled = false
+        self.nextPageButton.isEnabled = false
+        self.lastPageButton.isEnabled = false
+        self.firstPageButton.isEnabled = false
+        self.backPageButton.isEnabled = false
+        self.currentPageLabel.text = "#"
         self.totalProductsCount = 0
         self.eventProducts = []
+        self.eventPools = []
         self.eventProductsCollectionView.reloadData()
         self.totalProductsCountLabel.text = "Cargando..."
+    }
+    
+    func getEventProducts(event: Event,available: String, gifted: String, filters: [String : Any]) {
+        self.prepareForRestartSegment()
         sharedApiManager.getEventProducts(event: event, available: available, gifted: gifted, filters: filters) { (eventProducts, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.eventProducts = eventProducts!
                     self.totalProductsCount += eventProducts!.count
                     self.getEventPools(event: self.currentEvent)
+                    sharedApiManager.getEventProductsPagination(event: event, available: available, gifted: gifted, filters: self.filters) { (pagination, resultPagination) in
+                        if let response = resultPagination {
+                            if (response.isSuccess()) {
+                                self.setPaginationButtons(pagination: pagination!)
+                            }
+                        }
+                    }
                     self.loadTotalProducts()
                 }
                 self.registrySegment.isEnabled = true
@@ -317,8 +402,38 @@ class ProductsRegistryViewController: UIViewController {
         }
     }
     
+    func setPaginationButtons(pagination: Pagination){
+        self.pagination = pagination
+        self.currentPageLabel.text =
+            String(self.pagination.currentPage)
+        if(self.pagination.currentPage == 1 && self.pagination.currentPage == self.pagination.totalPages){
+            self.nextPageButton.isEnabled = false
+            self.lastPageButton.isEnabled = false
+            self.firstPageButton.isEnabled = false
+            self.backPageButton.isEnabled = false
+        }
+        else if(self.pagination.currentPage == self.pagination.totalPages){
+            self.nextPageButton.isEnabled = false
+            self.lastPageButton.isEnabled = false
+            self.firstPageButton.isEnabled = true
+            self.backPageButton.isEnabled = true
+        }
+        else if(self.pagination.currentPage == 1){
+            self.nextPageButton.isEnabled = true
+            self.lastPageButton.isEnabled = true
+            self.firstPageButton.isEnabled = false
+            self.backPageButton.isEnabled = false
+        }
+        else{
+            self.nextPageButton.isEnabled = true
+            self.lastPageButton.isEnabled = true
+            self.firstPageButton.isEnabled = true
+            self.backPageButton.isEnabled = true
+        }
+    }
+ 
+    
     func getEventPools(event: Event) {
-        print(event.id)
         sharedApiManager.getEventPools(event: event) {(pools, result) in
             if let response = result {
                 if (response.isSuccess()) {
@@ -331,18 +446,20 @@ class ProductsRegistryViewController: UIViewController {
     }
     
     func getEventPoolsTab(event: Event) {
-        self.registrySegment.isEnabled = false
-        self.totalProductsCount = 0
-        self.eventProducts = []
-        self.eventPools = []
-        self.eventProductsCollectionView.reloadData()
-        self.totalProductsCountLabel.text = "Cargando..."
+        self.prepareForRestartSegment()
         sharedApiManager.getEventPools(event: event) {(pools, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.eventPools = pools!
                     self.totalProductsCount += pools!.count
                     self.eventProductsCollectionView.reloadData()
+//                    sharedApiManager.getEventPoolsPagination(event: self.currentEvent) { (pagination, result) in
+//                        if let response = result{
+//                            if(response.isSuccess()){
+//                                self.setPaginationButtons(pagination: pagination!)
+//                            }
+//                        }
+//                    }
                     self.loadTotalProducts()
                 }
             self.registrySegment.isEnabled = true
@@ -351,26 +468,19 @@ class ProductsRegistryViewController: UIViewController {
     }
     
     func loadGiftedAndThanked() {
-        self.registrySegment.isEnabled = false
-        self.totalProductsCount = 0
-        self.eventProducts = []
-        self.eventPools = []
-        self.eventProductsCollectionView.reloadData()
-        self.totalProductsCountLabel.text = "Cargando..."
-          sharedApiManager.getGiftThanksSummary(event: self.currentEvent, hasBeenThanked: false, hasBeenPaid: true) {(eventProducts, result) in
+        self.prepareForRestartSegment()
+        sharedApiManager.getGiftThanksSummary(event: self.currentEvent, hasBeenThanked: false, hasBeenPaid: true, filters: self.filters) {(eventProducts, result) in
              if let response = result {
                  if (response.isSuccess()) {
-                    var gifted:[EventProduct] = []
-                    for gift in eventProducts!
-                    {
-                        if gift.hasBeenPaid || gift.guestData!["user_info"]!.count > 0{
-                            self.totalProductsCount += 1
-                            gifted.append(gift)
+                    self.eventProducts = eventProducts!
+                    self.eventProductsCollectionView.reloadData()
+                    sharedApiManager.getGiftThanksSummaryPagination(event: self.currentEvent, hasBeenThanked: true, hasBeenPaid: true, filters: self.filters){ (pagination, result) in
+                        if let response = result{
+                            if(response.isSuccess()){
+                                self.setPaginationButtons(pagination: pagination!)
+                            }
                         }
                     }
-                    
-                    self.eventProducts = gifted
-                    self.eventProductsCollectionView.reloadData()
                     self.loadTotalProducts()
                  }
                 self.registrySegment.isEnabled = true
@@ -465,7 +575,6 @@ extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionV
         cell?.layer.borderWidth = 1
         cell?.isSelected = true
         print("selected")
-        print(self.selectedIndexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

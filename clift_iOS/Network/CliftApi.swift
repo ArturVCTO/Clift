@@ -39,6 +39,7 @@ enum CliftApi {
     case getProductsAsLoggedInUser(group: Group,subgroup: Subgroup,event: Event, brand: Brand,shop: Shop, filters: [String : Any], page: Int)
     case getColors
     case getEventProducts(event: Event,available: String,gifted: String, filters: [String : Any])
+    case getEventProductsPagination(event: Event,available: String,gifted: String, filters: [String : Any])
     case createExternalProducts(event: Event,externalProduct: [MultipartFormData])
     case createEventPools(event: Event,pool: [MultipartFormData])
     case updateEventProductAsImportant(eventProduct: EventProduct,setImportant: Bool)
@@ -72,7 +73,8 @@ enum CliftApi {
     case createShoppingCart
     case updateCartQuantity(cartItem: CartItem,quantity: Int)
     case deleteItemFromCart(cartItem: CartItem)
-    case getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool)
+    case getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, filters: [String:Any])
+    case getGiftThanksSummaryPagination(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, filters: [String:Any])
     case requestGifts(event: Event, ids: [String])
     case stripeCheckout(event: Event,checkout: Checkout)
     case getCredits(event: Event)
@@ -136,6 +138,8 @@ extension CliftApi: TargetType {
         case .getColors:
             return "colors"
         case .getEventProducts(let event,_,_,_):
+            return "events/\(event.id)/registries"
+        case .getEventProductsPagination(let event,_,_,_):
             return "events/\(event.id)/registries"
         case .createExternalProducts(let event,_):
             return "events/\(event.id)/external_products"
@@ -203,7 +207,9 @@ extension CliftApi: TargetType {
             return "cart/\(cartItem.id)/update"
         case .deleteItemFromCart(let cartItem):
             return "cart/\(cartItem.id)/remove_item"
-        case .getGiftThanksSummary(let event,_,_):
+        case .getGiftThanksSummary(let event,_,_,_):
+            return "events/\(event.id)/gift_summary"
+        case .getGiftThanksSummaryPagination(let event,_,_,_):
             return "events/\(event.id)/gift_summary"
         case .requestGifts(let event,_):
             return "events/\(event.id)/request_gifts"
@@ -228,7 +234,7 @@ extension CliftApi: TargetType {
         switch self {
         case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.stripeCheckout,.completeStripeAccount:
             return .post
-        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities:
+        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities:
             return .get
         case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
             return .put
@@ -291,6 +297,11 @@ extension CliftApi: TargetType {
             parameters["available"] = available
             parameters["gifted"] = gifted
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .getEventProductsPagination(_,let available,let gifted, var filters):
+            var parameters = filters
+            parameters["available"] = available
+            parameters["gifted"] = gifted
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         case .createInvitation(_,_,let invitation):
             return .requestParameters(parameters: ["invitation":  invitation.toJSON()], encoding: JSONEncoding.default)
         case .updateInvitation(_,let invitation):
@@ -323,11 +334,14 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity, "wishable_type": "Product"]], encoding: JSONEncoding.default)
         case .updateCartQuantity(_, let quantity):
             return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity]], encoding: JSONEncoding.default)
-        case .getGiftThanksSummary(_,let hasBeenThanked, let hasBeenPaid):
-            //var parameters = [String: Any]()
+        case .getGiftThanksSummary(_,let hasBeenThanked, let hasBeenPaid, var parameters):
             //parameters["gifted"] = hasBeenPaid
             //parameters["thanked"] = hasBeenThanked
-            return .requestParameters(parameters: ["":""], encoding: URLEncoding.default)
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .getGiftThanksSummaryPagination(_,let hasBeenThanked, let hasBeenPaid, var parameters):
+            //parameters["gifted"] = hasBeenPaid
+            //parameters["thanked"] = hasBeenThanked
+        return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         case .requestGifts(_,let ids):
             return .requestParameters(parameters: ["ids": [ids]], encoding: JSONEncoding.default)
         case .stripeCheckout(_,let checkout):
