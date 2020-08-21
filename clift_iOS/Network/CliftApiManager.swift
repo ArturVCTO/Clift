@@ -382,6 +382,14 @@ extension CliftApiManager: ApiCalls {
         requestEmptyObject(.deleteProductFromRegistry(productId: productId, eventId: eventId), completion: completion)
     }
     
+    func deleteEventProduct(eventProduct: EventProduct, event: Event, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.deleteEventProduct(eventProduct: eventProduct, event: event), completion: completion)
+    }
+    
+    func deleteEventPool(eventPool: EventPool, event: Event, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.deleteEventPool(eventPool: eventPool, event: event), completion: completion)
+    }
+    
     func getColors(completion: @escaping ([CliftColor]?, Response?) -> Void) {
         requestArrayWithResponse(.getColors, type: CliftColor.self, completion: completion, wrapper: "colors")
     }

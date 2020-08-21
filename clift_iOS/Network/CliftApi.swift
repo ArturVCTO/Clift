@@ -40,6 +40,8 @@ enum CliftApi {
     case getColors
     case getEventProducts(event: Event,available: String,gifted: String, filters: [String : Any])
     case getEventProductsPagination(event: Event,available: String,gifted: String, filters: [String : Any])
+    case deleteEventProduct(eventProduct: EventProduct, event: Event)
+    case deleteEventPool(eventPool: EventPool, event: Event)
     case createExternalProducts(event: Event,externalProduct: [MultipartFormData])
     case createEventPools(event: Event,pool: [MultipartFormData])
     case updateEventProductAsImportant(eventProduct: EventProduct,setImportant: Bool)
@@ -131,6 +133,10 @@ extension CliftApi: TargetType {
             return "events/\(eventId)/products/\(productId)"
         case .deleteProductFromRegistry(let productId, let eventId):
             return "events/\(eventId)/products/\(productId)"
+        case .deleteEventProduct(let eventProduct, let event):
+            return "events/\(event.id)/registries/\(eventProduct.id)"
+        case .deleteEventPool(let eventPool, let event):
+            return "events/\(event.id)/event_pools/\(eventPool.id)"
         case .getBrands:
             return "brands"
         case .getProducts(_,_,_,_,_,_):
@@ -238,7 +244,7 @@ extension CliftApi: TargetType {
             return .get
         case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
             return .put
-        case .deleteLogoutSession,.deleteProductFromRegistry,.deleteBankAccount,.deleteItemFromCart:
+        case .deleteLogoutSession,.deleteProductFromRegistry,.deleteEventProduct,.deleteEventPool,.deleteBankAccount,.deleteItemFromCart:
             return .delete
         }
     }

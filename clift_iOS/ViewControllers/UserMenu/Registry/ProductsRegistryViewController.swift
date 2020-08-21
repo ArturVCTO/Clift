@@ -260,6 +260,44 @@ class ProductsRegistryViewController: UIViewController {
         }
     }
     
+    func removeProductButtonPressed(alert: UIAlertAction) {
+        self.removeProductFromRegistry(eventProduct: self.eventProducts[selectedIndexPath.row], event: self.currentEvent)
+    }
+    
+    func removePoolButtonPressed(alert: UIAlertAction) {
+        self.removePoolFromRegistry(eventPool: self.eventPools[selectedIndexPath.row], event: self.currentEvent)
+    }
+    
+    func removeProductFromRegistry(eventProduct: EventProduct,event: Event) {
+        sharedApiManager.deleteEventProduct(eventProduct: eventProduct, event: event) { (emptyObject, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.showMessage(NSLocalizedString("Producto se ha quitado de tu mesa", comment: "Removed Product Success "),type: .success)
+                        self.getEventProducts(event: self.currentEvent,available: self.availableSelected, gifted: self.giftedSelected, filters: [:])
+                        self.deselectItems()
+                        self.eventProductsCollectionView.reloadData()
+                } else {
+                    self.showMessage(NSLocalizedString("\(emptyObject?.errors.first ?? "Error, intente de nuevo más tarde.")", comment: "Remove  Error"),type: .error)
+                }
+            }
+        }
+    }
+    
+    func removePoolFromRegistry(eventPool: EventPool,event: Event) {
+        sharedApiManager.deleteEventPool(eventPool: eventPool, event: event) { (emptyObject, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.showMessage(NSLocalizedString("Sobre se ha quitado de tu mesa", comment: "Removed Pool Success "),type: .success)
+                        self.getEventPools(event: event)
+                        self.deselectItems()
+                        self.eventProductsCollectionView.reloadData()
+                } else {
+                    self.showMessage(NSLocalizedString("\(emptyObject?.errors.first ?? "Error, intente de nuevo más tarde.")", comment: "Remove  Error"),type: .error)
+                }
+            }
+        }
+    }
+    
     func collaborativeActionButtonPressed(alert: UIAlertAction) {
            let eventProductCollaborativeBool = self.eventProducts[selectedIndexPath.row].isCollaborative
            
@@ -284,26 +322,63 @@ class ProductsRegistryViewController: UIViewController {
     
     @IBAction func actionButtonTapped(_ sender: Any) {
         let sheet = UIAlertController(title: "Acciones", message: nil, preferredStyle: .actionSheet)
-        let setAsImportant = UIAlertAction(title: "Marcar como lo más importante", style: .default, handler: importantActionButtonPressed(alert:))
-        let requestGift = UIAlertAction(title: "Solicitar envio", style: .default,handler: requestGift(alert:))
-            
-               let removeFromRegistry = UIAlertAction(title: "Quitar de mesa", style: .default)
-        let makeCollaborativeGift = UIAlertAction(title: "Convertir a regalo grupal", style: .default, handler: collaborativeActionButtonPressed(alert:))
-               let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
-               
-              setAsImportant.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-               removeFromRegistry.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-        requestGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-        makeCollaborativeGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-               cancelAction.setValue(UIColor.init(displayP3Red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0), forKey: "titleTextColor")
         
-               sheet.addAction(setAsImportant)
-                sheet.addAction(requestGift)
-               sheet.addAction(removeFromRegistry)
-                sheet.addAction(makeCollaborativeGift)
-               sheet.addAction(cancelAction)
+        var setAsImportant: UIAlertAction
+        if registrySegment.selectedSegmentIndex == 2 || selectedIndexPath.section == 1{
+            if (self.eventPools[self.selectedIndexPath.row].isImportant){
+                setAsImportant = UIAlertAction(title: "Desmarcar como lo más importante", style: .default, handler: importantActionButtonPressed(alert:))
+            }
+            else{
+                setAsImportant = UIAlertAction(title: "Marcar como lo más importante", style: .default, handler: importantActionButtonPressed(alert:))
+            }
+        }
+        else{
+            if (self.eventProducts[self.selectedIndexPath.row].isImportant){
+                setAsImportant = UIAlertAction(title: "Desmarcar como lo más importante", style: .default, handler: importantActionButtonPressed(alert:))
+            }
+            else{
+                setAsImportant = UIAlertAction(title: "Marcar como lo más importante", style: .default, handler: importantActionButtonPressed(alert:))
+            }
+        }
+        
+        //SOLO PARA REGALOS
+        var requestGift: UIAlertAction
+        var makeCollaborativeGift: UIAlertAction
+        var removeFromRegistry: UIAlertAction
+        if !(registrySegment.selectedSegmentIndex == 2 || selectedIndexPath.section == 1){ //Productos
+            //SOLICITAR ENVIO
+            requestGift = UIAlertAction(title: "Solicitar envio", style: .default,handler: requestGift(alert:))
+            requestGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+            sheet.addAction(requestGift)
+            
+            //CONVERTIR A REGALO GRUPAL
+            makeCollaborativeGift = UIAlertAction(title: "Convertir a regalo grupal", style: .default, handler: collaborativeActionButtonPressed(alert:))
+            makeCollaborativeGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+            sheet.addAction(makeCollaborativeGift)
+            
+            if(self.eventProducts[self.selectedIndexPath.row].gifted_quantity == 0){
+                removeFromRegistry = UIAlertAction(title: "Quitar producto de mesa", style: .destructive,handler: removeProductButtonPressed(alert:))
+                removeFromRegistry.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                sheet.addAction(removeFromRegistry)
+            }
+        }
+        else{ //Pools
+            if(Float(self.eventPools[self.selectedIndexPath.row].collectedAmount) == 0){
+               removeFromRegistry = UIAlertAction(title: "Quitar sobre de mesa", style: .destructive,handler: removePoolButtonPressed(alert:))
+               removeFromRegistry.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                sheet.addAction(removeFromRegistry)
+            }
+        }
+            
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
                
-               present(sheet, animated: true, completion: nil)
+        setAsImportant.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+        cancelAction.setValue(UIColor.init(displayP3Red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0), forKey: "titleTextColor")
+    
+        sheet.addAction(setAsImportant)
+        sheet.addAction(cancelAction)
+       
+        present(sheet, animated: true, completion: nil)
     }
     
     func updateEventProductToImportant(eventProduct: EventProduct, importantBool: Bool) {
@@ -316,7 +391,7 @@ class ProductsRegistryViewController: UIViewController {
                     } else {
                         self.showMessage(NSLocalizedString("Producto desmarcado como importante", comment: "Update success"),type: .success)
                     }
-                    self.eventProducts[self.selectedIndexPath.row].isImportant = eventProduct!.isImportant
+                    self.eventProducts[self.selectedIndexPath.row].isImportant = !(self.eventProducts[self.selectedIndexPath.row].isImportant)
                     let cell = self.eventProductsCollectionView.cellForItem(at: self.selectedIndexPath) as! EventProductCell
                     cell.topPriorityView.isHidden = !cell.topPriorityView.isHidden
                     
@@ -336,7 +411,7 @@ class ProductsRegistryViewController: UIViewController {
                     } else {
                         self.showMessage(NSLocalizedString("Sobre desmarcado como importante", comment: "Update success"),type: .success)
                     }
-                    self.eventPools[self.selectedIndexPath.row].isImportant = eventPool!.isImportant
+                    self.eventPools[self.selectedIndexPath.row].isImportant = !(self.eventPools[self.selectedIndexPath.row].isImportant)
                     let cell = self.eventProductsCollectionView.cellForItem(at: self.selectedIndexPath) as! EventPoolCell
                     cell.isPriorityImageView.isHidden = !cell.isPriorityImageView.isHidden
                 }
@@ -372,12 +447,13 @@ class ProductsRegistryViewController: UIViewController {
         self.lastPageButton.isEnabled = false
         self.firstPageButton.isEnabled = false
         self.backPageButton.isEnabled = false
-        self.currentPageLabel.text = "#"
+        self.currentPageLabel.text = ""
         self.totalProductsCount = 0
         self.eventProducts = []
         self.eventPools = []
         self.eventProductsCollectionView.reloadData()
         self.totalProductsCountLabel.text = "Cargando..."
+        self.deselectItems()
     }
     
     func getEventProducts(event: Event,available: String, gifted: String, filters: [String : Any]) {
@@ -492,7 +568,9 @@ class ProductsRegistryViewController: UIViewController {
         for indexPath in self.eventProductsCollectionView.indexPathsForSelectedItems! {
             self.eventProductsCollectionView.deselectItem(at: indexPath, animated: true)
         }
-        self.selectedIndexPath.removeLast()
+        if(!self.selectedIndexPath.isEmpty){
+            self.selectedIndexPath.dropLast()
+        }
         self.checkIfSelectedCells()
     }
     
@@ -567,14 +645,19 @@ extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedIndexPath = indexPath
-        self.checkIfSelectedCells()
-        let cell = collectionView.cellForItem(at: indexPath)
-        cell?.layer.cornerRadius = 4
-        cell?.layer.borderColor = UIColor.green.cgColor
-        cell?.layer.borderWidth = 1
-        cell?.isSelected = true
-        print("selected")
+        if(self.selectedIndexPath == indexPath){
+            self.collectionView(collectionView, didDeselectItemAt: indexPath)
+            self.deselectItems()
+        }else{
+            self.selectedIndexPath = indexPath
+            self.checkIfSelectedCells()
+            let cell = collectionView.cellForItem(at: indexPath)
+            cell?.layer.cornerRadius = 4
+            cell?.layer.borderColor = UIColor.green.cgColor
+            cell?.layer.borderWidth = 1
+            cell?.isSelected = true
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -584,7 +667,6 @@ extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionV
         cell?.layer.cornerRadius = 4
         cell?.layer.borderWidth = 0
         cell?.isSelected = false
-        print("deselected")
         self.eventProductsCollectionView.deselectItem(at: indexPath, animated: true)
         self.selectedIndexPath = self.selectedIndexPath.dropLast()
     }
