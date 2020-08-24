@@ -250,7 +250,7 @@ class ProductsRegistryViewController: UIViewController {
     
     func importantActionButtonPressed(alert: UIAlertAction) {
         loadEvent()
-        if registrySegment.selectedSegmentIndex == 2 || selectedIndexPath.section == 1{
+        if registrySegment.selectedSegmentIndex == 2 {
             let eventPoolImportantBool = self.eventPools[selectedIndexPath.row].isImportant
             self.updateEventPoolToImportant(event: self.currentEvent, eventPool: self.eventPools[selectedIndexPath.row],importantBool: !eventPoolImportantBool)
         }
@@ -266,6 +266,18 @@ class ProductsRegistryViewController: UIViewController {
     
     func removePoolButtonPressed(alert: UIAlertAction) {
         self.removePoolFromRegistry(eventPool: self.eventPools[selectedIndexPath.row], event: self.currentEvent)
+    }
+    
+    func addCollaboratorsView(alert: UIAlertAction){
+        let collaboratorsInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "collaboratorsInfoVC") as!
+         CollaboratorsViewController
+        self.parent? .addChild(collaboratorsInfoVC)
+        collaboratorsInfoVC.view.frame = self.view.frame
+        self.parent?.view.addSubview(collaboratorsInfoVC.view)
+        collaboratorsInfoVC.didMove(toParent: self)
+        
+        collaboratorsInfoVC.product = eventProducts[selectedIndexPath.row]
+        
     }
     
     func removeProductFromRegistry(eventProduct: EventProduct,event: Event) {
@@ -324,7 +336,7 @@ class ProductsRegistryViewController: UIViewController {
         let sheet = UIAlertController(title: "Acciones", message: nil, preferredStyle: .actionSheet)
         
         var setAsImportant: UIAlertAction
-        if registrySegment.selectedSegmentIndex == 2 || selectedIndexPath.section == 1{
+        if registrySegment.selectedSegmentIndex == 2{
             if (self.eventPools[self.selectedIndexPath.row].isImportant){
                 setAsImportant = UIAlertAction(title: "Desmarcar como lo más importante", style: .default, handler: importantActionButtonPressed(alert:))
             }
@@ -345,7 +357,7 @@ class ProductsRegistryViewController: UIViewController {
         var requestGift: UIAlertAction
         var makeCollaborativeGift: UIAlertAction
         var removeFromRegistry: UIAlertAction
-        if !(registrySegment.selectedSegmentIndex == 2 || selectedIndexPath.section == 1){ //Productos
+        if !(registrySegment.selectedSegmentIndex == 2){ //Productos
             //SOLICITAR ENVIO
             requestGift = UIAlertAction(title: "Solicitar envio", style: .default,handler: requestGift(alert:))
             requestGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
@@ -360,6 +372,13 @@ class ProductsRegistryViewController: UIViewController {
                 removeFromRegistry = UIAlertAction(title: "Quitar producto de mesa", style: .destructive,handler: removeProductButtonPressed(alert:))
                 removeFromRegistry.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
                 sheet.addAction(removeFromRegistry)
+            }else{
+                if(registrySegment.selectedSegmentIndex == 1){
+                    let collaboratorsAction = UIAlertAction(title: "Ver colaboradores", style: .default,handler:addCollaboratorsView(alert
+                    :))
+                    collaboratorsAction.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                    sheet.addAction(collaboratorsAction)
+                }
             }
         }
         else{ //Pools
@@ -463,7 +482,6 @@ class ProductsRegistryViewController: UIViewController {
                 if (response.isSuccess()) {
                     self.eventProducts = eventProducts!
                     self.totalProductsCount += eventProducts!.count
-                    self.getEventPools(event: self.currentEvent)
                     sharedApiManager.getEventProductsPagination(event: event, available: available, gifted: gifted, filters: self.filters) { (pagination, resultPagination) in
                         if let response = resultPagination {
                             if (response.isSuccess()) {
@@ -471,6 +489,7 @@ class ProductsRegistryViewController: UIViewController {
                             }
                         }
                     }
+                    self.eventProductsCollectionView.reloadData()
                     self.loadTotalProducts()
                 }
                 self.registrySegment.isEnabled = true
@@ -549,6 +568,7 @@ class ProductsRegistryViewController: UIViewController {
              if let response = result {
                  if (response.isSuccess()) {
                     self.eventProducts = eventProducts!
+                    self.totalProductsCount += eventProducts!.count
                     self.eventProductsCollectionView.reloadData()
                     sharedApiManager.getGiftThanksSummaryPagination(event: self.currentEvent, hasBeenThanked: true, hasBeenPaid: true, filters: self.filters){ (pagination, result) in
                         if let response = result{

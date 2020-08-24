@@ -33,6 +33,7 @@ class EventProduct: Mappable {
     var thankYouUser: ThankYouUser?
     var guestData: Dictionary<String,[ThankYouUser]>?
     var collaborators = Int()
+    var orderItems: [OrderItem]?
     
     var errors: [String] = []
     
@@ -61,6 +62,8 @@ class EventProduct: Mappable {
         guestData <- map["guest_data"]
         collaborators <- map["collaborators"]
         status <- map["status"]
+        
+        orderItems <- map["order_items"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {
