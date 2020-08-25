@@ -17,25 +17,27 @@ class ProductInformationTableViewController: UITableViewController {
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productPriceLabel: UILabel!
     @IBOutlet weak var nameColorLabel: UILabel!
+    @IBOutlet weak var stepperButton: UIStepper!
     @IBOutlet weak var productColorView: customView!
     @IBOutlet weak var quantityProductLabel: UILabel!
     @IBOutlet weak var descriptionProductLabel: UITextView!
-    @IBOutlet weak var specsProductLabel: UITextView!
     @IBOutlet weak var productImageView: UIImageView!
     
     @IBOutlet weak var productImageSlider: ImageSlideshow!
     var product = Product()
     var productVC: ProductViewController!
+    var eventProduct = EventProduct()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.setProduct(product: self.product)
     }
     
     @IBAction func quantityStepperTapped(_ sender: UIStepper) {
         
-        self.quantityProductLabel.text = "Cantidad: \(Int(sender.value))"
-        self.productVC.quantity = Int(sender.value)
+//        self.quantityProductLabel.text = "Cantidad: \(Int(sender.value))"
+//        self.productVC.quantity = Int(sender.value)
     }
     
     func setProduct(product: Product) {
@@ -43,12 +45,20 @@ class ProductInformationTableViewController: UITableViewController {
         self.brandProductLabel.text = product.brand.name
         self.productNameLabel.text = product.name
         self.productPriceLabel.text = "$\(product.price)"
-        self.descriptionProductLabel.text = product.description
-        self.specsProductLabel.text = product.specs
+        
+        if(eventProduct.collaborators > 0){ //Es un producto colaborativo
+             self.quantityProductLabel.text = "Colaboraciones: \(eventProduct.guestData?["user_info"]?.count ?? 0) de \(eventProduct.collaborators)"
+            self.stepperButton.isHidden = true
+        }else{
+             self.quantityProductLabel.text = "Cantidad: \(eventProduct.gifted_quantity) de \(eventProduct.quantity)"
+            self.stepperButton.isHidden = false
+        }
+        
+        self.descriptionProductLabel.text = product.description;
         self.productColorView.backgroundColor = self.hexStringToUIColor(hex: product.color.hexCode)
         self.nameColorLabel.text = product.color.name
         if let imageURL = URL(string:"\(product.imageUrl)") {
-            self.productImageView.kf.setImage(with: imageURL)
+            self.productImageView.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
         }
         
     }

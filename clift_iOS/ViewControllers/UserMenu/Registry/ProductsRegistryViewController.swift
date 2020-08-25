@@ -271,13 +271,27 @@ class ProductsRegistryViewController: UIViewController {
     func addCollaboratorsView(alert: UIAlertAction){
         let collaboratorsInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "collaboratorsInfoVC") as!
          CollaboratorsViewController
-        self.parent? .addChild(collaboratorsInfoVC)
+        self.parent?.addChild(collaboratorsInfoVC)
         collaboratorsInfoVC.view.frame = self.view.frame
         self.parent?.view.addSubview(collaboratorsInfoVC.view)
         collaboratorsInfoVC.didMove(toParent: self)
         
         collaboratorsInfoVC.product = eventProducts[selectedIndexPath.row]
+    }
+    
+    func addMoreInfoProductView(alert: UIAlertAction){
+        let productInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "productInfoVC") as!
+        ProductInformationTableViewController
         
+        productInfoVC.product = eventProducts[selectedIndexPath.row].product
+        productInfoVC.eventProduct = eventProducts[selectedIndexPath.row]
+        
+        self.parent?.addChild(productInfoVC)
+        productInfoVC.view.frame = self.view.frame
+        self.parent?.view.addSubview(productInfoVC.view)
+        productInfoVC.didMove(toParent: self)
+        
+       
     }
     
     func removeProductFromRegistry(eventProduct: EventProduct,event: Event) {
@@ -357,6 +371,7 @@ class ProductsRegistryViewController: UIViewController {
         var requestGift: UIAlertAction
         var makeCollaborativeGift: UIAlertAction
         var removeFromRegistry: UIAlertAction
+        var seeMoreInfoProduct: UIAlertAction
         if !(registrySegment.selectedSegmentIndex == 2){ //Productos
             //SOLICITAR ENVIO
             requestGift = UIAlertAction(title: "Solicitar envio", style: .default,handler: requestGift(alert:))
@@ -367,6 +382,11 @@ class ProductsRegistryViewController: UIViewController {
             makeCollaborativeGift = UIAlertAction(title: "Convertir a regalo grupal", style: .default, handler: collaborativeActionButtonPressed(alert:))
             makeCollaborativeGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
             sheet.addAction(makeCollaborativeGift)
+            
+            //VER INFORMACION DE PRODUCTO
+            seeMoreInfoProduct = UIAlertAction(title: "Ver información de producto", style: .default, handler: addMoreInfoProductView(alert:))
+            seeMoreInfoProduct.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+            sheet.addAction(seeMoreInfoProduct)
             
             if(self.eventProducts[self.selectedIndexPath.row].gifted_quantity == 0){
                 removeFromRegistry = UIAlertAction(title: "Quitar producto de mesa", style: .destructive,handler: removeProductButtonPressed(alert:))
