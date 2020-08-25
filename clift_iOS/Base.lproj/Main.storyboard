@@ -6310,12 +6310,12 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cantidad: 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVe-Uy-hiJ">
-                                                    <rect key="frame" x="20" y="239.5" width="165" height="46"/>
+                                                    <rect key="frame" x="20" y="239.5" width="180" height="46"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="165" id="LfO-nu-cS2"/>
+                                                        <constraint firstAttribute="width" constant="180" id="LfO-nu-cS2"/>
                                                         <constraint firstAttribute="height" constant="46" id="jvV-dm-7B0"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

@@ -285,20 +285,21 @@ class ProductsRegistryViewController: UIViewController {
         
         productInfoVC.product = eventProducts[selectedIndexPath.row].product
         productInfoVC.eventProduct = eventProducts[selectedIndexPath.row]
+        productInfoVC.event = self.currentEvent
+        productInfoVC.collectionView = self.eventProductsCollectionView
+        productInfoVC.selectedIndexPath = self.selectedIndexPath
         
         self.parent?.addChild(productInfoVC)
         productInfoVC.view.frame = self.view.frame
         self.parent?.view.addSubview(productInfoVC.view)
         productInfoVC.didMove(toParent: self)
-        
-       
     }
     
     func removeProductFromRegistry(eventProduct: EventProduct,event: Event) {
         sharedApiManager.deleteEventProduct(eventProduct: eventProduct, event: event) { (emptyObject, result) in
             if let response = result {
                 if (response.isSuccess()) {
-                    self.showMessage(NSLocalizedString("Producto se ha quitado de tu mesa", comment: "Removed Product Success "),type: .success)
+                    self.showMessage(NSLocalizedString("Producto se ha quitado de tu mesa", comment: "Removed Product Success"),type: .success)
                         self.getEventProducts(event: self.currentEvent,available: self.availableSelected, gifted: self.giftedSelected, filters: [:])
                         self.deselectItems()
                         self.eventProductsCollectionView.reloadData()

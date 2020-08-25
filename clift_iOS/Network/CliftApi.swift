@@ -47,6 +47,7 @@ enum CliftApi {
     case updateEventProductAsImportant(eventProduct: EventProduct,setImportant: Bool)
     case updateEventPoolAsImportant(event: Event, eventPool: EventPool,setImportant: Bool)
     case updateEventProductAsCollaborative(eventProduct: EventProduct,setCollaborative: Bool)
+    case updateEventProductQuantity(event: Event, eventProduct: EventProduct, quantity: Int)
     case getEventPools(event: Event)
     case getEventSummary(event: Event)
     case getInvitationTemplates(event: Event)
@@ -153,6 +154,8 @@ extension CliftApi: TargetType {
             return "events/\(event.id)/event_pools"
         case .updateEventProductAsImportant(let eventProduct,_):
             return "event_products/\(eventProduct.id)/set_important"
+        case .updateEventProductQuantity(let event, let eventProduct, _):
+            return "events/\(event.id)/registries/\(eventProduct.id)"
         case .updateEventPoolAsImportant(let event, let eventPool,_):
             return "events/\(event.id)/event_pools/\(eventPool.id)"
         case .updateEventProductAsCollaborative(let eventProduct,_):
@@ -242,7 +245,7 @@ extension CliftApi: TargetType {
             return .post
         case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductQuantity,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
             return .put
         case .deleteLogoutSession,.deleteProductFromRegistry,.deleteEventProduct,.deleteEventPool,.deleteBankAccount,.deleteItemFromCart:
             return .delete
@@ -298,6 +301,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["event_pool": ["is_important" : isImportant]], encoding: JSONEncoding.default)
         case .updateEventProductAsCollaborative(_,let setCollaborative):
             return .requestParameters(parameters: ["event_product": ["set_collaborative" : setCollaborative]], encoding: JSONEncoding.default)
+        case .updateEventProductQuantity(_, _, let quantity):
+            return .requestParameters(parameters: ["event_product": ["quantity" : quantity]], encoding: JSONEncoding.default)
         case .getEventProducts(_,let available,let gifted, var filters):
             var parameters = filters
             parameters["available"] = available
