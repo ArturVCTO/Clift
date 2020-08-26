@@ -337,6 +337,23 @@ class ProductsRegistryViewController: UIViewController {
                numberOfCollaboratorsVC.didMove(toParent: self)
     }
     
+    func individualActionButtonPressed(alert: UIAlertAction){
+        sharedApiManager.updateEventProductAsCollaborative(eventProduct: self.eventProducts[self.selectedIndexPath.row], setCollaborative: false, collaborators: 0) { (_, response) in
+            if let result = response{
+                if result.isSuccess(){
+                    self.eventProducts[self.selectedIndexPath.row].isCollaborative = false
+                    self.eventProducts[self.selectedIndexPath.row].collaborators = 0
+                    self.eventProductsCollectionView.reloadItems(at: [self.selectedIndexPath])
+                    self.showMessage(NSLocalizedString("Porducto actualizado como individual", comment: "Producto actualizado"), type: .success)
+                }else{
+                    self.showMessage(NSLocalizedString("Error de servidor, intente de nuevo más tarde", comment: "Error"), type: .error)
+                    
+                }
+            }
+        }
+    
+    }
+    
     func requestGift(alert: UIAlertAction) {
         var requestedGifts: [EventProduct] = []
         
@@ -377,6 +394,7 @@ class ProductsRegistryViewController: UIViewController {
         //SOLO PARA REGALOS
         var requestGift: UIAlertAction
         var makeCollaborativeGift: UIAlertAction
+        var makeIndividualGift: UIAlertAction
         var removeFromRegistry: UIAlertAction
         var seeMoreInfoProduct: UIAlertAction
         if !(registrySegment.selectedSegmentIndex == 2){ //Productos
@@ -390,6 +408,12 @@ class ProductsRegistryViewController: UIViewController {
                 makeCollaborativeGift = UIAlertAction(title: "Convertir a regalo colaborativo", style: .default, handler: collaborativeActionButtonPressed(alert:))
                 makeCollaborativeGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
                 sheet.addAction(makeCollaborativeGift)
+            }
+            
+            if(self.eventProducts[self.selectedIndexPath.row].isCollaborative && self.eventProducts[self.selectedIndexPath.row].gifted_quantity == 0){
+                makeIndividualGift = UIAlertAction(title: "Convertir a regalo individual", style: .default, handler: individualActionButtonPressed(alert:))
+                makeIndividualGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                sheet.addAction(makeIndividualGift)
             }
             
             //VER INFORMACION DE PRODUCTO
