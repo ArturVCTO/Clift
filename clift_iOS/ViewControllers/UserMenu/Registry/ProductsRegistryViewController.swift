@@ -326,9 +326,15 @@ class ProductsRegistryViewController: UIViewController {
     }
     
     func collaborativeActionButtonPressed(alert: UIAlertAction) {
-           let eventProductCollaborativeBool = self.eventProducts[selectedIndexPath.row].isCollaborative
-           
-           self.updateEventProductToCollaborative(eventProduct: self.eventProducts[selectedIndexPath.row],collaborativeBool:  !eventProductCollaborativeBool)
+        let numberOfCollaboratorsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "numberOfCollaboratorsVC") as!
+         NumberOfCollaboratorsViewController
+        numberOfCollaboratorsVC.selectedIndexPath = selectedIndexPath
+        numberOfCollaboratorsVC.collectionView = self.eventProductsCollectionView
+        numberOfCollaboratorsVC.eventProduct = self.eventProducts[selectedIndexPath.row]
+        self.parent?.addChild(numberOfCollaboratorsVC)
+               numberOfCollaboratorsVC.view.frame = self.view.frame
+               self.parent?.view.addSubview(numberOfCollaboratorsVC.view)
+               numberOfCollaboratorsVC.didMove(toParent: self)
     }
     
     func requestGift(alert: UIAlertAction) {
@@ -379,10 +385,12 @@ class ProductsRegistryViewController: UIViewController {
             requestGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
             sheet.addAction(requestGift)
             
-            //CONVERTIR A REGALO GRUPAL
-            makeCollaborativeGift = UIAlertAction(title: "Convertir a regalo grupal", style: .default, handler: collaborativeActionButtonPressed(alert:))
-            makeCollaborativeGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-            sheet.addAction(makeCollaborativeGift)
+            if(!self.eventProducts[self.selectedIndexPath.row].isCollaborative && self.eventProducts[self.selectedIndexPath.row].gifted_quantity == 0  && self.eventProducts[self.selectedIndexPath.row].product.price>=2000){
+                //CONVERTIR A REGALO GRUPAL
+                makeCollaborativeGift = UIAlertAction(title: "Convertir a regalo colaborativo", style: .default, handler: collaborativeActionButtonPressed(alert:))
+                makeCollaborativeGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                sheet.addAction(makeCollaborativeGift)
+            }
             
             //VER INFORMACION DE PRODUCTO
             seeMoreInfoProduct = UIAlertAction(title: "Ver información de producto", style: .default, handler: addMoreInfoProductView(alert:))
@@ -459,22 +467,7 @@ class ProductsRegistryViewController: UIViewController {
         }
     }
     
-    func updateEventProductToCollaborative(eventProduct: EventProduct, collaborativeBool: Bool) {
-        sharedApiManager.updateEventProductAsCollaborative(eventProduct: eventProduct, setCollaborative: collaborativeBool) { (eventProduct, result) in
-            if let response = result {
-                if (response.isSuccess()) {
-                    self.totalProductsCount = 0
-                    if eventProduct!.isCollaborative {
-                        self.showMessage(NSLocalizedString("Producto marcado como colaborativo", comment: "Update success"),type: .success)
-                    } else {
-                        self.showMessage(NSLocalizedString("Producto desmarcado como colaborativo", comment: "Update success"),type: .success)
-                    }
-                    self.getEventProducts(event: self.currentEvent,available: self.availableSelected, gifted: self.giftedSelected, filters: [:])
-                    self.deselectItems()
-                    self.eventProductsCollectionView.reloadData()
-                }
-            }
-        }
+    func updateEventProductToCollaborative(eventProduct: EventProduct){
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -694,8 +687,8 @@ extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionV
             self.checkIfSelectedCells()
             let cell = collectionView.cellForItem(at: indexPath)
             cell?.layer.cornerRadius = 4
-            cell?.layer.borderColor = UIColor.green.cgColor
-            cell?.layer.borderWidth = 1
+            cell?.layer.borderColor = UIColor(hue: 0.3556, saturation: 0.7, brightness: 0.7, alpha: 1.0).cgColor
+            cell?.layer.borderWidth = 3
             cell?.isSelected = true
         }
         

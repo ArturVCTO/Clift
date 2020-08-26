@@ -72,7 +72,7 @@ class ProductInformationTableViewController: UITableViewController {
         self.productNameLabel.text = product.name
         self.productPriceLabel.text = "$\(product.price)"
         
-        if(eventProduct.collaborators > 0){ //Es un producto colaborativo
+        if(eventProduct.isCollaborative){ //Es un producto colaborativo
              self.quantityProductLabel.text = "Colaboraciones: \(eventProduct.guestData?["user_info"]?.count ?? 0) de \(eventProduct.collaborators)"
             self.stepperButton.isHidden = true
         }else{

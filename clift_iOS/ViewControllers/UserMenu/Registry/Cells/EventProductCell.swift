@@ -96,7 +96,7 @@ class EventProductCell: UICollectionViewCell {
                     self.eventProductImageView.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
                 }
                
-                if(eventProduct.collaborators == 0){
+                if(!eventProduct.isCollaborative){
                     self.paidAmount.barHeight = 0.0
                 }
                 
@@ -109,7 +109,7 @@ class EventProductCell: UICollectionViewCell {
                     self.giftedCheckmark.isHidden = true
                 }
         }
-        if(eventProduct.collaborators > 0){ //Es un producto colaborativo
+        if(eventProduct.isCollaborative){ //Es un producto colaborativo
             self.eventProductQuantityLabel.text = "\(eventProduct.guestData?["user_info"]?.count ?? 0)/\(eventProduct.collaborators)"
             self.collaboratorsLeftLabel.isHidden = false
             self.collaboratorsLeftLabel.text = "Faltan: \(eventProduct.collaborators - eventProduct.gifted_quantity) colaboracion(es)"

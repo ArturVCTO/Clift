@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,19 +17,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="0hY-GO-zf1">
-                                <rect key="frame" x="156" y="245" width="102" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="FuT-2y-exn"/>
-                                    <constraint firstAttribute="width" constant="102" id="p8p-Oe-fpt"/>
-                                </constraints>
+                                <rect key="frame" x="100" y="248" width="214" height="100"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.69411764710000001" green="0.82745098039999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="0hY-GO-zf1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="201" id="A5N-44-Knv"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0hY-GO-zf1" secondAttribute="bottom" constant="517" id="Bcu-7x-shH"/>
-                            <constraint firstItem="0hY-GO-zf1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="156" id="N9C-mZ-g3t"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0hY-GO-zf1" secondAttribute="trailing" constant="156" id="tA0-jy-CDC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0hY-GO-zf1" secondAttribute="trailing" constant="100" id="HFE-01-8E6"/>
+                            <constraint firstItem="0hY-GO-zf1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="HR6-yO-UeF"/>
+                            <constraint firstItem="0hY-GO-zf1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-150" id="Moe-8y-Skl"/>
+                            <constraint firstItem="0hY-GO-zf1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="xA1-Q4-o4g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

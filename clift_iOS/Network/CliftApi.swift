@@ -46,7 +46,7 @@ enum CliftApi {
     case createEventPools(event: Event,pool: [MultipartFormData])
     case updateEventProductAsImportant(eventProduct: EventProduct,setImportant: Bool)
     case updateEventPoolAsImportant(event: Event, eventPool: EventPool,setImportant: Bool)
-    case updateEventProductAsCollaborative(eventProduct: EventProduct,setCollaborative: Bool)
+    case updateEventProductAsCollaborative(eventProduct: EventProduct,setCollaborative: Bool, collaborators: Int)
     case updateEventProductQuantity(event: Event, eventProduct: EventProduct, quantity: Int)
     case getEventPools(event: Event)
     case getEventSummary(event: Event)
@@ -158,7 +158,7 @@ extension CliftApi: TargetType {
             return "events/\(event.id)/registries/\(eventProduct.id)"
         case .updateEventPoolAsImportant(let event, let eventPool,_):
             return "events/\(event.id)/event_pools/\(eventPool.id)"
-        case .updateEventProductAsCollaborative(let eventProduct,_):
+        case .updateEventProductAsCollaborative(let eventProduct,_,_):
             return "event_products/\(eventProduct.id)/set_collaborative"
         case .getEventPools(let event):
             return "events/\(event.id)/event_pools"
@@ -299,8 +299,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["event_product": ["set_important" : setImportant]], encoding: JSONEncoding.default)
          case .updateEventPoolAsImportant(_, _,let isImportant):
             return .requestParameters(parameters: ["event_pool": ["is_important" : isImportant]], encoding: JSONEncoding.default)
-        case .updateEventProductAsCollaborative(_,let setCollaborative):
-            return .requestParameters(parameters: ["event_product": ["set_collaborative" : setCollaborative]], encoding: JSONEncoding.default)
+        case .updateEventProductAsCollaborative(_,let setCollaborative,let collaborators):
+            return .requestParameters(parameters: ["event_product": ["set_collaborative" : setCollaborative, "collaborators": collaborators]], encoding: JSONEncoding.default)
         case .updateEventProductQuantity(_, _, let quantity):
             return .requestParameters(parameters: ["event_product": ["quantity" : quantity]], encoding: JSONEncoding.default)
         case .getEventProducts(_,let available,let gifted, var filters):

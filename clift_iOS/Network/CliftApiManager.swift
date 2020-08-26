@@ -216,7 +216,7 @@ protocol ApiCalls {
 
     func updateEventPoolAsImportant(event: Event, eventPool: EventPool, setImportant: Bool, completion: @escaping(EventPool?, Response?) -> Void)
     
-    func updateEventProductAsCollaborative(eventProduct: EventProduct, setCollaborative: Bool, completion: @escaping(EventProduct?, Response?) -> Void)
+    func updateEventProductAsCollaborative(eventProduct: EventProduct, setCollaborative: Bool, collaborators: Int, completion: @escaping(EventProduct?, Response?) -> Void)
     
     func updateEventProductQuantity(event: Event,eventProduct: EventProduct, quantity: Int, completion:
         @escaping(EventProduct?, Response?) -> Void)
@@ -422,8 +422,8 @@ extension CliftApiManager: ApiCalls {
         requestObjectWithResponse(.updateEventPoolAsImportant(event: event, eventPool: eventPool,setImportant: setImportant), type: EventPool.self, completion: completion, wrapper: "event_product")
     }
     
-    func updateEventProductAsCollaborative(eventProduct: EventProduct, setCollaborative: Bool, completion: @escaping (EventProduct?, Response?) -> Void) {
-        requestObjectWithResponse(.updateEventProductAsCollaborative(eventProduct: eventProduct,setCollaborative: setCollaborative), type: EventProduct.self, completion: completion, wrapper: "event_product")
+    func updateEventProductAsCollaborative(eventProduct: EventProduct, setCollaborative: Bool, collaborators: Int, completion: @escaping (EventProduct?, Response?) -> Void) {
+        requestObjectWithResponse(.updateEventProductAsCollaborative(eventProduct: eventProduct,setCollaborative: setCollaborative, collaborators: collaborators), type: EventProduct.self, completion: completion, wrapper: "event_product")
     }
     
     func updateEventProductQuantity(event: Event, eventProduct: EventProduct, quantity: Int, completion: @escaping (EventProduct?, Response?) -> Void){
