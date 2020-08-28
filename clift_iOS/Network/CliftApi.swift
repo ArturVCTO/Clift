@@ -39,11 +39,16 @@ enum CliftApi {
     case getProductsAsLoggedInUser(group: Group,subgroup: Subgroup,event: Event, brand: Brand,shop: Shop, filters: [String : Any], page: Int)
     case getColors
     case getEventProducts(event: Event,available: String,gifted: String, filters: [String : Any])
+    case getEventProductsPagination(event: Event,available: String,gifted: String, filters: [String : Any])
+    case deleteEventProduct(eventProduct: EventProduct, event: Event)
+    case deleteEventPool(eventPool: EventPool, event: Event)
     case createExternalProducts(event: Event,externalProduct: [MultipartFormData])
     case createEventPools(event: Event,pool: [MultipartFormData])
     case updateEventProductAsImportant(eventProduct: EventProduct,setImportant: Bool)
     case updateEventPoolAsImportant(event: Event, eventPool: EventPool,setImportant: Bool)
-    case updateEventProductAsCollaborative(eventProduct: EventProduct,setCollaborative: Bool)
+    case updateEventProductAsCollaborative(eventProduct: EventProduct,setCollaborative: Bool, collaborators: Int)
+    case updateEventProductQuantity(event: Event, eventProduct: EventProduct, quantity: Int)
+    case updateEventProductThankMessage(event: Event, orderItem: OrderItem, names: [String], emails: [String], message: String)
     case getEventPools(event: Event)
     case getEventSummary(event: Event)
     case getInvitationTemplates(event: Event)
@@ -72,7 +77,8 @@ enum CliftApi {
     case createShoppingCart
     case updateCartQuantity(cartItem: CartItem,quantity: Int)
     case deleteItemFromCart(cartItem: CartItem)
-    case getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool)
+    case getGiftThanksSummary(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, filters: [String:Any])
+    case getGiftThanksSummaryPagination(event: Event, hasBeenThanked: Bool, hasBeenPaid: Bool, filters: [String:Any])
     case requestGifts(event: Event, ids: [String])
     case stripeCheckout(event: Event,checkout: Checkout)
     case getCredits(event: Event)
@@ -129,6 +135,10 @@ extension CliftApi: TargetType {
             return "events/\(eventId)/products/\(productId)"
         case .deleteProductFromRegistry(let productId, let eventId):
             return "events/\(eventId)/products/\(productId)"
+        case .deleteEventProduct(let eventProduct, let event):
+            return "events/\(event.id)/registries/\(eventProduct.id)"
+        case .deleteEventPool(let eventPool, let event):
+            return "events/\(event.id)/event_pools/\(eventPool.id)"
         case .getBrands:
             return "brands"
         case .getProducts(_,_,_,_,_,_):
@@ -137,15 +147,21 @@ extension CliftApi: TargetType {
             return "colors"
         case .getEventProducts(let event,_,_,_):
             return "events/\(event.id)/registries"
+        case .getEventProductsPagination(let event,_,_,_):
+            return "events/\(event.id)/registries"
         case .createExternalProducts(let event,_):
             return "events/\(event.id)/external_products"
         case .createEventPools(let event,_):
             return "events/\(event.id)/event_pools"
         case .updateEventProductAsImportant(let eventProduct,_):
             return "event_products/\(eventProduct.id)/set_important"
+        case .updateEventProductQuantity(let event, let eventProduct, _):
+            return "events/\(event.id)/registries/\(eventProduct.id)"
+        case .updateEventProductThankMessage(let event, let orderItem, _, _, _):
+            return "events/\(event.id)/thank_message/\(orderItem.id)"
         case .updateEventPoolAsImportant(let event, let eventPool,_):
             return "events/\(event.id)/event_pools/\(eventPool.id)"
-        case .updateEventProductAsCollaborative(let eventProduct,_):
+        case .updateEventProductAsCollaborative(let eventProduct,_,_):
             return "event_products/\(eventProduct.id)/set_collaborative"
         case .getEventPools(let event):
             return "events/\(event.id)/event_pools"
@@ -203,7 +219,9 @@ extension CliftApi: TargetType {
             return "cart/\(cartItem.id)/update"
         case .deleteItemFromCart(let cartItem):
             return "cart/\(cartItem.id)/remove_item"
-        case .getGiftThanksSummary(let event,_,_):
+        case .getGiftThanksSummary(let event,_,_,_):
+            return "events/\(event.id)/gift_summary"
+        case .getGiftThanksSummaryPagination(let event,_,_,_):
             return "events/\(event.id)/gift_summary"
         case .requestGifts(let event,_):
             return "events/\(event.id)/request_gifts"
@@ -228,11 +246,11 @@ extension CliftApi: TargetType {
         switch self {
         case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.stripeCheckout,.completeStripeAccount:
             return .post
-        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities:
+        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductQuantity,.updateEventProductThankMessage,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
             return .put
-        case .deleteLogoutSession,.deleteProductFromRegistry,.deleteBankAccount,.deleteItemFromCart:
+        case .deleteLogoutSession,.deleteProductFromRegistry,.deleteEventProduct,.deleteEventPool,.deleteBankAccount,.deleteItemFromCart:
             return .delete
         }
     }
@@ -284,9 +302,18 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["event_product": ["set_important" : setImportant]], encoding: JSONEncoding.default)
          case .updateEventPoolAsImportant(_, _,let isImportant):
             return .requestParameters(parameters: ["event_pool": ["is_important" : isImportant]], encoding: JSONEncoding.default)
-        case .updateEventProductAsCollaborative(_,let setCollaborative):
-            return .requestParameters(parameters: ["event_product": ["set_collaborative" : setCollaborative]], encoding: JSONEncoding.default)
+        case .updateEventProductAsCollaborative(_,let setCollaborative,let collaborators):
+            return .requestParameters(parameters: ["event_product": ["set_collaborative" : setCollaborative, "collaborators": collaborators]], encoding: JSONEncoding.default)
+        case .updateEventProductQuantity(_, _, let quantity):
+            return .requestParameters(parameters: ["event_product": ["quantity" : quantity]], encoding: JSONEncoding.default)
+        case .updateEventProductThankMessage(_, _,let names, let emails, let message):
+            return .requestParameters(parameters: ["message" : ["thank_message": message, "name":names, "email":emails]], encoding: JSONEncoding.default)
         case .getEventProducts(_,let available,let gifted, var filters):
+            var parameters = filters
+            parameters["available"] = available
+            parameters["gifted"] = gifted
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .getEventProductsPagination(_,let available,let gifted, var filters):
             var parameters = filters
             parameters["available"] = available
             parameters["gifted"] = gifted
@@ -323,11 +350,14 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity, "wishable_type": "Product"]], encoding: JSONEncoding.default)
         case .updateCartQuantity(_, let quantity):
             return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity]], encoding: JSONEncoding.default)
-        case .getGiftThanksSummary(_,let hasBeenThanked, let hasBeenPaid):
-            //var parameters = [String: Any]()
+        case .getGiftThanksSummary(_,let hasBeenThanked, let hasBeenPaid, var parameters):
             //parameters["gifted"] = hasBeenPaid
             //parameters["thanked"] = hasBeenThanked
-            return .requestParameters(parameters: ["":""], encoding: URLEncoding.default)
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .getGiftThanksSummaryPagination(_,let hasBeenThanked, let hasBeenPaid, var parameters):
+            //parameters["gifted"] = hasBeenPaid
+            //parameters["thanked"] = hasBeenThanked
+        return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         case .requestGifts(_,let ids):
             return .requestParameters(parameters: ["ids": [ids]], encoding: JSONEncoding.default)
         case .stripeCheckout(_,let checkout):

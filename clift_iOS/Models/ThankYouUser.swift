@@ -16,6 +16,7 @@ class ThankYouUser: Mappable {
     var id: String? = ""
     var email: String? = ""
     var lastName: String? = ""
+    var phone: String? = ""
     var name: String? = ""
     var note: String? = ""
     
@@ -27,6 +28,7 @@ class ThankYouUser: Mappable {
         id <- map["id"]
         email <- map["email"]
         lastName <- map["last_name"]
+        phone <- map["cell_phone_number"]
         name <- map["name"]
         note <- map["note"]
     }
