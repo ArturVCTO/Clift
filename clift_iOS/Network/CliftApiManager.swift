@@ -221,6 +221,8 @@ protocol ApiCalls {
     func updateEventProductQuantity(event: Event,eventProduct: EventProduct, quantity: Int, completion:
         @escaping(EventProduct?, Response?) -> Void)
     
+    func updateEventProductThankMessage(event:Event, orderItem: OrderItem, names: [String], emails: [String], message: String, completion: @escaping (EmptyObjectWithErrors?,Response?) -> Void)
+    
     func getEventPools(event: Event, completion: @escaping([EventPool]?, Response?) -> Void)
     
     func getEventPoolsPagination(event: Event, completion: @escaping(Pagination?, Response?) -> Void)
@@ -428,6 +430,10 @@ extension CliftApiManager: ApiCalls {
     
     func updateEventProductQuantity(event: Event, eventProduct: EventProduct, quantity: Int, completion: @escaping (EventProduct?, Response?) -> Void){
         requestObjectWithResponse(.updateEventProductQuantity(event: event, eventProduct: eventProduct, quantity: quantity), type: EventProduct.self, completion: completion, wrapper: "")
+    }
+    
+    func updateEventProductThankMessage(event:Event, orderItem: OrderItem, names: [String], emails: [String], message: String, completion: @escaping (EmptyObjectWithErrors?,Response?) -> Void){
+        requestEmptyObject(.updateEventProductThankMessage(event: event, orderItem: orderItem, names: names, emails: emails, message: message), completion: completion)
     }
     
     func getEventPools(event: Event, completion: @escaping ([EventPool]?, Response?) -> Void) {

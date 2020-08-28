@@ -271,12 +271,16 @@ class ProductsRegistryViewController: UIViewController {
     func addCollaboratorsView(alert: UIAlertAction){
         let collaboratorsInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "collaboratorsInfoVC") as!
          CollaboratorsViewController
-        self.parent?.addChild(collaboratorsInfoVC)
-        collaboratorsInfoVC.view.frame = self.view.frame
-        self.parent?.view.addSubview(collaboratorsInfoVC.view)
-        collaboratorsInfoVC.didMove(toParent: self)
-        
+
         collaboratorsInfoVC.product = eventProducts[selectedIndexPath.row]
+        collaboratorsInfoVC.currentEvent = self.currentEvent
+
+        self.parent?.parent?.addChild(collaboratorsInfoVC)
+        collaboratorsInfoVC.view.frame = self.parent!.view.frame
+        self.parent?.parent?.view.addSubview(collaboratorsInfoVC.view)
+        collaboratorsInfoVC.didMove(toParent: self.parent)
+        
+        
     }
     
     func addMoreInfoProductView(alert: UIAlertAction){

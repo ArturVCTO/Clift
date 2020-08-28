@@ -19,6 +19,7 @@ class OrderItem: Mappable {
     var hasBeenThanked = Bool()
     var thankMessage = ""
     var amount = ""
+    var status = ""
     
     var errors: [String] = []
     
@@ -32,6 +33,7 @@ class OrderItem: Mappable {
         hasBeenThanked <- map["has_been_thanked"]
         thankMessage <- map["thank_message"]
         amount <- map["amount"]
+        status <- map["status"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {

@@ -12,12 +12,15 @@ class CollaboratorsViewController: UIViewController {
 
     @IBOutlet weak var infoCard: UIView!
     public var product: EventProduct!
+    public var currentEvent: Event!
     public var pool: EventPool!
     @IBOutlet weak var collaboratorsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.product.orderItems = self.product.orderItems!.filter { (order) -> Bool in
+            order.status != "pending"
+        }
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         self.infoCard.layer.cornerRadius = 5
         self.showAnimation()
@@ -84,7 +87,11 @@ extension CollaboratorsViewController: UITableViewDelegate, UITableViewDataSourc
         if let items = self.product.orderItems{
             orders = items
         }
-        print("index", indexPath.row)
+        cell.thankButton.setImage(nil, for: .normal)
+        cell.thankButton.borderWidth = CGFloat(0)
+        cell.thankButton.isEnabled = false
+        cell.parentVC = self
+        cell.currentEvent = self.currentEvent
         cell.setup(user: self.product.guestData!["user_info"]![indexPath
             .row], order: orders[indexPath.row])
         

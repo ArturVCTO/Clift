@@ -200,6 +200,7 @@
 		CE8D41C424BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
 		CE8D41C524BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
 		CE8D41C624BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
+		CE9125A424F830BA00B30F7F /* ThankCollaboratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9125A324F830BA00B30F7F /* ThankCollaboratorViewController.swift */; };
 		CEF53FB024F429B500D7C997 /* CollaboratorInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */; };
 		CEF53FB424F4461D00D7C997 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FB324F4461D00D7C997 /* OrderItem.swift */; };
 		FB69CC8CE945481E9839D8BF /* Pods_clift_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */; };
@@ -421,6 +422,7 @@
 		CE59EADF24F0714300EA97E5 /* CollaboratorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsViewController.swift; sourceTree = "<group>"; };
 		CE66B16724EC3AB200AE91C7 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 		CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-Bold.ttf"; sourceTree = "<group>"; };
+		CE9125A324F830BA00B30F7F /* ThankCollaboratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankCollaboratorViewController.swift; sourceTree = "<group>"; };
 		CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CEF53FB324F4461D00D7C997 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
@@ -730,6 +732,7 @@
 				46831C1323DBAEEF004BAAC1 /* ThankGuestViewController.swift */,
 				CE59EADF24F0714300EA97E5 /* CollaboratorsViewController.swift */,
 				CE317A3424F6E25F002EFA80 /* NumberOfCollaboratorsViewController.swift */,
+				CE9125A324F830BA00B30F7F /* ThankCollaboratorViewController.swift */,
 			);
 			path = Registry;
 			sourceTree = "<group>";
@@ -1355,6 +1358,7 @@
 				466E99DF246DA62A009E94E3 /* OnboardingShippingAddress.swift in Sources */,
 				CE66B16824EC3AB200AE91C7 /* Pagination.swift in Sources */,
 				463A304E2321785A00C42347 /* ProductInformationTableViewController.swift in Sources */,
+				CE9125A424F830BA00B30F7F /* ThankCollaboratorViewController.swift in Sources */,
 				465C82192362159D00DAC090 /* AddProductByUrlViewController.swift in Sources */,
 				4604A3372303319F0041F9AA /* Spouse.swift in Sources */,
 				46A2DD9422FB723D0051DCA6 /* EmptyObjectWithErrors.swift in Sources */,
