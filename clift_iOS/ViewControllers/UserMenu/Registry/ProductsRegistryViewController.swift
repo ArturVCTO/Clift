@@ -274,13 +274,13 @@ class ProductsRegistryViewController: UIViewController {
 
         collaboratorsInfoVC.product = eventProducts[selectedIndexPath.row]
         collaboratorsInfoVC.currentEvent = self.currentEvent
+        collaboratorsInfoVC.selectedIndexPath = self.selectedIndexPath
+        collaboratorsInfoVC.registryVC = self
 
         self.parent?.parent?.addChild(collaboratorsInfoVC)
         collaboratorsInfoVC.view.frame = self.parent!.view.frame
         self.parent?.parent?.view.addSubview(collaboratorsInfoVC.view)
         collaboratorsInfoVC.didMove(toParent: self.parent)
-        
-        
     }
     
     func addMoreInfoProductView(alert: UIAlertAction){
@@ -380,18 +380,18 @@ class ProductsRegistryViewController: UIViewController {
         var setAsImportant: UIAlertAction
         if registrySegment.selectedSegmentIndex == 2{
             if (self.eventPools[self.selectedIndexPath.row].isImportant){
-                setAsImportant = UIAlertAction(title: "Desmarcar como lo más importante", style: .default, handler: importantActionButtonPressed(alert:))
+                setAsImportant = UIAlertAction(title: "Desmarcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
             }
             else{
-                setAsImportant = UIAlertAction(title: "Marcar como lo más importante", style: .default, handler: importantActionButtonPressed(alert:))
+                setAsImportant = UIAlertAction(title: "Marcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
             }
         }
         else{
             if (self.eventProducts[self.selectedIndexPath.row].isImportant){
-                setAsImportant = UIAlertAction(title: "Desmarcar como lo más importante", style: .default, handler: importantActionButtonPressed(alert:))
+                setAsImportant = UIAlertAction(title: "Desmarcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
             }
             else{
-                setAsImportant = UIAlertAction(title: "Marcar como lo más importante", style: .default, handler: importantActionButtonPressed(alert:))
+                setAsImportant = UIAlertAction(title: "Marcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
             }
         }
         
@@ -405,35 +405,42 @@ class ProductsRegistryViewController: UIViewController {
             //SOLICITAR ENVIO
             requestGift = UIAlertAction(title: "Solicitar envio", style: .default,handler: requestGift(alert:))
             requestGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+            requestGift.setValue(UIImage(named: "icdelivergray"), forKey: "image")
+            
             sheet.addAction(requestGift)
             
             if(!self.eventProducts[self.selectedIndexPath.row].isCollaborative && self.eventProducts[self.selectedIndexPath.row].gifted_quantity == 0  && self.eventProducts[self.selectedIndexPath.row].product.price>=2000){
                 //CONVERTIR A REGALO GRUPAL
                 makeCollaborativeGift = UIAlertAction(title: "Convertir a regalo colaborativo", style: .default, handler: collaborativeActionButtonPressed(alert:))
                 makeCollaborativeGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                makeCollaborativeGift.setValue(UIImage(named: "addmanualcolab"), forKey: "image")
                 sheet.addAction(makeCollaborativeGift)
             }
             
             if(self.eventProducts[self.selectedIndexPath.row].isCollaborative && self.eventProducts[self.selectedIndexPath.row].gifted_quantity == 0){
                 makeIndividualGift = UIAlertAction(title: "Convertir a regalo individual", style: .default, handler: individualActionButtonPressed(alert:))
                 makeIndividualGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                makeIndividualGift.setValue(UIImage(named: "infoprofileic"), forKey: "image")
                 sheet.addAction(makeIndividualGift)
             }
             
             //VER INFORMACION DE PRODUCTO
             seeMoreInfoProduct = UIAlertAction(title: "Ver información de producto", style: .default, handler: addMoreInfoProductView(alert:))
             seeMoreInfoProduct.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+            seeMoreInfoProduct.setValue(UIImage(named: "icsearch"), forKey: "image")
             sheet.addAction(seeMoreInfoProduct)
             
             if(self.eventProducts[self.selectedIndexPath.row].gifted_quantity == 0){
                 removeFromRegistry = UIAlertAction(title: "Quitar producto de mesa", style: .destructive,handler: removeProductButtonPressed(alert:))
                 removeFromRegistry.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                removeFromRegistry.setValue(UIImage(named: "icremove"), forKey: "image")
                 sheet.addAction(removeFromRegistry)
             }else{
                 if(registrySegment.selectedSegmentIndex == 1){
                     let collaboratorsAction = UIAlertAction(title: "Ver colaboradores", style: .default,handler:addCollaboratorsView(alert
                     :))
                     collaboratorsAction.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                    collaboratorsAction.setValue(UIImage(named: "icthankgray"), forKey: "image")
                     sheet.addAction(collaboratorsAction)
                 }
             }
@@ -442,6 +449,7 @@ class ProductsRegistryViewController: UIViewController {
             if(Float(self.eventPools[self.selectedIndexPath.row].collectedAmount) == 0){
                removeFromRegistry = UIAlertAction(title: "Quitar sobre de mesa", style: .destructive,handler: removePoolButtonPressed(alert:))
                removeFromRegistry.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                removeFromRegistry.setValue(UIImage(named: "icremove"), forKey: "image")
                 sheet.addAction(removeFromRegistry)
             }
         }
@@ -449,7 +457,10 @@ class ProductsRegistryViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
                
         setAsImportant.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+        setAsImportant.setValue(UIImage(named: "addmanualfav"), forKey: "image")
+        
         cancelAction.setValue(UIColor.init(displayP3Red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0), forKey: "titleTextColor")
+        cancelAction.setValue(UIImage(named: "icnotassisting"), forKey: "image")
     
         sheet.addAction(setAsImportant)
         sheet.addAction(cancelAction)
