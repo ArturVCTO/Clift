@@ -205,11 +205,13 @@ class ProductsRegistryViewController: UIViewController {
            if #available(iOS 13.0, *) {
                   let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "addCashFundVC") as! AddCashFundViewController
                     vc.productsRegistryVC = self
+            vc.currentEvent = self.currentEvent
                   self.navigationController?.pushViewController(vc, animated: true)
               } else {
                 // Fallback on earlier versions
                 let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addCashFundVC") as! AddCashFundViewController
                 vc.productsRegistryVC = self
+            vc.currentEvent = self.currentEvent
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         })
