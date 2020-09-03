@@ -28,9 +28,6 @@ class EventProductCell: UICollectionViewCell {
     
     func setup(eventProduct: EventProduct) {
         var thanked:[OrderItem] = []
-
-        
-        
         
         if (eventProduct.isImportant == true) {
             topPriorityView.isHidden = false
@@ -73,14 +70,20 @@ class EventProductCell: UICollectionViewCell {
                     self.creditedIcon.isHidden = false
                     self.creditedIcon.image = UIImage(named: "iccreditblack")
                     self.deliveredIcon.isHidden = false
-                    self.deliveredIcon.image = UIImage(named: "icdeliverblack")
+                    self.deliveredIcon.image = UIImage(named: "icdelivergray")
                 }
-                
+            }
+            else if !eventProduct.hasBeenPaid && eventProduct.status == "credit"{
+                self.creditedIcon.isHidden = false
+            }
+            else if eventProduct.quantity > 1 && eventProduct.status == "pending" && eventProduct.gifted_quantity > 0{
+                 self.deliveredIcon.isHidden = false
+                self.deliveredIcon.image = UIImage(named: "icdelivergray")
+                self.creditedIcon.isHidden = false
+                self.creditedIcon.image = UIImage(named: "iccreditblack")
             }
             else{ //has_been_paid = false
                 self.thankedIcon.isHidden = true
-                self.creditedIcon.isHidden = true
-                self.deliveredIcon.isHidden = true
                 self.giftedLabel.text = "Disponible"
                 self.giftedCheckmark.isHidden = true
             }

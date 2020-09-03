@@ -359,7 +359,7 @@ extension CliftApi: TargetType {
             //parameters["thanked"] = hasBeenThanked
         return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         case .requestGifts(_,let ids):
-            return .requestParameters(parameters: ["ids": [ids]], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["request":["ids": ids]], encoding: JSONEncoding.default)
         case .stripeCheckout(_,let checkout):
             return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
         default:

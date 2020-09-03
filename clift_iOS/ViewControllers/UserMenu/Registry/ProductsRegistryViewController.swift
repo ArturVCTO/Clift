@@ -404,13 +404,7 @@ class ProductsRegistryViewController: UIViewController {
         var removeFromRegistry: UIAlertAction
         var seeMoreInfoProduct: UIAlertAction
         if !(registrySegment.selectedSegmentIndex == 2){ //Productos
-            //SOLICITAR ENVIO
-            requestGift = UIAlertAction(title: "Solicitar envio", style: .default,handler: requestGift(alert:))
-            requestGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-            requestGift.setValue(UIImage(named: "icdelivergray"), forKey: "image")
-            
-            sheet.addAction(requestGift)
-            
+              
             if(!self.eventProducts[self.selectedIndexPath.row].isCollaborative && self.eventProducts[self.selectedIndexPath.row].gifted_quantity == 0  && self.eventProducts[self.selectedIndexPath.row].product.price>=2000){
                 //CONVERTIR A REGALO GRUPAL
                 makeCollaborativeGift = UIAlertAction(title: "Convertir a regalo colaborativo", style: .default, handler: collaborativeActionButtonPressed(alert:))
@@ -444,6 +438,15 @@ class ProductsRegistryViewController: UIViewController {
                     collaboratorsAction.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
                     collaboratorsAction.setValue(UIImage(named: "icthankgray"), forKey: "image")
                     sheet.addAction(collaboratorsAction)
+                    
+                    //SOLICITAR ENVIO
+                    if((self.eventProducts[self.selectedIndexPath.row].hasBeenPaid && self.eventProducts[self.selectedIndexPath.row].status == "pending") || (self.eventProducts[self.selectedIndexPath.row].quantity > 1 && self.eventProducts[self.selectedIndexPath.row].status == "pending")){
+                        requestGift = UIAlertAction(title: "Solicitar envio", style: .default,handler: requestGift(alert:))
+                        requestGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                        requestGift.setValue(UIImage(named: "icdelivergray"), forKey: "image")
+                        
+                        sheet.addAction(requestGift)
+                    }
                 }
             }
         }
@@ -681,8 +684,8 @@ extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionV
                 cell.isSelected = false
             }else{
                 cell.layer.cornerRadius = 4
-                cell.layer.borderColor = UIColor.green.cgColor
-                cell.layer.borderWidth = 1
+                cell.layer.borderColor = UIColor(hue: 0.3556, saturation: 0.7, brightness: 0.7, alpha: 1.0).cgColor
+                cell.layer.borderWidth = 3
                 cell.isSelected = true
             }
             
@@ -702,8 +705,8 @@ extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionV
                 cell.isSelected = false
             }else{
                 cell.layer.cornerRadius = 4
-                cell.layer.borderColor = UIColor.green.cgColor
-                cell.layer.borderWidth = 1
+                cell.layer.borderColor = UIColor(hue: 0.3556, saturation: 0.7, brightness: 0.7, alpha: 1.0).cgColor
+                cell.layer.borderWidth = 3
                 cell.isSelected = true
             }
             
