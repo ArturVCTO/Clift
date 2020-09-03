@@ -24,13 +24,14 @@ class ThankCollaboratorViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var saveButton: customButton!
     var placeHolderText = ""
     var collabVC: CollaboratorsViewController!
+    var productRegistryVC: ProductsRegistryViewController!
+    var selectedIndexPath : IndexPath!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         self.infoCard.layer.cornerRadius = 5
         self.showAnimation()
-        self.saveButton.isEnabled = false
         
         self.thankMessageTextField.delegate = self
         
@@ -55,9 +56,6 @@ class ThankCollaboratorViewController: UIViewController, UITextViewDelegate {
         if thankMessageTextField.text.isEmpty || thankMessageTextField.text == ""{
             thankMessageTextField.textColor = .lightGray
             thankMessageTextField.text = placeHolderText
-            self.saveButton.isEnabled = false
-        }else{
-            self.saveButton.isEnabled = true
         }
     }
     
@@ -77,6 +75,7 @@ class ThankCollaboratorViewController: UIViewController, UITextViewDelegate {
     }
     
     func removeAnimation(){
+        self.hideKeyboardOnClickOutside()
         UIView.animate(withDuration: 0.25, animations: {
             self.view.transform = CGAffineTransform(scaleX: 1.3,y: 1.3)
              self.view.alpha = 0.0
@@ -89,16 +88,20 @@ class ThankCollaboratorViewController: UIViewController, UITextViewDelegate {
         })
     }
     @IBAction func saveThankMessage(_ sender: Any) {
-        sharedApiManager.updateEventProductThankMessage(event: self.event, orderItem: self.orderItem, names: [self.thankedUser.name!], emails: [self.thankedUser.email!], message: self.thankMessageTextField.text!) { (_, response) in
-            if let result=response{
-                if result.isSuccess(){
-                    self.parent?.showMessage(NSLocalizedString("Mensaje de agradecimiento mandado con éxito", comment: "Update success"),type: .success)
-                    self.orderItem!.hasBeenThanked = true
-                    self.collabVC!.collaboratorsTableView.reloadData()
+        if (!thankMessageTextField.text.isEmpty && thankMessageTextField.text != "" && thankMessageTextField.text != placeHolderText){
+            sharedApiManager.updateEventProductThankMessage(event: self.event, orderItem: self.orderItem, names: [self.thankedUser.name!], emails: [self.thankedUser.email!], message: self.thankMessageTextField.text!) { (_, response) in
+                if let result=response{
+                    if result.isSuccess(){
+                        self.parent?.showMessage(NSLocalizedString("Mensaje de agradecimiento mandado con éxito", comment: "Update success"),type: .success)
+                        self.orderItem!.hasBeenThanked = true
+                        self.collabVC!.collaboratorsTableView.reloadData()
+                        self.productRegistryVC.eventProducts[self.selectedIndexPath.row].hasBeenThanked = true
+                        self.productRegistryVC.eventProductsCollectionView.reloadItems(at: [self.selectedIndexPath])
+                    }
                 }
             }
+            self.removeAnimation()
         }
-        self.removeAnimation()
     }
     
     @IBAction func exitButtonIsTapped(_ sender: Any) {

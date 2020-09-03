@@ -72,7 +72,7 @@ class ProductInformationTableViewController: UITableViewController {
         self.productNameLabel.text = product.name
         self.productPriceLabel.text = "$\(product.price)"
         
-        if(eventProduct.isCollaborative){ //Es un producto colaborativo
+        if(eventProduct.isCollaborative ){ //Es un producto colaborativo
              self.quantityProductLabel.text = "Colaboraciones: \(eventProduct.guestData?["user_info"]?.count ?? 0) de \(eventProduct.collaborators)"
             self.stepperButton.isHidden = true
         }else{
@@ -83,6 +83,9 @@ class ProductInformationTableViewController: UITableViewController {
             self.stepperButton.minimumValue = Double(eventProduct.gifted_quantity + 1)
             self.stepperButton.maximumValue = 20
             self.stepperButton.value = Double(eventProduct.quantity)
+        }
+        if(eventProduct.status != "pending"){
+            self.stepperButton.isHidden = true
         }
         
         self.descriptionProductLabel.text = product.description;

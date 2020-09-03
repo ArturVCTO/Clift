@@ -13,48 +13,43 @@ import Moya
 import GSMessages
 import RealmSwift
 
-class AddCashFundViewController: UIViewController {
-    
-    @IBOutlet weak var quantityTypeSegmentControl: UISegmentedControl!
+class AddCashFundViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var cashFundImageView: UIImageView!
-    @IBOutlet weak var hideTotalSwitch: UISwitch!
-    @IBOutlet weak var markAsImportantSwitch: UISwitch!
     @IBOutlet weak var goalTextField: HoshiTextField!
     
-    @IBOutlet weak var designLineView: UIView!
-    @IBOutlet weak var designLineView2: UIView!
-    @IBOutlet weak var hideFromGuestsView: UIView!
-    @IBOutlet weak var fundCollaborationsLabel: UILabel!
-    @IBOutlet weak var collaboratorsStepper: UIStepper!
-    @IBOutlet weak var totalMountStackView: UIStackView!
-    @IBOutlet weak var totalPoolAmountLabel: UILabel!
-    
+    @IBOutlet weak var markAsImportantSwitch: UISwitch!
     @IBOutlet weak var cashFundNameTextField: HoshiTextField!
     @IBOutlet weak var cashFundNoteTextField: HoshiTextField!
     var imagePicker: UIImagePickerController!
-    
     @IBOutlet weak var totalMountTextField: HoshiTextField!
-    @IBOutlet weak var mountTextField: HoshiTextField!
-//    IBOutlet constraint for design purposes
-    @IBOutlet weak var totalMountToNotesConstraintQT0: NSLayoutConstraint!
+    @IBOutlet weak var hideFromGuestsSwitch: UISwitch!
+    @IBOutlet weak var createButton: customButton!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    
     var productsRegistryVC: ProductsRegistryViewController!
     var eventPool = EventPool()
     var goal = Double()
     var mount = Double()
     var currentEvent = Event()
-    @IBOutlet weak var detailsToMostImportantConstraint: NSLayoutConstraint!
-    @IBOutlet weak var totalMountToNoteConstraint: NSLayoutConstraint!
+    var yOrigin = CGFloat()
+    var lastKeyboardSize = CGFloat()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.loadInitialSwitchesValue()
-        self.loadEvent()
-        self.totalMountTextField.delegate = self
-        self.cashFundNameTextField.delegate = self
-        self.cashFundNoteTextField.delegate = self
-        self.goalTextField.delegate = self
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
+        goalTextField.delegate = self
+        cashFundNameTextField.delegate = self
+        cashFundNoteTextField.delegate = self
+        totalMountTextField.delegate = self
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnClickOutside))
+        view.addGestureRecognizer(tap)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboard, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        yOrigin =  self.view.frame.origin.y
+        self.view.frame.origin.y = yOrigin
     }
     
    override func viewWillDisappear(_ animated: Bool) {
@@ -62,259 +57,162 @@ class AddCashFundViewController: UIViewController {
        self.navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0)
    }
     
-    func loadEvent() {
-       let realm = try! Realm()
-       let realmEvents = realm.objects(Event.self)
-       if let currentEvent = realmEvents.first {
-           self.currentEvent = currentEvent
-       }
-    }
-    
-    func loadCurrentQuantityType() {
-        if quantityTypeSegmentControl.selectedSegmentIndex == 0 {
-                   self.mountTextField.isHidden = true
-                   self.totalMountStackView.isHidden = true
-                   self.designLineView.isHidden = true
-                   self.designLineView2.isHidden = true
-                   self.totalMountTextField.isHidden = false
-                   self.fundCollaborationsLabel.isHidden = true
-                   self.collaboratorsStepper.isHidden = true
-                   self.hideFromGuestsView.isHidden = false
-
-               } else {
-                   self.mountTextField.isHidden = false
-                   self.totalMountStackView.isHidden = false
-                   self.designLineView.isHidden = false
-                   self.designLineView2.isHidden = false
-                   self.totalMountTextField.isHidden = true
-                   self.fundCollaborationsLabel.isHidden = false
-                   self.collaboratorsStepper.isHidden = false
-                   self.hideFromGuestsView.isHidden = true
-
-               }
-    }
-    
-    var pickerHeightVisible: CGFloat!
-    var mountToNote: CGFloat!
-   
-    func togglePickerViewVisibility(animated: Bool = true) {
-        if detailsToMostImportantConstraint.constant != 0 {
-            pickerHeightVisible = detailsToMostImportantConstraint.constant
-            detailsToMostImportantConstraint.constant = 0
-        } else {
-            detailsToMostImportantConstraint.constant = pickerHeightVisible
-        }
-        if animated {
-            UIView.animate(withDuration: 0.2, animations: {
-                  () -> Void in
-                   self.view.layoutIfNeeded()
-             }, completion: nil)
-        } else {
-             view.layoutIfNeeded()
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            
+            if self.view.frame.origin.y == self.yOrigin {
+                self.view.frame.origin.y -= (keyboardSize.height)
+                self.lastKeyboardSize = keyboardSize.height
+            }
+            
         }
     }
     
-    func toggleDetailsToMount(animated: Bool = true) {
-        if detailsToMostImportantConstraint.constant != 8 {
-            mountToNote = totalMountToNoteConstraint.constant
-            totalMountToNoteConstraint.constant = 8
-        } else {
-            totalMountToNoteConstraint.constant = mountToNote
-        }
-        if animated {
-            UIView.animate(withDuration: 0.2, animations: {
-                  () -> Void in
-                   self.view.layoutIfNeeded()
-             }, completion: nil)
-        } else {
-             view.layoutIfNeeded()
+    @objc func keyboardDidShow(notification: NSNotification){
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            print("size",keyboardSize)
+            if lastKeyboardSize > keyboardSize.height{
+                       self.view.frame.origin.y += (lastKeyboardSize - keyboardSize.height)
+                       self.lastKeyboardSize = keyboardSize.height
+                   }else if  lastKeyboardSize < keyboardSize.height{
+                       self.view.frame.origin.y -= (lastKeyboardSize - keyboardSize.height)
+                       self.lastKeyboardSize = keyboardSize.height
+                   }
         }
     }
     
-    @IBAction func quantityTypeSegmentChanged(_ sender: Any) {
-        if quantityTypeSegmentControl.selectedSegmentIndex == 0 {
-            self.mountTextField.isHidden = true
-            self.totalMountStackView.isHidden = true
-            self.designLineView.isHidden = true
-            self.designLineView2.isHidden = true
-            self.totalMountTextField.isHidden = false
-            self.fundCollaborationsLabel.isHidden = true
-            self.collaboratorsStepper.isHidden = true
-            self.hideFromGuestsView.isHidden = false
-            self.togglePickerViewVisibility()
-//            self.toggleDetailsToMount()
-
-        } else {
-            self.mountTextField.isHidden = false
-            self.totalMountStackView.isHidden = false
-            self.designLineView.isHidden = false
-            self.designLineView2.isHidden = false
-            self.totalMountTextField.isHidden = true
-            self.fundCollaborationsLabel.isHidden = false
-            self.collaboratorsStepper.isHidden = false
-            self.hideFromGuestsView.isHidden = true
-            self.togglePickerViewVisibility()
-//            self.toggleDetailsToMount()
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != self.yOrigin {
+            self.view.frame.origin.y = self.yOrigin
         }
     }
     
-    @IBAction func addImageToCashFund(_ sender: Any) {
-        self.openCameraPickerForCashFund()
+    @IBAction func hideKeyboardOnClickOutside(){
+        view.endEditing(true)
     }
     
-    @IBAction func collaboratorStepperChanged(_ sender: UIStepper) {
-        self.fundCollaborationsLabel.text = "Colaboraciones: \(Int(sender.value))"
-        if (self.mountTextField.text != "") {
-            self.totalPoolAmountLabel.text = "$\(Double(sender.value) * self.mount)"
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //self.view.frame.origin.y = self.yOrigin
+    }
+    
+    @IBAction func createMoneyPool(_ sender: Any) {
+        if let goalToSet = goalTextField.text{
+            self.goal = Double(goalToSet) ?? 0
+        }
+        
+        if let amountToSet = totalMountTextField.text{
+            self.mount = Double(amountToSet) ?? 0
+        }
+        
+        if(self.cashFundNameTextField.text == "" || self.goalTextField.text == "" || self.totalMountTextField.text == ""){
+            self.hideKeyboardOnClickOutside()
+            self.showMessage(NSLocalizedString("Favor de llenar todos los campos obligatorios", comment: "Create Error"),type: .error)
+            return
+        }
+        else if(self.goal <= 0){
+            self.hideKeyboardOnClickOutside()
+            self.showMessage(NSLocalizedString("Meta debe ser mayor a $0 MXN", comment: "Create Error"),type: .error)
+            return
+        }
+        else if(self.mount <= 0 || self.mount >= self.goal){
+            self.hideKeyboardOnClickOutside()
+            self.showMessage(NSLocalizedString("Contribución mínima debe ser menor que Meta", comment: "Create Error"),type: .error)
+            return
+        }
+        else{
+            self.hideKeyboardOnClickOutside()
+            
+            self.eventPool.collectedAmount = "0"
+            self.eventPool.description = self.cashFundNameTextField.text!
+            self.eventPool.goal = String(self.goal)
+            self.eventPool.isImportant = self.markAsImportantSwitch.isOn
+            self.eventPool.isPriceVisible = !self.hideFromGuestsSwitch.isOn
+            self.eventPool.note = self.cashFundNoteTextField.text!
+            self.eventPool.suggestedAmount = String(self.mount)
+            self.eventPool.image = self.cashFundImageView.image as! UIImage?
+            var multipartFormData: [MultipartFormData] = self.createPoolData()
+            
+            if !(multipartFormData.isEmpty) {
+                self.createButton.setTitle("Procesando", for: .normal)
+                self.createButton.isEnabled = false
+                self.cancelButton.isEnabled = false
+                sharedApiManager.createEventPool(event: self.currentEvent, pool: multipartFormData) { (_, response) in
+                if let result=response{
+                    if result.isSuccess(){
+                            self.productsRegistryVC.registrySegment.selectedSegmentIndex = 2
+                            
+                            self.productsRegistryVC.segmentedValueChanged(self.productsRegistryVC.registrySegment)
+                        self.parent?.showMessage(NSLocalizedString("Sobre de dinero creado con éxito", comment: "Create Success"),type: .success)
+                        self.navigationController?.popViewController(animated: true)
+                    }else{
+                        print(result)
+                        self.showMessage(NSLocalizedString("Error, intentelo más tarde", comment: "Create error"),type: .error)
+                        self.createButton.setTitle("Crear Sobre de Dinero", for: .normal)
+                        self.createButton.isEnabled = true
+                        self.cancelButton.isEnabled = true
+                    }
+                }
+            }
+            }
         }
     }
     
-    func hideKeyBoardForMountTextField() {
-           mountTextField.resignFirstResponder()
-    }
-    
-    func hideKeyBoardForTotalMountTextField() {
-        totalMountTextField.resignFirstResponder()
-    }
-    
-    func hideKeyBoardForCashFundNameTextField() {
-        cashFundNameTextField.resignFirstResponder()
-    }
-    
-    func hideKeyBoardForNoteTextField() {
-        cashFundNoteTextField.resignFirstResponder()
-    }
-    
-    func hideKeyBoardForGoalTextField() {
-        goalTextField.resignFirstResponder()
+    func createPoolData() -> [MultipartFormData] {
+        var multipartFormData: [MultipartFormData] = []
+        
+        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.description.data(using: String.Encoding.utf8)!))), name: "event_pool[description]"))
+        
+        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.goal.data(using: String.Encoding.utf8)!))), name: "event_pool[goal]"))
+        
+        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.suggestedAmount.data(using: String.Encoding.utf8)!))), name: "event_pool[suggested_amount]"))
+        
+        var tempStr = ""
+        if(self.eventPool.isPriceVisible){
+            tempStr = "true"
+        }else{
+            tempStr = "false"
+        }
+        
+        multipartFormData.append(MultipartFormData(provider: .data(((tempStr.data(using: String.Encoding.utf8)!))), name: "event_pool[is_price_visible]"))
+        
+        if(self.eventPool.isImportant){
+            tempStr = "true"
+        }else{
+            tempStr = "false"
+        }
+        
+        multipartFormData.append(MultipartFormData(provider: .data(((tempStr.data(using: String.Encoding.utf8)!))), name: "event_pool[is_important]"))
+        
+        if(self.eventPool.image != nil){
+            multipartFormData.append(MultipartFormData(provider: .data((self.eventPool.image?.jpegData(compressionQuality: 1.0))!), name: "event_pool[image]", fileName: "image.jpeg", mimeType: "image/jpeg"))
+        }
+        
+        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.note.data(using: String.Encoding.utf8)!))), name: "event_pool[note]"))
+        
+        tempStr = "1"
+        
+        multipartFormData.append(MultipartFormData(provider: .data(((tempStr.data(using: String.Encoding.utf8)!))), name: "event_pool[contributions]"))
+        
+        return multipartFormData
+        
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    @IBAction func createCashFundButtonTapped(_ sender: Any) {
-        self.createCashFund(event: self.currentEvent)
+    @IBAction func takePhotoAsCoverPhoto(_ sender: Any) {
+        self.openCameraPickerForCashFund()
     }
-    @IBAction func hideTotalFromGuests(_ sender: Any) {
-        if self.hideTotalSwitch.isOn {
-            self.eventPool.isPriceVisible = false
-        } else {
-            self.eventPool.isPriceVisible = true
-        }
-    }
-    
-    @IBAction func markAsImportant(_ sender: Any) {
-        if self.markAsImportantSwitch.isOn {
-            self.eventPool.isImportant = true
-        } else {
-            self.eventPool.isImportant = false
-        }
-    }
-    
-    func loadInitialSwitchesValue() {
-        self.eventPool.isPriceVisible = true
-        self.eventPool.isImportant = false
-    }
-    
-    
-    func createCashFund(event: Event) {
-        var multipartFormData: [MultipartFormData] = self.getCashFundMultipart()
-        
-        sharedApiManager.createEventPool(event: event, pool: multipartFormData) { (emptyObjectWIthErrors, result) in
-            if let response = result {
-                if (response.isSuccess()) {
-                    self.productsRegistryVC.getEventProducts(event: self.currentEvent, available: self.productsRegistryVC.availableSelected, gifted: self.productsRegistryVC.giftedSelected, filters: [:])
-                    self.productsRegistryVC.eventProductsCollectionView.reloadData()
-                    self.navigationController?.popViewController(animated: true)
-                    self.navigationController?.showMessage(NSLocalizedString("Fondo creado", comment: "Fondo Creado"), type: .success)
-                } else if (response.isClientError()) {
-                    self.showMessage(NSLocalizedString("\(emptyObjectWIthErrors!.errors.first!)", comment: "errors"), type: .error)
-                } else {
-                    self.showMessage(NSLocalizedString("Error de servidor, intente de nuevo más tarde", comment: "Error"), type: .error)
-                }
-            }
-        }
-    }
-    
-    func getCashFundMultipart() -> [MultipartFormData] {
-        var multipartFormData: [MultipartFormData] = []
-        
-        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.description.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[description]"))
-        
-        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.note.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[note]"))
-        
-        
-        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.suggestedAmount.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[suggested_amount]"))
-        
-        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.isImportant.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[is_important]"))
-        
-        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.goal.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[goal]"))
-        
-        multipartFormData.append(MultipartFormData(provider: .data(((self.eventPool.isPriceVisible.description.data(using: String.Encoding.utf8)! ))),name: "event_pool[is_price_visible]"))
-        
-        
-        
-        if (self.eventPool.image != nil) {
-                  multipartFormData.append(MultipartFormData(provider: .data((self.eventPool.image?.jpegData(compressionQuality: 1.0))!), name: "event_pool[image]", fileName: "image.jpeg", mimeType: "image/jpeg"))
-        }
-        
-        return multipartFormData
+    @IBAction func pickImageAsCoverPhoto(_ sender: Any) {
+        self.openGallerPickerForCashFund()
     }
 }
 
-extension AddCashFundViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        var bool = false
-        
-        if textField == mountTextField {
-            hideKeyBoardForMountTextField()
-            bool = true
-        } else if textField == totalMountTextField {
-            hideKeyBoardForTotalMountTextField()
-            bool = true
-        } else if textField == cashFundNameTextField {
-            hideKeyBoardForCashFundNameTextField()
-            bool = true
-        } else if textField == cashFundNoteTextField {
-            hideKeyBoardForNoteTextField()
-            bool = true
-        } else if textField == goalTextField {
-            hideKeyBoardForGoalTextField()
-            bool = true
-        }
-        
-        return bool
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == mountTextField {
-            self.mount = Double(self.mountTextField.text!)!
-            self.eventPool.suggestedAmount = self.mountTextField.text!
-        }
-        
-        if textField == totalMountTextField {
-            self.eventPool.suggestedAmount = self.totalMountTextField.text!
-        }
-        
-        if textField == cashFundNoteTextField {
-            self.eventPool.note = cashFundNoteTextField.text!
-        }
-        if textField == cashFundNameTextField {
-            self.eventPool.description = cashFundNameTextField.text!
-        }
-        
-        if textField == goalTextField {
-            self.goal = Double(self.goalTextField.text!) as! Double
-            self.eventPool.goal = goalTextField.text!
-        }
-        
-    }
-}
 extension AddCashFundViewController: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     func openCameraPickerForCashFund() {
+        view.endEditing(true)
         imagePicker = UIImagePickerController()
         imagePicker.modalPresentationStyle = .overFullScreen
         imagePicker.delegate = self
@@ -324,6 +222,7 @@ extension AddCashFundViewController: UIImagePickerControllerDelegate,UINavigatio
     }
     
     func openGallerPickerForCashFund() {
+        view.endEditing(true)
         imagePicker = UIImagePickerController()
         imagePicker.modalPresentationStyle = .overFullScreen
         imagePicker.delegate = self
@@ -336,5 +235,7 @@ extension AddCashFundViewController: UIImagePickerControllerDelegate,UINavigatio
             imagePicker.dismiss(animated: true, completion: nil)
             self.eventPool.image = info[.originalImage] as! UIImage?
             self.cashFundImageView.image = info[.originalImage] as! UIImage?
+            self.view.frame.origin.y = self.yOrigin
+            self.hideKeyboardOnClickOutside()
        }
 }

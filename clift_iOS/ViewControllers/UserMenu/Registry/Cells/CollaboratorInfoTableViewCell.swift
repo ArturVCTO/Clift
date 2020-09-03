@@ -22,6 +22,7 @@ class CollaboratorInfoTableViewCell: UITableViewCell {
     var thankedUser: ThankYouUser!
     var currentOrder: OrderItem!
     var currentEvent: Event!
+    var selectedIndexPath: IndexPath!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -66,11 +67,12 @@ class CollaboratorInfoTableViewCell: UITableViewCell {
         
         let thankCollaboratorVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "thankCollaboratorVC") as!
          ThankCollaboratorViewController
-        
+        thankCollaboratorVC.productRegistryVC = self.parentVC.registryVC
         thankCollaboratorVC.thankedUser = self.thankedUser
         thankCollaboratorVC.event = self.currentEvent
         thankCollaboratorVC.orderItem = self.currentOrder
         thankCollaboratorVC.collabVC = parentVC
+        thankCollaboratorVC.selectedIndexPath = self.selectedIndexPath
         self.parentVC.parent?.addChild(thankCollaboratorVC)
         thankCollaboratorVC.view.frame = self.parentVC.view.frame
         self.parentVC.parent?.view.addSubview(thankCollaboratorVC.view)

@@ -27,6 +27,7 @@ class EventProductCell: UICollectionViewCell {
     @IBOutlet weak var collaboratorsLeftLabel: UILabel!
     
     func setup(eventProduct: EventProduct) {
+        var thanked:[OrderItem] = []
         
         if (eventProduct.isImportant == true) {
             topPriorityView.isHidden = false
@@ -52,11 +53,6 @@ class EventProductCell: UICollectionViewCell {
             }
             var isProductGifted = self.isGifted(price: eventProduct.product.price, paidAmount: eventProduct.paidAmount)
             
-            if eventProduct.hasBeenThanked{
-                self.thankedIcon.isHidden = false
-                self.thankedIcon.image = UIImage(named: "icthankgreen")
-            }
-            
             if eventProduct.status == "credit"{
                 self.creditedIcon.isHidden = false
                 self.creditedIcon.image = UIImage(named: "iccreditgreen")
@@ -67,26 +63,47 @@ class EventProductCell: UICollectionViewCell {
                 self.deliveredIcon.image = UIImage(named: "icdeliveredgreen")
             }
             
-            if eventProduct.hasBeenPaid {
+            if eventProduct.hasBeenPaid{
                 self.giftedLabel.text = "Regalado"
                 self.giftedCheckmark.isHidden = false
                 if eventProduct.status == "pending"{
                     self.creditedIcon.isHidden = false
                     self.creditedIcon.image = UIImage(named: "iccreditblack")
                     self.deliveredIcon.isHidden = false
-                    self.deliveredIcon.image = UIImage(named: "icdeliverblack")
+                    self.deliveredIcon.image = UIImage(named: "icdelivergray")
                 }
-                if !eventProduct.hasBeenThanked{
-                    self.thankedIcon.isHidden = false
-                    self.thankedIcon.image = UIImage(named: "icthankblack")
-                }
+            }
+            else if !eventProduct.hasBeenPaid && eventProduct.status == "credit"{
+                self.creditedIcon.isHidden = false
+            }
+            else if eventProduct.quantity > 1 && eventProduct.status == "pending" && eventProduct.gifted_quantity > 0{
+                 self.deliveredIcon.isHidden = false
+                self.deliveredIcon.image = UIImage(named: "icdelivergray")
+                self.creditedIcon.isHidden = false
+                self.creditedIcon.image = UIImage(named: "iccreditblack")
             }
             else{ //has_been_paid = false
                 self.thankedIcon.isHidden = true
-                self.creditedIcon.isHidden = true
-                self.deliveredIcon.isHidden = true
                 self.giftedLabel.text = "Disponible"
                 self.giftedCheckmark.isHidden = true
+            }
+            
+            if eventProduct.orderItems != nil{
+                eventProduct.orderItems = eventProduct.orderItems!.filter { (order) -> Bool in
+                    order.status != "pending"
+                }
+                print(eventProduct.product.name)
+                print(eventProduct.orderItems)
+                thanked = eventProduct.orderItems!.filter { (order) -> Bool in !order.hasBeenThanked }
+                if thanked.count == 0{
+                    self.thankedIcon.isHidden = false
+                    self.thankedIcon.image = UIImage(named: "icthankgreen")
+                }
+                else{
+                    self.thankedIcon.isHidden = false
+                    self.thankedIcon.image = UIImage(named: "icthankblack")
+                }
+                
             }
             
           } else { //Productos externos

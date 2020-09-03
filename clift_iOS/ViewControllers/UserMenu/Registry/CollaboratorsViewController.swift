@@ -14,6 +14,8 @@ class CollaboratorsViewController: UIViewController {
     public var product: EventProduct!
     public var currentEvent: Event!
     public var pool: EventPool!
+    var selectedIndexPath: IndexPath!
+    var registryVC: ProductsRegistryViewController!
     @IBOutlet weak var collaboratorsTableView: UITableView!
     
     override func viewDidLoad() {
@@ -92,6 +94,7 @@ extension CollaboratorsViewController: UITableViewDelegate, UITableViewDataSourc
         cell.thankButton.isEnabled = false
         cell.parentVC = self
         cell.currentEvent = self.currentEvent
+        cell.selectedIndexPath = self.selectedIndexPath
         cell.setup(user: self.product.guestData!["user_info"]![indexPath
             .row], order: orders[indexPath.row])
         

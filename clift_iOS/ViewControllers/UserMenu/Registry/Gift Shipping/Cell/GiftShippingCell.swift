@@ -20,9 +20,9 @@ class GiftShippingCell: UITableViewCell {
         if let imageURL = URL(string:"\(cell.product.imageUrl)") {
             self.giftImageView.kf.setImage(with: imageURL)
         }
-        self.giftName.text = cell.name
+        self.giftName.text = cell.product.name
         self.giftShop.text = cell.product.shop.name
-        self.giftBrand.text = cell.product.brand.name
-        self.giftQuantity.text = "\(cell.quantity)"
+        self.giftBrand.text = cell.product.brand_name
+        self.giftQuantity.text = "\(cell.gifted_quantity)"
     }
 }

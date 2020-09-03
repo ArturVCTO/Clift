@@ -29,6 +29,7 @@ class Address: Mappable {
     
     convenience required init?(map: Map) {
         self.init()
+        self.country.name = "México"
     }
     
     func mapping(map: Map) {
@@ -39,8 +40,8 @@ class Address: Mappable {
         email <- map["email"]
         cellPhoneNumber <- map["cell_phone_number"]
         streetAndNumber <- map["street_and_number"]
-        city <- map["city"]
-        state <- map["state"]
+        city <- map["address_city"]
+        state <- map["address_state"]
         country <- map["country"]
         zipCode <- map["zip_code"]
         suburb <- map["suburb"]
