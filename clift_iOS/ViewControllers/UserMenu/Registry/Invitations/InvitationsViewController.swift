@@ -50,6 +50,7 @@ class InvitationsViewController: UIViewController,CNContactPickerDelegate{
     var currentEvent = Event()
     
     override func viewDidLoad() {
+        recentActivityView.isHidden = true
         super.viewDidLoad()
         self.invitationTemplatesCollectionView.dataSource = self
         self.invitationTemplatesCollectionView.delegate = self

@@ -13,7 +13,10 @@ import Foundation
 import UIKit
 
 class PaymentsViewController: UIViewController {
+    @IBOutlet weak var fundsAmountLabel: UILabel!
     @IBOutlet weak var seeMyCreditsButton: customButton!
+    @IBOutlet weak var totalAmountLabel: UILabel!
+    @IBOutlet weak var creditsAmountLabel: UILabel!
     @IBOutlet weak var cashOutFundsButton: customButton!
     @IBOutlet weak var eventImageView: customImageView!
     @IBOutlet weak var coverImageView: UIImageView!
@@ -35,11 +38,13 @@ class PaymentsViewController: UIViewController {
         super.viewDidLoad()
         self.pageRefreshControl.addTarget(self, action: #selector(refreshPage), for: .valueChanged)
         self.scrollView.refreshControl = self.pageRefreshControl
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.getEvents()
+        
         self.setupInitialView()
     }
     
@@ -161,6 +166,10 @@ class PaymentsViewController: UIViewController {
         var eventVisibilityString = String()
         var eventTypeString = String()
         self.eventNameLabel.text = event.name
+        self.currentEvent = event
+        self.fundsAmountLabel.text = String(format: "%.2f", Double(event.eventAnalytics.cashGiftTotal))
+        
+        self.getCredits(event: self.currentEvent)
         
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "es_MX")
@@ -201,6 +210,24 @@ class PaymentsViewController: UIViewController {
         
         if let imageURL = URL(string:"\(event.coverImageUrl)") {
             self.coverImageView.kf.setImage(with: imageURL)
+        }
+    }
+    
+    func getCredits(event: Event){
+        sharedApiManager.getCredits(event: currentEvent ) { (credits, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    var balance = 0.0
+                    for item in credits! {
+                        balance += item.balance
+                    }
+                    self.creditsAmountLabel.text = String(format: "%.2f", balance)
+                    var funds = 0
+                    funds = self.currentEvent.eventAnalytics.cashGiftTotal
+                    self.totalAmountLabel.text =
+                        String(format: "%.2f", balance + Double(funds))
+                }
+            }
         }
     }
     

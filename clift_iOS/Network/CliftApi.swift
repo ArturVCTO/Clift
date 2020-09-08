@@ -339,7 +339,17 @@ extension CliftApi: TargetType {
         case .updateBankAccount(let bankAccount):
             return .requestParameters(parameters: ["bank_account": bankAccount.toJSON()], encoding: JSONEncoding.default)
         case .addAddress(let address):
-            return .requestParameters(parameters: ["shipping_address": address.toJSON()], encoding: JSONEncoding.default)
+            var parameters = Dictionary<String,Any>()
+            parameters["address_city_id"] = address.city.id
+            parameters["address_state_id"] = address.state.id
+            parameters["cell_phone_number"] = address.cellPhoneNumber
+            parameters["email"] = address.email
+            parameters["first_name"] = address.firstName
+            parameters["last_name"] = address.lastName
+            parameters["street_and_number"] = address.streetAndNumber
+            parameters["suburb"] = address.suburb
+            parameters["zip_code"] = address.zipCode
+            return .requestParameters(parameters: ["shipping_address": parameters], encoding: JSONEncoding.default)
         case .updateAddress(let address):
             return .requestParameters(parameters: ["shipping_address": address], encoding: JSONEncoding.default)
         case .setDefaultAddress(let address):

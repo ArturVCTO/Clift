@@ -10,8 +10,14 @@ import Foundation
 import UIKit
 import RealmSwift
 import Realm
+import AVFoundation
+import AVKit
+
 
 class RootViewController: UIViewController {
+
+    var player = AVPlayer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let realm = try! Realm()
@@ -19,14 +25,40 @@ class RootViewController: UIViewController {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         print(urls[urls.count-1] as URL)
         
-        if(users.isEmpty) {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.showCreateSessionFlow()
+        loadVideo()
+
+        let seconds = 4.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            if(users.isEmpty) {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.showCreateSessionFlow()
+            }
+            else {
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.userHasSuccesfullySignedIn()
+            }
         }
-        else {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.userHasSuccesfullySignedIn()
-        }
+        
+    }
+    
+    private func loadVideo() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.ambient)
+        } catch { }
+
+        let path = Bundle.main.path(forResource: "SplashScreenMobile", ofType:"mp4")
+
+        player = AVPlayer(url: NSURL(fileURLWithPath: path!) as URL)
+        let playerLayer = AVPlayerLayer(player: player)
+
+        playerLayer.frame = self.view.frame
+        playerLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        playerLayer.zPosition = -1
+
+        self.view.layer.addSublayer(playerLayer)
+
+        player.seek(to: CMTime.zero)
+        player.play()
     }
 }
  

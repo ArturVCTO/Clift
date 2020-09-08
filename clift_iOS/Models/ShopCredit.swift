@@ -28,7 +28,9 @@ class ShopCredit: Mappable {
     func mapping(map: Map) {
         id <- map["id"]
         code <- map["credit_code"]
-        balance <- map["amount"]
+        var temp  = ""
+        temp <- map["amount"]
+        balance = Double(temp) ?? 0
         expirationDate <- map["expiration_date"]
         event <- map["event"]
         shop <- map["shop"]
