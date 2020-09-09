@@ -38,7 +38,10 @@ class ProductsRegistryViewController: UIViewController {
     @IBOutlet weak var nextPageButton: UIButton!
     @IBOutlet weak var lastPageButton: UIButton!
     @IBOutlet weak var registrySegment: UISegmentedControl!
+    private let spacing:CGFloat = 16
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.eventProductsCollectionView.delegate = self
         self.eventProductsCollectionView.dataSource = self
@@ -48,6 +51,12 @@ class ProductsRegistryViewController: UIViewController {
         self.getEventProducts(event: currentEvent, available: availableSelected, gifted: giftedSelected, filters: ["page": 1])
         self.navigationView.layer.cornerRadius = 20
         self.navigationView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        self.eventProductsCollectionView?.collectionViewLayout = layout
     }
     
     func loadTotalProducts() {
@@ -376,6 +385,21 @@ class ProductsRegistryViewController: UIViewController {
         }
     }
     
+    func requestCredit(alert: UIAlertAction) {
+            let convertCreditVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "convertCreditVC") as!
+            ConvertToCreditViewController
+            
+            convertCreditVC.eventProduct = eventProducts[selectedIndexPath.row]
+            convertCreditVC.event = self.currentEvent
+            convertCreditVC.collectionView = self.eventProductsCollectionView
+            convertCreditVC.selectedIndexPath = self.selectedIndexPath
+            
+            self.parent?.addChild(convertCreditVC)
+            convertCreditVC.view.frame = self.view.frame
+            self.parent?.view.addSubview(convertCreditVC.view)
+            convertCreditVC.didMove(toParent: self)
+    }
+    
     @IBAction func actionButtonTapped(_ sender: Any) {
         let sheet = UIAlertController(title: "Acciones", message: nil, preferredStyle: .actionSheet)
         
@@ -399,6 +423,7 @@ class ProductsRegistryViewController: UIViewController {
         
         //SOLO PARA REGALOS
         var requestGift: UIAlertAction
+        var requestCredit: UIAlertAction
         var makeCollaborativeGift: UIAlertAction
         var makeIndividualGift: UIAlertAction
         var removeFromRegistry: UIAlertAction
@@ -444,9 +469,23 @@ class ProductsRegistryViewController: UIViewController {
                         requestGift = UIAlertAction(title: "Solicitar envio", style: .default,handler: requestGift(alert:))
                         requestGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
                         requestGift.setValue(UIImage(named: "icdelivergray"), forKey: "image")
-                        
                         sheet.addAction(requestGift)
+                        
+                        requestCredit = UIAlertAction(title: "Solicitar crédito", style: .default,handler: requestCredit(alert:))
+                        requestCredit.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                        requestCredit.setValue(UIImage(named: "iccreditgray"), forKey: "image")
+                        
+                        sheet.addAction(requestCredit)
+                        
                     }
+                    if self.eventProducts[self.selectedIndexPath.row].isCollaborative && self.eventProducts[self.selectedIndexPath.row].gifted_quantity >= 1 && self.eventProducts[self.selectedIndexPath.row].status == "pending" {
+                        requestCredit = UIAlertAction(title: "Solicitar crédito", style: .default,handler: requestCredit(alert:))
+                        requestCredit.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                        requestCredit.setValue(UIImage(named: "iccreditgray"), forKey: "image")
+                        
+                        sheet.addAction(requestCredit)
+                    }
+                   
                 }
             }
         }
@@ -653,7 +692,24 @@ class ProductsRegistryViewController: UIViewController {
     }
     
 }
-extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionViewDataSource {
+extension ProductsRegistryViewController: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+
+   
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+           let numberOfItemsPerRow:CGFloat = 2
+           let spacingBetweenCells:CGFloat = 16
+           
+           let totalSpacing = (2 * self.spacing) + ((numberOfItemsPerRow - 1) * spacingBetweenCells) //Amount of total spacing in a row
+           
+           if let collection = self.eventProductsCollectionView {
+               let width = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
+               return CGSize(width: width, height: 368)
+           }else{
+               return CGSize(width: 0, height: 0)
+           }
+       }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }

@@ -259,6 +259,8 @@ protocol ApiCalls {
     
     func addAddress(address: Address, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
     
+    func convertToCredits(event: Event, payload: [Dictionary<String,Any>], completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
+    
     func getAddresses(completion: @escaping([Address]?, Response?) -> Void)
     
     func getAddress(addressId: String, completion: @escaping(Address?, Response?) -> Void)
@@ -506,6 +508,10 @@ extension CliftApiManager: ApiCalls {
     
     func addAddress(address: Address, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
         requestEmptyObject(.addAddress(address: address), completion: completion)
+    }
+    
+    func convertToCredits(event: Event, payload: [Dictionary<String, Any>], completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.convertToCredits(event: event, payload: payload), completion: completion)
     }
     
     func getAddresses(completion: @escaping([Address]?, Response?) -> Void) {

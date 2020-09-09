@@ -20,6 +20,7 @@ class OrderItem: Mappable {
     var thankMessage = ""
     var amount = ""
     var status = ""
+    var orderId = ""
     
     var errors: [String] = []
     
@@ -32,8 +33,9 @@ class OrderItem: Mappable {
         quantity <- map["quantity"]
         hasBeenThanked <- map["has_been_thanked"]
         thankMessage <- map["thank_message"]
-        amount <- map["amount"]
+        amount <- map["amount" ]
         status <- map["status"]
+        orderId <- map["order_id"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {

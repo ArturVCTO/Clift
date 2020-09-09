@@ -197,13 +197,14 @@
 		CE317A3524F6E25F002EFA80 /* NumberOfCollaboratorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE317A3424F6E25F002EFA80 /* NumberOfCollaboratorsViewController.swift */; };
 		CE59EAE024F0714300EA97E5 /* CollaboratorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59EADF24F0714300EA97E5 /* CollaboratorsViewController.swift */; };
 		CE66B16824EC3AB200AE91C7 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE66B16724EC3AB200AE91C7 /* Pagination.swift */; };
+		CE7B9EFF2509395500E8ED9D /* ConvertToCreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7B9EFE2509395500E8ED9D /* ConvertToCreditViewController.swift */; };
 		CE8D41C424BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
 		CE8D41C524BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
 		CE8D41C624BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
 		CE9125A424F830BA00B30F7F /* ThankCollaboratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9125A324F830BA00B30F7F /* ThankCollaboratorViewController.swift */; };
 		CEB74B0A2507E8750022BFA1 /* SplashScreenMobile.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CEB74B092507E8750022BFA1 /* SplashScreenMobile.mp4 */; };
 		CEF53FB024F429B500D7C997 /* CollaboratorInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */; };
-		CEF53FB424F4461D00D7C997 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FB324F4461D00D7C997 /* OrderItem.swift */; };
+		CEF53FB424F4461D00D7C997 /* ≤c<daqwewq.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FB324F4461D00D7C997 /* ≤c<daqwewq.swift */; };
 		FB69CC8CE945481E9839D8BF /* Pods_clift_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -422,12 +423,13 @@
 		CE317A3424F6E25F002EFA80 /* NumberOfCollaboratorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfCollaboratorsViewController.swift; sourceTree = "<group>"; };
 		CE59EADF24F0714300EA97E5 /* CollaboratorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsViewController.swift; sourceTree = "<group>"; };
 		CE66B16724EC3AB200AE91C7 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
+		CE7B9EFE2509395500E8ED9D /* ConvertToCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertToCreditViewController.swift; sourceTree = "<group>"; };
 		CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-Bold.ttf"; sourceTree = "<group>"; };
 		CE9125A324F830BA00B30F7F /* ThankCollaboratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankCollaboratorViewController.swift; sourceTree = "<group>"; };
 		CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB74B092507E8750022BFA1 /* SplashScreenMobile.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SplashScreenMobile.mp4; sourceTree = "<group>"; };
 		CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorInfoTableViewCell.swift; sourceTree = "<group>"; };
-		CEF53FB324F4461D00D7C997 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
+		CEF53FB324F4461D00D7C997 /* ≤c<daqwewq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "≤c<daqwewq.swift"; sourceTree = "<group>"; };
 		DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.canary.xcconfig"; sourceTree = "<group>"; };
 		F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC9BC5CE8D99C231599E05C1 /* Pods-clift_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -735,6 +737,7 @@
 				CE59EADF24F0714300EA97E5 /* CollaboratorsViewController.swift */,
 				CE317A3424F6E25F002EFA80 /* NumberOfCollaboratorsViewController.swift */,
 				CE9125A324F830BA00B30F7F /* ThankCollaboratorViewController.swift */,
+				CE7B9EFE2509395500E8ED9D /* ConvertToCreditViewController.swift */,
 			);
 			path = Registry;
 			sourceTree = "<group>";
@@ -855,7 +858,7 @@
 				4604A334230331890041F9AA /* User.swift */,
 				4677DA122415D0F800A2CE28 /* VerifiedResponse.swift */,
 				CE66B16724EC3AB200AE91C7 /* Pagination.swift */,
-				CEF53FB324F4461D00D7C997 /* OrderItem.swift */,
+				CEF53FB324F4461D00D7C997 /* ≤c<daqwewq.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1261,6 +1264,7 @@
 				46B2E6182408335B00635CF9 /* ConfigurartionViewController.swift in Sources */,
 				462EB0BD2316C8460084C3C7 /* EventAnalytics.swift in Sources */,
 				462F9F2E230C6AE20014CD9E /* StringExtensions.swift in Sources */,
+				CE7B9EFF2509395500E8ED9D /* ConvertToCreditViewController.swift in Sources */,
 				465FED1323708B7B0038D557 /* SummaryRegistryTableViewCell.swift in Sources */,
 				46ABCB2E2318669500857046 /* MyEventsCell.swift in Sources */,
 				460836A92386FF890052E73A /* InvitationTemplatesViewController.swift in Sources */,
@@ -1314,7 +1318,7 @@
 				463A78A42385F3F100985674 /* GuestListViewController.swift in Sources */,
 				46831C1423DBAEEF004BAAC1 /* ThankGuestViewController.swift in Sources */,
 				46DC795223E943400013C306 /* ThankYouUser.swift in Sources */,
-				CEF53FB424F4461D00D7C997 /* OrderItem.swift in Sources */,
+				CEF53FB424F4461D00D7C997 /* ≤c<daqwewq.swift in Sources */,
 				46E85B5222FB5ED9004FA3FE /* CliftApiManager.swift in Sources */,
 				468258162307261C00D3D49C /* LoginViewController.swift in Sources */,
 				4604A32F22FE18900041F9AA /* FourthStepOnboardingViewController.swift in Sources */,
