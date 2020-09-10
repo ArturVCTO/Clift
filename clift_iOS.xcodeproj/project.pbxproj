@@ -203,6 +203,7 @@
 		CE8D41C624BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */; };
 		CE9125A424F830BA00B30F7F /* ThankCollaboratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9125A324F830BA00B30F7F /* ThankCollaboratorViewController.swift */; };
 		CEB74B0A2507E8750022BFA1 /* SplashScreenMobile.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CEB74B092507E8750022BFA1 /* SplashScreenMobile.mp4 */; };
+		CEC006A4250A894100E54337 /* ActivityTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC006A3250A894100E54337 /* ActivityTabViewController.swift */; };
 		CEF53FB024F429B500D7C997 /* CollaboratorInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */; };
 		CEF53FB424F4461D00D7C997 /* ≤c<daqwewq.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FB324F4461D00D7C997 /* ≤c<daqwewq.swift */; };
 		FB69CC8CE945481E9839D8BF /* Pods_clift_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */; };
@@ -428,6 +429,7 @@
 		CE9125A324F830BA00B30F7F /* ThankCollaboratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankCollaboratorViewController.swift; sourceTree = "<group>"; };
 		CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB74B092507E8750022BFA1 /* SplashScreenMobile.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SplashScreenMobile.mp4; sourceTree = "<group>"; };
+		CEC006A3250A894100E54337 /* ActivityTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTabViewController.swift; sourceTree = "<group>"; };
 		CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CEF53FB324F4461D00D7C997 /* ≤c<daqwewq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "≤c<daqwewq.swift"; sourceTree = "<group>"; };
 		DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.canary.xcconfig"; sourceTree = "<group>"; };
@@ -738,6 +740,7 @@
 				CE317A3424F6E25F002EFA80 /* NumberOfCollaboratorsViewController.swift */,
 				CE9125A324F830BA00B30F7F /* ThankCollaboratorViewController.swift */,
 				CE7B9EFE2509395500E8ED9D /* ConvertToCreditViewController.swift */,
+				CEC006A3250A894100E54337 /* ActivityTabViewController.swift */,
 			);
 			path = Registry;
 			sourceTree = "<group>";
@@ -1288,6 +1291,7 @@
 				46DE69CE235D6965002C2BB8 /* colorFilterTVCell.swift in Sources */,
 				46EC9DA423314FFA00950139 /* SubcategoryCollectionViewCell.swift in Sources */,
 				4637826D23A72CBE0027FCD6 /* EventGuestAnalytics.swift in Sources */,
+				CEC006A4250A894100E54337 /* ActivityTabViewController.swift in Sources */,
 				465167B0237A7D3300755077 /* EventProductBrandCell.swift in Sources */,
 				46E85B5022FB5ECF004FA3FE /* CliftApi.swift in Sources */,
 				46D377682391CF74004BE93E /* DiscardChangesAlertView.swift in Sources */,

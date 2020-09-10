@@ -40,6 +40,12 @@ class MainStoreViewController: UIViewController {
         self.getBrands()
     }
     
+    @IBAction func redirectToWeb(_ sender: Any) {
+        if let url = URL(string: "https://www.cliftapp.com") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
     func comingFromRegistry() {
         if fromRegistry {
             arrowBarButtonItem.isEnabled = true
