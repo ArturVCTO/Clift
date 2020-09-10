@@ -16,12 +16,14 @@ class GiftsViewController: UIViewController {
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
     @IBOutlet weak var eventTypeAndVisibilityLabel: UILabel!
+    @IBOutlet weak var giftSummaryButton: customButton!
     @IBOutlet weak var monthCountDownLabel: UILabel!
     @IBOutlet weak var weekCountDownLabel: UILabel!
     @IBOutlet weak var dayCountDownLabel: UILabel!
     @IBOutlet weak var productsAddedProgressButton: customButton!
     @IBOutlet weak var giftCountAnalyticsLabel: UILabel!
     @IBOutlet weak var giftUserActivityLabel: UILabel!
+    @IBOutlet weak var giftUserActivityView: customView!
     @IBOutlet weak var dateActivityLabel: UILabel!
     @IBOutlet weak var eventImageView: customImageView!
     @IBOutlet weak var coverImageView: UIImageView!
@@ -36,6 +38,10 @@ class GiftsViewController: UIViewController {
         self.pageRefreshControl.addTarget(self, action: #selector(refreshPage), for: .valueChanged)
         self.giftsScrollView.refreshControl = self.pageRefreshControl
         self.setupInitialView()
+        
+        //HIDE ACTIVITY VIEW
+        self.giftUserActivityView.isHidden = true
+        self.giftSummaryButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

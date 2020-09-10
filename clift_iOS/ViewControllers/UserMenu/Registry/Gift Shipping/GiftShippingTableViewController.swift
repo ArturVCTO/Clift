@@ -23,9 +23,14 @@ class GiftShippingTableViewController: UITableViewController {
     @IBOutlet weak var countryButtonDropdown: UIButton!
     @IBOutlet weak var stateButtonDropdown: UIButton!
     @IBOutlet weak var cityButtonDropdown: UIButton!
+    var yOrigin = CGFloat()
     var currentEvent = Event()
     var requestshippingEventProducts: [EventProduct] = []
     var eventProductIds: [String] = []
+    
+    override func viewDidAppear(_ animated: Bool) {
+                self.yOrigin =  self.view.frame.origin.y
+    }
     
     override func viewDidLoad() {
         self.loadAddress()
@@ -41,14 +46,16 @@ class GiftShippingTableViewController: UITableViewController {
     }
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= (keyboardSize.height)/2
+            
+            if self.view.frame.origin.y == self.yOrigin {
+                self.view.frame.origin.y -= (keyboardSize.height)
             }
+            
         }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+        if self.view.frame.origin.y != self.yOrigin {
+            self.view.frame.origin.y = self.yOrigin
         }
     }
     

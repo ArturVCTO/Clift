@@ -58,6 +58,11 @@ class EventProductCell: UICollectionViewCell {
                 self.creditedIcon.image = UIImage(named: "iccreditgreen")
             }
             
+            if eventProduct.isCollaborative && eventProduct.gifted_quantity >= 1 && eventProduct.status == "pending"{
+                self.creditedIcon.isHidden = false
+                self.creditedIcon.image = UIImage(named: "iccreditblack")
+            }
+            
             if eventProduct.status == "requested"{
                 self.deliveredIcon.isHidden = false
                 self.deliveredIcon.image = UIImage(named: "icdeliveredgreen")

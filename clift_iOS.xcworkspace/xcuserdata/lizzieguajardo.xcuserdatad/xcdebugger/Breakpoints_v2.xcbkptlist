@@ -27,7 +27,7 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIViewController.h"
+            filePath = "../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIViewController.h"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1"
@@ -46,8 +46,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Invitations/InvitationsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "384"
-            endingLineNumber = "384"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
             landmarkName = "contactPicker(_:didSelect:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "622"
-            endingLineNumber = "622"
+            startingLineNumber = "661"
+            endingLineNumber = "661"
             landmarkName = "ProductsRegistryViewController"
             landmarkType = "3">
             <Locations>
@@ -222,8 +222,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Cells/EventProductCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "setup(eventProduct:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,8 +270,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "494"
-            endingLineNumber = "494"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
             landmarkName = "ProductsRegistryViewController"
             landmarkType = "3">
             <Locations>
@@ -318,8 +318,8 @@
             filePath = "clift_iOS/Network/CliftApiManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
             landmarkName = "updateEventPoolAsImportant(event:eventPool:setImportant:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -334,8 +334,8 @@
             filePath = "clift_iOS/Network/CliftApi.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
             landmarkName = "path"
             landmarkType = "24">
          </BreakpointContent>
@@ -350,8 +350,8 @@
             filePath = "clift_iOS/Network/CliftApi.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "307"
+            endingLineNumber = "307"
             landmarkName = "task"
             landmarkType = "24">
          </BreakpointContent>
@@ -366,8 +366,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
             landmarkName = "importantActionButtonPressed(alert:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -382,8 +382,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "importantActionButtonPressed(alert:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -398,8 +398,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "loadEvent()"
             landmarkType = "7">
          </BreakpointContent>
@@ -414,8 +414,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "587"
-            endingLineNumber = "587"
+            startingLineNumber = "626"
+            endingLineNumber = "626"
             landmarkName = "ProductsRegistryViewController"
             landmarkType = "3">
             <Locations>
@@ -462,8 +462,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "483"
-            endingLineNumber = "483"
+            startingLineNumber = "522"
+            endingLineNumber = "522"
             landmarkName = "updateEventProductToImportant(eventProduct:importantBool:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -478,8 +478,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
+            startingLineNumber = "526"
+            endingLineNumber = "526"
             landmarkName = "updateEventProductToImportant(eventProduct:importantBool:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -526,8 +526,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "535"
-            endingLineNumber = "535"
+            startingLineNumber = "574"
+            endingLineNumber = "574"
             landmarkName = "ProductsRegistryViewController"
             landmarkType = "3">
             <Locations>
@@ -1184,8 +1184,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "380"
-            endingLineNumber = "380"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
             landmarkName = "actionButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1200,8 +1200,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "503"
-            endingLineNumber = "503"
+            startingLineNumber = "542"
+            endingLineNumber = "542"
             landmarkName = "updateEventPoolToImportant(event:eventPool:importantBool:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1216,8 +1216,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "504"
-            endingLineNumber = "504"
+            startingLineNumber = "543"
+            endingLineNumber = "543"
             landmarkName = "updateEventPoolToImportant(event:eventPool:importantBool:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1264,8 +1264,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
             landmarkName = "addCollaboratorsView(alert:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1337,22 +1337,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D3B0F279-42EE-498C-86D7-5DD2E87E2318"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Gift Shipping/InitialGiftShippingViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "8"
-            endingLineNumber = "8"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "67F1E2E6-D229-4D6B-9668-668FD90D20CB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1360,8 +1344,8 @@
             filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Gift Shipping/GiftShippingTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "sendShippingRequest()"
             landmarkType = "7">
             <Locations>
@@ -1396,6 +1380,70 @@
                   offsetFromSymbolStart = "188">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "047C9A33-F307-43AA-AF90-52D3518284AE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/UserSettings/Addresses/AddAddressViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "setupCityDropDown()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1FC27CE0-4F18-4CC8-AC12-D491E28234FE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/PaymentsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "getCredits(event:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2172ACAF-367B-4FC5-89A4-F5F02A015468"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Payments/MyCreditsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "getTotalAmount()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E2511E8-8409-4AAE-B0FE-44CDCF4F67BF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIViewController.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

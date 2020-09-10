@@ -13,6 +13,7 @@ import RealmSwift
 class ProfileViewController: UIViewController {
     
     
+    @IBOutlet weak var userEmailLabel: UILabel!
     @IBOutlet weak var profileImageView: customImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     override func viewDidLoad() {
@@ -28,6 +29,7 @@ class ProfileViewController: UIViewController {
             if let response = result {
                 if response.isSuccess() {
                     self.profileNameLabel.text = profile?.fullName()
+                    self.userEmailLabel.text = profile?.email
                     if let imageURL = URL(string:"\(profile!.imageUrl)") {
                         self.profileImageView.kf.setImage(with: imageURL)
                     }

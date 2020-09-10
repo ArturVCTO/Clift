@@ -30,6 +30,7 @@ class MyCreditsViewController: UIViewController {
                     self.credits = credits!
                     self.creditsTableView.reloadData()
                     self.loadCode(code: self.credits.first!.code)
+                    self.getTotalAmount()
                 }
             }
         }
@@ -39,7 +40,11 @@ class MyCreditsViewController: UIViewController {
     }
     
     func getTotalAmount() {
-        
+        var total = 0.0;
+        for credit in self.credits{
+            total += credit.balance
+        }
+        self.totalCreditsAmountLabel.text = String(format: "%.2f", total)
     }
     
     func loadCode(code: String) {

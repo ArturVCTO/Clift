@@ -66,6 +66,7 @@ enum CliftApi {
     case updateBankAccount(bankAccount: BankAccount)
     case deleteBankAccount(bankAccount: BankAccount)
     case addAddress(address: Address)
+    case convertToCredits(event: Event, payload: [Dictionary<String, Any>])
     case getAddresses
     case getAddress(addressId: String)
     case updateAddress(address: Address)
@@ -197,6 +198,8 @@ extension CliftApi: TargetType {
             return "bank_accounts/\(bankAccount.id)"
         case .addAddress(_):
             return "shipping_addresses"
+        case .convertToCredits(let event, _):
+            return "events/\(event.id)/credits"
         case .getAddresses:
             return "shipping_addresses"
         case .getAddress(let addressId):
@@ -244,7 +247,7 @@ extension CliftApi: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.stripeCheckout,.completeStripeAccount:
+        case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount:
             return .post
         case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities:
             return .get
@@ -339,7 +342,19 @@ extension CliftApi: TargetType {
         case .updateBankAccount(let bankAccount):
             return .requestParameters(parameters: ["bank_account": bankAccount.toJSON()], encoding: JSONEncoding.default)
         case .addAddress(let address):
-            return .requestParameters(parameters: ["shipping_address": address.toJSON()], encoding: JSONEncoding.default)
+            var parameters = Dictionary<String,Any>()
+            parameters["address_city_id"] = address.city.id
+            parameters["address_state_id"] = address.state.id
+            parameters["cell_phone_number"] = address.cellPhoneNumber
+            parameters["email"] = address.email
+            parameters["first_name"] = address.firstName
+            parameters["last_name"] = address.lastName
+            parameters["street_and_number"] = address.streetAndNumber
+            parameters["suburb"] = address.suburb
+            parameters["zip_code"] = address.zipCode
+            return .requestParameters(parameters: ["shipping_address": parameters], encoding: JSONEncoding.default)
+        case .convertToCredits(let event, let payload):
+            return .requestParameters(parameters: ["event_products": payload], encoding: JSONEncoding.default)
         case .updateAddress(let address):
             return .requestParameters(parameters: ["shipping_address": address], encoding: JSONEncoding.default)
         case .setDefaultAddress(let address):
