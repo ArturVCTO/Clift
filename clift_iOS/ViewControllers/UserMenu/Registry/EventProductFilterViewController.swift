@@ -48,7 +48,7 @@ class EventProductFilterViewController: UIViewController {
     }
     
     func getBrands() {
-        sharedApiManager.getBrands() { (brands, result) in
+        sharedApiManager.getBrands(filters: [:]) { (brands, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.brands = brands!
