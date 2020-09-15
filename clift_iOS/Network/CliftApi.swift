@@ -35,7 +35,7 @@ enum CliftApi {
     case getShops
     case addProductToRegistry(productId: String, eventId: String,quantity: Int,paidAmount: Int)
     case deleteProductFromRegistry(productId: String, eventId: String)
-    case getBrands
+    case getBrands(filters: [String: Any])
     case getProductsAsLoggedInUser(group: Group,subgroup: Subgroup,event: Event, brand: Brand,shop: Shop, filters: [String : Any], page: Int)
     case getColors
     case getEventProducts(event: Event,available: String,gifted: String, filters: [String : Any])
@@ -140,7 +140,7 @@ extension CliftApi: TargetType {
             return "events/\(event.id)/registries/\(eventProduct.id)"
         case .deleteEventPool(let eventPool, let event):
             return "events/\(event.id)/event_pools/\(eventPool.id)"
-        case .getBrands:
+        case .getBrands(_):
             return "brands"
         case .getProducts(_,_,_,_,_,_):
             return "products"
@@ -285,6 +285,8 @@ extension CliftApi: TargetType {
             parameters["page"] = page
             
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .getBrands(let filters):
+            return .requestParameters(parameters: filters, encoding: URLEncoding.default)
         case .addProductToRegistry(_,_,let quantity, let paidAmount):
             return .requestParameters(parameters: ["event_product": ["paid_amount" : 0, "quantity" : quantity, "wishable_type": "Product"]], encoding: JSONEncoding.default)
         case .getProductsAsLoggedInUser(let group, let subgroup,_, let brand, let shop, var filters, let page):
@@ -377,6 +379,11 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["request":["ids": ids]], encoding: JSONEncoding.default)
         case .stripeCheckout(_,let checkout):
             return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
+        case .getShops:
+            var parameteres: [String:Any] = [:]
+            parameteres["per_page"] = "all"
+            parameteres["simple_format"] = true
+            return .requestParameters(parameters: parameteres, encoding: URLEncoding.default)
         default:
             return .requestPlain
         }

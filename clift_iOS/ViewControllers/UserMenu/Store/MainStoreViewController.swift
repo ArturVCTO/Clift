@@ -11,9 +11,6 @@ import UIKit
 
 class MainStoreViewController: UIViewController {
         
-   
-    @IBOutlet weak var categoryCollectionView: UICollectionView!
-    
     @IBOutlet weak var arrowBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var storeCollectionView: UICollectionView!
     
@@ -21,24 +18,30 @@ class MainStoreViewController: UIViewController {
     
     @IBOutlet weak var brandsCollectionView: UICollectionView!
     var fromRegistry = false
-    var categories: [Category] = []
     var shops: [Shop] = []
     var brands: [Brand] = []
     var event = Event()
     
+    var filtersStores = Dictionary<String,Any>()
+    var filtersBrands = Dictionary<String,Any>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.comingFromRegistry()
-        self.categoryCollectionView.delegate = self
-        self.categoryCollectionView.dataSource = self
         self.storeCollectionView.delegate = self
         self.storeCollectionView.dataSource = self
+        self.storeCollectionView.alwaysBounceHorizontal = true
+        
+        self.filtersBrands["page"] = 1
+        self.filtersStores["page"] = 1
+        
         self.brandsCollectionView.delegate = self
         self.brandsCollectionView.dataSource = self
-        self.getCategories()
         self.getShops()
         self.getBrands()
     }
+    
+
     
     @IBAction func redirectToWeb(_ sender: Any) {
         if let url = URL(string: "https://www.cliftapp.com") {
@@ -55,17 +58,6 @@ class MainStoreViewController: UIViewController {
         }
     }
     
-    func getCategories() {
-        sharedApiManager.getCategories() { (categories, result) in
-            if let response = result {
-                if(response.isSuccess()) {
-                    self.categories = categories!
-                    self.categoryCollectionView.reloadData()
-                }
-            }
-        }
-    }
-    
     func getShops() {
         sharedApiManager.getShops() { (shops, result) in
             if let response = result {
@@ -78,7 +70,7 @@ class MainStoreViewController: UIViewController {
     }
     
     func getBrands() {
-        sharedApiManager.getBrands() { (brands, result) in
+        sharedApiManager.getBrands(filters: filtersBrands) { (brands, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.brands = brands!
@@ -115,8 +107,6 @@ class MainStoreViewController: UIViewController {
 extension MainStoreViewController: UICollectionViewDataSource,UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch collectionView {
-        case categoryCollectionView:
-            return self.categories.count
         case storeCollectionView:
             return self.shops.count
         case checklistCollectionView:
@@ -131,10 +121,6 @@ extension MainStoreViewController: UICollectionViewDataSource,UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch collectionView {
-        case categoryCollectionView:
-            let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: "mainShopCategoryCell", for: indexPath) as! MainStoreCategoryCollectionViewCell
-            cell.setup(category: categories[indexPath.row])
-            return cell
         case storeCollectionView:
             let cell = storeCollectionView.dequeueReusableCell(withReuseIdentifier: "mainShopCell", for: indexPath) as! CliftStoresCollectionViewCell
             cell.setup(shop: shops[indexPath.row])
@@ -155,17 +141,6 @@ extension MainStoreViewController: UICollectionViewDataSource,UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
-        case categoryCollectionView:
-            if #available(iOS 13.0, *) {
-                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "groupsViewController") as! SubcategoryCollectionViewController
-                vc.category = self.categories[indexPath.row]
-                self.navigationController?.pushViewController(vc, animated: true)
-            } else {
-                // Fallback on earlier versions
-                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "groupsViewController") as! SubcategoryCollectionViewController
-                vc.category = self.categories[indexPath.row]
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
         case storeCollectionView:
              if #available(iOS 13.0, *) {
                    let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "firstFilterViewController") as! FirstFilterViewController

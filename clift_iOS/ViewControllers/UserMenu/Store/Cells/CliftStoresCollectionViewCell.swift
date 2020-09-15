@@ -15,9 +15,15 @@ class CliftStoresCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var shopImageUrl: customImageView!
     
     func setup(shop: Shop) {
+        
         self.shopNameLabel.text = shop.name
+        
         if let imageURL = URL(string:"\(shop.imageURL)") {
-                   self.shopImageUrl.kf.setImage(with: imageURL)
+                   self.shopImageUrl.kf.setImage(with: imageURL, placeholder: UIImage(named: "profilePlaceHolder"), options: [
+                       .scaleFactor(UIScreen.main.scale),
+                       .transition(.fade(1)),
+                       .cacheOriginalImage
+                   ])
         }
     }
 }

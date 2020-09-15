@@ -192,7 +192,7 @@ protocol ApiCalls {
     
     func getShops(completion: @escaping([Shop]?, Response?) -> Void)
     
-    func getBrands(completion: @escaping([Brand]?, Response?) -> Void)
+    func getBrands(filters: [String: Any],completion: @escaping([Brand]?, Response?) -> Void)
     
     func getProducts(group: Group, subgroup: Subgroup,brand: Brand, shop: Shop, filters: [String : Any], page: Int, completion: @escaping([Product]?,Response?) -> Void)
     
@@ -369,8 +369,8 @@ extension CliftApiManager: ApiCalls {
         requestArrayWithResponse(.getShops, type: Shop.self, completion: completion, wrapper: "shops")
     }
     
-    func getBrands(completion: @escaping ([Brand]?, Response?) -> Void) {
-        requestArrayWithResponse(.getBrands, type: Brand.self, completion: completion, wrapper: "brands")
+    func getBrands(filters: [String: Any], completion: @escaping ([Brand]?, Response?) -> Void) {
+        requestArrayWithResponse(.getBrands(filters: filters), type: Brand.self, completion: completion, wrapper: "brands")
     }
     
     func getProducts(group: Group, subgroup: Subgroup, brand: Brand, shop: Shop, filters: [String : Any], page: Int, completion: @escaping ([Product]?, Response?) -> Void) {
