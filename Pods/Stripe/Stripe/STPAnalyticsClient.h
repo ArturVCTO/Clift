@@ -15,9 +15,9 @@
 
 + (instancetype)sharedClient;
 
-+ (void)initializeIfNeeded;
-
 + (NSString *)tokenTypeFromParameters:(NSDictionary *)parameters;
+
+- (void)addClassToProductUsageIfNecessary:(Class)klass;
 
 - (void)addAdditionalInfo:(NSString *)info;
 
@@ -30,13 +30,13 @@
 - (void)logSourceCreationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
                                        sourceType:(NSString *)sourceType;
 
-- (void)logPaymentMethodCreationSucceededWithConfiguration:(STPPaymentConfiguration *)configuration
-                                           paymentMethodID:(NSString *)paymentMethodID;
+- (void)logPaymentMethodCreationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
+                                       paymentMethodType:(NSString *)paymentMethodType;
 
 #pragma mark - Confirmation
 
 - (void)logPaymentIntentConfirmationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
-                                                  sourceType:(NSString *)sourceType;
+                                           paymentMethodType:(NSString *)paymentMethodType;
 
 - (void)logSetupIntentConfirmationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
                                          paymentMethodType:(NSString *)paymentMethodType;
@@ -71,5 +71,19 @@
 - (void)log3DS2ChallengeFlowErroredWithConfiguration:(STPPaymentConfiguration *)configuration
                                             intentID:(NSString *)intentID
                                      errorDictionary:(NSDictionary *)errorDictionary;
+
+#pragma mark - Card Metadata
+
+- (void)logUserEnteredCompletePANBeforeMetadataLoadedWithConfiguration:(STPPaymentConfiguration *)configuration;
+
+- (void)logCardMetadataResponseFailureWithConfiguration:(STPPaymentConfiguration *)configuration;
+
+- (void)logCardMetadataMissingRangeWithConfiguration:(STPPaymentConfiguration *)configuration;
+
+#pragma mark - Card Scanning
+
+- (void)logCardScanSucceededWithDuration:(NSTimeInterval)duration;
+
+- (void)logCardScanCancelledWithDuration:(NSTimeInterval)duration;
 
 @end

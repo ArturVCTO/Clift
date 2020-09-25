@@ -11,12 +11,21 @@
 #import "NSDictionary+Stripe.h"
 #import "STPImageLibrary.h"
 #import "STPLocalizationUtils.h"
+#import "STPPaymentMethodAlipay.h"
+#import "STPPaymentMethodAUBECSDebit.h"
+#import "STPPaymentMethodBacsDebit.h"
+#import "STPPaymentMethodBancontact.h"
 #import "STPPaymentMethodBillingDetails.h"
 #import "STPPaymentMethodCard.h"
 #import "STPPaymentMethodCardPresent.h"
+#import "STPPaymentMethodEPS.h"
 #import "STPPaymentMethodFPX.h"
+#import "STPPaymentMethodGiropay.h"
+#import "STPPaymentMethodGrabPay.h"
 #import "STPPaymentMethodiDEAL.h"
+#import "STPPaymentMethodPrzelewy24.h"
 #import "STPPaymentMethodSEPADebit.h"
+#import "STPPaymentMethodSofort.h"
 
 @interface STPPaymentMethod ()
 
@@ -28,8 +37,17 @@
 @property (nonatomic, strong, nullable, readwrite) STPPaymentMethodCard *card;
 @property (nonatomic, strong, nullable, readwrite) STPPaymentMethodiDEAL *iDEAL;
 @property (nonatomic, strong, nullable, readwrite) STPPaymentMethodFPX *fpx;
+@property (nonatomic, strong, nullable, readwrite) STPPaymentMethodBacsDebit *bacsDebit;
 @property (nonatomic, strong, nullable, readwrite) STPPaymentMethodCardPresent *cardPresent;
 @property (nonatomic, strong, nullable, readwrite) STPPaymentMethodSEPADebit *sepaDebit;
+@property (nonatomic, strong, nullable, readwrite) STPPaymentMethodAUBECSDebit *auBECSDebit;
+@property (nonatomic, strong, nullable, readwrite) STPPaymentMethodGiropay *giropay;
+@property (nonatomic, strong, nullable, readwrite) STPPaymentMethodEPS *eps;
+@property (nonatomic, strong, nullable, readwrite) STPPaymentMethodPrzelewy24 *przelewy24;
+@property (nonatomic, strong, nullable, readwrite) STPPaymentMethodBancontact *bancontact;
+@property (nonatomic, strong, nullable, readwrite) STPPaymentMethodSofort *sofort;
+@property (nonatomic, strong, nullable, readwrite) STPPaymentMethodAlipay *alipay;
+@property (nonatomic, strong, nullable, readwrite) STPPaymentMethodGrabPay *grabPay;
 @property (nonatomic, copy, nullable, readwrite) NSString *customerId;
 @property (nonatomic, copy, nullable, readwrite) NSDictionary<NSString*, NSString *> *metadata;
 @property (nonatomic, copy, nonnull, readwrite) NSDictionary *allResponseFields;
@@ -48,14 +66,23 @@
                        [NSString stringWithFormat:@"stripeId = %@", self.stripeId],
                        
                        // STPPaymentMethod details (alphabetical)
+                       [NSString stringWithFormat:@"alipay = %@", self.alipay],
+                       [NSString stringWithFormat:@"auBECSDebit = %@", self.auBECSDebit],
+                       [NSString stringWithFormat:@"bacsDebit = %@", self.bacsDebit],
+                       [NSString stringWithFormat:@"bancontact = %@", self.bancontact],
                        [NSString stringWithFormat:@"billingDetails = %@", self.billingDetails],
                        [NSString stringWithFormat:@"card = %@", self.card],
                        [NSString stringWithFormat:@"cardPresent = %@", self.cardPresent],
                        [NSString stringWithFormat:@"created = %@", self.created],
                        [NSString stringWithFormat:@"customerId = %@", self.customerId],
                        [NSString stringWithFormat:@"ideal = %@", self.iDEAL],
+                       [NSString stringWithFormat:@"eps = %@", self.eps],
                        [NSString stringWithFormat:@"fpx = %@", self.fpx],
+                       [NSString stringWithFormat:@"giropay = %@", self.giropay],
+                       [NSString stringWithFormat:@"grabPay = %@", self.bacsDebit],
+                       [NSString stringWithFormat:@"przelewy24 = %@", self.przelewy24],
                        [NSString stringWithFormat:@"sepaDebit = %@", self.sepaDebit],
+                       [NSString stringWithFormat:@"sofort = %@", self.sofort],
                        [NSString stringWithFormat:@"liveMode = %@", self.liveMode ? @"YES" : @"NO"],
                        [NSString stringWithFormat:@"metadata = %@", self.metadata],
                        [NSString stringWithFormat:@"type = %@", [self.allResponseFields stp_stringForKey:@"type"]],
@@ -72,6 +99,15 @@
              @"fpx": @(STPPaymentMethodTypeFPX),
              @"card_present": @(STPPaymentMethodTypeCardPresent),
              @"sepa_debit": @(STPPaymentMethodTypeSEPADebit),
+             @"bacs_debit": @(STPPaymentMethodTypeBacsDebit),
+             @"au_becs_debit": @(STPPaymentMethodTypeAUBECSDebit),
+             @"grabpay": @(STPPaymentMethodTypeGrabPay),
+             @"giropay": @(STPPaymentMethodTypeGiropay),
+             @"p24": @(STPPaymentMethodTypePrzelewy24),
+             @"eps": @(STPPaymentMethodTypeEPS),
+             @"bancontact": @(STPPaymentMethodTypeBancontact),
+             @"sofort": @(STPPaymentMethodTypeSofort),
+             @"alipay": @(STPPaymentMethodTypeAlipay),
              };
 }
 
@@ -124,8 +160,17 @@
     paymentMethod.fpx = [STPPaymentMethodFPX decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"fpx"]];
     paymentMethod.cardPresent = [STPPaymentMethodCardPresent decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"card_present"]];
     paymentMethod.sepaDebit = [STPPaymentMethodSEPADebit decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"sepa_debit"]];
+    paymentMethod.bacsDebit = [STPPaymentMethodBacsDebit decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"bacs_debit"]];
+    paymentMethod.auBECSDebit = [STPPaymentMethodAUBECSDebit decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"au_becs_debit"]];
+    paymentMethod.giropay = [STPPaymentMethodGiropay decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"giropay"]];
+    paymentMethod.eps = [STPPaymentMethodEPS decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"eps"]];
+    paymentMethod.przelewy24 = [STPPaymentMethodPrzelewy24 decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"p24"]];
+    paymentMethod.bancontact = [STPPaymentMethodBancontact decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"bancontact"]];
+    paymentMethod.sofort = [STPPaymentMethodSofort decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"sofort"]];
     paymentMethod.customerId = [dict stp_stringForKey:@"customer"];
     paymentMethod.metadata = [[dict stp_dictionaryForKey:@"metadata"] stp_dictionaryByRemovingNonStrings];
+    paymentMethod.alipay = [STPPaymentMethodAlipay decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"alipay"]];
+    paymentMethod.grabPay = [STPPaymentMethodGrabPay decodedObjectFromAPIResponse:[dict stp_dictionaryForKey:@"grabpay"]];
     return paymentMethod;
 }
 
@@ -149,6 +194,8 @@
 
 - (NSString *)label {
     switch (self.type) {
+        case STPPaymentMethodTypeAlipay:
+            return STPLocalizedString(@"Alipay", @"Payment Method type brand name");
         case STPPaymentMethodTypeCard:
             if (self.card != nil) {
                 NSString *brand = STPStringFromCardBrand(self.card.brand);
@@ -166,14 +213,50 @@
             }
         case STPPaymentMethodTypeSEPADebit:
             return STPLocalizedString(@"SEPA Debit", @"Payment method brand name");
+        case STPPaymentMethodTypeAUBECSDebit:
+            return STPLocalizedString(@"AU BECS Debit", @"Payment Method type brand name.");
+        case STPPaymentMethodTypeGrabPay:
+            return STPLocalizedString(@"GrabPay", @"Payment Method type brand name.");
+        case STPPaymentMethodTypeGiropay:
+            return STPLocalizedString(@"giropay", @"Payment Method type brand name.");
+        case STPPaymentMethodTypeEPS:
+            return STPLocalizedString(@"EPS", @"Payment Method type brand name.");
+        case STPPaymentMethodTypePrzelewy24:
+            return STPLocalizedString(@"Przelewy24", @"Payment Method type brand name.");
+        case STPPaymentMethodTypeBancontact:
+            return STPLocalizedString(@"Bancontact", @"Payment Method type brand name");
+        case STPPaymentMethodTypeSofort:
+            return STPLocalizedString(@"Sofort", @"Payment Method type brand name");
+        case STPPaymentMethodTypeBacsDebit:
         case STPPaymentMethodTypeCardPresent:
+            // fall through
         case STPPaymentMethodTypeUnknown:
             return STPLocalizedString(@"Unknown", @"Default missing source type label");
     }
 }
 
 - (BOOL)isReusable {
-    return (self.type == STPPaymentMethodTypeCard);
+
+    switch (self.type) {
+        case STPPaymentMethodTypeCard:
+            return YES;
+        case STPPaymentMethodTypeAlipay: // Careful! Revisit this if/when we support recurring Alipay
+        case STPPaymentMethodTypeAUBECSDebit:
+        case STPPaymentMethodTypeBacsDebit:
+        case STPPaymentMethodTypeSEPADebit:
+        case STPPaymentMethodTypeiDEAL:
+        case STPPaymentMethodTypeFPX:
+        case STPPaymentMethodTypeCardPresent:
+        case STPPaymentMethodTypeGiropay:
+        case STPPaymentMethodTypeEPS:
+        case STPPaymentMethodTypePrzelewy24:
+        case STPPaymentMethodTypeBancontact:
+        case STPPaymentMethodTypeSofort:
+        case STPPaymentMethodTypeGrabPay:
+            // fall through
+        case STPPaymentMethodTypeUnknown:
+            return NO;
+    }
 }
 
 @end

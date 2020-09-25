@@ -14,6 +14,7 @@
 #import "STPAPIClient.h"
 #import "STPAPIClient+ApplePay.h"
 #import "STPAPIClient+Private.h"
+#import "STPAPIClient+Beta.h"
 
 #import "NSBundle+Stripe_AppName.h"
 #import "NSError+Stripe.h"
@@ -30,6 +31,7 @@
 #import "STPFPXBankStatusResponse.h"
 #import "STPGenericStripeObject.h"
 #import "STPAppInfo.h"
+#import "STPCardBINMetadata.h"
 #import "STPMultipartFormDataEncoder.h"
 #import "STPMultipartFormDataPart.h"
 #import "STPPaymentConfiguration.h"
@@ -65,6 +67,7 @@ static NSString * const APIEndpointSetupIntents = @"setup_intents";
 static NSString * const APIEndpointPaymentMethods = @"payment_methods";
 static NSString * const APIEndpoint3DS2 = @"3ds2";
 static NSString * const APIEndpointFPXStatus = @"fpx/bank_statuses";
+static NSString * const CardMetadataURL = @"https://api.stripe.com/edge-internal/card-metadata";
 
 #pragma mark - Stripe
 
@@ -72,6 +75,7 @@ static NSString * const APIEndpointFPXStatus = @"fpx/bank_statuses";
 
 static NSArray<PKPaymentNetwork> *_additionalEnabledApplePayNetworks;
 static NSString *_defaultPublishableKey;
+static BOOL _advancedFraudSignalsEnabled;
 
 + (void)setDefaultPublishableKey:(NSString *)publishableKey {
     _defaultPublishableKey = [publishableKey copy];
@@ -79,6 +83,19 @@ static NSString *_defaultPublishableKey;
 
 + (NSString *)defaultPublishableKey {
     return _defaultPublishableKey;
+}
+
++ (void)setAdvancedFraudSignalsEnabled:(BOOL)enabled {
+    [self advancedFraudSignalsEnabled];
+    _advancedFraudSignalsEnabled = enabled;
+}
+
++ (BOOL)advancedFraudSignalsEnabled {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _advancedFraudSignalsEnabled = YES;
+    });
+    return _advancedFraudSignalsEnabled;
 }
 
 @end
@@ -91,6 +108,8 @@ static NSString *_defaultPublishableKey;
 @property (nonatomic, strong, readwrite) dispatch_queue_t sourcePollersQueue;
 
 // See STPAPIClient+Private.h
+@property (nonatomic) NSSet<NSString *> *betas;
+
 
 @end
 
@@ -101,7 +120,6 @@ static NSString *_defaultPublishableKey;
 }
 
 + (void)initialize {
-    [STPAnalyticsClient initializeIfNeeded];
     [STPTelemetryClient sharedInstance];
 #ifdef STP_STATIC_LIBRARY_BUILD
     [STPCategoryLoader loadCategories];
@@ -151,6 +169,7 @@ static NSString *_defaultPublishableKey;
     dispatch_once(&configToken, ^{
         STPSharedURLSessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     });
+    
     return STPSharedURLSessionConfiguration;
 }
 
@@ -168,7 +187,13 @@ static NSString *_defaultPublishableKey;
 - (NSDictionary<NSString *, NSString *> *)defaultHeaders {
     NSMutableDictionary *defaultHeaders = [NSMutableDictionary new];
     defaultHeaders[@"X-Stripe-User-Agent"] = [self.class stripeUserAgentDetailsWithAppInfo:self.appInfo];
-    defaultHeaders[@"Stripe-Version"] = APIVersion;
+    NSString *stripeVersion = APIVersion;
+    if (self.betas && self.betas.count > 0) {
+        for (NSString *betaHeader in self.betas) {
+            stripeVersion = [stripeVersion stringByAppendingString:[NSString stringWithFormat:@"; %@", betaHeader]];
+        }
+    }
+    defaultHeaders[@"Stripe-Version"] = stripeVersion;
     defaultHeaders[@"Stripe-Account"] = self.stripeAccount;
     [defaultHeaders addEntriesFromDictionary:[self authorizationHeaderUsingEphemeralKey:nil]];
     return [defaultHeaders copy];
@@ -400,6 +425,36 @@ static NSString *_defaultPublishableKey;
 
 @end
 
+@implementation STPAPIClient (CardPrivate)
+
+- (void)retrieveCardBINMetadataForPrefix:(NSString *)binPrefix withCompletion:(void (^)(STPCardBINMetadata * _Nullable, NSError * _Nullable))completion {
+    NSAssert(binPrefix.length == 6, @"Requests can only be made with 6-digit binPrefixes.");
+    // not adding explicit handling for above assert as endpoint will error anyway
+    NSDictionary *params = @{@"bin_prefix": binPrefix};
+    
+    
+    NSURL *url = [NSURL URLWithString:CardMetadataURL];
+    NSMutableURLRequest *request = [self configuredRequestForURL:url additionalHeaders:@{}];
+    [request stp_addParametersToURL:params];
+    request.HTTPMethod = @"GET";
+
+    // Perform request
+    NSURLSessionDataTask *task = [self.urlSession dataTaskWithRequest:request completionHandler:^(NSData *body, NSURLResponse *response, NSError *error) {
+        [STPAPIRequest parseResponse:response
+                                body:body
+                               error:error
+                       deserializers:@[[STPCardBINMetadata new]]
+                          completion:^(STPCardBINMetadata *  _Nullable object, __unused NSHTTPURLResponse * _Nullable parsedResponse, NSError * _Nullable parsedError) {
+            if (completion != nil) {
+                completion(object, parsedError);
+            }
+        }];
+    }];
+    [task resume];
+}
+
+@end
+
 #pragma mark - Apple Pay
 
 @implementation Stripe (ApplePay)
@@ -414,7 +469,12 @@ static NSString *_defaultPublishableKey;
     if (paymentRequest.merchantIdentifier == nil) {
         return NO;
     }
-    return [[[paymentRequest.paymentSummaryItems lastObject] amount] floatValue] > 0;
+    // "In versions of iOS prior to version 12.0 and watchOS prior to version 5.0, the amount of the grand total must be greater than zero."
+    if (@available(iOS 12, *)) {
+        return [[[paymentRequest.paymentSummaryItems lastObject] amount] floatValue] >= 0;
+    } else {
+        return [[[paymentRequest.paymentSummaryItems lastObject] amount] floatValue] > 0;
+    }
 }
 
 + (NSArray<NSString *> *)supportedPKPaymentNetworks {
@@ -443,14 +503,8 @@ static NSString *_defaultPublishableKey;
     [paymentRequest setMerchantCapabilities:PKMerchantCapability3DS];
     [paymentRequest setCountryCode:countryCode.uppercaseString];
     [paymentRequest setCurrencyCode:currencyCode.uppercaseString];
-    if (@available(iOS 11, *)) {
-        paymentRequest.requiredBillingContactFields = [NSSet setWithArray:@[PKContactFieldPostalAddress]];
-    } else {
-#if !(defined(TARGET_OS_MACCATALYST) && (TARGET_OS_MACCATALYST != 0))
-        paymentRequest.requiredBillingAddressFields = PKAddressFieldPostalAddress;
-#endif
-    }
-    return paymentRequest;
+    paymentRequest.requiredBillingContactFields = [NSSet setWithArray:@[PKContactFieldPostalAddress]];
+        return paymentRequest;
 }
 
 + (void)setJCBPaymentNetworkSupported:(BOOL)JCBPaymentNetworkSupported {
@@ -745,9 +799,9 @@ toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
     NSCAssert([STPPaymentIntentParams isClientSecretValid:paymentIntentParams.clientSecret], @"`paymentIntentParams.clientSecret` format does not match expected client secret formatting.");
 
     NSString *identifier = paymentIntentParams.stripeId;
-    NSString *sourceType = [STPSource stringFromType:paymentIntentParams.sourceParams.type];
+    NSString *type = paymentIntentParams.paymentMethodParams.rawTypeString ?: paymentIntentParams.sourceParams.rawTypeString;
     [[STPAnalyticsClient sharedClient] logPaymentIntentConfirmationAttemptWithConfiguration:self.configuration
-                                                                                 sourceType:sourceType];
+                                                                          paymentMethodType:type];
 
     NSString *endpoint = [NSString stringWithFormat:@"%@/%@/confirm", APIEndpointPaymentIntents, identifier];
 
@@ -811,9 +865,8 @@ toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
     NSCAssert(setupIntentParams.clientSecret != nil, @"'clientSecret' is required to confirm a SetupIntent");
     NSCAssert([STPSetupIntentConfirmParams isClientSecretValid:setupIntentParams.clientSecret], @"`setupIntentParams.clientSecret` format does not match expected client secret formatting.");
 
-    NSString *paymentMethodType = [STPPaymentMethod stringFromType:setupIntentParams.paymentMethodParams.type];
     [[STPAnalyticsClient sharedClient] logSetupIntentConfirmationAttemptWithConfiguration:self.configuration
-                                                                        paymentMethodType:paymentMethodType];
+                                                                        paymentMethodType:setupIntentParams.paymentMethodParams.rawTypeString];
 
     NSString *identifier = [STPSetupIntent idFromClientSecret:setupIntentParams.clientSecret];
     NSString *endpoint = [NSString stringWithFormat:@"%@/%@/confirm", APIEndpointSetupIntents, identifier];
@@ -849,14 +902,13 @@ toCustomerUsingKey:(STPEphemeralKey *)ephemeralKey
                                  completion:(STPPaymentMethodCompletionBlock)completion {
     NSCAssert(paymentMethodParams != nil, @"'paymentMethodParams' is required to create a PaymentMethod");
     NSCAssert(paymentMethodParams.rawTypeString != nil, @"Set the `type` or `rawTypeString` property on paymentMethodParams.");
+    [[STPAnalyticsClient sharedClient] logPaymentMethodCreationAttemptWithConfiguration:self.configuration paymentMethodType:paymentMethodParams.rawTypeString];
+    
     [STPAPIRequest<STPPaymentMethod *> postWithAPIClient:self
                                                endpoint:APIEndpointPaymentMethods
                                              parameters:[STPFormEncoder dictionaryForObject:paymentMethodParams]
                                            deserializer:[STPPaymentMethod new]
                                              completion:^(STPPaymentMethod *paymentMethod, __unused NSHTTPURLResponse *response, NSError *error) {
-                                                 if (error == nil && paymentMethod != nil) {
-                                                     [[STPAnalyticsClient sharedClient] logPaymentMethodCreationSucceededWithConfiguration:self.configuration paymentMethodID:paymentMethod.stripeId];
-                                                 }
                                                  completion(paymentMethod, error);
                                              }];
 
