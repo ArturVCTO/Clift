@@ -29,7 +29,7 @@ class RootViewController: UIViewController {
 
         let seconds = 4.0
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            if(users.isEmpty) {
+            if(users.isEmpty || users.first!.accountType == "Guest") {
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.showCreateSessionFlow()
             }

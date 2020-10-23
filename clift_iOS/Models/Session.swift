@@ -15,6 +15,7 @@ import RealmSwift
 class Session: Object, Mappable {
     
     @objc dynamic var token = ""
+    @objc dynamic var accountType = ""
     
     var errors: [String] = []
     
@@ -24,7 +25,12 @@ class Session: Object, Mappable {
     
     func mapping(map: Map) {
         token <- (map["token"])
-        
+        if token == ""{
+            token <- (map["session"])
+            accountType = "Guest"
+        }else{
+            accountType = "Host"
+        }
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {
                 errors.append(error)

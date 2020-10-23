@@ -193,6 +193,18 @@
 		46EC9DA423314FFA00950139 /* SubcategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9DA323314FFA00950139 /* SubcategoryCollectionViewCell.swift */; };
 		85D1161D2D04F9B25477BAE8 /* Pods_clift_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */; };
 		A9D3728582D9B5913F8C5C14 /* Pods_clift_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */; };
+		BD5ECC2B251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */; };
+		BD5ECC2C251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */; };
+		BD5ECC2D251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */; };
+		BD5ECC2E251EAA5700A1F45F /* SearchEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC28251EAA5600A1F45F /* SearchEventCell.swift */; };
+		BD5ECC2F251EAA5700A1F45F /* SearchEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC28251EAA5600A1F45F /* SearchEventCell.swift */; };
+		BD5ECC30251EAA5700A1F45F /* SearchEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC28251EAA5600A1F45F /* SearchEventCell.swift */; };
+		BD5ECC31251EAA5700A1F45F /* RegistryGuestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC29251EAA5600A1F45F /* RegistryGuestCell.swift */; };
+		BD5ECC32251EAA5700A1F45F /* RegistryGuestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC29251EAA5600A1F45F /* RegistryGuestCell.swift */; };
+		BD5ECC33251EAA5700A1F45F /* RegistryGuestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC29251EAA5600A1F45F /* RegistryGuestCell.swift */; };
+		BD5ECC34251EAA5700A1F45F /* SearchEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC2A251EAA5600A1F45F /* SearchEventTableViewController.swift */; };
+		BD5ECC35251EAA5700A1F45F /* SearchEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC2A251EAA5600A1F45F /* SearchEventTableViewController.swift */; };
+		BD5ECC36251EAA5700A1F45F /* SearchEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC2A251EAA5600A1F45F /* SearchEventTableViewController.swift */; };
 		CE1BC9F324D3766C003D49BE /* GuestInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1BC9F224D3766C003D49BE /* GuestInfoViewController.swift */; };
 		CE317A3524F6E25F002EFA80 /* NumberOfCollaboratorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE317A3424F6E25F002EFA80 /* NumberOfCollaboratorsViewController.swift */; };
 		CE59EAE024F0714300EA97E5 /* CollaboratorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE59EADF24F0714300EA97E5 /* CollaboratorsViewController.swift */; };
@@ -205,7 +217,7 @@
 		CEB74B0A2507E8750022BFA1 /* SplashScreenMobile.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = CEB74B092507E8750022BFA1 /* SplashScreenMobile.mp4 */; };
 		CEC006A4250A894100E54337 /* ActivityTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC006A3250A894100E54337 /* ActivityTabViewController.swift */; };
 		CEF53FB024F429B500D7C997 /* CollaboratorInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */; };
-		CEF53FB424F4461D00D7C997 /* ≤c<daqwewq.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FB324F4461D00D7C997 /* ≤c<daqwewq.swift */; };
+		CEF53FB424F4461D00D7C997 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FB324F4461D00D7C997 /* OrderItem.swift */; };
 		FB69CC8CE945481E9839D8BF /* Pods_clift_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -419,6 +431,10 @@
 		6B9CC23E02EA53603D9BFAD5 /* Pods-clift_iOSUITests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.canary.xcconfig"; sourceTree = "<group>"; };
 		8B1E86386FC9F3A216AD6DBB /* Pods-clift_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		A9E9B21D2B9B464893AAAFB0 /* Pods-clift_iOS.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.canary.xcconfig"; sourceTree = "<group>"; };
+		BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestGiftListViewController.swift; sourceTree = "<group>"; };
+		BD5ECC28251EAA5600A1F45F /* SearchEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventCell.swift; sourceTree = "<group>"; };
+		BD5ECC29251EAA5600A1F45F /* RegistryGuestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistryGuestCell.swift; sourceTree = "<group>"; };
+		BD5ECC2A251EAA5600A1F45F /* SearchEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventTableViewController.swift; sourceTree = "<group>"; };
 		C249504948AE023D846380FD /* Pods-clift_iOS.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.mock.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.mock.xcconfig"; sourceTree = "<group>"; };
 		CE1BC9F224D3766C003D49BE /* GuestInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestInfoViewController.swift; sourceTree = "<group>"; };
 		CE317A3424F6E25F002EFA80 /* NumberOfCollaboratorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfCollaboratorsViewController.swift; sourceTree = "<group>"; };
@@ -431,7 +447,7 @@
 		CEB74B092507E8750022BFA1 /* SplashScreenMobile.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SplashScreenMobile.mp4; sourceTree = "<group>"; };
 		CEC006A3250A894100E54337 /* ActivityTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTabViewController.swift; sourceTree = "<group>"; };
 		CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorInfoTableViewCell.swift; sourceTree = "<group>"; };
-		CEF53FB324F4461D00D7C997 /* ≤c<daqwewq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "≤c<daqwewq.swift"; sourceTree = "<group>"; };
+		CEF53FB324F4461D00D7C997 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.canary.xcconfig"; sourceTree = "<group>"; };
 		F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC9BC5CE8D99C231599E05C1 /* Pods-clift_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -861,7 +877,7 @@
 				4604A334230331890041F9AA /* User.swift */,
 				4677DA122415D0F800A2CE28 /* VerifiedResponse.swift */,
 				CE66B16724EC3AB200AE91C7 /* Pagination.swift */,
-				CEF53FB324F4461D00D7C997 /* ≤c<daqwewq.swift */,
+				CEF53FB324F4461D00D7C997 /* OrderItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -944,6 +960,7 @@
 		46E85B4E22FB5E93004FA3FE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BD5ECC25251EAA5600A1F45F /* Guest */,
 				461316B9232177110048AB5B /* Shared */,
 				465E09B223139433006776D1 /* UserMenu */,
 				468258142307260800D3D49C /* Session */,
@@ -981,6 +998,25 @@
 				6B9CC23E02EA53603D9BFAD5 /* Pods-clift_iOSUITests.canary.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		BD5ECC25251EAA5600A1F45F /* Guest */ = {
+			isa = PBXGroup;
+			children = (
+				BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */,
+				BD5ECC27251EAA5600A1F45F /* Cells */,
+				BD5ECC2A251EAA5600A1F45F /* SearchEventTableViewController.swift */,
+			);
+			path = Guest;
+			sourceTree = "<group>";
+		};
+		BD5ECC27251EAA5600A1F45F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BD5ECC28251EAA5600A1F45F /* SearchEventCell.swift */,
+				BD5ECC29251EAA5600A1F45F /* RegistryGuestCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1322,7 +1358,7 @@
 				463A78A42385F3F100985674 /* GuestListViewController.swift in Sources */,
 				46831C1423DBAEEF004BAAC1 /* ThankGuestViewController.swift in Sources */,
 				46DC795223E943400013C306 /* ThankYouUser.swift in Sources */,
-				CEF53FB424F4461D00D7C997 /* ≤c<daqwewq.swift in Sources */,
+				CEF53FB424F4461D00D7C997 /* OrderItem.swift in Sources */,
 				46E85B5222FB5ED9004FA3FE /* CliftApiManager.swift in Sources */,
 				468258162307261C00D3D49C /* LoginViewController.swift in Sources */,
 				4604A32F22FE18900041F9AA /* FourthStepOnboardingViewController.swift in Sources */,
@@ -1354,6 +1390,7 @@
 				463A30502321790200C42347 /* ProductViewController.swift in Sources */,
 				462A6B4222FC88170045C94E /* FirstStepOnboardingViewController.swift in Sources */,
 				460A1D932375EB2900311876 /* EventPoolCell.swift in Sources */,
+				BD5ECC2B251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */,
 				46DE69C6235A3E2A002C2BB8 /* FirstFilterCollectionViewController.swift in Sources */,
 				462F9F34230F00820014CD9E /* RootViewController.swift in Sources */,
 				4604A33322FE1F600041F9AA /* RootOnboardingViewController.swift in Sources */,
@@ -1373,6 +1410,7 @@
 				CE9125A424F830BA00B30F7F /* ThankCollaboratorViewController.swift in Sources */,
 				465C82192362159D00DAC090 /* AddProductByUrlViewController.swift in Sources */,
 				4604A3372303319F0041F9AA /* Spouse.swift in Sources */,
+				BD5ECC31251EAA5700A1F45F /* RegistryGuestCell.swift in Sources */,
 				46A2DD9422FB723D0051DCA6 /* EmptyObjectWithErrors.swift in Sources */,
 				46E034B82326C775001143BC /* FilterProductsViewController.swift in Sources */,
 				465BC5272391A042000975C1 /* InvitationTemplate.swift in Sources */,
@@ -1398,6 +1436,7 @@
 				464D1CDC24104E3800CBC546 /* CreditMovementTableViewController.swift in Sources */,
 				463A78A92386F33400985674 /* GuestListTableViewCell.swift in Sources */,
 				465C8212236100A100DAC090 /* customProgressView.swift in Sources */,
+				BD5ECC2E251EAA5700A1F45F /* SearchEventCell.swift in Sources */,
 				CE317A3524F6E25F002EFA80 /* NumberOfCollaboratorsViewController.swift in Sources */,
 				464D1CD82410494B00CBC546 /* CreditMovement.swift in Sources */,
 				46C42AEB23295D9800D5A72F /* MainStoreViewController.swift in Sources */,
@@ -1406,6 +1445,7 @@
 				460A1D912373E85400311876 /* EventProductFilterViewController.swift in Sources */,
 				4604A32D22FCDA700041F9AA /* ThirdStepOnboardingViewController.swift in Sources */,
 				CEF53FB024F429B500D7C997 /* CollaboratorInfoTableViewCell.swift in Sources */,
+				BD5ECC34251EAA5700A1F45F /* SearchEventTableViewController.swift in Sources */,
 				46E1287C2333EFDD00354DB9 /* MainStoreCategoryCollectionViewCell.swift in Sources */,
 				465FED112370896B0038D557 /* SummaryRegistryViewController.swift in Sources */,
 				463A78A62386E9EC00985674 /* Invitee.swift in Sources */,
@@ -1421,7 +1461,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD5ECC2F251EAA5700A1F45F /* SearchEventCell.swift in Sources */,
+				BD5ECC35251EAA5700A1F45F /* SearchEventTableViewController.swift in Sources */,
 				4672A8A422F88F27001F374F /* clift_iOSTests.swift in Sources */,
+				BD5ECC2C251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */,
+				BD5ECC32251EAA5700A1F45F /* RegistryGuestCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1429,7 +1473,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD5ECC30251EAA5700A1F45F /* SearchEventCell.swift in Sources */,
+				BD5ECC36251EAA5700A1F45F /* SearchEventTableViewController.swift in Sources */,
 				4672A8AF22F88F27001F374F /* clift_iOSUITests.swift in Sources */,
+				BD5ECC2D251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */,
+				BD5ECC33251EAA5700A1F45F /* RegistryGuestCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1536,8 +1584,9 @@
 			buildSettings = {
 				API_BASE_URL_ENDPOINT = "http://api.clift.axented.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -1548,6 +1597,7 @@
 				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
 				PRODUCT_NAME = CLIFT;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1663,8 +1713,9 @@
 			buildSettings = {
 				API_BASE_URL_ENDPOINT = "https://ezmock.herokuapp.com/api/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -1675,6 +1726,7 @@
 				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
 				PRODUCT_NAME = CLIFT;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIPE_PUBLISHABLE_KEY = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1846,8 +1898,9 @@
 			buildSettings = {
 				API_BASE_URL_ENDPOINT = "http://api.clift.axented.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -1858,6 +1911,7 @@
 				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
 				PRODUCT_NAME = CLIFT;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1870,8 +1924,9 @@
 			buildSettings = {
 				API_BASE_URL_ENDPOINT = "https://api.cliftapp.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -1882,6 +1937,7 @@
 				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cliftapp.clift;
 				PRODUCT_NAME = CLIFT;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIPE_PUBLISHABLE_KEY = pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -88,6 +88,10 @@ enum CliftApi {
     case verifyEventPool(event: Event)
     case getStates
     case getCities(stateId: String)
+    //GUEST FUNCTIONS
+    case getGuestToken
+    case getEventsSearch(query: String)
+    case getRegistriesGuest(event: Event,filters: [String:Any])
 }
 
 extension CliftApi: TargetType {
@@ -242,14 +246,22 @@ extension CliftApi: TargetType {
             return "states"
         case .getCities(let stateId):
             return "cities/\(stateId)"
+        //GUEST ROUTES
+        case .getGuestToken:
+            return "guest_token"
+        case .getEventsSearch(_):
+            return "events/finder"
+        case .getRegistriesGuest(let event,_):
+            return "event_registries/\(event.id)"
         }
+        
     }
     
     var method: Moya.Method {
         switch self {
-        case .postLoginSession,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount:
+        case .postLoginSession,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount:
             return .post
-        case .getInterests,.getProfile,.getEvents,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities:
+        case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest:
             return .get
         case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductQuantity,.updateEventProductThankMessage,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
             return .put
@@ -285,8 +297,6 @@ extension CliftApi: TargetType {
             parameters["page"] = page
             
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
-        case .getBrands(let filters):
-            return .requestParameters(parameters: filters, encoding: URLEncoding.default)
         case .addProductToRegistry(_,_,let quantity, let paidAmount):
             return .requestParameters(parameters: ["event_product": ["paid_amount" : 0, "quantity" : quantity, "wishable_type": "Product"]], encoding: JSONEncoding.default)
         case .getProductsAsLoggedInUser(let group, let subgroup,_, let brand, let shop, var filters, let page):
@@ -379,11 +389,11 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["request":["ids": ids]], encoding: JSONEncoding.default)
         case .stripeCheckout(_,let checkout):
             return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
-        case .getShops:
-            var parameteres: [String:Any] = [:]
-            parameteres["per_page"] = "all"
-            parameteres["simple_format"] = true
-            return .requestParameters(parameters: parameteres, encoding: URLEncoding.default)
+        //GUEST PARAMETERS
+        case .getEventsSearch(let query):
+            return .requestParameters(parameters: ["q":query, "id":""], encoding: URLEncoding.default)
+        case .getRegistriesGuest(_,let parameters):
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         default:
             return .requestPlain
         }
@@ -395,14 +405,18 @@ extension CliftApi: TargetType {
         
         if (session.isEmpty) {
             return ["Accept": "application/vnd.cft.v1+json", "Content-Type": "application/json", "X-Client": "app"]
-        } else {
+        } else if(session.first!.accountType == "Guest"){
+            return  ["Accept": "application/vnd.cft.v1+json", "Content-Type": "application/json", "X-Client": "",
+            "Authorization": session.first!.token, "Accept-Encoding": "gzip, deflate, br","Sec-Fetch-Dest": "empty","Sec-Fetch-Mode": "cors"]
+        }
+        else {
             switch self {
             case .updateProfile(_):
                 return  ["Accept": "application/vnd.cft.v1+json", "Content-Type": "application/x-www-form-urlencoded", "X-Client": "app",
                          "Authorization": session.first!.token]
             default:
                 return  ["Accept": "application/vnd.cft.v1+json", "Content-Type": "application/json", "X-Client": "app",
-                         "Authorization": session.first!.token]
+                         "Authorization": session.first!.token, "Accept-Encoding": "gzip, deflate, br","Sec-Fetch-Dest": "empty","Sec-Fetch-Mode": "cors"]
             }
         }
         

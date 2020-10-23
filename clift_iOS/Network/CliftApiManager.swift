@@ -162,6 +162,8 @@ extension CliftApiManager {
 protocol ApiCalls {
     func login(email: String, password: String, completion: @escaping(Session?, Response?) -> Void)
     
+    func getGuestToken(completion: @escaping (Session?,Response?)-> Void)
+    
     func interests(completion: @escaping ([Interest]?, Response?) -> Void)
     
     func postUsers(user: User, completion: @escaping(User?,Response?) -> Void)
@@ -171,6 +173,8 @@ protocol ApiCalls {
     func updateProfile(profile: [MultipartFormData], completion: @escaping (EmptyObjectWithErrors?,Response?) -> Void)
     
     func getEvents(completion: @escaping ([Event]?,Response?) -> Void)
+    
+    func getEventsSearch(query: String ,completion: @escaping ([Event]?,Response?) -> Void)
     
     func showEvent(id: String, completion: @escaping (Event?,Response?) -> Void)
     
@@ -302,11 +306,18 @@ protocol ApiCalls {
     func getCities(stateId: String, completion: @escaping([AddressCity]?, Response?) -> Void)
     
     func getStates(completion: @escaping([AddressState]?, Response?) -> Void)
+    
+    //GUEST FUNCTIONS
+    func getRegistriesGuest(event: Event, filters: [String:Any], completion:  @escaping([EventProduct]?, Response?)->Void)
 }
 
 extension CliftApiManager: ApiCalls {
     func login(email: String, password: String, completion: @escaping (Session?, Response?) -> Void) {
         requestObjectWithResponse(.postLoginSession(email: email, password: password), type: Session.self, completion: completion, wrapper: "session")
+    }
+    
+    func getGuestToken(completion: @escaping (Session?, Response?) -> Void) {
+        requestObjectWithResponse(.getGuestToken, type: Session.self, completion: completion, wrapper: "")
     }
     
     func interests(completion: @escaping ([Interest]?, Response?) -> Void) {
@@ -327,6 +338,10 @@ extension CliftApiManager: ApiCalls {
     
     func getEvents(completion: @escaping ([Event]?, Response?) -> Void) {
         requestArrayWithResponse(.getEvents, type: Event.self, completion: completion, wrapper: "events")
+    }
+    
+    func getEventsSearch(query: String,completion: @escaping ([Event]?, Response?) -> Void) {
+        requestArrayWithResponse(.getEventsSearch(query: query), type: Event.self, completion: completion, wrapper: "event")
     }
     
     func showEvent(id: String, completion: @escaping (Event?, Response?) -> Void) {
@@ -597,4 +612,10 @@ extension CliftApiManager: ApiCalls {
     func getStates(completion: @escaping ([AddressState]?, Response?) -> Void) {
         requestArrayWithResponse(.getStates, type: AddressState.self, completion: completion, wrapper: "states")
     }
+    
+    //GUEST CALLS
+    func getRegistriesGuest(event: Event, filters: [String:Any], completion:  @escaping([EventProduct]?, Response?)->Void){
+        requestArrayWithResponse(.getRegistriesGuest(event: event, filters: filters), type: EventProduct.self, completion: completion, wrapper: "registries")
+    }
 }
+
