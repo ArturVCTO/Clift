@@ -6,7 +6,6 @@
 //  Copyright © 2019 Clift. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import TextFieldEffects
 import RealmSwift
