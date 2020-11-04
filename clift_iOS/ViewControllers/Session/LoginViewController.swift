@@ -60,7 +60,8 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func backToMainMenu(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+		let onboardingEventTypeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "onboardingEventTypeVC") as! OnboardingEventTypeViewController
+		present(onboardingEventTypeVC, animated: true, completion: nil)
     }
 }
 
