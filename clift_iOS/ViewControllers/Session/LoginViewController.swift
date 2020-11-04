@@ -12,21 +12,21 @@ import TextFieldEffects
 import RealmSwift
 import GSMessages
 
-class LoginViewController: UIViewController,UITextFieldDelegate {
+class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailSignInTextField: HoshiTextField!
     @IBOutlet weak var passwordSignInTextField: HoshiTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emailSignInTextField.delegate = self
-        self.passwordSignInTextField.delegate = self
+        emailSignInTextField.delegate = self
+        passwordSignInTextField.delegate = self
         let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnClickOutside))
         view.addGestureRecognizer(tap)
     }
     
     func postLoginSession() {
-        sharedApiManager.login(email: self.emailSignInTextField.text!, password: self.passwordSignInTextField.text!) { (session, result) in
+        sharedApiManager.login(email: emailSignInTextField.text!, password: passwordSignInTextField.text!) { (session, result) in
             if let response = result {
                 if response.isSuccess() {
                     if (session != nil && session?.token != "") {
@@ -56,26 +56,26 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         passwordSignInTextField.resignFirstResponder()
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        var bool = false
-        if textField == emailSignInTextField {
-            hideKeyBoardForEmail()
-            bool = true
-        } else if textField == passwordSignInTextField {
-            hidePasswordKeyBoard()
-            bool = true
-        }
-        
-        return bool
-    }
-    
     @IBAction func loginButtonTapped(_ sender: Any) {
-        self.postLoginSession()
+        postLoginSession()
     }
-    
     
     @IBAction func backToMainMenu(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
-    
+}
+
+extension LoginViewController: UITextFieldDelegate {
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		var bool = false
+		if textField == emailSignInTextField {
+			hideKeyBoardForEmail()
+			bool = true
+		} else if textField == passwordSignInTextField {
+			hidePasswordKeyBoard()
+			bool = true
+		}
+		
+		return bool
+	}
 }
