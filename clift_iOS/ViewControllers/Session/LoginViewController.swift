@@ -15,7 +15,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailSignInTextField: HoshiTextField!
     @IBOutlet weak var passwordSignInTextField: HoshiTextField!
-    
+	@IBOutlet weak var forgotPasswordButton: UIButton!
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		emailSignInTextField.delegate = self
@@ -63,6 +64,11 @@ class LoginViewController: UIViewController {
 		let onboardingEventTypeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "onboardingEventTypeVC") as! OnboardingEventTypeViewController
 		present(onboardingEventTypeVC, animated: true, completion: nil)
     }
+	
+	@IBAction func forgotPasswordButtonTapped(_ sender: Any) {
+		let onboardingEventTypeVC = UIStoryboard(name: "Session", bundle: nil).instantiateViewController(withIdentifier: "recoverPasswordVC") as! RecoverPasswordViewController
+		present(onboardingEventTypeVC, animated: true, completion: nil)
+	}
 }
 
 extension LoginViewController: UITextFieldDelegate {

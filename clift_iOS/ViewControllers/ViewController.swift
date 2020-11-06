@@ -23,7 +23,7 @@ class ViewController: UIViewController {
 	}
     
 	@IBAction func loginButtonTapped(_ sender: Any) {
-		let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
+		let loginVC = UIStoryboard(name: "Session", bundle: nil).instantiateViewController(withIdentifier: "loginViewController") as! LoginViewController
 		present(loginVC, animated: true, completion: nil)
 	}
     
