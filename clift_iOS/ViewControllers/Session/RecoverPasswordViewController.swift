@@ -62,12 +62,15 @@ class RecoverPasswordViewController: UIViewController {
 			setError(type: .email)
 			return
 		}
+		
 		sharedApiManager.recoverPassword(email: emailTextField.text!) { (emptyObjectWithErrors, response) in
 			guard let result = response, !result.isError() else {
 				return self.setError(type: .backend)
 			}
 			self.setError(type: .none)
-			// TODO: Move to email sent screen
+			let passwordEmailSentVC = UIStoryboard(name: "Session", bundle: nil).instantiateViewController(withIdentifier: "passwordEmailSentVC") as! PasswordEmailSentViewController
+			passwordEmailSentVC.email = self.emailTextField.text!
+			self.present(passwordEmailSentVC, animated: true, completion: nil)
 		}
 	}
 	
@@ -76,6 +79,7 @@ class RecoverPasswordViewController: UIViewController {
 	}
 }
 
+// MARK: - UITextFieldDelegate
 extension RecoverPasswordViewController: UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		var bool = false

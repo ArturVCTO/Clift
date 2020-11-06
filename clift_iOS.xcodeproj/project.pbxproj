@@ -10,6 +10,7 @@
 		0B1F53E52554DDD7003A3F9F /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F53E42554DDD7003A3F9F /* RecoverPasswordViewController.swift */; };
 		0B1F53F02554E0A5003A3F9F /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F53EF2554E0A5003A3F9F /* UIImageExtension.swift */; };
 		0B1F54122554E493003A3F9F /* Session.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1F53E92554DF69003A3F9F /* Session.storyboard */; };
+		0B82FA5C2554FC60004BE0A3 /* PasswordEmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B82FA5B2554FC60004BE0A3 /* PasswordEmailSentViewController.swift */; };
 		46029C56232804B7008A8EAE /* PriceRangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46029C55232804B7008A8EAE /* PriceRangeTableViewCell.swift */; };
 		46029C5823281270008A8EAE /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46029C5723281270008A8EAE /* RangeSlider.swift */; };
 		46029C5A23284527008A8EAE /* RangeSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46029C5923284527008A8EAE /* RangeSliderTrackLayer.swift */; };
@@ -245,6 +246,7 @@
 		0B1F53E42554DDD7003A3F9F /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		0B1F53E92554DF69003A3F9F /* Session.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Session.storyboard; sourceTree = "<group>"; };
 		0B1F53EF2554E0A5003A3F9F /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		0B82FA5B2554FC60004BE0A3 /* PasswordEmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEmailSentViewController.swift; sourceTree = "<group>"; };
 		20C0FCDBF82262C61E2BFDDB /* Pods-clift_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3803F0F381BDC0ACD9A6BEAF /* Pods-clift_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -834,6 +836,7 @@
 				0B1F53E92554DF69003A3F9F /* Session.storyboard */,
 				468258152307261C00D3D49C /* LoginViewController.swift */,
 				0B1F53E42554DDD7003A3F9F /* RecoverPasswordViewController.swift */,
+				0B82FA5B2554FC60004BE0A3 /* PasswordEmailSentViewController.swift */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -1461,6 +1464,7 @@
 				465FED112370896B0038D557 /* SummaryRegistryViewController.swift in Sources */,
 				463A78A62386E9EC00985674 /* Invitee.swift in Sources */,
 				46DE69C8235D671A002C2BB8 /* sortFilterTVCell.swift in Sources */,
+				0B82FA5C2554FC60004BE0A3 /* PasswordEmailSentViewController.swift in Sources */,
 				46E034BB2326E50D001143BC /* CategoryTableViewCell.swift in Sources */,
 				465C821B236215BF00DAC090 /* AddCashFundViewController.swift in Sources */,
 				467A08D82406E6DE007D18DF /* AssociateStripeAccountViewController.swift in Sources */,

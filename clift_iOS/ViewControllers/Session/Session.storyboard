@@ -253,7 +253,6 @@
                                 <rect key="frame" x="16" y="766" width="382" height="32"/>
                                 <color key="backgroundColor" name="PrimaryBlue"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="56" id="9FL-gd-jZx"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="56" id="OeG-qy-Paz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
@@ -323,6 +322,103 @@
             </objects>
             <point key="canvasLocation" x="47.826086956521742" y="872.54464285714278"/>
         </scene>
+        <!--Password Email Sent View Controller-->
+        <scene sceneID="nlZ-1T-oOY">
+            <objects>
+                <viewController storyboardIdentifier="passwordEmailSentVC" id="Ngn-K4-LHj" customClass="PasswordEmailSentViewController" customModule="CLIFT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pks-EB-MEp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colored-logo" translatesAutoresizingMaskIntoConstraints="NO" id="HCd-UP-KIe">
+                                <rect key="frame" x="175" y="72" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="HCd-UP-KIe" secondAttribute="height" multiplier="1:1" id="0gt-Cc-t8s"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Se ha enviado tu solicitud!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Neb-ji-FkF">
+                                <rect key="frame" x="60" y="166" width="294" height="70"/>
+                                <fontDescription key="fontDescription" name="Tinos-Bold" family="Tinos" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Revisa tu correo electrónico y sigue las instrucciones para recuperar tu contraseña." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBH-PI-dkp">
+                                <rect key="frame" x="16" y="276" width="382" height="40"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2s6-Wf-0aX" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
+                                <rect key="frame" x="16" y="750" width="382" height="32"/>
+                                <color key="backgroundColor" name="PrimaryBlue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="56" id="HyG-J5-4GS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="INICIAR SESIÓN">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="Ngn-K4-LHj" eventType="touchUpInside" id="wI8-ZP-p82"/>
+                                    <action selector="loginButtonTapped:" destination="cTl-aG-Ldr" eventType="touchUpInside" id="kI5-CN-GIk"/>
+                                    <action selector="sendButtonPressed:" destination="8xB-ve-yhA" eventType="touchUpInside" id="Ok8-Dk-ouE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HwW-3o-nNV" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
+                                <rect key="frame" x="16" y="798" width="382" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="36" id="8Zl-3X-kSu"/>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="56" id="RSB-XE-xxC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="16"/>
+                                <state key="normal" title="Reenviar solicitud">
+                                    <color key="titleColor" name="PrimaryBlue"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="cTl-aG-Ldr" eventType="touchUpInside" id="bhI-cl-HOK"/>
+                                    <action selector="resendEmailButtonPressed:" destination="Ngn-K4-LHj" eventType="touchUpInside" id="uHK-9a-UVG"/>
+                                    <action selector="sendButtonPressed:" destination="8xB-ve-yhA" eventType="touchUpInside" id="dhV-f2-vkz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JFl-aj-0ce"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HCd-UP-KIe" firstAttribute="top" secondItem="JFl-aj-0ce" secondAttribute="top" constant="28" id="8PC-TJ-NZe"/>
+                            <constraint firstItem="HwW-3o-nNV" firstAttribute="top" secondItem="2s6-Wf-0aX" secondAttribute="bottom" constant="16" id="8wB-hC-fF1"/>
+                            <constraint firstItem="VBH-PI-dkp" firstAttribute="leading" secondItem="JFl-aj-0ce" secondAttribute="leading" constant="16" id="DjE-5G-Ah1"/>
+                            <constraint firstItem="Neb-ji-FkF" firstAttribute="top" secondItem="HCd-UP-KIe" secondAttribute="bottom" constant="30" id="Dzb-Vc-viq"/>
+                            <constraint firstItem="HwW-3o-nNV" firstAttribute="leading" secondItem="JFl-aj-0ce" secondAttribute="leading" constant="16" id="FA0-It-b5G"/>
+                            <constraint firstItem="Neb-ji-FkF" firstAttribute="leading" secondItem="JFl-aj-0ce" secondAttribute="leading" constant="60" id="J2O-Go-I6F"/>
+                            <constraint firstItem="2s6-Wf-0aX" firstAttribute="leading" secondItem="JFl-aj-0ce" secondAttribute="leading" constant="16" id="STA-47-2y1"/>
+                            <constraint firstAttribute="trailing" secondItem="VBH-PI-dkp" secondAttribute="trailing" constant="16" id="d9G-Wz-RKy"/>
+                            <constraint firstItem="JFl-aj-0ce" firstAttribute="bottom" secondItem="HwW-3o-nNV" secondAttribute="bottom" constant="28" id="gN9-dL-ZoU"/>
+                            <constraint firstItem="JFl-aj-0ce" firstAttribute="trailing" secondItem="HwW-3o-nNV" secondAttribute="trailing" constant="16" id="mcY-1p-Crf"/>
+                            <constraint firstItem="JFl-aj-0ce" firstAttribute="trailing" secondItem="2s6-Wf-0aX" secondAttribute="trailing" constant="16" id="nOg-3t-bwg"/>
+                            <constraint firstItem="VBH-PI-dkp" firstAttribute="top" secondItem="Neb-ji-FkF" secondAttribute="bottom" constant="40" id="oCO-xe-OeS"/>
+                            <constraint firstItem="HCd-UP-KIe" firstAttribute="centerX" secondItem="JFl-aj-0ce" secondAttribute="centerX" id="pzw-aw-Vgt"/>
+                            <constraint firstItem="JFl-aj-0ce" firstAttribute="trailing" secondItem="Neb-ji-FkF" secondAttribute="trailing" constant="60" id="zlg-Z3-6zZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginButton" destination="2s6-Wf-0aX" id="tA3-wK-9H0"/>
+                        <outlet property="resendEmailButton" destination="HwW-3o-nNV" id="uQq-gc-wA1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h7H-Rg-OuG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1025" y="873"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="0X4-xG-Wfd">
@@ -330,6 +426,12 @@
         </designable>
         <designable name="1kc-LM-9jB">
             <size key="intrinsicContentSize" width="128" height="32"/>
+        </designable>
+        <designable name="2s6-Wf-0aX">
+            <size key="intrinsicContentSize" width="128" height="32"/>
+        </designable>
+        <designable name="HwW-3o-nNV">
+            <size key="intrinsicContentSize" width="127" height="31"/>
         </designable>
         <designable name="dNy-D3-Bde">
             <size key="intrinsicContentSize" width="142" height="21.5"/>
