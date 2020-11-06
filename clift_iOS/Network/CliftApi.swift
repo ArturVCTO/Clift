@@ -17,6 +17,7 @@ var apiVersion = 1
 enum CliftApi {
 //    Sprint 1
     case postLoginSession(email: String, password: String)
+	case recoverPassword(email: String)
     case getInterests
     case postUser(user: User)
     case deleteLogoutSession
@@ -104,6 +105,8 @@ extension CliftApi: TargetType {
         switch self {
         case .postLoginSession:
             return "sessions"
+		case .recoverPassword:
+			return "password_recovery"
         case .getInterests:
             return "interests"
         case .postUser(_):
@@ -259,7 +262,7 @@ extension CliftApi: TargetType {
     
     var method: Moya.Method {
         switch self {
-        case .postLoginSession,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount:
+		case .postLoginSession,.recoverPassword,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount:
             return .post
         case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest:
             return .get
@@ -281,6 +284,8 @@ extension CliftApi: TargetType {
         switch self {
         case .postLoginSession(let email, let password):
             return .requestParameters(parameters: ["session": ["email": email, "password": password]], encoding: JSONEncoding.default)
+		case .recoverPassword(let email):
+			return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.default)
         case .postUser(let user):
             return .requestParameters(parameters: ["user": user.toJSON()], encoding: JSONEncoding.default)
         case .updateProfile(let profile):

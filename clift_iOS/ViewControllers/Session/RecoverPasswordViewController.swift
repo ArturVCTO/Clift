@@ -62,8 +62,13 @@ class RecoverPasswordViewController: UIViewController {
 			setError(type: .email)
 			return
 		}
-		// TODO: Send recover password email
-		setError(type: nil)
+		sharedApiManager.recoverPassword(email: emailTextField.text!) { (emptyObjectWithErrors, response) in
+			guard let result = response, !result.isError() else {
+				return self.setError(type: .backend)
+			}
+			self.setError(type: .none)
+			// TODO: Move to email sent screen
+		}
 	}
 	
 	@IBAction func returnButtonPressed(_ sender: Any) {

@@ -162,6 +162,8 @@ extension CliftApiManager {
 protocol ApiCalls {
     func login(email: String, password: String, completion: @escaping(Session?, Response?) -> Void)
     
+	func recoverPassword(email: String, completion: @escaping (EmptyObjectWithErrors?,Response?) -> Void)
+	
     func getGuestToken(completion: @escaping (Session?,Response?)-> Void)
     
     func interests(completion: @escaping ([Interest]?, Response?) -> Void)
@@ -316,6 +318,10 @@ extension CliftApiManager: ApiCalls {
         requestObjectWithResponse(.postLoginSession(email: email, password: password), type: Session.self, completion: completion, wrapper: "session")
     }
     
+	func recoverPassword(email: String, completion: @escaping (EmptyObjectWithErrors?,Response?) -> Void) {
+		requestEmptyObject(.recoverPassword(email: email), completion: completion)
+	}
+	
     func getGuestToken(completion: @escaping (Session?, Response?) -> Void) {
         requestObjectWithResponse(.getGuestToken, type: Session.self, completion: completion, wrapper: "")
     }
