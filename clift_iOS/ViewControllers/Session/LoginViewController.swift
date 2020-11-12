@@ -15,14 +15,15 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailSignInTextField: HoshiTextField!
     @IBOutlet weak var passwordSignInTextField: HoshiTextField!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        emailSignInTextField.delegate = self
-        passwordSignInTextField.delegate = self
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnClickOutside))
-        view.addGestureRecognizer(tap)
-    }
+	@IBOutlet weak var forgotPasswordButton: UIButton!
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		emailSignInTextField.delegate = self
+		passwordSignInTextField.delegate = self
+		let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnClickOutside))
+		view.addGestureRecognizer(tap)
+	}
     
     func postLoginSession() {
         sharedApiManager.login(email: emailSignInTextField.text!, password: passwordSignInTextField.text!) { (session, result) in
@@ -63,6 +64,11 @@ class LoginViewController: UIViewController {
 		let onboardingEventTypeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "onboardingEventTypeVC") as! OnboardingEventTypeViewController
 		present(onboardingEventTypeVC, animated: true, completion: nil)
     }
+	
+	@IBAction func forgotPasswordButtonTapped(_ sender: Any) {
+		let onboardingEventTypeVC = UIStoryboard(name: "Session", bundle: nil).instantiateViewController(withIdentifier: "recoverPasswordVC") as! RecoverPasswordViewController
+		present(onboardingEventTypeVC, animated: true, completion: nil)
+	}
 }
 
 extension LoginViewController: UITextFieldDelegate {

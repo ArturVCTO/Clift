@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/juanpabloramos/Documents/Freelance/Clift/clift_iOS/ViewControllers/Session/Session.storyboard">
+   </FileRef>
+   <FileRef
       location = "group:clift_iOS.xcodeproj">
    </FileRef>
    <FileRef
