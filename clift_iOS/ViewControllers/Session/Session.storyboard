@@ -205,26 +205,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colored-logo" translatesAutoresizingMaskIntoConstraints="NO" id="wcC-PE-cPz">
-                                <rect key="frame" x="175" y="72" width="64" height="64"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="forgot-password" translatesAutoresizingMaskIntoConstraints="NO" id="wcC-PE-cPz">
+                                <rect key="frame" x="155.5" y="72" width="103" height="103"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wcC-PE-cPz" secondAttribute="height" id="Fga-ud-oYD"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Olvidaste tu contraseña?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AAu-Be-KlG">
-                                <rect key="frame" x="60" y="166" width="294" height="70"/>
+                                <rect key="frame" x="60" y="205" width="294" height="70"/>
                                 <fontDescription key="fontDescription" name="Tinos-Bold" family="Tinos" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Por favor ingresa la información de la cuenta que deseas recuperar." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SAg-UU-Ydj">
-                                <rect key="frame" x="16" y="276" width="382" height="37.5"/>
+                                <rect key="frame" x="16" y="315" width="382" height="37.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Correo Electrónico" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dNy-D3-Bde" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="321.5" width="382" height="68"/>
+                                <rect key="frame" x="16" y="360.5" width="382" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="Awa-bo-HKG"/>
                                 </constraints>
@@ -280,7 +280,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ocurrió algún error. Porfavor inténtalo de nuevo." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KH7-7r-09I">
-                                <rect key="frame" x="35" y="397.5" width="344" height="17.5"/>
+                                <rect key="frame" x="35" y="436.5" width="344" height="17.5"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.93725490196078431" green="0.79607843137254897" blue="0.43137254901960786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -330,20 +330,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colored-logo" translatesAutoresizingMaskIntoConstraints="NO" id="HCd-UP-KIe">
-                                <rect key="frame" x="175" y="72" width="64" height="64"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email-sent" translatesAutoresizingMaskIntoConstraints="NO" id="HCd-UP-KIe">
+                                <rect key="frame" x="157" y="72" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="HCd-UP-KIe" secondAttribute="height" multiplier="1:1" id="0gt-Cc-t8s"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Se ha enviado tu solicitud!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Neb-ji-FkF">
-                                <rect key="frame" x="60" y="166" width="294" height="70"/>
+                                <rect key="frame" x="60" y="202" width="294" height="70"/>
                                 <fontDescription key="fontDescription" name="Tinos-Bold" family="Tinos" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Revisa tu correo electrónico y sigue las instrucciones para recuperar tu contraseña." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBH-PI-dkp">
-                                <rect key="frame" x="16" y="276" width="382" height="40"/>
+                                <rect key="frame" x="16" y="312" width="382" height="40"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -446,6 +446,8 @@
     <resources>
         <image name="arrowleft" width="12" height="12"/>
         <image name="colored-logo" width="64" height="63"/>
+        <image name="email-sent" width="100" height="100"/>
+        <image name="forgot-password" width="88" height="103"/>
         <image name="logotipo" width="129" height="41"/>
         <namedColor name="PrimaryBlue">
             <color red="0.6940000057220459" green="0.82700002193450928" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
