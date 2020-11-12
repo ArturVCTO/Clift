@@ -18,7 +18,7 @@ class PasswordEmailSentViewController: UIViewController {
 	
 	private enum ResendButtonState: String {
 		case resend = "Reenviar solicitud"
-		case resent = "Se reenvió tu solicitud."
+		case resent = " Se reenvió tu solicitud."
 		case error = "Hubo un error. Intenta más tarde."
 	}
 	
@@ -43,7 +43,9 @@ class PasswordEmailSentViewController: UIViewController {
 			resendEmailButton.tintColor = .white
 			
 		case .error:
-			break
+			resendEmailButton.backgroundColor = UIColor(named: "TextfieldYellow")
+			resendEmailButton.setImage(nil, for: .normal)
+			resendEmailButton.setTitleColor(.white, for: .normal)
 		}
 	}
 	
