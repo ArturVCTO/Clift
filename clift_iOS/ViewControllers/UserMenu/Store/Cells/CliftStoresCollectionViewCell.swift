@@ -18,6 +18,7 @@ class CliftStoresCollectionViewCell: UICollectionViewCell {
         
         self.shopNameLabel.text = shop.name
         
+		shopImageUrl.contentMode = .scaleAspectFit
         if let imageURL = URL(string:"\(shop.imageURL)") {
                    self.shopImageUrl.kf.setImage(with: imageURL, placeholder: UIImage(named: "profilePlaceHolder"), options: [
                        .scaleFactor(UIScreen.main.scale),
