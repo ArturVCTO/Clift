@@ -10,6 +10,9 @@
 		0B1F53E52554DDD7003A3F9F /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F53E42554DDD7003A3F9F /* RecoverPasswordViewController.swift */; };
 		0B1F53F02554E0A5003A3F9F /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F53EF2554E0A5003A3F9F /* UIImageExtension.swift */; };
 		0B1F54122554E493003A3F9F /* Session.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1F53E92554DF69003A3F9F /* Session.storyboard */; };
+		0B61742F2574BB5900FD7EAC /* Guest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B61742E2574BB5900FD7EAC /* Guest.storyboard */; };
+		0B6174342574BB8A00FD7EAC /* EventHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6174332574BB8A00FD7EAC /* EventHeaderCell.swift */; };
+		0B6174392574BDE400FD7EAC /* EventGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6174382574BDE400FD7EAC /* EventGiftListViewController.swift */; };
 		0B82FA5C2554FC60004BE0A3 /* PasswordEmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B82FA5B2554FC60004BE0A3 /* PasswordEmailSentViewController.swift */; };
 		46029C56232804B7008A8EAE /* PriceRangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46029C55232804B7008A8EAE /* PriceRangeTableViewCell.swift */; };
 		46029C5823281270008A8EAE /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46029C5723281270008A8EAE /* RangeSlider.swift */; };
@@ -246,6 +249,9 @@
 		0B1F53E42554DDD7003A3F9F /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		0B1F53E92554DF69003A3F9F /* Session.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Session.storyboard; sourceTree = "<group>"; };
 		0B1F53EF2554E0A5003A3F9F /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		0B61742E2574BB5900FD7EAC /* Guest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Guest.storyboard; sourceTree = "<group>"; };
+		0B6174332574BB8A00FD7EAC /* EventHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderCell.swift; sourceTree = "<group>"; };
+		0B6174382574BDE400FD7EAC /* EventGiftListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGiftListViewController.swift; sourceTree = "<group>"; };
 		0B82FA5B2554FC60004BE0A3 /* PasswordEmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEmailSentViewController.swift; sourceTree = "<group>"; };
 		20C0FCDBF82262C61E2BFDDB /* Pods-clift_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1015,9 +1021,11 @@
 		BD5ECC25251EAA5600A1F45F /* Guest */ = {
 			isa = PBXGroup;
 			children = (
+				0B61742E2574BB5900FD7EAC /* Guest.storyboard */,
 				BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */,
 				BD5ECC27251EAA5600A1F45F /* Cells */,
 				BD5ECC2A251EAA5600A1F45F /* SearchEventTableViewController.swift */,
+				0B6174382574BDE400FD7EAC /* EventGiftListViewController.swift */,
 			);
 			path = Guest;
 			sourceTree = "<group>";
@@ -1027,6 +1035,7 @@
 			children = (
 				BD5ECC28251EAA5600A1F45F /* SearchEventCell.swift */,
 				BD5ECC29251EAA5600A1F45F /* RegistryGuestCell.swift */,
+				0B6174332574BB8A00FD7EAC /* EventHeaderCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1151,6 +1160,7 @@
 				46987D9922FA10AD007B2C78 /* Poppins-Medium.ttf in Resources */,
 				464D1CC4241012EC00CBC546 /* clabe.json in Resources */,
 				46441B7723CE852C00F5FCD2 /* Mihan-Regular.ttf in Resources */,
+				0B61742F2574BB5900FD7EAC /* Guest.storyboard in Resources */,
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
 				46B5F74623845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */,
 				0B1F54122554E493003A3F9F /* Session.storyboard in Resources */,
@@ -1317,6 +1327,7 @@
 				462EB0BD2316C8460084C3C7 /* EventAnalytics.swift in Sources */,
 				462F9F2E230C6AE20014CD9E /* StringExtensions.swift in Sources */,
 				CE7B9EFF2509395500E8ED9D /* ConvertToCreditViewController.swift in Sources */,
+				0B6174342574BB8A00FD7EAC /* EventHeaderCell.swift in Sources */,
 				465FED1323708B7B0038D557 /* SummaryRegistryTableViewCell.swift in Sources */,
 				46ABCB2E2318669500857046 /* MyEventsCell.swift in Sources */,
 				460836A92386FF890052E73A /* InvitationTemplatesViewController.swift in Sources */,
@@ -1336,6 +1347,7 @@
 				46BFA8C023D0EFEC008D6B72 /* CheckoutViewController.swift in Sources */,
 				46E4D77523D8C130004FC798 /* PaymentTableViewController.swift in Sources */,
 				46A2DD9222FB6CC60051DCA6 /* Session.swift in Sources */,
+				0B6174392574BDE400FD7EAC /* EventGiftListViewController.swift in Sources */,
 				4672A89122F88F25001F374F /* ViewController.swift in Sources */,
 				46DE69CE235D6965002C2BB8 /* colorFilterTVCell.swift in Sources */,
 				46EC9DA423314FFA00950139 /* SubcategoryCollectionViewCell.swift in Sources */,
