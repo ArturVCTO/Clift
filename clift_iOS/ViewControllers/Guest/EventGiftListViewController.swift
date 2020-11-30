@@ -22,7 +22,7 @@ class EventGiftListViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		navigationController?.navigationBar.tintColor = .black
+		navigationController?.navigationBar.tintColor = .white
 	}
 }
 

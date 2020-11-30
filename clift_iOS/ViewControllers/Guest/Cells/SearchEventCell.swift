@@ -25,9 +25,10 @@ class SearchEventCell: UITableViewCell {
 		self.delegate = delegate
 		self.indexPath = indexPath
 		
-        self.eventNameLabel.text = event.name
+		eventDateLabel.text = event.formattedDate()
+        eventNameLabel.text = event.name
         if let imageURL = URL(string:"\(event.eventImageUrl)") {
-            self.eventImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
+            eventImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
         }
     }
 	
