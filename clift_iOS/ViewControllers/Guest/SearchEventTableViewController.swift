@@ -19,6 +19,9 @@ class SearchEventTableViewController: UITableViewController, UISearchBarDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "", style: .plain, target: nil, action: nil)
+        
         self.searchEvent.showsCancelButton = false
         searchEvent.delegate = self
         self.searchEvent.delegate = self
