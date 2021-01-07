@@ -198,6 +198,8 @@
 		46EC9D9E232BF33B00950139 /* ProductsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9D9D232BF33B00950139 /* ProductsCollectionViewLayout.swift */; };
 		46EC9DA22331493D00950139 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9DA12331493D00950139 /* ProductCollectionViewCell.swift */; };
 		46EC9DA423314FFA00950139 /* SubcategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9DA323314FFA00950139 /* SubcategoryCollectionViewCell.swift */; };
+		61F0C2D725A3C89700AA58CF /* GuestEventProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F0C2D525A3C89700AA58CF /* GuestEventProductCell.swift */; };
+		61F0C2D825A3C89700AA58CF /* GuestEventProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */; };
 		85D1161D2D04F9B25477BAE8 /* Pods_clift_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */; };
 		A9D3728582D9B5913F8C5C14 /* Pods_clift_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */; };
 		BD5ECC2B251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */; };
@@ -440,6 +442,8 @@
 		46EC9D9D232BF33B00950139 /* ProductsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		46EC9DA12331493D00950139 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		46EC9DA323314FFA00950139 /* SubcategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		61F0C2D525A3C89700AA58CF /* GuestEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestEventProductCell.swift; sourceTree = "<group>"; };
+		61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuestEventProductCell.xib; sourceTree = "<group>"; };
 		63E2F7BED90D17510D41F45C /* Pods-clift_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		692982E91D6BF3F5E0781046 /* Pods-clift_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6B9CC23E02EA53603D9BFAD5 /* Pods-clift_iOSUITests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.canary.xcconfig"; sourceTree = "<group>"; };
@@ -1036,6 +1040,8 @@
 				BD5ECC28251EAA5600A1F45F /* SearchEventCell.swift */,
 				BD5ECC29251EAA5600A1F45F /* RegistryGuestCell.swift */,
 				0B6174332574BB8A00FD7EAC /* EventHeaderCell.swift */,
+				61F0C2D525A3C89700AA58CF /* GuestEventProductCell.swift */,
+				61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1153,6 +1159,7 @@
 				CE8D41C424BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */,
 				46987D9B22FA10AD007B2C78 /* Poppins-Bold.ttf in Resources */,
 				46987D9C22FA10AD007B2C78 /* Poppins-Regular.ttf in Resources */,
+				61F0C2D825A3C89700AA58CF /* GuestEventProductCell.xib in Resources */,
 				46B5F74323845BB600AFF425 /* Tinos-RegularItalic.ttf in Resources */,
 				4672A89922F88F27001F374F /* LaunchScreen.storyboard in Resources */,
 				46987D9F22FA10C5007B2C78 /* OpenSans-SemiBold.ttf in Resources */,
@@ -1318,6 +1325,7 @@
 				46831C0E23DA4079004BAAC1 /* PaymentConfirmationViewController.swift in Sources */,
 				46403A8F23E0A425007866B8 /* GiftShippingConfirmationViewController.swift in Sources */,
 				464D1CCE2410137600CBC546 /* CashOutFundsViewController.swift in Sources */,
+				61F0C2D725A3C89700AA58CF /* GuestEventProductCell.swift in Sources */,
 				46C724D123C7DA0B00F12924 /* AddressCity.swift in Sources */,
 				462EB0C12316D4250084C3C7 /* MyEventsTableViewController.swift in Sources */,
 				464D1CCF2410137600CBC546 /* LinkBankAccountEmptyStateVC.swift in Sources */,
