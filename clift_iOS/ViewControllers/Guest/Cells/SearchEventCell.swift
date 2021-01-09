@@ -8,44 +8,34 @@
 
 import UIKit
 
-class SearchEventCell: UITableViewCell {
+protocol SearchEventCellDelegate: class {
+	func didSelectEvent(at indexPath: IndexPath)
+}
 
-    var currentEvent = Event()
-    var parentVC : SearchEventTableViewController!
+class SearchEventCell: UITableViewCell {
     
     @IBOutlet weak var eventImage: customImageView!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
     
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+	weak var delegate: SearchEventCellDelegate?
+	private var indexPath: IndexPath?
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
-    func setUp(event: Event){
-        self.currentEvent = event
-        self.eventNameLabel.text = event.name
-        
+	func setUp(event: Event, delegate: SearchEventCellDelegate, indexPath: IndexPath){
+		self.delegate = delegate
+		self.indexPath = indexPath
+		
+		eventDateLabel.text = event.formattedDate()
+        eventNameLabel.text = event.name
         if let imageURL = URL(string:"\(event.eventImageUrl)") {
-            self.eventImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
+            eventImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
         }
     }
+	
     @IBAction func showEventGuest(_ sender: UIButton) {
-        let eventGuest = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "guestViewController") as! GuestGiftListViewController
-        
-        eventGuest.currentEvent  = self.currentEvent
-        
-        eventGuest.modalPresentationStyle = .fullScreen
-        self.parentVC.navigationController?.pushViewController(eventGuest, animated: true)
-        //self.parentVC.present(eventGuest, animated: true, completion: nil)
-        
+		guard let indexPath = indexPath else {
+			return
+		}
+		delegate?.didSelectEvent(at: indexPath)
     }
 }

@@ -143,44 +143,13 @@ class GiftsViewController: UIViewController {
     }
     
     func loadEventInformation(event: Event) {
-        var eventVisibilityString = String()
-        var eventTypeString = String()
-
-        self.eventNameLabel.text = event.name
+		self.eventNameLabel.text = event.name
         self.eventDateLabel.text = event.date
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "es_MX")
-        dateFormatter.dateFormat = "dd MMMM yyyy"
-        self.eventDateLabel.text = dateFormatter.string(from: event.date.stringToDate())
-        
+
+		self.eventDateLabel.text = event.formattedDate()
         self.countDownCalendar(eventDate: event.date.stringToDate())
         
-        switch event.visibility {
-        case 0:
-            eventVisibilityString = "Evento Privado"
-        case 1:
-            eventVisibilityString = "Evento Público"
-        default:
-            break
-        }
-        
-        switch event.eventType {
-        case 0:
-            eventTypeString = "Boda"
-        case 1:
-            eventTypeString = "XV Años"
-        case 2:
-            eventTypeString = "Baby Shower"
-        case 3:
-            eventTypeString = "Cumpleaños"
-        case 4:
-            eventTypeString = "Otro"
-        default:
-            break
-        }
-        
-        self.eventTypeAndVisibilityLabel.text = eventTypeString + " - " + eventVisibilityString
+		self.eventTypeAndVisibilityLabel.text = event.stringType() + " - " + event.stringVisibility()
         
         if event.eventProgress.productsHaveBeenAdded == false {
             self.productsAddedProgressButton.isHidden = false
@@ -197,7 +166,6 @@ class GiftsViewController: UIViewController {
         if let coverImageURL = URL(string:"\(event.coverImageUrl)") {
             self.coverImageView.kf.setImage(with: coverImageURL)
         }
-        
     }
     
     func countDownCalendar(eventDate: Date) {
