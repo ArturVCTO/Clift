@@ -23,14 +23,13 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var addToCartButton: UIButton!
     
     var currentEventProduct: EventProduct?
-    var prueba = ["https://bit.ly/auk_image","https://bit.ly/moa_imagee","https://st1.uvnimg.com/dims4/default/0102b2f/2147483647/resize/1093x820%3E/quality/75/?url=http%3A%2F%2Fuvn-brightspot.s3.amazonaws.com%2Fd4%2F4a%2F006304a74db4902c0b4d8d8026c8%2Fchevrolet-corvette-c8-stingray-2020-1280-08.jpg","https://www.landuum.com/wp-content/uploads/2019/03/cultura_paisajeiluminado_landuum5.jpg","https://www.infobae.com/new-resizer/d09N_vgiOAqH_NojJDsUET2Dk2s=/1200x900/filters:format(jpg):quality(85)//arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/5NQ4QLPS7VFF3A7MYAKGMNE7OA.jpg"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setUI()
         setNavBar()
-        setScrollView(with: prueba)
+        setScrollView()
         configure()
     }
     
@@ -56,7 +55,7 @@ class ProductDetailsViewController: UIViewController {
         print("Carrito de compras")
     }
     
-    func setScrollView(with imagesToDisplay: [String]) {
+    func setScrollView() {
         
         //SetUI
         scrollView.auk.settings.pageControl.backgroundColor = .clear
@@ -68,7 +67,17 @@ class ProductDetailsViewController: UIViewController {
         /*imagesToDisplay.forEach { image in
             scrollView.auk.show(url: image)
         }*/
-        scrollView.auk.show(url: (currentEventProduct?.product.imageUrl)!)
+        if currentEventProduct?.product.imageUrl != "" {
+            scrollView.auk.show(url: (currentEventProduct?.product.imageUrl)!)
+        }
+        
+        if currentEventProduct?.product.secondImageUrl != "" {
+            scrollView.auk.show(url: (currentEventProduct?.product.secondImageUrl)!)
+        }
+        
+        if currentEventProduct?.product.thirdImageUrl != "" {
+            scrollView.auk.show(url: (currentEventProduct?.product.thirdImageUrl)!)
+        }
         
         //Set AutoScroll
         scrollView.auk.startAutoScroll(delaySeconds: 2)

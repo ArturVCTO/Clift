@@ -23,6 +23,8 @@ class Product: Mappable {
     var specs = ""
     var color = CliftColor()
     var imageUrl = ""
+    var secondImageUrl = ""
+    var thirdImageUrl = ""
     var shouldShowBrand = false
     var inStock = false
     var isInEvent = false
@@ -43,6 +45,8 @@ class Product: Mappable {
         price <- map["price"]
         brand <- map["brand"]
         imageUrl <- map["image_url"]
+        secondImageUrl <- map["second_image_url"]
+        thirdImageUrl <- map["third_image_url"]
         sku <- map["sku"]
         shop <- map["shop"]
         description <- map["description"]
