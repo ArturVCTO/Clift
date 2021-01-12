@@ -7,3 +7,20 @@
 //
 
 import Foundation
+import UIKit
+
+extension UILabel {
+
+      func colorString(text: String?, coloredText: [String?], color: UIColor? = .red) {
+
+      let attributedString = NSMutableAttributedString(string: text!)
+        
+        coloredText.forEach { colorText in
+            let range = (text! as NSString).range(of: colorText!)
+              attributedString.setAttributes([NSAttributedString.Key.foregroundColor: color!],
+                                     range: range)
+        }
+        
+      self.attributedText = attributedString
+  }
+}
