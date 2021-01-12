@@ -1,6 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework
+${BUILT_PRODUCTS_DIR}/Auk/Auk.framework
 ${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
 ${BUILT_PRODUCTS_DIR}/GSMessages/GSMessages.framework
 ${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework
@@ -20,3 +21,4 @@ ${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework
 ${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework
 ${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework
 ${BUILT_PRODUCTS_DIR}/UITextField+Shake/UITextField_Shake.framework
+${BUILT_PRODUCTS_DIR}/moa/moa.framework

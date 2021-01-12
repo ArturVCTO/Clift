@@ -29,6 +29,10 @@ target 'clift_iOS' do
   pod 'GoogleSignIn'
   pod 'Stripe', '~> 20.0'
 
+  # Pods for carouselImages
+  pod 'moa', '~> 12.0'
+  pod 'Auk', '~> 11.0'
+
 
   target 'clift_iOSTests' do
     inherit! :search_paths

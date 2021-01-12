@@ -198,6 +198,9 @@
 		46EC9D9E232BF33B00950139 /* ProductsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9D9D232BF33B00950139 /* ProductsCollectionViewLayout.swift */; };
 		46EC9DA22331493D00950139 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9DA12331493D00950139 /* ProductCollectionViewCell.swift */; };
 		46EC9DA423314FFA00950139 /* SubcategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9DA323314FFA00950139 /* SubcategoryCollectionViewCell.swift */; };
+		6169708625A7DE85009F6EB9 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169708525A7DE85009F6EB9 /* UIViewExtension.swift */; };
+		61D21B4225A92949009DED75 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D21B4125A92949009DED75 /* UILabelExtension.swift */; };
+		61D51A6425A6926F0085C8DE /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D51A6325A6926F0085C8DE /* ProductDetailsViewController.swift */; };
 		61F0C2D725A3C89700AA58CF /* GuestEventProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F0C2D525A3C89700AA58CF /* GuestEventProductCell.swift */; };
 		61F0C2D825A3C89700AA58CF /* GuestEventProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */; };
 		85D1161D2D04F9B25477BAE8 /* Pods_clift_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */; };
@@ -442,6 +445,9 @@
 		46EC9D9D232BF33B00950139 /* ProductsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		46EC9DA12331493D00950139 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		46EC9DA323314FFA00950139 /* SubcategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		6169708525A7DE85009F6EB9 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		61D21B4125A92949009DED75 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		61D51A6325A6926F0085C8DE /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		61F0C2D525A3C89700AA58CF /* GuestEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestEventProductCell.swift; sourceTree = "<group>"; };
 		61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuestEventProductCell.xib; sourceTree = "<group>"; };
 		63E2F7BED90D17510D41F45C /* Pods-clift_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -911,6 +917,8 @@
 				462F9F2F230DAC980014CD9E /* DateFormatter.swift */,
 				46DE69872358175F002C2BB8 /* ColorExtension.swift */,
 				0B1F53EF2554E0A5003A3F9F /* UIImageExtension.swift */,
+				6169708525A7DE85009F6EB9 /* UIViewExtension.swift */,
+				61D21B4125A92949009DED75 /* UILabelExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1030,6 +1038,7 @@
 				BD5ECC27251EAA5600A1F45F /* Cells */,
 				BD5ECC2A251EAA5600A1F45F /* SearchEventTableViewController.swift */,
 				0B6174382574BDE400FD7EAC /* EventGiftListViewController.swift */,
+				61D51A6325A6926F0085C8DE /* ProductDetailsViewController.swift */,
 			);
 			path = Guest;
 			sourceTree = "<group>";
@@ -1348,6 +1357,7 @@
 				46C724D523C7DA7700F12924 /* AddressCountry.swift in Sources */,
 				469823C023C9376500671731 /* AddressCell.swift in Sources */,
 				46E128802333F02300354DB9 /* CliftStoresCollectionViewCell.swift in Sources */,
+				61D51A6425A6926F0085C8DE /* ProductDetailsViewController.swift in Sources */,
 				465FED152373BB510038D557 /* EventPool.swift in Sources */,
 				46D3776D2395783D004BE93E /* AddGuestsViewController.swift in Sources */,
 				465C82172362157100DAC090 /* AddManualProductViewController.swift in Sources */,
@@ -1364,6 +1374,7 @@
 				465167B0237A7D3300755077 /* EventProductBrandCell.swift in Sources */,
 				46E85B5022FB5ECF004FA3FE /* CliftApi.swift in Sources */,
 				46D377682391CF74004BE93E /* DiscardChangesAlertView.swift in Sources */,
+				61D21B4225A92949009DED75 /* UILabelExtension.swift in Sources */,
 				46DE69CA235D6944002C2BB8 /* shopFilterTVCell.swift in Sources */,
 				46C724D323C7DA6000F12924 /* AddressState.swift in Sources */,
 				46153CE423C8F6F3005CD395 /* AddAddressViewController.swift in Sources */,
@@ -1400,6 +1411,7 @@
 				46167731232AE9C700A6CAB9 /* SubcategoryCollectionViewController.swift in Sources */,
 				46462BE223A9296200516A60 /* GradientFontExtension.swift in Sources */,
 				46DC795823E9A0770013C306 /* StripeCheckout.swift in Sources */,
+				6169708625A7DE85009F6EB9 /* UIViewExtension.swift in Sources */,
 				46E1287E2333EFF700354DB9 /* MainStoreBrandCollectionViewCell.swift in Sources */,
 				462EB0AF2314816D0084C3C7 /* GiftsViewController.swift in Sources */,
 				461C423823DA3CF400486D80 /* ShippingTableViewController.swift in Sources */,
