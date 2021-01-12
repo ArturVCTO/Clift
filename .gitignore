@@ -5,7 +5,6 @@
 build/
 *.pbxuser
 Pods/
-.DS_Store
 .Trashes
 *.swp
 *.lock
