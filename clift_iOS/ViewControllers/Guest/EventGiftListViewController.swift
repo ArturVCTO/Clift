@@ -42,9 +42,11 @@ class EventGiftListViewController: UIViewController {
         
         let cartImage = UIImage(named: "cart")
         let searchImage = UIImage(named: "searchicon")
-        let editButton   = UIBarButtonItem(image: cartImage,  style: .plain, target: self, action: #selector(didTapCartButton(sender:)))
+        let cartButton   = UIBarButtonItem(image: cartImage,  style: .plain, target: self, action: #selector(didTapCartButton(sender:)))
         let searchButton = UIBarButtonItem(image: searchImage,  style: .plain, target: self, action: #selector(didTapSearchButton(sender:)))
-        navigationItem.rightBarButtonItems = [editButton, searchButton]
+        navigationItem.rightBarButtonItems = [cartButton, searchButton]
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "", style: .plain, target: nil, action: nil)
     }
     
     @objc func didTapCartButton(sender: AnyObject){
@@ -87,7 +89,7 @@ class EventGiftListViewController: UIViewController {
     }
 }
 
-// MARK: Collection View Delegate and Data Source
+// MARK: Extension Collection View Delegate and Data Source
 extension EventGiftListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -102,13 +104,22 @@ extension EventGiftListViewController: UICollectionViewDelegate, UICollectionVie
         
         if let cell = productsCollectionView.dequeueReusableCell(withReuseIdentifier: "GuestEventProductCell", for: indexPath) as? GuestEventProductCell {
             
+            cell.productCellDelegate = self
             cell.configure(product: eventRegistries[indexPath.row])
             return cell
         }
         return UICollectionViewCell()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
+        productDetailsVC.currentEventProduct = eventRegistries[indexPath.row]
+        productDetailsVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(productDetailsVC, animated: true)
+    }
 }
 
+//MARK:- Extension UICollectionViewDelegateFlowLayout
 extension EventGiftListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             
@@ -116,5 +127,13 @@ extension EventGiftListViewController: UICollectionViewDelegateFlowLayout {
             let collectionViewSize = collectionView.frame.size.width - padding
 
             return CGSize(width: collectionViewSize / 2, height: collectionViewSize / 2)
+    }
+}
+
+//MARK:- Extension ProductCellDelegate
+extension EventGiftListViewController: ProductCellDelegate {
+    
+    func didTapAddProductToCart() {
+        print("Product added to cart using delegate")
     }
 }
