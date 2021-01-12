@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ProductCellDelegate {
+    func didTapAddProductToCart()
+}
+
 class GuestEventProductCell: UICollectionViewCell {
 
     @IBOutlet weak var productImage: UIImageView!
@@ -16,6 +20,8 @@ class GuestEventProductCell: UICollectionViewCell {
     @IBOutlet weak var quantityView: UIView!
     @IBOutlet weak var productQuantityLabel: UILabel!
     @IBOutlet weak var addCartView: UIView!
+    
+    var productCellDelegate: ProductCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,6 +48,6 @@ class GuestEventProductCell: UICollectionViewCell {
     }
 
     @IBAction func addProductToCart(_ sender: UIButton) {
-        print("Product added to cart")
+        productCellDelegate.didTapAddProductToCart()
     }
 }
