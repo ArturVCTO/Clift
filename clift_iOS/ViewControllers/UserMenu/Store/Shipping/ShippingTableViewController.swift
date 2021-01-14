@@ -62,7 +62,24 @@ class ShippingTableViewController: UITableViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func prepareAddress() {
+        
+        //address
+        let state = AddressState()
+        state.id = selectedStateId
+        address?.state = state
+        
+        //city
+        let city = AddressCity()
+        city.id = selectedCityId
+        address?.city = city
+
+        self.address?.zipCode = self.zipCodeTextField.text
+
+    }
+    
     func addAddress(address: Address) {
+        prepareAddress()
            sharedApiManager.addAddress(address: address) { (createdAddress, result) in
                if let response = result {
                    if (response.isSuccess()) {
