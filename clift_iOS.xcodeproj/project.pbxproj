@@ -198,8 +198,10 @@
 		46EC9D9E232BF33B00950139 /* ProductsCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9D9D232BF33B00950139 /* ProductsCollectionViewLayout.swift */; };
 		46EC9DA22331493D00950139 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9DA12331493D00950139 /* ProductCollectionViewCell.swift */; };
 		46EC9DA423314FFA00950139 /* SubcategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EC9DA323314FFA00950139 /* SubcategoryCollectionViewCell.swift */; };
+		613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */; };
 		6169708625A7DE85009F6EB9 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169708525A7DE85009F6EB9 /* UIViewExtension.swift */; };
 		61D21B4225A92949009DED75 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D21B4125A92949009DED75 /* UILabelExtension.swift */; };
+		61D3F86525B0060500EEF709 /* FilterSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D3F86425B0060500EEF709 /* FilterSelectionViewController.swift */; };
 		61D51A6425A6926F0085C8DE /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D51A6325A6926F0085C8DE /* ProductDetailsViewController.swift */; };
 		61F0C2D725A3C89700AA58CF /* GuestEventProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F0C2D525A3C89700AA58CF /* GuestEventProductCell.swift */; };
 		61F0C2D825A3C89700AA58CF /* GuestEventProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */; };
@@ -445,8 +447,10 @@
 		46EC9D9D232BF33B00950139 /* ProductsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		46EC9DA12331493D00950139 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		46EC9DA323314FFA00950139 /* SubcategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		6169708525A7DE85009F6EB9 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		61D21B4125A92949009DED75 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
+		61D3F86425B0060500EEF709 /* FilterSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionViewController.swift; sourceTree = "<group>"; };
 		61D51A6325A6926F0085C8DE /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
 		61F0C2D525A3C89700AA58CF /* GuestEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestEventProductCell.swift; sourceTree = "<group>"; };
 		61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuestEventProductCell.xib; sourceTree = "<group>"; };
@@ -919,6 +923,7 @@
 				0B1F53EF2554E0A5003A3F9F /* UIImageExtension.swift */,
 				6169708525A7DE85009F6EB9 /* UIViewExtension.swift */,
 				61D21B4125A92949009DED75 /* UILabelExtension.swift */,
+				613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1039,6 +1044,7 @@
 				BD5ECC2A251EAA5600A1F45F /* SearchEventTableViewController.swift */,
 				0B6174382574BDE400FD7EAC /* EventGiftListViewController.swift */,
 				61D51A6325A6926F0085C8DE /* ProductDetailsViewController.swift */,
+				61D3F86425B0060500EEF709 /* FilterSelectionViewController.swift */,
 			);
 			path = Guest;
 			sourceTree = "<group>";
@@ -1329,6 +1335,7 @@
 				46167733232AECC700A6CAB9 /* ProductCollectionViewController.swift in Sources */,
 				469D8C2A230F02AB000D447E /* EditProfileViewController.swift in Sources */,
 				465C82142361087400DAC090 /* CustomAlertController.swift in Sources */,
+				61D3F86525B0060500EEF709 /* FilterSelectionViewController.swift in Sources */,
 				46E12882233ACFB000354DB9 /* Shop.swift in Sources */,
 				46D3777123972DDD004BE93E /* Invitation.swift in Sources */,
 				46831C0E23DA4079004BAAC1 /* PaymentConfirmationViewController.swift in Sources */,
@@ -1379,6 +1386,7 @@
 				46C724D323C7DA6000F12924 /* AddressState.swift in Sources */,
 				46153CE423C8F6F3005CD395 /* AddAddressViewController.swift in Sources */,
 				462EB0BB2316C6C30084C3C7 /* Progress.swift in Sources */,
+				613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */,
 				465FED172373DE1A0038D557 /* ExternalProduct.swift in Sources */,
 				0B1F53F02554E0A5003A3F9F /* UIImageExtension.swift in Sources */,
 				CE59EAE024F0714300EA97E5 /* CollaboratorsViewController.swift in Sources */,
