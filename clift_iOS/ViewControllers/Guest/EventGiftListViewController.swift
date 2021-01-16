@@ -7,6 +7,14 @@
 //
 
 import UIKit
+import SideMenu
+
+enum sortKeys: String {
+    case nameAscending = "sort_name.asc"
+    case nameDescending = "sort_name.desc"
+    case priceAscending = "sort_price.asc"
+    case priceDescending = "sort_price.desc"
+}
 
 class EventGiftListViewController: UIViewController {
     
@@ -15,17 +23,29 @@ class EventGiftListViewController: UIViewController {
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
-	
+    @IBOutlet weak var filerView: UIView!
+    @IBOutlet weak var orderByView: UIView!
+    @IBOutlet weak var orderByInnerView: UIView!
+    @IBOutlet weak var orderByFirstButton: UIButton!
+    @IBOutlet weak var orderBySecondButton: UIButton!
+    @IBOutlet weak var orderByThirdButton: UIButton!
+    @IBOutlet weak var orderByFourthButton: UIButton!
+    @IBOutlet weak var smallViewOrderByConstraint: NSLayoutConstraint!
+    @IBOutlet weak var largeViewOrderByConstraint: NSLayoutConstraint!
+    @IBOutlet weak var paginationLabel: UILabel!
+    @IBOutlet weak var paginationStackViewButtons: UIStackView!
+    
     @IBOutlet weak var productsCollectionView: UICollectionView! {
         didSet {
             productsCollectionView.delegate = self
             productsCollectionView.dataSource = self
-            //productsCollectionView.allowsMultipleSelection = false
         }
     }
 	
 	var currentEvent = Event()
     var eventRegistries: [EventProduct]! = []
+    var orderByViewSizeFlag = true
+    var filtersDic = ["shop":"","category":"","price":""]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -50,7 +70,9 @@ class EventGiftListViewController: UIViewController {
     }
     
     @objc func didTapCartButton(sender: AnyObject){
-        print("Carrito de compras")
+        
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func didTapSearchButton(sender: AnyObject){
@@ -71,21 +93,112 @@ class EventGiftListViewController: UIViewController {
         dateLabel.text = event.formattedDate()
         typeLabel.text = event.stringVisibility()
         eventImageView.layer.cornerRadius = 30
+        
+        orderByView.layer.cornerRadius = 10
+        orderByInnerView.layer.cornerRadius = 10
+        filerView.layer.cornerRadius = 10
     }
     
     private func registerCells() {
         productsCollectionView.register(UINib(nibName: "GuestEventProductCell", bundle: nil), forCellWithReuseIdentifier: "GuestEventProductCell")
     }
     
-    func getRegistries(){
-        sharedApiManager.getRegistriesGuest(event: currentEvent, filters:[:]){ (eventProducts, result) in
+    func getRegistries(orderBy: String = ""){
+        self.presentLoader()
+        productsCollectionView.isScrollEnabled = false
+        eventRegistries.removeAll()
+        productsCollectionView.reloadData()
+        sharedApiManager.getRegistriesGuest(event: currentEvent, filters:filtersDic, orderBy: orderBy){ (eventProducts, result) in
                 if let response = result{
                     if response.isSuccess() {
                         self.eventRegistries = eventProducts
                         self.productsCollectionView.reloadData()
                     }
                 }
+            self.dismissLoader()
+            self.productsCollectionView.isScrollEnabled = true
         }
+    }
+    
+    func addProductToCart(quantity: Int, product: Product) {
+        sharedApiManager.addItemToCart(quantity: quantity, product: product) { (cartItem, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: "Login Error"),type: .success)
+                } else if (response.isClientError()) {
+                    self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
+                }
+            }
+        }
+    }
+    
+    @IBAction func didTapFilterButton(_ sender: UIButton) {
+        
+        let FilterSelectionVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "FilterSelectionVC") as! FilterSelectionViewController
+        
+        FilterSelectionVC.eventGiftListVC = self
+        let menu = UISideMenuNavigationController(rootViewController: FilterSelectionVC)
+        menu.presentationStyle = .menuSlideIn
+        menu.menuWidth = UIScreen.main.bounds.size.width * 0.8
+        present(menu,animated: true, completion: nil)
+    }
+}
+
+// MARK: Extension OrderBy
+extension EventGiftListViewController {
+    
+    @IBAction func didTapOrderByButton(_ sender: UITapGestureRecognizer) {
+        
+        if orderByViewSizeFlag {
+            setLargeOrderByView()
+        } else {
+            setSmallOrderByView()
+        }
+        orderByViewSizeFlag = !orderByViewSizeFlag
+    }
+    
+    func setSmallOrderByView() {
+        
+        largeViewOrderByConstraint.isActive = false
+        smallViewOrderByConstraint.isActive = true
+        
+        orderByFirstButton.isHidden = true
+        orderBySecondButton.isHidden = true
+        orderByThirdButton.isHidden = true
+        orderByFourthButton.isHidden = true
+    }
+    
+    func setLargeOrderByView() {
+        
+        smallViewOrderByConstraint.isActive = false
+        largeViewOrderByConstraint.isActive = true
+        
+        orderByFirstButton.isHidden = false
+        orderBySecondButton.isHidden = false
+        orderByThirdButton.isHidden = false
+        orderByFourthButton.isHidden = false
+    }
+    
+    @IBAction func didTapOrderByLowPrice(_ sender: UIButton) {
+        getRegistries(orderBy: sortKeys.priceAscending.rawValue)
+    }
+    
+    @IBAction func didTapOrderByHighPrice(_ sender: UIButton) {
+        eventRegistries.removeAll()
+        productsCollectionView.reloadData()
+        getRegistries(orderBy: sortKeys.priceDescending.rawValue)
+    }
+    
+    @IBAction func didTapOrderByAZ(_ sender: UIButton) {
+        eventRegistries.removeAll()
+        productsCollectionView.reloadData()
+        getRegistries(orderBy: sortKeys.nameAscending.rawValue)
+    }
+    
+    @IBAction func didTapOrderByZA(_ sender: UIButton) {
+        eventRegistries.removeAll()
+        productsCollectionView.reloadData()
+        getRegistries(orderBy: sortKeys.nameDescending.rawValue)
     }
 }
 
@@ -133,7 +246,15 @@ extension EventGiftListViewController: UICollectionViewDelegateFlowLayout {
 //MARK:- Extension ProductCellDelegate
 extension EventGiftListViewController: ProductCellDelegate {
     
-    func didTapAddProductToCart() {
-        print("Product added to cart using delegate")
+    func didTapAddProductToCart(quantity: Int, product: Product) {
+        addProductToCart(quantity: quantity, product: product)
     }
+}
+
+extension EventGiftListViewController: UISideMenuNavigationControllerDelegate {
+
+        func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
+            
+            getRegistries()
+        }
 }

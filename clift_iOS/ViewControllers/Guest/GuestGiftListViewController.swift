@@ -31,7 +31,7 @@ class GuestGiftListViewController: UIViewController {
     }
     
     func getRegistries(){
-        sharedApiManager.getRegistriesGuest(event: currentEvent, filters:[:]){ (eventProducts, result) in
+        sharedApiManager.getRegistriesGuest(event: currentEvent, filters:[:], orderBy: ""){ (eventProducts, result) in
                 if let response = result{
                     if response.isSuccess() { 
                         self.eventRegistries = eventProducts
