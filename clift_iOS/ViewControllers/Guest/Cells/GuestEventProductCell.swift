@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ProductCellDelegate {
-    func didTapAddProductToCart()
+    func didTapAddProductToCart(quantity:Int, product: Product)
 }
 
 class GuestEventProductCell: UICollectionViewCell {
@@ -22,6 +22,7 @@ class GuestEventProductCell: UICollectionViewCell {
     @IBOutlet weak var addCartView: UIView!
     
     var productCellDelegate: ProductCellDelegate!
+    var currentProduct: Product!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +39,8 @@ class GuestEventProductCell: UICollectionViewCell {
     
     func configure(product: EventProduct) {
         
+        currentProduct = product.product
+        
         if let imageURL = URL(string:"\(product.product.imageUrl)") {
             self.productImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
         }
@@ -48,6 +51,6 @@ class GuestEventProductCell: UICollectionViewCell {
     }
 
     @IBAction func addProductToCart(_ sender: UIButton) {
-        productCellDelegate.didTapAddProductToCart()
+        productCellDelegate.didTapAddProductToCart(quantity: 1, product: currentProduct)
     }
 }
