@@ -44,7 +44,7 @@ class ProductDetailsViewController: UIViewController {
     
     func setNavBar() {
         
-        navigationItem.title = "Por definir"
+        navigationItem.title = "Producto"
         
         let cartImage = UIImage(named: "cart")
         let cartButton   = UIBarButtonItem(image: cartImage,  style: .plain, target: self, action: #selector(didTapCartButton(sender:)))
@@ -52,7 +52,8 @@ class ProductDetailsViewController: UIViewController {
     }
     
     @objc func didTapCartButton(sender: AnyObject){
-        print("Carrito de compras")
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func setScrollView() {
@@ -64,9 +65,6 @@ class ProductDetailsViewController: UIViewController {
         scrollView.auk.settings.placeholderImage = UIImage(named: "cliftplaceholder")
         
         //Set images in scrollView
-        /*imagesToDisplay.forEach { image in
-            scrollView.auk.show(url: image)
-        }*/
         if currentEventProduct?.product.imageUrl != "" {
             scrollView.auk.show(url: (currentEventProduct?.product.imageUrl)!)
         }
@@ -115,6 +113,20 @@ class ProductDetailsViewController: UIViewController {
     }
     
     @IBAction func addToCartPressed(_ sender: UIButton) {
-        print("Producto agregado al carrito")
+        if let product = currentEventProduct?.product {
+            addProductToCart(quantity: 1, product: product)
+        }
+    }
+    
+    func addProductToCart(quantity: Int, product: Product) {
+        sharedApiManager.addItemToCart(quantity: quantity, product: product) { (cartItem, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: "Login Error"),type: .success)
+                } else if (response.isClientError()) {
+                    self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
+                }
+            }
+        }
     }
 }
