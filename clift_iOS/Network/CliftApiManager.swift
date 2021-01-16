@@ -310,7 +310,7 @@ protocol ApiCalls {
     func getStates(completion: @escaping([AddressState]?, Response?) -> Void)
     
     //GUEST FUNCTIONS
-    func getRegistriesGuest(event: Event, filters: [String:Any], completion:  @escaping([EventProduct]?, Response?)->Void)
+    func getRegistriesGuest(event: Event, filters: [String:Any], orderBy: String, completion:  @escaping([EventProduct]?, Response?)->Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -620,8 +620,8 @@ extension CliftApiManager: ApiCalls {
     }
     
     //GUEST CALLS
-    func getRegistriesGuest(event: Event, filters: [String:Any], completion:  @escaping([EventProduct]?, Response?)->Void){
-        requestArrayWithResponse(.getRegistriesGuest(event: event, filters: filters), type: EventProduct.self, completion: completion, wrapper: "registries")
+    func getRegistriesGuest(event: Event, filters: [String:Any],orderBy: String, completion:  @escaping([EventProduct]?, Response?)->Void){
+        requestArrayWithResponse(.getRegistriesGuest(event: event, filters: filters, orderBy: orderBy), type: EventProduct.self, completion: completion, wrapper: "registries")
     }
 }
 
