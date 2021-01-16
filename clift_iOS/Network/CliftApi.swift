@@ -92,7 +92,7 @@ enum CliftApi {
     //GUEST FUNCTIONS
     case getGuestToken
     case getEventsSearch(query: String)
-    case getRegistriesGuest(event: Event,filters: [String:Any])
+    case getRegistriesGuest(event: Event,filters: [String:Any],orderBy: String)
 }
 
 extension CliftApi: TargetType {
@@ -254,7 +254,7 @@ extension CliftApi: TargetType {
             return "guest_token"
         case .getEventsSearch(_):
             return "events/finder"
-        case .getRegistriesGuest(let event,_):
+        case .getRegistriesGuest(let event,_,_):
             return "event_registries/\(event.id)"
         }
         
@@ -397,8 +397,11 @@ extension CliftApi: TargetType {
         //GUEST PARAMETERS
         case .getEventsSearch(let query):
             return .requestParameters(parameters: ["q":query, "id":""], encoding: URLEncoding.default)
-        case .getRegistriesGuest(_,let parameters):
-            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .getRegistriesGuest(_,let filters, let orderBy):
+            let shop = filters["shop"] ?? ""
+            let category = filters["category"] ?? ""
+            let price = filters["price"] ?? ""
+            return .requestParameters(parameters: ["shop":shop,"category":category,"price_range":price,"sort_by":orderBy], encoding: URLEncoding.default)
         default:
             return .requestPlain
         }
