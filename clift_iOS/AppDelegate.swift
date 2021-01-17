@@ -10,6 +10,7 @@ import UIKit
 import SideMenu
 import GoogleSignIn
 import Stripe
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
@@ -42,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         GIDSignIn.sharedInstance()?.clientID = "659271946310-ab43ccokoq7uijrd53rgcojp0o07n9ch.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self
         Stripe.setDefaultPublishableKey(Bundle.main.infoDictionary!["STRIPE_PUBLISHABLE_KEY"] as! String)
-
+        IQKeyboardManager.shared.enable = true
         return true
     }
 

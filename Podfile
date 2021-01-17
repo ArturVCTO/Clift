@@ -28,6 +28,7 @@ target 'clift_iOS' do
   pod 'ImageSlideshow', '~> 1.8'
   pod 'GoogleSignIn'
   pod 'Stripe', '~> 20.0'
+  pod 'IQKeyboardManagerSwift'
 
   # Pods for carouselImages
   pod 'moa', '~> 12.0'
