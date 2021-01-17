@@ -44,16 +44,17 @@ class EventGiftListViewController: UIViewController {
 	
 	var currentEvent = Event()
     var eventRegistries: [EventProduct]! = []
+    var eventPools: [EventPool]! = []
     var orderByViewSizeFlag = true
     var filtersDic = ["shop":"","category":"","price":""]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
+        getPoolsAndRegistries()
         setNavBar()
         registerCells()
         setup(event: currentEvent)
-        getRegistries()
 	}
     
     func setNavBar() {
@@ -120,11 +121,24 @@ class EventGiftListViewController: UIViewController {
         }
     }
     
+    func getPoolsAndRegistries(){
+        
+        sharedApiManager.getEventPools(event: currentEvent) {(pools, result) in
+            self.presentLoader()
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.eventPools = pools
+                }
+            }
+            self.getRegistries()
+        }
+    }
+    
     func addProductToCart(quantity: Int, product: Product) {
         sharedApiManager.addItemToCart(quantity: quantity, product: product) { (cartItem, result) in
             if let response = result {
                 if (response.isSuccess()) {
-                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: "Login Error"),type: .success)
+                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: ""),type: .success)
                 } else if (response.isClientError()) {
                     self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
                 }
@@ -141,6 +155,15 @@ class EventGiftListViewController: UIViewController {
         menu.presentationStyle = .menuSlideIn
         menu.menuWidth = UIScreen.main.bounds.size.width * 0.8
         present(menu,animated: true, completion: nil)
+    }
+    
+    func goToEnvelopeInformation(eventPool: EventPool) {
+        
+        let envelopeInfoVC = UIStoryboard(name: "EnvelopeFlow", bundle: nil).instantiateViewController(withIdentifier: "EnvelopeInfoVC") as! EnvelopeInfoViewController
+        envelopeInfoVC.currentEventPool = eventPool
+        envelopeInfoVC.currentEvent = currentEvent
+        envelopeInfoVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(envelopeInfoVC, animated: true)
     }
 }
 
@@ -210,7 +233,7 @@ extension EventGiftListViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return eventRegistries.count
+        return eventPools.count + eventRegistries.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -218,17 +241,30 @@ extension EventGiftListViewController: UICollectionViewDelegate, UICollectionVie
         if let cell = productsCollectionView.dequeueReusableCell(withReuseIdentifier: "GuestEventProductCell", for: indexPath) as? GuestEventProductCell {
             
             cell.productCellDelegate = self
-            cell.configure(product: eventRegistries[indexPath.row])
+            
+            //Set Pool Cells and Product Cells
+            if eventPools.count > indexPath.row {
+                cell.cellType = .Eventpool
+                cell.configure(pool: eventPools[indexPath.row])
+            } else {
+                cell.cellType = .Eventproduct
+                cell.configure(product: eventRegistries[indexPath.row - eventPools.count])
+            }
             return cell
         }
         return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
-        productDetailsVC.currentEventProduct = eventRegistries[indexPath.row]
-        productDetailsVC.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(productDetailsVC, animated: true)
+        
+        if eventPools.count > indexPath.row {
+            goToEnvelopeInformation(eventPool: eventPools[indexPath.row])
+        } else {
+            let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
+            productDetailsVC.currentEventProduct = eventRegistries[indexPath.row - eventPools.count]
+            productDetailsVC.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(productDetailsVC, animated: true)
+        }
     }
 }
 
@@ -245,6 +281,10 @@ extension EventGiftListViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK:- Extension ProductCellDelegate
 extension EventGiftListViewController: ProductCellDelegate {
+    func didTapCashFundPool(eventPool: EventPool) {
+        goToEnvelopeInformation(eventPool: eventPool)
+    }
+    
     
     func didTapAddProductToCart(quantity: Int, product: Product) {
         addProductToCart(quantity: quantity, product: product)
