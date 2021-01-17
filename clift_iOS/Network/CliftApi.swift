@@ -93,6 +93,7 @@ enum CliftApi {
     case getGuestToken
     case getEventsSearch(query: String)
     case getRegistriesGuest(event: Event,filters: [String:Any],orderBy: String)
+    case stripeCheckoutEnvelope(event: Event,pool: EventPool,checkout: CheckoutEnvelope)
 }
 
 extension CliftApi: TargetType {
@@ -172,7 +173,7 @@ extension CliftApi: TargetType {
         case .updateEventProductAsCollaborative(let eventProduct,_,_):
             return "event_products/\(eventProduct.id)/set_collaborative"
         case .getEventPools(let event):
-            return "events/\(event.id)/event_pools"
+            return "event_pools/\(event.id)"
         case .getEventSummary(let event):
             return "events/\(event.id)/summary"
         case .getInvitationTemplates(let event):
@@ -256,13 +257,14 @@ extension CliftApi: TargetType {
             return "events/finder"
         case .getRegistriesGuest(let event,_,_):
             return "event_registries/\(event.id)"
+        case.stripeCheckoutEnvelope(let event,let pool,_):
+            return "checkout/\(event.id)/event_pool/\(pool.id)"
         }
-        
     }
     
     var method: Moya.Method {
         switch self {
-		case .postLoginSession,.recoverPassword,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount:
+        case .postLoginSession,.recoverPassword,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount,.stripeCheckoutEnvelope:
             return .post
         case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest:
             return .get
@@ -402,6 +404,8 @@ extension CliftApi: TargetType {
             let category = filters["category"] ?? ""
             let price = filters["price"] ?? ""
             return .requestParameters(parameters: ["shop":shop,"category":category,"price_range":price,"sort_by":orderBy], encoding: URLEncoding.default)
+        case .stripeCheckoutEnvelope(_,_,let checkout):
+            return .requestParameters(parameters: ["event_pool": checkout.toJSON()], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }

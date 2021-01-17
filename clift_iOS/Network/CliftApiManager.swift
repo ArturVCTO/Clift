@@ -311,6 +311,8 @@ protocol ApiCalls {
     
     //GUEST FUNCTIONS
     func getRegistriesGuest(event: Event, filters: [String:Any], orderBy: String, completion:  @escaping([EventProduct]?, Response?)->Void)
+    
+    func stripeCheckoutEnvelope(event: Event, pool:EventPool, checkout: CheckoutEnvelope, completion: @escaping(StripeCheckout?, Response?) -> Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -460,7 +462,7 @@ extension CliftApiManager: ApiCalls {
     }
     
     func getEventPools(event: Event, completion: @escaping ([EventPool]?, Response?) -> Void) {
-        requestArrayWithResponse(.getEventPools(event: event), type: EventPool.self, completion: completion, wrapper: "event_pools")
+        requestArrayWithResponse(.getEventPools(event: event), type: EventPool.self, completion: completion, wrapper: "registries")
     }
     
     func getEventPoolsPagination(event: Event, completion: @escaping (Pagination?, Response?) -> Void) {
@@ -622,6 +624,10 @@ extension CliftApiManager: ApiCalls {
     //GUEST CALLS
     func getRegistriesGuest(event: Event, filters: [String:Any],orderBy: String, completion:  @escaping([EventProduct]?, Response?)->Void){
         requestArrayWithResponse(.getRegistriesGuest(event: event, filters: filters, orderBy: orderBy), type: EventProduct.self, completion: completion, wrapper: "registries")
+    }
+    
+    func stripeCheckoutEnvelope(event: Event, pool: EventPool, checkout: CheckoutEnvelope, completion: @escaping (StripeCheckout?, Response?) -> Void) {
+        requestObjectWithResponse(.stripeCheckoutEnvelope(event: event, pool: pool, checkout: checkout), type: StripeCheckout.self, completion: completion, wrapper: "")
     }
 }
 
