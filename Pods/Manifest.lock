@@ -29,6 +29,7 @@ PODS:
   - ImageSlideshow (1.8.0):
     - ImageSlideshow/Core (= 1.8.0)
   - ImageSlideshow/Core (1.8.0)
+  - IQKeyboardManagerSwift (6.5.6)
   - Kingfisher (5.7.0)
   - moa (12.0.0)
   - Moya (11.0.2):
@@ -69,6 +70,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - GSMessages
   - ImageSlideshow (~> 1.8)
+  - IQKeyboardManagerSwift
   - Kingfisher (~> 5.0)
   - moa (~> 12.0)
   - Moya-ObjectMapper/RxSwift
@@ -93,6 +95,7 @@ SPEC REPOS:
     - GTMAppAuth
     - GTMSessionFetcher
     - ImageSlideshow
+    - IQKeyboardManagerSwift
     - Kingfisher
     - moa
     - Moya
@@ -120,6 +123,7 @@ SPEC CHECKSUMS:
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   ImageSlideshow: 197130fe349aafa9446f54277c792551d41eadf9
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
   moa: e2346f12de6c65bbca4d103950d45db9e46785ef
   Moya: a725035953bc1c0eb1be505ab903984501d82440
@@ -136,6 +140,6 @@ SPEC CHECKSUMS:
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 29f6407ac6e7cb8e5dfc5de2e460122dd9957b15
+PODFILE CHECKSUM: 1a6bcf95b351f7afa1823085da623fd61696dfdc
 
 COCOAPODS: 1.10.0
