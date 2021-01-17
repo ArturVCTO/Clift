@@ -75,7 +75,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMK-Mj-8ps">
                                                         <rect key="frame" x="0.0" y="21" width="180" height="21"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$648 MXN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="72u-bN-dyi">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$648 MXN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="72u-bN-dyi">
                                                                 <rect key="frame" x="5" y="0.0" width="175" height="21"/>
                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="12"/>
                                                                 <nil key="textColor"/>
@@ -117,7 +117,7 @@
                                                                         <rect key="frame" x="82.5" y="0.0" width="72.5" height="21"/>
                                                                         <subviews>
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ev7-HH-jBx">
-                                                                                <rect key="frame" x="18" y="-0.5" width="36.5" height="22"/>
+                                                                                <rect key="frame" x="26.5" y="0.0" width="20" height="21"/>
                                                                                 <color key="backgroundColor" name="PrimaryBlue"/>
                                                                                 <state key="normal" image="cart"/>
                                                                                 <connections>
@@ -128,7 +128,7 @@
                                                                         <color key="backgroundColor" name="PrimaryBlue"/>
                                                                         <constraints>
                                                                             <constraint firstItem="Ev7-HH-jBx" firstAttribute="centerX" secondItem="gSo-cs-UG7" secondAttribute="centerX" id="KPV-5M-XUK"/>
-                                                                            <constraint firstItem="Ev7-HH-jBx" firstAttribute="width" secondItem="gSo-cs-UG7" secondAttribute="width" multiplier="0.5" id="OP5-Nb-kbR"/>
+                                                                            <constraint firstItem="Ev7-HH-jBx" firstAttribute="height" secondItem="gSo-cs-UG7" secondAttribute="height" id="adD-2m-bTv"/>
                                                                             <constraint firstItem="Ev7-HH-jBx" firstAttribute="centerY" secondItem="gSo-cs-UG7" secondAttribute="centerY" id="xTA-5K-zuo"/>
                                                                         </constraints>
                                                                     </view>
@@ -185,6 +185,7 @@
             <size key="customSize" width="169" height="218"/>
             <connections>
                 <outlet property="addCartView" destination="gSo-cs-UG7" id="7Jk-Kp-CCa"/>
+                <outlet property="productActionButton" destination="Ev7-HH-jBx" id="1zq-L1-86y"/>
                 <outlet property="productImage" destination="N76-bl-Ua6" id="8wZ-cP-44e"/>
                 <outlet property="productNameLabel" destination="5wq-xI-fTu" id="gRW-ja-yoj"/>
                 <outlet property="productPriceLabel" destination="72u-bN-dyi" id="gma-x8-erI"/>

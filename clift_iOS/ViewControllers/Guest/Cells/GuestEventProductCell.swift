@@ -10,6 +10,12 @@ import UIKit
 
 protocol ProductCellDelegate {
     func didTapAddProductToCart(quantity:Int, product: Product)
+    func didTapCashFundPool(eventPool: EventPool)
+}
+
+enum ProductGuestCellType {
+    case Eventproduct
+    case Eventpool
 }
 
 class GuestEventProductCell: UICollectionViewCell {
@@ -20,9 +26,12 @@ class GuestEventProductCell: UICollectionViewCell {
     @IBOutlet weak var quantityView: UIView!
     @IBOutlet weak var productQuantityLabel: UILabel!
     @IBOutlet weak var addCartView: UIView!
+    @IBOutlet weak var productActionButton: UIButton!
     
     var productCellDelegate: ProductCellDelegate!
     var currentProduct: Product!
+    var currentPool: EventPool!
+    var cellType: ProductGuestCellType?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,20 +46,44 @@ class GuestEventProductCell: UICollectionViewCell {
         addCartView.layer.cornerRadius = 5
     }
     
-    func configure(product: EventProduct) {
+    func configure(pool: EventPool? = nil, product: EventProduct? = nil) {
         
-        currentProduct = product.product
-        
-        if let imageURL = URL(string:"\(product.product.imageUrl)") {
-            self.productImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
+        switch cellType {
+            case .Eventproduct:
+                
+                if let product = product {
+                    currentProduct = product.product
+                
+                    if let imageURL = URL(string:"\(product.product.imageUrl)") {
+                        self.productImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
+                    }
+                
+                    productNameLabel.text = product.product.name
+                    productPriceLabel.text = "$ \(product.product.price) MXN"
+                    productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
+                }
+            case .Eventpool:
+                
+                if let pool = pool {
+                    productImage.image = UIImage(named: "cashFund")
+                    productNameLabel.text = pool.description
+                    productPriceLabel.text = pool.note
+                    quantityView.isHidden = true
+                    productActionButton.setImage(UIImage(named: "whiteGift"), for: .normal)
+                }
+            default:
+                break
         }
-        
-        productNameLabel.text = product.product.name
-        productPriceLabel.text = "$ \(product.product.price) MXN"
-        productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
     }
 
     @IBAction func addProductToCart(_ sender: UIButton) {
-        productCellDelegate.didTapAddProductToCart(quantity: 1, product: currentProduct)
+        switch cellType {
+        case .Eventproduct:
+            productCellDelegate.didTapAddProductToCart(quantity: 1, product: currentProduct)
+        case .Eventpool:
+            productCellDelegate.didTapCashFundPool(eventPool: currentPool)
+        default:
+            break
+        }
     }
 }
