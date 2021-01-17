@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import UIKit
+import ObjectMapper
+import ObjectMapper_Realm
+import RealmSwift
+
+class CheckoutEnvelope: Mappable {
+    var amount: Double?
+    var userData: CheckoutUserDatapeEnvelope?
+    
+    convenience required init?(map: Map) {
+        self.init()
+    }
+    
+    func mapping(map: Map) {
+        amount <- map["amount"]
+        userData <- map["user_data"]
+    }
+}
