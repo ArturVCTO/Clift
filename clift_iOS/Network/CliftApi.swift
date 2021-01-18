@@ -403,7 +403,8 @@ extension CliftApi: TargetType {
             let shop = filters["shop"] ?? ""
             let category = filters["category"] ?? ""
             let price = filters["price"] ?? ""
-            return .requestParameters(parameters: ["shop":shop,"category":category,"price_range":price,"sort_by":orderBy], encoding: URLEncoding.default)
+            let page = filters["page"] ?? 1
+            return .requestParameters(parameters: ["shop":shop,"category":category,"price_range":price,"sort_by":orderBy, "page": page], encoding: URLEncoding.default)
         case .stripeCheckoutEnvelope(_,_,let checkout):
             return .requestParameters(parameters: ["event_pool": checkout.toJSON()], encoding: JSONEncoding.default)
         default:

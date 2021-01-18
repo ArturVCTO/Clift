@@ -18,6 +18,7 @@ enum sortKeys: String {
 
 class EventGiftListViewController: UIViewController {
     
+    @IBOutlet weak var menuContainerWidth: NSLayoutConstraint!
     @IBOutlet weak var backgroundImageView: customImageView!
     @IBOutlet weak var eventImageView: customImageView!
     @IBOutlet weak var eventNameLabel: UILabel!
@@ -42,21 +43,53 @@ class EventGiftListViewController: UIViewController {
         }
     }
 	
+    //Pages Menu
+    @IBOutlet weak var backMenuContainerWidth: NSLayoutConstraint!
+    @IBOutlet weak var buttonContainerWidth: NSLayoutConstraint!
+    @IBOutlet weak var menuContainerView: UIView!
+    @IBOutlet weak var backMenuContainerView: UIView!
+    @IBOutlet weak var backMenuButton: UIButton!
+    @IBOutlet weak var nextMenuButton: UIButton!
+    
+    //First Button
+    @IBOutlet weak var firstMenuButtonContainerView: UIView!
+    @IBOutlet weak var firstMenuButton: UIButton!
+    
+    //Second Button
+    @IBOutlet weak var secondButtonContainerView: UIView!
+    @IBOutlet weak var secondButton: UIButton!
+    
+    //Third Button
+    @IBOutlet weak var thirdButtonContainerView: UIView!
+    @IBOutlet weak var thirdButton: UIButton!
+    
+    
 	var currentEvent = Event()
     var eventRegistries: [EventProduct]! = []
     var eventPools: [EventPool]! = []
     var orderByViewSizeFlag = true
-    var filtersDic = ["shop":"","category":"","price":""]
-	
+    var filtersDic: [String: Any] = ["shop":"","category":"","price":""]
+    
+    private var actualPage = 1
+    private var numberOfPages = 0
+    private let selectedButtonColor = UIColor(red: 0.1961, green: 0.1882, blue: 0.2314, alpha: 1)
+    
+    private var firstButtonValue = 1
+    private var secondButtonValue = 2
+    private var thirdButtonValue = 3
+    
+    var lastButtonPressed: UIButton?
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
         getPoolsAndRegistries()
         setNavBar()
         registerCells()
+        setPaginationMenu()
         setup(event: currentEvent)
+        selectButton(button: firstMenuButton)
 	}
-    
+        
     func setNavBar() {
         
         navigationItem.title = "EVENTO"
@@ -71,7 +104,6 @@ class EventGiftListViewController: UIViewController {
     }
     
     @objc func didTapCartButton(sender: AnyObject){
-        
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -109,13 +141,26 @@ class EventGiftListViewController: UIViewController {
         productsCollectionView.isScrollEnabled = false
         eventRegistries.removeAll()
         productsCollectionView.reloadData()
+        filtersDic["page"] = actualPage
         sharedApiManager.getRegistriesGuest(event: currentEvent, filters:filtersDic, orderBy: orderBy){ (eventProducts, result) in
                 if let response = result{
                     if response.isSuccess() {
                         self.eventRegistries = eventProducts
                         self.productsCollectionView.reloadData()
+                        guard let json = try? JSONSerialization.jsonObject(with: response.data,
+                                                                           options: []) as? [String: Any],
+                              let meta = json["meta"] as? [String: Any],
+                              let pagination = Pagination(JSON: meta) else {
+                            return
+                        }
+                        self.actualPage = pagination.currentPage
+                        self.numberOfPages = pagination.totalPages
                     }
                 }
+            self.setPaginationMenu()
+            self.setButtonValues()
+            self.addOrDeleteMenuButtonsDependingOnNumberOfPages()
+            self.lastButtonPressed = nil
             self.dismissLoader()
             self.productsCollectionView.isScrollEnabled = true
         }
@@ -158,13 +203,47 @@ class EventGiftListViewController: UIViewController {
     }
     
     func goToEnvelopeInformation(eventPool: EventPool) {
-        
         let envelopeInfoVC = UIStoryboard(name: "EnvelopeFlow", bundle: nil).instantiateViewController(withIdentifier: "EnvelopeInfoVC") as! EnvelopeInfoViewController
         envelopeInfoVC.currentEventPool = eventPool
         envelopeInfoVC.currentEvent = currentEvent
         envelopeInfoVC.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(envelopeInfoVC, animated: true)
     }
+    
+    @IBAction func leftButtonPressed(_ sender: Any) {
+        actualPage = 1
+        getRegistries()
+    }
+    
+    @IBAction func rightButtonPressed(_ sender: Any) {
+        actualPage = numberOfPages
+        getRegistries()
+    }
+    
+    @IBAction func firstButtonPressed(_ sender: Any) {
+        actualPage = firstButtonValue
+        lastButtonPressed = firstMenuButton
+        setButtonValues()
+        addOrDeleteMenuButtonsDependingOnNumberOfPages()
+        getRegistries()
+    }
+    
+    @IBAction func secondButtonPressed(_ sender: Any) {
+        actualPage = secondButtonValue
+        lastButtonPressed = secondButton
+        setButtonValues()
+        addOrDeleteMenuButtonsDependingOnNumberOfPages()
+        getRegistries()
+    }
+    
+    @IBAction func thirdButtonPressed(_ sender: Any) {
+        actualPage = thirdButtonValue
+        lastButtonPressed = thirdButton
+        setButtonValues()
+        addOrDeleteMenuButtonsDependingOnNumberOfPages()
+        getRegistries()
+    }
+    
 }
 
 // MARK: Extension OrderBy
@@ -294,7 +373,149 @@ extension EventGiftListViewController: ProductCellDelegate {
 extension EventGiftListViewController: UISideMenuNavigationControllerDelegate {
 
         func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
-            
             getRegistries()
         }
+}
+
+//Pagination Menu
+extension EventGiftListViewController {
+    
+    private func setButtonValues() {
+        let remainingPages = numberOfPages - actualPage
+        guard actualPage != 1 else {
+            firstButtonValue = 1
+            secondButtonValue = 2
+            thirdButtonValue = 3
+            selectButton(button: firstMenuButton)
+            return
+        }
+        if remainingPages == 0, let lastButtonPressed = lastButtonPressed {
+            selectButton(button: lastButtonPressed)
+            return
+        } else if remainingPages == 0 {
+            //This case is a next button pressed so we need to now how many buttons we have to give them the text number
+            if thirdButtonContainerView.isHidden && secondButtonContainerView.isHidden {
+                firstButtonValue = actualPage
+                selectButton(button: firstMenuButton)
+                return
+            }
+            if thirdButtonContainerView.isHidden {
+                firstButtonValue = actualPage - 1
+                secondButtonValue = actualPage
+                selectButton(button: secondButton)
+                return
+            }
+            firstButtonValue = actualPage - 2
+            secondButtonValue = actualPage - 1
+            thirdButtonValue = actualPage
+            selectButton(button: thirdButton)
+            return
+        }
+        firstButtonValue = actualPage - 1
+        selectButton(button: secondButton)
+        secondButtonValue = actualPage
+        thirdButtonValue = actualPage + 1
+    }
+    
+    private func setPaginationMenu() {
+        let borderColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9294, alpha: 1)
+        setMenuContainerViewCornerRadius(borderColor: borderColor)
+        setButtons()
+        unselectAllButtons()
+    }
+    
+    private func setMenuContainerViewCornerRadius(borderColor: UIColor) {
+        menuContainerView.layer.cornerRadius = 10
+        menuContainerView.layer.borderWidth = 2.0
+        menuContainerView.layer.borderColor = borderColor.cgColor
+    }
+    
+    private func setButtons() {
+        setButtonContainerWidth()
+        addOrDeleteMenuButtonsDependingOnNumberOfPages()
+    }
+    
+    private func setButtonContainerWidth() {
+        var numberOfButtons = numberOfPages
+        if numberOfPages >= 3 {
+            numberOfButtons = 3
+        }
+        let buttonsWidth: CGFloat = (buttonContainerWidth.constant * CGFloat(numberOfButtons))
+        let newWidth: CGFloat = (backMenuContainerWidth.constant + backMenuContainerWidth.constant ) + buttonsWidth
+        menuContainerWidth.constant = newWidth
+    }
+    
+    /// This functions adds or deletes buttons in the pagination menu depending on the number of pages
+    func addOrDeleteMenuButtonsDependingOnNumberOfPages() {
+        
+        let borderColor = UIColor(red: 0.9333, green: 0.9333, blue: 0.9294, alpha: 1)
+        let width:CGFloat = 2.0
+        
+        if numberOfPages == 1 {
+            firstMenuButtonContainerView.isHidden = false
+            secondButtonContainerView.isHidden = true
+            thirdButtonContainerView.isHidden = true
+            addLeftAndRightCorners(button: firstMenuButtonContainerView,
+                                   color: borderColor,
+                                   width: width)
+        }
+        
+        if numberOfPages == 2 {
+            firstMenuButtonContainerView.isHidden = false
+            secondButtonContainerView.isHidden = false
+            thirdButtonContainerView.isHidden = true
+            firstMenuButtonContainerView.addLeftBorder(with: borderColor, andWidth: width)
+            addLeftAndRightCorners(button: secondButtonContainerView, color: borderColor, width: width)
+        }
+        
+        if numberOfPages >= 3 {
+            firstMenuButtonContainerView.isHidden = false
+            secondButtonContainerView.isHidden = false
+            thirdButtonContainerView.isHidden = false
+            firstMenuButtonContainerView.addLeftBorder(with: borderColor, andWidth: width)
+            addLeftAndRightCorners(button: secondButtonContainerView, color: borderColor, width: width)
+            thirdButton.addRightBorder(with: borderColor, andWidth: width)
+        }
+        
+        if numberOfPages == 0 {
+            firstMenuButtonContainerView.isHidden = true
+            secondButtonContainerView.isHidden = true
+            thirdButtonContainerView.isHidden = true
+        }
+        
+        updateMenuButtonsText()
+        
+    }
+    
+    private func updateMenuButtonsText() {
+        firstMenuButton.setTitle(String(firstButtonValue), for: .normal)
+        secondButton.setTitle(String(secondButtonValue), for: .normal)
+        thirdButton.setTitle(String(thirdButtonValue), for: .normal)
+    }
+    
+    func addLeftAndRightCorners(button: UIView, color: UIColor, width: CGFloat) {
+        button.addLeftBorder(with: color, andWidth: width)
+        button.addRightBorder(with: color, andWidth: width)
+    }
+    
+    private func unselectAllButtons() {
+        unselectButton(button: firstMenuButton)
+        unselectButton(button: secondButton)
+        unselectButton(button: thirdButton)
+    }
+    
+    private func unselectButton(button: UIButton) {
+        button.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 20.0)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = .white
+    }
+    
+    private func selectButton(button: UIButton) {
+        unselectAllButtons()
+        button.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 20.0)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = selectedButtonColor
+        
+    }
+    
 }

@@ -86,7 +86,7 @@ class ShippingTableViewController: UITableViewController {
                     self.paymentTableVC.hasAddressSet = true
                        self.navigationController?.popViewController(animated: true)
                    } else {
-                       self.showMessage("\(createdAddress!.errors.first ?? "Error en forma")", type: .error)
+                       self.showMessage("\(createdAddress?.errors.first ?? "Error en forma")", type: .error)
                    }
                }
            }
