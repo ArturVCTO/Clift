@@ -44,6 +44,7 @@ class GuestEventProductCell: UICollectionViewCell {
         quantityView.layer.borderWidth = 1
         quantityView.layer.borderColor = UIColor(named: "PrimaryBlue")?.cgColor
         addCartView.layer.cornerRadius = 5
+        productImage.contentMode = .scaleAspectFit
     }
     
     func configure(pool: EventPool? = nil, product: EventProduct? = nil) {
