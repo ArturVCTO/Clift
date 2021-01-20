@@ -69,6 +69,7 @@ class EventGiftListViewController: UIViewController {
     var eventPools: [EventPool]! = []
     var orderByViewSizeFlag = true
     var filtersDic: [String: Any] = ["shop":"","category":"","price":""]
+    var currentOrder: sortKeys = .nameAscending
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -136,13 +137,13 @@ class EventGiftListViewController: UIViewController {
         productsCollectionView.register(UINib(nibName: "GuestEventProductCell", bundle: nil), forCellWithReuseIdentifier: "GuestEventProductCell")
     }
     
-    func getRegistries(orderBy: String = ""){
+    func getRegistries(){
         self.presentLoader()
         productsCollectionView.isScrollEnabled = false
         eventRegistries.removeAll()
         productsCollectionView.reloadData()
         filtersDic["page"] = actualPage
-        sharedApiManager.getRegistriesGuest(event: currentEvent, filters:filtersDic, orderBy: orderBy){ (eventProducts, result) in
+        sharedApiManager.getRegistriesGuest(event: currentEvent, filters:filtersDic, orderBy: currentOrder.rawValue){ (eventProducts, result) in
                 if let response = result{
                     if response.isSuccess() {
                         self.eventRegistries = eventProducts
@@ -282,25 +283,31 @@ extension EventGiftListViewController {
     }
     
     @IBAction func didTapOrderByLowPrice(_ sender: UIButton) {
-        getRegistries(orderBy: sortKeys.priceAscending.rawValue)
+        eventRegistries.removeAll()
+        productsCollectionView.reloadData()
+        currentOrder = .priceAscending
+        getRegistries()
     }
     
     @IBAction func didTapOrderByHighPrice(_ sender: UIButton) {
         eventRegistries.removeAll()
         productsCollectionView.reloadData()
-        getRegistries(orderBy: sortKeys.priceDescending.rawValue)
+        currentOrder = .priceDescending
+        getRegistries()
     }
     
     @IBAction func didTapOrderByAZ(_ sender: UIButton) {
         eventRegistries.removeAll()
         productsCollectionView.reloadData()
-        getRegistries(orderBy: sortKeys.nameAscending.rawValue)
+        currentOrder = .nameAscending
+        getRegistries()
     }
     
     @IBAction func didTapOrderByZA(_ sender: UIButton) {
         eventRegistries.removeAll()
         productsCollectionView.reloadData()
-        getRegistries(orderBy: sortKeys.nameDescending.rawValue)
+        currentOrder = .nameDescending
+        getRegistries()
     }
 }
 
