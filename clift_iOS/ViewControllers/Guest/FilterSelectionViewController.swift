@@ -82,6 +82,7 @@ class FilterSelectionViewController: UIViewController {
         eventGiftListVC.filtersDic["category"] = ""
         eventGiftListVC.filtersDic["price"] = ""
         eventGiftListVC.filtersDic["shop"] = ""
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func categoryButtonTapped(_ sender: Any) {
