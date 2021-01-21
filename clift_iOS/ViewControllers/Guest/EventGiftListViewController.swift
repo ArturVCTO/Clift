@@ -35,6 +35,7 @@ class EventGiftListViewController: UIViewController {
     @IBOutlet weak var largeViewOrderByConstraint: NSLayoutConstraint!
     @IBOutlet weak var paginationLabel: UILabel!
     @IBOutlet weak var paginationStackViewButtons: UIStackView!
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var productsCollectionView: UICollectionView! {
         didSet {
@@ -137,9 +138,12 @@ class EventGiftListViewController: UIViewController {
         productsCollectionView.register(UINib(nibName: "GuestEventProductCell", bundle: nil), forCellWithReuseIdentifier: "GuestEventProductCell")
     }
     
+    private func setCollectionViewHeight() {
+        collectionViewHeight.constant = productsCollectionView.collectionViewLayout.collectionViewContentSize.height
+    }
+    
     func getRegistries(){
         self.presentLoader()
-        productsCollectionView.isScrollEnabled = false
         eventRegistries.removeAll()
         productsCollectionView.reloadData()
         filtersDic["page"] = actualPage
@@ -148,6 +152,7 @@ class EventGiftListViewController: UIViewController {
                     if response.isSuccess() {
                         self.eventRegistries = eventProducts
                         self.productsCollectionView.reloadData()
+                        self.setCollectionViewHeight()
                         guard let json = try? JSONSerialization.jsonObject(with: response.data,
                                                                            options: []) as? [String: Any],
                               let meta = json["meta"] as? [String: Any],
@@ -163,7 +168,6 @@ class EventGiftListViewController: UIViewController {
             self.addOrDeleteMenuButtonsDependingOnNumberOfPages()
             self.lastButtonPressed = nil
             self.dismissLoader()
-            self.productsCollectionView.isScrollEnabled = true
         }
     }
     
