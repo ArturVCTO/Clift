@@ -159,10 +159,10 @@ class ProductViewController: UIViewController {
     
     @IBAction func checkoutButtonTapped(_ sender: Any) {
         if #available(iOS 13.0, *) {
-          let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "checkoutVC") as! CheckoutViewController
+          let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(identifier: "checkoutVC") as! CheckoutViewController
           self.navigationController?.pushViewController(vc, animated: true)
          } else {
-          let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
+          let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
           self.navigationController?.pushViewController(vc, animated: true)
          }
     }

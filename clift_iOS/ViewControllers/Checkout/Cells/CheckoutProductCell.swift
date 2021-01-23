@@ -13,7 +13,7 @@ class CheckoutProductCell: UITableViewCell {
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productCostLabel: UILabel!
-    @IBOutlet weak var productQuantityLabel: UILabel!
+    //@IBOutlet weak var productQuantityLabel: UILabel!
     var vc: CheckoutViewController!
     var productQuantity: Int?
     var productPrice: Double?
@@ -30,7 +30,7 @@ class CheckoutProductCell: UITableViewCell {
         self.productCostLabel.text = "\(self.getPriceStringFormat(value: Double(cartItem.product!.price)))"
         self.productQuantity = cartItem.quantity
         self.productPrice = Double(cartItem.product!.price)
-        self.productQuantityLabel.text = "\(cartItem.quantity ?? 0)"
+        //self.productQuantityLabel.text = "\(cartItem.quantity ?? 0)"
     }
     
     func getPriceStringFormat(value: Double) -> String {
@@ -40,7 +40,7 @@ class CheckoutProductCell: UITableViewCell {
       return formatter.string(from: NSNumber(value: value))!
     }
     
-    @IBAction func addProductQuantity(_ sender: Any) {
+    /*@IBAction func addProductQuantity(_ sender: Any) {
         let newQuant = self.productQuantity! + 1
         self.productQuantity = newQuant
         self.productCostLabel.text = "\(self.getPriceStringFormat(value: productPrice! * Double(newQuant)))"
@@ -56,7 +56,7 @@ class CheckoutProductCell: UITableViewCell {
             self.productCostLabel.text = "\(self.getPriceStringFormat(value: productPrice! * Double(newQuant)))"
             self.updateProductQuantity(cartItem: self.cartItem, quantity: newQuant)
         }
-    }
+    }*/
     
     func updateProductQuantity(cartItem: CartItem, quantity: Int) {
         sharedApiManager.updateCartQuantity(cartItem: cartItem, quantity: quantity) { (cartItem, result) in

@@ -106,7 +106,7 @@ class EventGiftListViewController: UIViewController {
     }
     
     @objc func didTapCartButton(sender: AnyObject){
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
+        let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
