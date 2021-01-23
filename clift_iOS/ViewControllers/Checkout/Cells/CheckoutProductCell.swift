@@ -13,12 +13,22 @@ class CheckoutProductCell: UITableViewCell {
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productCostLabel: UILabel!
-    //@IBOutlet weak var productQuantityLabel: UILabel!
+    @IBOutlet weak var productQuantityTextField: UITextField!
+    @IBOutlet weak var imageContainerView: UIView!
+    
     var vc: CheckoutViewController!
     var productQuantity: Int?
     var productPrice: Double?
     var productId: String?
     var cartItem = CartItem()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        productQuantityTextField.delegate = self
+        imageContainerView.layer.cornerRadius = 10
+        imageContainerView.layer.borderWidth = 1
+        imageContainerView.layer.borderColor = UIColor(named: "PrimaryBlue")?.cgColor
+    }
     
      func configure(with cartItem: CartItem) {
         self.cartItem = cartItem
@@ -30,7 +40,7 @@ class CheckoutProductCell: UITableViewCell {
         self.productCostLabel.text = "\(self.getPriceStringFormat(value: Double(cartItem.product!.price)))"
         self.productQuantity = cartItem.quantity
         self.productPrice = Double(cartItem.product!.price)
-        //self.productQuantityLabel.text = "\(cartItem.quantity ?? 0)"
+        productQuantityTextField.text = "\(cartItem.quantity ?? 0)"
     }
     
     func getPriceStringFormat(value: Double) -> String {
@@ -40,23 +50,9 @@ class CheckoutProductCell: UITableViewCell {
       return formatter.string(from: NSNumber(value: value))!
     }
     
-    /*@IBAction func addProductQuantity(_ sender: Any) {
-        let newQuant = self.productQuantity! + 1
-        self.productQuantity = newQuant
-        self.productCostLabel.text = "\(self.getPriceStringFormat(value: productPrice! * Double(newQuant)))"
-        self.updateProductQuantity(cartItem: self.cartItem, quantity: newQuant)
+    @IBAction func didTapRemoveProduct(_ sender: UIButton) {
+        vc.deleteCartItem(cartItem: cartItem)
     }
-    
-    @IBAction func reduceProductQuantity(_ sender: Any) {
-        if self.productQuantity! <= 1 {
-            self.vc.showMessage("No se puede reducir a 0.", type: .error)
-        } else {
-            let newQuant = (self.productQuantity)! - 1
-            self.productQuantity = newQuant
-            self.productCostLabel.text = "\(self.getPriceStringFormat(value: productPrice! * Double(newQuant)))"
-            self.updateProductQuantity(cartItem: self.cartItem, quantity: newQuant)
-        }
-    }*/
     
     func updateProductQuantity(cartItem: CartItem, quantity: Int) {
         sharedApiManager.updateCartQuantity(cartItem: cartItem, quantity: quantity) { (cartItem, result) in
@@ -64,10 +60,28 @@ class CheckoutProductCell: UITableViewCell {
                 if (response.isSuccess()) {
                     self.vc.getCartItems()
                     self.vc.checkoutProductTableView.reloadData()
+                    self.productCostLabel.text = "\(self.getPriceStringFormat(value: self.productPrice! * Double(quantity)))"
                 } else if (response.isClientError()) {
                     self.vc.showMessage("Error actualizando cantidad.", type: .error)
                 }
             }
         }
+    }
+}
+
+extension CheckoutProductCell: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let quantityText = productQuantityTextField.text, !quantityText.isEmpty else {
+            self.showMessage(NSLocalizedString("Error", comment: ""),type: .error)
+            return
+        }
+        
+        if Int(quantityText)! < 1 {
+            productQuantityTextField.text = "1"
+        } else if Int(quantityText)! > 50 {
+            productQuantityTextField.text = "50"
+        }
+        updateProductQuantity(cartItem: cartItem, quantity: Int(quantityText)!)
     }
 }

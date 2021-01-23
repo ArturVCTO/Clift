@@ -11,17 +11,19 @@ import UIKit
 import Stripe
 
 class CheckoutViewController: UIViewController {
+    
     @IBOutlet weak var checkoutProductTableView: UITableView!
     @IBOutlet weak var subtotalLabel: UILabel!
-    @IBOutlet weak var totalShopsShippingLabel: UILabel!
+    @IBOutlet weak var stripeCommissionLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
-    @IBOutlet weak var totalProductsLabel: UILabel!
+    
     var cartItems: [CartItem] = []
     var totalAmount: Int?
     var subTotalAmount: Int?
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerCells()
         self.tableViewSetup()
         self.view.addSubview(checkoutProductTableView)
         self.checkoutProductTableView.delegate = self
@@ -29,6 +31,10 @@ class CheckoutViewController: UIViewController {
         self.checkoutProductTableView.translatesAutoresizingMaskIntoConstraints = false
         self.checkoutProductTableView.reloadData()
         self.getCartItems()
+    }
+    
+    private func registerCells() {
+        checkoutProductTableView.register(UINib(nibName: "CheckoutProductCell", bundle: nil), forCellReuseIdentifier: "checkoutProductCell")
     }
     
     func getCartItems() {
@@ -70,7 +76,6 @@ class CheckoutViewController: UIViewController {
     
     func tableViewSetup() {
         self.checkoutProductTableView.separatorStyle = .singleLine
-        self.checkoutProductTableView.rowHeight = 134
     }
     
     func getTotalAmountAndSubtotal(cartItems: [CartItem]) {
@@ -81,8 +86,8 @@ class CheckoutViewController: UIViewController {
             }
             return newResult
         }
-        self.totalAmountLabel.text = "\(self.getPriceStringFormat(value: Double(totalAmount)))"
-        self.subtotalLabel.text = "\(self.getPriceStringFormat(value: Double(totalAmount)))"
+        self.totalAmountLabel.text = "\(self.getPriceStringFormat(value: Double(totalAmount))) MXN"
+        self.subtotalLabel.text = "\(self.getPriceStringFormat(value: Double(totalAmount))) MXN"
         self.totalAmount = totalAmount
         self.subTotalAmount = totalAmount
     }
@@ -121,10 +126,6 @@ extension CheckoutViewController: UITableViewDataSource, UITableViewDelegate {
         cell.vc = self
         cell.configure(with: product)
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

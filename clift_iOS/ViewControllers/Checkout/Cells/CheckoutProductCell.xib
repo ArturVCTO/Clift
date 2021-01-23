@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,16 +16,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CheckoutProductCell" customModule="CLIFT" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                <autoresizingMask key="autoresizingMask"/>
-            </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="139" y="115"/>
-        </tableViewCell>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="checkoutProductCell" rowHeight="200" id="79t-td-x8h" customClass="CheckoutProductCell" customModule="CLIFT" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
@@ -41,20 +30,20 @@
                                 <rect key="frame" x="0.0" y="0.0" width="118" height="180"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Banco de almacenamiento de zapatos tapizado en cuero." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gJ-D5-mqX">
-                                        <rect key="frame" x="0.0" y="0.0" width="118" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="118" height="35"/>
                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hPy-Qr-41V">
-                                        <rect key="frame" x="0.0" y="55" width="118" height="85"/>
+                                        <rect key="frame" x="0.0" y="40" width="118" height="100"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WdZ-v1-2ph">
-                                                <rect key="frame" x="16.5" y="0.0" width="85" height="85"/>
+                                                <rect key="frame" x="9" y="0.0" width="100" height="100"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="10" translatesAutoresizingMaskIntoConstraints="NO" id="ON5-Gq-P0V" customClass="customImageView" customModule="CLIFT" customModuleProvider="target">
-                                                        <rect key="frame" x="2" y="2" width="81" height="81"/>
+                                                        <rect key="frame" x="5" y="5" width="90" height="90"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="ON5-Gq-P0V" secondAttribute="height" multiplier="1:1" id="hGD-ie-ds8"/>
                                                         </constraints>
@@ -78,17 +67,17 @@
                                                 <constraints>
                                                     <constraint firstItem="ON5-Gq-P0V" firstAttribute="centerY" secondItem="WdZ-v1-2ph" secondAttribute="centerY" id="0Fr-Gb-hYh"/>
                                                     <constraint firstAttribute="width" secondItem="WdZ-v1-2ph" secondAttribute="height" multiplier="1:1" id="3VG-zd-Ehl"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ON5-Gq-P0V" secondAttribute="trailing" constant="2" id="58D-PL-fYI"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ON5-Gq-P0V" secondAttribute="bottom" constant="2" id="Cia-aH-URi"/>
-                                                    <constraint firstItem="ON5-Gq-P0V" firstAttribute="leading" secondItem="WdZ-v1-2ph" secondAttribute="leading" constant="2" id="El4-TG-nxD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ON5-Gq-P0V" secondAttribute="trailing" constant="5" id="58D-PL-fYI"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ON5-Gq-P0V" secondAttribute="bottom" constant="5" id="Cia-aH-URi"/>
+                                                    <constraint firstItem="ON5-Gq-P0V" firstAttribute="leading" secondItem="WdZ-v1-2ph" secondAttribute="leading" constant="5" id="El4-TG-nxD"/>
                                                     <constraint firstItem="ON5-Gq-P0V" firstAttribute="centerX" secondItem="WdZ-v1-2ph" secondAttribute="centerX" id="PPb-Vg-8LZ"/>
-                                                    <constraint firstItem="ON5-Gq-P0V" firstAttribute="top" secondItem="WdZ-v1-2ph" secondAttribute="top" constant="2" id="TSs-ce-0ft"/>
+                                                    <constraint firstItem="ON5-Gq-P0V" firstAttribute="top" secondItem="WdZ-v1-2ph" secondAttribute="top" constant="5" id="TSs-ce-0ft"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="85" id="Ea6-eD-8vX"/>
+                                            <constraint firstAttribute="height" constant="100" id="Ea6-eD-8vX"/>
                                             <constraint firstAttribute="bottom" secondItem="WdZ-v1-2ph" secondAttribute="bottom" id="GF1-nN-coq"/>
                                             <constraint firstItem="WdZ-v1-2ph" firstAttribute="centerX" secondItem="hPy-Qr-41V" secondAttribute="centerX" id="UeU-1T-7hH"/>
                                             <constraint firstItem="WdZ-v1-2ph" firstAttribute="centerY" secondItem="hPy-Qr-41V" secondAttribute="centerY" id="bXt-c5-4wm"/>
@@ -163,6 +152,9 @@
                                         <state key="normal" title="REMOVER">
                                             <color key="titleColor" name="PrimaryBlue"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didTapRemoveProduct:" destination="79t-td-x8h" eventType="touchUpInside" id="9qj-WG-5dk"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OI2-bJ-ybR">
                                         <rect key="frame" x="0.0" y="86" width="118" height="94"/>
@@ -181,9 +173,11 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imageContainerView" destination="WdZ-v1-2ph" id="bEE-br-d8z"/>
                 <outlet property="productCostLabel" destination="vVS-xI-O0a" id="XLn-Rh-C8q"/>
                 <outlet property="productImageView" destination="ON5-Gq-P0V" id="9Ce-eZ-kwI"/>
                 <outlet property="productNameLabel" destination="2gJ-D5-mqX" id="EI4-OI-ITT"/>
+                <outlet property="productQuantityTextField" destination="jFA-9P-Zdd" id="cKK-g7-BUv"/>
             </connections>
             <point key="canvasLocation" x="139" y="-11"/>
         </tableViewCell>
