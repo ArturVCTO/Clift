@@ -27,6 +27,7 @@ class Product: Mappable {
     var thirdImageUrl = ""
     var shouldShowBrand = false
     var inStock = false
+    var stock = 0
     var isInEvent = false
     var shippingCost = 0
     var shipping = false
@@ -54,6 +55,7 @@ class Product: Mappable {
         shippingCost <- map["shipping_cost"]
         shipping <- map["shipping"]
         color <- map["color"]
+        stock <- map["stock"]
         inStock <- map["in_stock"]
         isInEvent <- map["is_in_event"]
         categories <- map["categories"]
