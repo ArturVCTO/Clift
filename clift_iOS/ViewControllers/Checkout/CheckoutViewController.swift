@@ -37,7 +37,7 @@ class CheckoutViewController: UIViewController {
         checkoutProductTableView.register(UINib(nibName: "CheckoutProductCell", bundle: nil), forCellReuseIdentifier: "checkoutProductCell")
     }
     
-    func getCartItems() {
+    func getCartItems(fromDelete: Bool = false) {
         sharedApiManager.getCartItems() { (cartItems, result) in
             if let response = result {
                 if (response.isSuccess()) {
@@ -45,6 +45,9 @@ class CheckoutViewController: UIViewController {
                         self.cartItems = optCartItems
                         self.getTotalAmountAndSubtotal(cartItems: optCartItems)
                         self.checkoutProductTableView.reloadData()
+                        if fromDelete {
+                            self.checkIfProductsExistsInCart()
+                        }
                     }
                 } else if (response.isClientError()) {
                     self.showMessage("Hubo un error cargando el carrito de compras.", type: .error)
@@ -60,7 +63,7 @@ class CheckoutViewController: UIViewController {
             if let response = result {
                 if response.isSuccess() {
                     self.showMessage("Producto borrado del carrito.", type: .error)
-                    self.getCartItems()
+                    self.getCartItems(fromDelete: true)
                     self.checkoutProductTableView.reloadData()
                 }
             }
@@ -94,6 +97,12 @@ class CheckoutViewController: UIViewController {
     
     @IBAction func backButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    func checkIfProductsExistsInCart() {
+        if cartItems.isEmpty {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction func goToPaymentCheckoutVC(_ sender: Any) {
