@@ -77,11 +77,18 @@ extension CheckoutProductCell: UITextFieldDelegate {
             return
         }
         
-        if Int(quantityText)! < 1 {
+        if Int(quantityText)! == 0 {
+            vc.deleteCartItem(cartItem: cartItem)
+        } else if Int(quantityText)! < 0 {
+            self.showMessage(NSLocalizedString("El valor minimo a ingresar es 1", comment: ""),type: .error)
             productQuantityTextField.text = "1"
-        } else if Int(quantityText)! > 50 {
-            productQuantityTextField.text = "50"
+            updateProductQuantity(cartItem: cartItem, quantity: 1)
+        } else if let stock = cartItem.product?.stock, Int(quantityText)! > stock {
+            self.showMessage(NSLocalizedString("No hay suficientes artículos disponibles", comment: ""),type: .error)
+            productQuantityTextField.text = String(stock)
+            updateProductQuantity(cartItem: cartItem, quantity: stock)
+        } else {
+            updateProductQuantity(cartItem: cartItem, quantity: Int(quantityText)!)
         }
-        updateProductQuantity(cartItem: cartItem, quantity: Int(quantityText)!)
     }
 }
