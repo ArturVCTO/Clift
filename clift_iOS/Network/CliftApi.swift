@@ -92,7 +92,7 @@ enum CliftApi {
     //GUEST FUNCTIONS
     case getGuestToken
     case getEventsSearch(query: String)
-    case getRegistriesGuest(event: Event,filters: [String:Any],orderBy: String)
+    case getRegistriesGuest(event: Event,filters: [String:Any],orderBy: String, query: String)
     case stripeCheckoutEnvelope(event: Event,pool: EventPool,checkout: CheckoutEnvelope)
 }
 
@@ -255,7 +255,7 @@ extension CliftApi: TargetType {
             return "guest_token"
         case .getEventsSearch(_):
             return "events/finder"
-        case .getRegistriesGuest(let event,_,_):
+        case .getRegistriesGuest(let event,_,_,_):
             return "event_registries/\(event.id)"
         case.stripeCheckoutEnvelope(let event,let pool,_):
             return "checkout/\(event.id)/event_pool/\(pool.id)"
@@ -399,12 +399,12 @@ extension CliftApi: TargetType {
         //GUEST PARAMETERS
         case .getEventsSearch(let query):
             return .requestParameters(parameters: ["q":query, "id":""], encoding: URLEncoding.default)
-        case .getRegistriesGuest(_,let filters, let orderBy):
+        case .getRegistriesGuest(_,let filters, let orderBy, let query):
             let shop = filters["shop"] ?? ""
             let category = filters["category"] ?? ""
             let price = filters["price"] ?? ""
             let page = filters["page"] ?? 1
-            return .requestParameters(parameters: ["shop":shop,"category":category,"price_range":price,"sort_by":orderBy, "page": page], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["shop": shop,"category": category,"price_range": price,"sort_by": orderBy, "page": page, "q": query], encoding: URLEncoding.default)
         case .stripeCheckoutEnvelope(_,_,let checkout):
             return .requestParameters(parameters: ["event_pool": checkout.toJSON()], encoding: JSONEncoding.default)
         default:

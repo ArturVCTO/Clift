@@ -18,6 +18,7 @@ enum sortKeys: String {
 
 class EventGiftListViewController: UIViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var menuContainerWidth: NSLayoutConstraint!
     @IBOutlet weak var backgroundImageView: customImageView!
     @IBOutlet weak var eventImageView: customImageView!
@@ -71,6 +72,7 @@ class EventGiftListViewController: UIViewController {
     var orderByViewSizeFlag = true
     var filtersDic: [String: Any] = ["shop":"","category":"","price":""]
     var currentOrder: sortKeys = .nameAscending
+    var isSearchBarHIdden = true
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -84,6 +86,7 @@ class EventGiftListViewController: UIViewController {
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        searchBar.delegate = self
         getPoolsAndRegistries()
         setNavBar()
         registerCells()
@@ -111,7 +114,13 @@ class EventGiftListViewController: UIViewController {
     }
 
     @objc func didTapSearchButton(sender: AnyObject){
-        print("Buscar")
+        if isSearchBarHIdden {
+            searchBar.isHidden = false
+        } else {
+            searchBar.isHidden = true
+        }
+        
+        isSearchBarHIdden = !isSearchBarHIdden
     }
     
     func setup(event: Event) {
@@ -142,12 +151,12 @@ class EventGiftListViewController: UIViewController {
         collectionViewHeight.constant = productsCollectionView.collectionViewLayout.collectionViewContentSize.height
     }
     
-    func getRegistries(){
+    func getRegistries(query: String = ""){
         self.presentLoader()
         eventRegistries.removeAll()
         productsCollectionView.reloadData()
         filtersDic["page"] = actualPage
-        sharedApiManager.getRegistriesGuest(event: currentEvent, filters:filtersDic, orderBy: currentOrder.rawValue){ (eventProducts, result) in
+        sharedApiManager.getRegistriesGuest(event: currentEvent, filters:filtersDic, orderBy: currentOrder.rawValue, query: query){ (eventProducts, result) in
                 if let response = result{
                     if response.isSuccess() {
                         self.eventRegistries = eventProducts
@@ -529,4 +538,20 @@ extension EventGiftListViewController {
         
     }
     
+}
+
+extension EventGiftListViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        if !searchBar.isHidden {
+            searchBar.endEditing(true)
+            if let query = searchBar.text {
+                getRegistries(query: query)
+            }
+        }
+        searchBar.text = ""
+        searchBar.isHidden = true
+        isSearchBarHIdden = !isSearchBarHIdden
+    }
 }

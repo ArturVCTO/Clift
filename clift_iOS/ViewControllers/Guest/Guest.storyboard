@@ -205,6 +205,10 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K0L-5R-IXE">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
+                                            <searchBar hidden="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="gID-K3-yG2">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </searchBar>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eLx-zp-5hJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                                                 <subviews>
@@ -662,6 +666,7 @@
                         <outlet property="paginationLabel" destination="6Le-By-TZ4" id="BiU-Bf-r3I"/>
                         <outlet property="paginationStackViewButtons" destination="SPz-Ma-MAf" id="6Br-tR-D1f"/>
                         <outlet property="productsCollectionView" destination="Lpm-i3-xIS" id="vC4-dc-l96"/>
+                        <outlet property="searchBar" destination="gID-K3-yG2" id="aH0-Je-23f"/>
                         <outlet property="secondButton" destination="YVq-gQ-V5F" id="osZ-Lf-Y49"/>
                         <outlet property="secondButtonContainerView" destination="3Vy-8A-HbI" id="gM9-yP-AxX"/>
                         <outlet property="smallViewOrderByConstraint" destination="ZHW-DF-xGr" id="cJ9-vf-hFe"/>
