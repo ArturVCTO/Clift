@@ -90,11 +90,11 @@ class EnvelopeInfoViewController: UIViewController {
         }
         
         checkoutObject.amount = Double(amountText)
-        checkoutObject.userData?.name = nameText
-        checkoutObject.userData?.lastName = lastNameText
-        checkoutObject.userData?.email = emailText
-        checkoutObject.userData?.cellPhoneNumber = cellphoneText
-        checkoutObject.userData?.note = messageText
+        checkoutObject.userData.name = nameText
+        checkoutObject.userData.lastName = lastNameText
+        checkoutObject.userData.email = emailText
+        checkoutObject.userData.cellPhoneNumber = cellphoneText
+        checkoutObject.userData.note = messageText
         pay()
     }
     

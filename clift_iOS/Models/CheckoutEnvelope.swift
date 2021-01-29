@@ -14,7 +14,7 @@ import RealmSwift
 
 class CheckoutEnvelope: Mappable {
     var amount: Double?
-    var userData: CheckoutUserDatapeEnvelope?
+    var userData: CheckoutUserDatapeEnvelope = CheckoutUserDatapeEnvelope()
     
     convenience required init?(map: Map) {
         self.init()
