@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +12,9 @@
     <customFonts key="customFonts">
         <array key="Mihan-Regular.ttf">
             <string>Mihan-Regular</string>
+        </array>
+        <array key="Tinos-Bold.ttf">
+            <string>Tinos-Bold</string>
         </array>
         <array key="Tinos-Regular.ttf">
             <string>Tinos-Regular</string>
@@ -266,6 +270,227 @@
             </objects>
             <point key="canvasLocation" x="11476.8115942029" y="-3642.8571428571427"/>
         </scene>
+        <!--Payment View Controller-->
+        <scene sceneID="Jqh-Ak-2uJ">
+            <objects>
+                <viewController storyboardIdentifier="PaymentVC" id="gYc-nE-wVD" customClass="PaymentViewController" customModule="CLIFT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tVf-gd-Rn8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uHG-8H-tTu">
+                                <rect key="frame" x="20" y="74" width="374" height="544"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MsU-HS-2SH">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Información de regalo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7U-sQ-6x6">
+                                        <rect key="frame" x="0.0" y="56.5" width="374" height="36.5"/>
+                                        <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre de quién regala" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Zuy-fB-AsL">
+                                        <rect key="frame" x="0.0" y="113" width="374" height="36"/>
+                                        <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="name"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apellido de quién regala" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pHP-ka-77F">
+                                        <rect key="frame" x="0.0" y="169" width="374" height="36.5"/>
+                                        <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="family-name"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Teléfono celular (10 dígitos)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a1L-ul-w7k">
+                                        <rect key="frame" x="0.0" y="225.5" width="374" height="36.5"/>
+                                        <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" textContentType="tel"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo electrónico" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mPr-a5-Afi">
+                                        <rect key="frame" x="0.0" y="282" width="374" height="36.5"/>
+                                        <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLG-gZ-eBD">
+                                        <rect key="frame" x="0.0" y="338.5" width="374" height="36.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mensaje para la pareja" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLI-tt-B9f">
+                                        <rect key="frame" x="0.0" y="395" width="374" height="36"/>
+                                        <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escribe un breve mensaje" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k1r-td-oO7">
+                                        <rect key="frame" x="0.0" y="451" width="374" height="36.5"/>
+                                        <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VhZ-uV-5fU">
+                                        <rect key="frame" x="0.0" y="507.5" width="374" height="36.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ujw-V1-atq">
+                                <rect key="frame" x="20" y="618" width="374" height="224"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k0N-gT-C9V">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="224"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Se enviará a la pareja un correo electrónico informándoles que su regalo ha sido comprado." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uUH-eL-vwj">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="14"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYM-wD-ysk">
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="224"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rn4-tu-qHV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="224"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BNn-rg-QiX">
+                                                                <rect key="frame" x="0.0" y="0.0" width="182" height="224"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cashFund" translatesAutoresizingMaskIntoConstraints="NO" id="Kcy-xh-Svh">
+                                                                        <rect key="frame" x="-32" y="33.5" width="246" height="157"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="Kcy-xh-Svh" firstAttribute="height" secondItem="BNn-rg-QiX" secondAttribute="height" multiplier="0.7" id="Z1T-TC-dPZ"/>
+                                                                    <constraint firstItem="Kcy-xh-Svh" firstAttribute="centerX" secondItem="BNn-rg-QiX" secondAttribute="centerX" id="aeb-Q1-XgF"/>
+                                                                    <constraint firstItem="Kcy-xh-Svh" firstAttribute="centerY" secondItem="BNn-rg-QiX" secondAttribute="centerY" id="xsd-ja-JEI"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Fh-ol-TXU">
+                                                                <rect key="frame" x="192" y="0.0" width="182" height="224"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KOW-4U-Y0U">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="224"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sobre" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MNR-zc-JUi">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="182" height="68"/>
+                                                                                <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="20"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9s-0P-Tzv">
+                                                                                <rect key="frame" x="0.0" y="78" width="182" height="68"/>
+                                                                                <subviews>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L6m-4X-Shr">
+                                                                                        <rect key="frame" x="0.0" y="22.5" width="39" height="23.5"/>
+                                                                                        <fontDescription key="fontDescription" name="Tinos-Bold" family="Tinos" pointSize="20"/>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUN-an-Aup">
+                                                                                        <rect key="frame" x="49" y="22.5" width="44.5" height="23.5"/>
+                                                                                        <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="20"/>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                </subviews>
+                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="IUN-an-Aup" firstAttribute="centerY" secondItem="d9s-0P-Tzv" secondAttribute="centerY" id="13a-qb-bGT"/>
+                                                                                    <constraint firstItem="L6m-4X-Shr" firstAttribute="leading" secondItem="d9s-0P-Tzv" secondAttribute="leading" id="Fgd-4C-wto"/>
+                                                                                    <constraint firstItem="IUN-an-Aup" firstAttribute="leading" secondItem="L6m-4X-Shr" secondAttribute="trailing" constant="10" id="xVr-dn-ioB"/>
+                                                                                    <constraint firstItem="L6m-4X-Shr" firstAttribute="centerY" secondItem="d9s-0P-Tzv" secondAttribute="centerY" id="yGk-B7-fy8"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCi-Np-uUI">
+                                                                                <rect key="frame" x="0.0" y="156" width="182" height="68"/>
+                                                                                <subviews>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djZ-bh-Lf5">
+                                                                                        <rect key="frame" x="42" y="7" width="98" height="54"/>
+                                                                                        <color key="backgroundColor" name="PrimaryBlue"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" secondItem="djZ-bh-Lf5" secondAttribute="height" multiplier="9:5" id="KGY-gl-S4z"/>
+                                                                                        </constraints>
+                                                                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
+                                                                                        <state key="normal" title="Aceptar">
+                                                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        </state>
+                                                                                        <connections>
+                                                                                            <action selector="didTapAcceptButton:" destination="gYc-nE-wVD" eventType="touchUpInside" id="ua7-b2-6iw"/>
+                                                                                        </connections>
+                                                                                    </button>
+                                                                                </subviews>
+                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="djZ-bh-Lf5" firstAttribute="centerX" secondItem="MCi-Np-uUI" secondAttribute="centerX" id="Edj-6n-X8b"/>
+                                                                                    <constraint firstItem="djZ-bh-Lf5" firstAttribute="height" secondItem="MCi-Np-uUI" secondAttribute="height" multiplier="0.8" id="Opy-Hi-EcV"/>
+                                                                                    <constraint firstItem="djZ-bh-Lf5" firstAttribute="centerY" secondItem="MCi-Np-uUI" secondAttribute="centerY" id="hZM-dq-LDE"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="KOW-4U-Y0U" firstAttribute="top" secondItem="6Fh-ol-TXU" secondAttribute="top" id="7yg-nL-uDT"/>
+                                                                    <constraint firstItem="KOW-4U-Y0U" firstAttribute="leading" secondItem="6Fh-ol-TXU" secondAttribute="leading" id="D2a-37-1jR"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="KOW-4U-Y0U" secondAttribute="trailing" id="Yvo-fe-Jd3"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="KOW-4U-Y0U" secondAttribute="bottom" id="ntA-bq-axn"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="rn4-tu-qHV" firstAttribute="top" secondItem="XYM-wD-ysk" secondAttribute="top" id="3Qj-j7-yiU"/>
+                                                    <constraint firstItem="rn4-tu-qHV" firstAttribute="leading" secondItem="XYM-wD-ysk" secondAttribute="leading" id="9V3-Hg-S0K"/>
+                                                    <constraint firstAttribute="bottom" secondItem="rn4-tu-qHV" secondAttribute="bottom" id="d8l-SE-Ro6"/>
+                                                    <constraint firstAttribute="trailing" secondItem="rn4-tu-qHV" secondAttribute="trailing" id="ebC-VN-tZH"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="k0N-gT-C9V" firstAttribute="leading" secondItem="Ujw-V1-atq" secondAttribute="leading" id="D0P-gP-4tY"/>
+                                    <constraint firstItem="k0N-gT-C9V" firstAttribute="top" secondItem="Ujw-V1-atq" secondAttribute="top" id="UZ9-Lj-Ufs"/>
+                                    <constraint firstAttribute="bottom" secondItem="k0N-gT-C9V" secondAttribute="bottom" id="X1O-od-J5u"/>
+                                    <constraint firstAttribute="trailing" secondItem="k0N-gT-C9V" secondAttribute="trailing" id="xVt-vJ-uhQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0KA-k6-ET6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ujw-V1-atq" firstAttribute="leading" secondItem="0KA-k6-ET6" secondAttribute="leading" constant="20" id="0Y7-bR-Oq6"/>
+                            <constraint firstItem="Ujw-V1-atq" firstAttribute="bottom" secondItem="0KA-k6-ET6" secondAttribute="bottom" constant="-20" id="1VP-2w-MPZ"/>
+                            <constraint firstAttribute="trailing" secondItem="uHG-8H-tTu" secondAttribute="trailing" constant="20" id="8Af-6P-1Fb"/>
+                            <constraint firstItem="Ujw-V1-atq" firstAttribute="top" secondItem="uHG-8H-tTu" secondAttribute="bottom" id="E3w-y8-Gqc"/>
+                            <constraint firstItem="Ujw-V1-atq" firstAttribute="height" secondItem="tVf-gd-Rn8" secondAttribute="height" multiplier="0.25" id="JSc-OF-lyQ"/>
+                            <constraint firstItem="0KA-k6-ET6" firstAttribute="trailing" secondItem="Ujw-V1-atq" secondAttribute="trailing" constant="20" id="LtX-nK-e9Z"/>
+                            <constraint firstItem="uHG-8H-tTu" firstAttribute="leading" secondItem="0KA-k6-ET6" secondAttribute="leading" constant="20" id="VKS-dM-nsx"/>
+                            <constraint firstItem="uHG-8H-tTu" firstAttribute="top" secondItem="0KA-k6-ET6" secondAttribute="top" constant="30" id="pyF-Mc-Hpg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="acceptPaymentButton" destination="djZ-bh-Lf5" id="rCW-HL-KH8"/>
+                        <outlet property="cellphoneTextField" destination="a1L-ul-w7k" id="fIe-2B-ChJ"/>
+                        <outlet property="emailTextField" destination="mPr-a5-Afi" id="DGe-XW-1ql"/>
+                        <outlet property="lastNameTextField" destination="pHP-ka-77F" id="gbb-ZS-E24"/>
+                        <outlet property="messageTextField" destination="k1r-td-oO7" id="A05-eA-Rn2"/>
+                        <outlet property="nameTextField" destination="Zuy-fB-AsL" id="DWe-00-60k"/>
+                        <outlet property="subtotalLabel" destination="MNR-zc-JUi" id="x11-Cy-QqL"/>
+                        <outlet property="totalLabel" destination="L6m-4X-Shr" id="njA-Wf-Cn2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pxz-oy-dml" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13578" y="-3643"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="CpZ-6J-Wwc">
@@ -273,6 +498,10 @@
         </designable>
     </designables>
     <resources>
+        <image name="cashFund" width="246" height="254.5"/>
+        <namedColor name="PrimaryBlue">
+            <color red="0.6940000057220459" green="0.82700002193450928" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

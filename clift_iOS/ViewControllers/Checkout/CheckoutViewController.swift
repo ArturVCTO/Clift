@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 import Stripe
 
+enum PaymentType: String {
+    case userLogIn
+    case userGuest
+}
+
 class CheckoutViewController: UIViewController {
     
     @IBOutlet weak var checkoutProductTableView: UITableView!
@@ -20,9 +25,12 @@ class CheckoutViewController: UIViewController {
     var cartItems: [CartItem] = []
     var totalAmount: Int?
     var subTotalAmount: Int?
+    var paymentType: PaymentType = .userLogIn
+    var currentEvent = Event()
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUINavBar()
         registerCells()
         self.tableViewSetup()
         self.view.addSubview(checkoutProductTableView)
@@ -31,6 +39,11 @@ class CheckoutViewController: UIViewController {
         self.checkoutProductTableView.translatesAutoresizingMaskIntoConstraints = false
         self.checkoutProductTableView.reloadData()
         self.getCartItems()
+    }
+    
+    private func setUINavBar() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "", style: .plain, target: nil, action: nil)
     }
     
     private func registerCells() {
@@ -107,18 +120,41 @@ class CheckoutViewController: UIViewController {
     
     @IBAction func goToPaymentCheckoutVC(_ sender: Any) {
         if #available(iOS 13.0, *) {
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "paymentTableVC") as! PaymentTableViewController
-            vc.products = self.cartItems
-            vc.totalAmount = self.totalAmount
-            vc.subtotalAmount = self.subTotalAmount
-
-            self.navigationController?.pushViewController(vc, animated: true)
+            
+            switch paymentType {
+            case .userLogIn:
+                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "paymentTableVC") as! PaymentTableViewController
+                vc.products = self.cartItems
+                vc.totalAmount = self.totalAmount
+                vc.subtotalAmount = self.subTotalAmount
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+            case .userGuest:
+                let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(identifier: "PaymentVC") as! PaymentViewController
+                vc.products = self.cartItems
+                vc.currentEvent = currentEvent
+                vc.totalAmount = self.totalAmount
+                vc.subtotalAmount = self.subTotalAmount
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         } else {
-            let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "paymentTableVC") as! PaymentTableViewController
-            vc.products = self.cartItems
-            vc.totalAmount = self.totalAmount
-            vc.subtotalAmount = self.subTotalAmount
-            self.navigationController?.pushViewController(vc, animated: true)
+            
+            switch paymentType {
+            case .userLogIn:
+                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "paymentTableVC") as! PaymentTableViewController
+                vc.products = self.cartItems
+                vc.totalAmount = self.totalAmount
+                vc.subtotalAmount = self.subTotalAmount
+                self.navigationController?.pushViewController(vc, animated: true)
+            
+            case .userGuest:
+                let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentViewController
+                vc.products = self.cartItems
+                vc.currentEvent = currentEvent
+                vc.totalAmount = self.totalAmount
+                vc.subtotalAmount = self.subTotalAmount
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
 }

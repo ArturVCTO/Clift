@@ -9,22 +9,113 @@
 import UIKit
 
 class PaymentViewController: UIViewController {
+    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
+    @IBOutlet weak var cellphoneTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var subtotalLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var acceptPaymentButton: UIButton!
+    
+    var products: [CartItem] = []
+    var totalAmount: Int?
+    var subtotalAmount: Int?
+    var checkoutObject = CheckoutGuest()
+    var userData = CheckoutUserDataGuest()
+    var currentEvent = Event()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setUI()
+        loadTotalAndSubtotal()
+        startCheckout()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setUI() {
+        navigationItem.title = "CLIFT"
+        acceptPaymentButton.layer.cornerRadius = 10
     }
-    */
+    
+    func loadTotalAndSubtotal() {
+        self.subtotalLabel.text = "\((getPriceStringFormat(value: Double(subtotalAmount ?? 0))))"
+        self.totalLabel.text = "\((getPriceStringFormat(value: Double(totalAmount ?? 0))))"
+    }
+    
+    func getPriceStringFormat(value: Double) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+              
+        return formatter.string(from: NSNumber(value: value))!
+    }
+    
+    func startCheckout() {
+        for product in products {
+            self.checkoutObject.cartItemIds.append(product.id)
+        }
+        self.checkoutObject.userDataGuest.name = "Fer"
+        self.checkoutObject.userDataGuest.lastName = "Limón"
+        self.checkoutObject.userDataGuest.email = "flimflo2@hotmail.com"
+        self.checkoutObject.userDataGuest.cellPhoneNumber = "4741016266"
+        self.checkoutObject.userDataGuest.note = "Felicidades"
+    }
+    
+    func pay() {
+        sharedApiManager.stripeCheckoutGuest(event: self.currentEvent , checkout: self.checkoutObject) { (stripe, result) in
+            if let response = result {
+                if response.isSuccess() {
+                    if #available(iOS 13.0, *) {
+                        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "stripeCheckoutVC") as! StripeCheckoutViewController
+                        vc.checkoutSessionId = stripe!.id!
+                        vc.successUrl = stripe!.successUrl!
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    } else {
+                        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "stripeCheckoutVC") as! StripeCheckoutViewController
+                        vc.checkoutSessionId = stripe!.id!
+                        vc.successUrl = stripe!.successUrl!
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func didTapAcceptButton(_ sender: UIButton) {
+        
+        /*guard let nameText = nameTextField.text, !nameText.isEmpty else {
+            self.showMessage(NSLocalizedString("No has llenado el nombre", comment: ""),type: .error)
+            return
+        }
+        
+        guard let lastNameText = lastNameTextField.text, !lastNameText.isEmpty else {
+            self.showMessage(NSLocalizedString("No has llenado el apellido", comment: ""),type: .error)
+            return
+        }
+        
+        guard let cellphoneText = cellphoneTextField.text, !cellphoneText.isEmpty else {
+            self.showMessage(NSLocalizedString("No has llenado el número celular", comment: ""),type: .error)
+            return
+        }
+        
+        guard let emailText = emailTextField.text, !emailText.isEmpty else {
+            self.showMessage(NSLocalizedString("No has llenado el correo", comment: ""),type: .error)
+            return
+        }
+        
+        guard let messageText = messageTextField.text, !messageText.isEmpty else {
+            self.showMessage(NSLocalizedString("No has llenado el mensaje", comment: ""),type: .error)
+            return
+        }
+        
+        checkoutObject.userDataGuest?.name = nameText
+        checkoutObject.userDataGuest?.lastName = lastNameText
+        checkoutObject.userDataGuest?.email = emailText
+        checkoutObject.userDataGuest?.cellPhoneNumber = cellphoneText
+        checkoutObject.userDataGuest?.note = messageText*/
+        
+        
+        pay()
+    }
 
 }

@@ -110,6 +110,8 @@ class EventGiftListViewController: UIViewController {
     
     @objc func didTapCartButton(sender: AnyObject){
         let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
+        vc.paymentType = .userGuest
+        vc.currentEvent = currentEvent
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -361,6 +363,7 @@ extension EventGiftListViewController: UICollectionViewDelegate, UICollectionVie
         } else {
             let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
             productDetailsVC.currentEventProduct = eventRegistries[indexPath.row - eventPools.count]
+            productDetailsVC.currentEvent = currentEvent
             productDetailsVC.modalPresentationStyle = .fullScreen
             self.navigationController?.pushViewController(productDetailsVC, animated: true)
         }
