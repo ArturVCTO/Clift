@@ -313,6 +313,8 @@ protocol ApiCalls {
     func getRegistriesGuest(event: Event, filters: [String:Any], orderBy: String, query: String, completion:  @escaping([EventProduct]?, Response?)->Void)
     
     func stripeCheckoutEnvelope(event: Event, pool:EventPool, checkout: CheckoutEnvelope, completion: @escaping(StripeCheckout?, Response?) -> Void)
+    
+    func stripeCheckoutGuest(event: Event, checkout: CheckoutGuest, completion: @escaping(StripeCheckout?, Response?) -> Void)
 }
 
 extension CliftApiManager: ApiCalls {
@@ -628,6 +630,10 @@ extension CliftApiManager: ApiCalls {
     
     func stripeCheckoutEnvelope(event: Event, pool: EventPool, checkout: CheckoutEnvelope, completion: @escaping (StripeCheckout?, Response?) -> Void) {
         requestObjectWithResponse(.stripeCheckoutEnvelope(event: event, pool: pool, checkout: checkout), type: StripeCheckout.self, completion: completion, wrapper: "")
+    }
+    
+    func stripeCheckoutGuest(event: Event, checkout: CheckoutGuest, completion: @escaping (StripeCheckout?, Response?) -> Void) {
+        requestObjectWithResponse(.stripeCheckoutGuest(event: event, checkout: checkout), type: StripeCheckout.self, completion: completion, wrapper: "")
     }
 }
 

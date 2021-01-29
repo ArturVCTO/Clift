@@ -94,6 +94,7 @@ enum CliftApi {
     case getEventsSearch(query: String)
     case getRegistriesGuest(event: Event,filters: [String:Any],orderBy: String, query: String)
     case stripeCheckoutEnvelope(event: Event,pool: EventPool,checkout: CheckoutEnvelope)
+    case stripeCheckoutGuest(event: Event,checkout: CheckoutGuest)
 }
 
 extension CliftApi: TargetType {
@@ -259,12 +260,14 @@ extension CliftApi: TargetType {
             return "event_registries/\(event.id)"
         case.stripeCheckoutEnvelope(let event,let pool,_):
             return "checkout/\(event.id)/event_pool/\(pool.id)"
+        case.stripeCheckoutGuest(let event,_):
+            return "checkout/gift_payment/\(event.id)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .postLoginSession,.recoverPassword,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount,.stripeCheckoutEnvelope:
+        case .postLoginSession,.recoverPassword,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount,.stripeCheckoutEnvelope,.stripeCheckoutGuest:
             return .post
         case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest:
             return .get
@@ -407,6 +410,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["shop": shop,"category": category,"price_range": price,"sort_by": orderBy, "page": page, "q": query], encoding: URLEncoding.default)
         case .stripeCheckoutEnvelope(_,_,let checkout):
             return .requestParameters(parameters: ["event_pool": checkout.toJSON()], encoding: JSONEncoding.default)
+        case .stripeCheckoutGuest(_,let checkout):
+            return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }
