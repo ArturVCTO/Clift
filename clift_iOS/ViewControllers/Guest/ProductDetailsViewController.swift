@@ -9,6 +9,11 @@
 import UIKit
 import Auk
 
+enum ProductDetailType {
+    case EventProduct
+    case EventExternalProduct
+}
+
 class ProductDetailsViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -24,6 +29,7 @@ class ProductDetailsViewController: UIViewController {
     
     var currentEventProduct: EventProduct?
     var currentEvent = Event()
+    var productDetailType: ProductDetailType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +37,11 @@ class ProductDetailsViewController: UIViewController {
         setUI()
         setNavBar()
         setScrollView()
-        configure()
+        if productDetailType == .EventProduct {
+            configureProduct()
+        } else {
+            configureExternalProduct()
+        }
     }
     
     func setUI() {
@@ -84,7 +94,7 @@ class ProductDetailsViewController: UIViewController {
         scrollView.auk.startAutoScroll(delaySeconds: 2)
     }
     
-    func configure() {
+    func configureProduct() {
         
         productNameLabel.text = currentEventProduct?.product.name
         productBrandLabel.text = currentEventProduct?.product.brand_name
@@ -109,6 +119,21 @@ class ProductDetailsViewController: UIViewController {
         productDetailsLabel.text = currentEventProduct?.product.description
         productEspecificationsLabel.text = currentEventProduct?.product.specs
         if let price = currentEventProduct?.product.price {
+            productPriceLabel.text = "$\(price)"
+        } else {
+            productPriceLabel.text = "Sin precio"
+        }
+    }
+    
+    func configureExternalProduct() {
+        
+        productNameLabel.text = currentEventProduct?.externalProduct.name
+        productBrandLabel.text = currentEventProduct?.externalProduct.shopName
+        productCategoryLabel.isHidden = true
+        productDetailsLabel.isHidden = true
+        productEspecificationsLabel.text = "Producto Externo"
+        scrollView.auk.show(url: (currentEventProduct?.externalProduct.imageUrl)!)
+        if let price = currentEventProduct?.externalProduct.price {
             productPriceLabel.text = "$\(price)"
         } else {
             productPriceLabel.text = "Sin precio"

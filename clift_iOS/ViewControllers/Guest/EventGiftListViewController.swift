@@ -369,6 +369,7 @@ extension EventGiftListViewController: UICollectionViewDelegate, UICollectionVie
             let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
             productDetailsVC.currentEventProduct = eventRegistries[indexPath.row - eventPools.count]
             productDetailsVC.currentEvent = currentEvent
+            productDetailsVC.productDetailType = eventRegistries[indexPath.row - eventPools.count].wishableType == "ExternalProduct" ? .EventExternalProduct : .EventProduct
             productDetailsVC.modalPresentationStyle = .fullScreen
             self.navigationController?.pushViewController(productDetailsVC, animated: true)
         }
