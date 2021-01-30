@@ -74,7 +74,7 @@ class GuestEventProductCell: UICollectionViewCell {
                 
                     productNameLabel.text = product.externalProduct.name
                     productPriceLabel.text = "$ \(product.externalProduct.price) MXN"
-                    productQuantityLabel.text = "\(product.externalProduct.gifted_quantity) / \(product.externalProduct.gifted_quantity)"
+                    productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
                 }
             case .EventPool:
                 
