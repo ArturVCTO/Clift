@@ -14,8 +14,9 @@ protocol ProductCellDelegate {
 }
 
 enum ProductGuestCellType {
-    case Eventproduct
-    case Eventpool
+    case EventProduct
+    case EventPool
+    case EventExternalProduct
 }
 
 class GuestEventProductCell: UICollectionViewCell {
@@ -50,7 +51,7 @@ class GuestEventProductCell: UICollectionViewCell {
     func configure(pool: EventPool? = nil, product: EventProduct? = nil) {
         
         switch cellType {
-            case .Eventproduct:
+            case .EventProduct:
                 
                 if let product = product {
                     currentProduct = product.product
@@ -63,7 +64,19 @@ class GuestEventProductCell: UICollectionViewCell {
                     productPriceLabel.text = "$ \(product.product.price) MXN"
                     productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
                 }
-            case .Eventpool:
+            case .EventExternalProduct:
+                if let product = product {
+                    currentProduct = product.product
+                
+                    if let imageURL = URL(string:"\(product.externalProduct.imageUrl)") {
+                        self.productImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
+                    }
+                
+                    productNameLabel.text = product.externalProduct.name
+                    productPriceLabel.text = "$ \(product.externalProduct.price) MXN"
+                    productQuantityLabel.text = "\(product.externalProduct.gifted_quantity) / \(product.externalProduct.gifted_quantity)"
+                }
+            case .EventPool:
                 
                 if let pool = pool {
                     productImage.image = UIImage(named: "cashFund")
@@ -79,9 +92,9 @@ class GuestEventProductCell: UICollectionViewCell {
 
     @IBAction func addProductToCart(_ sender: UIButton) {
         switch cellType {
-        case .Eventproduct:
+        case .EventProduct, .EventExternalProduct:
             productCellDelegate.didTapAddProductToCart(quantity: 1, product: currentProduct)
-        case .Eventpool:
+        case .EventPool:
             productCellDelegate.didTapCashFundPool(eventPool: currentPool)
         default:
             break

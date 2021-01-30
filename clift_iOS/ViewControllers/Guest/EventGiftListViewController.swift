@@ -345,11 +345,16 @@ extension EventGiftListViewController: UICollectionViewDelegate, UICollectionVie
             
             //Set Pool Cells and Product Cells
             if eventPools.count > indexPath.row {
-                cell.cellType = .Eventpool
+                cell.cellType = .EventPool
                 cell.configure(pool: eventPools[indexPath.row])
             } else {
-                cell.cellType = .Eventproduct
-                cell.configure(product: eventRegistries[indexPath.row - eventPools.count])
+                if eventRegistries[indexPath.row - eventPools.count].wishableType == "ExternalProduct" {
+                    cell.cellType = .EventExternalProduct
+                    cell.configure(product: eventRegistries[indexPath.row - eventPools.count])
+                } else {
+                    cell.cellType = .EventProduct
+                    cell.configure(product: eventRegistries[indexPath.row - eventPools.count])
+                }
             }
             return cell
         }

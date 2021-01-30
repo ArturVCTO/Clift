@@ -26,6 +26,7 @@ class ExternalProduct: Mappable {
     var redirectToUrl = Bool()
     var url = ""
     var wishableType = "ExternalProduct"
+    var gifted_quantity = Int()
     
     var errors: [String] = []
     
@@ -47,6 +48,7 @@ class ExternalProduct: Mappable {
         redirectToUrl <- map["redirect_to_url"]
         wishableType <- map["wishable_type"]
         url <- map["url"]
+        gifted_quantity <- map ["gifted_quantity"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {
