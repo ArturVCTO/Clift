@@ -86,6 +86,7 @@ class EventGiftListViewController: UIViewController {
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        productsCollectionView.collectionViewLayout = layout
         searchBar.delegate = self
         getPoolsAndRegistries()
         setNavBar()
@@ -149,21 +150,25 @@ class EventGiftListViewController: UIViewController {
         productsCollectionView.register(UINib(nibName: "GuestEventProductCell", bundle: nil), forCellWithReuseIdentifier: "GuestEventProductCell")
     }
     
+    var layout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = CGSize(width: 150, height: 280)
+        return layout
+    }()
+    
     private func setCollectionViewHeight() {
-        collectionViewHeight.constant = productsCollectionView.collectionViewLayout.collectionViewContentSize.height
+        collectionViewHeight.constant = CGFloat(productsCollectionView.collectionViewLayout.collectionViewContentSize.height)
     }
     
     func getRegistries(query: String = ""){
         self.presentLoader()
         eventRegistries.removeAll()
-        productsCollectionView.reloadData()
+        reloadCollectionView()
         filtersDic["page"] = actualPage
         sharedApiManager.getRegistriesGuest(event: currentEvent, filters:filtersDic, orderBy: currentOrder.rawValue, query: query){ (eventProducts, result) in
                 if let response = result{
                     if response.isSuccess() {
                         self.eventRegistries = eventProducts
-                        self.productsCollectionView.reloadData()
-                        self.setCollectionViewHeight()
                         guard let json = try? JSONSerialization.jsonObject(with: response.data,
                                                                            options: []) as? [String: Any],
                               let meta = json["meta"] as? [String: Any],
@@ -172,6 +177,7 @@ class EventGiftListViewController: UIViewController {
                         }
                         self.actualPage = pagination.currentPage
                         self.numberOfPages = pagination.totalPages
+                        self.reloadCollectionView()
                     }
                 }
             self.setPaginationMenu()
@@ -299,28 +305,28 @@ extension EventGiftListViewController {
     
     @IBAction func didTapOrderByLowPrice(_ sender: UIButton) {
         eventRegistries.removeAll()
-        productsCollectionView.reloadData()
+        reloadCollectionView()
         currentOrder = .priceAscending
         getRegistries()
     }
     
     @IBAction func didTapOrderByHighPrice(_ sender: UIButton) {
         eventRegistries.removeAll()
-        productsCollectionView.reloadData()
+        reloadCollectionView()
         currentOrder = .priceDescending
         getRegistries()
     }
     
     @IBAction func didTapOrderByAZ(_ sender: UIButton) {
         eventRegistries.removeAll()
-        productsCollectionView.reloadData()
+        reloadCollectionView()
         currentOrder = .nameAscending
         getRegistries()
     }
     
     @IBAction func didTapOrderByZA(_ sender: UIButton) {
         eventRegistries.removeAll()
-        productsCollectionView.reloadData()
+        reloadCollectionView()
         currentOrder = .nameDescending
         getRegistries()
     }
@@ -342,7 +348,6 @@ extension EventGiftListViewController: UICollectionViewDelegate, UICollectionVie
         if let cell = productsCollectionView.dequeueReusableCell(withReuseIdentifier: "GuestEventProductCell", for: indexPath) as? GuestEventProductCell {
             
             cell.productCellDelegate = self
-            
             //Set Pool Cells and Product Cells
             if eventPools.count > indexPath.row {
                 cell.cellType = .EventPool
@@ -356,6 +361,7 @@ extension EventGiftListViewController: UICollectionViewDelegate, UICollectionVie
                     cell.configure(product: eventRegistries[indexPath.row - eventPools.count])
                 }
             }
+            cell.cellWidth = (collectionView.frame.size.width - 25) / 2
             return cell
         }
         return UICollectionViewCell()
@@ -374,19 +380,15 @@ extension EventGiftListViewController: UICollectionViewDelegate, UICollectionVie
             self.navigationController?.pushViewController(productDetailsVC, animated: true)
         }
     }
-}
-
-//MARK:- Extension UICollectionViewDelegateFlowLayout
-extension EventGiftListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            
-            let padding: CGFloat =  50
-            let collectionViewSize = collectionView.frame.size.width - padding
-
-            return CGSize(width: collectionViewSize / 2, height: collectionViewSize / 2)
+    
+    private func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.productsCollectionView.reloadData()
+            self.setCollectionViewHeight()
+        }
     }
+    
 }
-
 //MARK:- Extension ProductCellDelegate
 extension EventGiftListViewController: ProductCellDelegate {
     func didTapCashFundPool(eventPool: EventPool) {

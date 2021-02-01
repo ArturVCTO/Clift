@@ -34,8 +34,24 @@ class GuestEventProductCell: UICollectionViewCell {
     var currentPool: EventPool!
     var cellType: ProductGuestCellType?
     
+    var cellWidthConstraint: NSLayoutConstraint?
+    
+    var cellWidth: CGFloat? {
+        didSet{
+            guard let cellWidth = cellWidth else { return }
+            cellWidthConstraint?.constant = cellWidth
+            cellWidthConstraint?.isActive = true
+            contentView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            contentView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+            setNeedsLayout()
+            layoutIfNeeded()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        cellWidthConstraint = contentView.widthAnchor.constraint(equalToConstant: 0)
         
         setup()
     }
