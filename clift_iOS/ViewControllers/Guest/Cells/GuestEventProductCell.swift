@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ProductCellDelegate {
-    func didTapAddProductToCart(quantity:Int, product: Product)
+    func didTapAddProductToCart(quantity:Int, product: EventProduct)
     func didTapCashFundPool(eventPool: EventPool)
 }
 
@@ -30,7 +30,7 @@ class GuestEventProductCell: UICollectionViewCell {
     @IBOutlet weak var productActionButton: UIButton!
     
     var productCellDelegate: ProductCellDelegate!
-    var currentProduct: Product!
+    var currentProduct: EventProduct!
     var currentPool: EventPool!
     var cellType: ProductGuestCellType?
     
@@ -70,7 +70,7 @@ class GuestEventProductCell: UICollectionViewCell {
             case .EventProduct:
                 
                 if let product = product {
-                    currentProduct = product.product
+                    currentProduct = product
                 
                     if let imageURL = URL(string:"\(product.product.imageUrl)") {
                         self.productImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
@@ -82,7 +82,7 @@ class GuestEventProductCell: UICollectionViewCell {
                 }
             case .EventExternalProduct:
                 if let product = product {
-                    currentProduct = product.product
+                    currentProduct = product
                 
                     if let imageURL = URL(string:"\(product.externalProduct.imageUrl)") {
                         self.productImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))

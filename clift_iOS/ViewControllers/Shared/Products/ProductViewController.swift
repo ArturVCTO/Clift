@@ -105,7 +105,7 @@ class ProductViewController: UIViewController {
     }
     
     func addProductToCart(quantity: Int, product: Product) {
-        sharedApiManager.addItemToCart(quantity: self.quantity, product: product) { (cartItem, result) in
+        /*sharedApiManager.addItemToCart(quantity: self.quantity, product: product) { (cartItem, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: "Login Error"),type: .success)
@@ -114,7 +114,7 @@ class ProductViewController: UIViewController {
 
                 }
             }
-        }
+        }*/
     }
     
     func removeProductFromRegistry(product: Product,event: Event) {

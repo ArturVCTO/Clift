@@ -141,12 +141,12 @@ class ProductDetailsViewController: UIViewController {
     }
     
     @IBAction func addToCartPressed(_ sender: UIButton) {
-        if let product = currentEventProduct?.product {
+        if let product = currentEventProduct {
             addProductToCart(quantity: 1, product: product)
         }
     }
     
-    func addProductToCart(quantity: Int, product: Product) {
+    func addProductToCart(quantity: Int, product: EventProduct) {
         sharedApiManager.addItemToCart(quantity: quantity, product: product) { (cartItem, result) in
             if let response = result {
                 if (response.isSuccess()) {

@@ -139,7 +139,7 @@ class EventGiftListViewController: UIViewController {
         eventNameLabel.text = event.name
         dateLabel.text = event.formattedDate()
         typeLabel.text = event.stringVisibility()
-        eventImageView.layer.cornerRadius = 30
+        eventImageView.layer.cornerRadius = eventImageView.frame.height / 2
         
         orderByView.layer.cornerRadius = 10
         orderByInnerView.layer.cornerRadius = 10
@@ -201,7 +201,7 @@ class EventGiftListViewController: UIViewController {
         }
     }
     
-    func addProductToCart(quantity: Int, product: Product) {
+    func addProductToCart(quantity: Int, product: EventProduct) {
         sharedApiManager.addItemToCart(quantity: quantity, product: product) { (cartItem, result) in
             if let response = result {
                 if (response.isSuccess()) {
@@ -396,7 +396,7 @@ extension EventGiftListViewController: ProductCellDelegate {
     }
     
     
-    func didTapAddProductToCart(quantity: Int, product: Product) {
+    func didTapAddProductToCart(quantity: Int, product: EventProduct) {
         addProductToCart(quantity: quantity, product: product)
     }
 }

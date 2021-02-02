@@ -54,11 +54,6 @@ class PaymentViewController: UIViewController {
         for product in products {
             self.checkoutObject.cartItemIds.append(product.id)
         }
-        self.checkoutObject.userDataGuest.name = "Fer"
-        self.checkoutObject.userDataGuest.lastName = "Limón"
-        self.checkoutObject.userDataGuest.email = "flimflo2@hotmail.com"
-        self.checkoutObject.userDataGuest.cellPhoneNumber = "4741016266"
-        self.checkoutObject.userDataGuest.note = "Felicidades"
     }
     
     func pay() {
@@ -83,7 +78,7 @@ class PaymentViewController: UIViewController {
     
     @IBAction func didTapAcceptButton(_ sender: UIButton) {
         
-        /*guard let nameText = nameTextField.text, !nameText.isEmpty else {
+        guard let nameText = nameTextField.text, !nameText.isEmpty else {
             self.showMessage(NSLocalizedString("No has llenado el nombre", comment: ""),type: .error)
             return
         }
@@ -108,12 +103,11 @@ class PaymentViewController: UIViewController {
             return
         }
         
-        checkoutObject.userDataGuest?.name = nameText
-        checkoutObject.userDataGuest?.lastName = lastNameText
-        checkoutObject.userDataGuest?.email = emailText
-        checkoutObject.userDataGuest?.cellPhoneNumber = cellphoneText
-        checkoutObject.userDataGuest?.note = messageText*/
-        
+        checkoutObject.userDataGuest.name = nameText
+        checkoutObject.userDataGuest.lastName = lastNameText
+        checkoutObject.userDataGuest.email = emailText
+        checkoutObject.userDataGuest.cellPhoneNumber = cellphoneText
+        checkoutObject.userDataGuest.note = messageText
         
         pay()
     }
