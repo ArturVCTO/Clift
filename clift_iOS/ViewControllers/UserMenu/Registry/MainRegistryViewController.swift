@@ -31,8 +31,7 @@ class MainRegistryViewController: UIViewController{
     }
     
     private lazy var giftsViewController: GiftsViewController = {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "giftsVC") as! GiftsViewController
+        let viewController = GiftsViewController.make()
         viewController.mainRegistryVC = self
         viewController.containerView = self.containerView
         

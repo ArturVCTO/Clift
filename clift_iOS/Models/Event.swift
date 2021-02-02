@@ -74,6 +74,13 @@ class Event: Object, Mappable {
 		}
 		return formatter.string(from: safeDate)
 	}
+    
+    func dateWithOfWord() -> String {
+        let month = date.formateStringDate(format: "MMMM")
+        let year = date.formateStringDate(format: "yyyy")
+        let day = date.formateStringDate(format: "dd")
+        return day + " DE " + month + " DE " + year
+    }
 	
 	func stringVisibility() -> String {
 		switch visibility {

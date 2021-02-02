@@ -11,6 +11,10 @@ import UIKit
 import Kingfisher
 class GiftsViewController: UIViewController {
     
+    static func make() -> GiftsViewController {
+        let storyboard = UIStoryboard(name: "GiftsViewController", bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: "giftsVC") as! GiftsViewController
+    }
     
     @IBOutlet weak var giftsScrollView: UIScrollView!
     @IBOutlet weak var eventNameLabel: UILabel!
@@ -74,16 +78,16 @@ class GiftsViewController: UIViewController {
     
     func setupInitialView() {
         self.setupSegmentControl()
-        self.registrySegmentControl.selectedSegmentIndex = 0
-        self.registrySegmentControl.sendActions(for: UIControl.Event.valueChanged)
+        self.registrySegmentControl?.selectedSegmentIndex = 0
+        self.registrySegmentControl?.sendActions(for: UIControl.Event.valueChanged)
     }
     
     func setupSegmentControl() {
-        self.registrySegmentControl.removeAllSegments()
-        self.registrySegmentControl.insertSegment(withTitle: "Regalos", at: 0, animated: false)
-        self.registrySegmentControl.insertSegment(withTitle: "Invitados", at: 1, animated: false)
-        self.registrySegmentControl.insertSegment(withTitle: "Dinero", at: 2, animated: false)
-        self.registrySegmentControl.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
+        self.registrySegmentControl?.removeAllSegments()
+        self.registrySegmentControl?.insertSegment(withTitle: "Regalos", at: 0, animated: false)
+        self.registrySegmentControl?.insertSegment(withTitle: "Invitados", at: 1, animated: false)
+        self.registrySegmentControl?.insertSegment(withTitle: "Dinero", at: 2, animated: false)
+        self.registrySegmentControl?.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
     }
     
     @objc func selectionDidChange(_ sender: UISegmentedControl) {
@@ -91,7 +95,7 @@ class GiftsViewController: UIViewController {
     }
     
     func updateView() {
-        switch registrySegmentControl.selectedSegmentIndex {
+        switch registrySegmentControl?.selectedSegmentIndex {
         case 0:
             remove(asChildViewController: invitationsViewController)
             remove(asChildViewController: paymentsViewController)
@@ -144,12 +148,11 @@ class GiftsViewController: UIViewController {
     
     func loadEventInformation(event: Event) {
 		self.eventNameLabel.text = event.name
-        self.eventDateLabel.text = event.date
-
-		self.eventDateLabel.text = event.formattedDate()
+        self.eventDateLabel.text = event.dateWithOfWord().uppercased()
+        self.eventDateLabel.addCharactersSpacing(1)
         self.countDownCalendar(eventDate: event.date.stringToDate())
         
-		self.eventTypeAndVisibilityLabel.text = event.stringType() + " - " + event.stringVisibility()
+		self.eventTypeAndVisibilityLabel.text = event.stringType() + " · " + event.stringVisibility()
         
         if event.eventProgress.productsHaveBeenAdded == false {
             self.productsAddedProgressButton.isHidden = false

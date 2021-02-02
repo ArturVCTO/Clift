@@ -241,6 +241,7 @@
 		CEC006A4250A894100E54337 /* ActivityTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC006A3250A894100E54337 /* ActivityTabViewController.swift */; };
 		CEF53FB024F429B500D7C997 /* CollaboratorInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */; };
 		CEF53FB424F4461D00D7C997 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FB324F4461D00D7C997 /* OrderItem.swift */; };
+		F35E9CC225C8B4C200B54192 /* GiftsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */; };
 		FB69CC8CE945481E9839D8BF /* Pods_clift_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -496,6 +497,7 @@
 		CEF53FB324F4461D00D7C997 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.canary.xcconfig"; sourceTree = "<group>"; };
 		F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftsViewController.storyboard; sourceTree = "<group>"; };
 		FC9BC5CE8D99C231599E05C1 /* Pods-clift_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -748,6 +750,7 @@
 		465E09B223139433006776D1 /* UserMenu */ = {
 			isa = PBXGroup;
 			children = (
+				F35E9CC025C8B44D00B54192 /* Wedding Gift Table */,
 				462F9F35230F02540014CD9E /* UserSettings */,
 				465E09B523139455006776D1 /* Registry */,
 				465E09B423139449006776D1 /* Favorites */,
@@ -786,7 +789,6 @@
 				465167AC237A7CF200755077 /* Filters */,
 				465C82152362155B00DAC090 /* Add Products */,
 				46ABCB2C2318667C00857046 /* Cells */,
-				462EB0AE2314816D0084C3C7 /* GiftsViewController.swift */,
 				462EB0B0231484FF0084C3C7 /* PaymentsViewController.swift */,
 				462EB0B423148AC90084C3C7 /* MainRegistryViewController.swift */,
 				462EB0B823163F100084C3C7 /* EditRegistryViewController.swift */,
@@ -1104,6 +1106,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		F35E9CC025C8B44D00B54192 /* Wedding Gift Table */ = {
+			isa = PBXGroup;
+			children = (
+				462EB0AE2314816D0084C3C7 /* GiftsViewController.swift */,
+				F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */,
+			);
+			path = "Wedding Gift Table";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1231,6 +1242,7 @@
 				6173DE4E25BBA8C6000476CB /* CheckoutProductCell.xib in Resources */,
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
 				46B5F74623845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */,
+				F35E9CC225C8B4C200B54192 /* GiftsViewController.storyboard in Resources */,
 				0B1F54122554E493003A3F9F /* Session.storyboard in Resources */,
 				46B5F75223845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */,
 				46987DA022FA10C5007B2C78 /* OpenSans-Regular.ttf in Resources */,

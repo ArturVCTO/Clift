@@ -42,4 +42,19 @@ public extension String {
         return newDate!
     }
 
+    func formateStringDate(format: String) -> String {
+        let getFormatter = DateFormatter()
+        getFormatter.dateFormat = "yyyy-mm-dd"
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.locale = Locale(identifier: "es_MX")
+        
+        let date = getFormatter.date(from: self)
+        guard let safeDate = date else {
+            return ""
+        }
+        return formatter.string(from: safeDate)
+    }
+    
 }
