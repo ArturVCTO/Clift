@@ -147,13 +147,15 @@ class ProductDetailsViewController: UIViewController {
     }
     
     func addProductToCart(quantity: Int, product: EventProduct) {
-        sharedApiManager.addItemToCart(quantity: quantity, product: product) { (cartItem, result) in
+        sharedApiManager.addItemToCartGuest(quantity: quantity, product: product) { (cartItem, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: "Login Error"),type: .success)
                 } else if (response.isClientError()) {
                     self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
                 }
+            } else {
+                self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
             }
         }
     }
