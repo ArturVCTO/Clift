@@ -98,6 +98,7 @@ class GuestEventProductCell: UICollectionViewCell {
                     productImage.image = UIImage(named: "cashFund")
                     productNameLabel.text = pool.description
                     productPriceLabel.text = pool.note
+                    productPriceLabel.font = UIFont(name: "Mihan-Regular", size: 12.0)
                     quantityView.isHidden = true
                     productActionButton.setImage(UIImage(named: "whiteGift"), for: .normal)
                 }
