@@ -18,13 +18,19 @@ class GiftsViewController: UIViewController {
     
     @IBOutlet weak var giftsScrollView: UIScrollView!
     @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var eventDateLabel: UILabel!
+    @IBOutlet weak var eventDateLabel: UILabel! {
+        didSet {
+            eventDateLabel?.addCharactersSpacing(1)
+        }
+    }
+    
     @IBOutlet weak var eventTypeAndVisibilityLabel: UILabel!
     @IBOutlet weak var giftSummaryButton: customButton!
     @IBOutlet weak var monthCountDownLabel: UILabel!
     @IBOutlet weak var weekCountDownLabel: UILabel!
     @IBOutlet weak var dayCountDownLabel: UILabel!
-    @IBOutlet weak var productsAddedProgressButton: customButton!
+
+
     @IBOutlet weak var giftCountAnalyticsLabel: UILabel!
     @IBOutlet weak var giftUserActivityLabel: UILabel!
     @IBOutlet weak var giftUserActivityView: customView!
@@ -34,14 +40,22 @@ class GiftsViewController: UIViewController {
     var pageRefreshControl = UIRefreshControl()
     var containerView: UIView!
     var mainRegistryVC: MainRegistryViewController!
-    @IBOutlet weak var registrySegmentControl: UISegmentedControl!
+
+    @IBOutlet weak var mostRecentActivityDateLabel: UILabel!
+    @IBOutlet weak var mostRecentActivityLabel: UILabel!
+    @IBOutlet weak var giftsReceivedLabel: UILabel!
+    @IBOutlet weak var tableGiftButton: customButton! {
+        didSet {
+            tableGiftButton?.setTitle("VER MI LISTA DE REGALOS", for: .normal)
+            tableGiftButton.titleLabel?.addCharactersSpacing(1)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getEvents()
         self.pageRefreshControl.addTarget(self, action: #selector(refreshPage), for: .valueChanged)
         self.giftsScrollView.refreshControl = self.pageRefreshControl
-        self.setupInitialView()
         
         //HIDE ACTIVITY VIEW
         self.giftUserActivityView.isHidden = true
@@ -76,42 +90,7 @@ class GiftsViewController: UIViewController {
         return viewController
     }()
     
-    func setupInitialView() {
-        self.setupSegmentControl()
-        self.registrySegmentControl?.selectedSegmentIndex = 0
-        self.registrySegmentControl?.sendActions(for: UIControl.Event.valueChanged)
-    }
-    
-    func setupSegmentControl() {
-        self.registrySegmentControl?.removeAllSegments()
-        self.registrySegmentControl?.insertSegment(withTitle: "Regalos", at: 0, animated: false)
-        self.registrySegmentControl?.insertSegment(withTitle: "Invitados", at: 1, animated: false)
-        self.registrySegmentControl?.insertSegment(withTitle: "Dinero", at: 2, animated: false)
-        self.registrySegmentControl?.addTarget(self, action: #selector(selectionDidChange(_:)), for: .valueChanged)
-    }
-    
-    @objc func selectionDidChange(_ sender: UISegmentedControl) {
-        self.updateView()
-    }
-    
-    func updateView() {
-        switch registrySegmentControl?.selectedSegmentIndex {
-        case 0:
-            remove(asChildViewController: invitationsViewController)
-            remove(asChildViewController: paymentsViewController)
-        case 1:
-            remove(asChildViewController: self)
-            remove(asChildViewController: paymentsViewController)
-            add(asChildViewController: invitationsViewController)
-            addView(asChildViewController: invitationsViewController)
-        case 2:
-            remove(asChildViewController: self)
-            remove(asChildViewController: invitationsViewController)
-            add(asChildViewController: paymentsViewController)
-            addView(asChildViewController: paymentsViewController)
-        default:
-            break
-        }
+    @IBAction func tableGiftButtonPressed(_ sender: Any) {
     }
     
     private func addView(asChildViewController viewController: UIViewController) {
@@ -153,12 +132,6 @@ class GiftsViewController: UIViewController {
         self.countDownCalendar(eventDate: event.date.stringToDate())
         
 		self.eventTypeAndVisibilityLabel.text = event.stringType() + " · " + event.stringVisibility()
-        
-        if event.eventProgress.productsHaveBeenAdded == false {
-            self.productsAddedProgressButton.isHidden = false
-        } else {
-            self.productsAddedProgressButton.isHidden = true
-        }
         
         self.giftCountAnalyticsLabel.text = "\(event.eventAnalytics.giftCount)"
         
