@@ -202,6 +202,8 @@
 		6127D94925B3CF3D00C8250A /* CheckoutEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127D94825B3CF3D00C8250A /* CheckoutEnvelope.swift */; };
 		6127D96E25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */; };
 		613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */; };
+		615C982925CE0E39002DB95E /* UserEventProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615C982725CE0E39002DB95E /* UserEventProductCell.swift */; };
+		615C982A25CE0E39002DB95E /* UserEventProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615C982825CE0E39002DB95E /* UserEventProductCell.xib */; };
 		6169708625A7DE85009F6EB9 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169708525A7DE85009F6EB9 /* UIViewExtension.swift */; };
 		6172B76425C0FDBE00363125 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172B76325C0FDBE00363125 /* PaymentViewController.swift */; };
 		6173DE4E25BBA8C6000476CB /* CheckoutProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6173DE4C25BBA8C6000476CB /* CheckoutProductCell.xib */; };
@@ -462,6 +464,8 @@
 		6127D94825B3CF3D00C8250A /* CheckoutEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutEnvelope.swift; sourceTree = "<group>"; };
 		6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUserDataEnvelope.swift; sourceTree = "<group>"; };
 		613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventProductCell.swift; sourceTree = "<group>"; };
+		615C982825CE0E39002DB95E /* UserEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserEventProductCell.xib; sourceTree = "<group>"; };
 		6169708525A7DE85009F6EB9 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		6172B76325C0FDBE00363125 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		6173DE4C25BBA8C6000476CB /* CheckoutProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckoutProductCell.xib; sourceTree = "<group>"; };
@@ -1041,6 +1045,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		615C982625CE0DE9002DB95E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				615C982725CE0E39002DB95E /* UserEventProductCell.swift */,
+				615C982825CE0E39002DB95E /* UserEventProductCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		6173DE4A25BBA874000476CB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1111,6 +1124,7 @@
 		F35E9CC025C8B44D00B54192 /* Wedding Gift Table */ = {
 			isa = PBXGroup;
 			children = (
+				615C982625CE0DE9002DB95E /* Cells */,
 				462EB0AE2314816D0084C3C7 /* GiftsViewController.swift */,
 				F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */,
 				6120F4A125CB7430005996E6 /* UserGiftTableViewController.swift */,
@@ -1246,6 +1260,7 @@
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
 				46B5F74623845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */,
 				F35E9CC225C8B4C200B54192 /* GiftsViewController.storyboard in Resources */,
+				615C982A25CE0E39002DB95E /* UserEventProductCell.xib in Resources */,
 				0B1F54122554E493003A3F9F /* Session.storyboard in Resources */,
 				46B5F75223845BB600AFF425 /* Tinos-RegularItalic 2.ttf in Resources */,
 				46987DA022FA10C5007B2C78 /* OpenSans-Regular.ttf in Resources */,
@@ -1548,6 +1563,7 @@
 				46403A8D23E0A054007866B8 /* GiftShippingCell.swift in Sources */,
 				46029C5823281270008A8EAE /* RangeSlider.swift in Sources */,
 				46D3776B2391D8A1004BE93E /* DiscardChangesViewDelegate.swift in Sources */,
+				615C982925CE0E39002DB95E /* UserEventProductCell.swift in Sources */,
 				46EC9D9E232BF33B00950139 /* ProductsCollectionViewLayout.swift in Sources */,
 				465167B2237A7D7500755077 /* FilterTableViewCell.swift in Sources */,
 				462EB0B923163F100084C3C7 /* EditRegistryViewController.swift in Sources */,
