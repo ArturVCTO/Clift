@@ -95,6 +95,16 @@ class GiftsViewController: UIViewController {
     }()
     
     @IBAction func tableGiftButtonPressed(_ sender: Any) {
+        
+        if #available(iOS 13.0, *) {
+            let vc = UIStoryboard.init(name: "GiftsViewController", bundle: nil).instantiateViewController(identifier: "UserGiftTableVC") as! UserGiftTableViewController
+            vc.currentEvent = currentEvent
+            self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = UIStoryboard.init(name: "GiftsViewController", bundle: nil).instantiateViewController(withIdentifier: "UserGiftTableVC") as! UserGiftTableViewController
+            vc.currentEvent = currentEvent
+            self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     private func addView(asChildViewController viewController: UIViewController) {
@@ -185,22 +195,13 @@ class GiftsViewController: UIViewController {
         }
     
     @IBAction func tapEventRegistryButton(_ sender: Any) {
+        
         if #available(iOS 13.0, *) {
-            let vc = UIStoryboard.init(name: "GiftsViewController", bundle: nil).instantiateViewController(identifier: "UserGiftTableVC") as! UserGiftTableViewController
-            vc.currentEvent = currentEvent
-            self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            let vc = UIStoryboard.init(name: "GiftsViewController", bundle: nil).instantiateViewController(withIdentifier: "UserGiftTableVC") as! UserGiftTableViewController
-            vc.currentEvent = currentEvent
-            self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
-        }
-        /*if #available(iOS 13.0, *) {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "productsRegistryVC") as! ProductsRegistryViewController
             self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "productsRegistryVC") as! ProductsRegistryViewController
             self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
-        }*/
+        }
     }
-    
 }
