@@ -1,22 +1,15 @@
 //
-//  EventGiftListViewController.swift
+//  UserGiftTableViewController.swift
 //  clift_iOS
 //
-//  Created by Juan Pablo Ramos on 29/11/20.
-//  Copyright © 2020 Clift. All rights reserved.
+//  Created by Fernando Limón Flores on 03/02/21.
+//  Copyright © 2021 Clift. All rights reserved.
 //
 
 import UIKit
 import SideMenu
 
-enum sortKeys: String {
-    case nameAscending = "sort_name.asc"
-    case nameDescending = "sort_name.desc"
-    case priceAscending = "sort_price.asc"
-    case priceDescending = "sort_price.desc"
-}
-
-class EventGiftListViewController: UIViewController {
+class UserGiftTableViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var menuContainerWidth: NSLayoutConstraint!
@@ -44,7 +37,7 @@ class EventGiftListViewController: UIViewController {
             productsCollectionView.dataSource = self
         }
     }
-	
+    
     //Pages Menu
     @IBOutlet weak var backMenuContainerWidth: NSLayoutConstraint!
     @IBOutlet weak var buttonContainerWidth: NSLayoutConstraint!
@@ -66,13 +59,15 @@ class EventGiftListViewController: UIViewController {
     @IBOutlet weak var thirdButton: UIButton!
     
     
-	var currentEvent = Event()
+    var currentEvent = Event()
     var eventRegistries: [EventProduct]! = []
     var eventPools: [EventPool]! = []
     var orderByViewSizeFlag = true
     var filtersDic: [String: Any] = ["shop":"","category":"","price":""]
     var currentOrder: sortKeys = .nameAscending
     var isSearchBarHIdden = true
+    var availableSelected = ""
+    var giftedSelected = ""
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -84,36 +79,28 @@ class EventGiftListViewController: UIViewController {
     
     var lastButtonPressed: UIButton?
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         productsCollectionView.collectionViewLayout = layout
         searchBar.delegate = self
+
         getPoolsAndRegistries()
         setNavBar()
         registerCells()
         setPaginationMenu()
         setup(event: currentEvent)
         selectButton(button: firstMenuButton)
-	}
+    }
         
     func setNavBar() {
         
-        navigationItem.title = "EVENTO"
+        navigationItem.title = "MESA DE REGALO"
         
-        let cartImage = UIImage(named: "cart")
         let searchImage = UIImage(named: "searchicon")
-        let cartButton   = UIBarButtonItem(image: cartImage,  style: .plain, target: self, action: #selector(didTapCartButton(sender:)))
         let searchButton = UIBarButtonItem(image: searchImage,  style: .plain, target: self, action: #selector(didTapSearchButton(sender:)))
-        navigationItem.rightBarButtonItems = [cartButton, searchButton]
+        navigationItem.rightBarButtonItems = [searchButton]
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "", style: .plain, target: nil, action: nil)
-    }
-    
-    @objc func didTapCartButton(sender: AnyObject){
-        let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
-        vc.paymentType = .userGuest
-        vc.currentEvent = currentEvent
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     @objc func didTapSearchButton(sender: AnyObject){
@@ -160,34 +147,6 @@ class EventGiftListViewController: UIViewController {
         collectionViewHeight.constant = CGFloat(productsCollectionView.collectionViewLayout.collectionViewContentSize.height)
     }
     
-    func getRegistries(query: String = ""){
-        self.presentLoader()
-        eventRegistries.removeAll()
-        reloadCollectionView()
-        filtersDic["page"] = actualPage
-        sharedApiManager.getRegistriesGuest(event: currentEvent, filters:filtersDic, orderBy: currentOrder.rawValue, query: query){ (eventProducts, result) in
-                if let response = result{
-                    if response.isSuccess() {
-                        self.eventRegistries = eventProducts
-                        guard let json = try? JSONSerialization.jsonObject(with: response.data,
-                                                                           options: []) as? [String: Any],
-                              let meta = json["meta"] as? [String: Any],
-                              let pagination = Pagination(JSON: meta) else {
-                            return
-                        }
-                        self.actualPage = pagination.currentPage
-                        self.numberOfPages = pagination.totalPages
-                        self.reloadCollectionView()
-                    }
-                }
-            self.setPaginationMenu()
-            self.setButtonValues()
-            self.addOrDeleteMenuButtonsDependingOnNumberOfPages()
-            self.lastButtonPressed = nil
-            self.dismissLoader()
-        }
-    }
-    
     func getPoolsAndRegistries(){
         
         sharedApiManager.getEventPools(event: currentEvent) {(pools, result) in
@@ -197,19 +156,39 @@ class EventGiftListViewController: UIViewController {
                     self.eventPools = pools
                 }
             }
-            self.getRegistries()
+            self.getEventProducts()
         }
     }
     
-    func addProductToCart(quantity: Int, product: Product) {
-        sharedApiManager.addItemToCart(quantity: quantity, product: product) { (cartItem, result) in
+    func getEventProducts(available: String = "", gifted: String = "") {
+        
+        self.presentLoader()
+        eventRegistries.removeAll()
+        reloadCollectionView()
+        filtersDic["page"] = actualPage
+        filtersDic["sort_by"] = currentOrder.rawValue
+        
+        sharedApiManager.getEventProducts(event: currentEvent, available: available, gifted: gifted, filters: filtersDic) { (eventProducts, result) in
             if let response = result {
                 if (response.isSuccess()) {
-                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: ""),type: .success)
-                } else if (response.isClientError()) {
-                    self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
+                    self.eventRegistries = eventProducts!
+                    
+                    guard let json = try? JSONSerialization.jsonObject(with: response.data,
+                                                                       options: []) as? [String: Any],
+                          let meta = json["meta"] as? [String: Any],
+                          let pagination = Pagination(JSON: meta) else {
+                        return
+                    }
+                    self.actualPage = pagination.currentPage
+                    self.numberOfPages = pagination.totalPages
+                    self.reloadCollectionView()
                 }
             }
+            self.setPaginationMenu()
+            self.setButtonValues()
+            self.addOrDeleteMenuButtonsDependingOnNumberOfPages()
+            self.lastButtonPressed = nil
+            self.dismissLoader()
         }
     }
     
@@ -234,12 +213,12 @@ class EventGiftListViewController: UIViewController {
     
     @IBAction func leftButtonPressed(_ sender: Any) {
         actualPage = 1
-        getRegistries()
+        getEventProducts()
     }
     
     @IBAction func rightButtonPressed(_ sender: Any) {
         actualPage = numberOfPages
-        getRegistries()
+        getEventProducts()
     }
     
     @IBAction func firstButtonPressed(_ sender: Any) {
@@ -247,7 +226,7 @@ class EventGiftListViewController: UIViewController {
         lastButtonPressed = firstMenuButton
         setButtonValues()
         addOrDeleteMenuButtonsDependingOnNumberOfPages()
-        getRegistries()
+        getEventProducts()
     }
     
     @IBAction func secondButtonPressed(_ sender: Any) {
@@ -255,7 +234,7 @@ class EventGiftListViewController: UIViewController {
         lastButtonPressed = secondButton
         setButtonValues()
         addOrDeleteMenuButtonsDependingOnNumberOfPages()
-        getRegistries()
+        getEventProducts()
     }
     
     @IBAction func thirdButtonPressed(_ sender: Any) {
@@ -263,13 +242,13 @@ class EventGiftListViewController: UIViewController {
         lastButtonPressed = thirdButton
         setButtonValues()
         addOrDeleteMenuButtonsDependingOnNumberOfPages()
-        getRegistries()
+        getEventProducts()
     }
     
 }
 
 // MARK: Extension OrderBy
-extension EventGiftListViewController {
+extension UserGiftTableViewController {
     
     @IBAction func didTapOrderByButton(_ sender: UITapGestureRecognizer) {
         
@@ -307,36 +286,36 @@ extension EventGiftListViewController {
         eventRegistries.removeAll()
         reloadCollectionView()
         currentOrder = .priceAscending
-        getRegistries()
+        getEventProducts()
     }
     
     @IBAction func didTapOrderByHighPrice(_ sender: UIButton) {
         eventRegistries.removeAll()
         reloadCollectionView()
         currentOrder = .priceDescending
-        getRegistries()
+        getEventProducts()
     }
     
     @IBAction func didTapOrderByAZ(_ sender: UIButton) {
         eventRegistries.removeAll()
         reloadCollectionView()
         currentOrder = .nameAscending
-        getRegistries()
+        getEventProducts()
     }
     
     @IBAction func didTapOrderByZA(_ sender: UIButton) {
         eventRegistries.removeAll()
         reloadCollectionView()
         currentOrder = .nameDescending
-        getRegistries()
+        getEventProducts()
     }
 }
 
 // MARK: Extension FilterBy
-extension EventGiftListViewController: SideFilterSelectionDelegate {
+extension UserGiftTableViewController: SideFilterSelectionDelegate {
     func didTapCleanFilters() {
         filtersDic["category"] = ""
-        filtersDic["price"] = ""
+        filtersDic["price_range"] = ""
         filtersDic["shop"] = ""
     }
     
@@ -345,7 +324,7 @@ extension EventGiftListViewController: SideFilterSelectionDelegate {
     }
     
     func didTapPriceFilter(priceQuery: String) {
-        filtersDic["price"] = priceQuery
+        filtersDic["price_range"] = priceQuery
     }
     
     func didTapShopFilter(shopId: String) {
@@ -354,7 +333,7 @@ extension EventGiftListViewController: SideFilterSelectionDelegate {
 }
 
 // MARK: Extension Collection View Delegate and Data Source
-extension EventGiftListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -411,26 +390,26 @@ extension EventGiftListViewController: UICollectionViewDelegate, UICollectionVie
     
 }
 //MARK:- Extension ProductCellDelegate
-extension EventGiftListViewController: ProductCellDelegate {
+extension UserGiftTableViewController: ProductCellDelegate {
     func didTapCashFundPool(eventPool: EventPool) {
         goToEnvelopeInformation(eventPool: eventPool)
     }
     
     
     func didTapAddProductToCart(quantity: Int, product: Product) {
-        addProductToCart(quantity: quantity, product: product)
+        print("Este delegate se borra")
     }
 }
 
-extension EventGiftListViewController: UISideMenuNavigationControllerDelegate {
+extension UserGiftTableViewController: UISideMenuNavigationControllerDelegate {
 
         func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
-            getRegistries()
+            getEventProducts()
         }
 }
 
-//Pagination Menu
-extension EventGiftListViewController {
+//MARK:- Extension Pagination Menu
+extension UserGiftTableViewController {
     
     private func setButtonValues() {
         let remainingPages = numberOfPages - actualPage
@@ -572,14 +551,14 @@ extension EventGiftListViewController {
     
 }
 
-extension EventGiftListViewController: UISearchBarDelegate {
+extension UserGiftTableViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         if !searchBar.isHidden {
             searchBar.endEditing(true)
             if let query = searchBar.text {
-                getRegistries(query: query)
+                //getEventProducts(query: query)
             }
         }
         searchBar.text = ""

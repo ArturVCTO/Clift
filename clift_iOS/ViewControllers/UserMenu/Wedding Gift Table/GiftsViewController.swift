@@ -34,6 +34,7 @@ class GiftsViewController: UIViewController {
     var pageRefreshControl = UIRefreshControl()
     var containerView: UIView!
     var mainRegistryVC: MainRegistryViewController!
+    var currentEvent: Event!
     @IBOutlet weak var registrySegmentControl: UISegmentedControl!
     
     override func viewDidLoad() {
@@ -42,6 +43,8 @@ class GiftsViewController: UIViewController {
         self.pageRefreshControl.addTarget(self, action: #selector(refreshPage), for: .valueChanged)
         self.giftsScrollView.refreshControl = self.pageRefreshControl
         self.setupInitialView()
+        self.mainRegistryVC.navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "", style: .plain, target: nil, action: nil)
         
         //HIDE ACTIVITY VIEW
         self.giftUserActivityView.isHidden = true
@@ -189,6 +192,7 @@ class GiftsViewController: UIViewController {
         sharedApiManager.showEvent(id: id) {(event, result) in
             if let response = result {
                 if (response.isSuccess()) {
+                    self.currentEvent = event
                     self.loadEventInformation(event: event!)
                 }
             }
@@ -208,12 +212,21 @@ class GiftsViewController: UIViewController {
     
     @IBAction func tapEventRegistryButton(_ sender: Any) {
         if #available(iOS 13.0, *) {
+            let vc = UIStoryboard.init(name: "GiftsViewController", bundle: nil).instantiateViewController(identifier: "UserGiftTableVC") as! UserGiftTableViewController
+            vc.currentEvent = currentEvent
+            self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc = UIStoryboard.init(name: "GiftsViewController", bundle: nil).instantiateViewController(withIdentifier: "UserGiftTableVC") as! UserGiftTableViewController
+            vc.currentEvent = currentEvent
+            self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
+        }
+        /*if #available(iOS 13.0, *) {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "productsRegistryVC") as! ProductsRegistryViewController
             self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "productsRegistryVC") as! ProductsRegistryViewController
             self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
-        }
+        }*/
     }
     
 }

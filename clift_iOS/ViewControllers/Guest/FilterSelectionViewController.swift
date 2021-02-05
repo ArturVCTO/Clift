@@ -15,6 +15,13 @@ enum filterSreenShown {
     case filterByShop
 }
 
+protocol SideFilterSelectionDelegate {
+    func didTapCleanFilters()
+    func didTapCategoryFilter(categoryId: String)
+    func didTapPriceFilter(priceQuery: String)
+    func didTapShopFilter(shopId: String)
+}
+
 class FilterSelectionViewController: UIViewController {
     
     @IBOutlet weak var tableViewContainer: UIView!
@@ -30,7 +37,7 @@ class FilterSelectionViewController: UIViewController {
         }
     }
     
-    var eventGiftListVC: EventGiftListViewController!
+    var sideFilterSelectionDelegate: SideFilterSelectionDelegate!
     var categories: [Category]! = []
     var shops: [Shop] = []
     let prices: [String] = ["Menos de $1000","$1000 - $2500","$2500 - $4000","$4000 - $6500","$6500 - $8000","$8000 - $10000","Más de $10000"]
@@ -79,9 +86,7 @@ class FilterSelectionViewController: UIViewController {
     }
 
     @IBAction func cleanFilterButtonTapped(_ sender: UIButton) {
-        eventGiftListVC.filtersDic["category"] = ""
-        eventGiftListVC.filtersDic["price"] = ""
-        eventGiftListVC.filtersDic["shop"] = ""
+        sideFilterSelectionDelegate.didTapCleanFilters()
         dismiss(animated: true, completion: nil)
     }
     
@@ -163,11 +168,13 @@ extension FilterSelectionViewController: UITableViewDelegate, UITableViewDataSou
         
         switch filterScreenShown {
         case .filterByCategory:
-            eventGiftListVC.filtersDic["category"] = categories[indexPath.row].id
+            sideFilterSelectionDelegate.didTapCategoryFilter(categoryId: categories[indexPath.row].id)
         case .filterByPrice:
-            eventGiftListVC.filtersDic["price"] = pricesDic[indexPath.row]
+            if let priceQuery = pricesDic[indexPath.row] {
+                sideFilterSelectionDelegate.didTapPriceFilter(priceQuery: priceQuery)
+            }
         case .filterByShop:
-            eventGiftListVC.filtersDic["shop"] = shops[indexPath.row].id
+            sideFilterSelectionDelegate.didTapShopFilter(shopId: shops[indexPath.row].id)
         default:
             break
         }
