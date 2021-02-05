@@ -58,7 +58,6 @@ class GiftsViewController: UIViewController {
         self.getEvents()
         self.pageRefreshControl.addTarget(self, action: #selector(refreshPage), for: .valueChanged)
         self.giftsScrollView.refreshControl = self.pageRefreshControl
-        self.setupInitialView()
         self.mainRegistryVC.navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "", style: .plain, target: nil, action: nil)
         
