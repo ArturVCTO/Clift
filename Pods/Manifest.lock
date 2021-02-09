@@ -57,6 +57,9 @@ PODS:
     - Realm (= 3.17.3)
   - Result (3.2.4)
   - RxSwift (4.5.0)
+  - SDWebImage (5.10.4):
+    - SDWebImage/Core (= 5.10.4)
+  - SDWebImage/Core (5.10.4)
   - SideMenu (6.1.4)
   - Stripe (20.0.0)
   - SwiftSoup (2.2.1)
@@ -77,6 +80,7 @@ DEPENDENCIES:
   - Moya/RxSwift (~> 11.0)
   - "ObjectMapper+Realm"
   - RealmSwift
+  - SDWebImage (~> 5.0)
   - SideMenu
   - Stripe (~> 20.0)
   - SwiftSoup
@@ -106,6 +110,7 @@ SPEC REPOS:
     - RealmSwift
     - Result
     - RxSwift
+    - SDWebImage
     - SideMenu
     - Stripe
     - SwiftSoup
@@ -134,12 +139,13 @@ SPEC CHECKSUMS:
   RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SideMenu: 7e7f16f229c8d160830e5449308f6562821d762d
   Stripe: 339e8c50d3a27dcbe9a4f35b98c260fb9715d962
   SwiftSoup: a91d3c96ecb6f8f13005552ef60f9075aae4a7f3
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 1a6bcf95b351f7afa1823085da623fd61696dfdc
+PODFILE CHECKSUM: 93e1d7db038b3da8e5303ba862ec14e379d3f042
 
 COCOAPODS: 1.10.0

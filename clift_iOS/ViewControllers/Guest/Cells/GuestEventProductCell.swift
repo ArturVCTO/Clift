@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol ProductCellDelegate {
     func didTapAddProductToCart(quantity:Int, product: Product)
@@ -71,11 +72,9 @@ class GuestEventProductCell: UICollectionViewCell {
                 
                 if let product = product {
                     currentProduct = product.product
-                
                     if let imageURL = URL(string:"\(product.product.imageUrl)") {
-                        self.productImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
+                        self.productImage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "cliftplaceholder"))
                     }
-                
                     productNameLabel.text = product.product.name
                     productPriceLabel.text = "$ \(product.product.price) MXN"
                     productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
@@ -85,7 +84,7 @@ class GuestEventProductCell: UICollectionViewCell {
                     currentProduct = product.product
                 
                     if let imageURL = URL(string:"\(product.externalProduct.imageUrl)") {
-                        self.productImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
+                        self.productImage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "cliftplaceholder"))
                     }
                 
                     productNameLabel.text = product.externalProduct.name

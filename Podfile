@@ -12,7 +12,7 @@ target 'clift_iOS' do
   use_frameworks!
 
   # Pods for clift_iOS
-  
+
   pod 'RealmSwift'
   pod 'Moya/RxSwift', '~> 11.0'
   pod 'ObjectMapper+Realm'
@@ -29,6 +29,7 @@ target 'clift_iOS' do
   pod 'GoogleSignIn'
   pod 'Stripe', '~> 20.0'
   pod 'IQKeyboardManagerSwift'
+  pod 'SDWebImage', '~> 5.0'
 
   # Pods for carouselImages
   pod 'moa', '~> 12.0'
