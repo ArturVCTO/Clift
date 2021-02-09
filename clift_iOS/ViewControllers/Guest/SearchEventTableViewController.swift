@@ -30,12 +30,20 @@ class SearchEventTableViewController: UITableViewController, UISearchBarDelegate
         view.addGestureRecognizer(tap)
     }
     
+    private func deleteTemporarySession() {
+        let realm = try? Realm()
+        try? realm?.write {
+            realm?.deleteAll()
+        }
+    }
+    
     @IBAction func hideKeyboardOnClickOutside(){
         view.endEditing(true)
     }
 	
     // MARK: - Table view data source
     @IBAction func BackButtonPressed(_ sender: UIBarButtonItem) {
+        deleteTemporarySession()
         view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
 	
