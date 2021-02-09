@@ -16,6 +16,9 @@ class GiftsViewController: UIViewController {
         return storyboard.instantiateViewController(withIdentifier: "giftsVC") as! GiftsViewController
     }
     
+    
+    @IBOutlet weak var sectionsCollectionViewHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var giftsScrollView: UIScrollView!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel! {
@@ -23,15 +26,14 @@ class GiftsViewController: UIViewController {
             eventDateLabel?.addCharactersSpacing(1)
         }
     }
-    @IBOutlet weak var sectionCollectionView: UICollectionView! {
+    @IBOutlet weak var sectionsCollectionView: UICollectionView! {
         didSet {
-            sectionCollectionView?.dataSource = self
-            sectionCollectionView?.delegate = self
+            sectionsCollectionView?.dataSource = self
+            sectionsCollectionView?.delegate = self
         }
     }
     
     @IBOutlet weak var eventTypeAndVisibilityLabel: UILabel!
-    @IBOutlet weak var giftSummaryButton: customButton!
     @IBOutlet weak var monthCountDownLabel: UILabel!
     @IBOutlet weak var weekCountDownLabel: UILabel!
     @IBOutlet weak var dayCountDownLabel: UILabel!
@@ -53,14 +55,17 @@ class GiftsViewController: UIViewController {
     
     fileprivate var sectionsCollectionViewDataSource = WeddingProfileProducts.products
     
+    private lazy var productsCollectionViewCellSize: CGFloat = {
+        let padding: CGFloat =  24
+        return ((sectionsCollectionView.frame.size.width) - padding) / 3
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getEvents()
         self.pageRefreshControl.addTarget(self, action: #selector(refreshPage), for: .valueChanged)
         self.giftsScrollView.refreshControl = self.pageRefreshControl
-        
-        //HIDE ACTIVITY VIEW
-        self.giftSummaryButton.isHidden = true
+        setCollectionViewHeight()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +76,11 @@ class GiftsViewController: UIViewController {
     @objc func refreshPage() {
         self.getEvents()
         self.pageRefreshControl.endRefreshing()
+    }
+    
+    private func setCollectionViewHeight() {
+        sectionsCollectionViewHeightConstraint.constant = productsCollectionViewCellSize * 3
+        self.view.layoutIfNeeded()
     }
     
     private lazy var invitationsViewController: InvitationsViewController = {
@@ -203,11 +213,8 @@ class GiftsViewController: UIViewController {
 extension GiftsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let padding: CGFloat =  24
-        let collectionViewSize = ((collectionView.frame.size.width) - padding) / 3
-        
-        return CGSize(width: collectionViewSize,
-                      height: collectionViewSize)
+        return CGSize(width: productsCollectionViewCellSize,
+                      height: productsCollectionViewCellSize)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
