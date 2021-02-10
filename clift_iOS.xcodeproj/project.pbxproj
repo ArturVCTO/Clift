@@ -466,8 +466,8 @@
 		6127D94825B3CF3D00C8250A /* CheckoutEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutEnvelope.swift; sourceTree = "<group>"; };
 		6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUserDataEnvelope.swift; sourceTree = "<group>"; };
 		613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventProductCell.swift; sourceTree = "<group>"; };
-		615C982825CE0E39002DB95E /* UserEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserEventProductCell.xib; sourceTree = "<group>"; };
+		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserEventProductCell.swift; path = "../View Controllers/Cells/UserEventProductCell.swift"; sourceTree = "<group>"; };
+		615C982825CE0E39002DB95E /* UserEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = UserEventProductCell.xib; path = "../View Controllers/Cells/UserEventProductCell.xib"; sourceTree = "<group>"; };
 		6169708525A7DE85009F6EB9 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		6172B76325C0FDBE00363125 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		6173DE4C25BBA8C6000476CB /* CheckoutProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckoutProductCell.xib; sourceTree = "<group>"; };
@@ -1055,7 +1055,8 @@
 				615C982725CE0E39002DB95E /* UserEventProductCell.swift */,
 				615C982825CE0E39002DB95E /* UserEventProductCell.xib */,
 			);
-			path = Cells;
+			name = Cells;
+			path = ../Cells;
 			sourceTree = "<group>";
 		};
 		6173DE4A25BBA874000476CB /* Cells */ = {
@@ -1136,10 +1137,6 @@
 		F35E9CC025C8B44D00B54192 /* Wedding Gift Table */ = {
 			isa = PBXGroup;
 			children = (
-				615C982625CE0DE9002DB95E /* Cells */,
-				462EB0AE2314816D0084C3C7 /* GiftsViewController.swift */,
-				F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */,
-				6120F4A125CB7430005996E6 /* UserGiftTableViewController.swift */,
 				F38DD69B25D0C4D900F7C8D1 /* View Controllers */,
 				F38DD69A25D0C4CF00F7C8D1 /* Models */,
 				F32A8D9C25D08A2C00BE01AE /* section view */,
@@ -1158,8 +1155,10 @@
 		F38DD69B25D0C4D900F7C8D1 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */,
+				615C982625CE0DE9002DB95E /* Cells */,
 				462EB0AE2314816D0084C3C7 /* GiftsViewController.swift */,
+				F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */,
+				6120F4A125CB7430005996E6 /* UserGiftTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
