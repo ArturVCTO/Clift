@@ -134,7 +134,7 @@ class UserGiftTableViewController: UIViewController {
     }
     
     private func registerCells() {
-        productsCollectionView.register(UINib(nibName: "GuestEventProductCell", bundle: nil), forCellWithReuseIdentifier: "GuestEventProductCell")
+        productsCollectionView.register(UINib(nibName: "UserEventProductCell", bundle: nil), forCellWithReuseIdentifier: "UserEventProductCell")
     }
     
     var layout: UICollectionViewFlowLayout = {
@@ -201,14 +201,6 @@ class UserGiftTableViewController: UIViewController {
         menu.presentationStyle = .menuSlideIn
         menu.menuWidth = UIScreen.main.bounds.size.width * 0.8
         present(menu,animated: true, completion: nil)
-    }
-    
-    func goToEnvelopeInformation(eventPool: EventPool) {
-        let envelopeInfoVC = UIStoryboard(name: "EnvelopeFlow", bundle: nil).instantiateViewController(withIdentifier: "EnvelopeInfoVC") as! EnvelopeInfoViewController
-        envelopeInfoVC.currentEventPool = eventPool
-        envelopeInfoVC.currentEvent = currentEvent
-        envelopeInfoVC.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(envelopeInfoVC, animated: true)
     }
     
     @IBAction func leftButtonPressed(_ sender: Any) {
@@ -345,9 +337,9 @@ extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if let cell = productsCollectionView.dequeueReusableCell(withReuseIdentifier: "GuestEventProductCell", for: indexPath) as? GuestEventProductCell {
+        if let cell = productsCollectionView.dequeueReusableCell(withReuseIdentifier: "UserEventProductCell", for: indexPath) as? UserEventProductCell {
             
-            cell.productCellDelegate = self
+            cell.userProductCellDelegate = self
             //Set Pool Cells and Product Cells
             if eventPools.count > indexPath.row {
                 cell.cellType = .EventPool
@@ -370,7 +362,7 @@ extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if eventPools.count > indexPath.row {
-            goToEnvelopeInformation(eventPool: eventPools[indexPath.row])
+            //goToEnvelopeInformation(eventPool: eventPools[indexPath.row])
         } else {
             let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
             productDetailsVC.currentEventProduct = eventRegistries[indexPath.row - eventPools.count]
@@ -390,14 +382,32 @@ extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionVie
     
 }
 //MARK:- Extension ProductCellDelegate
-extension UserGiftTableViewController: ProductCellDelegate {
-    func didTapCashFundPool(eventPool: EventPool) {
-        goToEnvelopeInformation(eventPool: eventPool)
+extension UserGiftTableViewController: UserProductCellDelegate {
+    func didTapStartProduct() {
+        print("estrella")
     }
     
-    
-    func didTapAddProductToCart(quantity: Int, product: Product) {
-        print("Este delegate se borra")
+    func didTapMoreOptions() {
+        
+        /*let sheet = UIAlertController(title: "Acciones", message: nil, preferredStyle: .actionSheet)
+        var setAsImportant: UIAlertAction
+        
+        if registrySegment.selectedSegmentIndex == 2{
+            if (self.eventPools[self.selectedIndexPath.row].isImportant){
+                setAsImportant = UIAlertAction(title: "Desmarcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
+            }
+            else{
+                setAsImportant = UIAlertAction(title: "Marcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
+            }
+        }
+        else{
+            if (self.eventProducts[self.selectedIndexPath.row].isImportant){
+                setAsImportant = UIAlertAction(title: "Desmarcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
+            }
+            else{
+                setAsImportant = UIAlertAction(title: "Marcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
+            }
+        }*/
     }
 }
 
