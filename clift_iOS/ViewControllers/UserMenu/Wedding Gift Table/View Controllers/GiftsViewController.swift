@@ -43,18 +43,22 @@ class GiftsViewController: UIViewController {
     var containerView: UIView!
     var mainRegistryVC: MainRegistryViewController!
     var currentEvent: Event!
-    @IBOutlet weak var registrySegmentControl: UISegmentedControl!
-
     @IBOutlet weak var mostRecentActivityDateLabel: UILabel!
     @IBOutlet weak var mostRecentActivityLabel: UILabel!
     @IBOutlet weak var giftsReceivedLabel: UILabel!
     @IBOutlet weak var tableGiftButton: customButton! {
         didSet {
-            tableGiftButton?.setTitle("VER MI LISTA DE REGALOS", for: .normal)
+            tableGiftButton?.setTitle("VER MI MESA DE REGALOS", for: .normal)
             tableGiftButton.titleLabel?.addCharactersSpacing(1)
         }
     }
     
+    @IBOutlet weak var giftSummaryButton: customButton! {
+        didSet {
+            giftSummaryButton?.setTitle("RESUMEN DE REGALOS", for: .normal)
+            giftSummaryButton.titleLabel?.addCharactersSpacing(1)
+        }
+    }
     fileprivate var sectionsCollectionViewDataSource = WeddingProfileProducts.products
     
     private lazy var productsCollectionViewCellSize: CGFloat = {
