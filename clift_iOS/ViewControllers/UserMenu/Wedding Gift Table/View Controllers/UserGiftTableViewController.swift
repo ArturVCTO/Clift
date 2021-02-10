@@ -13,11 +13,6 @@ class UserGiftTableViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var menuContainerWidth: NSLayoutConstraint!
-    @IBOutlet weak var backgroundImageView: customImageView!
-    @IBOutlet weak var eventImageView: customImageView!
-    @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var filerView: UIView!
     @IBOutlet weak var orderByView: UIView!
     @IBOutlet weak var orderByInnerView: UIView!
@@ -114,22 +109,6 @@ class UserGiftTableViewController: UIViewController {
     }
     
     func setup(event: Event) {
-        
-        if let coverURL = URL(string: event.coverImageUrl) {
-            backgroundImageView.sd_setImage(with: coverURL,
-                                            placeholderImage: UIImage(named: "cliftplaceholder"))
-        }
-        
-        if let eventURL = URL(string: event.eventImageUrl) {
-            backgroundImageView.sd_setImage(with: eventURL,
-                                            placeholderImage: UIImage(named: "profilePlaceHolder"))
-        }
-        
-        eventNameLabel.text = event.name
-        dateLabel.text = event.formattedDate()
-        typeLabel.text = event.stringVisibility()
-        eventImageView.layer.cornerRadius = 30
-        
         orderByView.layer.cornerRadius = 10
         orderByInnerView.layer.cornerRadius = 10
         filerView.layer.cornerRadius = 10
