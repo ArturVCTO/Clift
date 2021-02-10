@@ -16,6 +16,9 @@ class GiftsViewController: UIViewController {
         return storyboard.instantiateViewController(withIdentifier: "giftsVC") as! GiftsViewController
     }
     
+    
+    @IBOutlet weak var sectionsCollectionViewHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var giftsScrollView: UIScrollView!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel! {
@@ -23,18 +26,17 @@ class GiftsViewController: UIViewController {
             eventDateLabel?.addCharactersSpacing(1)
         }
     }
+    @IBOutlet weak var sectionsCollectionView: UICollectionView! {
+        didSet {
+            sectionsCollectionView?.dataSource = self
+            sectionsCollectionView?.delegate = self
+        }
+    }
     
     @IBOutlet weak var eventTypeAndVisibilityLabel: UILabel!
-    @IBOutlet weak var giftSummaryButton: customButton!
     @IBOutlet weak var monthCountDownLabel: UILabel!
     @IBOutlet weak var weekCountDownLabel: UILabel!
     @IBOutlet weak var dayCountDownLabel: UILabel!
-
-
-    @IBOutlet weak var giftCountAnalyticsLabel: UILabel!
-    @IBOutlet weak var giftUserActivityLabel: UILabel!
-    @IBOutlet weak var giftUserActivityView: customView!
-    @IBOutlet weak var dateActivityLabel: UILabel!
     @IBOutlet weak var eventImageView: customImageView!
     @IBOutlet weak var coverImageView: UIImageView!
     var pageRefreshControl = UIRefreshControl()
@@ -53,6 +55,13 @@ class GiftsViewController: UIViewController {
         }
     }
     
+    fileprivate var sectionsCollectionViewDataSource = WeddingProfileProducts.products
+    
+    private lazy var productsCollectionViewCellSize: CGFloat = {
+        let padding: CGFloat =  24
+        return ((sectionsCollectionView.frame.size.width) - padding) / 3
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getEvents()
@@ -61,9 +70,7 @@ class GiftsViewController: UIViewController {
         self.mainRegistryVC.navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "", style: .plain, target: nil, action: nil)
         
-        //HIDE ACTIVITY VIEW
-        self.giftUserActivityView.isHidden = true
-        self.giftSummaryButton.isHidden = true
+        setCollectionViewHeight()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +81,11 @@ class GiftsViewController: UIViewController {
     @objc func refreshPage() {
         self.getEvents()
         self.pageRefreshControl.endRefreshing()
+    }
+    
+    private func setCollectionViewHeight() {
+        sectionsCollectionViewHeightConstraint.constant = productsCollectionViewCellSize * 3
+        self.view.layoutIfNeeded()
     }
     
     private lazy var invitationsViewController: InvitationsViewController = {
@@ -140,14 +152,22 @@ class GiftsViewController: UIViewController {
     }
     
     func loadEventInformation(event: Event) {
+        
+        //new
+        giftsReceivedLabel.text = String(event.eventAnalytics.giftCount)
+        if let firstRecentActivity = event.recentActivity.first {
+            mostRecentActivityLabel.text = firstRecentActivity.user.name + " " + firstRecentActivity.activityType.description
+            mostRecentActivityDateLabel.text = firstRecentActivity.createdDate
+            
+        }
+        //////
+        
 		self.eventNameLabel.text = event.name
         self.eventDateLabel.text = event.dateWithOfWord().uppercased()
         self.eventDateLabel.addCharactersSpacing(1)
         self.countDownCalendar(eventDate: event.date.stringToDate())
         
 		self.eventTypeAndVisibilityLabel.text = event.stringType() + " · " + event.stringVisibility()
-        
-        self.giftCountAnalyticsLabel.text = "\(event.eventAnalytics.giftCount)"
         
         if let eventImageURL = URL(string:"\(event.eventImageUrl)") {
             self.eventImageView.kf.setImage(with: eventImageURL)
@@ -204,4 +224,30 @@ class GiftsViewController: UIViewController {
             self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
         }
     }
+}
+
+extension GiftsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: productsCollectionViewCellSize,
+                      height: productsCollectionViewCellSize)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return sectionsCollectionViewDataSource.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellName = String(describing: WeddingProfileProductsCollectionViewCell.self)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellName,
+                                                            for: indexPath) as? WeddingProfileProductsCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+
+        let product = sectionsCollectionViewDataSource[indexPath.row]
+        cell.nameLabel.text = product.name
+        cell.imageView.image = UIImage(named: product.imageName)
+        return cell
+    }
+    
 }

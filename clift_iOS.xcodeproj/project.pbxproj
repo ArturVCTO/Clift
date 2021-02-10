@@ -244,7 +244,9 @@
 		CEC006A4250A894100E54337 /* ActivityTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC006A3250A894100E54337 /* ActivityTabViewController.swift */; };
 		CEF53FB024F429B500D7C997 /* CollaboratorInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */; };
 		CEF53FB424F4461D00D7C997 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FB324F4461D00D7C997 /* OrderItem.swift */; };
+		F32A8D9E25D08A5E00BE01AE /* WeddingProfileProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A8D9D25D08A5E00BE01AE /* WeddingProfileProductsView.swift */; };
 		F35E9CC225C8B4C200B54192 /* GiftsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */; };
+		F38DD6A325D0C58800F7C8D1 /* WeddingProfileProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DD6A225D0C58800F7C8D1 /* WeddingProfileProduct.swift */; };
 		FB69CC8CE945481E9839D8BF /* Pods_clift_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -503,7 +505,9 @@
 		CEF53FB324F4461D00D7C997 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
 		DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.canary.xcconfig"; sourceTree = "<group>"; };
 		F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F32A8D9D25D08A5E00BE01AE /* WeddingProfileProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingProfileProductsView.swift; sourceTree = "<group>"; };
 		F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftsViewController.storyboard; sourceTree = "<group>"; };
+		F38DD6A225D0C58800F7C8D1 /* WeddingProfileProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingProfileProduct.swift; sourceTree = "<group>"; };
 		FC9BC5CE8D99C231599E05C1 /* Pods-clift_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1121,6 +1125,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		F32A8D9C25D08A2C00BE01AE /* section view */ = {
+			isa = PBXGroup;
+			children = (
+				F32A8D9D25D08A5E00BE01AE /* WeddingProfileProductsView.swift */,
+			);
+			path = "section view";
+			sourceTree = "<group>";
+		};
 		F35E9CC025C8B44D00B54192 /* Wedding Gift Table */ = {
 			isa = PBXGroup;
 			children = (
@@ -1128,8 +1140,28 @@
 				462EB0AE2314816D0084C3C7 /* GiftsViewController.swift */,
 				F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */,
 				6120F4A125CB7430005996E6 /* UserGiftTableViewController.swift */,
+				F38DD69B25D0C4D900F7C8D1 /* View Controllers */,
+				F38DD69A25D0C4CF00F7C8D1 /* Models */,
+				F32A8D9C25D08A2C00BE01AE /* section view */,
 			);
 			path = "Wedding Gift Table";
+			sourceTree = "<group>";
+		};
+		F38DD69A25D0C4CF00F7C8D1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F38DD6A225D0C58800F7C8D1 /* WeddingProfileProduct.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F38DD69B25D0C4D900F7C8D1 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */,
+				462EB0AE2314816D0084C3C7 /* GiftsViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1467,6 +1499,7 @@
 				46DE69CA235D6944002C2BB8 /* shopFilterTVCell.swift in Sources */,
 				46C724D323C7DA6000F12924 /* AddressState.swift in Sources */,
 				46153CE423C8F6F3005CD395 /* AddAddressViewController.swift in Sources */,
+				F32A8D9E25D08A5E00BE01AE /* WeddingProfileProductsView.swift in Sources */,
 				462EB0BB2316C6C30084C3C7 /* Progress.swift in Sources */,
 				613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */,
 				465FED172373DE1A0038D557 /* ExternalProduct.swift in Sources */,
@@ -1565,6 +1598,7 @@
 				46D3776B2391D8A1004BE93E /* DiscardChangesViewDelegate.swift in Sources */,
 				615C982925CE0E39002DB95E /* UserEventProductCell.swift in Sources */,
 				46EC9D9E232BF33B00950139 /* ProductsCollectionViewLayout.swift in Sources */,
+				F38DD6A325D0C58800F7C8D1 /* WeddingProfileProduct.swift in Sources */,
 				465167B2237A7D7500755077 /* FilterTableViewCell.swift in Sources */,
 				462EB0B923163F100084C3C7 /* EditRegistryViewController.swift in Sources */,
 				46792371239EBB92005103F2 /* PreviewInvitationViewController.swift in Sources */,

@@ -31,15 +31,16 @@ class CheckoutProductCell: UITableViewCell {
     }
     
      func configure(with cartItem: CartItem) {
+        guard let product = cartItem.product else { return }
         self.cartItem = cartItem
         self.productId = cartItem.id
-        self.productNameLabel.text = cartItem.product!.name
-        if let imageURL = URL(string:"\(cartItem.product!.imageUrl)") {
-            self.productImageView.kf.setImage(with: imageURL)
+        self.productNameLabel.text = product.name
+        if let imageURL = URL(string:"\(product.imageUrl)") {
+            self.productImageView.sd_setImage(with: imageURL)
         }
-        self.productCostLabel.text = "\(self.getPriceStringFormat(value: Double(cartItem.product!.price)))"
+        self.productCostLabel.text = "\(self.getPriceStringFormat(value: Double(product.price)))"
         self.productQuantity = cartItem.quantity
-        self.productPrice = Double(cartItem.product!.price)
+        self.productPrice = Double(product.price)
         productQuantityTextField.text = "\(cartItem.quantity ?? 0)"
     }
     
