@@ -116,11 +116,13 @@ class UserGiftTableViewController: UIViewController {
     func setup(event: Event) {
         
         if let coverURL = URL(string: event.coverImageUrl) {
-            backgroundImageView.kf.setImage(with: coverURL, placeholder: UIImage(named: "cliftplaceholder"))
+            backgroundImageView.sd_setImage(with: coverURL,
+                                            placeholderImage: UIImage(named: "cliftplaceholder"))
         }
         
         if let eventURL = URL(string: event.eventImageUrl) {
-            eventImageView.kf.setImage(with: eventURL, placeholder: UIImage(named: "profilePlaceHolder"))
+            backgroundImageView.sd_setImage(with: eventURL,
+                                            placeholderImage: UIImage(named: "profilePlaceHolder"))
         }
         
         eventNameLabel.text = event.name

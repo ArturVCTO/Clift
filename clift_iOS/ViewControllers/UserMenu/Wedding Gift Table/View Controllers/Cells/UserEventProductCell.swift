@@ -82,7 +82,8 @@ class UserEventProductCell: UICollectionViewCell {
                     currentProduct = product.product
 
                     if let imageURL = URL(string:"\(product.product.imageUrl)") {
-                        self.productImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
+                        self.productImage.sd_setImage(with: imageURL,
+                                                      placeholderImage: UIImage(named: "cliftplaceholder"))
                     }
                 
                     setProductType()//////
@@ -103,7 +104,8 @@ class UserEventProductCell: UICollectionViewCell {
                     currentProduct = product.product
                 
                     if let imageURL = URL(string:"\(product.externalProduct.imageUrl)") {
-                        self.productImage.kf.setImage(with: imageURL,placeholder: UIImage(named: "cliftplaceholder"))
+                        self.productImage.sd_setImage(with: imageURL,
+                                                      placeholderImage: UIImage(named: "cliftplaceholder"))
                     }
                 
                     productNameLabel.text = product.externalProduct.name
