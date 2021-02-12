@@ -128,51 +128,6 @@ class UserGiftTableViewController: UIViewController {
         collectionViewHeight.constant = CGFloat(productsCollectionView.collectionViewLayout.collectionViewContentSize.height)
     }
     
-    func getPoolsAndRegistries(){
-        
-        sharedApiManager.getEventPools(event: currentEvent) {(pools, result) in
-            self.presentLoader()
-            if let response = result {
-                if (response.isSuccess()) {
-                    self.eventPools = pools
-                }
-            }
-            self.getEventProducts()
-        }
-    }
-    
-    func getEventProducts(available: String = "", gifted: String = "") {
-        
-        self.presentLoader()
-        eventRegistries.removeAll()
-        reloadCollectionView()
-        filtersDic["page"] = actualPage
-        filtersDic["sort_by"] = currentOrder.rawValue
-        
-        sharedApiManager.getEventProducts(event: currentEvent, available: available, gifted: gifted, filters: filtersDic) { (eventProducts, result) in
-            if let response = result {
-                if (response.isSuccess()) {
-                    self.eventRegistries = eventProducts!
-                    
-                    guard let json = try? JSONSerialization.jsonObject(with: response.data,
-                                                                       options: []) as? [String: Any],
-                          let meta = json["meta"] as? [String: Any],
-                          let pagination = Pagination(JSON: meta) else {
-                        return
-                    }
-                    self.actualPage = pagination.currentPage
-                    self.numberOfPages = pagination.totalPages
-                    self.reloadCollectionView()
-                }
-            }
-            self.setPaginationMenu()
-            self.setButtonValues()
-            self.addOrDeleteMenuButtonsDependingOnNumberOfPages()
-            self.lastButtonPressed = nil
-            self.dismissLoader()
-        }
-    }
-    
     @IBAction func didTapFilterButton(_ sender: UIButton) {
         
         let FilterSelectionVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "FilterSelectionVC") as! FilterSelectionViewController
@@ -218,6 +173,93 @@ class UserGiftTableViewController: UIViewController {
         getEventProducts()
     }
     
+}
+
+// MARK: Extension REST APIs
+extension UserGiftTableViewController {
+    
+    func getPoolsAndRegistries(){
+        
+        sharedApiManager.getEventPools(event: currentEvent) {(pools, result) in
+            self.presentLoader()
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.eventPools = pools
+                }
+            }
+            self.getEventProducts()
+        }
+    }
+    
+    func getEventProducts(available: String = "", gifted: String = "") {
+        
+        self.presentLoader()
+        eventRegistries.removeAll()
+        reloadCollectionView()
+        filtersDic["page"] = actualPage
+        filtersDic["sort_by"] = currentOrder.rawValue
+        
+        sharedApiManager.getEventProducts(event: currentEvent, available: available, gifted: gifted, filters: filtersDic) { (eventProducts, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.eventRegistries = eventProducts!
+                    
+                    guard let json = try? JSONSerialization.jsonObject(with: response.data,
+                                                                       options: []) as? [String: Any],
+                          let meta = json["meta"] as? [String: Any],
+                          let pagination = Pagination(JSON: meta) else {
+                        return
+                    }
+                    self.actualPage = pagination.currentPage
+                    self.numberOfPages = pagination.totalPages
+                    self.reloadCollectionView()
+                }
+            }
+            self.setPaginationMenu()
+            self.setButtonValues()
+            self.addOrDeleteMenuButtonsDependingOnNumberOfPages()
+            self.lastButtonPressed = nil
+            self.dismissLoader()
+        }
+    }
+    
+    func updateEventProductToImportant(eventProduct: EventProduct, importantBool: Bool) {
+        
+        sharedApiManager.updateEventProductAsImportant(eventProduct: eventProduct,setImportant: importantBool) { (eventProduct,result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    if eventProduct!.isImportant {
+                        self.showMessage(NSLocalizedString("Producto marcado como importante", comment: "Update success"),type: .success)
+                    } else {
+                        self.showMessage(NSLocalizedString("Producto desmarcado como importante", comment: "Update success"),type: .success)
+                    }
+                    if let productUpdatedIndex = self.eventRegistries.firstIndex(where: {$0.id == eventProduct?.id}) {
+                        self.eventRegistries[productUpdatedIndex].isImportant = importantBool
+                    }
+                    self.reloadCollectionView()
+                }
+            }
+        }
+    }
+    
+    func updateEventPoolToImportant(event: Event, oldEventPool: EventPool, importantBool: Bool) {
+
+        sharedApiManager.updateEventPoolAsImportant(event: event, eventPool: oldEventPool,setImportant: importantBool) { (eventPool,result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    if !oldEventPool.isImportant {
+                        self.showMessage(NSLocalizedString("Sobre marcado como importante", comment: "Update success"),type: .success)
+                    } else {
+                        self.showMessage(NSLocalizedString("Sobre desmarcado como importante", comment: "Update success"),type: .success)
+                    }
+                    if let poolUpdatedIndex = self.eventPools.firstIndex(where: {$0.id == oldEventPool.id}) {
+                        self.eventPools[poolUpdatedIndex].isImportant = importantBool
+                    }
+                    self.reloadCollectionView()
+                }
+            }
+        }
+    }
 }
 
 // MARK: Extension OrderBy
@@ -364,8 +406,12 @@ extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionVie
 }
 //MARK:- Extension ProductCellDelegate
 extension UserGiftTableViewController: UserProductCellDelegate {
-    func didTapStartProduct() {
-        print("estrella")
+    func didTapStartProduct(eventProduct: EventProduct) {
+        updateEventProductToImportant(eventProduct: eventProduct, importantBool: !eventProduct.isImportant)
+    }
+    
+    func didTapStartPool(eventPool: EventPool) {
+        updateEventPoolToImportant(event: currentEvent, oldEventPool: eventPool, importantBool: !eventPool.isImportant)
     }
     
     func didTapMoreOptions() {

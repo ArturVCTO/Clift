@@ -9,7 +9,8 @@
 import UIKit
 
 protocol UserProductCellDelegate {
-    func didTapStartProduct()
+    func didTapStartProduct(eventProduct: EventProduct)
+    func didTapStartPool(eventPool: EventPool)
     func didTapMoreOptions()
 }
 
@@ -39,11 +40,27 @@ class UserEventProductCell: UICollectionViewCell {
     @IBOutlet weak var creditActionButton: UIButton!
     
     var userProductCellDelegate: UserProductCellDelegate!
-    var currentProduct: Product!
+    var currentEventProduct: EventProduct!
     var currentPool: EventPool!
     var cellType: ProductGuestCellType?
     
     var cellWidthConstraint: NSLayoutConstraint?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        greenCheckmarkImage.isHidden = false
+        giftTypeLabel.isHidden = true
+        starProductButton.setImage(UIImage(named: "star"), for: .normal)
+        shopLabel.isHidden = false
+        brandLabel.isHidden = false
+        envelopeImage.isHidden = false
+        deliveryView.isHidden = false
+        creditView.isHidden = false
+        deliveryView.backgroundColor = UIColor(named: "PrimaryBlue")
+        creditView.backgroundColor = UIColor(named: "PrimaryBlue")
+        quantityView.layer.borderColor = UIColor(named: "PrimaryBlue")?.cgColor
+        productQuantityLabel.textColor = UIColor(named: "PrimaryBlue")
+    }
     
     var cellWidth: CGFloat? {
         didSet{
@@ -79,7 +96,7 @@ class UserEventProductCell: UICollectionViewCell {
         switch cellType {
             case .EventProduct:
                 if let product = product {
-                    currentProduct = product.product
+                    currentEventProduct = product
 
                     if let imageURL = URL(string:"\(product.product.imageUrl)") {
                         self.productImage.sd_setImage(with: imageURL,
@@ -89,9 +106,7 @@ class UserEventProductCell: UICollectionViewCell {
                     setProductType()//////
                     if product.isImportant {/////
                         starProductButton.setImage(UIImage(named: "fullStar"), for: .normal)///
-                    } else {
-                        starProductButton.setImage(UIImage(named: "star"), for: .normal)///
-                    }/////
+                    }
                     productNameLabel.text = product.product.name
                     shopLabel.text = product.product.shop.name////7
                     brandLabel.text = "-" + product.product.brand_name//////
@@ -101,7 +116,7 @@ class UserEventProductCell: UICollectionViewCell {
                 }
             case .EventExternalProduct:
                 if let product = product {
-                    currentProduct = product.product
+                    currentEventProduct = product
                 
                     if let imageURL = URL(string:"\(product.externalProduct.imageUrl)") {
                         self.productImage.sd_setImage(with: imageURL,
@@ -115,11 +130,21 @@ class UserEventProductCell: UICollectionViewCell {
             case .EventPool:
                 
                 if let pool = pool {
+                    currentPool = pool
                     productImage.image = UIImage(named: "cashFund")
+                    greenCheckmarkImage.isHidden = true
+                    giftTypeLabel.isHidden = true
+                    if pool.isImportant {
+                        starProductButton.setImage(UIImage(named: "fullStar"), for: .normal)
+                    }
                     productNameLabel.text = pool.description
-                    productPriceLabel.text = pool.note
+                    productPriceLabel.text = "$ \(pool.goal) MXN"
+                    shopLabel.isHidden = true
+                    brandLabel.isHidden = true
                     quantityView.isHidden = true
-                    deliveryActionButton.setImage(UIImage(named: "whiteGift"), for: .normal)
+                    envelopeImage.isHidden = true
+                    deliveryView.isHidden = true
+                    creditView.isHidden = true
                 }
             default:
                 break
@@ -184,7 +209,15 @@ class UserEventProductCell: UICollectionViewCell {
     }
     
     @IBAction func productStarted(_ sender: UIButton) {
-        userProductCellDelegate.didTapStartProduct()
+        switch cellType {
+        case .EventProduct, .EventExternalProduct:
+            userProductCellDelegate.didTapStartProduct(eventProduct: currentEventProduct)
+        case .EventPool:
+            userProductCellDelegate.didTapStartPool(eventPool: currentPool)
+        default:
+            break
+        }
+        
     }
     
     @IBAction func productMoreOptions(_ sender: UIButton) {

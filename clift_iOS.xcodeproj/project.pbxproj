@@ -466,8 +466,8 @@
 		6127D94825B3CF3D00C8250A /* CheckoutEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutEnvelope.swift; sourceTree = "<group>"; };
 		6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUserDataEnvelope.swift; sourceTree = "<group>"; };
 		613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
-		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserEventProductCell.swift; path = "../View Controllers/Cells/UserEventProductCell.swift"; sourceTree = "<group>"; };
-		615C982825CE0E39002DB95E /* UserEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = UserEventProductCell.xib; path = "../View Controllers/Cells/UserEventProductCell.xib"; sourceTree = "<group>"; };
+		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventProductCell.swift; sourceTree = "<group>"; };
+		615C982825CE0E39002DB95E /* UserEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserEventProductCell.xib; sourceTree = "<group>"; };
 		6169708525A7DE85009F6EB9 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		6172B76325C0FDBE00363125 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		6173DE4C25BBA8C6000476CB /* CheckoutProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckoutProductCell.xib; sourceTree = "<group>"; };
@@ -1055,8 +1055,7 @@
 				615C982725CE0E39002DB95E /* UserEventProductCell.swift */,
 				615C982825CE0E39002DB95E /* UserEventProductCell.xib */,
 			);
-			name = Cells;
-			path = ../Cells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		6173DE4A25BBA874000476CB /* Cells */ = {
