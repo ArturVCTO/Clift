@@ -13,6 +13,10 @@ import Moya
 import GSMessages
 import RealmSwift
 
+protocol NumberOfCollaboratorsViewControllerDelegate {
+    func didChangeToCollaborativeProduct(eventProduct: EventProduct)
+}
+
 class NumberOfCollaboratorsViewController: UIViewController {
 
     @IBOutlet weak var infoCard: UIView!
@@ -21,8 +25,9 @@ class NumberOfCollaboratorsViewController: UIViewController {
     @IBOutlet weak var amoutPerCollaboratorLabel: UILabel!
     
     var eventProduct = EventProduct()
-    var collectionView: UICollectionView!
-    var selectedIndexPath: IndexPath!
+    var collectionView: UICollectionView! //This line can be deleted when ProductsRegistryViewController is no longer available for users
+    var selectedIndexPath: IndexPath! //This line can be deleted when ProductsRegistryViewController is no longer available for users
+    var numberOfCollaboratorsViewControllerDelegate: NumberOfCollaboratorsViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,9 +62,10 @@ class NumberOfCollaboratorsViewController: UIViewController {
                     
                     self.eventProduct.collaborators = Int(self.stepper.value)
                     self.eventProduct.isCollaborative = true
-                    self.collectionView.reloadItems(at: [self.selectedIndexPath!])
+                    self.numberOfCollaboratorsViewControllerDelegate.didChangeToCollaborativeProduct(eventProduct: self.eventProduct)
+                    //self.collectionView.reloadItems(at: [self.selectedIndexPath!]) //This line can be deleted when ProductsRegistryViewController is no longer available for users
                     self.removeAnimation()
-                    self.navigationController?.showMessage(NSLocalizedString("Porducto actualizado como colaborativo", comment: "Producto actualizado"), type: .success)
+                    self.navigationController?.showMessage(NSLocalizedString("Producto actualizado como colaborativo", comment: "Producto actualizado"), type: .success)
                 }
                 else {
                     self.showMessage(NSLocalizedString("Error de servidor, intente de nuevo más tarde", comment: "Error"), type: .error)
