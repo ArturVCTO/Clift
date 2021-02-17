@@ -94,6 +94,7 @@ class GuestEventProductCell: UICollectionViewCell {
             case .EventPool:
                 
                 if let pool = pool {
+                    currentPool = pool
                     productImage.image = UIImage(named: "cashFund")
                     productNameLabel.text = pool.description
                     productPriceLabel.text = pool.note
