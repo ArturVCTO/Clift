@@ -235,8 +235,8 @@ extension UserGiftTableViewController {
                     }
                     if let productUpdatedIndex = self.eventRegistries.firstIndex(where: {$0.id == eventProduct?.id}) {
                         self.eventRegistries[productUpdatedIndex].isImportant = importantBool
+                        self.productsCollectionView.reloadItems(at: [IndexPath(row: productUpdatedIndex + self.eventPools.count, section: 0)])
                     }
-                    self.reloadCollectionView()
                 }
             }
         }
@@ -254,8 +254,56 @@ extension UserGiftTableViewController {
                     }
                     if let poolUpdatedIndex = self.eventPools.firstIndex(where: {$0.id == oldEventPool.id}) {
                         self.eventPools[poolUpdatedIndex].isImportant = importantBool
+                        self.productsCollectionView.reloadItems(at: [IndexPath(row: poolUpdatedIndex, section: 0)])
                     }
+                }
+            }
+        }
+    }
+    
+    func removeProductFromRegistry(eventProduct: EventProduct,event: Event) {
+        
+        sharedApiManager.deleteEventProduct(eventProduct: eventProduct, event: event) { (emptyObject, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.showMessage(NSLocalizedString("Producto se ha quitado de tu mesa", comment: "Removed Product Success"),type: .success)
+                    self.getEventProducts()
                     self.reloadCollectionView()
+                } else {
+                    self.showMessage(NSLocalizedString("\(emptyObject?.errors.first ?? "Error, intente de nuevo más tarde.")", comment: "Remove  Error"),type: .error)
+                }
+            }
+        }
+    }
+    
+    func removePoolFromRegistry(eventPool: EventPool,event: Event) {
+        
+        sharedApiManager.deleteEventPool(eventPool: eventPool, event: event) { (emptyObject, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.showMessage(NSLocalizedString("Sobre se ha quitado de tu mesa", comment: "Removed Pool Success "),type: .success)
+                    self.getPoolsAndRegistries()
+                    self.reloadCollectionView()
+                } else {
+                    self.showMessage(NSLocalizedString("\(emptyObject?.errors.first ?? "Error, intente de nuevo más tarde.")", comment: "Remove  Error"),type: .error)
+                }
+            }
+        }
+    }
+    
+    func convertToIndividualGift(eventProduct: EventProduct) {
+        
+        sharedApiManager.updateEventProductAsCollaborative(eventProduct: eventProduct, setCollaborative: false, collaborators: 0) { (_, response) in
+            if let result = response{
+                if result.isSuccess() {
+                    if let productUpdatedIndex = self.eventRegistries.firstIndex(where: {$0.id == eventProduct.id}) {
+                        self.eventRegistries[productUpdatedIndex].isCollaborative = false
+                        self.eventRegistries[productUpdatedIndex].collaborators = 0
+                        self.productsCollectionView.reloadItems(at: [IndexPath(row: productUpdatedIndex, section: 0)])
+                    }
+                    self.showMessage(NSLocalizedString("Porducto actualizado como individual", comment: "Producto actualizado"), type: .success)
+                }else{
+                    self.showMessage(NSLocalizedString("Error de servidor, intente de nuevo más tarde", comment: "Error"), type: .error)
                 }
             }
         }
@@ -406,38 +454,150 @@ extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionVie
 }
 //MARK:- Extension ProductCellDelegate
 extension UserGiftTableViewController: UserProductCellDelegate {
-    func didTapStartProduct(eventProduct: EventProduct) {
+    
+    func didTapStarProduct(eventProduct: EventProduct) {
         updateEventProductToImportant(eventProduct: eventProduct, importantBool: !eventProduct.isImportant)
     }
     
-    func didTapStartPool(eventPool: EventPool) {
+    func didTapStarPool(eventPool: EventPool) {
         updateEventPoolToImportant(event: currentEvent, oldEventPool: eventPool, importantBool: !eventPool.isImportant)
     }
     
-    func didTapMoreOptions() {
+    func didTapMoreOptions(cellType: ProductCellType, eventPool: EventPool, eventProduct: EventProduct) {
         
-        /*let sheet = UIAlertController(title: "Acciones", message: nil, preferredStyle: .actionSheet)
+        let sheet = UIAlertController(title: "Acciones", message: nil, preferredStyle: .actionSheet)
+        
         var setAsImportant: UIAlertAction
-        
-        if registrySegment.selectedSegmentIndex == 2{
-            if (self.eventPools[self.selectedIndexPath.row].isImportant){
-                setAsImportant = UIAlertAction(title: "Desmarcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
+        if cellType == .EventPool {
+            if (eventPool.isImportant){
+                setAsImportant = UIAlertAction(title: "Desmarcar como importante", style: .default, handler: {(action) in self.importantActionButtonPressedPool(eventPool: eventPool)})
+            } else {
+                setAsImportant = UIAlertAction(title: "Marcar como importante", style: .default, handler: {(action) in self.importantActionButtonPressedPool(eventPool: eventPool)})
             }
-            else{
-                setAsImportant = UIAlertAction(title: "Marcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
+        } else {
+            if (eventProduct.isImportant){
+                setAsImportant = UIAlertAction(title: "Desmarcar como importante", style: .default, handler: {(action) in self.importantActionButtonPressedProduct(eventProduct: eventProduct)})
+            } else {
+                setAsImportant = UIAlertAction(title: "Marcar como importante", style: .default, handler: {(action) in self.importantActionButtonPressedProduct(eventProduct: eventProduct)})
             }
         }
-        else{
-            if (self.eventProducts[self.selectedIndexPath.row].isImportant){
-                setAsImportant = UIAlertAction(title: "Desmarcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
+        
+        //SOLO PARA REGALOS
+        var requestGift: UIAlertAction
+        var requestCredit: UIAlertAction
+        var makeCollaborativeGift: UIAlertAction
+        var makeIndividualGift: UIAlertAction
+        var removeFromRegistry: UIAlertAction
+        var seeMoreInfoProduct: UIAlertAction
+        if cellType == .EventProduct/*!(registrySegment.selectedSegmentIndex == 2)*/{ //Productos
+              
+            if (!eventProduct.isCollaborative && eventProduct.gifted_quantity == 0  && eventProduct.product.price>=2000){
+                //CONVERTIR A REGALO GRUPAL
+                makeCollaborativeGift = UIAlertAction(title: "Convertir a regalo colaborativo", style: .default, handler: {(action) in self.collaborativeActionButtonPressed(eventProduct: eventProduct)})
+                makeCollaborativeGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                makeCollaborativeGift.setValue(UIImage(named: "addmanualcolab"), forKey: "image")
+                sheet.addAction(makeCollaborativeGift)
             }
-            else{
-                setAsImportant = UIAlertAction(title: "Marcar como importante", style: .default, handler: importantActionButtonPressed(alert:))
+            
+            if (eventProduct.isCollaborative && eventProduct.gifted_quantity == 0){
+                makeIndividualGift = UIAlertAction(title: "Convertir a regalo individual", style: .default, handler: {(action) in self.individualActionButtonPressed(eventProduct: eventProduct)})
+                makeIndividualGift.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                makeIndividualGift.setValue(UIImage(named: "infoprofileic"), forKey: "image")
+                sheet.addAction(makeIndividualGift)
             }
-        }*/
+            
+            //VER INFORMACION DE PRODUCTO
+            seeMoreInfoProduct = UIAlertAction(title: "Ver información de producto", style: .default, handler: {(action) in self.addMoreInfoProductView(eventProduct: eventProduct)})
+            seeMoreInfoProduct.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+            seeMoreInfoProduct.setValue(UIImage(named: "icsearch"), forKey: "image")
+            sheet.addAction(seeMoreInfoProduct)
+            
+            if (eventProduct.gifted_quantity == 0){
+                removeFromRegistry = UIAlertAction(title: "Quitar producto de mesa", style: .destructive,handler: {(action) in self.removeProductButtonPressed(eventProduct: eventProduct)})
+                removeFromRegistry.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+                removeFromRegistry.setValue(UIImage(named: "icremove"), forKey: "image")
+                sheet.addAction(removeFromRegistry)
+            }
+        } else if(Float(eventPool.collectedAmount) == 0) { //Pools
+            removeFromRegistry = UIAlertAction(title: "Quitar sobre de mesa", style: .destructive,handler: {(action) in self.removePoolButtonPressed(eventPool: eventPool)})
+            removeFromRegistry.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+            removeFromRegistry.setValue(UIImage(named: "icremove"), forKey: "image")
+            sheet.addAction(removeFromRegistry)
+        }
+            
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
+               
+        setAsImportant.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
+        setAsImportant.setValue(UIImage(named: "addmanualfav"), forKey: "image")
+        
+        cancelAction.setValue(UIColor.init(displayP3Red: 177/255, green: 211/255, blue: 246/255, alpha: 1.0), forKey: "titleTextColor")
+        cancelAction.setValue(UIImage(named: "icnotassisting"), forKey: "image")
+    
+        sheet.addAction(setAsImportant)
+        sheet.addAction(cancelAction)
+       
+        present(sheet, animated: true, completion: nil)
     }
 }
 
+//MARK:- Extension More Options Functions
+extension UserGiftTableViewController {
+    
+    func importantActionButtonPressedPool(eventPool: EventPool) {
+        updateEventPoolToImportant(event: currentEvent, oldEventPool: eventPool, importantBool: !eventPool.isImportant)
+    }
+    
+    func importantActionButtonPressedProduct(eventProduct: EventProduct) {
+        updateEventProductToImportant(eventProduct: eventProduct, importantBool: !eventProduct.isImportant)
+    }
+    
+    func collaborativeActionButtonPressed(eventProduct: EventProduct) {
+        let numberOfCollaboratorsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "numberOfCollaboratorsVC") as!
+         NumberOfCollaboratorsViewController
+        numberOfCollaboratorsVC.numberOfCollaboratorsViewControllerDelegate = self
+        numberOfCollaboratorsVC.eventProduct = eventProduct
+        self.parent?.addChild(numberOfCollaboratorsVC)
+               numberOfCollaboratorsVC.view.frame = self.view.frame
+               self.parent?.view.addSubview(numberOfCollaboratorsVC.view)
+               numberOfCollaboratorsVC.didMove(toParent: self)
+    }
+    
+    func individualActionButtonPressed(eventProduct: EventProduct) {
+        
+        convertToIndividualGift(eventProduct: eventProduct)
+    }
+    
+    func addMoreInfoProductView(eventProduct: EventProduct){
+        let productInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "productInfoVC") as!
+        ProductInformationTableViewController
+        
+        let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
+        productDetailsVC.currentEventProduct = eventProduct
+        productDetailsVC.currentEvent = currentEvent
+        productDetailsVC.productDetailType = eventProduct.wishableType == "ExternalProduct" ? .EventExternalProduct : .EventProduct
+        productDetailsVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(productDetailsVC, animated: true)
+    }
+    
+    func removeProductButtonPressed(eventProduct: EventProduct) {
+        self.removeProductFromRegistry(eventProduct: eventProduct, event: currentEvent)
+    }
+    
+    func removePoolButtonPressed(eventPool: EventPool) {
+        self.removePoolFromRegistry(eventPool: eventPool, event: currentEvent)
+    }
+}
+
+//MARK:- NumberOfCollaboratorsViewControllerDelegate
+extension UserGiftTableViewController:NumberOfCollaboratorsViewControllerDelegate {
+    func didChangeToCollaborativeProduct(eventProduct: EventProduct) {
+        if let productUpdatedIndex = self.eventRegistries.firstIndex(where: {$0.id == eventProduct.id}) {
+            self.eventRegistries[productUpdatedIndex] = eventProduct
+        }
+    }
+}
+
+//MARK:- Quitar Sidemenu
 extension UserGiftTableViewController: UISideMenuNavigationControllerDelegate {
 
         func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
