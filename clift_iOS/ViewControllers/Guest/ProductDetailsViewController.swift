@@ -30,6 +30,7 @@ class ProductDetailsViewController: UIViewController {
     var currentEventProduct: EventProduct?
     var currentEvent = Event()
     var productDetailType: ProductDetailType?
+    var showAddProductToCart = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,10 @@ class ProductDetailsViewController: UIViewController {
             configureProduct()
         } else {
             configureExternalProduct()
+        }
+        
+        if !showAddProductToCart {
+            addToCartButton.isHidden = true
         }
     }
     
@@ -57,9 +62,11 @@ class ProductDetailsViewController: UIViewController {
         
         navigationItem.title = "Producto"
         
-        let cartImage = UIImage(named: "cart")
-        let cartButton   = UIBarButtonItem(image: cartImage,  style: .plain, target: self, action: #selector(didTapCartButton(sender:)))
-        navigationItem.rightBarButtonItem = cartButton
+        if showAddProductToCart {
+            let cartImage = UIImage(named: "cart")
+            let cartButton   = UIBarButtonItem(image: cartImage,  style: .plain, target: self, action: #selector(didTapCartButton(sender:)))
+            navigationItem.rightBarButtonItem = cartButton
+        }
     }
     
     @objc func didTapCartButton(sender: AnyObject){

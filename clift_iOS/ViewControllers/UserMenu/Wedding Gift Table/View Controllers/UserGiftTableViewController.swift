@@ -483,13 +483,11 @@ extension UserGiftTableViewController: UserProductCellDelegate {
         }
         
         //SOLO PARA REGALOS
-        var requestGift: UIAlertAction
-        var requestCredit: UIAlertAction
         var makeCollaborativeGift: UIAlertAction
         var makeIndividualGift: UIAlertAction
         var removeFromRegistry: UIAlertAction
         var seeMoreInfoProduct: UIAlertAction
-        if cellType == .EventProduct/*!(registrySegment.selectedSegmentIndex == 2)*/{ //Productos
+        if cellType == .EventProduct || cellType == .EventExternalProduct { //Productos
               
             if (!eventProduct.isCollaborative && eventProduct.gifted_quantity == 0  && eventProduct.product.price>=2000){
                 //CONVERTIR A REGALO GRUPAL
@@ -574,6 +572,7 @@ extension UserGiftTableViewController {
         let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
         productDetailsVC.currentEventProduct = eventProduct
         productDetailsVC.currentEvent = currentEvent
+        productDetailsVC.showAddProductToCart = false
         productDetailsVC.productDetailType = eventProduct.wishableType == "ExternalProduct" ? .EventExternalProduct : .EventProduct
         productDetailsVC.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(productDetailsVC, animated: true)
