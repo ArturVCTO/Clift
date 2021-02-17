@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -30,91 +30,87 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qF7-SU-dGv">
-                                <rect key="frame" x="20" y="74" width="374" height="544"/>
+                                <rect key="frame" x="20" y="73.999999999999972" width="374" height="489.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cantidad a contribuir" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLV-jS-Nwr">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="36.666666666666664"/>
                                         <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$0.00" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="xcs-oH-vgw">
-                                        <rect key="frame" x="0.0" y="56.5" width="374" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="56.666666666666657" width="374" height="36.333333333333343"/>
                                         <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Información de regalo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8U-9K-V12">
-                                        <rect key="frame" x="0.0" y="113" width="374" height="36"/>
+                                        <rect key="frame" x="0.0" y="113.00000000000001" width="374" height="36.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre de quién regala" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="1JI-fH-tYR">
-                                        <rect key="frame" x="0.0" y="169" width="374" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="169.66666666666666" width="374" height="36.666666666666657"/>
                                         <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apellido de quién regala" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mYJ-V1-Z5b">
-                                        <rect key="frame" x="0.0" y="225.5" width="374" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="226.33333333333331" width="374" height="36.666666666666686"/>
                                         <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" textContentType="family-name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Teléfono celular (10 dígitos)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pQJ-gE-vBg">
-                                        <rect key="frame" x="0.0" y="282" width="374" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="283" width="374" height="36.333333333333314"/>
                                         <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" textContentType="tel"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo electrónico" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="awa-ZW-uYL">
-                                        <rect key="frame" x="0.0" y="338.5" width="374" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="339.33333333333331" width="374" height="36.666666666666686"/>
                                         <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mensaje para la pareja" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7r-6i-UmF">
-                                        <rect key="frame" x="0.0" y="395" width="374" height="36"/>
+                                        <rect key="frame" x="0.0" y="396" width="374" height="36.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escribe un breve mensaje" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WsI-bQ-1Lu">
-                                        <rect key="frame" x="0.0" y="451" width="374" height="36.5"/>
+                                        <rect key="frame" x="0.0" y="452.66666666666663" width="374" height="36.666666666666686"/>
                                         <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textField>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z5A-Yh-YoN">
-                                        <rect key="frame" x="0.0" y="507.5" width="374" height="36.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1o4-NN-T65">
-                                <rect key="frame" x="20" y="618" width="374" height="224"/>
+                                <rect key="frame" x="20" y="573.33333333333337" width="374" height="268.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aLN-hJ-CcT">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="224"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="268.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Se enviará a la pareja un correo electrónico informándoles que su regalo ha sido comprado." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtf-Jm-5YN">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="69.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="14"/>
                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7i-it-waX">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="224"/>
+                                                <rect key="frame" x="0.0" y="69.666666666666629" width="374" height="199"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AGy-Qi-Kyd">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="224"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="199"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGd-3A-CN5">
-                                                                <rect key="frame" x="0.0" y="0.0" width="182" height="224"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="182" height="199"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cashFund" translatesAutoresizingMaskIntoConstraints="NO" id="jyx-fe-keb">
-                                                                        <rect key="frame" x="-32" y="33.5" width="246" height="157"/>
+                                                                        <rect key="frame" x="-32.333333333333329" y="29.666666666666629" width="246.66666666666663" height="139.33333333333334"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -125,27 +121,27 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJk-kE-Z9Y">
-                                                                <rect key="frame" x="192" y="0.0" width="182" height="224"/>
+                                                                <rect key="frame" x="192" y="0.0" width="182" height="199"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="A7x-uR-jI7">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="224"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="199"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sobre" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LnR-M9-5JR">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="182" height="68"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="182" height="59.666666666666664"/>
                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="20"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OU-GK-mvs">
-                                                                                <rect key="frame" x="0.0" y="78" width="182" height="68"/>
+                                                                                <rect key="frame" x="0.0" y="69.666666666666629" width="182" height="59.666666666666657"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06B-Zc-wvJ">
-                                                                                        <rect key="frame" x="0.0" y="22.5" width="39" height="23.5"/>
+                                                                                        <rect key="frame" x="0.0" y="18.666666666666742" width="35" height="22.333333333333329"/>
                                                                                         <fontDescription key="fontDescription" name="Tinos-Bold" family="Tinos" pointSize="20"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34w-ow-VHz">
-                                                                                        <rect key="frame" x="49" y="22.5" width="44.5" height="23.5"/>
+                                                                                        <rect key="frame" x="45" y="18.666666666666742" width="47" height="22.333333333333329"/>
                                                                                         <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="20"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -160,13 +156,13 @@
                                                                                 </constraints>
                                                                             </view>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="446-VW-TcF">
-                                                                                <rect key="frame" x="0.0" y="156" width="182" height="68"/>
+                                                                                <rect key="frame" x="0.0" y="139.33333333333337" width="182" height="59.666666666666657"/>
                                                                                 <subviews>
                                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6JG-ng-e4j">
-                                                                                        <rect key="frame" x="42" y="7" width="98" height="54"/>
+                                                                                        <rect key="frame" x="19.333333333333343" y="6" width="143.33333333333334" height="47.666666666666664"/>
                                                                                         <color key="backgroundColor" name="PrimaryBlue"/>
                                                                                         <constraints>
-                                                                                            <constraint firstAttribute="width" secondItem="6JG-ng-e4j" secondAttribute="height" multiplier="9:5" id="PN2-vj-D3X"/>
+                                                                                            <constraint firstAttribute="width" secondItem="6JG-ng-e4j" secondAttribute="height" multiplier="9:3" id="PN2-vj-D3X"/>
                                                                                         </constraints>
                                                                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                                                                         <state key="normal" title="Aceptar">
@@ -207,6 +203,9 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="xtf-Jm-5YN" firstAttribute="height" secondItem="S7i-it-waX" secondAttribute="height" multiplier="0.35" id="fCz-Bm-fu7"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -223,11 +222,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="qF7-SU-dGv" secondAttribute="trailing" constant="20" id="C3y-YH-o5L"/>
                             <constraint firstItem="qF7-SU-dGv" firstAttribute="top" secondItem="IWY-Jf-V2A" secondAttribute="top" constant="30" id="FSf-3A-DGx"/>
-                            <constraint firstItem="1o4-NN-T65" firstAttribute="height" secondItem="wbq-PD-oe9" secondAttribute="height" multiplier="0.25" id="cxE-WF-TYM"/>
+                            <constraint firstItem="1o4-NN-T65" firstAttribute="height" secondItem="wbq-PD-oe9" secondAttribute="height" multiplier="0.3" id="cxE-WF-TYM"/>
                             <constraint firstItem="1o4-NN-T65" firstAttribute="leading" secondItem="IWY-Jf-V2A" secondAttribute="leading" constant="20" id="jzP-1z-UKS"/>
                             <constraint firstItem="IWY-Jf-V2A" firstAttribute="trailing" secondItem="1o4-NN-T65" secondAttribute="trailing" constant="20" id="pDP-Jo-gAc"/>
                             <constraint firstItem="qF7-SU-dGv" firstAttribute="leading" secondItem="IWY-Jf-V2A" secondAttribute="leading" constant="20" id="sUz-18-o53"/>
-                            <constraint firstItem="1o4-NN-T65" firstAttribute="top" secondItem="qF7-SU-dGv" secondAttribute="bottom" id="uqx-Ue-cGD"/>
+                            <constraint firstItem="1o4-NN-T65" firstAttribute="top" secondItem="qF7-SU-dGv" secondAttribute="bottom" constant="10" id="uqx-Ue-cGD"/>
                             <constraint firstItem="1o4-NN-T65" firstAttribute="bottom" secondItem="IWY-Jf-V2A" secondAttribute="bottom" constant="-20" id="vfA-rH-ubE"/>
                         </constraints>
                     </view>
@@ -249,7 +248,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cashFund" width="246" height="254.5"/>
+        <image name="cashFund" width="246.33332824707031" height="254.66667175292969"/>
         <namedColor name="PrimaryBlue">
             <color red="0.6940000057220459" green="0.82700002193450928" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
