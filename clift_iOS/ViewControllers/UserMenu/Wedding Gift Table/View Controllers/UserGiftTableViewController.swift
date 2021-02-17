@@ -7,20 +7,18 @@
 //
 
 import UIKit
-import SideMenu
 
 class UserGiftTableViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var menuContainerWidth: NSLayoutConstraint!
-    @IBOutlet weak var filerView: UIView!
     @IBOutlet weak var orderByView: UIView!
     @IBOutlet weak var orderByInnerView: UIView!
     @IBOutlet weak var orderByFirstButton: UIButton!
     @IBOutlet weak var orderBySecondButton: UIButton!
     @IBOutlet weak var orderByThirdButton: UIButton!
     @IBOutlet weak var orderByFourthButton: UIButton!
-    @IBOutlet weak var smallViewOrderByConstraint: NSLayoutConstraint!
+    @IBOutlet var smallViewOrderByConstraint: NSLayoutConstraint!
     @IBOutlet weak var largeViewOrderByConstraint: NSLayoutConstraint!
     @IBOutlet weak var paginationLabel: UILabel!
     @IBOutlet weak var paginationStackViewButtons: UIStackView!
@@ -58,11 +56,9 @@ class UserGiftTableViewController: UIViewController {
     var eventRegistries: [EventProduct]! = []
     var eventPools: [EventPool]! = []
     var orderByViewSizeFlag = true
-    var filtersDic: [String: Any] = ["shop":"","category":"","price":""]
+    var filtersDic: [String: Any] = [:]
     var currentOrder: sortKeys = .nameAscending
     var isSearchBarHIdden = true
-    var availableSelected = ""
-    var giftedSelected = ""
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -111,7 +107,6 @@ class UserGiftTableViewController: UIViewController {
     func setup(event: Event) {
         orderByView.layer.cornerRadius = 10
         orderByInnerView.layer.cornerRadius = 10
-        filerView.layer.cornerRadius = 10
     }
     
     private func registerCells() {
@@ -126,17 +121,6 @@ class UserGiftTableViewController: UIViewController {
     
     private func setCollectionViewHeight() {
         collectionViewHeight.constant = CGFloat(productsCollectionView.collectionViewLayout.collectionViewContentSize.height)
-    }
-    
-    @IBAction func didTapFilterButton(_ sender: UIButton) {
-        
-        let FilterSelectionVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "FilterSelectionVC") as! FilterSelectionViewController
-        
-        FilterSelectionVC.sideFilterSelectionDelegate = self
-        let menu = UISideMenuNavigationController(rootViewController: FilterSelectionVC)
-        menu.presentationStyle = .menuSlideIn
-        menu.menuWidth = UIScreen.main.bounds.size.width * 0.8
-        present(menu,animated: true, completion: nil)
     }
     
     @IBAction func leftButtonPressed(_ sender: Any) {
@@ -191,7 +175,7 @@ extension UserGiftTableViewController {
         }
     }
     
-    func getEventProducts(available: String = "", gifted: String = "") {
+    func getEventProducts() {
         
         self.presentLoader()
         eventRegistries.removeAll()
@@ -199,7 +183,7 @@ extension UserGiftTableViewController {
         filtersDic["page"] = actualPage
         filtersDic["sort_by"] = currentOrder.rawValue
         
-        sharedApiManager.getEventProducts(event: currentEvent, available: available, gifted: gifted, filters: filtersDic) { (eventProducts, result) in
+        sharedApiManager.getEventProducts(event: currentEvent, available: "", gifted: "", filters: filtersDic) { (eventProducts, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.eventRegistries = eventProducts!
@@ -374,27 +358,6 @@ extension UserGiftTableViewController {
     }
 }
 
-// MARK: Extension FilterBy
-extension UserGiftTableViewController: SideFilterSelectionDelegate {
-    func didTapCleanFilters() {
-        filtersDic["category"] = ""
-        filtersDic["price_range"] = ""
-        filtersDic["shop"] = ""
-    }
-    
-    func didTapCategoryFilter(categoryId: String) {
-        filtersDic["category"] = categoryId
-    }
-    
-    func didTapPriceFilter(priceQuery: String) {
-        filtersDic["price_range"] = priceQuery
-    }
-    
-    func didTapShopFilter(shopId: String) {
-        filtersDic["shop"] = shopId
-    }
-}
-
 // MARK: Extension Collection View Delegate and Data Source
 extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -450,7 +413,6 @@ extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionVie
             self.setCollectionViewHeight()
         }
     }
-    
 }
 //MARK:- Extension ProductCellDelegate
 extension UserGiftTableViewController: UserProductCellDelegate {
@@ -594,14 +556,6 @@ extension UserGiftTableViewController:NumberOfCollaboratorsViewControllerDelegat
             self.eventRegistries[productUpdatedIndex] = eventProduct
         }
     }
-}
-
-//MARK:- Quitar Sidemenu
-extension UserGiftTableViewController: UISideMenuNavigationControllerDelegate {
-
-        func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
-            getEventProducts()
-        }
 }
 
 //MARK:- Extension Pagination Menu

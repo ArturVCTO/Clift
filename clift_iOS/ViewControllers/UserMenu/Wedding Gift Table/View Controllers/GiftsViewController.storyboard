@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -493,30 +492,8 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGy-kK-qbI">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPX-o9-b8H">
-                                                                <rect key="frame" x="349" y="10" width="50" height="35"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nBy-49-oA3">
-                                                                        <rect key="frame" x="15" y="5" width="20" height="25"/>
-                                                                        <state key="normal" image="whiteFilter"/>
-                                                                        <connections>
-                                                                            <action selector="didTapFilterButton:" destination="gWm-15-eF0" eventType="touchUpInside" id="snc-Fv-1LV"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                </subviews>
-                                                                <color key="backgroundColor" name="PrimaryBlue"/>
-                                                                <gestureRecognizers/>
-                                                                <constraints>
-                                                                    <constraint firstItem="nBy-49-oA3" firstAttribute="top" secondItem="gPX-o9-b8H" secondAttribute="top" constant="5" id="Czs-cW-nea"/>
-                                                                    <constraint firstAttribute="width" constant="50" id="FKi-TK-spG"/>
-                                                                    <constraint firstItem="nBy-49-oA3" firstAttribute="leading" secondItem="gPX-o9-b8H" secondAttribute="leading" constant="15" id="ZEU-Od-yRC"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="nBy-49-oA3" secondAttribute="trailing" constant="15" id="bJN-Sy-o7W"/>
-                                                                    <constraint firstAttribute="height" constant="35" id="nUq-Me-vra"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="nBy-49-oA3" secondAttribute="bottom" constant="5" id="xqW-j7-b8x"/>
-                                                                </constraints>
-                                                            </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mostrando del 1 al 24 de 50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UM3-BN-hXr">
-                                                                <rect key="frame" x="151" y="61" width="248" height="29"/>
+                                                                <rect key="frame" x="151" y="73" width="248" height="17"/>
                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                                                 <color key="textColor" red="0.63921568630000003" green="0.63137254899999995" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -682,6 +659,9 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="35" id="cy0-39-lCm"/>
+                                                                        </constraints>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5EM-OR-ngr">
                                                                         <rect key="frame" x="20" y="35" width="110" height="0.0"/>
@@ -732,6 +712,7 @@
                                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <gestureRecognizers/>
                                                                 <constraints>
+                                                                    <constraint firstAttribute="height" constant="35" id="Ais-lN-Kwg"/>
                                                                     <constraint firstItem="9a8-Tv-fg6" firstAttribute="top" secondItem="760-c8-4mY" secondAttribute="top" id="Les-IN-Ehv"/>
                                                                     <constraint firstItem="5EM-OR-ngr" firstAttribute="leading" secondItem="760-c8-4mY" secondAttribute="leading" constant="20" id="Puc-dC-Yay"/>
                                                                     <constraint firstAttribute="width" constant="150" id="Ryu-ms-2Sr"/>
@@ -748,17 +729,12 @@
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstItem="gPX-o9-b8H" firstAttribute="top" secondItem="gGy-kK-qbI" secondAttribute="top" constant="10" id="0Fh-sw-Lky"/>
                                                             <constraint firstAttribute="trailing" secondItem="UM3-BN-hXr" secondAttribute="trailing" constant="15" id="5OZ-SE-tY8"/>
                                                             <constraint firstAttribute="bottom" secondItem="760-c8-4mY" secondAttribute="bottom" constant="10" id="BcW-Sj-Zbg"/>
-                                                            <constraint firstAttribute="trailing" secondItem="gPX-o9-b8H" secondAttribute="trailing" constant="15" id="Gcf-zS-jcd"/>
-                                                            <constraint firstItem="UM3-BN-hXr" firstAttribute="top" secondItem="gPX-o9-b8H" secondAttribute="bottom" constant="16" id="J2x-oZ-ql5"/>
                                                             <constraint firstItem="760-c8-4mY" firstAttribute="top" secondItem="gGy-kK-qbI" secondAttribute="top" constant="10" id="QlM-mv-YSt"/>
-                                                            <constraint firstItem="9a8-Tv-fg6" firstAttribute="height" secondItem="gPX-o9-b8H" secondAttribute="height" id="QvL-2l-Tjj"/>
-                                                            <constraint firstItem="gPX-o9-b8H" firstAttribute="leading" secondItem="760-c8-4mY" secondAttribute="trailing" constant="10" id="Vgj-ej-szz"/>
+                                                            <constraint firstAttribute="trailing" secondItem="760-c8-4mY" secondAttribute="trailing" constant="75" id="Yua-VW-0SK"/>
                                                             <constraint firstItem="Bq3-dv-2DY" firstAttribute="trailing" secondItem="UM3-BN-hXr" secondAttribute="trailing" id="baw-yC-Ccy"/>
                                                             <constraint firstAttribute="bottom" secondItem="Bq3-dv-2DY" secondAttribute="bottom" id="dgv-KT-nct"/>
-                                                            <constraint firstItem="760-c8-4mY" firstAttribute="height" secondItem="gPX-o9-b8H" secondAttribute="height" id="mgv-VS-0J8"/>
                                                             <constraint firstItem="Bq3-dv-2DY" firstAttribute="leading" secondItem="gGy-kK-qbI" secondAttribute="leading" constant="10" id="qy7-A8-fog"/>
                                                             <constraint firstItem="Bq3-dv-2DY" firstAttribute="top" secondItem="UM3-BN-hXr" secondAttribute="bottom" constant="10" id="uSy-4M-zb4"/>
                                                         </constraints>
@@ -835,7 +811,6 @@
                         <outlet property="backMenuContainerWidth" destination="6JK-j0-Gh2" id="jSe-fa-ReX"/>
                         <outlet property="buttonContainerWidth" destination="F7e-25-zFx" id="v19-uD-Gl3"/>
                         <outlet property="collectionViewHeight" destination="4mv-7p-aaq" id="Vg0-25-qfQ"/>
-                        <outlet property="filerView" destination="gPX-o9-b8H" id="7Ao-qj-dHf"/>
                         <outlet property="firstMenuButton" destination="vVB-VN-oao" id="TzS-ra-KBr"/>
                         <outlet property="firstMenuButtonContainerView" destination="a2L-EO-f5d" id="nMu-T9-cxs"/>
                         <outlet property="largeViewOrderByConstraint" destination="BcW-Sj-Zbg" id="c6m-cj-rQH"/>
@@ -854,7 +829,7 @@
                         <outlet property="searchBar" destination="Z78-qv-DsD" id="LNf-HL-CKj"/>
                         <outlet property="secondButton" destination="shh-Tv-aJW" id="tex-mU-kLY"/>
                         <outlet property="secondButtonContainerView" destination="bib-Ds-ypK" id="PMP-TY-t8B"/>
-                        <outlet property="smallViewOrderByConstraint" destination="mgv-VS-0J8" id="NLg-z2-gKf"/>
+                        <outlet property="smallViewOrderByConstraint" destination="Ais-lN-Kwg" id="7d0-rK-lOa"/>
                         <outlet property="thirdButton" destination="fVS-Ux-tSf" id="9If-ka-kkk"/>
                         <outlet property="thirdButtonContainerView" destination="Mkl-3S-DAb" id="KfY-QH-RLy"/>
                     </connections>
@@ -888,10 +863,6 @@
         <image name="profilePlaceHolder" width="1000" height="1000"/>
         <image name="weddingProfileBannerImage" width="374" height="138.5"/>
         <image name="wedding_profile_elipse" width="87.5" height="87.5"/>
-        <image name="whiteFilter" width="36" height="42.5"/>
-        <namedColor name="PrimaryBlue">
-            <color red="0.6940000057220459" green="0.82700002193450928" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
