@@ -14,7 +14,7 @@ protocol ProductCellDelegate {
     func didTapCashFundPool(eventPool: EventPool)
 }
 
-enum ProductGuestCellType {
+enum ProductCellType {
     case EventProduct
     case EventPool
     case EventExternalProduct
@@ -33,7 +33,7 @@ class GuestEventProductCell: UICollectionViewCell {
     var productCellDelegate: ProductCellDelegate!
     var currentProduct: Product!
     var currentPool: EventPool!
-    var cellType: ProductGuestCellType?
+    var cellType: ProductCellType?
     
     var cellWidthConstraint: NSLayoutConstraint?
     
