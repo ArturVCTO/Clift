@@ -21,6 +21,7 @@ class UserEventProductCell: UICollectionViewCell {
     @IBOutlet weak var giftTypeLabel: UILabel!
     @IBOutlet weak var starProductButton: UIButton!
     @IBOutlet weak var productNameLabel: UILabel!
+    @IBOutlet var shopAndBrandStackView: UIStackView!
     @IBOutlet weak var shopLabel: UILabel!
     @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var productPriceLabel: UILabel!
@@ -47,8 +48,7 @@ class UserEventProductCell: UICollectionViewCell {
         giftTypeLabel.isHidden = false
         giftTypeLabel.text = ""
         starProductButton.setImage(UIImage(named: "star"), for: .normal)
-        shopLabel.isHidden = false
-        brandLabel.isHidden = false
+        shopAndBrandStackView.isHidden = false
         brandLabel.text = ""
         envelopeImage.isHidden = false
         quantityView.isHidden = false
@@ -107,7 +107,7 @@ class UserEventProductCell: UICollectionViewCell {
                     }
                     productNameLabel.text = product.product.name
                     shopLabel.text = product.product.shop.name
-                    brandLabel.text = "-" + product.product.brand_name
+                    brandLabel.text = " - " + product.product.brand_name
                     productPriceLabel.text = "$ \(product.product.price) MXN"
                     productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
                     setDeliveryCreditButtons(product: product)
@@ -144,8 +144,7 @@ class UserEventProductCell: UICollectionViewCell {
                     }
                     productNameLabel.text = pool.description
                     productPriceLabel.text = "$ \(pool.goal) MXN"
-                    shopLabel.isHidden = true
-                    brandLabel.isHidden = true
+                    shopAndBrandStackView.isHidden = true
                     quantityView.isHidden = true
                     envelopeImage.isHidden = true
                     deliveryView.isHidden = true
@@ -157,11 +156,12 @@ class UserEventProductCell: UICollectionViewCell {
     }
     
     private func setProductType(eventProduct: EventProduct) {
-        if  eventProduct.status != "approved" {
+        if eventProduct.hasBeenPaid {
+            greenCheckmarkImage.isHidden = false
+            giftTypeLabel.text = "Regalado"
+        } else if eventProduct.status != "approved" && !eventProduct.hasBeenPaid {
             greenCheckmarkImage.isHidden = false
             giftTypeLabel.text = "Terminado"
-        } else if eventProduct.hasBeenPaid {
-            giftTypeLabel.text = "Completo"
         } else if eventProduct.isCollaborative {
             giftTypeLabel.text = "Regalo grupal"
         }

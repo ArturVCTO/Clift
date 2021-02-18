@@ -52,7 +52,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ao4-ux-Ncy">
                                         <rect key="frame" x="0.0" y="0.0" width="173" height="23"/>
-                                        <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="28"/>
+                                        <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -61,7 +61,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="PSJ-DA-tHw"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -72,8 +72,8 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="81.5" height="34"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 / 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="6R2-E5-7Qv">
-                                                        <rect key="frame" x="20.5" y="8.5" width="40.5" height="17"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <rect key="frame" x="20.5" y="7" width="40.5" height="20"/>
+                                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                                         <color key="textColor" name="PrimaryBlue"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>

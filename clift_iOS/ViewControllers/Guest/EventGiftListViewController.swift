@@ -304,29 +304,21 @@ extension EventGiftListViewController {
     }
     
     @IBAction func didTapOrderByLowPrice(_ sender: UIButton) {
-        eventRegistries.removeAll()
-        reloadCollectionView()
         currentOrder = .priceAscending
         getRegistries()
     }
     
     @IBAction func didTapOrderByHighPrice(_ sender: UIButton) {
-        eventRegistries.removeAll()
-        reloadCollectionView()
         currentOrder = .priceDescending
         getRegistries()
     }
     
     @IBAction func didTapOrderByAZ(_ sender: UIButton) {
-        eventRegistries.removeAll()
-        reloadCollectionView()
         currentOrder = .nameAscending
         getRegistries()
     }
     
     @IBAction func didTapOrderByZA(_ sender: UIButton) {
-        eventRegistries.removeAll()
-        reloadCollectionView()
         currentOrder = .nameDescending
         getRegistries()
     }

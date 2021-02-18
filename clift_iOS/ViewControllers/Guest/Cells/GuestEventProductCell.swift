@@ -37,6 +37,12 @@ class GuestEventProductCell: UICollectionViewCell {
     
     var cellWidthConstraint: NSLayoutConstraint?
     
+    override func prepareForReuse() {
+        productImage.image = UIImage(named: "cashFund")
+        quantityView.isHidden = false
+        productActionButton.setImage(UIImage(named: "cart"), for: .normal)
+    }
+    
     var cellWidth: CGFloat? {
         didSet{
             guard let cellWidth = cellWidth else { return }

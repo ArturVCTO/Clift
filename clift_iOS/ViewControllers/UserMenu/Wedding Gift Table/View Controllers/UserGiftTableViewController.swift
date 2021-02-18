@@ -85,7 +85,13 @@ class UserGiftTableViewController: UIViewController {
         
     func setNavBar() {
         
-        navigationItem.title = "MESA DE REGALO"
+        let titleLabel = UILabel()
+        titleLabel.text = "MESA DE REGALO"
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont(name: "Mihan-Regular", size: 16.0)!
+        titleLabel.addCharactersSpacing(5)
+        titleLabel.sizeToFit()
+        navigationItem.titleView = titleLabel
         
         let searchImage = UIImage(named: "searchicon")
         let searchButton = UIBarButtonItem(image: searchImage,  style: .plain, target: self, action: #selector(didTapSearchButton(sender:)))
@@ -330,29 +336,21 @@ extension UserGiftTableViewController {
     }
     
     @IBAction func didTapOrderByLowPrice(_ sender: UIButton) {
-        eventRegistries.removeAll()
-        reloadCollectionView()
         currentOrder = .priceAscending
         getEventProducts()
     }
     
     @IBAction func didTapOrderByHighPrice(_ sender: UIButton) {
-        eventRegistries.removeAll()
-        reloadCollectionView()
         currentOrder = .priceDescending
         getEventProducts()
     }
     
     @IBAction func didTapOrderByAZ(_ sender: UIButton) {
-        eventRegistries.removeAll()
-        reloadCollectionView()
         currentOrder = .nameAscending
         getEventProducts()
     }
     
     @IBAction func didTapOrderByZA(_ sender: UIButton) {
-        eventRegistries.removeAll()
-        reloadCollectionView()
         currentOrder = .nameDescending
         getEventProducts()
     }
