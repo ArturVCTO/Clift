@@ -337,8 +337,8 @@
                                                                     <constraint firstAttribute="width" constant="50" id="xwt-Sp-CTn"/>
                                                                 </constraints>
                                                             </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mostrando del 1 al 24 de 50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Le-By-TZ4">
-                                                                <rect key="frame" x="248" y="61" width="151" height="22"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Le-By-TZ4">
+                                                                <rect key="frame" x="399" y="61" width="0.0" height="22"/>
                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="12"/>
                                                                 <color key="textColor" red="0.63921568627450975" green="0.63137254901960782" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>

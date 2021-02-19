@@ -202,6 +202,7 @@ extension UserGiftTableViewController {
                     }
                     self.actualPage = pagination.currentPage
                     self.numberOfPages = pagination.totalPages
+                    self.paginationLabel.text = "Mostrando del \(pagination.from) al \(pagination.to) de \(pagination.totalCount)"
                     self.reloadCollectionView()
                 }
             }
