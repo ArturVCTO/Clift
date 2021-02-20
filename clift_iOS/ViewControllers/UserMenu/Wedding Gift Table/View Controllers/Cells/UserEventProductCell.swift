@@ -58,6 +58,8 @@ class UserEventProductCell: UICollectionViewCell {
         creditView.backgroundColor = UIColor(named: "PrimaryBlue")
         quantityView.layer.borderColor = UIColor(named: "PrimaryBlue")?.cgColor
         productQuantityLabel.textColor = UIColor(named: "PrimaryBlue")
+        deliveryActionButton.isEnabled = true
+        creditActionButton.isEnabled = true
     }
     
     var cellWidth: CGFloat? {
@@ -109,7 +111,11 @@ class UserEventProductCell: UICollectionViewCell {
                     shopLabel.text = product.product.shop.name
                     brandLabel.text = " - " + product.product.brand_name
                     productPriceLabel.text = "$ \(product.product.price) MXN"
-                    productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
+                    if product.isCollaborative {
+                        productQuantityLabel.text = "\(product.gifted_quantity) / \(product.collaborators)"
+                    } else {
+                        productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
+                    }
                     setDeliveryCreditButtons(product: product)
                 }
             case .EventExternalProduct:
@@ -129,7 +135,11 @@ class UserEventProductCell: UICollectionViewCell {
                     productNameLabel.text = product.externalProduct.name
                     shopLabel.text = product.externalProduct.shopName
                     productPriceLabel.text = "$ \(product.externalProduct.price) MXN"
-                    productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
+                    if product.isCollaborative {
+                        productQuantityLabel.text = "\(product.gifted_quantity) / \(product.collaborators)"
+                    } else {
+                        productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
+                    }
                     setDeliveryCreditButtons(product: product)
                 }
             case .EventPool:
@@ -184,15 +194,13 @@ class UserEventProductCell: UICollectionViewCell {
         case "requested":
             deliveryView.backgroundColor = UIColor(named: "SuccessGreen")
             creditView.isHidden = true
-            if !product.hasBeenPaid {
-                setGreenQuantityView()
-            }
+            setGreenQuantityView()
+            deliveryActionButton.isEnabled = false
         case "credit":
             creditView.backgroundColor = UIColor(named: "SuccessGreen")
             deliveryView.isHidden = true
-            if !product.hasBeenPaid {
-                setGreenQuantityView()
-            }
+            setGreenQuantityView()
+            creditActionButton.isEnabled = false
         case "pending":
             if !(product.hasBeenPaid && product.gifted_quantity >= 1) {
                 deliveryView.isHidden = true
@@ -230,7 +238,6 @@ class UserEventProductCell: UICollectionViewCell {
     }
     
     @IBAction func productMoreOptions(_ sender: UIButton) {
-        
         userProductCellDelegate.didTapMoreOptions(cellType: cellType ?? .EventProduct, eventPool: currentPool ?? EventPool(), eventProduct: currentEventProduct ?? EventProduct())
     }
 }
