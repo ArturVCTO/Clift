@@ -394,12 +394,11 @@ extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if eventPools.count > indexPath.row {
-            //goToEnvelopeInformation(eventPool: eventPools[indexPath.row])
-        } else {
+        if indexPath.row >= eventPools.count {
             let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
             productDetailsVC.currentEventProduct = eventRegistries[indexPath.row - eventPools.count]
             productDetailsVC.currentEvent = currentEvent
+            productDetailsVC.showAddProductToCart = false
             productDetailsVC.productDetailType = eventRegistries[indexPath.row - eventPools.count].wishableType == "ExternalProduct" ? .EventExternalProduct : .EventProduct
             productDetailsVC.modalPresentationStyle = .fullScreen
             self.navigationController?.pushViewController(productDetailsVC, animated: true)
