@@ -662,7 +662,7 @@
                         <outlet property="dateLabel" destination="QmH-Sh-X26" id="hvL-ql-IEe"/>
                         <outlet property="eventImageView" destination="YVw-u1-bKI" id="ySg-tO-km4"/>
                         <outlet property="eventNameLabel" destination="pwI-lQ-UOB" id="wN9-ng-EhR"/>
-                        <outlet property="filerView" destination="fRq-WL-6BK" id="E91-Av-c7g"/>
+                        <outlet property="filterView" destination="fRq-WL-6BK" id="E91-Av-c7g"/>
                         <outlet property="firstMenuButton" destination="r4f-tt-q9A" id="27D-th-ReO"/>
                         <outlet property="firstMenuButtonContainerView" destination="lY1-Fk-iXb" id="rDH-Ja-gPd"/>
                         <outlet property="largeViewOrderByConstraint" destination="Dr2-Ng-1wk" id="UJY-YD-Nfa"/>

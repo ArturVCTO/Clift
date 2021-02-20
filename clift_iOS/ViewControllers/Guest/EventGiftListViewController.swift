@@ -25,7 +25,7 @@ class EventGiftListViewController: UIViewController {
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var filerView: UIView!
+    @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var orderByView: UIView!
     @IBOutlet weak var orderByInnerView: UIView!
     @IBOutlet weak var orderByFirstButton: UIButton!
@@ -143,7 +143,7 @@ class EventGiftListViewController: UIViewController {
         
         orderByView.layer.cornerRadius = 10
         orderByInnerView.layer.cornerRadius = 10
-        filerView.layer.cornerRadius = 10
+        filterView.layer.cornerRadius = 10
     }
     
     private func registerCells() {

@@ -72,7 +72,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="81.5" height="25"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 / 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="6R2-E5-7Qv">
-                                                        <rect key="frame" x="12" y="4" width="57.5" height="17"/>
+                                                        <rect key="frame" x="12" y="2.5" width="57.5" height="20"/>
                                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                                         <color key="textColor" name="PrimaryBlue"/>
                                                         <nil key="highlightedColor"/>

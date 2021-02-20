@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import SideMenu
 
 class UserGiftTableViewController: UIViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var menuContainerWidth: NSLayoutConstraint!
+    @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var orderByView: UIView!
     @IBOutlet weak var orderByInnerView: UIView!
     @IBOutlet weak var orderByFirstButton: UIButton!
@@ -56,9 +57,8 @@ class UserGiftTableViewController: UIViewController {
     var eventRegistries: [EventProduct]! = []
     var eventPools: [EventPool]! = []
     var orderByViewSizeFlag = true
-    var filtersDic: [String: Any] = [:]
+    var filtersDic: [String: Any] = ["shop":"","category":"","price":""]
     var currentOrder: sortKeys = .nameAscending
-    var isSearchBarHIdden = true
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -73,7 +73,6 @@ class UserGiftTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         productsCollectionView.collectionViewLayout = layout
-        searchBar.delegate = self
 
         getPoolsAndRegistries()
         setNavBar()
@@ -92,27 +91,15 @@ class UserGiftTableViewController: UIViewController {
         titleLabel.addCharactersSpacing(5)
         titleLabel.sizeToFit()
         navigationItem.titleView = titleLabel
-        
-        let searchImage = UIImage(named: "searchicon")
-        let searchButton = UIBarButtonItem(image: searchImage,  style: .plain, target: self, action: #selector(didTapSearchButton(sender:)))
-        navigationItem.rightBarButtonItems = [searchButton]
+
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "", style: .plain, target: nil, action: nil)
-    }
-
-    @objc func didTapSearchButton(sender: AnyObject){
-        if isSearchBarHIdden {
-            searchBar.isHidden = false
-        } else {
-            searchBar.isHidden = true
-        }
-        
-        isSearchBarHIdden = !isSearchBarHIdden
     }
     
     func setup(event: Event) {
         orderByView.layer.cornerRadius = 10
         orderByInnerView.layer.cornerRadius = 10
+        filterView.layer.cornerRadius = 10
     }
     
     private func registerCells() {
@@ -127,6 +114,17 @@ class UserGiftTableViewController: UIViewController {
     
     private func setCollectionViewHeight() {
         collectionViewHeight.constant = CGFloat(productsCollectionView.collectionViewLayout.collectionViewContentSize.height)
+    }
+    
+    @IBAction func didTapFilterButton(_ sender: UIButton) {
+        
+        let FilterSelectionVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "FilterSelectionVC") as! FilterSelectionViewController
+        
+        FilterSelectionVC.sideFilterSelectionDelegate = self
+        let menu = UISideMenuNavigationController(rootViewController: FilterSelectionVC)
+        menu.presentationStyle = .menuSlideIn
+        menu.menuWidth = UIScreen.main.bounds.size.width * 0.8
+        present(menu,animated: true, completion: nil)
     }
     
     @IBAction func leftButtonPressed(_ sender: Any) {
@@ -357,6 +355,27 @@ extension UserGiftTableViewController {
     }
 }
 
+// MARK: Extension FilterBy
+extension UserGiftTableViewController: SideFilterSelectionDelegate {
+    func didTapCleanFilters() {
+        filtersDic["category"] = ""
+        filtersDic["price_range"] = ""
+        filtersDic["shop"] = ""
+    }
+    
+    func didTapCategoryFilter(categoryId: String) {
+        filtersDic["category"] = categoryId
+    }
+    
+    func didTapPriceFilter(priceQuery: String) {
+        filtersDic["price_range"] = priceQuery
+    }
+    
+    func didTapShopFilter(shopId: String) {
+        filtersDic["shop"] = shopId
+    }
+}
+
 // MARK: Extension Collection View Delegate and Data Source
 extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -412,6 +431,7 @@ extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionVie
         }
     }
 }
+
 //MARK:- Extension ProductCellDelegate
 extension UserGiftTableViewController: UserProductCellDelegate {
     
@@ -555,6 +575,13 @@ extension UserGiftTableViewController:NumberOfCollaboratorsViewControllerDelegat
         }
     }
 }
+//MARK:- Extension UISideMenuNavigationControllerDelegate
+extension UserGiftTableViewController: UISideMenuNavigationControllerDelegate {
+
+        func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
+            getEventProducts()
+        }
+}
 
 //MARK:- Extension Pagination Menu
 extension UserGiftTableViewController {
@@ -697,20 +724,4 @@ extension UserGiftTableViewController {
         
     }
     
-}
-
-extension UserGiftTableViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        if !searchBar.isHidden {
-            searchBar.endEditing(true)
-            if let query = searchBar.text {
-                //getEventProducts(query: query)
-            }
-        }
-        searchBar.text = ""
-        searchBar.isHidden = true
-        isSearchBarHIdden = !isSearchBarHIdden
-    }
 }
