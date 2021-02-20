@@ -51,16 +51,16 @@
                                 <rect key="frame" x="0.0" y="99" width="173" height="20"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="paX-rk-NTj">
-                                        <rect key="frame" x="3" y="0.0" width="84.5" height="17"/>
+                                        <rect key="frame" x="3" y="0.0" width="64.5" height="17"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greencheckmark" translatesAutoresizingMaskIntoConstraints="NO" id="7Fk-bG-fn5">
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greencheckmark" translatesAutoresizingMaskIntoConstraints="NO" id="7Fk-bG-fn5">
                                                 <rect key="frame" x="0.0" y="0.0" width="17" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="7Fk-bG-fn5" secondAttribute="height" multiplier="1:1" id="SFD-yV-kns"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regalo Grupal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uo0-Li-4pB">
-                                                <rect key="frame" x="20" y="0.0" width="64.5" height="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="64.5" height="17"/>
                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="10"/>
                                                 <color key="textColor" systemColor="systemGray2Color"/>
                                                 <nil key="highlightedColor"/>
@@ -137,19 +137,19 @@
                                                 <rect key="frame" x="0.0" y="25.5" width="173" height="15.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GANT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRp-1S-FJr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="16.5" height="15.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="27.5" height="15.5"/>
                                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="10"/>
                                                         <color key="textColor" systemColor="systemGray2Color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GANT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFe-vm-q1s">
-                                                        <rect key="frame" x="19.5" y="0.0" width="27.5" height="15.5"/>
+                                                        <rect key="frame" x="30.5" y="0.0" width="27.5" height="15.5"/>
                                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="10"/>
                                                         <color key="textColor" systemColor="systemGray2Color"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mxY-EQ-Yrq">
-                                                        <rect key="frame" x="50" y="0.0" width="123" height="15.5"/>
+                                                        <rect key="frame" x="61" y="0.0" width="112" height="15.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     </view>
                                                 </subviews>
@@ -192,7 +192,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sw5-Ak-cAb">
                                                                 <rect key="frame" x="64" y="0.0" width="20" height="25"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icthankgreen" translatesAutoresizingMaskIntoConstraints="NO" id="Cl5-Bx-oSQ">
+                                                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icthankgray" translatesAutoresizingMaskIntoConstraints="NO" id="Cl5-Bx-oSQ">
                                                                         <rect key="frame" x="0.0" y="5" width="20" height="20"/>
                                                                     </imageView>
                                                                 </subviews>
@@ -317,7 +317,7 @@
         <image name="greencheckmark" width="13" height="13"/>
         <image name="iccreditwhite" width="20" height="20"/>
         <image name="icdeliveredwhite" width="20" height="20"/>
-        <image name="icthankgreen" width="20" height="20"/>
+        <image name="icthankgray" width="20" height="20"/>
         <image name="moreOptionsIcon" width="4.5" height="18.5"/>
         <image name="star" width="18" height="18.5"/>
         <namedColor name="PrimaryBlue">

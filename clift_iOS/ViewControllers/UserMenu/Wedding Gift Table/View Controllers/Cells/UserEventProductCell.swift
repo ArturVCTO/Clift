@@ -52,6 +52,7 @@ class UserEventProductCell: UICollectionViewCell {
         brandLabel.text = ""
         envelopeImage.isHidden = false
         quantityView.isHidden = false
+        envelopeImage.isHidden = true
         deliveryView.isHidden = false
         creditView.isHidden = false
         deliveryView.backgroundColor = UIColor(named: "PrimaryBlue")
@@ -107,6 +108,7 @@ class UserEventProductCell: UICollectionViewCell {
                     if product.isImportant {
                         starProductButton.setImage(UIImage(named: "fullStar"), for: .normal)
                     }
+                    setEnvelopeImage(eventProduct: product)
                     productNameLabel.text = product.product.name
                     shopLabel.text = product.product.shop.name
                     brandLabel.text = " - " + product.product.brand_name
@@ -132,6 +134,7 @@ class UserEventProductCell: UICollectionViewCell {
                     if product.isImportant {
                         starProductButton.setImage(UIImage(named: "fullStar"), for: .normal)
                     }
+                    setEnvelopeImage(eventProduct: product)
                     productNameLabel.text = product.externalProduct.name
                     shopLabel.text = product.externalProduct.shopName
                     productPriceLabel.text = "$ \(product.externalProduct.price) MXN"
@@ -166,14 +169,29 @@ class UserEventProductCell: UICollectionViewCell {
     }
     
     private func setProductType(eventProduct: EventProduct) {
-        if eventProduct.hasBeenPaid {
+        if eventProduct.isCollaborative && !eventProduct.hasBeenPaid && eventProduct.status == "pending" {
+            giftTypeLabel.text = "Regalo grupal"
+        } else if eventProduct.hasBeenPaid {
             greenCheckmarkImage.isHidden = false
             giftTypeLabel.text = "Regalado"
-        } else if eventProduct.status != "approved" && !eventProduct.hasBeenPaid {
+        } else if !eventProduct.hasBeenPaid && eventProduct.status != "pending" {
             greenCheckmarkImage.isHidden = false
             giftTypeLabel.text = "Terminado"
-        } else if eventProduct.isCollaborative {
-            giftTypeLabel.text = "Regalo grupal"
+        } else {
+            giftTypeLabel.text = ""
+        }
+    }
+    
+    private func setEnvelopeImage(eventProduct: EventProduct) {
+        
+        if !eventProduct.hasBeenThanked && (eventProduct.hasBeenPaid || eventProduct.status != "pending") {
+            envelopeImage.isHidden = false
+            envelopeImage.image = UIImage(named: "icthankgray")
+        } else if eventProduct.hasBeenThanked {
+            envelopeImage.isHidden = false
+            envelopeImage.image = UIImage(named: "icthankgreen")
+        } else {
+            envelopeImage.isHidden = true
         }
     }
     
@@ -183,12 +201,6 @@ class UserEventProductCell: UICollectionViewCell {
     }
     
     private func setDeliveryCreditButtons(product: EventProduct) {
-        if product.isCollaborative {
-            if !(product.collaborators == product.gifted_quantity) {
-                deliveryView.isHidden = true
-                creditView.isHidden = true
-            }
-        }
         
         switch product.status {
         case "requested":
@@ -202,8 +214,11 @@ class UserEventProductCell: UICollectionViewCell {
             setGreenQuantityView()
             creditActionButton.isEnabled = false
         case "pending":
-            if !(product.hasBeenPaid && product.gifted_quantity >= 1) {
+            if !(product.hasBeenPaid && product.product.shop.shipsNational) {
                 deliveryView.isHidden = true
+            }
+            
+            if !product.hasBeenPaid {
                 creditView.isHidden = true
             }
         default:
