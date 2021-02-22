@@ -15,15 +15,25 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailSignInTextField: HoshiTextField!
     @IBOutlet weak var passwordSignInTextField: HoshiTextField!
-	@IBOutlet weak var forgotPasswordButton: UIButton!
-	
+    @IBOutlet var logInButton: customButton!
+    @IBOutlet weak var forgotPasswordButton: UIButton!
+    @IBOutlet var noAccountLabel: UILabel!
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		emailSignInTextField.delegate = self
 		passwordSignInTextField.delegate = self
 		let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnClickOutside))
 		view.addGestureRecognizer(tap)
+        setKerning()
 	}
+    
+    func setKerning() {
+        emailSignInTextField.placeholderLabel.addCharactersSpacing()
+        passwordSignInTextField.placeholderLabel.addCharactersSpacing()
+        logInButton.titleLabel?.addCharactersSpacing(3)
+        noAccountLabel.addCharactersSpacing()
+    }
     
     func postLoginSession() {
         sharedApiManager.login(email: emailSignInTextField.text!, password: passwordSignInTextField.text!) { (session, result) in
