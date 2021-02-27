@@ -18,15 +18,20 @@ class StoreCategoryAndGroupCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setCell()
     }
     
     func setCell() {
         cellImageView.layer.borderWidth = 1
-        cellImageView.layer.masksToBounds = false
+        cellImageView.layer.masksToBounds = true
         cellImageView.layer.borderColor = UIColor.lightGray.cgColor
-        cellImageView.layer.cornerRadius = 50//cellImageView.bounds.height / 2
-        cellImageView.clipsToBounds = true
+        if let width = cellWidth {
+            cellImageView.layer.cornerRadius = (width - 6) / 2
+            cellImageView.layer.shadowColor = UIColor.black.cgColor
+            cellImageView.layer.shadowOpacity = 0.3
+            cellImageView.layer.shadowOffset = .zero
+            cellImageView.layer.shadowRadius = 3
+        }
+        cellImageView.clipsToBounds = false
     }
     
     var cellWidth: CGFloat? {
@@ -46,5 +51,6 @@ class StoreCategoryAndGroupCell: UICollectionViewCell {
             cellImage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "cliftplaceholder"))
         }
         cellLabel.text = title
+        setCell()
     }
 }
