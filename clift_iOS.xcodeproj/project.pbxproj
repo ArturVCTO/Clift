@@ -209,6 +209,8 @@
 		6173DE4E25BBA8C6000476CB /* CheckoutProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6173DE4C25BBA8C6000476CB /* CheckoutProductCell.xib */; };
 		6185BEBE25C396F300557579 /* CheckoutGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6185BEBD25C396F300557579 /* CheckoutGuest.swift */; };
 		6185BEC325C3989400557579 /* CheckoutUserDataGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6185BEC225C3989400557579 /* CheckoutUserDataGuest.swift */; };
+		618CB1CE25E732D500A21DCC /* GiftStoreGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB1CD25E732D500A21DCC /* GiftStoreGroupViewController.swift */; };
+		618CB1D325E732F500A21DCC /* GiftStoreProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618CB1D225E732F500A21DCC /* GiftStoreProductsViewController.swift */; };
 		619E838425E5D89C0056D33A /* GiftStore.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 619E838325E5D89C0056D33A /* GiftStore.storyboard */; };
 		619E838925E5E51F0056D33A /* GiftStoreCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E838825E5E51F0056D33A /* GiftStoreCategoryViewController.swift */; };
 		619E839725E5F21A0056D33A /* StoreCategoryAndGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E839525E5F21A0056D33A /* StoreCategoryAndGroupCell.swift */; };
@@ -477,6 +479,8 @@
 		6173DE4C25BBA8C6000476CB /* CheckoutProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckoutProductCell.xib; sourceTree = "<group>"; };
 		6185BEBD25C396F300557579 /* CheckoutGuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutGuest.swift; sourceTree = "<group>"; };
 		6185BEC225C3989400557579 /* CheckoutUserDataGuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUserDataGuest.swift; sourceTree = "<group>"; };
+		618CB1CD25E732D500A21DCC /* GiftStoreGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStoreGroupViewController.swift; sourceTree = "<group>"; };
+		618CB1D225E732F500A21DCC /* GiftStoreProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStoreProductsViewController.swift; sourceTree = "<group>"; };
 		619E838325E5D89C0056D33A /* GiftStore.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftStore.storyboard; sourceTree = "<group>"; };
 		619E838825E5E51F0056D33A /* GiftStoreCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStoreCategoryViewController.swift; sourceTree = "<group>"; };
 		619E839525E5F21A0056D33A /* StoreCategoryAndGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCategoryAndGroupCell.swift; sourceTree = "<group>"; };
@@ -1082,6 +1086,8 @@
 				619E838D25E5EEF40056D33A /* Cells */,
 				619E838325E5D89C0056D33A /* GiftStore.storyboard */,
 				619E838825E5E51F0056D33A /* GiftStoreCategoryViewController.swift */,
+				618CB1CD25E732D500A21DCC /* GiftStoreGroupViewController.swift */,
+				618CB1D225E732F500A21DCC /* GiftStoreProductsViewController.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -1518,6 +1524,7 @@
 				46DE69CE235D6965002C2BB8 /* colorFilterTVCell.swift in Sources */,
 				6185BEBE25C396F300557579 /* CheckoutGuest.swift in Sources */,
 				46EC9DA423314FFA00950139 /* SubcategoryCollectionViewCell.swift in Sources */,
+				618CB1D325E732F500A21DCC /* GiftStoreProductsViewController.swift in Sources */,
 				4637826D23A72CBE0027FCD6 /* EventGuestAnalytics.swift in Sources */,
 				CEC006A4250A894100E54337 /* ActivityTabViewController.swift in Sources */,
 				465167B0237A7D3300755077 /* EventProductBrandCell.swift in Sources */,
@@ -1532,6 +1539,7 @@
 				462EB0BB2316C6C30084C3C7 /* Progress.swift in Sources */,
 				613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */,
 				465FED172373DE1A0038D557 /* ExternalProduct.swift in Sources */,
+				618CB1CE25E732D500A21DCC /* GiftStoreGroupViewController.swift in Sources */,
 				0B1F53F02554E0A5003A3F9F /* UIImageExtension.swift in Sources */,
 				CE59EAE024F0714300EA97E5 /* CollaboratorsViewController.swift in Sources */,
 				462F9F32230EE8870014CD9E /* customImageView.swift in Sources */,

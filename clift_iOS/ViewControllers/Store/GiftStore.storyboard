@@ -6,23 +6,86 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Gift Store Products View Controller-->
         <scene sceneID="Qko-2K-aEv">
             <objects>
-                <viewController id="tyE-Xr-ws1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GiftStoreProductsVC" id="tyE-Xr-ws1" customClass="GiftStoreProductsViewController" customModule="CLIFT" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6fO-Xf-DRg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELD-4E-zwS">
+                                <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Hcb-Zu-9Mt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ELD-4E-zwS" firstAttribute="centerY" secondItem="6fO-Xf-DRg" secondAttribute="centerY" id="2di-C0-qzh"/>
+                            <constraint firstItem="ELD-4E-zwS" firstAttribute="centerX" secondItem="6fO-Xf-DRg" secondAttribute="centerX" id="jyp-Ot-Y9K"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="testLabel" destination="ELD-4E-zwS" id="kmY-ZN-0gK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="owB-5z-om1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-36" y="144"/>
+            <point key="canvasLocation" x="106" y="144"/>
+        </scene>
+        <!--Gift Store Group View Controller-->
+        <scene sceneID="kfU-X5-D7W">
+            <objects>
+                <viewController storyboardIdentifier="GiftStoreGroupVC" id="4o2-th-Zf5" customClass="GiftStoreGroupViewController" customModule="CLIFT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rfH-1u-bk6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bpp-sx-Qh9">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IDy-LD-uP9">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="eLd-y1-pOZ">
+                                        <rect key="frame" x="40" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="J1e-FP-k70">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="VaL-45-RSU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bpp-sx-Qh9" firstAttribute="top" secondItem="VaL-45-RSU" secondAttribute="top" id="7o8-Jb-AE8"/>
+                            <constraint firstItem="VaL-45-RSU" firstAttribute="bottom" secondItem="bpp-sx-Qh9" secondAttribute="bottom" id="HiQ-HR-fGn"/>
+                            <constraint firstItem="VaL-45-RSU" firstAttribute="trailing" secondItem="bpp-sx-Qh9" secondAttribute="trailing" id="cpg-jQ-MGd"/>
+                            <constraint firstItem="bpp-sx-Qh9" firstAttribute="leading" secondItem="VaL-45-RSU" secondAttribute="leading" id="xYX-Xn-AD7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="eC1-8C-DbS"/>
+                    <connections>
+                        <outlet property="categoriesCollectionView" destination="bpp-sx-Qh9" id="E22-Zr-hz7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hqL-bz-UEm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-928" y="144"/>
         </scene>
     </scenes>
     <resources>
