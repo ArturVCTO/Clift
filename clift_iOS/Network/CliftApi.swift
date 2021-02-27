@@ -38,6 +38,7 @@ enum CliftApi {
     case deleteProductFromRegistry(productId: String, eventId: String)
     case getBrands(filters: [String: Any])
     case getProductsAsLoggedInUser(group: Group,subgroup: Subgroup,event: Event, brand: Brand,shop: Shop, filters: [String : Any], page: Int)
+    case getProductsAsLoggedInUserLessParams(event: Event, filters: [String : Any])
     case getColors
     case getEventProducts(event: Event,available: String,gifted: String, filters: [String : Any])
     case getEventProductsPagination(event: Event,available: String,gifted: String, filters: [String : Any])
@@ -126,6 +127,8 @@ extension CliftApi: TargetType {
         case .updateEvent(let id,_):
             return "events/\(id)"
         case .getProductsAsLoggedInUser(_, _,let event,_,_,_,_):
+            return "events/\(event.id)/products"
+        case .getProductsAsLoggedInUserLessParams(let event,_):
             return "events/\(event.id)/products"
         case .getCategory(let id):
             return "categories/\(id)"
@@ -269,7 +272,7 @@ extension CliftApi: TargetType {
         switch self {
         case .postLoginSession,.recoverPassword,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount,.stripeCheckoutEnvelope,.stripeCheckoutGuest:
             return .post
-        case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest:
+        case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getProductsAsLoggedInUserLessParams, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest:
             return .get
         case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductQuantity,.updateEventProductThankMessage,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
             return .put
@@ -318,6 +321,9 @@ extension CliftApi: TargetType {
 
             parameters["page"] = page
                        
+            return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
+        case .getProductsAsLoggedInUserLessParams(_,var filters):
+            var parameters = filters
             return .requestParameters(parameters: parameters, encoding: URLEncoding.default)
         case .createEventPools(_, let pool):
             return .uploadMultipart(pool)

@@ -204,6 +204,8 @@ protocol ApiCalls {
     
     func getProductsAsLoggedInUser(group: Group, subgroup: Subgroup, event: Event, brand: Brand, shop: Shop, filters: [String : Any], page: Int, completion: @escaping([Product]?, Response?) -> Void)
     
+    func getProductsAsLoggedInUserLessParams(event: Event, filters: [String : Any], completion: @escaping([Product]?, Response?) -> Void)
+    
     func addProductToRegistry(productId: String, eventId: String,quantity: Int,paidAmount: Int, completion: @escaping(EventProduct?,Response?) -> Void)
     
     func deleteProductFromRegistry(productId: String, eventId: String, completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
@@ -404,6 +406,10 @@ extension CliftApiManager: ApiCalls {
     
     func getProductsAsLoggedInUser(group: Group, subgroup: Subgroup, event: Event, brand: Brand, shop: Shop, filters: [String : Any], page: Int, completion: @escaping ([Product]?, Response?) -> Void) {
         requestArrayWithResponse(.getProductsAsLoggedInUser(group: group, subgroup: subgroup, event: event, brand: brand, shop: shop, filters: filters, page: page), type: Product.self, completion: completion, wrapper: "products")
+    }
+    
+    func getProductsAsLoggedInUserLessParams(event: Event, filters: [String : Any], completion: @escaping([Product]?, Response?) -> Void) {
+        requestArrayWithResponse(.getProductsAsLoggedInUserLessParams(event: event, filters: filters), type: Product.self, completion: completion, wrapper: "products")
     }
     
     func addProductToRegistry(productId: String, eventId: String, quantity: Int, paidAmount: Int, completion: @escaping (EventProduct?, Response?) -> Void) {
