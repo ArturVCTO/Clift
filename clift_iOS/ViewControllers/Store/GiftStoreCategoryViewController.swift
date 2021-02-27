@@ -51,8 +51,9 @@ extension GiftStoreCategoryViewController: UICollectionViewDelegate {
         
         if let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: "StoreCategoryAndGroupCell", for: indexPath) as? StoreCategoryAndGroupCell {
             
+            cell.cellWidth = (collectionView.bounds.width - 100) / 3.0
             cell.configure(title: categories[indexPath.row].name, imageURLString: categories[indexPath.row].imageUrl)
-            cell.cellWidth = (collectionView.frame.size.width - 25) / 4
+            
             return cell
         }
         return UICollectionViewCell()
@@ -60,17 +61,18 @@ extension GiftStoreCategoryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        print("Indexpath es: \(indexPath.row)")
-        /*if eventPools.count > indexPath.row {
-            goToEnvelopeInformation(eventPool: eventPools[indexPath.row])
+        if categories[indexPath.row].groups.isEmpty {
+            let giftStoreProductsVC = UIStoryboard(name: "GiftStore", bundle: nil).instantiateViewController(withIdentifier: "GiftStoreProductsVC") as! GiftStoreProductsViewController
+            giftStoreProductsVC.modalPresentationStyle = .fullScreen
+            giftStoreProductsVC.category = categories[indexPath.row]
+            giftStoreProductsVC.filtersDic["category"] = categories[indexPath.row].id
+            self.navigationController?.pushViewController(giftStoreProductsVC, animated: true)
         } else {
-            let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
-            productDetailsVC.currentEventProduct = eventRegistries[indexPath.row - eventPools.count]
-            productDetailsVC.currentEvent = currentEvent
-            productDetailsVC.productDetailType = eventRegistries[indexPath.row - eventPools.count].wishableType == "ExternalProduct" ? .EventExternalProduct : .EventProduct
-            productDetailsVC.modalPresentationStyle = .fullScreen
-            self.navigationController?.pushViewController(productDetailsVC, animated: true)
-        }*/
+            let giftStoreGroupsVC = UIStoryboard(name: "GiftStore", bundle: nil).instantiateViewController(withIdentifier: "GiftStoreGroupVC") as! GiftStoreGroupViewController
+            giftStoreGroupsVC.category = categories[indexPath.row]
+            giftStoreGroupsVC.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(giftStoreGroupsVC, animated: true)
+        }
     }
 }
 
@@ -83,6 +85,28 @@ extension GiftStoreCategoryViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
+    }
+}
+
+// MARK: Extension Collection View Delegate Flow Layout
+extension GiftStoreCategoryViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let top = collectionView.bounds.height / 8
+        let left = CGFloat(40)
+        let bottom = CGFloat(10)
+        let right = CGFloat(40)
+        
+        return UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = (collectionView.bounds.width - 100) / 3.0
+        let height = CGFloat(150)
+
+        return CGSize(width: width, height: height)
     }
 }
 
