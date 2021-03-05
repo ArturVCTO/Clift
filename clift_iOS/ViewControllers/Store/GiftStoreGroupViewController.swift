@@ -66,6 +66,7 @@ class GiftStoreGroupViewController: UIViewController {
         let giftStoreProductsVC = UIStoryboard(name: "GiftStore", bundle: nil).instantiateViewController(withIdentifier: "GiftStoreProductsVC") as! GiftStoreProductsViewController
         giftStoreProductsVC.modalPresentationStyle = .fullScreen
         giftStoreProductsVC.category = category
+        giftStoreProductsVC.subgroupNameString = category.groups[selectedGroupIndex].subgroups[subgroupIndex].name
         giftStoreProductsVC.filtersDic["subgroup"] = category.groups[selectedGroupIndex].subgroups[subgroupIndex].id
         self.navigationController?.pushViewController(giftStoreProductsVC, animated: true)
     }
