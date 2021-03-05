@@ -12,21 +12,8 @@ class GiftStoreProductsViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var menuContainerWidth: NSLayoutConstraint!
-    @IBOutlet weak var backgroundImageView: customImageView!
-    //@IBOutlet var subgroupLabel: UILabel!
-    @IBOutlet weak var eventImageView: customImageView!
-    @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet var subgroupLabel: UILabel!
     @IBOutlet weak var filterView: UIView!
-    @IBOutlet weak var orderByView: UIView!
-    @IBOutlet weak var orderByInnerView: UIView!
-    @IBOutlet weak var orderByFirstButton: UIButton!
-    @IBOutlet weak var orderBySecondButton: UIButton!
-    @IBOutlet weak var orderByThirdButton: UIButton!
-    @IBOutlet weak var orderByFourthButton: UIButton!
-    @IBOutlet weak var smallViewOrderByConstraint: NSLayoutConstraint!
-    @IBOutlet weak var largeViewOrderByConstraint: NSLayoutConstraint!
     @IBOutlet weak var paginationLabel: UILabel!
     @IBOutlet weak var paginationStackViewButtons: UIStackView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
@@ -83,7 +70,7 @@ class GiftStoreProductsViewController: UIViewController {
         searchBar.delegate = self
         getEventAndProducts()
         setNavBar()
-        //setSubgroupLabel()
+        setSubgroupLabel()
         registerCells()
         setPaginationMenu()
         selectButton(button: firstMenuButton)
@@ -107,7 +94,7 @@ class GiftStoreProductsViewController: UIViewController {
     }
     
     private func setSubgroupLabel() {
-        //subgroupLabel.text = subgroupNameString.uppercased()
+        subgroupLabel.text = subgroupNameString.uppercased()
     }
 
     @objc func didTapSearchButton(sender: AnyObject){
@@ -121,22 +108,6 @@ class GiftStoreProductsViewController: UIViewController {
     }
     
     func setup(event: Event) {
-        
-        if let coverURL = URL(string: event.coverImageUrl) {
-            backgroundImageView.kf.setImage(with: coverURL, placeholder: UIImage(named: "cliftplaceholder"))
-        }
-        
-        if let eventURL = URL(string: event.eventImageUrl) {
-            eventImageView.kf.setImage(with: eventURL, placeholder: UIImage(named: "profilePlaceHolder"))
-        }
-        
-        eventNameLabel.text = event.name
-        dateLabel.text = event.formattedDate()
-        typeLabel.text = event.stringVisibility()
-        eventImageView.layer.cornerRadius = 30
-        
-        orderByView.layer.cornerRadius = 10
-        orderByInnerView.layer.cornerRadius = 10
         filterView.layer.cornerRadius = 10
     }
     
@@ -155,14 +126,23 @@ class GiftStoreProductsViewController: UIViewController {
     }
     
     @IBAction func didTapOrderByButtonTest(_ sender: UIButton) {
-        print("Order By")
-        /*let FilterSelectionVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "FilterSelectionVC") as! FilterSelectionViewController
         
-        FilterSelectionVC.sideFilterSelectionDelegate = self
-        let menu = UISideMenuNavigationController(rootViewController: FilterSelectionVC)
-        menu.presentationStyle = .menuSlideIn
-        menu.menuWidth = UIScreen.main.bounds.size.width * 0.8
-        present(menu,animated: true, completion: nil)*/
+        let orderBySheet = UIAlertController(title: "Ordenar por", message: nil, preferredStyle: .actionSheet)
+        orderBySheet.view.tintColor = UIColor(named: "PrimaryBlue")
+        
+        let priceHightToLow = UIAlertAction(title: "PRECIO: ALTO - BAJO", style: .default, handler: {(action) in self.didTapOrderByHighPrice()})
+        let priceLowToHight = UIAlertAction(title: "PRECIO: BAJO - ALTO", style: .default, handler: {(action) in self.didTapOrderByLowPrice()})
+        let nameAtoZ = UIAlertAction(title: "A - Z", style: .default, handler: {(action) in self.didTapOrderByAZ()})
+        let nameZToA = UIAlertAction(title: "Z - A", style: .default, handler: {(action) in self.didTapOrderByZA()})
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
+        
+        orderBySheet.addAction(priceHightToLow)
+        orderBySheet.addAction(priceLowToHight)
+        orderBySheet.addAction(nameAtoZ)
+        orderBySheet.addAction(nameZToA)
+        orderBySheet.addAction(cancelAction)
+        
+        present(orderBySheet, animated: true, completion: nil)
     }
     
     @IBAction func leftButtonPressed(_ sender: Any) {
@@ -203,54 +183,22 @@ class GiftStoreProductsViewController: UIViewController {
 // MARK: Extension OrderBy
 extension GiftStoreProductsViewController {
     
-    @IBAction func didTapOrderByButton(_ sender: UITapGestureRecognizer) {
-        
-        if orderByViewSizeFlag {
-            setLargeOrderByView()
-        } else {
-            setSmallOrderByView()
-        }
-        orderByViewSizeFlag = !orderByViewSizeFlag
-    }
-    
-    func setSmallOrderByView() {
-        
-        largeViewOrderByConstraint.isActive = false
-        smallViewOrderByConstraint.isActive = true
-        
-        orderByFirstButton.isHidden = true
-        orderBySecondButton.isHidden = true
-        orderByThirdButton.isHidden = true
-        orderByFourthButton.isHidden = true
-    }
-    
-    func setLargeOrderByView() {
-        
-        smallViewOrderByConstraint.isActive = false
-        largeViewOrderByConstraint.isActive = true
-        
-        orderByFirstButton.isHidden = false
-        orderBySecondButton.isHidden = false
-        orderByThirdButton.isHidden = false
-        orderByFourthButton.isHidden = false
-    }
-    
-    @IBAction func didTapOrderByLowPrice(_ sender: UIButton) {
+    func didTapOrderByLowPrice() {
         currentOrder = .priceAscending
         getStoreProducts()
     }
     
-    @IBAction func didTapOrderByHighPrice(_ sender: UIButton) {
+    func didTapOrderByHighPrice() {
         currentOrder = .priceDescending
         getStoreProducts()
     }
     
-    @IBAction func didTapOrderByAZ(_ sender: UIButton) {
+    func didTapOrderByAZ() {
         currentOrder = .nameAscending
         getStoreProducts()
     }
     
-    @IBAction func didTapOrderByZA(_ sender: UIButton) {
+    func didTapOrderByZA() {
         currentOrder = .nameDescending
         getStoreProducts()
     }
@@ -465,6 +413,7 @@ extension GiftStoreProductsViewController {
         products.removeAll()
         reloadCollectionView()
         filtersDic["page"] = actualPage
+        filtersDic["sort_by"] = currentOrder.rawValue
         sharedApiManager.getProductsAsLoggedInUserLessParams(event:currentEvent, filters: filtersDic) { (products,result) in
             
             if let response = result{
