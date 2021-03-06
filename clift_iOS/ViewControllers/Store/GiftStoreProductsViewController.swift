@@ -125,7 +125,7 @@ class GiftStoreProductsViewController: UIViewController {
         collectionViewHeight.constant = CGFloat(productsCollectionView.collectionViewLayout.collectionViewContentSize.height)
     }
     
-    @IBAction func didTapOrderByButtonTest(_ sender: UIButton) {
+    @IBAction func didTapOrderByButton(_ sender: UIButton) {
         
         let orderBySheet = UIAlertController(title: "Ordenar por", message: nil, preferredStyle: .actionSheet)
         orderBySheet.view.tintColor = UIColor(named: "PrimaryBlue")
@@ -414,6 +414,7 @@ extension GiftStoreProductsViewController {
         reloadCollectionView()
         filtersDic["page"] = actualPage
         filtersDic["sort_by"] = currentOrder.rawValue
+        filtersDic["q"] = query
         sharedApiManager.getProductsAsLoggedInUserLessParams(event:currentEvent, filters: filtersDic) { (products,result) in
             
             if let response = result{
