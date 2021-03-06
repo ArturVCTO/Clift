@@ -68,16 +68,18 @@
                                         <rect key="frame" x="0.0" y="46" width="151" height="25"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zfd-qb-FGJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="70.5" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="43.5" height="25"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 / 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="u4V-3W-nJY">
-                                                        <rect key="frame" x="10.5" y="2.5" width="49.5" height="20"/>
+                                                        <rect key="frame" x="6.5" y="2.5" width="30.5" height="20"/>
+                                                        <gestureRecognizers/>
                                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                                         <color key="textColor" name="PrimaryBlue"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstItem="u4V-3W-nJY" firstAttribute="width" secondItem="Zfd-qb-FGJ" secondAttribute="width" multiplier="0.7" id="ist-8d-59v"/>
                                                     <constraint firstItem="u4V-3W-nJY" firstAttribute="centerY" secondItem="Zfd-qb-FGJ" secondAttribute="centerY" id="lc8-XV-sjs"/>
@@ -85,12 +87,15 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waV-Jp-bqU">
-                                                <rect key="frame" x="80.5" y="0.0" width="70.5" height="25"/>
+                                                <rect key="frame" x="53.5" y="0.0" width="44" height="25"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wok-Dx-9ao">
-                                                        <rect key="frame" x="25.5" y="0.0" width="20" height="25"/>
+                                                        <rect key="frame" x="12" y="0.0" width="20" height="25"/>
                                                         <color key="backgroundColor" name="PrimaryBlue"/>
                                                         <state key="normal" image="cart"/>
+                                                        <connections>
+                                                            <action selector="didTapAddToCart:" destination="gTV-IL-0wX" eventType="touchUpInside" id="qRD-vT-Rrn"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="PrimaryBlue"/>
@@ -98,6 +103,25 @@
                                                     <constraint firstItem="wok-Dx-9ao" firstAttribute="centerY" secondItem="waV-Jp-bqU" secondAttribute="centerY" id="0ox-e3-KiW"/>
                                                     <constraint firstItem="wok-Dx-9ao" firstAttribute="centerX" secondItem="waV-Jp-bqU" secondAttribute="centerX" id="JkG-jS-ECG"/>
                                                     <constraint firstItem="wok-Dx-9ao" firstAttribute="height" secondItem="waV-Jp-bqU" secondAttribute="height" id="fCV-VN-M8R"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tDU-v4-euy">
+                                                <rect key="frame" x="107.5" y="0.0" width="43.5" height="25"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hQ5-U6-bQT">
+                                                        <rect key="frame" x="13.5" y="0.0" width="16" height="25"/>
+                                                        <color key="backgroundColor" name="PrimaryBlue"/>
+                                                        <state key="normal" image="whiteGift"/>
+                                                        <connections>
+                                                            <action selector="didTapGift:" destination="gTV-IL-0wX" eventType="touchUpInside" id="udx-Yu-Trs"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" name="PrimaryBlue"/>
+                                                <constraints>
+                                                    <constraint firstItem="hQ5-U6-bQT" firstAttribute="centerX" secondItem="tDU-v4-euy" secondAttribute="centerX" id="896-Af-EKa"/>
+                                                    <constraint firstItem="hQ5-U6-bQT" firstAttribute="centerY" secondItem="tDU-v4-euy" secondAttribute="centerY" id="j4E-6O-zMS"/>
+                                                    <constraint firstItem="hQ5-U6-bQT" firstAttribute="height" secondItem="tDU-v4-euy" secondAttribute="height" id="suw-Ra-eh2"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -144,7 +168,7 @@
             <size key="customSize" width="151" height="175"/>
             <connections>
                 <outlet property="addCartView" destination="waV-Jp-bqU" id="ikD-KF-fpc"/>
-                <outlet property="productActionButton" destination="wok-Dx-9ao" id="mYK-OH-BWt"/>
+                <outlet property="giftView" destination="tDU-v4-euy" id="nRY-08-cGA"/>
                 <outlet property="productImage" destination="hQG-BA-Tik" id="4iA-wq-nSp"/>
                 <outlet property="productNameLabel" destination="gdi-0o-iqb" id="huf-ES-hyK"/>
                 <outlet property="productPriceLabel" destination="2W3-1z-t7v" id="9b9-bF-bSc"/>
@@ -157,6 +181,7 @@
     <resources>
         <image name="10" width="255" height="230"/>
         <image name="cart" width="20" height="20"/>
+        <image name="whiteGift" width="16" height="18.5"/>
         <namedColor name="PrimaryBlue">
             <color red="0.6940000057220459" green="0.82700002193450928" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

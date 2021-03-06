@@ -16,7 +16,8 @@ class StoreProductCell: UICollectionViewCell {
     @IBOutlet weak var quantityView: UIView!
     @IBOutlet weak var productQuantityLabel: UILabel!
     @IBOutlet weak var addCartView: UIView!
-    @IBOutlet weak var productActionButton: UIButton!
+    @IBOutlet var giftView: UIView!
+    
     var cellWidthConstraint: NSLayoutConstraint?
     
     var cellWidth: CGFloat? {
@@ -36,6 +37,13 @@ class StoreProductCell: UICollectionViewCell {
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
         cellWidthConstraint = contentView.widthAnchor.constraint(equalToConstant: 0)
         setup()
+        addGestureRecognizer()
+    }
+    
+    func addGestureRecognizer() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer( target: self, action: #selector(self.didTapQuantity))
+        tap.cancelsTouchesInView = false
+        quantityView.addGestureRecognizer(tap)
     }
     
     func setup() {
@@ -43,6 +51,7 @@ class StoreProductCell: UICollectionViewCell {
         quantityView.layer.borderWidth = 1
         quantityView.layer.borderColor = UIColor(named: "PrimaryBlue")?.cgColor
         addCartView.layer.cornerRadius = 5
+        giftView.layer.cornerRadius = 5
         productImage.contentMode = .scaleAspectFit
     }
     
@@ -54,5 +63,17 @@ class StoreProductCell: UICollectionViewCell {
         productNameLabel.text = product.name
         productPriceLabel.text = "$ \(product.price) MXN"
         //productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
+    }
+    
+    @objc func didTapQuantity() {
+        print("Quantity")
+    }
+    
+    @IBAction func didTapAddToCart(_ sender: Any) {
+        print("Cart")
+    }
+    
+    @IBAction func didTapGift(_ sender: Any) {
+        print("Gift")
     }
 }
