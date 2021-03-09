@@ -49,6 +49,7 @@ class GiftStoreProductsViewController: UIViewController {
     var subgroupNameString = ""
     var currentEvent = Event()
     var products: [Product]! = []
+    var productQuantity = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
     var orderByViewSizeFlag = true
     var filtersDic: [String: Any] = [:]
     var currentOrder: sortKeys = .nameAscending
@@ -219,6 +220,7 @@ extension GiftStoreProductsViewController: UICollectionViewDelegate, UICollectio
         
         if let cell = productsCollectionView.dequeueReusableCell(withReuseIdentifier: "StoreProductCell", for: indexPath) as? StoreProductCell {
             
+            cell.storeProductCellDelegate = self
             cell.configure(product: products[indexPath.row])
             cell.cellWidth = (collectionView.frame.size.width - 25) / 2
             return cell
@@ -404,6 +406,50 @@ extension GiftStoreProductsViewController: UISearchBarDelegate {
         isSearchBarHIdden = !isSearchBarHIdden
     }
 }
+
+// MARK: StoreProductCell
+extension GiftStoreProductsViewController: StoreProductCellDelegate {
+    func didTapProductQuantity(currentStoreProductCell: StoreProductCell) {
+        let alertView = UIAlertController(title: "Selecciona", message: "\n\n\n\n\n\n\n\n\n", preferredStyle: UIAlertController.Style.actionSheet);
+        let pickerView = UIPickerView()
+        
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        alertView.view.addSubview(pickerView)
+        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        pickerView.leftAnchor.constraint(equalTo: alertView.view.leftAnchor, constant: 20.0).isActive = true
+        pickerView.rightAnchor.constraint(equalTo: alertView.view.rightAnchor, constant: -20.0).isActive = true
+        
+        let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in self.presentProducts(subgroupIndex: pickerView.selectedRow(inComponent: 0),
+                                                                                                                               currentStoreProductCell: currentStoreProductCell)})
+        alertView.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+
+        alertView.addAction(action)
+        present(alertView, animated: true, completion: nil)
+    }
+    
+    func presentProducts(subgroupIndex: Int, currentStoreProductCell: StoreProductCell) {
+        currentStoreProductCell.productQuantityLabel.text = productQuantity[subgroupIndex]
+    }
+}
+
+extension GiftStoreProductsViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return productQuantity.count
+    }
+}
+
+extension GiftStoreProductsViewController: UIPickerViewDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return productQuantity[row]
+    }
+}
+
 
 // MARK: Extension REST APIs
 extension GiftStoreProductsViewController {

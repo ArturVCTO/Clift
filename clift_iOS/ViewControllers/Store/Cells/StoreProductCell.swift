@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import SDWebImage
+
+protocol StoreProductCellDelegate {
+    func didTapProductQuantity(currentStoreProductCell: StoreProductCell)
+}
 
 class StoreProductCell: UICollectionViewCell {
     
@@ -18,6 +23,7 @@ class StoreProductCell: UICollectionViewCell {
     @IBOutlet weak var addCartView: UIView!
     @IBOutlet var giftView: UIView!
     
+    var storeProductCellDelegate: StoreProductCellDelegate!
     var cellWidthConstraint: NSLayoutConstraint?
     
     var cellWidth: CGFloat? {
@@ -62,11 +68,10 @@ class StoreProductCell: UICollectionViewCell {
         }
         productNameLabel.text = product.name
         productPriceLabel.text = "$ \(product.price) MXN"
-        //productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
     }
     
     @objc func didTapQuantity() {
-        print("Quantity")
+        storeProductCellDelegate.didTapProductQuantity(currentStoreProductCell: self)
     }
     
     @IBAction func didTapAddToCart(_ sender: Any) {
