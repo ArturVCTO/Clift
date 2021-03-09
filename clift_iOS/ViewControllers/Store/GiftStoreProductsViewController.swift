@@ -409,6 +409,7 @@ extension GiftStoreProductsViewController: UISearchBarDelegate {
 
 // MARK: StoreProductCell
 extension GiftStoreProductsViewController: StoreProductCellDelegate {
+
     func didTapProductQuantity(currentStoreProductCell: StoreProductCell) {
         let alertView = UIAlertController(title: "Selecciona", message: "\n\n\n\n\n\n\n\n\n", preferredStyle: UIAlertController.Style.actionSheet);
         let pickerView = UIPickerView()
@@ -420,7 +421,7 @@ extension GiftStoreProductsViewController: StoreProductCellDelegate {
         pickerView.leftAnchor.constraint(equalTo: alertView.view.leftAnchor, constant: 20.0).isActive = true
         pickerView.rightAnchor.constraint(equalTo: alertView.view.rightAnchor, constant: -20.0).isActive = true
         
-        let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in self.presentProducts(subgroupIndex: pickerView.selectedRow(inComponent: 0),
+        let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in self.changeProductQuantity(subgroupIndex: pickerView.selectedRow(inComponent: 0),
                                                                                                                                currentStoreProductCell: currentStoreProductCell)})
         alertView.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
 
@@ -428,8 +429,16 @@ extension GiftStoreProductsViewController: StoreProductCellDelegate {
         present(alertView, animated: true, completion: nil)
     }
     
-    func presentProducts(subgroupIndex: Int, currentStoreProductCell: StoreProductCell) {
+    func changeProductQuantity(subgroupIndex: Int, currentStoreProductCell: StoreProductCell) {
         currentStoreProductCell.productQuantityLabel.text = productQuantity[subgroupIndex]
+    }
+    
+    func didTapAddProductToRegistry(product: Product, productQuantity: Int) {
+        addProductToRegistry(product: product, productQuantity: productQuantity)
+    }
+    
+    func didTapAddProductToCart(product: Product, productQuantity: Int) {
+        addProductToCart(product: product, productQuantity: productQuantity)
     }
 }
 
@@ -499,6 +508,30 @@ extension GiftStoreProductsViewController {
                 }
             } else {
                 self.dismissLoader()
+            }
+        }
+    }
+    
+    func addProductToRegistry(product: Product, productQuantity: Int) {
+        sharedApiManager.addProductToRegistry(productId: product.id, eventId: currentEvent.id, quantity: productQuantity, paidAmount: 0) { (eventProduct, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu mesa.", comment: "Product Added"),type: .success)
+                } else {
+                    self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Product Not Added"),type: .error)
+                }
+            }
+        }
+    }
+    
+    func addProductToCart(product: Product, productQuantity: Int) {
+        sharedApiManager.addItemToCart(quantity: productQuantity, product: product) { (cartItem, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: "Login Error"),type: .success)
+                } else if (response.isClientError()) {
+                    self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
+                }
             }
         }
     }

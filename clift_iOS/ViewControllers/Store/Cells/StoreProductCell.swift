@@ -11,6 +11,8 @@ import SDWebImage
 
 protocol StoreProductCellDelegate {
     func didTapProductQuantity(currentStoreProductCell: StoreProductCell)
+    func didTapAddProductToRegistry(product: Product, productQuantity: Int)
+    func didTapAddProductToCart(product: Product, productQuantity: Int)
 }
 
 class StoreProductCell: UICollectionViewCell {
@@ -25,6 +27,7 @@ class StoreProductCell: UICollectionViewCell {
     
     var storeProductCellDelegate: StoreProductCellDelegate!
     var cellWidthConstraint: NSLayoutConstraint?
+    var currentProduct = Product()
     
     var cellWidth: CGFloat? {
         didSet{
@@ -63,6 +66,8 @@ class StoreProductCell: UICollectionViewCell {
     
     func configure(product: Product) {
         
+        currentProduct = product
+        
         if let imageURL = URL(string:"\(product.imageUrl)") {
             self.productImage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "cliftplaceholder"))
         }
@@ -75,10 +80,14 @@ class StoreProductCell: UICollectionViewCell {
     }
     
     @IBAction func didTapAddToCart(_ sender: Any) {
-        print("Cart")
+        if let currentQuantity = Int(productQuantityLabel.text ?? "1") {
+            storeProductCellDelegate.didTapAddProductToCart(product: currentProduct, productQuantity: currentQuantity)
+        }
     }
     
     @IBAction func didTapGift(_ sender: Any) {
-        print("Gift")
+        if let currentQuantity = Int(productQuantityLabel.text ?? "1") {
+            storeProductCellDelegate.didTapAddProductToRegistry(product: currentProduct, productQuantity: currentQuantity)
+        }
     }
 }
