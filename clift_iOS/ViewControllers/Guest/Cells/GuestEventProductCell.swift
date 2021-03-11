@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 protocol ProductCellDelegate {
-    func didTapAddProductToCart(quantity:Int, product: Product)
+    func didTapAddProductToCart(quantity:Int, product: EventProduct)
     func didTapCashFundPool(eventPool: EventPool)
 }
 
@@ -31,7 +31,7 @@ class GuestEventProductCell: UICollectionViewCell {
     @IBOutlet weak var productActionButton: UIButton!
     
     var productCellDelegate: ProductCellDelegate!
-    var currentProduct: Product!
+    var currentProduct: EventProduct!
     var currentPool: EventPool!
     var cellType: ProductCellType?
     
@@ -77,7 +77,8 @@ class GuestEventProductCell: UICollectionViewCell {
             case .EventProduct:
                 
                 if let product = product {
-                    currentProduct = product.product
+                    currentProduct = product
+                
                     if let imageURL = URL(string:"\(product.product.imageUrl)") {
                         self.productImage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "cliftplaceholder"))
                     }
@@ -87,7 +88,7 @@ class GuestEventProductCell: UICollectionViewCell {
                 }
             case .EventExternalProduct:
                 if let product = product {
-                    currentProduct = product.product
+                    currentProduct = product
                 
                     if let imageURL = URL(string:"\(product.externalProduct.imageUrl)") {
                         self.productImage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "cliftplaceholder"))
@@ -104,6 +105,7 @@ class GuestEventProductCell: UICollectionViewCell {
                     productImage.image = UIImage(named: "cashFund")
                     productNameLabel.text = pool.description
                     productPriceLabel.text = pool.note
+                    productPriceLabel.font = UIFont(name: "Mihan-Regular", size: 12.0)
                     quantityView.isHidden = true
                     productActionButton.setImage(UIImage(named: "whiteGift"), for: .normal)
                 }

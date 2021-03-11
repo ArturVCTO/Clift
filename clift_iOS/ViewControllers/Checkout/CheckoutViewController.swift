@@ -19,7 +19,6 @@ class CheckoutViewController: UIViewController {
     
     @IBOutlet weak var checkoutProductTableView: UITableView!
     @IBOutlet weak var subtotalLabel: UILabel!
-    @IBOutlet weak var stripeCommissionLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
     
     var cartItems: [CartItem] = []

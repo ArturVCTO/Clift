@@ -139,7 +139,7 @@ class EventGiftListViewController: UIViewController {
         eventNameLabel.text = event.name
         dateLabel.text = event.formattedDate()
         typeLabel.text = event.stringVisibility()
-        eventImageView.layer.cornerRadius = 30
+        eventImageView.layer.cornerRadius = eventImageView.frame.height / 2
         
         orderByView.layer.cornerRadius = 10
         orderByInnerView.layer.cornerRadius = 10
@@ -202,14 +202,16 @@ class EventGiftListViewController: UIViewController {
         }
     }
     
-    func addProductToCart(quantity: Int, product: Product) {
-        sharedApiManager.addItemToCart(quantity: quantity, product: product) { (cartItem, result) in
+    func addProductToCart(quantity: Int, product: EventProduct) {
+        sharedApiManager.addItemToCartGuest(quantity: quantity, product: product) { (cartItem, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: ""),type: .success)
                 } else if (response.isClientError()) {
                     self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
                 }
+            } else {
+                self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
             }
         }
     }
@@ -410,7 +412,7 @@ extension EventGiftListViewController: ProductCellDelegate {
     }
     
     
-    func didTapAddProductToCart(quantity: Int, product: Product) {
+    func didTapAddProductToCart(quantity: Int, product: EventProduct) {
         addProductToCart(quantity: quantity, product: product)
     }
 }
