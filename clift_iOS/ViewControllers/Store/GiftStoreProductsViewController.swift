@@ -87,11 +87,20 @@ class GiftStoreProductsViewController: UIViewController {
         navigationItem.titleView = titleLabel
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
+        let cartImage = UIImage(named: "cart")
         let searchImage = UIImage(named: "searchicon")
+        let cartButton   = UIBarButtonItem(image: cartImage,  style: .plain, target: self, action: #selector(didTapCartButton(sender:)))
         let searchButton = UIBarButtonItem(image: searchImage,  style: .plain, target: self, action: #selector(didTapSearchButton(sender:)))
-        navigationItem.rightBarButtonItems = [searchButton]
+        navigationItem.rightBarButtonItems = [cartButton, searchButton]
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    @objc func didTapCartButton(sender: AnyObject){
+        let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
+        vc.paymentType = .userLogIn
+        vc.currentEvent = currentEvent
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func setSubgroupLabel() {
