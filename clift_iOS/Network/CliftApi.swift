@@ -96,6 +96,7 @@ enum CliftApi {
     case getRegistriesGuest(event: Event,filters: [String:Any],orderBy: String, query: String)
     case stripeCheckoutEnvelope(event: Event,pool: EventPool,checkout: CheckoutEnvelope)
     case stripeCheckoutGuest(event: Event,checkout: CheckoutGuest)
+    case addItemToCartGuest(quantity: Int,product: EventProduct)
 }
 
 extension CliftApi: TargetType {
@@ -265,6 +266,8 @@ extension CliftApi: TargetType {
             return "checkout/\(event.id)/event_pool/\(pool.id)"
         case.stripeCheckoutGuest(let event,_):
             return "checkout/gift_payment/\(event.id)"
+        case .addItemToCartGuest(_,let product):
+            return "cart/\(product.product.id)/add_item"
         }
     }
     
@@ -274,7 +277,7 @@ extension CliftApi: TargetType {
             return .post
         case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getProductsAsLoggedInUserLessParams, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductQuantity,.updateEventProductThankMessage,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductQuantity,.updateEventProductThankMessage,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts, .addItemToCartGuest:
             return .put
         case .deleteLogoutSession,.deleteProductFromRegistry,.deleteEventProduct,.deleteEventPool,.deleteBankAccount,.deleteItemFromCart:
             return .delete
@@ -418,6 +421,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["event_pool": checkout.toJSON()], encoding: JSONEncoding.default)
         case .stripeCheckoutGuest(_,let checkout):
             return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
+        case .addItemToCartGuest(let quantity,let product):
+            return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity, "wishable_type": "Product", "event_product_id": product.id]], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }

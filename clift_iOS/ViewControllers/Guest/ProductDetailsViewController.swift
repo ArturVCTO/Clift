@@ -148,19 +148,22 @@ class ProductDetailsViewController: UIViewController {
     }
     
     @IBAction func addToCartPressed(_ sender: UIButton) {
-        if let product = currentEventProduct?.product {
+        if let product = currentEventProduct {
             addProductToCart(quantity: 1, product: product)
         }
     }
     
-    func addProductToCart(quantity: Int, product: Product) {
-        sharedApiManager.addItemToCart(quantity: quantity, product: product) { (cartItem, result) in
+    func addProductToCart(quantity: Int, product: EventProduct) {
+        sharedApiManager.addItemToCartGuest(quantity: quantity, product: product) { (cartItem, result) in
             if let response = result {
                 if (response.isSuccess()) {
+                    self.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
                     self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: "Login Error"),type: .success)
                 } else if (response.isClientError()) {
                     self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
                 }
+            } else {
+                self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
             }
         }
     }
