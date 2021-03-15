@@ -477,7 +477,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ean-Fu-zhU">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pme-UE-IvJ">
+                                <rect key="frame" x="25" y="44" width="364" height="818"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="giftEmptyState" translatesAutoresizingMaskIntoConstraints="NO" id="YlU-Bn-Btk">
+                                        <rect key="frame" x="60" y="278" width="244.5" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Efb-bE-BHn"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Aún no tienes productos agregados a tu mesa!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWY-V6-95R">
+                                        <rect key="frame" x="-19" y="398" width="402" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visita nuestra tienda para escoger tus productos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4v7-rq-Pef">
+                                        <rect key="frame" x="52" y="440.5" width="260.5" height="14"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QrG-i7-krU">
+                                        <rect key="frame" x="109" y="474.5" width="146" height="35"/>
+                                        <color key="backgroundColor" name="PrimaryBlue"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="1fN-Nr-Dcb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
+                                        <state key="normal" title="IR A TIENDA">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="goToStorePressed:" destination="gWm-15-eF0" eventType="touchUpInside" id="eRf-7o-aJY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="sWY-V6-95R" firstAttribute="centerY" secondItem="pme-UE-IvJ" secondAttribute="centerY" id="BA4-uK-V9X"/>
+                                    <constraint firstItem="QrG-i7-krU" firstAttribute="centerX" secondItem="pme-UE-IvJ" secondAttribute="centerX" id="C7l-ty-JAe"/>
+                                    <constraint firstItem="YlU-Bn-Btk" firstAttribute="centerX" secondItem="pme-UE-IvJ" secondAttribute="centerX" id="O3G-AS-mQq"/>
+                                    <constraint firstItem="QrG-i7-krU" firstAttribute="width" secondItem="pme-UE-IvJ" secondAttribute="width" multiplier="0.4" id="OKk-lk-HNC"/>
+                                    <constraint firstItem="QrG-i7-krU" firstAttribute="top" secondItem="4v7-rq-Pef" secondAttribute="bottom" constant="20" id="QXc-aF-3Sm"/>
+                                    <constraint firstItem="4v7-rq-Pef" firstAttribute="centerX" secondItem="pme-UE-IvJ" secondAttribute="centerX" id="i4j-8Z-QJf"/>
+                                    <constraint firstItem="sWY-V6-95R" firstAttribute="centerX" secondItem="pme-UE-IvJ" secondAttribute="centerX" id="nwO-eu-3ES"/>
+                                    <constraint firstItem="sWY-V6-95R" firstAttribute="top" secondItem="YlU-Bn-Btk" secondAttribute="bottom" constant="20" id="tBS-Y8-KWu"/>
+                                    <constraint firstItem="4v7-rq-Pef" firstAttribute="top" secondItem="sWY-V6-95R" secondAttribute="bottom" constant="20" id="tEH-sl-nJj"/>
+                                </constraints>
+                            </view>
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ean-Fu-zhU">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JF9-2W-kvb">
@@ -821,8 +870,12 @@
                         <constraints>
                             <constraint firstItem="gnV-YZ-QU7" firstAttribute="trailing" secondItem="ean-Fu-zhU" secondAttribute="trailing" id="8tG-UF-TkM"/>
                             <constraint firstItem="ean-Fu-zhU" firstAttribute="leading" secondItem="gnV-YZ-QU7" secondAttribute="leading" id="IWO-Py-kUJ"/>
+                            <constraint firstItem="gnV-YZ-QU7" firstAttribute="bottom" secondItem="pme-UE-IvJ" secondAttribute="bottom" id="UDJ-bV-Mcp"/>
+                            <constraint firstItem="gnV-YZ-QU7" firstAttribute="trailing" secondItem="pme-UE-IvJ" secondAttribute="trailing" constant="25" id="YiX-JQ-dVk"/>
                             <constraint firstItem="ean-Fu-zhU" firstAttribute="top" secondItem="gnV-YZ-QU7" secondAttribute="top" id="h4c-N5-vwm"/>
                             <constraint firstItem="gnV-YZ-QU7" firstAttribute="bottom" secondItem="ean-Fu-zhU" secondAttribute="bottom" id="omf-IJ-I4b"/>
+                            <constraint firstItem="pme-UE-IvJ" firstAttribute="top" secondItem="gnV-YZ-QU7" secondAttribute="top" id="rSM-sj-A3O"/>
+                            <constraint firstItem="pme-UE-IvJ" firstAttribute="leading" secondItem="gnV-YZ-QU7" secondAttribute="leading" constant="25" id="ulG-xZ-hQZ"/>
                             <constraint firstItem="JF9-2W-kvb" firstAttribute="width" secondItem="Mvc-Ga-5mL" secondAttribute="width" id="xug-ZZ-BOg"/>
                         </constraints>
                     </view>
@@ -832,9 +885,11 @@
                         <outlet property="backMenuContainerWidth" destination="6JK-j0-Gh2" id="jSe-fa-ReX"/>
                         <outlet property="buttonContainerWidth" destination="F7e-25-zFx" id="v19-uD-Gl3"/>
                         <outlet property="collectionViewHeight" destination="4mv-7p-aaq" id="Vg0-25-qfQ"/>
+                        <outlet property="emptyStateView" destination="pme-UE-IvJ" id="XvJ-AV-biL"/>
                         <outlet property="filterView" destination="Sih-Q1-YJe" id="qKW-dR-w1E"/>
                         <outlet property="firstMenuButton" destination="vVB-VN-oao" id="TzS-ra-KBr"/>
                         <outlet property="firstMenuButtonContainerView" destination="a2L-EO-f5d" id="nMu-T9-cxs"/>
+                        <outlet property="goToStoreButton" destination="QrG-i7-krU" id="cdX-Ya-HR5"/>
                         <outlet property="largeViewOrderByConstraint" destination="BcW-Sj-Zbg" id="c6m-cj-rQH"/>
                         <outlet property="menuContainerView" destination="D3R-c2-b4K" id="DGa-Si-wqf"/>
                         <outlet property="menuContainerWidth" destination="3gI-Nf-LPv" id="uYh-ig-MJu"/>
@@ -848,6 +903,7 @@
                         <outlet property="paginationLabel" destination="UM3-BN-hXr" id="vmb-aH-QFD"/>
                         <outlet property="paginationStackViewButtons" destination="Bq3-dv-2DY" id="LJt-rh-uV1"/>
                         <outlet property="productsCollectionView" destination="aFy-Pd-Hm9" id="ID3-YU-Wqm"/>
+                        <outlet property="scrollView" destination="ean-Fu-zhU" id="FJA-BH-PHa"/>
                         <outlet property="secondButton" destination="shh-Tv-aJW" id="tex-mU-kLY"/>
                         <outlet property="secondButtonContainerView" destination="bib-Ds-ypK" id="PMP-TY-t8B"/>
                         <outlet property="smallViewOrderByConstraint" destination="Ais-lN-Kwg" id="7d0-rK-lOa"/>
@@ -881,6 +937,7 @@
         <image name="LeftArrowGuest" width="18" height="20"/>
         <image name="RightArrowGuest" width="18" height="20"/>
         <image name="chevrondowngray" width="10" height="7"/>
+        <image name="giftEmptyState" width="244.5" height="245"/>
         <image name="profilePlaceHolder" width="1000" height="1000"/>
         <image name="weddingProfileBannerImage" width="374" height="138.5"/>
         <image name="wedding_profile_elipse" width="87.5" height="87.5"/>
