@@ -9,7 +9,6 @@
 
 import Foundation
 import UIKit
-import SideMenu
 import RealmSwift
 import Realm
 
@@ -115,44 +114,6 @@ class MainRegistryViewController: UIViewController{
         viewController.view.frame = containerView.bounds
     }
     
-    @IBAction func optionsButtonTapped(_ sender: Any) {
-        let sheet = UIAlertController(title: "Opciones de mesa", message: nil, preferredStyle: .actionSheet)
-        let editAction = UIAlertAction(title: "Editar", style: .default, handler: editButtonPressed(alert:))
-        let shareAction = UIAlertAction(title: "Compartir", style: .default, handler: shareButtonPressed(alert:))
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
-        
-       editAction.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-        
-        shareAction.setValue(UIColor.init(displayP3Red: 46/255, green: 46/255, blue: 46/255, alpha: 1.0), forKey: "titleTextColor")
-        cancelAction.setValue(UIColor.init(displayP3Red: 117/255, green: 126/255, blue: 106/255, alpha: 1.0), forKey: "titleTextColor")
-        sheet.addAction(editAction)
-        sheet.addAction(shareAction)
-        sheet.addAction(cancelAction)
-        
-        present(sheet, animated: true, completion: nil)
-    }
-    
-    func editButtonPressed(alert: UIAlertAction) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let editRegistryVC = storyboard.instantiateViewController(withIdentifier: "editRegistryVC") as! EditRegistryViewController
-        editRegistryVC.eventId = self.event.id
-        editRegistryVC.giftsVC = giftsViewController
-        editRegistryVC.invitationsVC = invitationsViewController
-        editRegistryVC.paymentsVC = paymentsViewController
-        
-        self.navigationController?.pushViewController(editRegistryVC, animated: true)
-    }
-    
-    func shareButtonPressed(alert: UIAlertAction) {
-        if let link = NSURL(string: "http://cliftapp.com/gift-table?id=\(self.event.id)")
-        {
-            let objectsToShare = [link] as [Any]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            activityVC.excludedActivityTypes = [UIActivity.ActivityType.addToReadingList]
-            self.present(activityVC, animated: true, completion: nil)
-        }
-    }
-    
     func getEvents() {
         sharedApiManager.getEvents() { (events, result) in
             if let response = result {
@@ -178,15 +139,5 @@ class MainRegistryViewController: UIViewController{
             }
         }
     }
-    
-    @IBAction func myEventsSideMenuTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "myEventsSideMenu") as! MyEventsTableViewController
-        viewController.mainRegistryVC = self
-        let menu = UISideMenuNavigationController(rootViewController: viewController)
-        menu.leftSide = true
-        present(menu,animated: true, completion: nil)
-    }
-    
 }
 

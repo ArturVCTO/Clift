@@ -10,7 +10,6 @@ import UIKit
 
 class StoreCategoryAndGroupCell: UICollectionViewCell {
 
-    @IBOutlet var cellImageView: UIView!
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet var cellLabel: UILabel!
     
@@ -18,20 +17,6 @@ class StoreCategoryAndGroupCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-    
-    func setCell() {
-        cellImageView.layer.borderWidth = 1
-        cellImageView.layer.masksToBounds = true
-        cellImageView.layer.borderColor = UIColor.lightGray.cgColor
-        if let width = cellWidth {
-            cellImageView.layer.cornerRadius = (width - 6) / 2
-            cellImageView.layer.shadowColor = UIColor.black.cgColor
-            cellImageView.layer.shadowOpacity = 0.3
-            cellImageView.layer.shadowOffset = .zero
-            cellImageView.layer.shadowRadius = 3
-        }
-        cellImageView.clipsToBounds = false
     }
     
     var cellWidth: CGFloat? {
@@ -51,6 +36,5 @@ class StoreCategoryAndGroupCell: UICollectionViewCell {
             cellImage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "cliftplaceholder"))
         }
         cellLabel.text = title
-        setCell()
     }
 }

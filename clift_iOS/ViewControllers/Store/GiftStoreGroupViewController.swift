@@ -56,7 +56,7 @@ class GiftStoreGroupViewController: UIViewController {
         pickerView.rightAnchor.constraint(equalTo: alertView.view.rightAnchor, constant: -20.0).isActive = true
         
         let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in self.presentProducts(subgroupIndex: pickerView.selectedRow(inComponent: 0))})
-        alertView.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertView.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
 
         alertView.addAction(action)
         present(alertView, animated: true, completion: nil)
@@ -66,6 +66,7 @@ class GiftStoreGroupViewController: UIViewController {
         let giftStoreProductsVC = UIStoryboard(name: "GiftStore", bundle: nil).instantiateViewController(withIdentifier: "GiftStoreProductsVC") as! GiftStoreProductsViewController
         giftStoreProductsVC.modalPresentationStyle = .fullScreen
         giftStoreProductsVC.category = category
+        giftStoreProductsVC.subgroupNameString = category.groups[selectedGroupIndex].subgroups[subgroupIndex].name
         giftStoreProductsVC.filtersDic["subgroup"] = category.groups[selectedGroupIndex].subgroups[subgroupIndex].id
         self.navigationController?.pushViewController(giftStoreProductsVC, animated: true)
     }

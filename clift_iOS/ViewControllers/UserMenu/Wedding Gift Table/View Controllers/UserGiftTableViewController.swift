@@ -24,6 +24,9 @@ class UserGiftTableViewController: UIViewController {
     @IBOutlet weak var paginationLabel: UILabel!
     @IBOutlet weak var paginationStackViewButtons: UIStackView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var emptyStateView: UIView!
+    @IBOutlet weak var goToStoreButton: UIButton!
     
     @IBOutlet weak var productsCollectionView: UICollectionView! {
         didSet {
@@ -100,6 +103,7 @@ class UserGiftTableViewController: UIViewController {
         orderByView.layer.cornerRadius = 10
         orderByInnerView.layer.cornerRadius = 10
         filterView.layer.cornerRadius = 10
+        goToStoreButton.layer.cornerRadius = 5
     }
     
     private func registerCells() {
@@ -114,6 +118,20 @@ class UserGiftTableViewController: UIViewController {
     
     private func setCollectionViewHeight() {
         collectionViewHeight.constant = CGFloat(productsCollectionView.collectionViewLayout.collectionViewContentSize.height)
+    }
+    
+    private func displayEmptyState() {
+        scrollView.isHidden = true
+        emptyStateView.isHidden = false
+    }
+    
+    private func displayGiftTable() {
+        scrollView.isHidden = false
+        emptyStateView.isHidden = true
+    }
+    
+    @IBAction func goToStorePressed(_ sender: UIButton) {
+        tabBarController?.selectedIndex = 1
     }
     
     @IBAction func didTapFilterButton(_ sender: UIButton) {
@@ -209,6 +227,11 @@ extension UserGiftTableViewController {
             self.addOrDeleteMenuButtonsDependingOnNumberOfPages()
             self.lastButtonPressed = nil
             self.dismissLoader()
+            if self.eventPools.isEmpty && self.eventRegistries.isEmpty {
+                self.displayEmptyState()
+            } else {
+                self.displayGiftTable()
+            }
         }
     }
     

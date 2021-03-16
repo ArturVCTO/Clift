@@ -331,12 +331,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="enB-xX-qLB">
-                                <rect key="frame" x="0.0" y="68" width="375" height="27.5"/>
+                                <rect key="frame" x="0.0" y="68" width="414" height="27.5"/>
                                 <color key="pageIndicatorTintColor" red="0.80000000000000004" green="0.81568627450980391" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYh-qG-GrZ" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
-                                <rect key="frame" x="105" y="786" width="254" height="56"/>
+                                <rect key="frame" x="105" y="786" width="293" height="56"/>
                                 <color key="backgroundColor" red="0.69411764710000001" green="0.82745098039999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="PSK-ll-hJm"/>
@@ -382,7 +382,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="el4-6x-wKg" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
-                                <rect key="frame" x="105" y="786" width="254" height="56"/>
+                                <rect key="frame" x="105" y="786" width="293" height="56"/>
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.1803921568627451" blue="0.1803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="254" id="2xk-1d-OGt"/>
@@ -405,7 +405,7 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRM-kC-iqw">
-                                <rect key="frame" x="0.0" y="103.5" width="375" height="663.5"/>
+                                <rect key="frame" x="0.0" y="103.5" width="414" height="663.5"/>
                                 <connections>
                                     <segue destination="RI2-Gj-Lfu" kind="embed" id="VwE-dc-m6v"/>
                                 </connections>
@@ -1314,7 +1314,7 @@
         <scene sceneID="QOU-sV-Ow9">
             <objects>
                 <navigationController id="w8f-aZ-x6M" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mi Mesa" image="giftNormal" selectedImage="registrySelected" id="ULB-3y-LaV">
+                    <tabBarItem key="tabBarItem" title="Mi Mesa" image="giftTableTabIcon" selectedImage="giftTableTabIcon" id="ULB-3y-LaV">
                         <color key="badgeColor" red="0.45882352939999999" green="0.4941176471" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="iey-HH-dQi">
@@ -1344,7 +1344,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitmap" translatesAutoresizingMaskIntoConstraints="NO" id="kcV-4A-rJy">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="158"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Marisol y Carlos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAE-A9-sSv">
                                 <rect key="frame" x="16" y="214" width="343" height="21"/>
@@ -1354,7 +1354,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="g2D-xs-ME0">
-                                <rect key="frame" x="16" y="-36" width="343" height="29"/>
+                                <rect key="frame" x="16" y="-36" width="382" height="29"/>
                                 <segments>
                                     <segment title="Regalos"/>
                                     <segment title="Invitados"/>
@@ -1363,7 +1363,7 @@
                                 <color key="tintColor" red="0.45882352941176469" green="0.49411764705882355" blue="0.41568627450980389" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqO-tj-jtp" customClass="customView" customModule="CLIFT" customModuleProvider="target">
-                                <rect key="frame" x="127" y="92" width="120" height="120"/>
+                                <rect key="frame" x="127" y="92" width="159" height="120"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profilePlaceHolder" translatesAutoresizingMaskIntoConstraints="NO" id="Wo7-qJ-kcb" customClass="customImageView" customModule="CLIFT" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
@@ -1413,7 +1413,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NnI-qd-Ta2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4ke-o9-Ndj"/>
@@ -1436,20 +1436,7 @@
                     <tabBarItem key="tabBarItem" title="Mesa" image="giftNormal" selectedImage="registrySelected" id="dI3-FW-Gvx">
                         <color key="badgeColor" red="0.45882352939999999" green="0.4941176471" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="Mi Mesa" id="mQn-YI-I0q">
-                        <barButtonItem key="leftBarButtonItem" image="eventselector" id="Mzx-JS-nhZ">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="myEventsSideMenuTapped:" destination="ljP-ev-kY3" id="gS5-PZ-vPf"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Opciones" id="Bbg-vZ-9z9">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="optionsButtonTapped:" destination="ljP-ev-kY3" id="tcI-pc-QEx"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Mi Mesa" id="mQn-YI-I0q"/>
                     <connections>
                         <outlet property="containerView" destination="NnI-qd-Ta2" id="rxW-d5-UCO"/>
                         <outlet property="registrySegmentControl" destination="g2D-xs-ME0" id="TR2-gW-ZKL"/>
@@ -2557,10 +2544,10 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="xaa-Ua-Oye">
                                                             <rect key="frame" x="151.5" y="94.5" width="72.5" height="17.5"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icassisting" translatesAutoresizingMaskIntoConstraints="NO" id="1R6-Pb-JG1">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icassisting" translatesAutoresizingMaskIntoConstraints="NO" id="1R6-Pb-JG1">
                                                                     <rect key="frame" x="0.0" y="0.0" width="12" height="17.5"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Usó +1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJ9-er-c1V">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Usó +1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xJ9-er-c1V">
                                                                     <rect key="frame" x="24" y="0.0" width="48.5" height="17.5"/>
                                                                     <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
                                                                     <color key="textColor" red="0.4823529411764706" green="0.4823529411764706" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
@@ -4000,7 +3987,7 @@
         <scene sceneID="AfN-e2-cRt">
             <objects>
                 <navigationController id="tl0-gp-2Qq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Actividad" image="icactivity" selectedImage="icactivity" id="inq-ra-Fcb">
+                    <tabBarItem key="tabBarItem" title="Actividad" image="notificationTabIcon" selectedImage="notificationTabIcon" id="inq-ra-Fcb">
                         <color key="badgeColor" red="0.45882352939999999" green="0.4941176471" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="l5r-Sf-ElO">
@@ -4126,7 +4113,7 @@
         <scene sceneID="0pr-xS-hpk">
             <objects>
                 <navigationController id="VFH-rp-SWc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tienda" image="store" selectedImage="storeSelected" id="4tc-sa-eLu">
+                    <tabBarItem key="tabBarItem" title="Tienda" image="storeTabIcon" selectedImage="storeTabIcon" id="4tc-sa-eLu">
                         <color key="badgeColor" red="0.45882352939999999" green="0.4941176471" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Lwf-qw-UhG">
@@ -5963,7 +5950,7 @@
         <scene sceneID="POQ-Kl-6pE">
             <objects>
                 <navigationController id="bm6-Z0-tpy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Perfil" image="profile" selectedImage="profileSelected" id="egX-dP-t5n">
+                    <tabBarItem key="tabBarItem" title="Perfil" image="profileTabIcon" selectedImage="profileTabIcon" id="egX-dP-t5n">
                         <color key="badgeColor" red="0.45882352939999999" green="0.4941176471" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="rTu-m2-GPl">
@@ -7048,7 +7035,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TcU-Vt-lxJ" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="590.5" width="382" height="21.5"/>
+                                <rect key="frame" x="16" y="548.5" width="382" height="35.5"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -7065,7 +7052,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Apellido" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PpT-w8-3Ib" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="646" width="382" height="21.5"/>
+                                <rect key="frame" x="16" y="618" width="382" height="35.5"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -7169,7 +7156,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Celular" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RcE-bb-CMu" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="700" width="382" height="21.5"/>
+                                <rect key="frame" x="16" y="686" width="382" height="35.5"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -7333,7 +7320,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nombre" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JWf-9i-zYF" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="162" width="382" height="25"/>
+                                <rect key="frame" x="16" y="162" width="382" height="41.5"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
@@ -7350,7 +7337,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Apellido" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xKO-C9-Tnj" customClass="IsaoTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="221" width="382" height="25"/>
+                                <rect key="frame" x="16" y="237.5" width="382" height="41.5"/>
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -7597,7 +7584,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crea tu cuenta" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wld-ZT-bIV">
-                                <rect key="frame" x="48" y="110" width="213" height="79"/>
+                                <rect key="frame" x="48" y="110" width="317" height="79"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="278" id="NR0-iN-nuX"/>
                                     <constraint firstAttribute="height" constant="79" id="Wpz-3d-FRS"/>
@@ -7607,7 +7594,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Correo Electrónico" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bqh-L0-I72" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="231" width="278" height="68"/>
+                                <rect key="frame" x="16" y="231" width="382" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="ied-Pc-Mxc"/>
                                 </constraints>
@@ -7633,7 +7620,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wTk-q1-E4U" customClass="HoshiTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="16" y="315" width="278" height="68"/>
+                                <rect key="frame" x="16" y="315" width="382" height="68"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="68" id="nrP-3V-ZOT"/>
                                 </constraints>
@@ -7691,12 +7678,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="wv2-Xm-QhN">
-                                <rect key="frame" x="0.0" y="68" width="414" height="27.5"/>
+                                <rect key="frame" x="0.0" y="68" width="375" height="27.5"/>
                                 <color key="pageIndicatorTintColor" red="0.80000000000000004" green="0.81568627449999997" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypX-kn-Ohd" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
-                                <rect key="frame" x="105" y="786" width="293" height="56"/>
+                                <rect key="frame" x="105" y="786" width="254" height="56"/>
                                 <color key="backgroundColor" red="0.45882352939999999" green="0.4941176471" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="254" id="IrY-fn-Von"/>
@@ -7742,13 +7729,13 @@
                                 </connections>
                             </button>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNW-yh-fiz">
-                                <rect key="frame" x="0.0" y="103.5" width="414" height="663.5"/>
+                                <rect key="frame" x="0.0" y="103.5" width="375" height="663.5"/>
                                 <connections>
                                     <segue destination="cQC-uG-MRj" kind="embed" id="pkC-0w-kuq"/>
                                 </connections>
                             </containerView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTB-Kh-QdI" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
-                                <rect key="frame" x="105" y="786" width="293" height="56"/>
+                                <rect key="frame" x="105" y="786" width="254" height="56"/>
                                 <color key="backgroundColor" red="0.18039215689999999" green="0.18039215689999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="2CB-vT-G5q"/>
@@ -8977,6 +8964,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yh7-Yi-gCj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9vc-am-qDt">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -10083,7 +10071,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5XR-4p-npz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="f0J-eV-gd8">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.69411764710000001" green="0.82745098039999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
@@ -10231,14 +10218,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMs-tu-4dc">
-                                <rect key="frame" x="0.0" y="44" width="414" height="401"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="dismissAlert:" destination="LS4-e4-hu4" eventType="touchUpInside" id="vTC-TZ-Cal"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRr-fy-5tm" customClass="customView" customModule="CLIFT" customModuleProvider="target">
-                                <rect key="frame" x="52" y="244" width="309" height="0.0"/>
+                                <rect key="frame" x="52" y="244" width="309" height="417"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9X-Wj-UuB">
                                         <rect key="frame" x="8" y="30" width="293" height="63.5"/>
@@ -11241,10 +11228,10 @@ agradecimiento</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QKg-mk-u91" customClass="customView" customModule="CLIFT" customModuleProvider="target">
-                                <rect key="frame" x="36" y="227" width="303" height="336"/>
+                                <rect key="frame" x="36" y="227" width="342" height="336"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="POJ-4P-jH5">
-                                        <rect key="frame" x="0.0" y="0.0" width="303" height="336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="336"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tu nombre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKZ-sS-w6e">
                                         <rect key="frame" x="8" y="96" width="287" height="19"/>
@@ -11373,7 +11360,7 @@ agradecimiento</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2S8-bn-2SH" customClass="customView" customModule="CLIFT" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="764" width="375" height="98"/>
+                                <rect key="frame" x="0.0" y="764" width="414" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¿Asistirá?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dH4-Pu-llT">
                                         <rect key="frame" x="8" y="8" width="359" height="18"/>
@@ -11386,7 +11373,7 @@ agradecimiento</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="cgV-0C-rcz">
-                                        <rect key="frame" x="8" y="42" width="358" height="48"/>
+                                        <rect key="frame" x="8" y="42" width="397" height="48"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7f-nD-KKX" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="98" height="48"/>
@@ -11431,7 +11418,7 @@ agradecimiento</string>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbS-Vk-p1L" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
-                                                <rect key="frame" x="260" y="0.0" width="98" height="48"/>
+                                                <rect key="frame" x="260" y="0.0" width="137" height="48"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="48" id="Vez-A0-u9w"/>
                                                     <constraint firstAttribute="width" constant="98" id="evY-al-en2"/>
@@ -11483,7 +11470,7 @@ agradecimiento</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKc-aW-Ge2" customClass="customView" customModule="CLIFT" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="375" height="72"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="72"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Vista previa de tu invitación" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Vr-6P-jZk">
                                         <rect key="frame" x="8" y="8" width="216.5" height="20"/>
@@ -11501,7 +11488,7 @@ agradecimiento</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRA-9j-guI">
-                                        <rect key="frame" x="309" y="23" width="58" height="31"/>
+                                        <rect key="frame" x="348" y="23" width="58" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="58" id="XIr-R4-FoI"/>
                                         </constraints>
@@ -11542,7 +11529,7 @@ agradecimiento</string>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftu-to-8TX">
-                                <rect key="frame" x="16" y="140" width="343" height="39"/>
+                                <rect key="frame" x="16" y="140" width="382" height="39"/>
                                 <string key="text">Es de suma importancia su confirmación de asistencia al evento antes del
 20 de Junio.</string>
                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="13"/>
@@ -11659,6 +11646,7 @@ agradecimiento</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5If-fQ-PNz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="75A-mB-a6U">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.69411764710000001" green="0.82745098039999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
@@ -13042,13 +13030,13 @@ agradecimiento</string>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dpj-sP-cry">
-                                                    <rect key="frame" x="108" y="24" width="278" height="15"/>
+                                                    <rect key="frame" x="108" y="24" width="278" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CATEGORIA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BcC-eJ-zNs">
-                                                    <rect key="frame" x="108" y="55" width="294" height="13"/>
+                                                    <rect key="frame" x="108" y="57.5" width="294" height="15.5"/>
                                                     <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="13"/>
                                                     <color key="textColor" red="0.4823529412" green="0.4823529412" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -16620,7 +16608,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="216.5" height="19"/>
         </designable>
         <designable name="3IU-pF-SPP">
-            <size key="intrinsicContentSize" width="135.5" height="26"/>
+            <size key="intrinsicContentSize" width="131.5" height="22"/>
         </designable>
         <designable name="3PW-Bq-WRS">
             <size key="intrinsicContentSize" width="34.5" height="13.5"/>
@@ -16632,7 +16620,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="1280" height="800"/>
         </designable>
         <designable name="55R-Li-dUN">
-            <size key="intrinsicContentSize" width="220.5" height="26"/>
+            <size key="intrinsicContentSize" width="216.5" height="22"/>
         </designable>
         <designable name="5B8-Kn-Z9J">
             <size key="intrinsicContentSize" width="51" height="33"/>
@@ -16644,7 +16632,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="58" height="20.5"/>
         </designable>
         <designable name="7je-S5-gTF">
-            <size key="intrinsicContentSize" width="144.5" height="29.5"/>
+            <size key="intrinsicContentSize" width="140.5" height="25.5"/>
         </designable>
         <designable name="803-DM-XoK">
             <size key="intrinsicContentSize" width="128.5" height="18"/>
@@ -16686,7 +16674,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="92.5" height="18"/>
         </designable>
         <designable name="DA5-BR-7rf">
-            <size key="intrinsicContentSize" width="266" height="29.5"/>
+            <size key="intrinsicContentSize" width="262" height="25.5"/>
         </designable>
         <designable name="DJ4-g1-kkQ">
             <size key="intrinsicContentSize" width="89" height="19"/>
@@ -16725,7 +16713,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="135" height="31"/>
         </designable>
         <designable name="JWf-9i-zYF">
-            <size key="intrinsicContentSize" width="66" height="25"/>
+            <size key="intrinsicContentSize" width="78" height="42.5"/>
         </designable>
         <designable name="JfS-YM-XNd">
             <size key="intrinsicContentSize" width="12.5" height="22"/>
@@ -16773,7 +16761,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="103" height="19"/>
         </designable>
         <designable name="OC6-bK-U0j">
-            <size key="intrinsicContentSize" width="53" height="26"/>
+            <size key="intrinsicContentSize" width="49" height="22"/>
         </designable>
         <designable name="OKK-kW-1Kd">
             <size key="intrinsicContentSize" width="88" height="32"/>
@@ -16791,7 +16779,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="187" height="19"/>
         </designable>
         <designable name="PpT-w8-3Ib">
-            <size key="intrinsicContentSize" width="61.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="73.5" height="35.5"/>
         </designable>
         <designable name="Pxd-HQ-Jj1">
             <size key="intrinsicContentSize" width="99" height="32"/>
@@ -16803,10 +16791,10 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="116" height="18"/>
         </designable>
         <designable name="RcE-bb-CMu">
-            <size key="intrinsicContentSize" width="53.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="65.5" height="35.5"/>
         </designable>
         <designable name="Rod-uX-iqo">
-            <size key="intrinsicContentSize" width="142" height="26"/>
+            <size key="intrinsicContentSize" width="138" height="22"/>
         </designable>
         <designable name="SFZ-OZ-56e">
             <size key="intrinsicContentSize" width="167" height="167"/>
@@ -16830,7 +16818,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="48" height="31"/>
         </designable>
         <designable name="TcU-Vt-lxJ">
-            <size key="intrinsicContentSize" width="61.5" height="21.5"/>
+            <size key="intrinsicContentSize" width="73.5" height="35.5"/>
         </designable>
         <designable name="TkF-Gp-DMG">
             <size key="intrinsicContentSize" width="54.5" height="19"/>
@@ -16920,7 +16908,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="16" height="17"/>
         </designable>
         <designable name="coW-Lu-d1K">
-            <size key="intrinsicContentSize" width="53" height="26"/>
+            <size key="intrinsicContentSize" width="49" height="22"/>
         </designable>
         <designable name="dJI-L3-VuF">
             <size key="intrinsicContentSize" width="135.5" height="19"/>
@@ -16935,7 +16923,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="54.5" height="19"/>
         </designable>
         <designable name="f4a-iQ-Wvr">
-            <size key="intrinsicContentSize" width="128.5" height="27"/>
+            <size key="intrinsicContentSize" width="124.5" height="23"/>
         </designable>
         <designable name="fT9-dD-gsS">
             <size key="intrinsicContentSize" width="128" height="30"/>
@@ -16962,7 +16950,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="210" height="30"/>
         </designable>
         <designable name="i1T-Jr-FpN">
-            <size key="intrinsicContentSize" width="220.5" height="26"/>
+            <size key="intrinsicContentSize" width="216.5" height="22"/>
         </designable>
         <designable name="i4d-UG-2YC">
             <size key="intrinsicContentSize" width="167" height="167"/>
@@ -17010,7 +16998,7 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="209" height="30"/>
         </designable>
         <designable name="nbX-at-hNd">
-            <size key="intrinsicContentSize" width="166" height="29.5"/>
+            <size key="intrinsicContentSize" width="162" height="25.5"/>
         </designable>
         <designable name="ozi-R3-QM9">
             <size key="intrinsicContentSize" width="30" height="42"/>
@@ -17019,13 +17007,13 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="124.5" height="19"/>
         </designable>
         <designable name="pNl-un-gbv">
-            <size key="intrinsicContentSize" width="46.5" height="29.5"/>
+            <size key="intrinsicContentSize" width="42.5" height="25.5"/>
         </designable>
         <designable name="pRS-Ly-htV">
             <size key="intrinsicContentSize" width="12" height="22"/>
         </designable>
         <designable name="pVU-1X-5wh">
-            <size key="intrinsicContentSize" width="148" height="27"/>
+            <size key="intrinsicContentSize" width="144" height="23"/>
         </designable>
         <designable name="qO1-yL-StA">
             <size key="intrinsicContentSize" width="172" height="19"/>
@@ -17073,10 +17061,10 @@ de entrega de cada tienda)</string>
             <size key="intrinsicContentSize" width="12" height="22"/>
         </designable>
         <designable name="xKO-C9-Tnj">
-            <size key="intrinsicContentSize" width="64.5" height="25"/>
+            <size key="intrinsicContentSize" width="76.5" height="42.5"/>
         </designable>
         <designable name="xYv-Bs-TL3">
-            <size key="intrinsicContentSize" width="142" height="26"/>
+            <size key="intrinsicContentSize" width="138" height="22"/>
         </designable>
         <designable name="y1g-tV-ibG">
             <size key="intrinsicContentSize" width="87" height="30"/>
@@ -17133,19 +17121,18 @@ de entrega de cada tienda)</string>
         <image name="clock" width="20" height="20"/>
         <image name="ellipsismenu" width="4" height="18"/>
         <image name="emptystateinvitees" width="41" height="54"/>
-        <image name="eventselector" width="20" height="20"/>
         <image name="externalLinkAlt" width="28" height="28"/>
         <image name="eyeSlash" width="20" height="20"/>
         <image name="favoritestar" width="14" height="14"/>
         <image name="filter" width="16" height="16"/>
         <image name="giftNormal" width="28" height="28"/>
+        <image name="giftTableTabIcon" width="25.5" height="25.5"/>
         <image name="giftcard1" width="256" height="256"/>
         <image name="greencheckmark" width="13" height="13"/>
         <image name="icAddBank" width="74" height="67"/>
         <image name="icAppsmesa" width="20" height="20"/>
         <image name="icChampagne" width="57" height="57"/>
         <image name="icGiftList" width="56" height="56"/>
-        <image name="icactivity" width="22" height="28"/>
         <image name="icaddresses" width="16" height="20"/>
         <image name="icassisting" width="12" height="10"/>
         <image name="icbankprofile" width="20" height="21"/>
@@ -17163,6 +17150,7 @@ de entrega de cada tienda)</string>
         <image name="logoclift" width="193" height="56"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="multiply" catalog="system" width="128" height="111"/>
+        <image name="notificationTabIcon" width="20.5" height="25.5"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="placeholdercover" width="110" height="151"/>
         <image name="placeholderinvitation" width="184" height="135"/>
@@ -17173,11 +17161,13 @@ de entrega de cada tienda)</string>
         <image name="profile" width="28" height="28"/>
         <image name="profilePlaceHolder" width="1000" height="1000"/>
         <image name="profileSelected" width="28" height="28"/>
+        <image name="profileTabIcon" width="25.5" height="25.5"/>
         <image name="registrySelected" width="28" height="28"/>
         <image name="rightbluearrow" width="8" height="8"/>
         <image name="searchicon" width="20" height="20"/>
         <image name="store" width="28" height="28"/>
         <image name="storeSelected" width="28" height="28"/>
+        <image name="storeTabIcon" width="25.5" height="25.5"/>
         <image name="summarycocina" width="100" height="101"/>
         <image name="whiteplus" width="16" height="16"/>
         <namedColor name="PrimaryBlue">
