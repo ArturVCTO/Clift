@@ -237,20 +237,6 @@ extension GiftStoreProductsViewController: UICollectionViewDelegate, UICollectio
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        /*if eventPools.count > indexPath.row {
-            goToEnvelopeInformation(eventPool: eventPools[indexPath.row])
-        } else {
-            let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
-            productDetailsVC.currentEventProduct = eventRegistries[indexPath.row - eventPools.count]
-            productDetailsVC.currentEvent = currentEvent
-            productDetailsVC.productDetailType = eventRegistries[indexPath.row - eventPools.count].wishableType == "ExternalProduct" ? .EventExternalProduct : .EventProduct
-            productDetailsVC.modalPresentationStyle = .fullScreen
-            self.navigationController?.pushViewController(productDetailsVC, animated: true)
-        }*/
-    }
-    
     private func reloadCollectionView() {
         DispatchQueue.main.async {
             self.productsCollectionView.reloadData()
@@ -369,6 +355,9 @@ extension GiftStoreProductsViewController {
     }
     
     private func updateMenuButtonsText() {
+        firstMenuButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        secondButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        thirdButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
         firstMenuButton.setTitle(String(firstButtonValue), for: .normal)
         secondButton.setTitle(String(secondButtonValue), for: .normal)
         thirdButton.setTitle(String(thirdButtonValue), for: .normal)

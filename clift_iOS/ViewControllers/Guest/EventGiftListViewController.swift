@@ -98,7 +98,13 @@ class EventGiftListViewController: UIViewController {
         
     func setNavBar() {
         
-        navigationItem.title = "EVENTO"
+        let titleLabel = UILabel()
+        titleLabel.text = "EVENTO"
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont(name: "Mihan-Regular", size: 16.0)!
+        titleLabel.addCharactersSpacing(5)
+        titleLabel.sizeToFit()
+        self.navigationItem.titleView = titleLabel
         
         let cartImage = UIImage(named: "cart")
         let searchImage = UIImage(named: "searchicon")
@@ -137,7 +143,7 @@ class EventGiftListViewController: UIViewController {
         }
         
         eventNameLabel.text = event.name
-        dateLabel.text = event.formattedDate()
+        dateLabel.text = event.formattedDate().uppercased()
         typeLabel.text = event.stringVisibility()
         eventImageView.layer.cornerRadius = eventImageView.frame.height / 2
         
@@ -535,6 +541,9 @@ extension EventGiftListViewController {
     }
     
     private func updateMenuButtonsText() {
+        firstMenuButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        secondButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        thirdButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
         firstMenuButton.setTitle(String(firstButtonValue), for: .normal)
         secondButton.setTitle(String(secondButtonValue), for: .normal)
         thirdButton.setTitle(String(thirdButtonValue), for: .normal)

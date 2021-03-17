@@ -717,6 +717,9 @@ extension UserGiftTableViewController {
     }
     
     private func updateMenuButtonsText() {
+        firstMenuButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        secondButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        thirdButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
         firstMenuButton.setTitle(String(firstButtonValue), for: .normal)
         secondButton.setTitle(String(secondButtonValue), for: .normal)
         thirdButton.setTitle(String(thirdButtonValue), for: .normal)
