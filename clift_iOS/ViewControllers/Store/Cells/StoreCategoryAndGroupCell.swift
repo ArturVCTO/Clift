@@ -35,6 +35,6 @@ class StoreCategoryAndGroupCell: UICollectionViewCell {
         if let imageURL = URL(string:"\(imageURLString)") {
             cellImage.sd_setImage(with: imageURL, placeholderImage: UIImage(named: "cliftplaceholder"))
         }
-        cellLabel.text = title
+        cellLabel.text = title.uppercased()
     }
 }
