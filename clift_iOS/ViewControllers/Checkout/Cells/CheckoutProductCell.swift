@@ -84,10 +84,6 @@ extension CheckoutProductCell: UITextFieldDelegate {
             self.showMessage(NSLocalizedString("El valor minimo a ingresar es 1", comment: ""),type: .error)
             productQuantityTextField.text = "1"
             updateProductQuantity(cartItem: cartItem, quantity: 1)
-        } else if let stock = cartItem.product?.stock, Int(quantityText)! > stock {
-            self.showMessage(NSLocalizedString("No hay suficientes artículos disponibles", comment: ""),type: .error)
-            productQuantityTextField.text = String(stock)
-            updateProductQuantity(cartItem: cartItem, quantity: stock)
         } else {
             updateProductQuantity(cartItem: cartItem, quantity: Int(quantityText)!)
         }

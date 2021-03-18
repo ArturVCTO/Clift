@@ -424,7 +424,7 @@ extension CliftApi: TargetType {
         case .stripeCheckoutGuest(_,let checkout):
             return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
         case .addItemToCartGuest(let quantity,let product):
-            return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity, "wishable_type": "Product", "event_product_id": product.id]], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity, "wishable_type": "Product", "event_product_id": product.id,"is_collaborative":"false"]], encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }
