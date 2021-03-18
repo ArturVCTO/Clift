@@ -1000,19 +1000,22 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sb8-N3-gQf">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FILTROS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ft-Il-geA">
+                                        <rect key="frame" x="35" y="80" width="81" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="18"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="jEN-sZ-TaX" appends="YES" id="Ftl-bw-OUj"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filtros" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ft-Il-geA">
-                                <rect key="frame" x="35" y="168" width="59.5" height="18"/>
-                                <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="18"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rk-d6-W91">
-                                <rect key="frame" x="356.5" y="168" width="22.5" height="18"/>
+                                <rect key="frame" x="356.5" y="168" width="22.5" height="23"/>
                                 <state key="normal" image="blackCross"/>
                                 <connections>
                                     <action selector="cleanFilterButtonTapped:" destination="f7Z-f1-RrO" eventType="touchUpInside" id="23Z-Vv-AYl"/>
@@ -1047,7 +1050,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Limpiar filtros" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzK-Oq-kj4">
-                                <rect key="frame" x="284.5" y="206" width="94.5" height="5"/>
+                                <rect key="frame" x="284.5" y="211" width="94.5" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="13"/>
                                 <color key="textColor" red="0.19607843137254902" green="0.18823529411764706" blue="0.23529411764705882" alpha="0.49945998033940397" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1172,16 +1175,13 @@
                             <constraint firstItem="iIa-qK-7Yy" firstAttribute="trailing" secondItem="7rk-d6-W91" secondAttribute="trailing" constant="35" id="RpZ-I2-YQ5"/>
                             <constraint firstItem="ggU-gO-27l" firstAttribute="leading" secondItem="iIa-qK-7Yy" secondAttribute="leading" constant="35" id="ThS-kx-oh0"/>
                             <constraint firstItem="7rk-d6-W91" firstAttribute="top" secondItem="iIa-qK-7Yy" secondAttribute="top" constant="80" id="XTr-2l-iWP"/>
-                            <constraint firstItem="7rk-d6-W91" firstAttribute="height" secondItem="4Ft-Il-geA" secondAttribute="height" id="XUP-jw-ZWi"/>
                             <constraint firstItem="S9k-E9-VEE" firstAttribute="leading" secondItem="iIa-qK-7Yy" secondAttribute="leading" constant="35" id="eI1-nd-Vja"/>
                             <constraint firstItem="S9k-E9-VEE" firstAttribute="top" secondItem="GzK-Oq-kj4" secondAttribute="bottom" constant="40" id="h9K-Ep-W7S"/>
-                            <constraint firstItem="4Ft-Il-geA" firstAttribute="leading" secondItem="iIa-qK-7Yy" secondAttribute="leading" constant="35" id="hPv-Rs-IRN"/>
                             <constraint firstItem="sb8-N3-gQf" firstAttribute="top" secondItem="iIa-qK-7Yy" secondAttribute="top" id="jKo-r5-QT0"/>
                             <constraint firstItem="GzK-Oq-kj4" firstAttribute="top" secondItem="7rk-d6-W91" secondAttribute="bottom" constant="20" id="rX0-77-GBV"/>
                             <constraint firstItem="ggU-gO-27l" firstAttribute="top" secondItem="GzK-Oq-kj4" secondAttribute="bottom" constant="40" id="sQM-6t-hHG"/>
                             <constraint firstItem="iIa-qK-7Yy" firstAttribute="trailing" secondItem="sb8-N3-gQf" secondAttribute="trailing" id="thF-OU-c0c"/>
                             <constraint firstItem="iIa-qK-7Yy" firstAttribute="trailing" secondItem="ggU-gO-27l" secondAttribute="trailing" constant="35" id="uqw-WU-Vo4"/>
-                            <constraint firstItem="4Ft-Il-geA" firstAttribute="top" secondItem="iIa-qK-7Yy" secondAttribute="top" constant="80" id="wRa-4G-mp0"/>
                             <constraint firstItem="sb8-N3-gQf" firstAttribute="leading" secondItem="iIa-qK-7Yy" secondAttribute="leading" id="xmt-FR-8Bk"/>
                         </constraints>
                     </view>

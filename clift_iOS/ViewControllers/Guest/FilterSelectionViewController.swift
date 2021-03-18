@@ -148,11 +148,11 @@ extension FilterSelectionViewController: UITableViewDelegate, UITableViewDataSou
         
         switch filterScreenShown {
         case .filterByCategory:
-            cell.textLabel?.attributedText = NSMutableAttributedString(string: categories[indexPath.row].name, attributes: attributes)
+            cell.textLabel?.attributedText = NSMutableAttributedString(string: categories[indexPath.row].name.uppercased(), attributes: attributes)
         case .filterByPrice:
             cell.textLabel?.attributedText = NSMutableAttributedString(string: prices[indexPath.row], attributes: attributes)
         case .filterByShop:
-            cell.textLabel?.attributedText = NSMutableAttributedString(string: shops[indexPath.row].name, attributes: attributes)
+            cell.textLabel?.attributedText = NSMutableAttributedString(string: shops[indexPath.row].name.uppercased(), attributes: attributes)
         default:
             break
         }
