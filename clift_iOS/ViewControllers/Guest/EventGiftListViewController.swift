@@ -72,7 +72,7 @@ class EventGiftListViewController: UIViewController {
     var orderByViewSizeFlag = true
     var filtersDic: [String: Any] = ["shop":"","category":"","price":""]
     var currentOrder: sortKeys = .nameAscending
-    var isSearchBarHIdden = true
+    var isSearchBarHidden = true
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -123,13 +123,13 @@ class EventGiftListViewController: UIViewController {
     }
 
     @objc func didTapSearchButton(sender: AnyObject){
-        if isSearchBarHIdden {
+        if isSearchBarHidden {
             searchBar.isHidden = false
         } else {
             searchBar.isHidden = true
         }
         
-        isSearchBarHIdden = !isSearchBarHIdden
+        isSearchBarHidden = !isSearchBarHidden
     }
     
     func setup(event: Event) {
@@ -588,6 +588,6 @@ extension EventGiftListViewController: UISearchBarDelegate {
         }
         searchBar.text = ""
         searchBar.isHidden = true
-        isSearchBarHIdden = !isSearchBarHIdden
+        isSearchBarHidden = !isSearchBarHidden
     }
 }
