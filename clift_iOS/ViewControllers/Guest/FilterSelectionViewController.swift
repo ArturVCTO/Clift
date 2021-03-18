@@ -75,7 +75,8 @@ class FilterSelectionViewController: UIViewController {
     }
     
     func getShops() {
-        sharedApiManager.getShops() { (shops, result) in
+        let shopFilters = ["per_page":"all","simple_format":"true","sort_by":sortKeys.nameAscending.rawValue]
+        sharedApiManager.getShops(filters: shopFilters) { (shops, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.shops = shops!

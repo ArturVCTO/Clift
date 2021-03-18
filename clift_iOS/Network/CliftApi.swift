@@ -33,7 +33,7 @@ enum CliftApi {
     case getGroup(groupId: String)
     case getSubgroups
     case getSubgroup(subgroupId: String)
-    case getShops
+    case getShops(filters: [String : Any])
     case addProductToRegistry(productId: String, eventId: String,quantity: Int,paidAmount: Int)
     case deleteProductFromRegistry(productId: String, eventId: String)
     case getBrands(filters: [String: Any])
@@ -135,7 +135,7 @@ extension CliftApi: TargetType {
             return "categories/\(id)"
         case .getCategories:
             return "categories"
-        case .getShops:
+        case .getShops(_):
             return "shops"
         case .getGroup(let id):
             return "groups/\(id)"
@@ -303,6 +303,8 @@ extension CliftApi: TargetType {
             return .uploadMultipart(profile)
         case .updateEvent(_,let event):
             return .uploadMultipart(event)
+        case .getShops(let filters):
+            return .requestParameters(parameters: filters, encoding: URLEncoding.default)
         case .getProducts(let group, let subgroup, let brand, let shop, var filters, let page):
             var parameters = filters
             parameters["group"] = group.id

@@ -196,7 +196,7 @@ protocol ApiCalls {
     
     func getSubgroup(id: String, completion: @escaping(Subgroup?, Response?) -> Void)
     
-    func getShops(completion: @escaping([Shop]?, Response?) -> Void)
+    func getShops(filters: [String : Any],completion: @escaping([Shop]?, Response?) -> Void)
     
     func getBrands(filters: [String: Any],completion: @escaping([Brand]?, Response?) -> Void)
     
@@ -394,8 +394,8 @@ extension CliftApiManager: ApiCalls {
         requestObjectWithResponse(.getSubgroup(subgroupId: id), type: Subgroup.self, completion: completion, wrapper: "subgroup")
     }
     
-    func getShops(completion: @escaping ([Shop]?, Response?) -> Void) {
-        requestArrayWithResponse(.getShops, type: Shop.self, completion: completion, wrapper: "shops")
+    func getShops(filters: [String : Any] = [:],completion: @escaping ([Shop]?, Response?) -> Void) {
+        requestArrayWithResponse(.getShops(filters: filters), type: Shop.self, completion: completion, wrapper: "shops")
     }
     
     func getBrands(filters: [String: Any], completion: @escaping ([Brand]?, Response?) -> Void) {
