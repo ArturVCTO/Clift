@@ -42,13 +42,17 @@ class FilterSelectionViewController: UIViewController {
     var shops: [Shop] = []
     let prices: [String] = ["Menos de $1000","$1000 - $2500","$2500 - $4000","$4000 - $6500","$6500 - $8000","$8000 - $10000","Más de $10000"]
     let pricesDic: [Int:String] = [0:"price < 1000",1:"price >= 1000 AND price <= 2500",2:"price >= 2500 AND price <= 4000",3:"price >= 4000 AND price <= 6500",4:"price >= 6500 AND price <= 8000",5:"price >= 8000 AND price <= 10000",6:"price >= 10000"]
+    let alphabetArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var categorySelectedId = ""
+    var priceSelectedId = ""
+    var shopSelectedId = ""
     
     var filterMainCategoryFlag = true
     var filterScreenShown: filterSreenShown = .filterMainCategory
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         getShops()
         getCategories()
         SetUI()
@@ -94,21 +98,51 @@ class FilterSelectionViewController: UIViewController {
     @IBAction func categoryButtonTapped(_ sender: Any) {
         filterScreenShown = .filterByCategory
         updateScreen()
+        categorySelected(item: categorySelectedId)
     }
     
     @IBAction func priceButtonTapped(_ sender: Any) {
         filterScreenShown = .filterByPrice
         updateScreen()
+        priceSelected(item: priceSelectedId)
     }
     
     @IBAction func shopButtonTapped(_ sender: Any) {
         filterScreenShown = .filterByShop
         updateScreen()
+        shopSelected(item: shopSelectedId)
     }
     
     @IBAction func returnToMainCategories(_ sender: Any) {
         filterScreenShown = .filterMainCategory
         updateScreen()
+    }
+    
+    func categorySelected(item: String) {
+        if let indexItem = categories.firstIndex(where: {$0.id == item}) {
+            let indexPath = IndexPath(row: indexItem, section: 0)
+            filterTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
+    }
+    
+    func priceSelected(item: String) {
+
+        let keys = pricesDic
+        .filter { (k, v) -> Bool in v == item }
+        .map { (k, v) -> Int in k }
+        
+        print("algo")
+        if let indexItem = keys.first {
+            let indexPath = IndexPath(row: indexItem, section: 0)
+            filterTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
+    }
+    
+    func shopSelected(item: String) {
+        if let indexItem = shops.firstIndex(where: {$0.id == item}) {
+            let indexPath = IndexPath(row: indexItem, section: 0)
+            filterTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
     }
     
     func updateScreen() {
@@ -170,12 +204,15 @@ extension FilterSelectionViewController: UITableViewDelegate, UITableViewDataSou
         switch filterScreenShown {
         case .filterByCategory:
             sideFilterSelectionDelegate.didTapCategoryFilter(categoryId: categories[indexPath.row].id)
+            categorySelectedId = categories[indexPath.row].id
         case .filterByPrice:
             if let priceQuery = pricesDic[indexPath.row] {
                 sideFilterSelectionDelegate.didTapPriceFilter(priceQuery: priceQuery)
+                priceSelectedId = priceQuery
             }
         case .filterByShop:
             sideFilterSelectionDelegate.didTapShopFilter(shopId: shops[indexPath.row].id)
+            shopSelectedId = shops[indexPath.row].id
         default:
             break
         }

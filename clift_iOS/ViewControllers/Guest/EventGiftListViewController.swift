@@ -228,6 +228,9 @@ class EventGiftListViewController: UIViewController {
         let FilterSelectionVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "FilterSelectionVC") as! FilterSelectionViewController
         
         FilterSelectionVC.sideFilterSelectionDelegate = self
+        FilterSelectionVC.categorySelectedId = filtersDic["category"] as! String
+        FilterSelectionVC.priceSelectedId = filtersDic["price"] as! String
+        FilterSelectionVC.shopSelectedId = filtersDic["shop"] as! String
         let menu = UISideMenuNavigationController(rootViewController: FilterSelectionVC)
         menu.presentationStyle = .menuSlideIn
         menu.menuWidth = UIScreen.main.bounds.size.width * 0.8

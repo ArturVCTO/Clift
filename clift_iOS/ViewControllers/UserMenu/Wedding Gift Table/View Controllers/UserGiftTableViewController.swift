@@ -60,7 +60,7 @@ class UserGiftTableViewController: UIViewController {
     var eventRegistries: [EventProduct]! = []
     var eventPools: [EventPool]! = []
     var orderByViewSizeFlag = true
-    var filtersDic: [String: Any] = ["shop":"","category":"","price":""]
+    var filtersDic: [String: Any] = ["shop":"","category":"","price_range":""]
     var currentOrder: sortKeys = .nameAscending
     
     private var actualPage = 1
@@ -137,8 +137,10 @@ class UserGiftTableViewController: UIViewController {
     @IBAction func didTapFilterButton(_ sender: UIButton) {
         
         let FilterSelectionVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "FilterSelectionVC") as! FilterSelectionViewController
-        
         FilterSelectionVC.sideFilterSelectionDelegate = self
+        FilterSelectionVC.categorySelectedId = filtersDic["category"] as! String
+        FilterSelectionVC.priceSelectedId = filtersDic["price_range"] as! String
+        FilterSelectionVC.shopSelectedId = filtersDic["shop"] as! String
         let menu = UISideMenuNavigationController(rootViewController: FilterSelectionVC)
         menu.presentationStyle = .menuSlideIn
         menu.menuWidth = UIScreen.main.bounds.size.width * 0.8
