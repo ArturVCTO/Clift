@@ -514,7 +514,7 @@ extension GiftStoreProductsViewController {
         sharedApiManager.addProductToRegistry(productId: product.id, eventId: currentEvent.id, quantity: productQuantity, paidAmount: 0) { (eventProduct, result) in
             if let response = result {
                 if (response.isSuccess()) {
-                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu mesa.", comment: "Product Added"),type: .success)
+                    self.showMessage(NSLocalizedString("Producto agregado a tu mesa.", comment: "Product Added"),type: .success)
                 } else {
                     self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Product Not Added"),type: .error)
                 }
@@ -526,7 +526,8 @@ extension GiftStoreProductsViewController {
         sharedApiManager.addItemToCart(quantity: productQuantity, product: product) { (cartItem, result) in
             if let response = result {
                 if (response.isSuccess()) {
-                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: "Login Error"),type: .success)
+                    self.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
+                    self.showMessage(NSLocalizedString("Producto agregado a tu carrito.", comment: "Login Error"),type: .success)
                 } else if (response.isClientError()) {
                     self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
                 }
