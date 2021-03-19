@@ -21,6 +21,7 @@ class CheckoutProductCell: UITableViewCell {
     var productPrice: Double?
     var productId: String?
     var cartItem = CartItem()
+    var userType: PaymentType = .userLogIn
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,8 +31,9 @@ class CheckoutProductCell: UITableViewCell {
         imageContainerView.layer.borderColor = UIColor(named: "PrimaryBlue")?.cgColor
     }
     
-     func configure(with cartItem: CartItem) {
+    func configure(with cartItem: CartItem, userType: PaymentType) {
         guard let product = cartItem.product else { return }
+        self.userType = userType
         self.cartItem = cartItem
         self.productId = cartItem.id
         self.productNameLabel.text = product.name
@@ -84,6 +86,10 @@ extension CheckoutProductCell: UITextFieldDelegate {
             self.showMessage(NSLocalizedString("El valor minimo a ingresar es 1", comment: ""),type: .error)
             productQuantityTextField.text = "1"
             updateProductQuantity(cartItem: cartItem, quantity: 1)
+        } else if let stock = cartItem.product?.stock, Int(quantityText)! > stock, userType == .userLogIn {
+            self.showMessage(NSLocalizedString("No hay suficientes artículos disponibles", comment: ""),type: .error)
+            productQuantityTextField.text = String(stock)
+            updateProductQuantity(cartItem: cartItem, quantity: stock)
         } else {
             updateProductQuantity(cartItem: cartItem, quantity: Int(quantityText)!)
         }
