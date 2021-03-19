@@ -25,6 +25,7 @@ class UserEventProductCell: UICollectionViewCell {
     @IBOutlet weak var shopLabel: UILabel!
     @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var productPriceLabel: UILabel!
+    @IBOutlet weak var unitaryPriceLabel: UILabel!
     @IBOutlet weak var quantityStackView: UIStackView!
     @IBOutlet weak var quantityView: UIView!
     @IBOutlet weak var productQuantityLabel: UILabel!
@@ -33,6 +34,8 @@ class UserEventProductCell: UICollectionViewCell {
     @IBOutlet weak var deliveryActionButton: UIButton!
     @IBOutlet weak var creditView: UIView!
     @IBOutlet weak var creditActionButton: UIButton!
+    @IBOutlet weak var collaboratorsStackView: UIStackView!
+    @IBOutlet weak var numberOfCollaboratorsLabel: UILabel!
     
     var userProductCellDelegate: UserProductCellDelegate!
     var currentEventProduct: EventProduct!
@@ -50,6 +53,7 @@ class UserEventProductCell: UICollectionViewCell {
         starProductButton.setImage(UIImage(named: "star"), for: .normal)
         shopAndBrandStackView.isHidden = false
         brandLabel.text = ""
+        unitaryPriceLabel.isHidden = true
         envelopeImage.isHidden = false
         quantityView.isHidden = false
         envelopeImage.isHidden = true
@@ -61,6 +65,7 @@ class UserEventProductCell: UICollectionViewCell {
         productQuantityLabel.textColor = UIColor(named: "PrimaryBlue")
         deliveryActionButton.isEnabled = true
         creditActionButton.isEnabled = true
+        collaboratorsStackView.isHidden = true
     }
     
     var cellWidth: CGFloat? {
@@ -112,10 +117,16 @@ class UserEventProductCell: UICollectionViewCell {
                     productNameLabel.text = product.product.name
                     shopLabel.text = product.product.shop.name
                     brandLabel.text = " - " + product.product.brand_name
-                    productPriceLabel.text = "$ \(product.product.price) MXN"
+                    
                     if product.isCollaborative {
+                        productPriceLabel.text = "$ \(Double(product.product.price) / Double(product.collaborators)) MXN"
                         productQuantityLabel.text = "\(product.gifted_quantity) / \(product.collaborators)"
+                        unitaryPriceLabel.isHidden = false
+                        unitaryPriceLabel.text = "($ Unitario: $\(product.product.price)"
+                        collaboratorsStackView.isHidden = false
+                        numberOfCollaboratorsLabel.text = "\(product.collaborators - product.gifted_quantity) colaboracion(es)"
                     } else {
+                        productPriceLabel.text = "$ \(product.product.price) MXN"
                         productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
                     }
                     setDeliveryCreditButtons(product: product)
@@ -137,10 +148,16 @@ class UserEventProductCell: UICollectionViewCell {
                     setEnvelopeImage(eventProduct: product)
                     productNameLabel.text = product.externalProduct.name
                     shopLabel.text = product.externalProduct.shopName
-                    productPriceLabel.text = "$ \(product.externalProduct.price) MXN"
+                    
                     if product.isCollaborative {
+                        productPriceLabel.text = "$ \(Double(product.externalProduct.price) / Double(product.collaborators)) MXN"
                         productQuantityLabel.text = "\(product.gifted_quantity) / \(product.collaborators)"
+                        unitaryPriceLabel.isHidden = false
+                        unitaryPriceLabel.text = "($ Unitario: $\(product.externalProduct.price)"
+                        collaboratorsStackView.isHidden = false
+                        numberOfCollaboratorsLabel.text = "\(product.collaborators - product.gifted_quantity) colaboracion(es)"
                     } else {
+                        productPriceLabel.text = "$ \(product.externalProduct.price) MXN"
                         productQuantityLabel.text = "\(product.gifted_quantity) / \(product.quantity)"
                     }
                     setDeliveryCreditButtons(product: product)

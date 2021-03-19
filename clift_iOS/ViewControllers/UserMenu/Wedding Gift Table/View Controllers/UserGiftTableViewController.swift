@@ -311,7 +311,7 @@ extension UserGiftTableViewController {
                     if let productUpdatedIndex = self.eventRegistries.firstIndex(where: {$0.id == eventProduct.id}) {
                         self.eventRegistries[productUpdatedIndex].isCollaborative = false
                         self.eventRegistries[productUpdatedIndex].collaborators = 0
-                        self.productsCollectionView.reloadItems(at: [IndexPath(row: productUpdatedIndex, section: 0)])
+                        self.productsCollectionView.reloadItems(at: [IndexPath(row: productUpdatedIndex + self.eventPools.count, section: 0)])
                     }
                     self.showMessage(NSLocalizedString("Porducto actualizado como individual", comment: "Producto actualizado"), type: .success)
                 }else{
@@ -553,14 +553,13 @@ extension UserGiftTableViewController {
     }
     
     func collaborativeActionButtonPressed(eventProduct: EventProduct) {
-        let numberOfCollaboratorsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "numberOfCollaboratorsVC") as!
-         NumberOfCollaboratorsViewController
+        let numberOfCollaboratorsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "numberOfCollaboratorsVC") as! NumberOfCollaboratorsViewController
         numberOfCollaboratorsVC.numberOfCollaboratorsViewControllerDelegate = self
         numberOfCollaboratorsVC.eventProduct = eventProduct
         self.parent?.addChild(numberOfCollaboratorsVC)
-               numberOfCollaboratorsVC.view.frame = self.view.frame
-               self.parent?.view.addSubview(numberOfCollaboratorsVC.view)
-               numberOfCollaboratorsVC.didMove(toParent: self)
+        numberOfCollaboratorsVC.view.frame = self.view.frame
+        self.parent?.view.addSubview(numberOfCollaboratorsVC.view)
+        numberOfCollaboratorsVC.didMove(toParent: self)
     }
     
     func individualActionButtonPressed(eventProduct: EventProduct) {
@@ -593,8 +592,10 @@ extension UserGiftTableViewController {
 //MARK:- NumberOfCollaboratorsViewControllerDelegate
 extension UserGiftTableViewController:NumberOfCollaboratorsViewControllerDelegate {
     func didChangeToCollaborativeProduct(eventProduct: EventProduct) {
+        
         if let productUpdatedIndex = self.eventRegistries.firstIndex(where: {$0.id == eventProduct.id}) {
             self.eventRegistries[productUpdatedIndex] = eventProduct
+            self.productsCollectionView.reloadItems(at: [IndexPath(row: productUpdatedIndex + self.eventPools.count, section: 0)])
         }
     }
 }
