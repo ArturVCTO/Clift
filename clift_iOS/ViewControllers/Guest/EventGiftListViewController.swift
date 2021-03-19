@@ -232,7 +232,9 @@ class EventGiftListViewController: UIViewController {
         FilterSelectionVC.priceSelectedId = filtersDic["price"] as! String
         FilterSelectionVC.shopSelectedId = filtersDic["shop"] as! String
         let menu = UISideMenuNavigationController(rootViewController: FilterSelectionVC)
+        SideMenuManager.default.leftMenuNavigationController = menu
         menu.presentationStyle = .menuSlideIn
+        menu.statusBarEndAlpha = 0
         menu.menuWidth = UIScreen.main.bounds.size.width * 0.8
         present(menu,animated: true, completion: nil)
     }
