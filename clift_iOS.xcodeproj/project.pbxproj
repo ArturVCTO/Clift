@@ -217,6 +217,8 @@
 		619E838925E5E51F0056D33A /* GiftStoreCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E838825E5E51F0056D33A /* GiftStoreCategoryViewController.swift */; };
 		619E839725E5F21A0056D33A /* StoreCategoryAndGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E839525E5F21A0056D33A /* StoreCategoryAndGroupCell.swift */; };
 		619E839825E5F21A0056D33A /* StoreCategoryAndGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619E839625E5F21A0056D33A /* StoreCategoryAndGroupCell.xib */; };
+		61B6E4E726046DB300DB6D6D /* FilterSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B6E4E526046DB200DB6D6D /* FilterSelectionCell.swift */; };
+		61B6E4E826046DB300DB6D6D /* FilterSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61B6E4E626046DB300DB6D6D /* FilterSelectionCell.xib */; };
 		61C82A2025BA6781009F50AF /* Checkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61C82A1F25BA6781009F50AF /* Checkout.storyboard */; };
 		61D21B4225A92949009DED75 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D21B4125A92949009DED75 /* UILabelExtension.swift */; };
 		61D3F86525B0060500EEF709 /* FilterSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D3F86425B0060500EEF709 /* FilterSelectionViewController.swift */; };
@@ -489,6 +491,8 @@
 		619E838825E5E51F0056D33A /* GiftStoreCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStoreCategoryViewController.swift; sourceTree = "<group>"; };
 		619E839525E5F21A0056D33A /* StoreCategoryAndGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCategoryAndGroupCell.swift; sourceTree = "<group>"; };
 		619E839625E5F21A0056D33A /* StoreCategoryAndGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreCategoryAndGroupCell.xib; sourceTree = "<group>"; };
+		61B6E4E526046DB200DB6D6D /* FilterSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionCell.swift; sourceTree = "<group>"; };
+		61B6E4E626046DB300DB6D6D /* FilterSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterSelectionCell.xib; sourceTree = "<group>"; };
 		61C82A1F25BA6781009F50AF /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
 		61D21B4125A92949009DED75 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		61D3F86425B0060500EEF709 /* FilterSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionViewController.swift; sourceTree = "<group>"; };
@@ -1161,6 +1165,8 @@
 				0B6174332574BB8A00FD7EAC /* EventHeaderCell.swift */,
 				61F0C2D525A3C89700AA58CF /* GuestEventProductCell.swift */,
 				61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */,
+				61B6E4E526046DB200DB6D6D /* FilterSelectionCell.swift */,
+				61B6E4E626046DB300DB6D6D /* FilterSelectionCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1319,6 +1325,7 @@
 				46B5F74323845BB600AFF425 /* Tinos-RegularItalic.ttf in Resources */,
 				4672A89922F88F27001F374F /* LaunchScreen.storyboard in Resources */,
 				61C82A2025BA6781009F50AF /* Checkout.storyboard in Resources */,
+				61B6E4E826046DB300DB6D6D /* FilterSelectionCell.xib in Resources */,
 				619E839825E5F21A0056D33A /* StoreCategoryAndGroupCell.xib in Resources */,
 				46987D9F22FA10C5007B2C78 /* OpenSans-SemiBold.ttf in Resources */,
 				46B5F74C23845BB600AFF425 /* Tinos-Regular.ttf in Resources */,
@@ -1525,6 +1532,7 @@
 				465C82172362157100DAC090 /* AddManualProductViewController.swift in Sources */,
 				462EB0BF2316C9170084C3C7 /* RecentActivity.swift in Sources */,
 				46BFA8C023D0EFEC008D6B72 /* CheckoutViewController.swift in Sources */,
+				61B6E4E726046DB300DB6D6D /* FilterSelectionCell.swift in Sources */,
 				46E4D77523D8C130004FC798 /* PaymentTableViewController.swift in Sources */,
 				46A2DD9222FB6CC60051DCA6 /* Session.swift in Sources */,
 				0B6174392574BDE400FD7EAC /* EventGiftListViewController.swift in Sources */,

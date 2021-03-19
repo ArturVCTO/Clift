@@ -55,7 +55,12 @@ class FilterSelectionViewController: UIViewController {
         
         getShops()
         getCategories()
+        registerCells()
         SetUI()
+    }
+    
+    private func registerCells() {
+        filterTableView.register(UINib(nibName: "FilterSelectionCell", bundle: nil), forCellReuseIdentifier: "FilterSelectionCell")
     }
     
     func SetUI() {
@@ -131,7 +136,6 @@ class FilterSelectionViewController: UIViewController {
         .filter { (k, v) -> Bool in v == item }
         .map { (k, v) -> Int in k }
         
-        print("algo")
         if let indexItem = keys.first {
             let indexPath = IndexPath(row: indexItem, section: 0)
             filterTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
@@ -175,24 +179,27 @@ extension FilterSelectionViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "filterElement")!
         
-        let attributes = [
-            NSAttributedString.Key.font: UIFont(name: "Mihan-Regular", size: 16.0)!
-        ] as [NSAttributedString.Key : Any]
-        
-        switch filterScreenShown {
-        case .filterByCategory:
-            cell.textLabel?.attributedText = NSMutableAttributedString(string: categories[indexPath.row].name.uppercased(), attributes: attributes)
-        case .filterByPrice:
-            cell.textLabel?.attributedText = NSMutableAttributedString(string: prices[indexPath.row], attributes: attributes)
-        case .filterByShop:
-            cell.textLabel?.attributedText = NSMutableAttributedString(string: shops[indexPath.row].name.uppercased(), attributes: attributes)
-        default:
-            break
+        if let cell = filterTableView.dequeueReusableCell(withIdentifier: "FilterSelectionCell", for: indexPath) as? FilterSelectionCell {
+            
+            switch filterScreenShown {
+                case .filterByCategory:
+                    cell.configure(title: categories[indexPath.row].name)
+                case .filterByPrice:
+                    cell.configure(title: prices[indexPath.row])
+                case .filterByShop:
+                    if indexPath.row < alphabetArray.count {
+                        cell.configure(title: shops[indexPath.row].name, subtitle: alphabetArray[indexPath.row])
+                    } else {
+                        cell.configure(title: shops[indexPath.row].name)
+                    }
+                    
+                default:
+                    break
+            }
+            return cell
         }
-        
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
