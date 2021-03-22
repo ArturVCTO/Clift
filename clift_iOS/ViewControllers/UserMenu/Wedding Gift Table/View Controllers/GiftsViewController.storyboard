@@ -297,6 +297,9 @@
                                                         <real key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="giftsSummaryButtonPressed:" destination="Bba-Qi-3RO" eventType="touchUpInside" id="beN-yU-cSD"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t7z-kx-08N">
                                                 <rect key="frame" x="0.0" y="1095.5" width="375" height="400"/>

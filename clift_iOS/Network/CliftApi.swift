@@ -41,6 +41,7 @@ enum CliftApi {
     case getProductsAsLoggedInUserLessParams(event: Event, filters: [String : Any])
     case getColors
     case getEventProducts(event: Event,available: String,gifted: String, filters: [String : Any])
+    case getSummaryAllEvents(event: Event, params: [String: Any]?)
     case getEventProductsPagination(event: Event,available: String,gifted: String, filters: [String : Any])
     case deleteEventProduct(eventProduct: EventProduct, event: Event)
     case deleteEventPool(eventPool: EventPool, event: Event)
@@ -268,6 +269,8 @@ extension CliftApi: TargetType {
             return "checkout/gift_payment/\(event.id)"
         case .addItemToCartGuest(_,let product):
             return "cart/\(product.product.id)/add_item"
+        case .getSummaryAllEvents(let event, let params):
+            return "events/\(event.id)/gift_summary_items"
         }
     }
     
@@ -275,7 +278,7 @@ extension CliftApi: TargetType {
         switch self {
         case .postLoginSession,.recoverPassword,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount,.stripeCheckoutEnvelope,.stripeCheckoutGuest:
             return .post
-        case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getProductsAsLoggedInUserLessParams, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest:
+        case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getProductsAsLoggedInUserLessParams, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest, .getSummaryAllEvents:
             return .get
         case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductQuantity,.updateEventProductThankMessage,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts, .addItemToCartGuest:
             return .put
@@ -423,6 +426,12 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
         case .addItemToCartGuest(let quantity,let product):
             return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity, "wishable_type": "Product", "event_product_id": product.id]], encoding: JSONEncoding.default)
+        case .getSummaryAllEvents(event: _ , params: let params):
+            guard let params = params else {
+                return .requestPlain
+            }
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
+            
         default:
             return .requestPlain
         }
@@ -439,6 +448,7 @@ extension CliftApi: TargetType {
             "Authorization": session.first!.token, "Accept-Encoding": "gzip, deflate, br","Sec-Fetch-Dest": "empty","Sec-Fetch-Mode": "cors"]
         }
         else {
+            print(session.first!.token)
             switch self {
             case .updateProfile(_):
                 return  ["Accept": "application/vnd.cft.v1+json", "Content-Type": "application/x-www-form-urlencoded", "X-Client": "app",

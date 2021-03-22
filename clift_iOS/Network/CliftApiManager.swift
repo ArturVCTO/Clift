@@ -319,9 +319,15 @@ protocol ApiCalls {
     func stripeCheckoutGuest(event: Event, checkout: CheckoutGuest, completion: @escaping(StripeCheckout?, Response?) -> Void)
     
     func addItemToCartGuest(quantity: Int, product: EventProduct, completion: @escaping(CartItem?,Response?) -> Void)
+    
+    func getSummaryAllEvents(event: Event,
+                             params: [String: Any]?,
+                             completion: @escaping([GiftSummaryItem]?, Response?) -> Void)
+    
 }
 
 extension CliftApiManager: ApiCalls {
+        
     func login(email: String, password: String, completion: @escaping (Session?, Response?) -> Void) {
         requestObjectWithResponse(.postLoginSession(email: email, password: password), type: Session.self, completion: completion, wrapper: "session")
     }
@@ -646,6 +652,14 @@ extension CliftApiManager: ApiCalls {
     
     func addItemToCartGuest(quantity: Int, product: EventProduct, completion: @escaping (CartItem?, Response?) -> Void) {
         requestObjectWithResponse(.addItemToCartGuest(quantity: quantity, product: product), type: CartItem.self, completion: completion, wrapper: "shopping_cart_item")
+    }
+    func getSummaryAllEvents(event: Event,
+                             params: [String: Any]?,
+                             completion: @escaping ([GiftSummaryItem]?, Response?) -> Void) {
+        requestArrayWithResponse(.getSummaryAllEvents(event: event,
+                                                      params: params),
+                                 type: GiftSummaryItem.self,
+                                 completion: completion, wrapper: "gift_items")
     }
 }
 
