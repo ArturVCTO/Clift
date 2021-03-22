@@ -42,16 +42,25 @@ class FilterSelectionViewController: UIViewController {
     var shops: [Shop] = []
     let prices: [String] = ["Menos de $1000","$1000 - $2500","$2500 - $4000","$4000 - $6500","$6500 - $8000","$8000 - $10000","Más de $10000"]
     let pricesDic: [Int:String] = [0:"price < 1000",1:"price >= 1000 AND price <= 2500",2:"price >= 2500 AND price <= 4000",3:"price >= 4000 AND price <= 6500",4:"price >= 6500 AND price <= 8000",5:"price >= 8000 AND price <= 10000",6:"price >= 10000"]
+    let alphabetArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    var categorySelectedId = ""
+    var priceSelectedId = ""
+    var shopSelectedId = ""
     
     var filterMainCategoryFlag = true
     var filterScreenShown: filterSreenShown = .filterMainCategory
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         getShops()
         getCategories()
+        registerCells()
         SetUI()
+    }
+    
+    private func registerCells() {
+        filterTableView.register(UINib(nibName: "FilterSelectionCell", bundle: nil), forCellReuseIdentifier: "FilterSelectionCell")
     }
     
     func SetUI() {
@@ -75,7 +84,8 @@ class FilterSelectionViewController: UIViewController {
     }
     
     func getShops() {
-        sharedApiManager.getShops() { (shops, result) in
+        let shopFilters = ["per_page":"all","simple_format":"true","sort_by":sortKeys.nameAscending.rawValue]
+        sharedApiManager.getShops(filters: shopFilters) { (shops, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     self.shops = shops!
@@ -93,21 +103,50 @@ class FilterSelectionViewController: UIViewController {
     @IBAction func categoryButtonTapped(_ sender: Any) {
         filterScreenShown = .filterByCategory
         updateScreen()
+        categorySelected(item: categorySelectedId)
     }
     
     @IBAction func priceButtonTapped(_ sender: Any) {
         filterScreenShown = .filterByPrice
         updateScreen()
+        priceSelected(item: priceSelectedId)
     }
     
     @IBAction func shopButtonTapped(_ sender: Any) {
         filterScreenShown = .filterByShop
         updateScreen()
+        shopSelected(item: shopSelectedId)
     }
     
     @IBAction func returnToMainCategories(_ sender: Any) {
         filterScreenShown = .filterMainCategory
         updateScreen()
+    }
+    
+    func categorySelected(item: String) {
+        if let indexItem = categories.firstIndex(where: {$0.id == item}) {
+            let indexPath = IndexPath(row: indexItem, section: 0)
+            filterTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
+    }
+    
+    func priceSelected(item: String) {
+
+        let keys = pricesDic
+        .filter { (k, v) -> Bool in v == item }
+        .map { (k, v) -> Int in k }
+        
+        if let indexItem = keys.first {
+            let indexPath = IndexPath(row: indexItem, section: 0)
+            filterTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
+    }
+    
+    func shopSelected(item: String) {
+        if let indexItem = shops.firstIndex(where: {$0.id == item}) {
+            let indexPath = IndexPath(row: indexItem, section: 0)
+            filterTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        }
     }
     
     func updateScreen() {
@@ -140,24 +179,27 @@ extension FilterSelectionViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "filterElement")!
         
-        let attributes = [
-            NSAttributedString.Key.font: UIFont(name: "Mihan-Regular", size: 16.0)!
-        ] as [NSAttributedString.Key : Any]
-        
-        switch filterScreenShown {
-        case .filterByCategory:
-            cell.textLabel?.attributedText = NSMutableAttributedString(string: categories[indexPath.row].name, attributes: attributes)
-        case .filterByPrice:
-            cell.textLabel?.attributedText = NSMutableAttributedString(string: prices[indexPath.row], attributes: attributes)
-        case .filterByShop:
-            cell.textLabel?.attributedText = NSMutableAttributedString(string: shops[indexPath.row].name, attributes: attributes)
-        default:
-            break
+        if let cell = filterTableView.dequeueReusableCell(withIdentifier: "FilterSelectionCell", for: indexPath) as? FilterSelectionCell {
+            
+            switch filterScreenShown {
+                case .filterByCategory:
+                    cell.configure(title: categories[indexPath.row].name)
+                case .filterByPrice:
+                    cell.configure(title: prices[indexPath.row])
+                case .filterByShop:
+                    if indexPath.row < alphabetArray.count {
+                        cell.configure(title: shops[indexPath.row].name, subtitle: alphabetArray[indexPath.row])
+                    } else {
+                        cell.configure(title: shops[indexPath.row].name)
+                    }
+                    
+                default:
+                    break
+            }
+            return cell
         }
-        
-        return cell
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -169,12 +211,15 @@ extension FilterSelectionViewController: UITableViewDelegate, UITableViewDataSou
         switch filterScreenShown {
         case .filterByCategory:
             sideFilterSelectionDelegate.didTapCategoryFilter(categoryId: categories[indexPath.row].id)
+            categorySelectedId = categories[indexPath.row].id
         case .filterByPrice:
             if let priceQuery = pricesDic[indexPath.row] {
                 sideFilterSelectionDelegate.didTapPriceFilter(priceQuery: priceQuery)
+                priceSelectedId = priceQuery
             }
         case .filterByShop:
             sideFilterSelectionDelegate.didTapShopFilter(shopId: shops[indexPath.row].id)
+            shopSelectedId = shops[indexPath.row].id
         default:
             break
         }

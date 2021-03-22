@@ -53,7 +53,7 @@ class GiftStoreProductsViewController: UIViewController {
     var orderByViewSizeFlag = true
     var filtersDic: [String: Any] = [:]
     var currentOrder: sortKeys = .nameAscending
-    var isSearchBarHIdden = true
+    var isSearchBarHidden = true
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -108,13 +108,13 @@ class GiftStoreProductsViewController: UIViewController {
     }
 
     @objc func didTapSearchButton(sender: AnyObject){
-        if isSearchBarHIdden {
+        if isSearchBarHidden {
             searchBar.isHidden = false
         } else {
             searchBar.isHidden = true
         }
         
-        isSearchBarHIdden = !isSearchBarHIdden
+        isSearchBarHidden = !isSearchBarHidden
     }
     
     func setup(event: Event) {
@@ -237,20 +237,6 @@ extension GiftStoreProductsViewController: UICollectionViewDelegate, UICollectio
         return UICollectionViewCell()
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        /*if eventPools.count > indexPath.row {
-            goToEnvelopeInformation(eventPool: eventPools[indexPath.row])
-        } else {
-            let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
-            productDetailsVC.currentEventProduct = eventRegistries[indexPath.row - eventPools.count]
-            productDetailsVC.currentEvent = currentEvent
-            productDetailsVC.productDetailType = eventRegistries[indexPath.row - eventPools.count].wishableType == "ExternalProduct" ? .EventExternalProduct : .EventProduct
-            productDetailsVC.modalPresentationStyle = .fullScreen
-            self.navigationController?.pushViewController(productDetailsVC, animated: true)
-        }*/
-    }
-    
     private func reloadCollectionView() {
         DispatchQueue.main.async {
             self.productsCollectionView.reloadData()
@@ -369,6 +355,9 @@ extension GiftStoreProductsViewController {
     }
     
     private func updateMenuButtonsText() {
+        firstMenuButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        secondButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        thirdButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
         firstMenuButton.setTitle(String(firstButtonValue), for: .normal)
         secondButton.setTitle(String(secondButtonValue), for: .normal)
         thirdButton.setTitle(String(thirdButtonValue), for: .normal)
@@ -412,7 +401,7 @@ extension GiftStoreProductsViewController: UISearchBarDelegate {
         }
         searchBar.text = ""
         searchBar.isHidden = true
-        isSearchBarHIdden = !isSearchBarHIdden
+        isSearchBarHidden = !isSearchBarHidden
     }
 }
 
@@ -525,7 +514,7 @@ extension GiftStoreProductsViewController {
         sharedApiManager.addProductToRegistry(productId: product.id, eventId: currentEvent.id, quantity: productQuantity, paidAmount: 0) { (eventProduct, result) in
             if let response = result {
                 if (response.isSuccess()) {
-                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu mesa.", comment: "Product Added"),type: .success)
+                    self.showMessage(NSLocalizedString("Producto agregado a tu mesa.", comment: "Product Added"),type: .success)
                 } else {
                     self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Product Not Added"),type: .error)
                 }
@@ -537,7 +526,8 @@ extension GiftStoreProductsViewController {
         sharedApiManager.addItemToCart(quantity: productQuantity, product: product) { (cartItem, result) in
             if let response = result {
                 if (response.isSuccess()) {
-                    self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: "Login Error"),type: .success)
+                    self.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
+                    self.showMessage(NSLocalizedString("Producto agregado a tu carrito.", comment: "Login Error"),type: .success)
                 } else if (response.isClientError()) {
                     self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
                 }

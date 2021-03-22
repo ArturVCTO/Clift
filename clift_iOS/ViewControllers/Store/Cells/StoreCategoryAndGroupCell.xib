@@ -39,7 +39,10 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="217" height="217"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:j71-6N-H4F:image" translatesAutoresizingMaskIntoConstraints="NO" id="j71-6N-H4F">
-                                                        <rect key="frame" x="17" y="17" width="183" height="183"/>
+                                                        <rect key="frame" x="5" y="5" width="207" height="207"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="j71-6N-H4F" secondAttribute="height" multiplier="1:1" id="b5b-RV-vfq"/>
+                                                        </constraints>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -47,13 +50,13 @@
                                                     <constraint firstItem="j71-6N-H4F" firstAttribute="centerY" secondItem="MQb-WG-Fs2" secondAttribute="centerY" id="2Oo-P9-kBl"/>
                                                     <constraint firstAttribute="bottom" secondItem="EgM-Zx-gmw" secondAttribute="bottom" id="6pm-v3-x1A"/>
                                                     <constraint firstItem="j71-6N-H4F" firstAttribute="centerX" secondItem="MQb-WG-Fs2" secondAttribute="centerX" id="6wn-uB-CKL"/>
-                                                    <constraint firstAttribute="trailing" secondItem="j71-6N-H4F" secondAttribute="trailing" constant="17" id="8E8-74-2RJ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="j71-6N-H4F" secondAttribute="trailing" constant="5" id="8E8-74-2RJ"/>
                                                     <constraint firstAttribute="width" secondItem="MQb-WG-Fs2" secondAttribute="height" multiplier="1:1" id="8YQ-LN-3XI"/>
                                                     <constraint firstItem="EgM-Zx-gmw" firstAttribute="top" secondItem="MQb-WG-Fs2" secondAttribute="top" id="9Ww-PK-F5s"/>
-                                                    <constraint firstItem="j71-6N-H4F" firstAttribute="top" secondItem="MQb-WG-Fs2" secondAttribute="top" constant="17" id="C2q-x7-lG6"/>
-                                                    <constraint firstAttribute="bottom" secondItem="j71-6N-H4F" secondAttribute="bottom" constant="17" id="HJx-t4-487"/>
+                                                    <constraint firstItem="j71-6N-H4F" firstAttribute="top" secondItem="MQb-WG-Fs2" secondAttribute="top" constant="5" id="C2q-x7-lG6"/>
+                                                    <constraint firstAttribute="bottom" secondItem="j71-6N-H4F" secondAttribute="bottom" constant="5" id="HJx-t4-487"/>
                                                     <constraint firstAttribute="trailing" secondItem="EgM-Zx-gmw" secondAttribute="trailing" id="HQh-fx-Bny"/>
-                                                    <constraint firstItem="j71-6N-H4F" firstAttribute="leading" secondItem="MQb-WG-Fs2" secondAttribute="leading" constant="17" id="OSn-KH-v1A"/>
+                                                    <constraint firstItem="j71-6N-H4F" firstAttribute="leading" secondItem="MQb-WG-Fs2" secondAttribute="leading" constant="5" id="OSn-KH-v1A"/>
                                                     <constraint firstItem="EgM-Zx-gmw" firstAttribute="leading" secondItem="MQb-WG-Fs2" secondAttribute="leading" id="kiC-UI-eon"/>
                                                 </constraints>
                                             </view>
@@ -69,7 +72,7 @@
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Cocina" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8c-n6-Ged">
                                         <rect key="frame" x="0.0" y="233" width="223" height="11"/>
-                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

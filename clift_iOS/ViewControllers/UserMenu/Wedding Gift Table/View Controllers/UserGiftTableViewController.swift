@@ -60,7 +60,7 @@ class UserGiftTableViewController: UIViewController {
     var eventRegistries: [EventProduct]! = []
     var eventPools: [EventPool]! = []
     var orderByViewSizeFlag = true
-    var filtersDic: [String: Any] = ["shop":"","category":"","price":""]
+    var filtersDic: [String: Any] = ["shop":"","category":"","price_range":""]
     var currentOrder: sortKeys = .nameAscending
     
     private var actualPage = 1
@@ -137,10 +137,14 @@ class UserGiftTableViewController: UIViewController {
     @IBAction func didTapFilterButton(_ sender: UIButton) {
         
         let FilterSelectionVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "FilterSelectionVC") as! FilterSelectionViewController
-        
         FilterSelectionVC.sideFilterSelectionDelegate = self
+        FilterSelectionVC.categorySelectedId = filtersDic["category"] as! String
+        FilterSelectionVC.priceSelectedId = filtersDic["price_range"] as! String
+        FilterSelectionVC.shopSelectedId = filtersDic["shop"] as! String
         let menu = UISideMenuNavigationController(rootViewController: FilterSelectionVC)
+        SideMenuManager.default.leftMenuNavigationController = menu
         menu.presentationStyle = .menuSlideIn
+        menu.statusBarEndAlpha = 0
         menu.menuWidth = UIScreen.main.bounds.size.width * 0.8
         present(menu,animated: true, completion: nil)
     }
@@ -311,7 +315,7 @@ extension UserGiftTableViewController {
                     if let productUpdatedIndex = self.eventRegistries.firstIndex(where: {$0.id == eventProduct.id}) {
                         self.eventRegistries[productUpdatedIndex].isCollaborative = false
                         self.eventRegistries[productUpdatedIndex].collaborators = 0
-                        self.productsCollectionView.reloadItems(at: [IndexPath(row: productUpdatedIndex, section: 0)])
+                        self.productsCollectionView.reloadItems(at: [IndexPath(row: productUpdatedIndex + self.eventPools.count, section: 0)])
                     }
                     self.showMessage(NSLocalizedString("Porducto actualizado como individual", comment: "Producto actualizado"), type: .success)
                 }else{
@@ -553,14 +557,13 @@ extension UserGiftTableViewController {
     }
     
     func collaborativeActionButtonPressed(eventProduct: EventProduct) {
-        let numberOfCollaboratorsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "numberOfCollaboratorsVC") as!
-         NumberOfCollaboratorsViewController
+        let numberOfCollaboratorsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "numberOfCollaboratorsVC") as! NumberOfCollaboratorsViewController
         numberOfCollaboratorsVC.numberOfCollaboratorsViewControllerDelegate = self
         numberOfCollaboratorsVC.eventProduct = eventProduct
         self.parent?.addChild(numberOfCollaboratorsVC)
-               numberOfCollaboratorsVC.view.frame = self.view.frame
-               self.parent?.view.addSubview(numberOfCollaboratorsVC.view)
-               numberOfCollaboratorsVC.didMove(toParent: self)
+        numberOfCollaboratorsVC.view.frame = self.view.frame
+        self.parent?.view.addSubview(numberOfCollaboratorsVC.view)
+        numberOfCollaboratorsVC.didMove(toParent: self)
     }
     
     func individualActionButtonPressed(eventProduct: EventProduct) {
@@ -593,8 +596,10 @@ extension UserGiftTableViewController {
 //MARK:- NumberOfCollaboratorsViewControllerDelegate
 extension UserGiftTableViewController:NumberOfCollaboratorsViewControllerDelegate {
     func didChangeToCollaborativeProduct(eventProduct: EventProduct) {
+        
         if let productUpdatedIndex = self.eventRegistries.firstIndex(where: {$0.id == eventProduct.id}) {
             self.eventRegistries[productUpdatedIndex] = eventProduct
+            self.productsCollectionView.reloadItems(at: [IndexPath(row: productUpdatedIndex + self.eventPools.count, section: 0)])
         }
     }
 }
@@ -717,6 +722,9 @@ extension UserGiftTableViewController {
     }
     
     private func updateMenuButtonsText() {
+        firstMenuButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        secondButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        thirdButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
         firstMenuButton.setTitle(String(firstButtonValue), for: .normal)
         secondButton.setTitle(String(secondButtonValue), for: .normal)
         thirdButton.setTitle(String(thirdButtonValue), for: .normal)

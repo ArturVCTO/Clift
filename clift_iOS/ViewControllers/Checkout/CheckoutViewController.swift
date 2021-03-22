@@ -168,7 +168,7 @@ extension CheckoutViewController: UITableViewDataSource, UITableViewDelegate {
         }
         let product = self.cartItems[indexPath.row]
         cell.vc = self
-        cell.configure(with: product)
+        cell.configure(with: product, userType: paymentType)
         return cell
     }
     

@@ -72,7 +72,7 @@ class EventGiftListViewController: UIViewController {
     var orderByViewSizeFlag = true
     var filtersDic: [String: Any] = ["shop":"","category":"","price":""]
     var currentOrder: sortKeys = .nameAscending
-    var isSearchBarHIdden = true
+    var isSearchBarHidden = true
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -98,7 +98,13 @@ class EventGiftListViewController: UIViewController {
         
     func setNavBar() {
         
-        navigationItem.title = "EVENTO"
+        let titleLabel = UILabel()
+        titleLabel.text = "EVENTO"
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont(name: "Mihan-Regular", size: 16.0)!
+        titleLabel.addCharactersSpacing(5)
+        titleLabel.sizeToFit()
+        self.navigationItem.titleView = titleLabel
         
         let cartImage = UIImage(named: "cart")
         let searchImage = UIImage(named: "searchicon")
@@ -117,13 +123,13 @@ class EventGiftListViewController: UIViewController {
     }
 
     @objc func didTapSearchButton(sender: AnyObject){
-        if isSearchBarHIdden {
+        if isSearchBarHidden {
             searchBar.isHidden = false
         } else {
             searchBar.isHidden = true
         }
         
-        isSearchBarHIdden = !isSearchBarHIdden
+        isSearchBarHidden = !isSearchBarHidden
     }
     
     func setup(event: Event) {
@@ -137,7 +143,7 @@ class EventGiftListViewController: UIViewController {
         }
         
         eventNameLabel.text = event.name
-        dateLabel.text = event.formattedDate()
+        dateLabel.text = event.formattedDate().uppercased()
         typeLabel.text = event.stringVisibility()
         eventImageView.layer.cornerRadius = eventImageView.frame.height / 2
         
@@ -206,6 +212,7 @@ class EventGiftListViewController: UIViewController {
         sharedApiManager.addItemToCartGuest(quantity: quantity, product: product) { (cartItem, result) in
             if let response = result {
                 if (response.isSuccess()) {
+                    self.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
                     self.showMessage(NSLocalizedString("Producto se ha agregado a tu carrito.", comment: ""),type: .success)
                 } else if (response.isClientError()) {
                     self.showMessage(NSLocalizedString("Producto no se pudo agregar, intente de nuevo más tarde.", comment: "Login Error"),type: .error)
@@ -221,8 +228,13 @@ class EventGiftListViewController: UIViewController {
         let FilterSelectionVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "FilterSelectionVC") as! FilterSelectionViewController
         
         FilterSelectionVC.sideFilterSelectionDelegate = self
+        FilterSelectionVC.categorySelectedId = filtersDic["category"] as! String
+        FilterSelectionVC.priceSelectedId = filtersDic["price"] as! String
+        FilterSelectionVC.shopSelectedId = filtersDic["shop"] as! String
         let menu = UISideMenuNavigationController(rootViewController: FilterSelectionVC)
+        SideMenuManager.default.leftMenuNavigationController = menu
         menu.presentationStyle = .menuSlideIn
+        menu.statusBarEndAlpha = 0
         menu.menuWidth = UIScreen.main.bounds.size.width * 0.8
         present(menu,animated: true, completion: nil)
     }
@@ -535,6 +547,9 @@ extension EventGiftListViewController {
     }
     
     private func updateMenuButtonsText() {
+        firstMenuButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        secondButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
+        thirdButton.titleLabel?.font = UIFont(name: "Mihan-Regular", size: 14.0)!
         firstMenuButton.setTitle(String(firstButtonValue), for: .normal)
         secondButton.setTitle(String(secondButtonValue), for: .normal)
         thirdButton.setTitle(String(thirdButtonValue), for: .normal)
@@ -579,6 +594,6 @@ extension EventGiftListViewController: UISearchBarDelegate {
         }
         searchBar.text = ""
         searchBar.isHidden = true
-        isSearchBarHIdden = !isSearchBarHIdden
+        isSearchBarHidden = !isSearchBarHidden
     }
 }

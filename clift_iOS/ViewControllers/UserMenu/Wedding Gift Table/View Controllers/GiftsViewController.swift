@@ -71,15 +71,26 @@ class GiftsViewController: UIViewController {
         self.getEvents()
         self.pageRefreshControl.addTarget(self, action: #selector(refreshPage), for: .valueChanged)
         self.giftsScrollView.refreshControl = self.pageRefreshControl
-        self.mainRegistryVC.navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: "", style: .plain, target: nil, action: nil)
-        
+        setNavBar()
         setCollectionViewHeight()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.getEvents()
+    }
+    
+    func setNavBar() {
+        let titleLabel = UILabel()
+        titleLabel.text = "MI MESA"
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont(name: "Mihan-Regular", size: 16.0)!
+        titleLabel.addCharactersSpacing(5)
+        titleLabel.sizeToFit()
+        self.mainRegistryVC.navigationItem.titleView = titleLabel
+        
+        self.mainRegistryVC.navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "", style: .plain, target: nil, action: nil)
     }
     
     @objc func refreshPage() {
