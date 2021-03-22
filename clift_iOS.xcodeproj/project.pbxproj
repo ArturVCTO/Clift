@@ -255,7 +255,16 @@
 		CEF53FB024F429B500D7C997 /* CollaboratorInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */; };
 		CEF53FB424F4461D00D7C997 /* OrderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF53FB324F4461D00D7C997 /* OrderItem.swift */; };
 		F32A8D9E25D08A5E00BE01AE /* WeddingProfileProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32A8D9D25D08A5E00BE01AE /* WeddingProfileProductsView.swift */; };
+		F330BDEE2603C1F3009F27B2 /* GiftsSummary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F330BDED2603C1F3009F27B2 /* GiftsSummary.storyboard */; };
+		F330BDF42603D3F8009F27B2 /* GiftSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F330BDF32603D3F8009F27B2 /* GiftSummaryItem.swift */; };
+		F330BDF92603F364009F27B2 /* SummaryTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F330BDF82603F364009F27B2 /* SummaryTypeButton.swift */; };
+		F330BE022604028F009F27B2 /* GiftsAndEnvelopesStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F330BE012604028F009F27B2 /* GiftsAndEnvelopesStackView.swift */; };
+		F330BE07260402B6009F27B2 /* GiftsTypeStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F330BE06260402B6009F27B2 /* GiftsTypeStackView.swift */; };
+		F330BE0F26054E32009F27B2 /* UserSummaryProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F330BE0D26054E32009F27B2 /* UserSummaryProductCollectionViewCell.swift */; };
+		F330BE1026054E32009F27B2 /* UserSummaryProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F330BE0E26054E32009F27B2 /* UserSummaryProductCollectionViewCell.xib */; };
+		F34E3BDA2607C07200DC0422 /* OrderProductUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E3BD92607C07200DC0422 /* OrderProductUserData.swift */; };
 		F35E9CC225C8B4C200B54192 /* GiftsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */; };
+		F370B0DD2601800E00608B36 /* GiftsSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370B0DC2601800E00608B36 /* GiftsSummaryViewController.swift */; };
 		F38DD6A325D0C58800F7C8D1 /* WeddingProfileProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DD6A225D0C58800F7C8D1 /* WeddingProfileProduct.swift */; };
 		FB69CC8CE945481E9839D8BF /* Pods_clift_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */; };
 /* End PBXBuildFile section */
@@ -526,7 +535,16 @@
 		DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.canary.xcconfig"; sourceTree = "<group>"; };
 		F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F32A8D9D25D08A5E00BE01AE /* WeddingProfileProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingProfileProductsView.swift; sourceTree = "<group>"; };
+		F330BDED2603C1F3009F27B2 /* GiftsSummary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftsSummary.storyboard; sourceTree = "<group>"; };
+		F330BDF32603D3F8009F27B2 /* GiftSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSummaryItem.swift; sourceTree = "<group>"; };
+		F330BDF82603F364009F27B2 /* SummaryTypeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTypeButton.swift; sourceTree = "<group>"; };
+		F330BE012604028F009F27B2 /* GiftsAndEnvelopesStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsAndEnvelopesStackView.swift; sourceTree = "<group>"; };
+		F330BE06260402B6009F27B2 /* GiftsTypeStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsTypeStackView.swift; sourceTree = "<group>"; };
+		F330BE0D26054E32009F27B2 /* UserSummaryProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSummaryProductCollectionViewCell.swift; sourceTree = "<group>"; };
+		F330BE0E26054E32009F27B2 /* UserSummaryProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserSummaryProductCollectionViewCell.xib; sourceTree = "<group>"; };
+		F34E3BD92607C07200DC0422 /* OrderProductUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProductUserData.swift; sourceTree = "<group>"; };
 		F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftsViewController.storyboard; sourceTree = "<group>"; };
+		F370B0DC2601800E00608B36 /* GiftsSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsSummaryViewController.swift; sourceTree = "<group>"; };
 		F38DD6A225D0C58800F7C8D1 /* WeddingProfileProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingProfileProduct.swift; sourceTree = "<group>"; };
 		FC9BC5CE8D99C231599E05C1 /* Pods-clift_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -931,6 +949,7 @@
 				4637826C23A72CBE0027FCD6 /* EventGuestAnalytics.swift */,
 				465FED142373BB500038D557 /* EventPool.swift */,
 				46DE69CF235DCD9A002C2BB8 /* EventProduct.swift */,
+				F34E3BD92607C07200DC0422 /* OrderProductUserData.swift */,
 				462EB0C22316E4630084C3C7 /* EventRecommendation.swift */,
 				465167AA237A178F00755077 /* EventRegistrySummary.swift */,
 				465FED162373DE190038D557 /* ExternalProduct.swift */,
@@ -1179,14 +1198,54 @@
 			path = "section view";
 			sourceTree = "<group>";
 		};
+		F330BDF22603D3A5009F27B2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F330BDF32603D3F8009F27B2 /* GiftSummaryItem.swift */,
+				F330BDF82603F364009F27B2 /* SummaryTypeButton.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F330BDFD26040268009F27B2 /* Custom View */ = {
+			isa = PBXGroup;
+			children = (
+				F330BE012604028F009F27B2 /* GiftsAndEnvelopesStackView.swift */,
+				F330BE06260402B6009F27B2 /* GiftsTypeStackView.swift */,
+			);
+			path = "Custom View";
+			sourceTree = "<group>";
+		};
+		F330BE0B26054DFB009F27B2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F330BE0D26054E32009F27B2 /* UserSummaryProductCollectionViewCell.swift */,
+				F330BE0E26054E32009F27B2 /* UserSummaryProductCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		F35E9CC025C8B44D00B54192 /* Wedding Gift Table */ = {
 			isa = PBXGroup;
 			children = (
+				F370B0DB26017FF300608B36 /* Gifts Summary */,
 				F38DD69B25D0C4D900F7C8D1 /* View Controllers */,
 				F38DD69A25D0C4CF00F7C8D1 /* Models */,
 				F32A8D9C25D08A2C00BE01AE /* section view */,
 			);
 			path = "Wedding Gift Table";
+			sourceTree = "<group>";
+		};
+		F370B0DB26017FF300608B36 /* Gifts Summary */ = {
+			isa = PBXGroup;
+			children = (
+				F330BE0B26054DFB009F27B2 /* Cells */,
+				F330BDFD26040268009F27B2 /* Custom View */,
+				F330BDF22603D3A5009F27B2 /* Models */,
+				F370B0DC2601800E00608B36 /* GiftsSummaryViewController.swift */,
+				F330BDED2603C1F3009F27B2 /* GiftsSummary.storyboard */,
+			);
+			path = "Gifts Summary";
 			sourceTree = "<group>";
 		};
 		F38DD69A25D0C4CF00F7C8D1 /* Models */ = {
@@ -1324,6 +1383,7 @@
 				61F0C2D825A3C89700AA58CF /* GuestEventProductCell.xib in Resources */,
 				46B5F74323845BB600AFF425 /* Tinos-RegularItalic.ttf in Resources */,
 				4672A89922F88F27001F374F /* LaunchScreen.storyboard in Resources */,
+				F330BDEE2603C1F3009F27B2 /* GiftsSummary.storyboard in Resources */,
 				61C82A2025BA6781009F50AF /* Checkout.storyboard in Resources */,
 				61B6E4E826046DB300DB6D6D /* FilterSelectionCell.xib in Resources */,
 				619E839825E5F21A0056D33A /* StoreCategoryAndGroupCell.xib in Resources */,
@@ -1347,6 +1407,7 @@
 				4672A89422F88F25001F374F /* Main.storyboard in Resources */,
 				CEB74B0A2507E8750022BFA1 /* SplashScreenMobile.mp4 in Resources */,
 				46DC795A23EA0DD60013C306 /* stripeRedirect.html in Resources */,
+				F330BE1026054E32009F27B2 /* UserSummaryProductCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1494,7 +1555,9 @@
 				469D8C2A230F02AB000D447E /* EditProfileViewController.swift in Sources */,
 				465C82142361087400DAC090 /* CustomAlertController.swift in Sources */,
 				61D3F86525B0060500EEF709 /* FilterSelectionViewController.swift in Sources */,
+				F330BE0F26054E32009F27B2 /* UserSummaryProductCollectionViewCell.swift in Sources */,
 				6127D96E25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift in Sources */,
+				F330BE07260402B6009F27B2 /* GiftsTypeStackView.swift in Sources */,
 				46E12882233ACFB000354DB9 /* Shop.swift in Sources */,
 				46D3777123972DDD004BE93E /* Invitation.swift in Sources */,
 				46831C0E23DA4079004BAAC1 /* PaymentConfirmationViewController.swift in Sources */,
@@ -1512,6 +1575,7 @@
 				462F9F2E230C6AE20014CD9E /* StringExtensions.swift in Sources */,
 				CE7B9EFF2509395500E8ED9D /* ConvertToCreditViewController.swift in Sources */,
 				0B6174342574BB8A00FD7EAC /* EventHeaderCell.swift in Sources */,
+				F34E3BDA2607C07200DC0422 /* OrderProductUserData.swift in Sources */,
 				465FED1323708B7B0038D557 /* SummaryRegistryTableViewCell.swift in Sources */,
 				46ABCB2E2318669500857046 /* MyEventsCell.swift in Sources */,
 				460836A92386FF890052E73A /* InvitationTemplatesViewController.swift in Sources */,
@@ -1579,6 +1643,7 @@
 				46DE69D0235DCD9B002C2BB8 /* EventProduct.swift in Sources */,
 				463A78A42385F3F100985674 /* GuestListViewController.swift in Sources */,
 				46831C1423DBAEEF004BAAC1 /* ThankGuestViewController.swift in Sources */,
+				F370B0DD2601800E00608B36 /* GiftsSummaryViewController.swift in Sources */,
 				46DC795223E943400013C306 /* ThankYouUser.swift in Sources */,
 				CEF53FB424F4461D00D7C997 /* OrderItem.swift in Sources */,
 				6127D94925B3CF3D00C8250A /* CheckoutEnvelope.swift in Sources */,
@@ -1605,6 +1670,7 @@
 				46831C1023DB9752004BAAC1 /* SummaryGiftsViewController.swift in Sources */,
 				462F9F30230DAC990014CD9E /* DateFormatter.swift in Sources */,
 				4604A339230331A60041F9AA /* Event.swift in Sources */,
+				F330BE022604028F009F27B2 /* GiftsAndEnvelopesStackView.swift in Sources */,
 				4604A33122FE18C30041F9AA /* LastStepOnboardingViewController.swift in Sources */,
 				469D8C28230F02A0000D447E /* ProfileViewController.swift in Sources */,
 				464D1CDA24104E1A00CBC546 /* CreditMovementCell.swift in Sources */,
@@ -1667,12 +1733,14 @@
 				464D1CD82410494B00CBC546 /* CreditMovement.swift in Sources */,
 				46C42AEB23295D9800D5A72F /* MainStoreViewController.swift in Sources */,
 				466E99DD2469F3CD009E94E3 /* AddressOnboardingViewController.swift in Sources */,
+				F330BDF42603D3F8009F27B2 /* GiftSummaryItem.swift in Sources */,
 				4616772D232AE8AD00A6CAB9 /* Brand.swift in Sources */,
 				460A1D912373E85400311876 /* EventProductFilterViewController.swift in Sources */,
 				4604A32D22FCDA700041F9AA /* ThirdStepOnboardingViewController.swift in Sources */,
 				CEF53FB024F429B500D7C997 /* CollaboratorInfoTableViewCell.swift in Sources */,
 				BD5ECC34251EAA5700A1F45F /* SearchEventTableViewController.swift in Sources */,
 				46E1287C2333EFDD00354DB9 /* MainStoreCategoryCollectionViewCell.swift in Sources */,
+				F330BDF92603F364009F27B2 /* SummaryTypeButton.swift in Sources */,
 				465FED112370896B0038D557 /* SummaryRegistryViewController.swift in Sources */,
 				463A78A62386E9EC00985674 /* Invitee.swift in Sources */,
 				46DE69C8235D671A002C2BB8 /* sortFilterTVCell.swift in Sources */,

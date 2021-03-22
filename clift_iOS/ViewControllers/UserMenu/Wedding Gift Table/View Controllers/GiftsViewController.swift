@@ -134,6 +134,17 @@ class GiftsViewController: UIViewController {
         }
     }
     
+    @IBAction func giftsSummaryButtonPressed(_ sender: Any) {
+        
+        if false {
+            tapEventRegistryButton(self)
+        } else {
+            let vc = GiftsSummaryViewController.make(event: currentEvent)
+            self.mainRegistryVC.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+    
     private func addView(asChildViewController viewController: UIViewController) {
         self.containerView.addSubview(viewController.view)
         viewController.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
