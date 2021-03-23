@@ -15,7 +15,7 @@ class EnvelopeInfoViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var cellphoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var envelopeTitleLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var acceptPaymentButton: UIButton!
@@ -23,18 +23,23 @@ class EnvelopeInfoViewController: UIViewController {
     var currentEventPool: EventPool = EventPool()
     var currentEvent: Event = Event()
     var checkoutObject = CheckoutEnvelope()
+    var firstMessage = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setUI()
         amountTextField.delegate = self
+        messageTextView.delegate = self
     }
     
     func setUI() {
         navigationItem.title = "CLIFT"
         envelopeTitleLabel.text = currentEventPool.description
         acceptPaymentButton.layer.cornerRadius = 10
+        messageTextView.layer.cornerRadius = 10
+        messageTextView.layer.borderWidth = 0.5
+        messageTextView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     func pay() {
@@ -84,7 +89,7 @@ class EnvelopeInfoViewController: UIViewController {
             return
         }
         
-        guard let messageText = messageTextField.text, !messageText.isEmpty else {
+        guard let messageText = messageTextView.text, !messageText.isEmpty else {
             self.showMessage(NSLocalizedString("No has llenado el mensaje", comment: ""),type: .error)
             return
         }
@@ -107,5 +112,16 @@ extension EnvelopeInfoViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         amountLabel.text = "$ \(amountTextField.text ?? "")"
+    }
+}
+
+extension EnvelopeInfoViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if firstMessage {
+            messageTextView.text = ""
+            messageTextView.textColor = UIColor.black
+            firstMessage = false
+        }
     }
 }
