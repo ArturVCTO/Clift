@@ -65,7 +65,7 @@ class GiftStoreGroupViewController: UIViewController {
     func presentProducts(subgroupIndex: Int) {
         let giftStoreProductsVC = UIStoryboard(name: "GiftStore", bundle: nil).instantiateViewController(withIdentifier: "GiftStoreProductsVC") as! GiftStoreProductsViewController
         giftStoreProductsVC.modalPresentationStyle = .fullScreen
-        giftStoreProductsVC.category = category
+        giftStoreProductsVC.navBarTitle = category.name
         giftStoreProductsVC.subgroupNameString = category.groups[selectedGroupIndex].subgroups[subgroupIndex].name
         giftStoreProductsVC.filtersDic["subgroup"] = category.groups[selectedGroupIndex].subgroups[subgroupIndex].id
         self.navigationController?.pushViewController(giftStoreProductsVC, animated: true)
@@ -92,7 +92,7 @@ extension GiftStoreGroupViewController: UICollectionViewDelegate {
         if category.groups[indexPath.row].subgroups.isEmpty {
             let giftStoreProductsVC = UIStoryboard(name: "GiftStore", bundle: nil).instantiateViewController(withIdentifier: "GiftStoreProductsVC") as! GiftStoreProductsViewController
             giftStoreProductsVC.modalPresentationStyle = .fullScreen
-            giftStoreProductsVC.category = category
+            giftStoreProductsVC.navBarTitle = category.name
             giftStoreProductsVC.filtersDic["group"] = category.groups[indexPath.row].id
             self.navigationController?.pushViewController(giftStoreProductsVC, animated: true)
         } else {

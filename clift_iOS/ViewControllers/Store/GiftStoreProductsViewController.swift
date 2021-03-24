@@ -45,7 +45,7 @@ class GiftStoreProductsViewController: UIViewController {
     @IBOutlet weak var thirdButtonContainerView: UIView!
     @IBOutlet weak var thirdButton: UIButton!
     
-    var category = Category()
+    var navBarTitle = ""
     var subgroupNameString = ""
     var currentEvent = Event()
     var products: [Product]! = []
@@ -79,7 +79,7 @@ class GiftStoreProductsViewController: UIViewController {
     
     private func setNavBar() {
         let titleLabel = UILabel()
-        titleLabel.text = category.name.uppercased()
+        titleLabel.text = navBarTitle.uppercased()
         titleLabel.textColor = .white
         titleLabel.font = UIFont(name: "Mihan-Regular", size: 16.0)!
         titleLabel.addCharactersSpacing(5)

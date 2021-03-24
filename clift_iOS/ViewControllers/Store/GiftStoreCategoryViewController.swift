@@ -30,7 +30,7 @@ class GiftStoreCategoryViewController: UIViewController {
     private func setNavBar() {
         
         let titleLabel = UILabel()
-        titleLabel.text = "TIENDA"
+        titleLabel.text = "CATEGORÍAS"
         titleLabel.textColor = .white
         titleLabel.font = UIFont(name: "Mihan-Regular", size: 16.0)!
         titleLabel.addCharactersSpacing(5)
@@ -64,7 +64,7 @@ extension GiftStoreCategoryViewController: UICollectionViewDelegate {
         if categories[indexPath.row].groups.isEmpty {
             let giftStoreProductsVC = UIStoryboard(name: "GiftStore", bundle: nil).instantiateViewController(withIdentifier: "GiftStoreProductsVC") as! GiftStoreProductsViewController
             giftStoreProductsVC.modalPresentationStyle = .fullScreen
-            giftStoreProductsVC.category = categories[indexPath.row]
+            giftStoreProductsVC.navBarTitle = categories[indexPath.row].name
             giftStoreProductsVC.filtersDic["category"] = categories[indexPath.row].id
             self.navigationController?.pushViewController(giftStoreProductsVC, animated: true)
         } else {

@@ -204,6 +204,7 @@
 		613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */; };
 		615C982925CE0E39002DB95E /* UserEventProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615C982725CE0E39002DB95E /* UserEventProductCell.swift */; };
 		615C982A25CE0E39002DB95E /* UserEventProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615C982825CE0E39002DB95E /* UserEventProductCell.xib */; };
+		6163820D260AE1AF00D3B0E8 /* GiftStoreShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6163820C260AE1AF00D3B0E8 /* GiftStoreShopViewController.swift */; };
 		6167D6DA25EF176E0010410F /* StoreProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6167D6D825EF176E0010410F /* StoreProductCell.swift */; };
 		6167D6DB25EF176E0010410F /* StoreProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6167D6D925EF176E0010410F /* StoreProductCell.xib */; };
 		6169708625A7DE85009F6EB9 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169708525A7DE85009F6EB9 /* UIViewExtension.swift */; };
@@ -217,6 +218,9 @@
 		619E838925E5E51F0056D33A /* GiftStoreCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E838825E5E51F0056D33A /* GiftStoreCategoryViewController.swift */; };
 		619E839725E5F21A0056D33A /* StoreCategoryAndGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E839525E5F21A0056D33A /* StoreCategoryAndGroupCell.swift */; };
 		619E839825E5F21A0056D33A /* StoreCategoryAndGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619E839625E5F21A0056D33A /* StoreCategoryAndGroupCell.xib */; };
+		61AE93C5260A837800E66595 /* GiftStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE93C4260A837800E66595 /* GiftStoreViewController.swift */; };
+		61AE93CE260AB9FE00E66595 /* StoreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE93CC260AB9FE00E66595 /* StoreCollectionReusableView.swift */; };
+		61AE93CF260AB9FE00E66595 /* StoreCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61AE93CD260AB9FE00E66595 /* StoreCollectionReusableView.xib */; };
 		61B6E4E726046DB300DB6D6D /* FilterSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B6E4E526046DB200DB6D6D /* FilterSelectionCell.swift */; };
 		61B6E4E826046DB300DB6D6D /* FilterSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61B6E4E626046DB300DB6D6D /* FilterSelectionCell.xib */; };
 		61C82A2025BA6781009F50AF /* Checkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61C82A1F25BA6781009F50AF /* Checkout.storyboard */; };
@@ -487,6 +491,7 @@
 		613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventProductCell.swift; sourceTree = "<group>"; };
 		615C982825CE0E39002DB95E /* UserEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserEventProductCell.xib; sourceTree = "<group>"; };
+		6163820C260AE1AF00D3B0E8 /* GiftStoreShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStoreShopViewController.swift; sourceTree = "<group>"; };
 		6167D6D825EF176E0010410F /* StoreProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProductCell.swift; sourceTree = "<group>"; };
 		6167D6D925EF176E0010410F /* StoreProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreProductCell.xib; sourceTree = "<group>"; };
 		6169708525A7DE85009F6EB9 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -500,6 +505,9 @@
 		619E838825E5E51F0056D33A /* GiftStoreCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStoreCategoryViewController.swift; sourceTree = "<group>"; };
 		619E839525E5F21A0056D33A /* StoreCategoryAndGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCategoryAndGroupCell.swift; sourceTree = "<group>"; };
 		619E839625E5F21A0056D33A /* StoreCategoryAndGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreCategoryAndGroupCell.xib; sourceTree = "<group>"; };
+		61AE93C4260A837800E66595 /* GiftStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStoreViewController.swift; sourceTree = "<group>"; };
+		61AE93CC260AB9FE00E66595 /* StoreCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCollectionReusableView.swift; sourceTree = "<group>"; };
+		61AE93CD260AB9FE00E66595 /* StoreCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreCollectionReusableView.xib; sourceTree = "<group>"; };
 		61B6E4E526046DB200DB6D6D /* FilterSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionCell.swift; sourceTree = "<group>"; };
 		61B6E4E626046DB300DB6D6D /* FilterSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterSelectionCell.xib; sourceTree = "<group>"; };
 		61C82A1F25BA6781009F50AF /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
@@ -1112,7 +1120,9 @@
 			children = (
 				619E838D25E5EEF40056D33A /* Cells */,
 				619E838325E5D89C0056D33A /* GiftStore.storyboard */,
+				61AE93C4260A837800E66595 /* GiftStoreViewController.swift */,
 				619E838825E5E51F0056D33A /* GiftStoreCategoryViewController.swift */,
+				6163820C260AE1AF00D3B0E8 /* GiftStoreShopViewController.swift */,
 				618CB1CD25E732D500A21DCC /* GiftStoreGroupViewController.swift */,
 				618CB1D225E732F500A21DCC /* GiftStoreProductsViewController.swift */,
 			);
@@ -1126,6 +1136,8 @@
 				619E839625E5F21A0056D33A /* StoreCategoryAndGroupCell.xib */,
 				6167D6D825EF176E0010410F /* StoreProductCell.swift */,
 				6167D6D925EF176E0010410F /* StoreProductCell.xib */,
+				61AE93CC260AB9FE00E66595 /* StoreCollectionReusableView.swift */,
+				61AE93CD260AB9FE00E66595 /* StoreCollectionReusableView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1396,6 +1408,7 @@
 				46441B7723CE852C00F5FCD2 /* Mihan-Regular.ttf in Resources */,
 				0B61742F2574BB5900FD7EAC /* Guest.storyboard in Resources */,
 				6173DE4E25BBA8C6000476CB /* CheckoutProductCell.xib in Resources */,
+				61AE93CF260AB9FE00E66595 /* StoreCollectionReusableView.xib in Resources */,
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
 				46B5F74623845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */,
 				F35E9CC225C8B4C200B54192 /* GiftsViewController.storyboard in Resources */,
@@ -1549,6 +1562,7 @@
 				46E034BD2326E522001143BC /* CategoryResultsTableViewCell.swift in Sources */,
 				61F86AE825B38B4400AFDCE5 /* EnvelopeInfoViewController.swift in Sources */,
 				465167AE237A7D1500755077 /* CollaborativeCell.swift in Sources */,
+				6163820D260AE1AF00D3B0E8 /* GiftStoreShopViewController.swift in Sources */,
 				6120F4A225CB7430005996E6 /* UserGiftTableViewController.swift in Sources */,
 				461C423523DA3B3E00486D80 /* DiscountCodeViewController.swift in Sources */,
 				46167733232AECC700A6CAB9 /* ProductCollectionViewController.swift in Sources */,
@@ -1561,6 +1575,7 @@
 				46E12882233ACFB000354DB9 /* Shop.swift in Sources */,
 				46D3777123972DDD004BE93E /* Invitation.swift in Sources */,
 				46831C0E23DA4079004BAAC1 /* PaymentConfirmationViewController.swift in Sources */,
+				61AE93C5260A837800E66595 /* GiftStoreViewController.swift in Sources */,
 				46403A8F23E0A425007866B8 /* GiftShippingConfirmationViewController.swift in Sources */,
 				464D1CCE2410137600CBC546 /* CashOutFundsViewController.swift in Sources */,
 				61F0C2D725A3C89700AA58CF /* GuestEventProductCell.swift in Sources */,
@@ -1722,6 +1737,7 @@
 				465167B2237A7D7500755077 /* FilterTableViewCell.swift in Sources */,
 				462EB0B923163F100084C3C7 /* EditRegistryViewController.swift in Sources */,
 				46792371239EBB92005103F2 /* PreviewInvitationViewController.swift in Sources */,
+				61AE93CE260AB9FE00E66595 /* StoreCollectionReusableView.swift in Sources */,
 				46DC795023E92D8F0013C306 /* StripeCheckoutViewController.swift in Sources */,
 				464D1CD42410181100CBC546 /* ShopCreditCell.swift in Sources */,
 				464C12A423A6F72B00A690C4 /* MainInvitationTemplateCVCell.swift in Sources */,
