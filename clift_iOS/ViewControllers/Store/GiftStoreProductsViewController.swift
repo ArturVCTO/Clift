@@ -158,12 +158,12 @@ class GiftStoreProductsViewController: UIViewController {
     
     @IBAction func leftButtonPressed(_ sender: Any) {
         actualPage = 1
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     @IBAction func rightButtonPressed(_ sender: Any) {
         actualPage = numberOfPages
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     @IBAction func firstButtonPressed(_ sender: Any) {
@@ -171,7 +171,7 @@ class GiftStoreProductsViewController: UIViewController {
         lastButtonPressed = firstMenuButton
         setButtonValues()
         addOrDeleteMenuButtonsDependingOnNumberOfPages()
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     @IBAction func secondButtonPressed(_ sender: Any) {
@@ -179,7 +179,7 @@ class GiftStoreProductsViewController: UIViewController {
         lastButtonPressed = secondButton
         setButtonValues()
         addOrDeleteMenuButtonsDependingOnNumberOfPages()
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     @IBAction func thirdButtonPressed(_ sender: Any) {
@@ -187,7 +187,7 @@ class GiftStoreProductsViewController: UIViewController {
         lastButtonPressed = thirdButton
         setButtonValues()
         addOrDeleteMenuButtonsDependingOnNumberOfPages()
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
 }
 
@@ -196,22 +196,22 @@ extension GiftStoreProductsViewController {
     
     func didTapOrderByLowPrice() {
         currentOrder = .priceAscending
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     func didTapOrderByHighPrice() {
         currentOrder = .priceDescending
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     func didTapOrderByAZ() {
         currentOrder = .nameAscending
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     func didTapOrderByZA() {
         currentOrder = .nameDescending
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
 }
 
