@@ -29,6 +29,8 @@ class GiftStoreViewController: UIViewController {
         getCategories()
         getShops()
         registerCells()
+        storeSearchBar.delegate = self
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).clearButtonMode = .never
     }
     
     private func registerCells() {
@@ -185,6 +187,61 @@ extension GiftStoreViewController: UICollectionViewDelegateFlowLayout {
         let height = CGFloat(150)
 
         return CGSize(width: width, height: height)
+    }
+}
+
+// MARK: Extension UISearchBarDelegate 
+extension GiftStoreViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        if searchBar.text == "" {
+            
+            searchBar.endEditing(true)
+            self.children.forEach {
+                $0.willMove(toParent: nil)
+                $0.view.removeFromSuperview()
+                $0.removeFromParent()
+            }
+        } else {
+            
+            searchBar.endEditing(true)
+            
+            let giftStoreProductsVC = UIStoryboard(name: "GiftStore", bundle: nil).instantiateViewController(withIdentifier: "GiftStoreProductsVC") as! GiftStoreProductsViewController
+
+            // Send query to GiftStoreProductsViewController
+            if let query = searchBar.text {
+                giftStoreProductsVC.queryFromStoreVC = query
+            }
+            
+            // Add as a childviewcontroller
+            addChild(giftStoreProductsVC)
+
+            // Add the child's View as a subview
+            self.view.addSubview(giftStoreProductsVC.view)
+            giftStoreProductsVC.view.frame = view.bounds
+            giftStoreProductsVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+            // Tell the childviewcontroller it's contained in it's parent
+            giftStoreProductsVC.didMove(toParent: self)
+            
+            // Set up of child view controller position and size
+            giftStoreProductsVC.view.frame = CGRect(x: 0, y: storeCollectionView.frame.origin.y, width: self.view.frame.size.width, height: storeCollectionView.frame.height)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if let text = searchBar.text {
+            if text == "" {
+                searchBar.endEditing(true)
+                self.children.forEach {
+                    $0.willMove(toParent: nil)
+                    $0.view.removeFromSuperview()
+                    $0.removeFromParent()
+                }
+            }
+        }
     }
 }
 

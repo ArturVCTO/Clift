@@ -54,6 +54,7 @@ class GiftStoreProductsViewController: UIViewController {
     var filtersDic: [String: Any] = [:]
     var currentOrder: sortKeys = .nameAscending
     var isSearchBarHidden = true
+    var queryFromStoreVC = ""
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -389,6 +390,7 @@ extension GiftStoreProductsViewController {
     
 }
 
+// MARK: Extension UISearchBarDelegate 
 extension GiftStoreProductsViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -501,7 +503,7 @@ extension GiftStoreProductsViewController {
                     if let currentEvent = events?.first {
                         self.currentEvent = currentEvent
                         self.setup(event: self.currentEvent)
-                        self.getStoreProducts()
+                        self.getStoreProducts(query: self.queryFromStoreVC)
                     }
                 }
             } else {
