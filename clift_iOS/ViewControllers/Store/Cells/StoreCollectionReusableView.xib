@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Mihan-Regular.ttf">
+            <string>Mihan-Regular</string>
+        </array>
+        <array key="Tinos-Bold.ttf">
+            <string>Tinos-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="StoreCollectionReusableView" id="U6b-Vx-4bR" customClass="StoreCollectionReusableView" customModule="CLIFT" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pqw-mp-krS">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="UP8-LL-4qv">
+                            <rect key="frame" x="302" y="17.5" width="8" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="UP8-LL-4qv" secondAttribute="height" multiplier="15:28" id="ANN-oI-MWx"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categorías" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F2V-KN-49w">
+                            <rect key="frame" x="10" y="11.5" width="111" height="27"/>
+                            <fontDescription key="fontDescription" name="Tinos-Bold" family="Tinos" pointSize="24"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5lL-cd-1mp">
+                            <rect key="frame" x="223" y="11.5" width="69" height="27"/>
+                            <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="14"/>
+                            <state key="normal" title="Ver todas">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="seeAllPressed:" destination="U6b-Vx-4bR" eventType="touchUpInside" id="fAO-qc-sve"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="F2V-KN-49w" firstAttribute="leading" secondItem="pqw-mp-krS" secondAttribute="leading" constant="10" id="Aui-Xl-acg"/>
+                        <constraint firstAttribute="trailing" secondItem="UP8-LL-4qv" secondAttribute="trailing" constant="10" id="J39-JQ-deK"/>
+                        <constraint firstItem="F2V-KN-49w" firstAttribute="centerY" secondItem="pqw-mp-krS" secondAttribute="centerY" id="Nbk-Va-mQS"/>
+                        <constraint firstItem="UP8-LL-4qv" firstAttribute="leading" secondItem="5lL-cd-1mp" secondAttribute="trailing" constant="10" id="aLf-p3-Gga"/>
+                        <constraint firstItem="UP8-LL-4qv" firstAttribute="height" secondItem="pqw-mp-krS" secondAttribute="height" multiplier="0.3" id="dRE-AR-EVy"/>
+                        <constraint firstItem="5lL-cd-1mp" firstAttribute="centerY" secondItem="pqw-mp-krS" secondAttribute="centerY" id="pY6-Hq-Vds"/>
+                        <constraint firstItem="UP8-LL-4qv" firstAttribute="centerY" secondItem="pqw-mp-krS" secondAttribute="centerY" id="sIg-r1-NBF"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstItem="pqw-mp-krS" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="GGU-yk-1Wt"/>
+                <constraint firstAttribute="bottom" secondItem="pqw-mp-krS" secondAttribute="bottom" id="TT9-OJ-ERl"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="pqw-mp-krS" secondAttribute="trailing" id="pns-0m-wJI"/>
+                <constraint firstItem="pqw-mp-krS" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="wPV-oj-WK3"/>
+            </constraints>
+            <connections>
+                <outlet property="titleLabel" destination="F2V-KN-49w" id="u0g-LI-r6z"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="114.50892857142857"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="rightArrow" width="15.5" height="28.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

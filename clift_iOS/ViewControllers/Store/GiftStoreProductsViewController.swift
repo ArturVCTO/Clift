@@ -45,7 +45,7 @@ class GiftStoreProductsViewController: UIViewController {
     @IBOutlet weak var thirdButtonContainerView: UIView!
     @IBOutlet weak var thirdButton: UIButton!
     
-    var category = Category()
+    var navBarTitle = ""
     var subgroupNameString = ""
     var currentEvent = Event()
     var products: [Product]! = []
@@ -54,6 +54,7 @@ class GiftStoreProductsViewController: UIViewController {
     var filtersDic: [String: Any] = [:]
     var currentOrder: sortKeys = .nameAscending
     var isSearchBarHidden = true
+    var queryFromStoreVC = ""
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -79,7 +80,7 @@ class GiftStoreProductsViewController: UIViewController {
     
     private func setNavBar() {
         let titleLabel = UILabel()
-        titleLabel.text = category.name.uppercased()
+        titleLabel.text = navBarTitle.uppercased()
         titleLabel.textColor = .white
         titleLabel.font = UIFont(name: "Mihan-Regular", size: 16.0)!
         titleLabel.addCharactersSpacing(5)
@@ -157,12 +158,12 @@ class GiftStoreProductsViewController: UIViewController {
     
     @IBAction func leftButtonPressed(_ sender: Any) {
         actualPage = 1
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     @IBAction func rightButtonPressed(_ sender: Any) {
         actualPage = numberOfPages
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     @IBAction func firstButtonPressed(_ sender: Any) {
@@ -170,7 +171,7 @@ class GiftStoreProductsViewController: UIViewController {
         lastButtonPressed = firstMenuButton
         setButtonValues()
         addOrDeleteMenuButtonsDependingOnNumberOfPages()
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     @IBAction func secondButtonPressed(_ sender: Any) {
@@ -178,7 +179,7 @@ class GiftStoreProductsViewController: UIViewController {
         lastButtonPressed = secondButton
         setButtonValues()
         addOrDeleteMenuButtonsDependingOnNumberOfPages()
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     @IBAction func thirdButtonPressed(_ sender: Any) {
@@ -186,7 +187,7 @@ class GiftStoreProductsViewController: UIViewController {
         lastButtonPressed = thirdButton
         setButtonValues()
         addOrDeleteMenuButtonsDependingOnNumberOfPages()
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
 }
 
@@ -195,22 +196,22 @@ extension GiftStoreProductsViewController {
     
     func didTapOrderByLowPrice() {
         currentOrder = .priceAscending
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     func didTapOrderByHighPrice() {
         currentOrder = .priceDescending
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     func didTapOrderByAZ() {
         currentOrder = .nameAscending
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
     
     func didTapOrderByZA() {
         currentOrder = .nameDescending
-        getStoreProducts()
+        getStoreProducts(query: queryFromStoreVC)
     }
 }
 
@@ -389,6 +390,7 @@ extension GiftStoreProductsViewController {
     
 }
 
+// MARK: Extension UISearchBarDelegate 
 extension GiftStoreProductsViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -501,7 +503,7 @@ extension GiftStoreProductsViewController {
                     if let currentEvent = events?.first {
                         self.currentEvent = currentEvent
                         self.setup(event: self.currentEvent)
-                        self.getStoreProducts()
+                        self.getStoreProducts(query: self.queryFromStoreVC)
                     }
                 }
             } else {
