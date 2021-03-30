@@ -167,12 +167,15 @@ class GiftsViewController: UIViewController {
     
     
     func getEvents() {
+        self.presentLoader()
         sharedApiManager.getEvents() { (events, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     print("\(events!.first!.id)")
                     self.showEvent(id: events!.first!.id)
                 }
+            } else {
+                self.dismissLoader()
             }
         }
     }
@@ -202,6 +205,7 @@ class GiftsViewController: UIViewController {
         if let coverImageURL = URL(string:"\(event.coverImageUrl)") {
             self.coverImageView.kf.setImage(with: coverImageURL)
         }
+        self.dismissLoader()
     }
     
     func countDownCalendar(eventDate: Date) {
@@ -225,6 +229,8 @@ class GiftsViewController: UIViewController {
                     self.currentEvent = event
                     self.loadEventInformation(event: event!)
                 }
+            } else {
+                self.dismissLoader()
             }
         }
     }
