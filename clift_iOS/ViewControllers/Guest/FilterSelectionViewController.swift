@@ -36,6 +36,8 @@ class FilterSelectionViewController: UIViewController {
             filterTableView.dataSource = self
         }
     }
+    @IBOutlet var filterTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var filterTableViewBottomConstraint: NSLayoutConstraint!
     
     var sideFilterSelectionDelegate: SideFilterSelectionDelegate!
     var categories: [Category]! = []
@@ -94,6 +96,21 @@ class FilterSelectionViewController: UIViewController {
             }
         }
     }
+    
+    func setTableViewHeight(numberOfRows: Int) {
+        let maxHeight = Double(UIScreen.main.bounds.height) - 180
+        let heightForNRows = Double(numberOfRows) * 40
+        
+        if heightForNRows >= maxHeight {
+            filterTableViewHeightConstraint.isActive = false
+            filterTableViewBottomConstraint.isActive = true
+            //filterTableViewHeightConstraint.constant = CGFloat(maxHeight)
+        } else {
+            filterTableViewBottomConstraint.isActive = false
+            filterTableViewHeightConstraint.isActive = true
+            filterTableViewHeightConstraint.constant = CGFloat(heightForNRows)
+        }
+    }
 
     @IBAction func cleanFilterButtonTapped(_ sender: UIButton) {
         sideFilterSelectionDelegate.didTapCleanFilters()
@@ -102,18 +119,21 @@ class FilterSelectionViewController: UIViewController {
     
     @IBAction func categoryButtonTapped(_ sender: Any) {
         filterScreenShown = .filterByCategory
+        setTableViewHeight(numberOfRows: categories.count)
         updateScreen()
         categorySelected(item: categorySelectedId)
     }
     
     @IBAction func priceButtonTapped(_ sender: Any) {
         filterScreenShown = .filterByPrice
+        setTableViewHeight(numberOfRows: prices.count)
         updateScreen()
         priceSelected(item: priceSelectedId)
     }
     
     @IBAction func shopButtonTapped(_ sender: Any) {
         filterScreenShown = .filterByShop
+        setTableViewHeight(numberOfRows: shops.count)
         updateScreen()
         shopSelected(item: shopSelectedId)
     }

@@ -74,19 +74,19 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre del evento" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="268-BF-ufD">
-                                                    <rect key="frame" x="80" y="15" width="319" height="17"/>
+                                                    <rect key="frame" x="80" y="15" width="319" height="20"/>
                                                     <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01-01-2000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dxw-MG-MpA">
-                                                    <rect key="frame" x="80" y="42" width="104" height="17"/>
+                                                    <rect key="frame" x="80" y="45" width="89" height="20"/>
                                                     <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aS-He-wrh" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
-                                                    <rect key="frame" x="344" y="35.5" width="50" height="30"/>
+                                                    <rect key="frame" x="344" y="40" width="50" height="30"/>
                                                     <color key="backgroundColor" name="PrimaryBlue"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="yiB-Dz-rkl"/>
@@ -265,19 +265,19 @@
                                                                                         <rect key="frame" x="136" y="0.0" width="278" height="81.5"/>
                                                                                         <subviews>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ana Gaby Y Andrés" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwI-lQ-UOB">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="278" height="36"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="278" height="34"/>
                                                                                                 <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="21"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="06 enero 2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmH-Sh-X26">
-                                                                                                <rect key="frame" x="0.0" y="36" width="278" height="23.5"/>
+                                                                                                <rect key="frame" x="0.0" y="34" width="278" height="24.5"/>
                                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
                                                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Evento Público" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcY-RY-7cb">
-                                                                                                <rect key="frame" x="0.0" y="59.5" width="278" height="22"/>
+                                                                                                <rect key="frame" x="0.0" y="58.5" width="278" height="23"/>
                                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="14"/>
                                                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                                 <nil key="highlightedColor"/>
@@ -509,7 +509,7 @@
                                                                         <rect key="frame" x="20" y="35" width="110" height="0.0"/>
                                                                         <subviews>
                                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4T-wZ-gyt">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="95" height="0.0"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="82" height="0.0"/>
                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="10"/>
                                                                                 <state key="normal" title="Precio: Bajo - Alto">
                                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -519,7 +519,7 @@
                                                                                 </connections>
                                                                             </button>
                                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D9S-lV-jTt">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="95" height="0.0"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="82" height="0.0"/>
                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="10"/>
                                                                                 <state key="normal" title="Precio: Alto - Bajo">
                                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -529,7 +529,7 @@
                                                                                 </connections>
                                                                             </button>
                                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6Q-gz-07R">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="95" height="0.0"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="82" height="0.0"/>
                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="10"/>
                                                                                 <state key="normal" title="A - Z">
                                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -539,7 +539,7 @@
                                                                                 </connections>
                                                                             </button>
                                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mYQ-Jx-pr5">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="95" height="0.0"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="82" height="0.0"/>
                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="10"/>
                                                                                 <state key="normal" title="Z - A">
                                                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -708,7 +708,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gok-P1-I1f">
-                                        <rect key="frame" x="0.0" y="10" width="414" height="667"/>
+                                        <rect key="frame" x="0.0" y="10" width="414" height="683.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPJ-Bh-8yJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
@@ -775,37 +775,37 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CZJ-ly-AoX">
-                                                <rect key="frame" x="0.0" y="200" width="414" height="238"/>
+                                                <rect key="frame" x="0.0" y="200" width="414" height="254.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QpE-kg-V7p">
-                                                        <rect key="frame" x="20" y="0.0" width="374" height="238"/>
+                                                        <rect key="frame" x="20" y="0.0" width="374" height="254.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGv-aQ-o0h">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="133"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="142"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0LY-cG-pHn">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="133"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="142"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 Wick Candle Gardenia" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="G7V-OL-Qb5">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="28"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="29.5"/>
                                                                                 <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="25"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GANT - Voluspa" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="pnw-c7-PiE">
-                                                                                <rect key="frame" x="0.0" y="48" width="374" height="15"/>
+                                                                                <rect key="frame" x="0.0" y="49.5" width="374" height="17.5"/>
                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categoría: Hogar l Grupo: Decoración" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="w0b-Rc-WQX">
-                                                                                <rect key="frame" x="0.0" y="83" width="374" height="15"/>
+                                                                                <rect key="frame" x="0.0" y="87" width="374" height="17.5"/>
                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vela de 3 mechas marca Volupsa" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="50e-Tu-lZ9">
-                                                                                <rect key="frame" x="0.0" y="118" width="374" height="15"/>
+                                                                                <rect key="frame" x="0.0" y="124.5" width="374" height="17.5"/>
                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -822,25 +822,25 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q8d-wg-119">
-                                                                <rect key="frame" x="0.0" y="153" width="374" height="85"/>
+                                                                <rect key="frame" x="0.0" y="162" width="374" height="92.5"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="yex-OA-Mix">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="85"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="92.5"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ESPECIFICACIONES:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7z9-82-9ZZ">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="15"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="17.5"/>
                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 340 grs." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="oLN-b1-ebn">
-                                                                                <rect key="frame" x="0.0" y="35" width="374" height="15"/>
+                                                                                <rect key="frame" x="0.0" y="37.5" width="374" height="17.5"/>
                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*Sujeto a disponibilidad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hG-kF-RnC">
-                                                                                <rect key="frame" x="0.0" y="70" width="374" height="15"/>
+                                                                                <rect key="frame" x="0.0" y="75" width="374" height="17.5"/>
                                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
                                                                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
@@ -868,7 +868,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DK0-oG-oGS">
-                                                <rect key="frame" x="0.0" y="458" width="414" height="209"/>
+                                                <rect key="frame" x="0.0" y="474.5" width="414" height="209"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="deu-6D-Fjf">
                                                         <rect key="frame" x="20" y="0.0" width="374" height="209"/>
@@ -883,13 +883,13 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="94.5"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="PRECIO:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSB-nY-Ymp">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="66.5"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="65"/>
                                                                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
                                                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$648" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vn0-qd-dCY">
-                                                                                        <rect key="frame" x="0.0" y="66.5" width="374" height="28"/>
+                                                                                        <rect key="frame" x="0.0" y="65" width="374" height="29.5"/>
                                                                                         <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="25"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -1001,15 +1001,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sb8-N3-gQf">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FILTROS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ft-Il-geA">
-                                        <rect key="frame" x="35" y="80" width="81" height="18"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILTROS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ft-Il-geA">
+                                        <rect key="frame" x="35" y="80" width="81" height="23"/>
                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="18"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="4Ft-Il-geA" firstAttribute="leading" secondItem="sb8-N3-gQf" secondAttribute="leading" constant="35" id="dg5-Ak-pGc"/>
+                                    <constraint firstItem="4Ft-Il-geA" firstAttribute="top" secondItem="sb8-N3-gQf" secondAttribute="top" constant="80" id="tNF-NO-FAw"/>
+                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="jEN-sZ-TaX" appends="YES" id="Ftl-bw-OUj"/>
                                 </connections>
@@ -1022,7 +1025,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9k-E9-VEE">
-                                <rect key="frame" x="35" y="251" width="344" height="280"/>
+                                <rect key="frame" x="35" y="264" width="344" height="280"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UE5-je-Uuv">
                                         <rect key="frame" x="0.0" y="0.0" width="344" height="280"/>
@@ -1039,13 +1042,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Limpiar filtros" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzK-Oq-kj4">
-                                <rect key="frame" x="284.5" y="211" width="94.5" height="0.0"/>
+                                <rect key="frame" x="284.5" y="211" width="94.5" height="13"/>
                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="13"/>
                                 <color key="textColor" red="0.19607843137254902" green="0.18823529411764706" blue="0.23529411764705882" alpha="0.49945998033940397" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ggU-gO-27l">
-                                <rect key="frame" x="35" y="251" width="344" height="581"/>
+                                <rect key="frame" x="35" y="264" width="344" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AO0-PJ-BYZ">
                                         <rect key="frame" x="0.0" y="0.0" width="344" height="60"/>
@@ -1147,7 +1150,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FJ3-Aa-BbW">
-                                        <rect key="frame" x="0.0" y="240" width="344" height="341"/>
+                                        <rect key="frame" x="0.0" y="240" width="344" height="328"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
@@ -1164,21 +1167,30 @@
                             <constraint firstItem="iIa-qK-7Yy" firstAttribute="trailing" secondItem="7rk-d6-W91" secondAttribute="trailing" constant="35" id="RpZ-I2-YQ5"/>
                             <constraint firstItem="ggU-gO-27l" firstAttribute="leading" secondItem="iIa-qK-7Yy" secondAttribute="leading" constant="35" id="ThS-kx-oh0"/>
                             <constraint firstItem="7rk-d6-W91" firstAttribute="top" secondItem="iIa-qK-7Yy" secondAttribute="top" constant="80" id="XTr-2l-iWP"/>
+                            <constraint firstItem="7rk-d6-W91" firstAttribute="height" secondItem="4Ft-Il-geA" secondAttribute="height" id="btq-Bq-afv"/>
                             <constraint firstItem="S9k-E9-VEE" firstAttribute="leading" secondItem="iIa-qK-7Yy" secondAttribute="leading" constant="35" id="eI1-nd-Vja"/>
                             <constraint firstItem="S9k-E9-VEE" firstAttribute="top" secondItem="GzK-Oq-kj4" secondAttribute="bottom" constant="40" id="h9K-Ep-W7S"/>
                             <constraint firstItem="sb8-N3-gQf" firstAttribute="top" secondItem="iIa-qK-7Yy" secondAttribute="top" id="jKo-r5-QT0"/>
+                            <constraint firstItem="iIa-qK-7Yy" firstAttribute="bottom" secondItem="S9k-E9-VEE" secondAttribute="bottom" constant="40" id="lzb-lH-bbB"/>
                             <constraint firstItem="GzK-Oq-kj4" firstAttribute="top" secondItem="7rk-d6-W91" secondAttribute="bottom" constant="20" id="rX0-77-GBV"/>
                             <constraint firstItem="ggU-gO-27l" firstAttribute="top" secondItem="GzK-Oq-kj4" secondAttribute="bottom" constant="40" id="sQM-6t-hHG"/>
                             <constraint firstItem="iIa-qK-7Yy" firstAttribute="trailing" secondItem="sb8-N3-gQf" secondAttribute="trailing" id="thF-OU-c0c"/>
                             <constraint firstItem="iIa-qK-7Yy" firstAttribute="trailing" secondItem="ggU-gO-27l" secondAttribute="trailing" constant="35" id="uqw-WU-Vo4"/>
                             <constraint firstItem="sb8-N3-gQf" firstAttribute="leading" secondItem="iIa-qK-7Yy" secondAttribute="leading" id="xmt-FR-8Bk"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="lzb-lH-bbB"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="GdF-wI-Ou3"/>
                     <connections>
                         <outlet property="categoryView" destination="AO0-PJ-BYZ" id="PaI-Tj-KNb"/>
                         <outlet property="filterCategoryStackView" destination="ggU-gO-27l" id="uhi-PE-R2G"/>
                         <outlet property="filterTableView" destination="UE5-je-Uuv" id="MdJ-EV-PiS"/>
+                        <outlet property="filterTableViewBottomConstraint" destination="lzb-lH-bbB" id="R6N-Yg-4Lc"/>
+                        <outlet property="filterTableViewHeightConstraint" destination="pqi-38-R5B" id="oN6-Xm-mU6"/>
                         <outlet property="priceView" destination="U6v-h4-aRP" id="v8s-5p-c3u"/>
                         <outlet property="shopView" destination="Ydl-pC-gNq" id="91U-Gh-dCy"/>
                         <outlet property="tableViewContainer" destination="S9k-E9-VEE" id="20I-Hm-wh1"/>
