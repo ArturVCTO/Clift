@@ -13,6 +13,7 @@ class GiftStoreProductsViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var menuContainerWidth: NSLayoutConstraint!
     @IBOutlet var subgroupLabel: UILabel!
+    @IBOutlet weak var subgroupView: UIView!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var paginationLabel: UILabel!
     @IBOutlet weak var paginationStackViewButtons: UIStackView!
@@ -55,6 +56,7 @@ class GiftStoreProductsViewController: UIViewController {
     var currentOrder: sortKeys = .nameAscending
     var isSearchBarHidden = true
     var queryFromStoreVC = ""
+    var fromSearch = false
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -76,6 +78,9 @@ class GiftStoreProductsViewController: UIViewController {
         registerCells()
         setPaginationMenu()
         selectButton(button: firstMenuButton)
+        if fromSearch {
+            subgroupView.isHidden = true
+        }
     }
     
     private func setNavBar() {

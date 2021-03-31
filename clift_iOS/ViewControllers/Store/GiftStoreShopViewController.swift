@@ -64,6 +64,7 @@ extension GiftStoreShopViewController: UICollectionViewDelegate {
         let giftStoreProductsVC = UIStoryboard(name: "GiftStore", bundle: nil).instantiateViewController(withIdentifier: "GiftStoreProductsVC") as! GiftStoreProductsViewController
         giftStoreProductsVC.modalPresentationStyle = .fullScreen
         giftStoreProductsVC.navBarTitle = shops[indexPath.row].name
+        giftStoreProductsVC.subgroupNameString = shops[indexPath.row].name
         giftStoreProductsVC.filtersDic["shop"] = shops[indexPath.row].id
         self.navigationController?.pushViewController(giftStoreProductsVC, animated: true)
     }

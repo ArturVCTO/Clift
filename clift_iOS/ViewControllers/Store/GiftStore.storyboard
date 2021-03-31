@@ -412,6 +412,7 @@
                         <outlet property="secondButton" destination="Z7U-fh-RBI" id="OT0-vr-GWm"/>
                         <outlet property="secondButtonContainerView" destination="xIK-DW-0p0" id="ZKi-Qy-cbn"/>
                         <outlet property="subgroupLabel" destination="DfB-hr-wlh" id="Cw2-Xa-yB1"/>
+                        <outlet property="subgroupView" destination="GAx-ym-bY2" id="UMb-SC-Voq"/>
                         <outlet property="thirdButton" destination="vjf-Dr-Jj1" id="1jn-yk-dTu"/>
                         <outlet property="thirdButtonContainerView" destination="0Tm-tw-Q0U" id="6sm-ro-Jhe"/>
                     </connections>
