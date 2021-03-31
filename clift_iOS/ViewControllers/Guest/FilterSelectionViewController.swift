@@ -72,6 +72,7 @@ class FilterSelectionViewController: UIViewController {
         shopView.layer.cornerRadius = 15
         tableViewContainer.layer.cornerRadius = 15
         filterTableView.layer.cornerRadius = 15
+        self.view.layer.cornerRadius = 15
     }
     
 
