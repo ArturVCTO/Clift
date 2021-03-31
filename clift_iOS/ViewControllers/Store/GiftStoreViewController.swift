@@ -17,6 +17,7 @@ class GiftStoreViewController: UIViewController {
             storeCollectionView.dataSource = self
         }
     }
+    @IBOutlet var dismissKeyboardTapGesture: UITapGestureRecognizer!
     
     var currentEvent = Event()
     var categories: [Category]! = []
@@ -30,7 +31,8 @@ class GiftStoreViewController: UIViewController {
         getShops()
         registerCells()
         storeSearchBar.delegate = self
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).clearButtonMode = .never
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardVisible(sender:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHidden(sender:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     private func registerCells() {
@@ -60,6 +62,18 @@ class GiftStoreViewController: UIViewController {
         vc.paymentType = .userLogIn
         vc.currentEvent = currentEvent
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+
+    @objc func keyboardVisible(sender: AnyObject) {
+        dismissKeyboardTapGesture.isEnabled = true
+    }
+
+    @objc func keyboardHidden(sender: AnyObject) {
+        dismissKeyboardTapGesture.isEnabled = false
+    }
+    
+    @IBAction func didTapToDismissKeyboard(_ sender: UITapGestureRecognizer) {
+        storeSearchBar.endEditing(true)
     }
 }
 
