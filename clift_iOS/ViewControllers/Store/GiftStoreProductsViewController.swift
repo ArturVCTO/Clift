@@ -243,6 +243,17 @@ extension GiftStoreProductsViewController: UICollectionViewDelegate, UICollectio
         return UICollectionViewCell()
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
+        productDetailsVC.currentProduct = products[indexPath.row]
+        productDetailsVC.currentEvent = currentEvent
+        productDetailsVC.productDetailType = .Product
+        productDetailsVC.paymentType = .userLogIn
+        productDetailsVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(productDetailsVC, animated: true)
+    }
+    
     private func reloadCollectionView() {
         DispatchQueue.main.async {
             self.productsCollectionView.reloadData()
