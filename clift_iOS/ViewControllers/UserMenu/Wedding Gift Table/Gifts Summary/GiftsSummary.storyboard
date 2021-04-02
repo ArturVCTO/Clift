@@ -151,7 +151,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="488"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="488" id="T6c-8h-mFW"/>
+                                                            <constraint firstAttribute="height" priority="750" constant="488" id="T6c-8h-mFW"/>
                                                         </constraints>
                                                     </tableView>
                                                 </subviews>

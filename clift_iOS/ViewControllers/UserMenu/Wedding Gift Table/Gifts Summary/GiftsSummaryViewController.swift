@@ -52,12 +52,6 @@ class GiftsSummaryViewController: UIViewController {
     
     @IBOutlet var dismissKeyboardTapGesture: UITapGestureRecognizer!
     
-    var layout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 150, height: 280)
-        return layout
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavBar()
@@ -69,9 +63,8 @@ class GiftsSummaryViewController: UIViewController {
     
     func setup() {
         registerCells()
-        self.collectionViewHeight.constant = 1000
-        tableView.estimatedRowHeight = 50;
-        tableView.rowHeight = UITableView.automaticDimension;
+        tableView.estimatedRowHeight = 205
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
     }
     
@@ -124,10 +117,8 @@ class GiftsSummaryViewController: UIViewController {
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
                 self.tableView.layoutIfNeeded()
-                self.collectionViewHeight.constant =
-                    CGFloat(self.tableView.contentSize.height)
+                self.collectionViewHeight.constant = CGFloat(self.tableView.contentSize.height)
             }
-    
         }
         
 //        sharedApiManager.getEventProducts(event: currentEvent, available: "", gifted: "", filters: filtersDic) { (eventProducts, result) in
@@ -232,7 +223,6 @@ extension GiftsSummaryViewController: UITableViewDataSource {
                     cell.configure(summaryItem: eventRegistries[indexPath.row])
                 }
             }
-            cell.layoutIfNeeded()
             return cell
         }
         return UITableViewCell()
@@ -269,7 +259,6 @@ extension GiftsSummaryViewController {
 //            self.navigationController?.pushViewController(productDetailsVC, animated: true)
         }
     }
-    
 }
 
 ////MARK:- Extension ProductCellDelegate
