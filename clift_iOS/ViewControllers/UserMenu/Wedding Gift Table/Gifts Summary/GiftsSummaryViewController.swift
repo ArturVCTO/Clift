@@ -48,6 +48,10 @@ class GiftsSummaryViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var giftSummarySearchBar: UISearchBar!
+    
+    @IBOutlet var dismissKeyboardTapGesture: UITapGestureRecognizer!
+    
     var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = CGSize(width: 150, height: 280)
@@ -60,6 +64,7 @@ class GiftsSummaryViewController: UIViewController {
         giftsAndEnvelopesStackView.delegate = self
         setup()
         getEventProducts()
+        setTapGesture()
     }
     
     func setup() {
@@ -86,6 +91,24 @@ class GiftsSummaryViewController: UIViewController {
     
     private func registerCells() {
         tableView.register(UINib(nibName: "UserSummaryProductCollectionViewCell", bundle: nil), forCellReuseIdentifier: "UserSummaryProductCollectionViewCell")
+    }
+    
+    func setTapGesture() {
+        dismissKeyboardTapGesture.isEnabled = false
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardVisible(sender:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHidden(sender:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+
+    @objc func keyboardVisible(sender: AnyObject) {
+        dismissKeyboardTapGesture.isEnabled = true
+    }
+
+    @objc func keyboardHidden(sender: AnyObject) {
+        dismissKeyboardTapGesture.isEnabled = false
+    }
+    
+    @IBAction func didTapToDismissKeyboard(_ sender: UITapGestureRecognizer) {
+        giftSummarySearchBar.endEditing(true)
     }
     
     func getEventProducts() {
