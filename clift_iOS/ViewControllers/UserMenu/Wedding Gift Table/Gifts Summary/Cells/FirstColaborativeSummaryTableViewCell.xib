@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Mihan-Regular.ttf">
+            <string>Mihan-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FirstColaborativeSummaryTableViewCell" rowHeight="188" id="75x-Ui-ve4" customClass="FirstColaborativeSummaryTableViewCell" customModule="CLIFT" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="422" height="188"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="75x-Ui-ve4" id="mmD-Hc-n61">
+                <rect key="frame" x="0.0" y="0.0" width="422" height="188"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="E4Q-ym-rrr">
+                        <rect key="frame" x="10" y="10" width="402" height="168"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pKj-on-zo5">
+                                <rect key="frame" x="0.0" y="0.0" width="228" height="168"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ana Gabriela Estrada" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KoU-iI-Kun">
+                                        <rect key="frame" x="0.0" y="0.0" width="228" height="16"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
+                                        <color key="textColor" red="0.015686274510000001" green="0.015686274510000001" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San Angelin" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YX9-VZ-lEU">
+                                        <rect key="frame" x="0.0" y="21" width="228" height="13"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="13"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Vajilla Cheers" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbG-uB-qUH">
+                                        <rect key="frame" x="0.0" y="39" width="228" height="45"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
+                                        <color key="textColor" red="0.015686274510000001" green="0.015686274510000001" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Categoría: Mesa" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="zOP-y9-3Ic">
+                                        <rect key="frame" x="0.0" y="89" width="228" height="16"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
+                                        <color key="textColor" red="0.015686274510000001" green="0.015686274510000001" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Precio: 150" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="com-2n-7JG">
+                                        <rect key="frame" x="0.0" y="110" width="228" height="16"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
+                                        <color key="textColor" red="0.015686274510000001" green="0.015686274510000001" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cantidad 2 de 6" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="17P-ZM-Pie">
+                                        <rect key="frame" x="0.0" y="131" width="228" height="16"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
+                                        <color key="textColor" red="0.015686274510000001" green="0.015686274510000001" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total: $648 MXN" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="y3F-nI-35M">
+                                        <rect key="frame" x="0.0" y="152" width="228" height="16"/>
+                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
+                                        <color key="textColor" red="0.015686274510000001" green="0.015686274510000001" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jWb-Sf-7ki">
+                                <rect key="frame" x="228" y="0.0" width="150" height="168"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gre-f8-KTk">
+                                        <rect key="frame" x="15" y="0.0" width="120" height="168"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 - 8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jx3-DD-Eq3">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="16"/>
+                                                <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="cashFund" translatesAutoresizingMaskIntoConstraints="NO" id="X1q-Ge-DfP">
+                                                <rect key="frame" x="0.0" y="16" width="120" height="152"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="gre-f8-KTk" firstAttribute="centerX" secondItem="jWb-Sf-7ki" secondAttribute="centerX" id="8Gr-uI-ubw"/>
+                                    <constraint firstAttribute="bottom" secondItem="gre-f8-KTk" secondAttribute="bottom" id="S0a-iv-Ml0"/>
+                                    <constraint firstItem="gre-f8-KTk" firstAttribute="width" secondItem="jWb-Sf-7ki" secondAttribute="width" multiplier="0.8" id="adJ-cd-NZp"/>
+                                    <constraint firstItem="gre-f8-KTk" firstAttribute="top" secondItem="jWb-Sf-7ki" secondAttribute="top" id="lsc-el-RZP"/>
+                                    <constraint firstAttribute="width" constant="150" id="rbt-sk-0di"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="yyQ-eD-p38">
+                                <rect key="frame" x="378" y="0.0" width="24" height="168"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5qr-4k-YT1">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="43.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1Y-gz-XTL">
+                                                <rect key="frame" x="0.0" y="9.5" width="24" height="24"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="24" id="M7w-33-me9"/>
+                                                    <constraint firstAttribute="height" constant="24" id="z88-vC-V8I"/>
+                                                </constraints>
+                                                <state key="normal" image="icdelivergray"/>
+                                                <state key="disabled" image="icdelivergray"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="z1Y-gz-XTL" firstAttribute="centerX" secondItem="5qr-4k-YT1" secondAttribute="centerX" id="2Mp-tg-Bz0"/>
+                                            <constraint firstItem="z1Y-gz-XTL" firstAttribute="centerY" secondItem="5qr-4k-YT1" secondAttribute="centerY" id="hgD-un-EAg"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pk8-V6-Y6Y">
+                                        <rect key="frame" x="0.0" y="62.5" width="24" height="43"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ko1-01-yQi">
+                                                <rect key="frame" x="0.0" y="9.5" width="24" height="24"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="JbZ-nG-64C"/>
+                                                    <constraint firstAttribute="width" constant="24" id="us6-yb-kwk"/>
+                                                </constraints>
+                                                <state key="normal" image="iccreditgray"/>
+                                                <state key="disabled" image="iccreditwhite"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="Ko1-01-yQi" firstAttribute="centerX" secondItem="pk8-V6-Y6Y" secondAttribute="centerX" id="L5k-wl-RRz"/>
+                                            <constraint firstItem="Ko1-01-yQi" firstAttribute="centerY" secondItem="pk8-V6-Y6Y" secondAttribute="centerY" id="ecu-KK-vQu"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jFg-2N-zHC">
+                                        <rect key="frame" x="0.0" y="124.5" width="24" height="43.5"/>
+                                        <subviews>
+                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icthankgray" translatesAutoresizingMaskIntoConstraints="NO" id="HMW-WT-LD5">
+                                                <rect key="frame" x="0.0" y="10" width="24" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="a4m-hF-3Ab"/>
+                                                    <constraint firstAttribute="width" constant="24" id="qD1-pc-uvB"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="HMW-WT-LD5" firstAttribute="centerY" secondItem="jFg-2N-zHC" secondAttribute="centerY" id="EzS-sz-qml"/>
+                                            <constraint firstItem="HMW-WT-LD5" firstAttribute="centerX" secondItem="jFg-2N-zHC" secondAttribute="centerX" id="wa2-TC-BJy"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="SB2-1e-2zt"/>
+                                    <constraint firstItem="5qr-4k-YT1" firstAttribute="width" secondItem="yyQ-eD-p38" secondAttribute="width" id="uT8-pJ-QSE"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="E4Q-ym-rrr" firstAttribute="top" secondItem="mmD-Hc-n61" secondAttribute="top" constant="10" id="1uS-Sw-v5Z"/>
+                    <constraint firstAttribute="trailing" secondItem="E4Q-ym-rrr" secondAttribute="trailing" constant="10" id="2d9-ss-c4Y"/>
+                    <constraint firstAttribute="bottom" secondItem="E4Q-ym-rrr" secondAttribute="bottom" constant="10" id="K9L-Ij-v4d"/>
+                    <constraint firstItem="E4Q-ym-rrr" firstAttribute="leading" secondItem="mmD-Hc-n61" secondAttribute="leading" constant="10" id="sgQ-K8-vnw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-671" y="179"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cashFund" width="246" height="254.5"/>
+        <image name="iccreditgray" width="20" height="20"/>
+        <image name="iccreditwhite" width="20" height="20"/>
+        <image name="icdelivergray" width="54" height="46.5"/>
+        <image name="icthankgray" width="20" height="20"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

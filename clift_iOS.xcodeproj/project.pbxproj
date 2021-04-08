@@ -223,6 +223,10 @@
 		61AE93CF260AB9FE00E66595 /* StoreCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61AE93CD260AB9FE00E66595 /* StoreCollectionReusableView.xib */; };
 		61B6E4E726046DB300DB6D6D /* FilterSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B6E4E526046DB200DB6D6D /* FilterSelectionCell.swift */; };
 		61B6E4E826046DB300DB6D6D /* FilterSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61B6E4E626046DB300DB6D6D /* FilterSelectionCell.xib */; };
+		61BAC510261E8E720070BF1B /* ColaborativeSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BAC50E261E8E720070BF1B /* ColaborativeSummaryTableViewCell.swift */; };
+		61BAC511261E8E720070BF1B /* ColaborativeSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BAC50F261E8E720070BF1B /* ColaborativeSummaryTableViewCell.xib */; };
+		61BAC517261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BAC515261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.swift */; };
+		61BAC518261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BAC516261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.xib */; };
 		61C82A2025BA6781009F50AF /* Checkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61C82A1F25BA6781009F50AF /* Checkout.storyboard */; };
 		61D21B4225A92949009DED75 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D21B4125A92949009DED75 /* UILabelExtension.swift */; };
 		61D3F86525B0060500EEF709 /* FilterSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D3F86425B0060500EEF709 /* FilterSelectionViewController.swift */; };
@@ -510,6 +514,10 @@
 		61AE93CD260AB9FE00E66595 /* StoreCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreCollectionReusableView.xib; sourceTree = "<group>"; };
 		61B6E4E526046DB200DB6D6D /* FilterSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionCell.swift; sourceTree = "<group>"; };
 		61B6E4E626046DB300DB6D6D /* FilterSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterSelectionCell.xib; sourceTree = "<group>"; };
+		61BAC50E261E8E720070BF1B /* ColaborativeSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColaborativeSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		61BAC50F261E8E720070BF1B /* ColaborativeSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColaborativeSummaryTableViewCell.xib; sourceTree = "<group>"; };
+		61BAC515261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstColaborativeSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		61BAC516261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstColaborativeSummaryTableViewCell.xib; sourceTree = "<group>"; };
 		61C82A1F25BA6781009F50AF /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
 		61D21B4125A92949009DED75 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		61D3F86425B0060500EEF709 /* FilterSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionViewController.swift; sourceTree = "<group>"; };
@@ -1233,6 +1241,10 @@
 			children = (
 				F330BE0D26054E32009F27B2 /* UserSummaryProductCollectionViewCell.swift */,
 				F330BE0E26054E32009F27B2 /* UserSummaryProductCollectionViewCell.xib */,
+				61BAC50E261E8E720070BF1B /* ColaborativeSummaryTableViewCell.swift */,
+				61BAC50F261E8E720070BF1B /* ColaborativeSummaryTableViewCell.xib */,
+				61BAC515261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.swift */,
+				61BAC516261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1400,6 +1412,7 @@
 				61B6E4E826046DB300DB6D6D /* FilterSelectionCell.xib in Resources */,
 				619E839825E5F21A0056D33A /* StoreCategoryAndGroupCell.xib in Resources */,
 				46987D9F22FA10C5007B2C78 /* OpenSans-SemiBold.ttf in Resources */,
+				61BAC518261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.xib in Resources */,
 				46B5F74C23845BB600AFF425 /* Tinos-Regular.ttf in Resources */,
 				46987D9922FA10AD007B2C78 /* Poppins-Medium.ttf in Resources */,
 				61F86B2125B3AF7700AFDCE5 /* EnvelopeFlow.storyboard in Resources */,
@@ -1409,6 +1422,7 @@
 				0B61742F2574BB5900FD7EAC /* Guest.storyboard in Resources */,
 				6173DE4E25BBA8C6000476CB /* CheckoutProductCell.xib in Resources */,
 				61AE93CF260AB9FE00E66595 /* StoreCollectionReusableView.xib in Resources */,
+				61BAC511261E8E720070BF1B /* ColaborativeSummaryTableViewCell.xib in Resources */,
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
 				46B5F74623845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */,
 				F35E9CC225C8B4C200B54192 /* GiftsViewController.storyboard in Resources */,
@@ -1590,6 +1604,7 @@
 				462F9F2E230C6AE20014CD9E /* StringExtensions.swift in Sources */,
 				CE7B9EFF2509395500E8ED9D /* ConvertToCreditViewController.swift in Sources */,
 				0B6174342574BB8A00FD7EAC /* EventHeaderCell.swift in Sources */,
+				61BAC517261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.swift in Sources */,
 				F34E3BDA2607C07200DC0422 /* OrderProductUserData.swift in Sources */,
 				465FED1323708B7B0038D557 /* SummaryRegistryTableViewCell.swift in Sources */,
 				46ABCB2E2318669500857046 /* MyEventsCell.swift in Sources */,
@@ -1703,6 +1718,7 @@
 				46EC9DA22331493D00950139 /* ProductCollectionViewCell.swift in Sources */,
 				46DE69882358175F002C2BB8 /* ColorExtension.swift in Sources */,
 				CE1BC9F324D3766C003D49BE /* GuestInfoViewController.swift in Sources */,
+				61BAC510261E8E720070BF1B /* ColaborativeSummaryTableViewCell.swift in Sources */,
 				4604A346230473E20041F9AA /* OnboardingInterestCell.swift in Sources */,
 				46BFA8C223D120F3008D6B72 /* CartProduct.swift in Sources */,
 				4616772B232AE7C300A6CAB9 /* Group.swift in Sources */,

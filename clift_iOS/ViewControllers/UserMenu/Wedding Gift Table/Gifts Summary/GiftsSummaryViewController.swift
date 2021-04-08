@@ -21,6 +21,7 @@ class GiftsSummaryViewController: UIViewController {
     var eventPools = [EventPool]()
     
     var type = GiftType.product
+    var isColaborativeSelected = false
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -34,7 +35,7 @@ class GiftsSummaryViewController: UIViewController {
     }
     
     var event: Event!
-    var params: [String: Any] = ["collaborative": false]
+    //var params: [String: Any] = ["collaborative": false]
     
     @IBOutlet weak var giftsTypeStackView: GiftsTypeStackView! {
         didSet {
@@ -84,6 +85,8 @@ class GiftsSummaryViewController: UIViewController {
     
     private func registerCells() {
         tableView.register(UINib(nibName: "UserSummaryProductCollectionViewCell", bundle: nil), forCellReuseIdentifier: "UserSummaryProductCollectionViewCell")
+        tableView.register(UINib(nibName: "FirstColaborativeSummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "FirstColaborativeSummaryTableViewCell")
+        tableView.register(UINib(nibName: "ColaborativeSummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "ColaborativeSummaryTableViewCell")
     }
     
     func setTapGesture() {
@@ -104,7 +107,7 @@ class GiftsSummaryViewController: UIViewController {
         giftSummarySearchBar.endEditing(true)
     }
     
-    func getEventProducts() {
+    func getEventProducts(params: [String: Any] = [:]) {
         
         self.presentLoader()
         print("el id es \(event.id)")
@@ -174,56 +177,90 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
     
     func allSelected() {
         let newParams = ["collaborative": false]
-        self.params = newParams
-        getEventProducts()
+        isColaborativeSelected = false
+        getEventProducts(params: newParams)
     }
     
     func requestedSelected() {
         let newParams = ["status": "requested"]
-        self.params = newParams
-        getEventProducts()
+        isColaborativeSelected = false
+        getEventProducts(params: newParams)
     }
     
     func creditSelected() {
         let newParams = ["status": "declined"]
-        self.params = newParams
-        getEventProducts()
+        isColaborativeSelected = false
+        getEventProducts(params: newParams)
     }
     
     func collaborativeSelected() {
-        let newParams = ["collaborative": false]
-        self.params = newParams
-        getEventProducts()
+        let newParams = ["collaborative": true]
+        isColaborativeSelected = true
+        getEventProducts(params: newParams)
     }
 }
 
 extension GiftsSummaryViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        switch self.type {
+        case .envelop:
+            return 1
+        case .product:
+            if isColaborativeSelected {
+                return eventRegistries.count
+            } else {
+                return 1
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.type {
         case .envelop:
             return eventPools.count
         case .product:
-            return eventRegistries.count
+            if isColaborativeSelected {
+                if let numberOfCollaborators = eventRegistries[section].eventProduct.guestData {
+                    return numberOfCollaborators.count
+                } else {
+                    return 0
+                }
+            } else {
+                return eventRegistries.count
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "UserSummaryProductCollectionViewCell", for: indexPath) as? UserSummaryProductCollectionViewCell {
-            
-            if self.type == .envelop {
-                cell.cellType = .EventPool
-                cell.configure(pool: eventPools[indexPath.row])
+        if isColaborativeSelected {
+            if indexPath.row == 0 {
+                if let firstColaborativeSummaryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FirstColaborativeSummaryTableViewCell", for: indexPath) as? FirstColaborativeSummaryTableViewCell {
+                    return firstColaborativeSummaryTableViewCell
+                }
             } else {
-                if eventRegistries[indexPath.row].eventProduct.wishableType == "ExternalProduct" {
-                    cell.cellType = .EventExternalProduct
-                    cell.configure(summaryItem: eventRegistries[indexPath.row])
-                } else {
-                    cell.cellType = .EventProduct
-                    cell.configure(summaryItem: eventRegistries[indexPath.row])
+                if let colaborativeSummaryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ColaborativeSummaryTableViewCell", for: indexPath) as? ColaborativeSummaryTableViewCell {
+                    return colaborativeSummaryTableViewCell
                 }
             }
-            return cell
+        } else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "UserSummaryProductCollectionViewCell", for: indexPath) as? UserSummaryProductCollectionViewCell {
+                
+                if self.type == .envelop {
+                    cell.cellType = .EventPool
+                    cell.configure(pool: eventPools[indexPath.row])
+                } else {
+                    if eventRegistries[indexPath.row].eventProduct.wishableType == "ExternalProduct" {
+                        cell.cellType = .EventExternalProduct
+                        cell.configure(summaryItem: eventRegistries[indexPath.row])
+                    } else {
+                        cell.cellType = .EventProduct
+                        cell.configure(summaryItem: eventRegistries[indexPath.row])
+                    }
+                }
+                return cell
+            }
         }
         return UITableViewCell()
     }
