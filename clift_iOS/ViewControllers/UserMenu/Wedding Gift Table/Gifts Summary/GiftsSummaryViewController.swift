@@ -35,7 +35,6 @@ class GiftsSummaryViewController: UIViewController {
     }
     
     var event: Event!
-    //var params: [String: Any] = ["collaborative": false]
     
     @IBOutlet weak var giftsTypeStackView: GiftsTypeStackView! {
         didSet {
@@ -58,7 +57,7 @@ class GiftsSummaryViewController: UIViewController {
         setNavBar()
         giftsAndEnvelopesStackView.delegate = self
         setup()
-        getEventProducts()
+        getEventProducts(params: ["collaborative": false])
         setTapGesture()
     }
     
@@ -110,7 +109,6 @@ class GiftsSummaryViewController: UIViewController {
     func getEventProducts(params: [String: Any] = [:]) {
         
         self.presentLoader()
-        print("el id es \(event.id)")
         
         sharedApiManager.getSummaryAllEvents(event: event, params: params) { (items, response) in
             guard let items = items else { return }
@@ -123,35 +121,6 @@ class GiftsSummaryViewController: UIViewController {
                 self.collectionViewHeight.constant = CGFloat(self.tableView.contentSize.height)
             }
         }
-        
-//        sharedApiManager.getEventProducts(event: currentEvent, available: "", gifted: "", filters: filtersDic) { (eventProducts, result) in
-//            if let response = result {
-//                if (response.isSuccess()) {
-//                    self.eventRegistries = eventProducts!
-//
-//                    guard let json = try? JSONSerialization.jsonObject(with: response.data,
-//                                                                       options: []) as? [String: Any],
-//                          let meta = json["meta"] as? [String: Any],
-//                          let pagination = Pagination(JSON: meta) else {
-//                        return
-//                    }
-//                    self.actualPage = pagination.currentPage
-//                    self.numberOfPages = pagination.totalPages
-//                    self.paginationLabel.text = "Mostrando del \(pagination.from) al \(pagination.to) de \(pagination.totalCount)"
-//                    self.reloadCollectionView()
-//                }
-//            }
-//            self.setPaginationMenu()
-//            self.setButtonValues()
-//            self.addOrDeleteMenuButtonsDependingOnNumberOfPages()
-//            self.lastButtonPressed = nil
-//            self.dismissLoader()
-//            if self.eventPools.isEmpty && self.eventRegistries.isEmpty {
-//                self.displayEmptyState()
-//            } else {
-//                self.displayGiftTable()
-//            }
-//        }
     }
     
 }
@@ -163,7 +132,6 @@ extension GiftsSummaryViewController: GiftsAndEvelopStackViewDelegate {
         allSelected()
         giftsTypeStackView.isHidden = false
         giftsTypeStackView.selectAllButton()
-        getEventProducts()
     }
     
     func envelopeSelected() {
