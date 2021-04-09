@@ -27,6 +27,7 @@ class GiftSummaryItem: Mappable {
     var id = ""
     var eventProduct = EventProduct()
     var order = OrderProduct()
+    var hasBeenThanked = false
     
     convenience required init?(map: Map) {
         self.init()
@@ -36,6 +37,7 @@ class GiftSummaryItem: Mappable {
         eventProduct <- map["event_product"]
         id <- map["id"]
         order <- map["order"]
+        hasBeenThanked <- map["has_been_thanked"]
     }
     
 }

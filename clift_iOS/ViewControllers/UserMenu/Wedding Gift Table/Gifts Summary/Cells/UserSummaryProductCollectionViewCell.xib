@@ -139,7 +139,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="540-O5-Je8">
                                         <rect key="frame" x="0.0" y="124.5" width="24" height="43.5"/>
                                         <subviews>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icthankgray" translatesAutoresizingMaskIntoConstraints="NO" id="PWT-Le-mCS">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icthankgray" translatesAutoresizingMaskIntoConstraints="NO" id="PWT-Le-mCS">
                                                 <rect key="frame" x="0.0" y="10" width="24" height="24"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="24" id="ZJn-pW-xcW"/>

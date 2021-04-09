@@ -202,6 +202,7 @@
 		6127D94925B3CF3D00C8250A /* CheckoutEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127D94825B3CF3D00C8250A /* CheckoutEnvelope.swift */; };
 		6127D96E25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */; };
 		613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */; };
+		6152F3A2261FE8F500B349FE /* GifyStatusHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */; };
 		615C982925CE0E39002DB95E /* UserEventProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615C982725CE0E39002DB95E /* UserEventProductCell.swift */; };
 		615C982A25CE0E39002DB95E /* UserEventProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615C982825CE0E39002DB95E /* UserEventProductCell.xib */; };
 		6163820D260AE1AF00D3B0E8 /* GiftStoreShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6163820C260AE1AF00D3B0E8 /* GiftStoreShopViewController.swift */; };
@@ -493,6 +494,7 @@
 		6127D94825B3CF3D00C8250A /* CheckoutEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutEnvelope.swift; sourceTree = "<group>"; };
 		6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUserDataEnvelope.swift; sourceTree = "<group>"; };
 		613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifyStatusHelper.swift; sourceTree = "<group>"; };
 		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventProductCell.swift; sourceTree = "<group>"; };
 		615C982825CE0E39002DB95E /* UserEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserEventProductCell.xib; sourceTree = "<group>"; };
 		6163820C260AE1AF00D3B0E8 /* GiftStoreShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStoreShopViewController.swift; sourceTree = "<group>"; };
@@ -1268,6 +1270,7 @@
 				F330BDF22603D3A5009F27B2 /* Models */,
 				F370B0DC2601800E00608B36 /* GiftsSummaryViewController.swift */,
 				F330BDED2603C1F3009F27B2 /* GiftsSummary.storyboard */,
+				6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */,
 			);
 			path = "Gifts Summary";
 			sourceTree = "<group>";
@@ -1741,6 +1744,7 @@
 				46167729232AE76100A6CAB9 /* Product.swift in Sources */,
 				46029C5A23284527008A8EAE /* RangeSliderTrackLayer.swift in Sources */,
 				46C07A1823D228C70091CDDA /* CheckoutProductCell.swift in Sources */,
+				6152F3A2261FE8F500B349FE /* GifyStatusHelper.swift in Sources */,
 				464D1CCC2410137600CBC546 /* BankAccountFormViewController.swift in Sources */,
 				46DC795623E99D550013C306 /* CheckoutUserData.swift in Sources */,
 				46CDF77123DE073800F01CEC /* ThankMessage.swift in Sources */,
