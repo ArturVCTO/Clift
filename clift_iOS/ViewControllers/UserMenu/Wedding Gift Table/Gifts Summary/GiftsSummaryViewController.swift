@@ -17,9 +17,7 @@ class GiftsSummaryViewController: UIViewController {
     }
     
     var eventRegistries = [GiftSummaryItem]()
-    
     var cashGiftItems = [CashGiftItem]()
-    
     var type = GiftType.product
     var isColaborativeSelected = false
     
@@ -234,6 +232,8 @@ extension GiftsSummaryViewController: UITableViewDataSource {
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "UserSummaryProductCollectionViewCell", for: indexPath) as? UserSummaryProductCollectionViewCell {
                 
+                cell.selectionStyle = .none
+                
                 if self.type == .envelope {
                     cell.cellType = .EventPool
                     cell.configure(cashGiftItem: cashGiftItems[indexPath.row])
@@ -251,50 +251,60 @@ extension GiftsSummaryViewController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
-    
 }
 
 extension GiftsSummaryViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch type {
         case .product:
-            print("Soy producto")
+            presetActionSheet(summaryItem: eventRegistries[indexPath.row])
         case .envelope:
             print("Soy sobre")
-        default:
-            break
         }
     }
 }
-// MARK: Extension Collection View Delegate and Data Source
-/*extension GiftsSummaryViewController {
+
+extension GiftsSummaryViewController {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch self.type {
-        case .envelope:
-            return cashGiftItems.count
-        case .product:
-            return eventRegistries.count
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func presetActionSheet(summaryItem: GiftSummaryItem) {
         
-        if indexPath.row >= cashGiftItems.count {
-//            let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
-//            productDetailsVC.currentEventProduct = eventRegistries[indexPath.row - eventPools.count]
-//            productDetailsVC.currentEvent = currentEvent
-//            productDetailsVC.showAddProductToCart = false
-//            productDetailsVC.productDetailType = eventRegistries[indexPath.row - eventPools.count].wishableType == "ExternalProduct" ? .EventExternalProduct : .EventProduct
-//            productDetailsVC.modalPresentationStyle = .fullScreen
-//            self.navigationController?.pushViewController(productDetailsVC, animated: true)
+        let optionsSheet = UIAlertController(title: "Opciones", message: nil, preferredStyle: .actionSheet)
+        optionsSheet.view.tintColor = UIColor(named: "PrimaryBlue")
+        
+        let convertToCredit = UIAlertAction(title: "CONVERTIR A CRÉDITO", style: .default, handler: {(action) in self.presentConvertToCredit()})
+        let requestProduct = UIAlertAction(title: "SOLICITAR PRODUCTO", style: .default, handler: {(action) in self.presentRequestProduct()})
+        let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO", style: .default, handler: {(action) in self.presentSendMessage()})
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
+        
+        let giftStatusHelperOptions = GiftStatusHelper.shared.manageSimpleGift(giftSummaryItem: summaryItem)
+        
+        if giftStatusHelperOptions.credit == .grayIcon {
+            optionsSheet.addAction(convertToCredit)
         }
+        
+        if giftStatusHelperOptions.deliver == .grayIcon {
+            optionsSheet.addAction(requestProduct)
+        }
+        
+        optionsSheet.addAction(sendMessage)
+        optionsSheet.addAction(cancelAction)
+        
+        present(optionsSheet, animated: true, completion: nil)
     }
-}*/
+    
+    func presentConvertToCredit() {
+        print("Ir a convertir a credito")
+    }
+    
+    func presentRequestProduct() {
+        print("Ir a solicitar producto")
+    }
+    
+    func presentSendMessage() {
+        print("Ir a enviar mensaje de agradecimiento")
+    }
+}
 
 ////MARK:- Extension ProductCellDelegate
 //extension GiftsSummaryViewController: UserSummaryProductCollectionViewCellDelegate {
