@@ -25,6 +25,7 @@ class GiftsSummaryViewController: UIViewController {
     
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
+    @IBOutlet var giftCounter: UILabel!
     
     class func make(event: Event) -> GiftsSummaryViewController {
         let vc = UIStoryboard.init(name: "GiftsSummary", bundle: nil).instantiateViewController(withIdentifier: "GiftsSummaryViewController") as! GiftsSummaryViewController
@@ -115,6 +116,7 @@ class GiftsSummaryViewController: UIViewController {
             self.eventRegistries = items
             DispatchQueue.main.async {
                 self.dismissLoader()
+                self.giftCounter.text = self.eventRegistries.count == 1 ? "1 regalo" : "\(self.eventRegistries.count) regalos"
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
                 self.tableView.layoutIfNeeded()
@@ -148,11 +150,14 @@ extension GiftsSummaryViewController: GiftsAndEvelopStackViewDelegate {
         type = .product
         allSelected()
         giftsTypeStackView.isHidden = false
+        giftSummarySearchBar.isHidden = false
         giftsTypeStackView.selectAllButton()
     }
     
     func envelopeSelected() {
         giftsTypeStackView.isHidden = true
+        giftSummarySearchBar.isHidden = true
+        self.giftCounter.text = self.cashGiftItems.count == 1 ? "1 sobre" : "\(self.cashGiftItems.count) sobres"
         type = .envelope
         tableView.reloadData()
     }
