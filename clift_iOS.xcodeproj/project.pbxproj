@@ -203,6 +203,7 @@
 		6127D96E25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */; };
 		613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */; };
 		6152F3A2261FE8F500B349FE /* GifyStatusHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */; };
+		6152F3AF2620249300B349FE /* CashGiftItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152F3AE2620249300B349FE /* CashGiftItem.swift */; };
 		615C982925CE0E39002DB95E /* UserEventProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615C982725CE0E39002DB95E /* UserEventProductCell.swift */; };
 		615C982A25CE0E39002DB95E /* UserEventProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615C982825CE0E39002DB95E /* UserEventProductCell.xib */; };
 		6163820D260AE1AF00D3B0E8 /* GiftStoreShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6163820C260AE1AF00D3B0E8 /* GiftStoreShopViewController.swift */; };
@@ -495,6 +496,7 @@
 		6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUserDataEnvelope.swift; sourceTree = "<group>"; };
 		613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifyStatusHelper.swift; sourceTree = "<group>"; };
+		6152F3AE2620249300B349FE /* CashGiftItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashGiftItem.swift; sourceTree = "<group>"; };
 		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventProductCell.swift; sourceTree = "<group>"; };
 		615C982825CE0E39002DB95E /* UserEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserEventProductCell.xib; sourceTree = "<group>"; };
 		6163820C260AE1AF00D3B0E8 /* GiftStoreShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStoreShopViewController.swift; sourceTree = "<group>"; };
@@ -1225,6 +1227,7 @@
 			children = (
 				F330BDF32603D3F8009F27B2 /* GiftSummaryItem.swift */,
 				F330BDF82603F364009F27B2 /* SummaryTypeButton.swift */,
+				6152F3AE2620249300B349FE /* CashGiftItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1780,6 +1783,7 @@
 				465FED112370896B0038D557 /* SummaryRegistryViewController.swift in Sources */,
 				463A78A62386E9EC00985674 /* Invitee.swift in Sources */,
 				46DE69C8235D671A002C2BB8 /* sortFilterTVCell.swift in Sources */,
+				6152F3AF2620249300B349FE /* CashGiftItem.swift in Sources */,
 				0B82FA5C2554FC60004BE0A3 /* PasswordEmailSentViewController.swift in Sources */,
 				46E034BB2326E50D001143BC /* CategoryTableViewCell.swift in Sources */,
 				465C821B236215BF00DAC090 /* AddCashFundViewController.swift in Sources */,

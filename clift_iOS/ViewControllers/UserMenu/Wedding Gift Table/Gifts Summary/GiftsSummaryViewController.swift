@@ -12,13 +12,13 @@ import UIKit
 class GiftsSummaryViewController: UIViewController {
     
     enum GiftType {
-        case envelop
+        case envelope
         case product
     }
     
     var eventRegistries = [GiftSummaryItem]()
     
-    var eventPools = [EventPool]()
+    var cashGiftItems = [CashGiftItem]()
     
     var type = GiftType.product
     var isColaborativeSelected = false
@@ -58,6 +58,7 @@ class GiftsSummaryViewController: UIViewController {
         giftsAndEnvelopesStackView.delegate = self
         setup()
         getEventProducts(params: ["collaborative": false])
+        getEnvelopes()
         setTapGesture()
     }
     
@@ -66,6 +67,7 @@ class GiftsSummaryViewController: UIViewController {
         tableView.estimatedRowHeight = 205
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     func setNavBar() {
@@ -123,6 +125,23 @@ class GiftsSummaryViewController: UIViewController {
         }
     }
     
+    func getEnvelopes(params: [String: Any] = [:]) {
+        
+        self.presentLoader()
+        
+        sharedApiManager.getOrderItems(event: event, params: params) { (cashItems, response) in
+            guard let cashItems = cashItems else { return }
+            self.cashGiftItems = cashItems
+            DispatchQueue.main.async {
+                self.dismissLoader()
+                self.tableView.isHidden = false
+                self.tableView.reloadData()
+                self.tableView.layoutIfNeeded()
+                self.collectionViewHeight.constant = CGFloat(self.tableView.contentSize.height)
+            }
+        }
+    }
+    
 }
 
 extension GiftsSummaryViewController: GiftsAndEvelopStackViewDelegate {
@@ -136,7 +155,7 @@ extension GiftsSummaryViewController: GiftsAndEvelopStackViewDelegate {
     
     func envelopeSelected() {
         giftsTypeStackView.isHidden = true
-        type = .envelop
+        type = .envelope
         tableView.reloadData()
     }
 }
@@ -172,7 +191,7 @@ extension GiftsSummaryViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         switch self.type {
-        case .envelop:
+        case .envelope:
             return 1
         case .product:
             if isColaborativeSelected {
@@ -185,8 +204,8 @@ extension GiftsSummaryViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.type {
-        case .envelop:
-            return eventPools.count
+        case .envelope:
+            return cashGiftItems.count
         case .product:
             if isColaborativeSelected {
                 if let numberOfCollaborators = eventRegistries[section].eventProduct.guestData {
@@ -215,9 +234,9 @@ extension GiftsSummaryViewController: UITableViewDataSource {
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "UserSummaryProductCollectionViewCell", for: indexPath) as? UserSummaryProductCollectionViewCell {
                 
-                if self.type == .envelop {
+                if self.type == .envelope {
                     cell.cellType = .EventPool
-                    cell.configure(pool: eventPools[indexPath.row])
+                    cell.configure(cashGiftItem: cashGiftItems[indexPath.row])
                 } else {
                     if eventRegistries[indexPath.row].eventProduct.wishableType == "ExternalProduct" {
                         cell.cellType = .EventExternalProduct
@@ -235,8 +254,20 @@ extension GiftsSummaryViewController: UITableViewDataSource {
     
 }
 
+extension GiftsSummaryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch type {
+        case .product:
+            print("Soy producto")
+        case .envelope:
+            print("Soy sobre")
+        default:
+            break
+        }
+    }
+}
 // MARK: Extension Collection View Delegate and Data Source
-extension GiftsSummaryViewController {
+/*extension GiftsSummaryViewController {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -244,17 +275,16 @@ extension GiftsSummaryViewController {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch self.type {
-        case .envelop:
-            return eventPools.count
+        case .envelope:
+            return cashGiftItems.count
         case .product:
             return eventRegistries.count
         }
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if indexPath.row >= eventPools.count {
+        if indexPath.row >= cashGiftItems.count {
 //            let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
 //            productDetailsVC.currentEventProduct = eventRegistries[indexPath.row - eventPools.count]
 //            productDetailsVC.currentEvent = currentEvent
@@ -264,7 +294,7 @@ extension GiftsSummaryViewController {
 //            self.navigationController?.pushViewController(productDetailsVC, animated: true)
         }
     }
-}
+}*/
 
 ////MARK:- Extension ProductCellDelegate
 //extension GiftsSummaryViewController: UserSummaryProductCollectionViewCellDelegate {

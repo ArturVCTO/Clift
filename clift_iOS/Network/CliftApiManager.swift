@@ -323,6 +323,7 @@ protocol ApiCalls {
     func getSummaryAllEvents(event: Event,
                              params: [String: Any]?,
                              completion: @escaping([GiftSummaryItem]?, Response?) -> Void)
+    func getOrderItems(event: Event, params: [String: Any]?,completion: @escaping([CashGiftItem]?, Response?) -> Void)
     
 }
 
@@ -660,6 +661,13 @@ extension CliftApiManager: ApiCalls {
                                                       params: params),
                                  type: GiftSummaryItem.self,
                                  completion: completion, wrapper: "gift_items")
+    }
+    
+    func getOrderItems(event: Event, params: [String: Any]?,completion: @escaping([CashGiftItem]?, Response?) -> Void) {
+        requestArrayWithResponse(.getOrderItems(event: event,
+                                                params: params),
+                                                type: CashGiftItem.self,
+                                                completion: completion, wrapper: "cash_gifts")
     }
 }
 

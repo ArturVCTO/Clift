@@ -45,9 +45,11 @@ class UserSummaryProductCollectionViewCell: UITableViewCell {
         deliveryActionButton.setImage(UIImage(named: "icdelivergray"), for: .normal)
         creditActionButton.isHidden = false
         creditActionButton.setImage(UIImage(named: "iccreditgray"), for: .normal)
+        totalLabel.isHidden = false
+        categoryLabel.isHidden = false
     }
         
-    func configure(pool: EventPool? = nil, summaryItem: GiftSummaryItem? = nil) {
+    func configure(cashGiftItem: CashGiftItem? = nil, summaryItem: GiftSummaryItem? = nil) {
         
         switch cellType {
             case .EventProduct:
@@ -107,18 +109,20 @@ class UserSummaryProductCollectionViewCell: UITableViewCell {
                 break
             case .EventPool:
                 
-                /*if let pool = pool {
-                    currentPool = pool
+                if let cashGiftItem = cashGiftItem {
+                    currentPool = cashGiftItem.eventPool
                     productImage.image = UIImage(named: "cashFund")
-                    productNameLabel.text = pool.description
-                    productPriceLabel.text = "Precio: $ \(pool.goal) MXN"
+                    nameLabel.text = cashGiftItem.order.userData.name + " " + cashGiftItem.order.userData.lastName
                     shopLabel.isHidden = true
+                    productNameLabel.text = currentPool.description
+                    categoryLabel.isHidden = true
+                    productPriceLabel.text = "Contribución: \(cashGiftItem.amount) MXN"
                     productQuantityLabel.isHidden = true
+                    totalLabel.isHidden = true
                     envelopeImage.isHidden = true
                     deliveryActionButton.isHidden = true
                     creditActionButton.isHidden = true
-                }*/
-                break
+                }
             default:
                 break
         }
