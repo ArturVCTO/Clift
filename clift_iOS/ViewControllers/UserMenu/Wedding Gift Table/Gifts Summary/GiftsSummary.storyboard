@@ -134,7 +134,7 @@
                                                     <outlet property="requestedButton" destination="bGf-y0-oXH" id="v41-05-glk"/>
                                                 </connections>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 regalos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXS-9E-B0n">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXS-9E-B0n">
                                                 <rect key="frame" x="0.0" y="80" width="343" height="9"/>
                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="9"/>
                                                 <nil key="textColor"/>
@@ -147,11 +147,11 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mca-Dp-Hh1">
                                                 <rect key="frame" x="0.0" y="161" width="343" height="488"/>
                                                 <subviews>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="osg-Kb-2ql">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="osg-Kb-2ql">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="488"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="488" id="T6c-8h-mFW"/>
+                                                            <constraint firstAttribute="height" priority="750" constant="488" id="T6c-8h-mFW"/>
                                                         </constraints>
                                                     </tableView>
                                                 </subviews>
@@ -164,6 +164,10 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="WOd-cB-y25" appends="YES" id="uwJ-Rs-P0T"/>
+                                        </connections>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -186,12 +190,20 @@
                     </view>
                     <connections>
                         <outlet property="collectionViewHeight" destination="T6c-8h-mFW" id="Whg-ci-o1R"/>
+                        <outlet property="dismissKeyboardTapGesture" destination="WOd-cB-y25" id="gt6-Zn-DXe"/>
+                        <outlet property="giftCounter" destination="tXS-9E-B0n" id="pK6-Ih-vzL"/>
+                        <outlet property="giftSummarySearchBar" destination="20C-eW-st1" id="mCB-a4-1n6"/>
                         <outlet property="giftsAndEnvelopesStackView" destination="FVY-SV-P74" id="YJ0-gN-jhg"/>
                         <outlet property="giftsTypeStackView" destination="cZ0-o8-Jbv" id="qzQ-qy-nzo"/>
                         <outlet property="tableView" destination="osg-Kb-2ql" id="mIa-kS-4vb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GuY-CE-cej" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="WOd-cB-y25">
+                    <connections>
+                        <action selector="didTapToDismissKeyboard:" destination="dr6-gI-7ea" id="fgs-Mf-q9V"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-188.40579710144928" y="51.5625"/>
         </scene>

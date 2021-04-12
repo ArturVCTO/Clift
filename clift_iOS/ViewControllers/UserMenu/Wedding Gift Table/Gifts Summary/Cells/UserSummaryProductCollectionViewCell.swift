@@ -40,95 +40,85 @@ class UserSummaryProductCollectionViewCell: UITableViewCell {
         productImage.image = UIImage(named: "cashFund")
         shopLabel.isHidden = false
         envelopeImage.isHidden = false
-        envelopeImage.isHidden = true
+        envelopeImage.image = UIImage(named: "icthankgray")
         deliveryActionButton.isHidden = false
+        deliveryActionButton.setImage(UIImage(named: "icdelivergray"), for: .normal)
         creditActionButton.isHidden = false
-        deliveryActionButton.isEnabled = true
-        creditActionButton.isEnabled = true
+        creditActionButton.setImage(UIImage(named: "iccreditgray"), for: .normal)
+        totalLabel.isHidden = false
+        categoryLabel.isHidden = false
     }
         
-    func configure(pool: EventPool? = nil, summaryItem: GiftSummaryItem? = nil) {
+    func configure(cashGiftItem: CashGiftItem? = nil, summaryItem: GiftSummaryItem? = nil) {
         
         switch cellType {
             case .EventProduct:
-                if let product = summaryItem?.eventProduct {
-                    currentEventProduct = product
+                if let currentSummaryItem = summaryItem {
+                    currentEventProduct = currentSummaryItem.eventProduct
 
-                    if let imageURL = URL(string:"\(product.product.imageUrl)") {
+                    if let imageURL = URL(string:"\(currentEventProduct.product.imageUrl)") {
                         self.productImage.sd_setImage(with: imageURL,
                                                       placeholderImage: UIImage(named: "cliftplaceholder"))
                     }
                     
-                    if let userData = summaryItem?.order.userData {
-                        nameLabel.text = userData.name + " " + userData.lastName
-                    }
+                    nameLabel.text = currentSummaryItem.order.userData.name + " " + currentSummaryItem.order.userData.lastName
                     
-                    if let category = summaryItem?.eventProduct.product.categories.first {
+                    if let category = currentEventProduct.product.categories.first {
                         categoryLabel.text = "Categoría: \(category.name)"
                     }
                     
-                    setProductType(eventProduct: product)
-                    setEnvelopeImage(eventProduct: product)
-                    productNameLabel.text = product.product.name
-                    shopLabel.text = product.product.shop.name + " - " + product.product.brand_name
-                    if product.gifted_quantity > 0 {
-                        productPriceLabel.text = "Precio: $\(Double(product.product.price)/Double(product.gifted_quantity)) MXN"
+                    productNameLabel.text = currentEventProduct.product.name
+                    shopLabel.text = currentEventProduct.product.shop.name + " - " + currentEventProduct.product.brand_name
+                    if currentEventProduct.gifted_quantity > 0 {
+                        productPriceLabel.text = "Precio: $\(Double(currentEventProduct.product.price)/Double(currentEventProduct.gifted_quantity)) MXN"
                     } else {
-                        productPriceLabel.text = "Precio: $\(product.product.price) MXN"
+                        productPriceLabel.text = "Precio: $\(currentEventProduct.product.price) MXN"
                     }
-                    totalLabel.text = "Total: $\(product.product.price)"
-                    if product.isCollaborative {
-                        productQuantityLabel.text = "Cantidad: \(product.gifted_quantity) de \(product.collaborators)"
-                    } else {
-                        productQuantityLabel.text = "Cantidad: \(product.gifted_quantity) de \(product.quantity)"
-                    }
-                    setDeliveryCreditButtons(product: product)
+                    totalLabel.text = "Total: $\(currentEventProduct.product.price)"
                     
+                    productQuantityLabel.text = "Cantidad: \(currentEventProduct.gifted_quantity) de \(currentEventProduct.quantity)"
+                    setButtons(summaryItem: currentSummaryItem)
                 }
             case .EventExternalProduct:
-                if let product = summaryItem?.eventProduct {
-                    currentEventProduct = product
+                if let currentSummaryItem = summaryItem {
+                    currentEventProduct = currentSummaryItem.eventProduct
                 
-                    if let imageURL = URL(string:"\(product.externalProduct.imageUrl)") {
+                    if let imageURL = URL(string:"\(currentEventProduct.externalProduct.imageUrl)") {
                         self.productImage.sd_setImage(with: imageURL,
                                                       placeholderImage: UIImage(named: "cliftplaceholder"))
                     }
                     
-                    setProductType(eventProduct: product)
-            
+                    productNameLabel.text = currentEventProduct.externalProduct.name
+                    shopLabel.text = currentEventProduct.externalProduct.shopName
                     
-                    setEnvelopeImage(eventProduct: product)
-                    productNameLabel.text = product.externalProduct.name
-                    shopLabel.text = product.externalProduct.shopName
-                    
-                    if product.gifted_quantity > 0 {
-                        productPriceLabel.text = "Precio: $\(Double(product.product.price)/Double(product.gifted_quantity)) MXN"
+                    if currentEventProduct.gifted_quantity > 0 {
+                        productPriceLabel.text = "Precio: $\(Double(currentEventProduct.product.price)/Double(currentEventProduct.gifted_quantity)) MXN"
                     } else {
-                        productPriceLabel.text = "Precio: $\(product.product.price) MXN"
+                        productPriceLabel.text = "Precio: $\(currentEventProduct.product.price) MXN"
                     }
                     
-                    totalLabel.text = "Precio: $\(product.externalProduct.price) MXN"
+                    totalLabel.text = "Precio: $\(currentEventProduct.externalProduct.price) MXN"
                     
-                    if let category = summaryItem?.eventProduct.product.categories.first {
+                    if let category = currentEventProduct.product.categories.first {
                         categoryLabel.text = "Categoría: \(category.name)"
                     }
-                    
-                    if product.isCollaborative {
-                        productQuantityLabel.text = "Cantidad: \(product.gifted_quantity) de \(product.collaborators)"
-                    } else {
-                        productQuantityLabel.text = "Cantidad: \(product.gifted_quantity) de \(product.quantity)"
-                    }
-                    setDeliveryCreditButtons(product: product)
+        
+                    productQuantityLabel.text = "Cantidad: \(currentEventProduct.gifted_quantity) de \(currentEventProduct.quantity)"
+                    setButtons(summaryItem: currentSummaryItem)
                 }
+                break
             case .EventPool:
                 
-                if let pool = pool {
-                    currentPool = pool
+                if let cashGiftItem = cashGiftItem {
+                    currentPool = cashGiftItem.eventPool
                     productImage.image = UIImage(named: "cashFund")
-                    productNameLabel.text = pool.description
-                    productPriceLabel.text = "Precio: $ \(pool.goal) MXN"
+                    nameLabel.text = cashGiftItem.order.userData.name + " " + cashGiftItem.order.userData.lastName
                     shopLabel.isHidden = true
+                    productNameLabel.text = currentPool.description
+                    categoryLabel.isHidden = true
+                    productPriceLabel.text = "Contribución: \(cashGiftItem.amount) MXN"
                     productQuantityLabel.isHidden = true
+                    totalLabel.isHidden = true
                     envelopeImage.isHidden = true
                     deliveryActionButton.isHidden = true
                     creditActionButton.isHidden = true
@@ -138,89 +128,36 @@ class UserSummaryProductCollectionViewCell: UITableViewCell {
         }
     }
     
-    private func setProductType(eventProduct: EventProduct) {
-//        if eventProduct.isCollaborative && !eventProduct.hasBeenPaid && eventProduct.status == "pending" {
-//            giftTypeLabel.text = "Regalo grupal"
-//        } else if eventProduct.hasBeenPaid {
-//            greenCheckmarkImage.isHidden = false
-//            giftTypeLabel.text = "Regalado"
-//        } else if !eventProduct.hasBeenPaid && eventProduct.status != "pending" {
-//            greenCheckmarkImage.isHidden = false
-//            giftTypeLabel.text = "Terminado"
-//        } else {
-//            giftTypeLabel.text = ""
-//        }
-    }
-    
-    private func setEnvelopeImage(eventProduct: EventProduct) {
+    private func setButtons(summaryItem: GiftSummaryItem) {
+        let giftStatusHelperOptions = GiftStatusHelper.shared.manageSimpleGift(giftSummaryItem: summaryItem)
         
-        if !eventProduct.hasBeenThanked && (eventProduct.hasBeenPaid || eventProduct.status != "pending") {
-            envelopeImage.isHidden = false
-            envelopeImage.image = UIImage(named: "icthankgray")
-        } else if eventProduct.hasBeenThanked {
-            envelopeImage.isHidden = false
-            envelopeImage.image = UIImage(named: "icthankgreen")
-        } else {
-            envelopeImage.isHidden = true
-        }
-    }
-    
-    private func setDeliveryCreditButtons(product: EventProduct) {
-        
-        switch product.status {
-        case "requested":
-            if let image = UIImage(named: "icdeliveredgreen") {
-                deliveryActionButton.setImage(image, for: .normal)
-            }
-            deliveryActionButton.isHidden = false
-            creditActionButton.isHidden = true
-            
-        case "credit":
+        switch giftStatusHelperOptions.credit {
+        case .greenIcon:
             let image = UIImage(named: "iccreditgreen")
             creditActionButton.setImage(image, for: .normal)
-            creditActionButton.isHidden = false
+        case .hidden:
+            creditActionButton.isHidden = true
+        default:
+            break
+        }
+        
+        switch giftStatusHelperOptions.deliver {
+        case .greenIcon:
+            let image = UIImage(named: "icdeliveredgreen")
+            deliveryActionButton.setImage(image, for: .normal)
+        case .hidden:
             deliveryActionButton.isHidden = true
-    
-        case "pending":
-            if !(product.hasBeenPaid && product.product.shop.shipsNational) {
-                deliveryActionButton.isHidden = true
-            }
-            
-            if !product.hasBeenPaid {
-                creditActionButton.isHidden = true
-            }
         default:
             break
         }
-    }
-
-    @IBAction func deliveryButtonPressed(_ sender: UIButton) {
-        switch cellType {
-        case .EventProduct, .EventExternalProduct:
-            print("delivery")
-        case .EventPool:
-            print("delivery")
+        
+        switch giftStatusHelperOptions.envelope {
+        case .greenIcon:
+            envelopeImage.image = UIImage(named: "icthankgreen")
+        case .hidden:
+            envelopeImage.isHidden = true
         default:
             break
         }
-    }
-    
-    @IBAction func creditButtonPressed(_ sender: UIButton) {
-        print("credit")
-    }
-    
-    @IBAction func productStarted(_ sender: UIButton) {
-        switch cellType {
-        case .EventProduct, .EventExternalProduct:
-            userProductCellDelegate.didTapStarProduct(eventProduct: currentEventProduct)
-        case .EventPool:
-            userProductCellDelegate.didTapStarPool(eventPool: currentPool)
-        default:
-            break
-        }
-    }
-    
-    @IBAction func productMoreOptions(_ sender: UIButton) {
-        userProductCellDelegate.didTapMoreOptions(cellType: cellType ?? .EventProduct, eventPool: currentPool ?? EventPool(), eventProduct: currentEventProduct ?? EventProduct())
     }
 }

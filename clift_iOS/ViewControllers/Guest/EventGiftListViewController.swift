@@ -8,6 +8,7 @@
 
 import UIKit
 import SideMenu
+import Kingfisher
 
 enum sortKeys: String {
     case nameAscending = "sort_name.asc"
@@ -135,7 +136,11 @@ class EventGiftListViewController: UIViewController {
     func setup(event: Event) {
         
         if let coverURL = URL(string: event.coverImageUrl) {
-            backgroundImageView.kf.setImage(with: coverURL, placeholder: UIImage(named: "cliftplaceholder"))
+            backgroundImageView.kf.setImage(with: coverURL, placeholder: UIImage(named: "cliftplaceholder"), options: [
+                .processor(DownsamplingImageProcessor(size: backgroundImageView.frame.size)),
+                .scaleFactor(UIScreen.main.scale),
+                .cacheOriginalImage
+            ])
         }
         
         if let eventURL = URL(string: event.eventImageUrl) {

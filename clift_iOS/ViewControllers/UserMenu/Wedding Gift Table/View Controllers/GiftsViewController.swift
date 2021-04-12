@@ -167,12 +167,15 @@ class GiftsViewController: UIViewController {
     
     
     func getEvents() {
+        self.presentLoader()
         sharedApiManager.getEvents() { (events, result) in
             if let response = result {
                 if (response.isSuccess()) {
                     print("\(events!.first!.id)")
                     self.showEvent(id: events!.first!.id)
                 }
+            } else {
+                self.dismissLoader()
             }
         }
     }
@@ -202,6 +205,7 @@ class GiftsViewController: UIViewController {
         if let coverImageURL = URL(string:"\(event.coverImageUrl)") {
             self.coverImageView.kf.setImage(with: coverImageURL)
         }
+        self.dismissLoader()
     }
     
     func countDownCalendar(eventDate: Date) {
@@ -213,9 +217,23 @@ class GiftsViewController: UIViewController {
 //        let eventDateComponents = calendar.dateComponents([.month,.weekOfYear,.day], from: eventDate)
         
         let difference = calendar.dateComponents([.year,.month,.weekOfMonth,.day], from: currentDate!, to: eventDate)
-        self.monthCountDownLabel.text = "\( (difference.month ?? 0) + ( difference.year ?? 0)*12)"
-        self.weekCountDownLabel.text = "\(difference.weekOfMonth ?? 0)"
-        self.dayCountDownLabel.text = "\(difference.day ?? 0)"
+        if (difference.month ?? 0) + (difference.year ?? 0) * 12 > 0 {
+            self.monthCountDownLabel.text = "\( (difference.month ?? 0) + ( difference.year ?? 0)*12)"
+        } else {
+            self.monthCountDownLabel.text = "0"
+        }
+        
+        if (difference.weekOfMonth ?? 0) > 0 {
+            self.weekCountDownLabel.text = "\(difference.weekOfMonth ?? 0)"
+        } else {
+            self.weekCountDownLabel.text = "0"
+        }
+        
+        if (difference.day ?? 0) > 0 {
+            self.dayCountDownLabel.text = "\(difference.day ?? 0)"
+        } else {
+            self.dayCountDownLabel.text = "0"
+        }
     }
     
     func showEvent(id: String) {
@@ -225,6 +243,8 @@ class GiftsViewController: UIViewController {
                     self.currentEvent = event
                     self.loadEventInformation(event: event!)
                 }
+            } else {
+                self.dismissLoader()
             }
         }
     }

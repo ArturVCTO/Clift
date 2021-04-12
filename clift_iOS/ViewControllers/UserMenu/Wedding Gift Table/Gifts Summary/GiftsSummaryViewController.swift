@@ -12,20 +12,20 @@ import UIKit
 class GiftsSummaryViewController: UIViewController {
     
     enum GiftType {
-        case envelop
+        case envelope
         case product
     }
     
     var eventRegistries = [GiftSummaryItem]()
-    
-    var eventPools = [EventPool]()
-    
+    var cashGiftItems = [CashGiftItem]()
     var type = GiftType.product
+    var isColaborativeSelected = false
     
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
+    @IBOutlet var giftCounter: UILabel!
     
     class func make(event: Event) -> GiftsSummaryViewController {
         let vc = UIStoryboard.init(name: "GiftsSummary", bundle: nil).instantiateViewController(withIdentifier: "GiftsSummaryViewController") as! GiftsSummaryViewController
@@ -34,7 +34,6 @@ class GiftsSummaryViewController: UIViewController {
     }
     
     var event: Event!
-    var params: [String: Any] = ["collaborative": false]
     
     @IBOutlet weak var giftsTypeStackView: GiftsTypeStackView! {
         didSet {
@@ -48,26 +47,26 @@ class GiftsSummaryViewController: UIViewController {
         }
     }
     
-    var layout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 150, height: 280)
-        return layout
-    }()
+    @IBOutlet weak var giftSummarySearchBar: UISearchBar!
+    
+    @IBOutlet var dismissKeyboardTapGesture: UITapGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavBar()
         giftsAndEnvelopesStackView.delegate = self
         setup()
-        getEventProducts()
+        getEventProducts(params: ["collaborative": false])
+        getEnvelopes()
+        setTapGesture()
     }
     
     func setup() {
         registerCells()
-        self.collectionViewHeight.constant = 1000
-        tableView.estimatedRowHeight = 50;
-        tableView.rowHeight = UITableView.automaticDimension;
+        tableView.estimatedRowHeight = 205
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     func setNavBar() {
@@ -86,55 +85,61 @@ class GiftsSummaryViewController: UIViewController {
     
     private func registerCells() {
         tableView.register(UINib(nibName: "UserSummaryProductCollectionViewCell", bundle: nil), forCellReuseIdentifier: "UserSummaryProductCollectionViewCell")
+        tableView.register(UINib(nibName: "FirstColaborativeSummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "FirstColaborativeSummaryTableViewCell")
+        tableView.register(UINib(nibName: "ColaborativeSummaryTableViewCell", bundle: nil), forCellReuseIdentifier: "ColaborativeSummaryTableViewCell")
     }
     
-    func getEventProducts() {
+    func setTapGesture() {
+        dismissKeyboardTapGesture.isEnabled = false
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardVisible(sender:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardHidden(sender:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+
+    @objc func keyboardVisible(sender: AnyObject) {
+        dismissKeyboardTapGesture.isEnabled = true
+    }
+
+    @objc func keyboardHidden(sender: AnyObject) {
+        dismissKeyboardTapGesture.isEnabled = false
+    }
+    
+    @IBAction func didTapToDismissKeyboard(_ sender: UITapGestureRecognizer) {
+        giftSummarySearchBar.endEditing(true)
+    }
+    
+    func getEventProducts(params: [String: Any] = [:]) {
         
         self.presentLoader()
-        print("el id es \(event.id)")
         
         sharedApiManager.getSummaryAllEvents(event: event, params: params) { (items, response) in
             guard let items = items else { return }
             self.eventRegistries = items
             DispatchQueue.main.async {
                 self.dismissLoader()
+                self.giftCounter.text = self.eventRegistries.count == 1 ? "1 regalo" : "\(self.eventRegistries.count) regalos"
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
                 self.tableView.layoutIfNeeded()
-                self.collectionViewHeight.constant =
-                    CGFloat(self.tableView.contentSize.height)
+                self.collectionViewHeight.constant = CGFloat(self.tableView.contentSize.height)
             }
-    
         }
+    }
+    
+    func getEnvelopes(params: [String: Any] = [:]) {
         
-//        sharedApiManager.getEventProducts(event: currentEvent, available: "", gifted: "", filters: filtersDic) { (eventProducts, result) in
-//            if let response = result {
-//                if (response.isSuccess()) {
-//                    self.eventRegistries = eventProducts!
-//
-//                    guard let json = try? JSONSerialization.jsonObject(with: response.data,
-//                                                                       options: []) as? [String: Any],
-//                          let meta = json["meta"] as? [String: Any],
-//                          let pagination = Pagination(JSON: meta) else {
-//                        return
-//                    }
-//                    self.actualPage = pagination.currentPage
-//                    self.numberOfPages = pagination.totalPages
-//                    self.paginationLabel.text = "Mostrando del \(pagination.from) al \(pagination.to) de \(pagination.totalCount)"
-//                    self.reloadCollectionView()
-//                }
-//            }
-//            self.setPaginationMenu()
-//            self.setButtonValues()
-//            self.addOrDeleteMenuButtonsDependingOnNumberOfPages()
-//            self.lastButtonPressed = nil
-//            self.dismissLoader()
-//            if self.eventPools.isEmpty && self.eventRegistries.isEmpty {
-//                self.displayEmptyState()
-//            } else {
-//                self.displayGiftTable()
-//            }
-//        }
+        self.presentLoader()
+        
+        sharedApiManager.getOrderItems(event: event, params: params) { (cashItems, response) in
+            guard let cashItems = cashItems else { return }
+            self.cashGiftItems = cashItems
+            DispatchQueue.main.async {
+                self.dismissLoader()
+                self.tableView.isHidden = false
+                self.tableView.reloadData()
+                self.tableView.layoutIfNeeded()
+                self.collectionViewHeight.constant = CGFloat(self.tableView.contentSize.height)
+            }
+        }
     }
     
 }
@@ -145,13 +150,15 @@ extension GiftsSummaryViewController: GiftsAndEvelopStackViewDelegate {
         type = .product
         allSelected()
         giftsTypeStackView.isHidden = false
+        giftSummarySearchBar.isHidden = false
         giftsTypeStackView.selectAllButton()
-        getEventProducts()
     }
     
     func envelopeSelected() {
         giftsTypeStackView.isHidden = true
-        type = .envelop
+        giftSummarySearchBar.isHidden = true
+        self.giftCounter.text = self.cashGiftItems.count == 1 ? "1 sobre" : "\(self.cashGiftItems.count) sobres"
+        type = .envelope
         tableView.reloadData()
     }
 }
@@ -160,93 +167,148 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
     
     func allSelected() {
         let newParams = ["collaborative": false]
-        self.params = newParams
-        getEventProducts()
+        isColaborativeSelected = false
+        getEventProducts(params: newParams)
     }
     
     func requestedSelected() {
         let newParams = ["status": "requested"]
-        self.params = newParams
-        getEventProducts()
+        isColaborativeSelected = false
+        getEventProducts(params: newParams)
     }
     
     func creditSelected() {
         let newParams = ["status": "declined"]
-        self.params = newParams
-        getEventProducts()
+        isColaborativeSelected = false
+        getEventProducts(params: newParams)
     }
     
     func collaborativeSelected() {
-        let newParams = ["collaborative": false]
-        self.params = newParams
-        getEventProducts()
+        let newParams = ["collaborative": true]
+        isColaborativeSelected = true
+        getEventProducts(params: newParams)
     }
 }
 
 extension GiftsSummaryViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        switch self.type {
+        case .envelope:
+            return 1
+        case .product:
+            if isColaborativeSelected {
+                return eventRegistries.count
+            } else {
+                return 1
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch self.type {
-        case .envelop:
-            return eventPools.count
+        case .envelope:
+            return cashGiftItems.count
         case .product:
-            return eventRegistries.count
+            if isColaborativeSelected {
+                if let numberOfCollaborators = eventRegistries[section].eventProduct.guestData {
+                    return numberOfCollaborators.count
+                } else {
+                    return 0
+                }
+            } else {
+                return eventRegistries.count
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "UserSummaryProductCollectionViewCell", for: indexPath) as? UserSummaryProductCollectionViewCell {
-            
-            if self.type == .envelop {
-                cell.cellType = .EventPool
-                cell.configure(pool: eventPools[indexPath.row])
+        if isColaborativeSelected {
+            if indexPath.row == 0 {
+                if let firstColaborativeSummaryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FirstColaborativeSummaryTableViewCell", for: indexPath) as? FirstColaborativeSummaryTableViewCell {
+                    return firstColaborativeSummaryTableViewCell
+                }
             } else {
-                if eventRegistries[indexPath.row].eventProduct.wishableType == "ExternalProduct" {
-                    cell.cellType = .EventExternalProduct
-                    cell.configure(summaryItem: eventRegistries[indexPath.row])
-                } else {
-                    cell.cellType = .EventProduct
-                    cell.configure(summaryItem: eventRegistries[indexPath.row])
+                if let colaborativeSummaryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ColaborativeSummaryTableViewCell", for: indexPath) as? ColaborativeSummaryTableViewCell {
+                    return colaborativeSummaryTableViewCell
                 }
             }
-            cell.layoutIfNeeded()
-            return cell
+        } else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "UserSummaryProductCollectionViewCell", for: indexPath) as? UserSummaryProductCollectionViewCell {
+                
+                cell.selectionStyle = .none
+                
+                if self.type == .envelope {
+                    cell.cellType = .EventPool
+                    cell.configure(cashGiftItem: cashGiftItems[indexPath.row])
+                } else {
+                    if eventRegistries[indexPath.row].eventProduct.wishableType == "ExternalProduct" {
+                        cell.cellType = .EventExternalProduct
+                        cell.configure(summaryItem: eventRegistries[indexPath.row])
+                    } else {
+                        cell.cellType = .EventProduct
+                        cell.configure(summaryItem: eventRegistries[indexPath.row])
+                    }
+                }
+                return cell
+            }
         }
         return UITableViewCell()
     }
-    
 }
 
-// MARK: Extension Collection View Delegate and Data Source
+extension GiftsSummaryViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch type {
+        case .product:
+            presetActionSheet(summaryItem: eventRegistries[indexPath.row])
+        case .envelope:
+            print("Soy sobre")
+        }
+    }
+}
+
 extension GiftsSummaryViewController {
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch self.type {
-        case .envelop:
-            return eventPools.count
-        case .product:
-            return eventRegistries.count
-        }
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func presetActionSheet(summaryItem: GiftSummaryItem) {
         
-        if indexPath.row >= eventPools.count {
-//            let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
-//            productDetailsVC.currentEventProduct = eventRegistries[indexPath.row - eventPools.count]
-//            productDetailsVC.currentEvent = currentEvent
-//            productDetailsVC.showAddProductToCart = false
-//            productDetailsVC.productDetailType = eventRegistries[indexPath.row - eventPools.count].wishableType == "ExternalProduct" ? .EventExternalProduct : .EventProduct
-//            productDetailsVC.modalPresentationStyle = .fullScreen
-//            self.navigationController?.pushViewController(productDetailsVC, animated: true)
+        let optionsSheet = UIAlertController(title: "Opciones", message: nil, preferredStyle: .actionSheet)
+        optionsSheet.view.tintColor = UIColor(named: "PrimaryBlue")
+        
+        let convertToCredit = UIAlertAction(title: "CONVERTIR A CRÉDITO", style: .default, handler: {(action) in self.presentConvertToCredit()})
+        let requestProduct = UIAlertAction(title: "SOLICITAR PRODUCTO", style: .default, handler: {(action) in self.presentRequestProduct()})
+        let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO", style: .default, handler: {(action) in self.presentSendMessage()})
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
+        
+        let giftStatusHelperOptions = GiftStatusHelper.shared.manageSimpleGift(giftSummaryItem: summaryItem)
+        
+        if giftStatusHelperOptions.credit == .grayIcon {
+            optionsSheet.addAction(convertToCredit)
         }
+        
+        if giftStatusHelperOptions.deliver == .grayIcon {
+            optionsSheet.addAction(requestProduct)
+        }
+        
+        optionsSheet.addAction(sendMessage)
+        optionsSheet.addAction(cancelAction)
+        
+        present(optionsSheet, animated: true, completion: nil)
     }
     
+    func presentConvertToCredit() {
+        print("Ir a convertir a credito")
+    }
+    
+    func presentRequestProduct() {
+        print("Ir a solicitar producto")
+    }
+    
+    func presentSendMessage() {
+        print("Ir a enviar mensaje de agradecimiento")
+    }
 }
 
 ////MARK:- Extension ProductCellDelegate

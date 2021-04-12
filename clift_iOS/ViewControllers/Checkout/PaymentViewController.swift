@@ -14,7 +14,8 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var cellphoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var messageTextField: UITextField!
+    //@IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var subtotalLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var acceptPaymentButton: UIButton!
@@ -25,17 +26,22 @@ class PaymentViewController: UIViewController {
     var checkoutObject = CheckoutGuest()
     var userData = CheckoutUserDataGuest()
     var currentEvent = Event()
+    var firstMessage = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
         loadTotalAndSubtotal()
         startCheckout()
+        messageTextView.delegate = self
     }
     
     func setUI() {
         navigationItem.title = "CLIFT"
         acceptPaymentButton.layer.cornerRadius = 10
+        messageTextView.layer.cornerRadius = 10
+        messageTextView.layer.borderWidth = 0.5
+        messageTextView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     func loadTotalAndSubtotal() {
@@ -98,7 +104,7 @@ class PaymentViewController: UIViewController {
             return
         }
         
-        guard let messageText = messageTextField.text, !messageText.isEmpty else {
+        guard let messageText = messageTextView.text, !messageText.isEmpty else {
             self.showMessage(NSLocalizedString("No has llenado el mensaje", comment: ""),type: .error)
             return
         }
@@ -110,5 +116,16 @@ class PaymentViewController: UIViewController {
         checkoutObject.userDataGuest.note = messageText
         
         pay()
+    }
+}
+
+extension PaymentViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if firstMessage {
+            messageTextView.text = ""
+            messageTextView.textColor = UIColor.black
+            firstMessage = false
+        }
     }
 }

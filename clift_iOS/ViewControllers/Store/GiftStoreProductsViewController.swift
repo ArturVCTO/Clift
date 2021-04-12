@@ -13,6 +13,7 @@ class GiftStoreProductsViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var menuContainerWidth: NSLayoutConstraint!
     @IBOutlet var subgroupLabel: UILabel!
+    @IBOutlet weak var subgroupView: UIView!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var paginationLabel: UILabel!
     @IBOutlet weak var paginationStackViewButtons: UIStackView!
@@ -55,6 +56,7 @@ class GiftStoreProductsViewController: UIViewController {
     var currentOrder: sortKeys = .nameAscending
     var isSearchBarHidden = true
     var queryFromStoreVC = ""
+    var fromSearch = false
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -76,6 +78,9 @@ class GiftStoreProductsViewController: UIViewController {
         registerCells()
         setPaginationMenu()
         selectButton(button: firstMenuButton)
+        if fromSearch {
+            subgroupView.isHidden = true
+        }
     }
     
     private func setNavBar() {
@@ -236,6 +241,17 @@ extension GiftStoreProductsViewController: UICollectionViewDelegate, UICollectio
             return cell
         }
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let productDetailsVC = UIStoryboard(name: "Guest", bundle: nil).instantiateViewController(withIdentifier: "ProductDetailsVC") as! ProductDetailsViewController
+        productDetailsVC.currentProduct = products[indexPath.row]
+        productDetailsVC.currentEvent = currentEvent
+        productDetailsVC.productDetailType = .Product
+        productDetailsVC.paymentType = .userLogIn
+        productDetailsVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(productDetailsVC, animated: true)
     }
     
     private func reloadCollectionView() {

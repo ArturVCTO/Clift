@@ -112,7 +112,7 @@ class UserGiftTableViewController: UIViewController {
     
     var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 150, height: 280)
+        layout.estimatedItemSize = CGSize(width: 150, height: 300)
         return layout
     }()
     
