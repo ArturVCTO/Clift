@@ -20,6 +20,7 @@ class GiftsSummaryViewController: UIViewController {
     var cashGiftItems = [CashGiftItem]()
     var type = GiftType.product
     var isColaborativeSelected = false
+    var endpointParams: [String: Any] = ["collaborative": false]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -56,7 +57,7 @@ class GiftsSummaryViewController: UIViewController {
         setNavBar()
         giftsAndEnvelopesStackView.delegate = self
         setup()
-        getEventProducts(params: ["collaborative": false])
+        getEventProducts()
         getEnvelopes()
         setTapGesture()
     }
@@ -67,6 +68,7 @@ class GiftsSummaryViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
         tableView.delegate = self
+        giftSummarySearchBar.delegate = self
     }
     
     func setNavBar() {
@@ -107,11 +109,11 @@ class GiftsSummaryViewController: UIViewController {
         giftSummarySearchBar.endEditing(true)
     }
     
-    func getEventProducts(params: [String: Any] = [:]) {
+    func getEventProducts() {
         
         self.presentLoader()
         
-        sharedApiManager.getSummaryAllEvents(event: event, params: params) { (items, response) in
+        sharedApiManager.getSummaryAllEvents(event: event, params: endpointParams) { (items, response) in
             guard let items = items else { return }
             self.eventRegistries = items
             DispatchQueue.main.async {
@@ -166,27 +168,35 @@ extension GiftsSummaryViewController: GiftsAndEvelopStackViewDelegate {
 extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
     
     func allSelected() {
-        let newParams = ["collaborative": false]
+        endpointParams["collaborative"] = false
+        endpointParams["status"] = ""
+        endpointParams["guest"] = ""
         isColaborativeSelected = false
-        getEventProducts(params: newParams)
+        getEventProducts()
     }
     
     func requestedSelected() {
-        let newParams = ["status": "requested"]
+        endpointParams["status"] = "requested"
+        endpointParams["collaborative"] = false
+        endpointParams["guest"] = ""
         isColaborativeSelected = false
-        getEventProducts(params: newParams)
+        getEventProducts()
     }
     
     func creditSelected() {
-        let newParams = ["status": "declined"]
+        endpointParams["status"] = "declined"
+        endpointParams["collaborative"] = false
+        endpointParams["guest"] = ""
         isColaborativeSelected = false
-        getEventProducts(params: newParams)
+        getEventProducts()
     }
     
     func collaborativeSelected() {
-        let newParams = ["collaborative": true]
+        endpointParams["collaborative"] = true
+        endpointParams["status"] = ""
+        endpointParams["guest"] = ""
         isColaborativeSelected = true
-        getEventProducts(params: newParams)
+        getEventProducts()
     }
 }
 
@@ -308,6 +318,21 @@ extension GiftsSummaryViewController {
     
     func presentSendMessage() {
         print("Ir a enviar mensaje de agradecimiento")
+    }
+}
+
+// MARK: Extension UISearchBarDelegate
+extension GiftsSummaryViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        searchBar.endEditing(true)
+        if let query = searchBar.text {
+            //getStoreProducts(query: query)
+            endpointParams["guest"] = query
+            getEventProducts()
+        }
+        searchBar.text = ""
     }
 }
 
