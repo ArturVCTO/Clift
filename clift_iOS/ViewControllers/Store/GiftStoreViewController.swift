@@ -230,6 +230,8 @@ extension GiftStoreViewController: UISearchBarDelegate {
             
             let giftStoreProductsVC = UIStoryboard(name: "GiftStore", bundle: nil).instantiateViewController(withIdentifier: "GiftStoreProductsVC") as! GiftStoreProductsViewController
             
+            giftStoreProductsVC.searchProductsDelegate = self
+            
             giftStoreProductsVC.fromSearch = true
 
             // Send query to GiftStoreProductsViewController
@@ -265,6 +267,13 @@ extension GiftStoreViewController: UISearchBarDelegate {
                 }
             }
         }
+    }
+}
+
+// MARK: Extension SearchProductsDelegate
+extension GiftStoreViewController: SearchProductsDelegate {
+    func didAddProductToCart() {
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
     }
 }
 
