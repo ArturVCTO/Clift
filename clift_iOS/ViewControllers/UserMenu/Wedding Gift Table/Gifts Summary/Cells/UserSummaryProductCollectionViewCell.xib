@@ -28,24 +28,35 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ulv-lQ-SRJ">
                                 <rect key="frame" x="0.0" y="0.0" width="228" height="168"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ana Gabriela Estrada" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-oe-qmI">
-                                        <rect key="frame" x="0.0" y="0.0" width="228" height="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Ana Gabriela Estrada" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ikb-oe-qmI">
+                                        <rect key="frame" x="0.0" y="0.0" width="228" height="33.5"/>
                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
                                         <color key="textColor" red="0.015686274510000001" green="0.015686274510000001" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="San" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEn-vB-eKU">
-                                        <rect key="frame" x="0.0" y="21" width="228" height="13"/>
+                                        <rect key="frame" x="0.0" y="38.5" width="228" height="13"/>
                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="13"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Vajilla Cheers" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mof-lm-rez">
-                                        <rect key="frame" x="0.0" y="39" width="228" height="45"/>
-                                        <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
-                                        <color key="textColor" red="0.015686274510000001" green="0.015686274510000001" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ig2-fi-y7a">
+                                        <rect key="frame" x="0.0" y="56.5" width="228" height="27.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blueGift" translatesAutoresizingMaskIntoConstraints="NO" id="1LP-aZ-dw2">
+                                                <rect key="frame" x="0.0" y="0.0" width="20" height="27.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="C3U-Ut-HuY"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Vajilla Cheers" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mof-lm-rez">
+                                                <rect key="frame" x="25" y="0.0" width="203" height="27.5"/>
+                                                <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
+                                                <color key="textColor" red="0.015686274510000001" green="0.015686274510000001" blue="0.019607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="748" text="Categoría: Mesa" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ww2-bN-Lx0">
                                         <rect key="frame" x="0.0" y="89" width="228" height="16"/>
                                         <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="16"/>
@@ -182,10 +193,11 @@
                 <outlet property="shopLabel" destination="aEn-vB-eKU" id="Auh-mU-Pab"/>
                 <outlet property="totalLabel" destination="evK-k3-L2J" id="5Le-I4-H4p"/>
             </connections>
-            <point key="canvasLocation" x="-671" y="179"/>
+            <point key="canvasLocation" x="-671.01449275362324" y="178.79464285714286"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="blueGift" width="28" height="27.5"/>
         <image name="cashFund" width="246" height="254.5"/>
         <image name="iccreditgray" width="20" height="20"/>
         <image name="iccreditwhite" width="20" height="20"/>
