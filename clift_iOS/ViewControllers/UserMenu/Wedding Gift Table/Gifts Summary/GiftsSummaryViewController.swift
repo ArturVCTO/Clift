@@ -17,6 +17,7 @@ class GiftsSummaryViewController: UIViewController {
     }
     
     var eventRegistries = [GiftSummaryItem]()
+    var collaborativeEventsProduct = [EventProduct]()
     var cashGiftItems = [CashGiftItem]()
     var type = GiftType.product
     var isColaborativeSelected = false
@@ -127,6 +128,32 @@ class GiftsSummaryViewController: UIViewController {
         }
     }
     
+    func getEventProductsCollaborative() {
+        
+        self.presentLoader()
+        
+        sharedApiManager.getGiftThanksSummary(event: event, hasBeenThanked: false, hasBeenPaid: false, filters: ["collaborative":true]) { (items, response) in
+            guard let items = items else { return }
+            self.collaborativeEventsProduct = items
+            
+            //This for cicle drops all the orderItems that have status as pending
+            for eventProduct in self.collaborativeEventsProduct {
+                if let orderItem = eventProduct.orderItems {
+                    eventProduct.orderItems = orderItem.filter { $0.status != "pending" }
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.dismissLoader()
+                self.giftCounter.text = self.collaborativeEventsProduct.count == 1 ? "1 regalo" : "\(self.collaborativeEventsProduct.count) regalos"
+                self.tableView.isHidden = false
+                self.tableView.reloadData()
+                self.tableView.layoutIfNeeded()
+                self.collectionViewHeight.constant = CGFloat(self.tableView.contentSize.height)
+            }
+        }
+    }
+    
     func getEnvelopes(params: [String: Any] = [:]) {
         
         self.presentLoader()
@@ -192,11 +219,8 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
     }
     
     func collaborativeSelected() {
-        endpointParams["collaborative"] = true
-        endpointParams["status"] = ""
-        endpointParams["guest"] = ""
         isColaborativeSelected = true
-        getEventProducts()
+        getEventProductsCollaborative()
     }
 }
 
@@ -208,7 +232,7 @@ extension GiftsSummaryViewController: UITableViewDataSource {
             return 1
         case .product:
             if isColaborativeSelected {
-                return eventRegistries.count
+                return collaborativeEventsProduct.count
             } else {
                 return 1
             }
@@ -221,10 +245,10 @@ extension GiftsSummaryViewController: UITableViewDataSource {
             return cashGiftItems.count
         case .product:
             if isColaborativeSelected {
-                if let numberOfCollaborators = eventRegistries[section].eventProduct.guestData {
+                if let numberOfCollaborators = collaborativeEventsProduct[section].orderItems {
                     return numberOfCollaborators.count
                 } else {
-                    return 0
+                    return 1
                 }
             } else {
                 return eventRegistries.count
@@ -237,10 +261,14 @@ extension GiftsSummaryViewController: UITableViewDataSource {
         if isColaborativeSelected {
             if indexPath.row == 0 {
                 if let firstColaborativeSummaryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "FirstColaborativeSummaryTableViewCell", for: indexPath) as? FirstColaborativeSummaryTableViewCell {
+                    firstColaborativeSummaryTableViewCell.selectionStyle = .none
+                    firstColaborativeSummaryTableViewCell.configure(eventProduct: collaborativeEventsProduct[indexPath.section])
                     return firstColaborativeSummaryTableViewCell
                 }
             } else {
                 if let colaborativeSummaryTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ColaborativeSummaryTableViewCell", for: indexPath) as? ColaborativeSummaryTableViewCell {
+                    colaborativeSummaryTableViewCell.selectionStyle = .none
+                    colaborativeSummaryTableViewCell.configure(eventProduct: collaborativeEventsProduct[indexPath.section], numberOfPerson: indexPath.row)
                     return colaborativeSummaryTableViewCell
                 }
             }
@@ -266,6 +294,20 @@ extension GiftsSummaryViewController: UITableViewDataSource {
         }
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if isColaborativeSelected {
+            tableView.separatorStyle = .none
+            let footerView = UIView()
+            let separatorView = UIView(frame: CGRect(x: tableView.separatorInset.left, y: footerView.frame.height, width: tableView.frame.width - tableView.separatorInset.right - tableView.separatorInset.left, height: 1))
+            separatorView.backgroundColor = UIColor.gray
+            footerView.addSubview(separatorView)
+            return footerView
+        } else {
+            tableView.separatorStyle = .singleLine
+            return UIView()
+        }
+    }
 }
 
 extension GiftsSummaryViewController: UITableViewDelegate {
@@ -273,7 +315,15 @@ extension GiftsSummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch type {
         case .product:
-            presetActionSheet(summaryItem: eventRegistries[indexPath.row])
+            if isColaborativeSelected {
+                if indexPath.row == 0 {
+                    presentActionSheet(eventProduct: collaborativeEventsProduct[indexPath.section])
+                } else {
+                    presentEnvelopeActionSheet()
+                }
+            } else {
+                presentActionSheet(summaryItem: eventRegistries[indexPath.row])
+            }
         case .envelope:
             print("Soy sobre")
         }
@@ -282,7 +332,7 @@ extension GiftsSummaryViewController: UITableViewDelegate {
 
 extension GiftsSummaryViewController {
     
-    func presetActionSheet(summaryItem: GiftSummaryItem) {
+    func presentActionSheet(summaryItem: GiftSummaryItem? = nil, eventProduct: EventProduct? = nil) {
         
         let optionsSheet = UIAlertController(title: "Opciones", message: nil, preferredStyle: .actionSheet)
         optionsSheet.view.tintColor = UIColor(named: "PrimaryBlue")
@@ -292,7 +342,13 @@ extension GiftsSummaryViewController {
         let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO", style: .default, handler: {(action) in self.presentSendMessage()})
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
         
-        let giftStatusHelperOptions = GiftStatusHelper.shared.manageSimpleGift(giftSummaryItem: summaryItem)
+        var giftStatusHelperOptions = GiftStatusHelperOptions()
+        
+        if let summaryItem = summaryItem {
+            giftStatusHelperOptions = GiftStatusHelper.shared.manageSimpleGift(giftSummaryItem: summaryItem)
+        } else if let eventProduct = eventProduct {
+            giftStatusHelperOptions = GiftStatusHelper.shared.manageCollaborativeGift(eventProduct: eventProduct)
+        }
         
         if giftStatusHelperOptions.credit == .grayIcon {
             optionsSheet.addAction(convertToCredit)
@@ -301,6 +357,20 @@ extension GiftsSummaryViewController {
         if giftStatusHelperOptions.deliver == .grayIcon {
             optionsSheet.addAction(requestProduct)
         }
+        
+        optionsSheet.addAction(sendMessage)
+        optionsSheet.addAction(cancelAction)
+        
+        present(optionsSheet, animated: true, completion: nil)
+    }
+    
+    func presentEnvelopeActionSheet() {
+        
+        let optionsSheet = UIAlertController(title: "Opciones", message: nil, preferredStyle: .actionSheet)
+        optionsSheet.view.tintColor = UIColor(named: "PrimaryBlue")
+        
+        let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO", style: .default, handler: {(action) in self.presentSendMessage()})
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
         
         optionsSheet.addAction(sendMessage)
         optionsSheet.addAction(cancelAction)
@@ -328,7 +398,6 @@ extension GiftsSummaryViewController: UISearchBarDelegate {
         
         searchBar.endEditing(true)
         if let query = searchBar.text {
-            //getStoreProducts(query: query)
             endpointParams["guest"] = query
             getEventProducts()
         }
