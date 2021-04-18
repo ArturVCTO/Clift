@@ -337,9 +337,24 @@ extension GiftsSummaryViewController {
         let optionsSheet = UIAlertController(title: "Opciones", message: nil, preferredStyle: .actionSheet)
         optionsSheet.view.tintColor = UIColor(named: "PrimaryBlue")
         
-        let convertToCredit = UIAlertAction(title: "CONVERTIR A CRÉDITO", style: .default, handler: {(action) in self.presentConvertToCredit()})
-        let requestProduct = UIAlertAction(title: "SOLICITAR PRODUCTO", style: .default, handler: {(action) in self.presentRequestProduct()})
-        let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO", style: .default, handler: {(action) in self.presentSendMessage()})
+        let convertToCredit = UIAlertAction(title: "CONVERTIR A CRÉDITO",
+                                            style: .default,
+                                            handler: { (action) in self.presentConvertToCredit()
+        })
+        
+        let requestProduct = UIAlertAction(title: "SOLICITAR PRODUCTO",
+                                           style: .default,
+                                           handler: { [weak self] (action) in
+                                            guard let self = self else { return }
+                                            guard let eventProduct = summaryItem?.eventProduct else { return }
+                                            self.presentRequestProduct(product: eventProduct)
+        })
+        
+        let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO",
+                                        style: .default,
+                                        handler: { (action) in self.presentSendMessage()
+                                        })
+        
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
         
         var giftStatusHelperOptions = GiftStatusHelperOptions()
@@ -362,6 +377,7 @@ extension GiftsSummaryViewController {
         optionsSheet.addAction(cancelAction)
         
         present(optionsSheet, animated: true, completion: nil)
+        
     }
     
     func presentEnvelopeActionSheet() {
@@ -382,8 +398,8 @@ extension GiftsSummaryViewController {
         print("Ir a convertir a credito")
     }
     
-    func presentRequestProduct() {
-        print("Ir a solicitar producto")
+    func presentRequestProduct(product: EventProduct) {
+        requestShipping(product: product)
     }
     
     func presentSendMessage() {
@@ -402,6 +418,14 @@ extension GiftsSummaryViewController: UISearchBarDelegate {
             getEventProducts()
         }
         searchBar.text = ""
+    }
+}
+
+extension GiftsSummaryViewController {
+    func requestShipping(product: EventProduct) {
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "initialGiftShippingVC") as! InitialGiftShippingViewController
+        vc.eventProducts = [product]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
