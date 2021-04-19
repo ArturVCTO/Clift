@@ -36,19 +36,21 @@ class LoginViewController: UIViewController {
     }
     
     func postLoginSession() {
-        sharedApiManager.login(email: emailSignInTextField.text!, password: passwordSignInTextField.text!) { (session, result) in
-            if let response = result {
-                if response.isSuccess() {
-                    if (session != nil && session?.token != "") {
-                        let realm = try! Realm()
-                        try! realm.write {
-                            realm.add(session!)
-                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                            appDelegate.userHasSuccesfullySignedIn()
+        if let userEmail = emailSignInTextField.text?.lowercased(), let userPassword = passwordSignInTextField.text {
+            sharedApiManager.login(email: userEmail, password: userPassword) { (session, result) in
+                if let response = result {
+                    if response.isSuccess() {
+                        if (session != nil && session?.token != "") {
+                            let realm = try! Realm()
+                            try! realm.write {
+                                realm.add(session!)
+                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                appDelegate.userHasSuccesfullySignedIn()
+                            }
                         }
+                    } else if (response.isClientError() && session != nil && !(session?.errors.isEmpty)!) {
+                        self.showMessage(NSLocalizedString("\(session!.errors.first!)", comment: "Login Error"),type: .error)
                     }
-                } else if (response.isClientError() && session != nil && !(session?.errors.isEmpty)!) {
-                    self.showMessage(NSLocalizedString("\(session!.errors.first!)", comment: "Login Error"),type: .error)
                 }
             }
         }

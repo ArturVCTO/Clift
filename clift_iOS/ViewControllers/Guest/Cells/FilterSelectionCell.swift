@@ -11,7 +11,6 @@ import UIKit
 class FilterSelectionCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,8 +26,7 @@ class FilterSelectionCell: UITableViewCell {
         }
     }
     
-    func configure(title: String, subtitle: String = "") {
+    func configure(title: String) {
         titleLabel.text = title.uppercased()
-        subtitleLabel.text = subtitle.uppercased()
     }
 }

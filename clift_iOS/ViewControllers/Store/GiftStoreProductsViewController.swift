@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SearchProductsDelegate {
+    func didAddProductToCart()
+}
+
 class GiftStoreProductsViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -57,6 +61,7 @@ class GiftStoreProductsViewController: UIViewController {
     var isSearchBarHidden = true
     var queryFromStoreVC = ""
     var fromSearch = false
+    var searchProductsDelegate: SearchProductsDelegate!
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -455,6 +460,9 @@ extension GiftStoreProductsViewController: StoreProductCellDelegate {
     
     func didTapAddProductToCart(product: Product, productQuantity: Int) {
         addProductToCart(product: product, productQuantity: productQuantity)
+        if let searchProductsDelegate = searchProductsDelegate {
+            searchProductsDelegate.didAddProductToCart()
+        }
     }
 }
 

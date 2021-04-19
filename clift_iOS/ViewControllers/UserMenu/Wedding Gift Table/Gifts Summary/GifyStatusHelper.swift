@@ -58,16 +58,18 @@ class GiftStatusHelper {
         return currentGiftStatusHelperOptions
     }
     
-    func manageCollaborativeGift(giftSummaryItem: GiftSummaryItem) -> GiftStatusHelperOptions {
+    func manageCollaborativeGift(eventProduct: EventProduct) -> GiftStatusHelperOptions {
         var currentGiftStatusHelperOptions = GiftStatusHelperOptions()
         
         currentGiftStatusHelperOptions.credit = .grayIcon
         
-        switch giftSummaryItem.eventProduct.status {
+        switch eventProduct.status {
         
         case "pending":
-            if giftSummaryItem.eventProduct.collaborators == giftSummaryItem.eventProduct.gifted_quantity {
+            if eventProduct.collaborators == eventProduct.gifted_quantity {
                 currentGiftStatusHelperOptions.deliver = .grayIcon
+            } else {
+                currentGiftStatusHelperOptions.deliver = .hidden
             }
         case "requested", "delivered":
             currentGiftStatusHelperOptions.credit = .hidden
@@ -79,7 +81,7 @@ class GiftStatusHelper {
             break
         }
         
-        if giftSummaryItem.hasBeenThanked {
+        if eventProduct.hasBeenThanked {
             currentGiftStatusHelperOptions.envelope = .greenIcon
         } else {
             currentGiftStatusHelperOptions.envelope = .grayIcon

@@ -44,7 +44,6 @@ class FilterSelectionViewController: UIViewController {
     var shops: [Shop] = []
     let prices: [String] = ["Menos de $1000","$1000 - $2500","$2500 - $4000","$4000 - $6500","$6500 - $8000","$8000 - $10000","Más de $10000"]
     let pricesDic: [Int:String] = [0:"price < 1000",1:"price >= 1000 AND price <= 2500",2:"price >= 2500 AND price <= 4000",3:"price >= 4000 AND price <= 6500",4:"price >= 6500 AND price <= 8000",5:"price >= 8000 AND price <= 10000",6:"price >= 10000"]
-    let alphabetArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","Ñ","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     var categorySelectedId = ""
     var priceSelectedId = ""
     var shopSelectedId = ""
@@ -209,12 +208,7 @@ extension FilterSelectionViewController: UITableViewDelegate, UITableViewDataSou
                 case .filterByPrice:
                     cell.configure(title: prices[indexPath.row])
                 case .filterByShop:
-                    if indexPath.row < alphabetArray.count {
-                        cell.configure(title: shops[indexPath.row].name, subtitle: alphabetArray[indexPath.row])
-                    } else {
-                        cell.configure(title: shops[indexPath.row].name)
-                    }
-                    
+                    cell.configure(title: shops[indexPath.row].name)
                 default:
                     break
             }
