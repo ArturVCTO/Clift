@@ -11,10 +11,11 @@ import UIKit
 class ViewController: UIViewController {
 
 	@IBOutlet weak var createRegistryButton: UIButton!
-	
+    @IBOutlet var logInButton: UIButton!
+    
 	override func viewDidLoad() {
         super.viewDidLoad()
-		createRegistryButton.layer.cornerRadius = 4
+		createRegistryButton.layer.cornerRadius = 12
     }
 
 	@IBAction func createRegistryButtonTapped(_ sender: Any) {
@@ -27,5 +28,8 @@ class ViewController: UIViewController {
 		present(loginVC, animated: true, completion: nil)
 	}
     
+    @IBAction func purchaseForYouPressed(_ sender: customButton) {
+        print("Go to Purchase For You")
+    }
 }
 
