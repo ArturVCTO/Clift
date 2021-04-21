@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController {
 
@@ -29,7 +30,36 @@ class ViewController: UIViewController {
 	}
     
     @IBAction func purchaseForYouPressed(_ sender: customButton) {
-        print("Go to Purchase For You")
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let navigationController = storyBoard.instantiateViewController(withIdentifier: "GiftStoreNavigationController") as! UINavigationController
+        navigationController.modalPresentationStyle = .fullScreen
+        getGuestToken()
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    private func getGuestToken() {
+        
+        let realm = try! Realm()
+        let users = realm.objects(Session.self)
+        
+        if(users.isEmpty || users.first!.accountType == "Host"){
+            sharedApiManager.getGuestToken() {(session,result) in
+                if let response = result{
+                    if response.isSuccess(){
+                        print("Session",session!.token)
+                        try! realm.write {
+                            realm.deleteAll()
+                        }
+                        try! realm.write {
+                            realm.add(session!)
+                        }
+                    }
+                }
+            }
+        }else{
+            print(users.first!.accountType)
+        }
     }
 }
 
