@@ -17,6 +17,12 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
         super.viewDidLoad()
 		createRegistryButton.layer.cornerRadius = 12
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
 	@IBAction func createRegistryButtonTapped(_ sender: Any) {
@@ -32,10 +38,11 @@ class ViewController: UIViewController {
     @IBAction func purchaseForYouPressed(_ sender: customButton) {
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let navigationController = storyBoard.instantiateViewController(withIdentifier: "GiftStoreNavigationController") as! UINavigationController
-        navigationController.modalPresentationStyle = .fullScreen
+        let giftStoreVC = storyBoard.instantiateViewController(withIdentifier: "GiftStoreViewController") as! GiftStoreViewController
+        giftStoreVC.modalPresentationStyle = .fullScreen
         getGuestToken()
-        present(navigationController, animated: true, completion: nil)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.pushViewController(giftStoreVC, animated: true)
     }
     
     private func getGuestToken() {
