@@ -64,7 +64,7 @@ class StoreProductCell: UICollectionViewCell {
         productImage.contentMode = .scaleAspectFit
     }
     
-    func configure(product: Product) {
+    func configure(product: Product, userType: PaymentType) {
         
         currentProduct = product
         
@@ -73,6 +73,10 @@ class StoreProductCell: UICollectionViewCell {
         }
         productNameLabel.text = product.name
         productPriceLabel.text = "$ \(product.price) MXN"
+        
+        if userType == .userGuest {
+            giftView.isHidden = true
+        }
     }
     
     @objc func didTapQuantity() {
