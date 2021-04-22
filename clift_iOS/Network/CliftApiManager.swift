@@ -325,6 +325,8 @@ protocol ApiCalls {
                              completion: @escaping([GiftSummaryItem]?, Response?) -> Void)
     func getOrderItems(event: Event, params: [String: Any]?,completion: @escaping([CashGiftItem]?, Response?) -> Void)
     
+    func getShopProductsAsGuest(params: [String : Any], completion: @escaping([Product]?, Response?) -> Void)
+    
 }
 
 extension CliftApiManager: ApiCalls {
@@ -668,6 +670,10 @@ extension CliftApiManager: ApiCalls {
                                                 params: params),
                                                 type: CashGiftItem.self,
                                                 completion: completion, wrapper: "cash_gifts")
+    }
+    
+    func getShopProductsAsGuest(params: [String : Any], completion: @escaping([Product]?, Response?) -> Void) {
+        requestArrayWithResponse(.getShopProductsAsGuest(params: params), type: Product.self, completion: completion, wrapper: "products")
     }
 }
 
