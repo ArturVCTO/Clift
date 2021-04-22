@@ -47,10 +47,15 @@ class ViewController: UIViewController {
     
     private func getGuestToken() {
         
+        let session = Session()
+        session.token = ""
         let realm = try! Realm()
         let users = realm.objects(Session.self)
         
-        if(users.isEmpty || users.first!.accountType == "Host"){
+        if(users.isEmpty){
+            try! realm.write {
+                realm.add(session)
+            }
             sharedApiManager.getGuestToken() {(session,result) in
                 if let response = result{
                     if response.isSuccess(){
