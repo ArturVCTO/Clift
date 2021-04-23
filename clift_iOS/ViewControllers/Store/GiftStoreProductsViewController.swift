@@ -102,7 +102,7 @@ class GiftStoreProductsViewController: UIViewController {
         if users.first!.accountType == "Host" {
             userType = .userLogIn
         } else {
-            userType = .userGuest
+            userType = .userGuestPurchaseForMeFlow
         }
     }
     
@@ -269,7 +269,7 @@ extension GiftStoreProductsViewController: UICollectionViewDelegate, UICollectio
         productDetailsVC.currentProduct = products[indexPath.row]
         productDetailsVC.currentEvent = currentEvent
         productDetailsVC.productDetailType = .Product
-        productDetailsVC.paymentType = .userLogIn
+        productDetailsVC.paymentType = userType
         productDetailsVC.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(productDetailsVC, animated: true)
     }
@@ -434,7 +434,8 @@ extension GiftStoreProductsViewController: UISearchBarDelegate {
         if !searchBar.isHidden {
             searchBar.endEditing(true)
             if let query = searchBar.text {
-                getStoreProducts(query: query)
+                queryFromStoreVC = query
+                getStoreProducts(query: queryFromStoreVC)
             }
         }
         searchBar.text = ""

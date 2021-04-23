@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GiftStoreViewController: UIViewController {
 
@@ -22,16 +23,29 @@ class GiftStoreViewController: UIViewController {
     var currentEvent = Event()
     var categories: [Category]! = []
     var shops: [Shop]! = []
+    var userType: PaymentType = .userLogIn
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavBar()
+        setUserType()
         getCurrentEvent()
         getCategories()
         getShops()
         registerCells()
         storeSearchBar.delegate = self
         setTapGesture()
+    }
+    
+    private func setUserType() {
+        let realm = try! Realm()
+        let users = realm.objects(Session.self)
+        
+        if users.first!.accountType == "Host" {
+            userType = .userLogIn
+        } else {
+            userType = .userGuestPurchaseForMeFlow
+        }
     }
     
     private func registerCells() {
@@ -58,7 +72,7 @@ class GiftStoreViewController: UIViewController {
     
     @objc func didTapCartButton(sender: AnyObject){
         let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
-        vc.paymentType = .userLogIn
+        vc.paymentType = userType
         vc.currentEvent = currentEvent
         self.navigationController?.pushViewController(vc, animated: true)
     }
