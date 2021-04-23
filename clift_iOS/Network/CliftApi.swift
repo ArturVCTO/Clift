@@ -100,6 +100,7 @@ enum CliftApi {
     case stripeCheckoutGuest(event: Event,checkout: CheckoutGuest)
     case addItemToCartGuest(quantity: Int,product: EventProduct)
     case getShopProductsAsGuest(params: [String:Any]?)
+    case stripeCheckoutPurchaseForMe(checkout: CheckoutGuest)
 }
 
 extension CliftApi: TargetType {
@@ -277,12 +278,14 @@ extension CliftApi: TargetType {
             return "events/\(event.id)/order_items"
         case .getShopProductsAsGuest(_):
             return "shop_products"
+        case .stripeCheckoutPurchaseForMe(_):
+            return "checkout/create"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .postLoginSession,.recoverPassword,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount,.stripeCheckoutEnvelope,.stripeCheckoutGuest:
+        case .postLoginSession,.recoverPassword,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount,.stripeCheckoutEnvelope,.stripeCheckoutGuest,.stripeCheckoutPurchaseForMe:
             return .post
         case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getProductsAsLoggedInUserLessParams, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest, .getSummaryAllEvents, .getOrderItems, .getShopProductsAsGuest:
             return .get
@@ -450,6 +453,9 @@ extension CliftApi: TargetType {
                 return .requestPlain
             }
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case .stripeCheckoutPurchaseForMe(let checkout):
+            return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
+            
         default:
             return .requestPlain
         }

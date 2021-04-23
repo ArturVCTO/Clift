@@ -327,6 +327,8 @@ protocol ApiCalls {
     
     func getShopProductsAsGuest(params: [String : Any], completion: @escaping([Product]?, Response?) -> Void)
     
+    func stripeCheckoutPurchaseForMe(checkout: CheckoutGuest, completion: @escaping(StripeCheckout?, Response?) -> Void)
+    
 }
 
 extension CliftApiManager: ApiCalls {
@@ -674,6 +676,10 @@ extension CliftApiManager: ApiCalls {
     
     func getShopProductsAsGuest(params: [String : Any], completion: @escaping([Product]?, Response?) -> Void) {
         requestArrayWithResponse(.getShopProductsAsGuest(params: params), type: Product.self, completion: completion, wrapper: "products")
+    }
+    
+    func stripeCheckoutPurchaseForMe(checkout: CheckoutGuest, completion: @escaping (StripeCheckout?, Response?) -> Void) {
+        requestObjectWithResponse(.stripeCheckoutPurchaseForMe(checkout: checkout), type: StripeCheckout.self, completion: completion, wrapper: "")
     }
 }
 
