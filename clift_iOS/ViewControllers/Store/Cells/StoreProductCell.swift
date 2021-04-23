@@ -74,7 +74,7 @@ class StoreProductCell: UICollectionViewCell {
         productNameLabel.text = product.name
         productPriceLabel.text = "$ \(product.price) MXN"
         
-        if userType == .userGuest {
+        if userType == .userGuestPurchaseForMeFlow {
             giftView.isHidden = true
         }
     }
