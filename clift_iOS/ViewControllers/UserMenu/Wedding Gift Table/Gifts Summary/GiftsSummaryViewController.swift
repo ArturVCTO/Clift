@@ -422,18 +422,7 @@ extension GiftsSummaryViewController {
     }
     
     func presentConvertToCredit(product: EventProduct) {
-        /*let convertCreditVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "convertCreditVC") as!
-        ConvertToCreditViewController
-        
-        convertCreditVC.eventProduct = product//eventProducts[selectedIndexPath.row]
-        convertCreditVC.event = event
-        //convertCreditVC.collectionView = self.eventProductsCollectionView
-        //convertCreditVC.selectedIndexPath = self.selectedIndexPath
-        
-        self.parent?.addChild(convertCreditVC)
-        convertCreditVC.view.frame = self.view.frame
-        self.parent?.view.addSubview(convertCreditVC.view)
-        convertCreditVC.didMove(toParent: self)*/
+        requestCredit(eventProduct: product)
     }
     
     func presentRequestProduct(product: EventProduct) {
@@ -485,6 +474,19 @@ extension GiftsSummaryViewController {
         vc.thankType = .Envelope
         vc.cashGiftItem = cashGiftItem
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func requestCredit(eventProduct: EventProduct) {
+        let convertCreditVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "convertCreditVC") as!
+        ConvertToCreditViewController
+        
+        convertCreditVC.eventProduct = eventProduct
+        convertCreditVC.event = event
+        
+        self.parent?.addChild(convertCreditVC)
+        convertCreditVC.view.frame = self.view.frame
+        self.parent?.view.addSubview(convertCreditVC.view)
+        convertCreditVC.didMove(toParent: self)
     }
 }
 
