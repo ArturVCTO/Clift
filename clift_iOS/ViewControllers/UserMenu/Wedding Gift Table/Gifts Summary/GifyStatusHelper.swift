@@ -58,7 +58,7 @@ class GiftStatusHelper {
         return currentGiftStatusHelperOptions
     }
     
-    func manageCollaborativeGift(eventProduct: EventProduct) -> GiftStatusHelperOptions {
+    func manageCollaborativeGift(eventProduct: EventProduct, orderItem: OrderItem) -> GiftStatusHelperOptions {
         var currentGiftStatusHelperOptions = GiftStatusHelperOptions()
         
         currentGiftStatusHelperOptions.credit = .grayIcon
@@ -81,7 +81,7 @@ class GiftStatusHelper {
             break
         }
         
-        if eventProduct.hasBeenThanked {
+        if orderItem.hasBeenThanked {
             currentGiftStatusHelperOptions.envelope = .greenIcon
         } else {
             currentGiftStatusHelperOptions.envelope = .grayIcon
