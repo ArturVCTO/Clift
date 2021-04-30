@@ -203,6 +203,7 @@
 		6127D96E25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */; };
 		612A99BA263367550035D744 /* ShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612A99B9263367550035D744 /* ShippingAddress.swift */; };
 		613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */; };
+		6147EA2C263BCF36008BB72D /* ThankEnvelopeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */; };
 		6152F3A2261FE8F500B349FE /* GifyStatusHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */; };
 		6152F3AF2620249300B349FE /* CashGiftItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152F3AE2620249300B349FE /* CashGiftItem.swift */; };
 		615C982925CE0E39002DB95E /* UserEventProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615C982725CE0E39002DB95E /* UserEventProductCell.swift */; };
@@ -497,6 +498,7 @@
 		6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUserDataEnvelope.swift; sourceTree = "<group>"; };
 		612A99B9263367550035D744 /* ShippingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddress.swift; sourceTree = "<group>"; };
 		613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankEnvelopeMessage.swift; sourceTree = "<group>"; };
 		6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifyStatusHelper.swift; sourceTree = "<group>"; };
 		6152F3AE2620249300B349FE /* CashGiftItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashGiftItem.swift; sourceTree = "<group>"; };
 		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventProductCell.swift; sourceTree = "<group>"; };
@@ -1003,6 +1005,7 @@
 				6185BEBD25C396F300557579 /* CheckoutGuest.swift */,
 				6185BEC225C3989400557579 /* CheckoutUserDataGuest.swift */,
 				612A99B9263367550035D744 /* ShippingAddress.swift */,
+				6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1667,6 +1670,7 @@
 				46DC795423E99CE10013C306 /* Checkout.swift in Sources */,
 				461C5C4B2360B544005FA273 /* ProductsRegistryViewController.swift in Sources */,
 				4604A335230331890041F9AA /* User.swift in Sources */,
+				6147EA2C263BCF36008BB72D /* ThankEnvelopeMessage.swift in Sources */,
 				4604A33B230346C30041F9AA /* Interest.swift in Sources */,
 				4672A88F22F88F25001F374F /* AppDelegate.swift in Sources */,
 				4677DA132415D0F800A2CE28 /* VerifiedResponse.swift in Sources */,

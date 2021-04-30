@@ -77,6 +77,7 @@ enum CliftApi {
     case setDefaultAddress(address: Address)
     case deleteAddress(address: Address)
     case sendThankMessage(thankMessage: ThankMessage,event: Event,orderItem: OrderItem)
+    case sendThankEnvelopeMessage(thankEnvelopeMessage: ThankEnvelopeMessage,event: Event,cashGiftItem: CashGiftItem)
     case addItemToCart(quantity: Int,product: Product)
     case getCartItems
     case createShoppingCart
@@ -229,6 +230,8 @@ extension CliftApi: TargetType {
             return "shipping_addresses/\(address.id)/delete"
         case .sendThankMessage(_,let event,let orderItem):
             return "events/\(event.id)/thank_message/\(orderItem.id)"
+        case .sendThankEnvelopeMessage(_, let event, let cashGiftItem):
+            return "events/\(event.id)/thank_event_pool/\(cashGiftItem.id)"
         case .addItemToCart(_,let product):
             return "cart/\(product.id)/add_item"
         case .getCartItems:
@@ -289,7 +292,7 @@ extension CliftApi: TargetType {
             return .post
         case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getProductsAsLoggedInUserLessParams, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest, .getSummaryAllEvents, .getOrderItems, .getShopProductsAsGuest:
             return .get
-        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductQuantity,.updateEventProductThankMessage,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts, .addItemToCartGuest:
+        case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductQuantity,.updateEventProductThankMessage,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts, .addItemToCartGuest, .sendThankEnvelopeMessage:
             return .put
         case .deleteLogoutSession,.deleteProductFromRegistry,.deleteEventProduct,.deleteEventPool,.deleteBankAccount,.deleteItemFromCart:
             return .delete
@@ -406,6 +409,8 @@ extension CliftApi: TargetType {
             return .requestParameters(parameters: ["shipping_address": address.toJSON()], encoding: JSONEncoding.default)
         case .sendThankMessage(let thankMessage,_,_):
             return .requestParameters(parameters: ["message": thankMessage.toJSON()], encoding: JSONEncoding.default)
+        case .sendThankEnvelopeMessage(let thankEnvelopeMessage,_,_):
+            return .requestParameters(parameters: ["message": thankEnvelopeMessage.toJSON()], encoding: JSONEncoding.default)
         case .addItemToCart(let quantity,_):
             return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity, "wishable_type": "Product"]], encoding: JSONEncoding.default)
         case .updateCartQuantity(_, let quantity):

@@ -281,6 +281,8 @@ protocol ApiCalls {
     
     func sendThankMessage(thankMessage: ThankMessage, event: Event, orderItem: OrderItem, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
     
+    func sendThankEnvelopeMessage(thankEnvelopeMessage: ThankEnvelopeMessage, event: Event, cashGiftItem: CashGiftItem, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
+    
     func addItemToCart(quantity: Int, product: Product, completion: @escaping(CartItem?,Response?) -> Void)
     
     func getCartItems(completion: @escaping([CartItem]?, Response?) -> Void)
@@ -580,6 +582,10 @@ extension CliftApiManager: ApiCalls {
     
     func sendThankMessage(thankMessage: ThankMessage, event: Event, orderItem: OrderItem, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
         requestEmptyObject(.sendThankMessage(thankMessage: thankMessage, event: event, orderItem: orderItem), completion: completion)
+    }
+    
+    func sendThankEnvelopeMessage(thankEnvelopeMessage: ThankEnvelopeMessage, event: Event, cashGiftItem: CashGiftItem, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.sendThankEnvelopeMessage(thankEnvelopeMessage: thankEnvelopeMessage, event: event, cashGiftItem: cashGiftItem), completion: completion)
     }
     
     func addItemToCart(quantity: Int, product: Product, completion: @escaping (CartItem?, Response?) -> Void) {

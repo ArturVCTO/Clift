@@ -327,7 +327,7 @@ extension GiftsSummaryViewController: UITableViewDelegate {
                 presentActionSheet(summaryItem: eventRegistries[indexPath.row])
             }
         case .envelope:
-            presentEnvelopeActionSheet()
+            presentEnvelopeActionSheet(cashGiftItem: cashGiftItems[indexPath.row])
         }
     }
 }
@@ -407,12 +407,12 @@ extension GiftsSummaryViewController {
         present(optionsSheet, animated: true, completion: nil)
     }
     
-    func presentEnvelopeActionSheet() {
+    func presentEnvelopeActionSheet(cashGiftItem: CashGiftItem) {
         
         let optionsSheet = UIAlertController(title: "Opciones", message: nil, preferredStyle: .actionSheet)
         optionsSheet.view.tintColor = UIColor(named: "PrimaryBlue")
         
-        let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO", style: .default, handler: {(action) in self.presentSendMessageEnvelope()}) //TO DO: Replace EventProduct With Envelope Info
+        let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO", style: .default, handler: {(action) in self.presentSendMessageEnvelope(cashGiftItem: cashGiftItem)})
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
         
         optionsSheet.addAction(sendMessage)
@@ -444,8 +444,8 @@ extension GiftsSummaryViewController {
         sendThanksMessage(orderItem: orderItem, eventProduct: eventProduct)
     }
     
-    func presentSendMessageEnvelope() {
-        //sendThanksMessage(orderItem: orderItem)
+    func presentSendMessageEnvelope(cashGiftItem: CashGiftItem) {
+        sendThanksMessageEnvelope(cashGiftItem: cashGiftItem)
     }
 }
 
@@ -473,8 +473,17 @@ extension GiftsSummaryViewController {
     func sendThanksMessage(orderItem: OrderItem, eventProduct: EventProduct) {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "thankGuestVC") as! ThankGuestViewController
         vc.event = self.event
+        vc.thankType = .SummaryProduct
         vc.orderItem = orderItem
         vc.gift = eventProduct
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func sendThanksMessageEnvelope(cashGiftItem: CashGiftItem) {
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "thankGuestVC") as! ThankGuestViewController
+        vc.event = self.event
+        vc.thankType = .Envelope
+        vc.cashGiftItem = cashGiftItem
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
