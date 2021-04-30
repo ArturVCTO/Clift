@@ -76,7 +76,7 @@ enum CliftApi {
     case updateAddress(address: Address)
     case setDefaultAddress(address: Address)
     case deleteAddress(address: Address)
-    case sendThankMessage(thankMessage: ThankMessage,event: Event,eventProduct: EventProduct)
+    case sendThankMessage(thankMessage: ThankMessage,event: Event,orderItem: OrderItem)
     case addItemToCart(quantity: Int,product: Product)
     case getCartItems
     case createShoppingCart
@@ -227,8 +227,8 @@ extension CliftApi: TargetType {
             return "shipping_addresses/\(address.id)/set_default"
         case .deleteAddress(let address):
             return "shipping_addresses/\(address.id)/delete"
-        case .sendThankMessage(_,let event,let eventProduct):
-            return "events/\(event.id)/thank_message/\(eventProduct.id)"
+        case .sendThankMessage(_,let event,let orderItem):
+            return "events/\(event.id)/thank_message/\(orderItem.id)"
         case .addItemToCart(_,let product):
             return "cart/\(product.id)/add_item"
         case .getCartItems:

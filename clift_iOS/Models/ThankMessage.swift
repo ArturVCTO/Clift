@@ -13,16 +13,16 @@ import ObjectMapper_Realm
 import RealmSwift
 
 class ThankMessage: Mappable {
-    var id: String? = ""
+    var name: [String] = [String]()
     var thankMessage: String? = ""
-    var email: String? = ""
+    var email: [String] = [String]()
     
     convenience required init?(map: Map) {
         self.init()
     }
     
     func mapping(map: Map) {
-        id <- map["id"]
+        name <- map["name"]
         thankMessage <- map["thank_message"]
         email <- map["email"]
     }
