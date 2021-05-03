@@ -219,11 +219,12 @@ class ProductDetailsViewController: UIViewController {
     
     @IBAction func addToCartPressed(_ sender: UIButton) {
         
-        if paymentType == .userGuest {
+        switch paymentType {
+        case .userGuest:
             if let eventProduct = currentEventProduct {
                 addEventProductToCart(quantity: 1, product: eventProduct)
             }
-        } else {
+        case .userGuestPurchaseForMeFlow, .userLogIn:
             if let product = currentProduct {
                 addProductToCart(product: product, productQuantity: 1)
             }

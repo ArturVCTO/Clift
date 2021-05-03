@@ -62,8 +62,8 @@ class ConvertToCreditViewController: UIViewController {
         sharedApiManager.convertToCredits(event: event, payload: creditIds) { (_, result) in
             if let response = result{
                 if response.isSuccess(){
-                    self.eventProduct.status = "credit"
-                    self.collectionView.reloadItems(at: [self.selectedIndexPath!])
+                    //self.eventProduct.status = "credit"
+                    //self.collectionView.reloadItems(at: [self.selectedIndexPath!])
                     self.removeAnimation()
                     self.navigationController?.showMessage(NSLocalizedString("Se ha convertido a crédito satisfactoriamente", comment: "Producto actualizado"), type: .success)
                 }else {

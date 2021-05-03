@@ -75,7 +75,8 @@ class FirstColaborativeSummaryTableViewCell: UITableViewCell {
     }
     
     private func setButtons(eventProduct: EventProduct) {
-        let giftStatusHelperOptions = GiftStatusHelper.shared.manageCollaborativeGift(eventProduct: eventProduct)
+        guard let orderItem = eventProduct.orderItems?.first else { return }
+        let giftStatusHelperOptions = GiftStatusHelper.shared.manageCollaborativeGift(eventProduct: eventProduct, orderItem: orderItem)
         
         switch giftStatusHelperOptions.credit {
         case .greenIcon:

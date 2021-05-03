@@ -61,7 +61,9 @@ PODS:
     - SDWebImage/Core (= 5.10.4)
   - SDWebImage/Core (5.10.4)
   - SideMenu (6.1.4)
-  - Stripe (20.0.0)
+  - Stripe (21.4.0):
+    - Stripe/Stripe3DS2 (= 21.4.0)
+  - Stripe/Stripe3DS2 (21.4.0)
   - SwiftSoup (2.2.1)
   - TextFieldEffects (1.6.0)
   - "UITextField+Shake (1.2.1)"
@@ -82,7 +84,7 @@ DEPENDENCIES:
   - RealmSwift
   - SDWebImage (~> 5.0)
   - SideMenu
-  - Stripe (~> 20.0)
+  - Stripe (~> 21.4)
   - SwiftSoup
   - TextFieldEffects
   - "UITextField+Shake (~> 1.2)"
@@ -141,11 +143,11 @@ SPEC CHECKSUMS:
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SideMenu: 7e7f16f229c8d160830e5449308f6562821d762d
-  Stripe: 339e8c50d3a27dcbe9a4f35b98c260fb9715d962
+  Stripe: 7c594b943abb65cf7bc28e37fd5124e65db3ce9e
   SwiftSoup: a91d3c96ecb6f8f13005552ef60f9075aae4a7f3
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
   "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
 
-PODFILE CHECKSUM: 93e1d7db038b3da8e5303ba862ec14e379d3f042
+PODFILE CHECKSUM: 3a010de07a9d81cc34478811aa545b852fbf253e
 
 COCOAPODS: 1.10.0

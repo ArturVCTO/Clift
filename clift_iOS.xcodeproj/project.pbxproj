@@ -14,6 +14,9 @@
 		0B6174342574BB8A00FD7EAC /* EventHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6174332574BB8A00FD7EAC /* EventHeaderCell.swift */; };
 		0B6174392574BDE400FD7EAC /* EventGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B6174382574BDE400FD7EAC /* EventGiftListViewController.swift */; };
 		0B82FA5C2554FC60004BE0A3 /* PasswordEmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B82FA5B2554FC60004BE0A3 /* PasswordEmailSentViewController.swift */; };
+		1ABC246DE0548B639F96F4B6 /* Pods_clift_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D00C310A758EFBE492AEF8E /* Pods_clift_iOS.framework */; };
+		1D353A7CA6D50C645C3AA4EE /* Pods_clift_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1C35E6E291810CBA5F66F2A /* Pods_clift_iOSTests.framework */; };
+		2A2EF1A420D9E33C8C3AA364 /* Pods_clift_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE6A9ADD0582238D9DDDA66 /* Pods_clift_iOSUITests.framework */; };
 		46029C56232804B7008A8EAE /* PriceRangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46029C55232804B7008A8EAE /* PriceRangeTableViewCell.swift */; };
 		46029C5823281270008A8EAE /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46029C5723281270008A8EAE /* RangeSlider.swift */; };
 		46029C5A23284527008A8EAE /* RangeSliderTrackLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46029C5923284527008A8EAE /* RangeSliderTrackLayer.swift */; };
@@ -201,7 +204,9 @@
 		6120F4A225CB7430005996E6 /* UserGiftTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6120F4A125CB7430005996E6 /* UserGiftTableViewController.swift */; };
 		6127D94925B3CF3D00C8250A /* CheckoutEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127D94825B3CF3D00C8250A /* CheckoutEnvelope.swift */; };
 		6127D96E25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */; };
+		612A99BA263367550035D744 /* ShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612A99B9263367550035D744 /* ShippingAddress.swift */; };
 		613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */; };
+		6147EA2C263BCF36008BB72D /* ThankEnvelopeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */; };
 		6152F3A2261FE8F500B349FE /* GifyStatusHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */; };
 		6152F3AF2620249300B349FE /* CashGiftItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152F3AE2620249300B349FE /* CashGiftItem.swift */; };
 		615C982925CE0E39002DB95E /* UserEventProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615C982725CE0E39002DB95E /* UserEventProductCell.swift */; };
@@ -237,8 +242,6 @@
 		61F0C2D825A3C89700AA58CF /* GuestEventProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */; };
 		61F86AE825B38B4400AFDCE5 /* EnvelopeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F86AE725B38B4400AFDCE5 /* EnvelopeInfoViewController.swift */; };
 		61F86B2125B3AF7700AFDCE5 /* EnvelopeFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F86B2025B3AF7700AFDCE5 /* EnvelopeFlow.storyboard */; };
-		85D1161D2D04F9B25477BAE8 /* Pods_clift_iOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */; };
-		A9D3728582D9B5913F8C5C14 /* Pods_clift_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */; };
 		BD5ECC2B251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */; };
 		BD5ECC2C251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */; };
 		BD5ECC2D251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */; };
@@ -276,7 +279,6 @@
 		F35E9CC225C8B4C200B54192 /* GiftsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */; };
 		F370B0DD2601800E00608B36 /* GiftsSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370B0DC2601800E00608B36 /* GiftsSummaryViewController.swift */; };
 		F38DD6A325D0C58800F7C8D1 /* WeddingProfileProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DD6A225D0C58800F7C8D1 /* WeddingProfileProduct.swift */; };
-		FB69CC8CE945481E9839D8BF /* Pods_clift_iOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,11 +306,7 @@
 		0B6174332574BB8A00FD7EAC /* EventHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHeaderCell.swift; sourceTree = "<group>"; };
 		0B6174382574BDE400FD7EAC /* EventGiftListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventGiftListViewController.swift; sourceTree = "<group>"; };
 		0B82FA5B2554FC60004BE0A3 /* PasswordEmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordEmailSentViewController.swift; sourceTree = "<group>"; };
-		20C0FCDBF82262C61E2BFDDB /* Pods-clift_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.release.xcconfig"; sourceTree = "<group>"; };
-		2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3803F0F381BDC0ACD9A6BEAF /* Pods-clift_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		38F58FBAC3AAF54ABB2FDD4B /* Pods-clift_iOSUITests.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.mock.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.mock.xcconfig"; sourceTree = "<group>"; };
-		39A0D06D6507D97CD5292FF9 /* Pods-clift_iOSTests.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.mock.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.mock.xcconfig"; sourceTree = "<group>"; };
+		326EC7F06F7F5A1B7D58D836 /* Pods-clift_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.release.xcconfig"; path = "Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
 		46029C55232804B7008A8EAE /* PriceRangeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceRangeTableViewCell.swift; sourceTree = "<group>"; };
 		46029C5723281270008A8EAE /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
 		46029C5923284527008A8EAE /* RangeSliderTrackLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSliderTrackLayer.swift; sourceTree = "<group>"; };
@@ -491,10 +489,15 @@
 		46EC9D9D232BF33B00950139 /* ProductsCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewLayout.swift; sourceTree = "<group>"; };
 		46EC9DA12331493D00950139 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		46EC9DA323314FFA00950139 /* SubcategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		4AE6A9ADD0582238D9DDDA66 /* Pods_clift_iOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B3354EAD5AD88E49B0082AF /* Pods-clift_iOS.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.canary.xcconfig"; path = "Target Support Files/Pods-clift_iOS/Pods-clift_iOS.canary.xcconfig"; sourceTree = "<group>"; };
+		5D00C310A758EFBE492AEF8E /* Pods_clift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6120F4A125CB7430005996E6 /* UserGiftTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGiftTableViewController.swift; sourceTree = "<group>"; };
 		6127D94825B3CF3D00C8250A /* CheckoutEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutEnvelope.swift; sourceTree = "<group>"; };
 		6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUserDataEnvelope.swift; sourceTree = "<group>"; };
+		612A99B9263367550035D744 /* ShippingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddress.swift; sourceTree = "<group>"; };
 		613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankEnvelopeMessage.swift; sourceTree = "<group>"; };
 		6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifyStatusHelper.swift; sourceTree = "<group>"; };
 		6152F3AE2620249300B349FE /* CashGiftItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashGiftItem.swift; sourceTree = "<group>"; };
 		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventProductCell.swift; sourceTree = "<group>"; };
@@ -530,16 +533,17 @@
 		61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuestEventProductCell.xib; sourceTree = "<group>"; };
 		61F86AE725B38B4400AFDCE5 /* EnvelopeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvelopeInfoViewController.swift; sourceTree = "<group>"; };
 		61F86B2025B3AF7700AFDCE5 /* EnvelopeFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EnvelopeFlow.storyboard; sourceTree = "<group>"; };
-		63E2F7BED90D17510D41F45C /* Pods-clift_iOSUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.release.xcconfig"; sourceTree = "<group>"; };
-		692982E91D6BF3F5E0781046 /* Pods-clift_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		6B9CC23E02EA53603D9BFAD5 /* Pods-clift_iOSUITests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.canary.xcconfig"; sourceTree = "<group>"; };
-		8B1E86386FC9F3A216AD6DBB /* Pods-clift_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		A9E9B21D2B9B464893AAAFB0 /* Pods-clift_iOS.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.canary.xcconfig"; sourceTree = "<group>"; };
+		6F4281962B9C2B0148E55DE1 /* Pods-clift_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.debug.xcconfig"; path = "Target Support Files/Pods-clift_iOS/Pods-clift_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		7235FC90FAEF1EDC339B9D02 /* Pods-clift_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.release.xcconfig"; path = "Target Support Files/Pods-clift_iOS/Pods-clift_iOS.release.xcconfig"; sourceTree = "<group>"; };
+		873EC12B38B35B3AFE909E0C /* Pods-clift_iOSUITests.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.mock.xcconfig"; path = "Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.mock.xcconfig"; sourceTree = "<group>"; };
+		A2041AE0D7663F1401CA80A5 /* Pods-clift_iOSTests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.canary.xcconfig"; path = "Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.canary.xcconfig"; sourceTree = "<group>"; };
+		AF478D1C79971C191CA5B10D /* Pods-clift_iOSTests.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.mock.xcconfig"; path = "Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.mock.xcconfig"; sourceTree = "<group>"; };
+		B1C35E6E291810CBA5F66F2A /* Pods_clift_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestGiftListViewController.swift; sourceTree = "<group>"; };
 		BD5ECC28251EAA5600A1F45F /* SearchEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventCell.swift; sourceTree = "<group>"; };
 		BD5ECC29251EAA5600A1F45F /* RegistryGuestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistryGuestCell.swift; sourceTree = "<group>"; };
 		BD5ECC2A251EAA5600A1F45F /* SearchEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventTableViewController.swift; sourceTree = "<group>"; };
-		C249504948AE023D846380FD /* Pods-clift_iOS.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.mock.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOS/Pods-clift_iOS.mock.xcconfig"; sourceTree = "<group>"; };
+		BFB612A5522175E7114C10B5 /* Pods-clift_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.release.xcconfig"; path = "Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE1BC9F224D3766C003D49BE /* GuestInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestInfoViewController.swift; sourceTree = "<group>"; };
 		CE317A3424F6E25F002EFA80 /* NumberOfCollaboratorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfCollaboratorsViewController.swift; sourceTree = "<group>"; };
 		CE59EADF24F0714300EA97E5 /* CollaboratorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorsViewController.swift; sourceTree = "<group>"; };
@@ -547,13 +551,13 @@
 		CE7B9EFE2509395500E8ED9D /* ConvertToCreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertToCreditViewController.swift; sourceTree = "<group>"; };
 		CE8D41C324BCB9E6005FA091 /* Tinos-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Tinos-Bold.ttf"; sourceTree = "<group>"; };
 		CE9125A324F830BA00B30F7F /* ThankCollaboratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankCollaboratorViewController.swift; sourceTree = "<group>"; };
-		CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB74B092507E8750022BFA1 /* SplashScreenMobile.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = SplashScreenMobile.mp4; sourceTree = "<group>"; };
 		CEC006A3250A894100E54337 /* ActivityTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTabViewController.swift; sourceTree = "<group>"; };
 		CEF53FAF24F429B500D7C997 /* CollaboratorInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollaboratorInfoTableViewCell.swift; sourceTree = "<group>"; };
 		CEF53FB324F4461D00D7C997 /* OrderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItem.swift; sourceTree = "<group>"; };
-		DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.canary.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.canary.xcconfig"; sourceTree = "<group>"; };
-		F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_clift_iOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8C90F7ED4856DD60B567C13 /* Pods-clift_iOSUITests.canary.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.canary.xcconfig"; path = "Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.canary.xcconfig"; sourceTree = "<group>"; };
+		DC999E73F2F12E2205A4CD7C /* Pods-clift_iOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EAB5C461EFFF8879546A04FC /* Pods-clift_iOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.debug.xcconfig"; path = "Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F32A8D9D25D08A5E00BE01AE /* WeddingProfileProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingProfileProductsView.swift; sourceTree = "<group>"; };
 		F330BDED2603C1F3009F27B2 /* GiftsSummary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftsSummary.storyboard; sourceTree = "<group>"; };
 		F330BDF32603D3F8009F27B2 /* GiftSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftSummaryItem.swift; sourceTree = "<group>"; };
@@ -566,7 +570,7 @@
 		F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftsViewController.storyboard; sourceTree = "<group>"; };
 		F370B0DC2601800E00608B36 /* GiftsSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsSummaryViewController.swift; sourceTree = "<group>"; };
 		F38DD6A225D0C58800F7C8D1 /* WeddingProfileProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingProfileProduct.swift; sourceTree = "<group>"; };
-		FC9BC5CE8D99C231599E05C1 /* Pods-clift_iOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-clift_iOSTests/Pods-clift_iOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		FDB342972F83B84300035A71 /* Pods-clift_iOS.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.mock.xcconfig"; path = "Target Support Files/Pods-clift_iOS/Pods-clift_iOS.mock.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -574,7 +578,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9D3728582D9B5913F8C5C14 /* Pods_clift_iOS.framework in Frameworks */,
+				1ABC246DE0548B639F96F4B6 /* Pods_clift_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,7 +586,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				85D1161D2D04F9B25477BAE8 /* Pods_clift_iOSTests.framework in Frameworks */,
+				1D353A7CA6D50C645C3AA4EE /* Pods_clift_iOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,19 +594,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FB69CC8CE945481E9839D8BF /* Pods_clift_iOSUITests.framework in Frameworks */,
+				2A2EF1A420D9E33C8C3AA364 /* Pods_clift_iOSUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		15F97B7E05A2F6862887FA65 /* Frameworks */ = {
+		116233B1E4C67FE84E4C930D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CEB275D57AC94585AED2F908 /* Pods_clift_iOS.framework */,
-				F24F5FED863C8D37CEC56B4F /* Pods_clift_iOSTests.framework */,
-				2F99296992149495A4C2208B /* Pods_clift_iOSUITests.framework */,
+				5D00C310A758EFBE492AEF8E /* Pods_clift_iOS.framework */,
+				B1C35E6E291810CBA5F66F2A /* Pods_clift_iOSTests.framework */,
+				4AE6A9ADD0582238D9DDDA66 /* Pods_clift_iOSUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -883,8 +887,8 @@
 				4672A8A222F88F27001F374F /* clift_iOSTests */,
 				4672A8AD22F88F27001F374F /* clift_iOSUITests */,
 				4672A88C22F88F25001F374F /* Products */,
-				AC214C0E4A7509E2E3ABFDFF /* Pods */,
-				15F97B7E05A2F6862887FA65 /* Frameworks */,
+				82BFC98F06E1C65CE5F6B5EE /* Pods */,
+				116233B1E4C67FE84E4C930D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1000,6 +1004,8 @@
 				6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */,
 				6185BEBD25C396F300557579 /* CheckoutGuest.swift */,
 				6185BEC225C3989400557579 /* CheckoutUserDataGuest.swift */,
+				612A99B9263367550035D744 /* ShippingAddress.swift */,
+				6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1165,23 +1171,24 @@
 			path = Checkout;
 			sourceTree = "<group>";
 		};
-		AC214C0E4A7509E2E3ABFDFF /* Pods */ = {
+		82BFC98F06E1C65CE5F6B5EE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8B1E86386FC9F3A216AD6DBB /* Pods-clift_iOS.debug.xcconfig */,
-				20C0FCDBF82262C61E2BFDDB /* Pods-clift_iOS.release.xcconfig */,
-				3803F0F381BDC0ACD9A6BEAF /* Pods-clift_iOSTests.debug.xcconfig */,
-				FC9BC5CE8D99C231599E05C1 /* Pods-clift_iOSTests.release.xcconfig */,
-				692982E91D6BF3F5E0781046 /* Pods-clift_iOSUITests.debug.xcconfig */,
-				63E2F7BED90D17510D41F45C /* Pods-clift_iOSUITests.release.xcconfig */,
-				C249504948AE023D846380FD /* Pods-clift_iOS.mock.xcconfig */,
-				A9E9B21D2B9B464893AAAFB0 /* Pods-clift_iOS.canary.xcconfig */,
-				39A0D06D6507D97CD5292FF9 /* Pods-clift_iOSTests.mock.xcconfig */,
-				DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */,
-				38F58FBAC3AAF54ABB2FDD4B /* Pods-clift_iOSUITests.mock.xcconfig */,
-				6B9CC23E02EA53603D9BFAD5 /* Pods-clift_iOSUITests.canary.xcconfig */,
+				6F4281962B9C2B0148E55DE1 /* Pods-clift_iOS.debug.xcconfig */,
+				FDB342972F83B84300035A71 /* Pods-clift_iOS.mock.xcconfig */,
+				5B3354EAD5AD88E49B0082AF /* Pods-clift_iOS.canary.xcconfig */,
+				7235FC90FAEF1EDC339B9D02 /* Pods-clift_iOS.release.xcconfig */,
+				EAB5C461EFFF8879546A04FC /* Pods-clift_iOSTests.debug.xcconfig */,
+				AF478D1C79971C191CA5B10D /* Pods-clift_iOSTests.mock.xcconfig */,
+				A2041AE0D7663F1401CA80A5 /* Pods-clift_iOSTests.canary.xcconfig */,
+				BFB612A5522175E7114C10B5 /* Pods-clift_iOSTests.release.xcconfig */,
+				DC999E73F2F12E2205A4CD7C /* Pods-clift_iOSUITests.debug.xcconfig */,
+				873EC12B38B35B3AFE909E0C /* Pods-clift_iOSUITests.mock.xcconfig */,
+				D8C90F7ED4856DD60B567C13 /* Pods-clift_iOSUITests.canary.xcconfig */,
+				326EC7F06F7F5A1B7D58D836 /* Pods-clift_iOSUITests.release.xcconfig */,
 			);
 			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		BD5ECC25251EAA5600A1F45F /* Guest */ = {
@@ -1304,12 +1311,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4672A8B322F88F27001F374F /* Build configuration list for PBXNativeTarget "clift_iOS" */;
 			buildPhases = (
-				1C0ABD4201AFD8A6B8928DA8 /* [CP] Check Pods Manifest.lock */,
+				3B19328C781CF1D463A8BF0A /* [CP] Check Pods Manifest.lock */,
 				4672A88722F88F25001F374F /* Sources */,
 				4672A88822F88F25001F374F /* Frameworks */,
 				4672A88922F88F25001F374F /* Resources */,
-				E3498C06711FD586DA720EEB /* [CP] Embed Pods Frameworks */,
-				E0C18DCA36A485893B85676F /* [CP] Copy Pods Resources */,
+				248D09A60AFA549DD06D6B3D /* [CP] Embed Pods Frameworks */,
+				6EB90D9F14E9E1139183624F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1324,7 +1331,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4672A8B622F88F27001F374F /* Build configuration list for PBXNativeTarget "clift_iOSTests" */;
 			buildPhases = (
-				3299738C46BEAB3374119C27 /* [CP] Check Pods Manifest.lock */,
+				5F2E6253B25A4C73531B934A /* [CP] Check Pods Manifest.lock */,
 				4672A89B22F88F27001F374F /* Sources */,
 				4672A89C22F88F27001F374F /* Frameworks */,
 				4672A89D22F88F27001F374F /* Resources */,
@@ -1343,7 +1350,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4672A8B922F88F27001F374F /* Build configuration list for PBXNativeTarget "clift_iOSUITests" */;
 			buildPhases = (
-				BF7E536881C758B776D8BEED /* [CP] Check Pods Manifest.lock */,
+				0A7BA7F023AE182CB198A544 /* [CP] Check Pods Manifest.lock */,
 				4672A8A622F88F27001F374F /* Sources */,
 				4672A8A722F88F27001F374F /* Frameworks */,
 				4672A8A822F88F27001F374F /* Resources */,
@@ -1471,51 +1478,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1C0ABD4201AFD8A6B8928DA8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-clift_iOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3299738C46BEAB3374119C27 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-clift_iOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BF7E536881C758B776D8BEED /* [CP] Check Pods Manifest.lock */ = {
+		0A7BA7F023AE182CB198A544 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1537,24 +1500,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E0C18DCA36A485893B85676F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E3498C06711FD586DA720EEB /* [CP] Embed Pods Frameworks */ = {
+		248D09A60AFA549DD06D6B3D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1569,6 +1515,67 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3B19328C781CF1D463A8BF0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-clift_iOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F2E6253B25A4C73531B934A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-clift_iOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6EB90D9F14E9E1139183624F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-clift_iOS/Pods-clift_iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1617,6 +1624,7 @@
 				460836A92386FF890052E73A /* InvitationTemplatesViewController.swift in Sources */,
 				4604A32B22FCDA4B0041F9AA /* SecondStepOnboardingViewController.swift in Sources */,
 				462A289D238C51CD002ECAF3 /* InvitationEditFormTableViewController.swift in Sources */,
+				612A99BA263367550035D744 /* ShippingAddress.swift in Sources */,
 				464D1CC62410130200CBC546 /* BankAccount.swift in Sources */,
 				46029C56232804B7008A8EAE /* PriceRangeTableViewCell.swift in Sources */,
 				6167D6DA25EF176E0010410F /* StoreProductCell.swift in Sources */,
@@ -1663,6 +1671,7 @@
 				46DC795423E99CE10013C306 /* Checkout.swift in Sources */,
 				461C5C4B2360B544005FA273 /* ProductsRegistryViewController.swift in Sources */,
 				4604A335230331890041F9AA /* User.swift in Sources */,
+				6147EA2C263BCF36008BB72D /* ThankEnvelopeMessage.swift in Sources */,
 				4604A33B230346C30041F9AA /* Interest.swift in Sources */,
 				4672A88F22F88F25001F374F /* AppDelegate.swift in Sources */,
 				4677DA132415D0F800A2CE28 /* VerifiedResponse.swift in Sources */,
@@ -1916,7 +1925,7 @@
 		};
 		4604A33D23045FA30041F9AA /* Canary */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9E9B21D2B9B464893AAAFB0 /* Pods-clift_iOS.canary.xcconfig */;
+			baseConfigurationReference = 5B3354EAD5AD88E49B0082AF /* Pods-clift_iOS.canary.xcconfig */;
 			buildSettings = {
 				API_BASE_URL_ENDPOINT = "http://api.clift.axented.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1942,7 +1951,7 @@
 		};
 		4604A33E23045FA30041F9AA /* Canary */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE007AD1C64ECCDB96B36C45 /* Pods-clift_iOSTests.canary.xcconfig */;
+			baseConfigurationReference = A2041AE0D7663F1401CA80A5 /* Pods-clift_iOSTests.canary.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1963,7 +1972,7 @@
 		};
 		4604A33F23045FA30041F9AA /* Canary */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B9CC23E02EA53603D9BFAD5 /* Pods-clift_iOSUITests.canary.xcconfig */;
+			baseConfigurationReference = D8C90F7ED4856DD60B567C13 /* Pods-clift_iOSUITests.canary.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -2045,7 +2054,7 @@
 		};
 		4604A34123045FAF0041F9AA /* Mock */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C249504948AE023D846380FD /* Pods-clift_iOS.mock.xcconfig */;
+			baseConfigurationReference = FDB342972F83B84300035A71 /* Pods-clift_iOS.mock.xcconfig */;
 			buildSettings = {
 				API_BASE_URL_ENDPOINT = "https://ezmock.herokuapp.com/api/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2071,7 +2080,7 @@
 		};
 		4604A34223045FAF0041F9AA /* Mock */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39A0D06D6507D97CD5292FF9 /* Pods-clift_iOSTests.mock.xcconfig */;
+			baseConfigurationReference = AF478D1C79971C191CA5B10D /* Pods-clift_iOSTests.mock.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2092,7 +2101,7 @@
 		};
 		4604A34323045FAF0041F9AA /* Mock */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 38F58FBAC3AAF54ABB2FDD4B /* Pods-clift_iOSUITests.mock.xcconfig */;
+			baseConfigurationReference = 873EC12B38B35B3AFE909E0C /* Pods-clift_iOSUITests.mock.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -2230,7 +2239,7 @@
 		};
 		4672A8B422F88F27001F374F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B1E86386FC9F3A216AD6DBB /* Pods-clift_iOS.debug.xcconfig */;
+			baseConfigurationReference = 6F4281962B9C2B0148E55DE1 /* Pods-clift_iOS.debug.xcconfig */;
 			buildSettings = {
 				API_BASE_URL_ENDPOINT = "http://api.clift.axented.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2256,7 +2265,7 @@
 		};
 		4672A8B522F88F27001F374F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 20C0FCDBF82262C61E2BFDDB /* Pods-clift_iOS.release.xcconfig */;
+			baseConfigurationReference = 7235FC90FAEF1EDC339B9D02 /* Pods-clift_iOS.release.xcconfig */;
 			buildSettings = {
 				API_BASE_URL_ENDPOINT = "https://api.cliftapp.com/";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -2282,7 +2291,7 @@
 		};
 		4672A8B722F88F27001F374F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3803F0F381BDC0ACD9A6BEAF /* Pods-clift_iOSTests.debug.xcconfig */;
+			baseConfigurationReference = EAB5C461EFFF8879546A04FC /* Pods-clift_iOSTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2303,7 +2312,7 @@
 		};
 		4672A8B822F88F27001F374F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC9BC5CE8D99C231599E05C1 /* Pods-clift_iOSTests.release.xcconfig */;
+			baseConfigurationReference = BFB612A5522175E7114C10B5 /* Pods-clift_iOSTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2324,7 +2333,7 @@
 		};
 		4672A8BA22F88F27001F374F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 692982E91D6BF3F5E0781046 /* Pods-clift_iOSUITests.debug.xcconfig */;
+			baseConfigurationReference = DC999E73F2F12E2205A4CD7C /* Pods-clift_iOSUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -2344,7 +2353,7 @@
 		};
 		4672A8BB22F88F27001F374F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 63E2F7BED90D17510D41F45C /* Pods-clift_iOSUITests.release.xcconfig */;
+			baseConfigurationReference = 326EC7F06F7F5A1B7D58D836 /* Pods-clift_iOSUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

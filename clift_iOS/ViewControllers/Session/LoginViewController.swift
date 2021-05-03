@@ -40,6 +40,10 @@ class LoginViewController: UIViewController {
             sharedApiManager.login(email: userEmail, password: userPassword) { (session, result) in
                 if let response = result {
                     if response.isSuccess() {
+                        let realm = try! Realm()
+                        try! realm.write {
+                            realm.deleteAll()
+                        }
                         if (session != nil && session?.token != "") {
                             let realm = try! Realm()
                             try! realm.write {

@@ -13,6 +13,7 @@ import Stripe
 enum PaymentType: String {
     case userLogIn
     case userGuest
+    case userGuestPurchaseForMeFlow
 }
 
 class CheckoutViewController: UIViewController {
@@ -121,8 +122,9 @@ class CheckoutViewController: UIViewController {
         if #available(iOS 13.0, *) {
             
             switch paymentType {
-            case .userLogIn:
+            case .userLogIn, .userGuestPurchaseForMeFlow:
                 let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "paymentTableVC") as! PaymentTableViewController
+                vc.userType = paymentType
                 vc.products = self.cartItems
                 vc.totalAmount = self.totalAmount
                 vc.subtotalAmount = self.subTotalAmount
@@ -139,8 +141,9 @@ class CheckoutViewController: UIViewController {
         } else {
             
             switch paymentType {
-            case .userLogIn:
+            case .userLogIn, .userGuestPurchaseForMeFlow:
                 let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "paymentTableVC") as! PaymentTableViewController
+                vc.userType = paymentType
                 vc.products = self.cartItems
                 vc.totalAmount = self.totalAmount
                 vc.subtotalAmount = self.subTotalAmount

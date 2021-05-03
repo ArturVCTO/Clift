@@ -27,7 +27,7 @@ target 'clift_iOS' do
   pod 'SwiftSoup'
   pod 'ImageSlideshow', '~> 1.8'
   pod 'GoogleSignIn'
-  pod 'Stripe', '~> 20.0'
+  pod 'Stripe', '~> 21.4'
   pod 'IQKeyboardManagerSwift'
   pod 'SDWebImage', '~> 5.0'
 

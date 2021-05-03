@@ -43,7 +43,6 @@ class SearchEventTableViewController: UITableViewController, UISearchBarDelegate
 	
     // MARK: - Table view data source
     @IBAction func BackButtonPressed(_ sender: UIBarButtonItem) {
-        deleteTemporarySession()
         view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
 	

@@ -78,9 +78,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     }
     
     func showCreateSessionFlow() {
-        var view: UIViewController?
         
-        view = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "InitialViewController")
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let view = storyBoard.instantiateViewController(withIdentifier: "InitialNavigationController") as! UINavigationController
+        view.modalPresentationStyle = .fullScreen
+        
         self.window?.rootViewController = view
         self.window?.makeKeyAndVisible()
     }

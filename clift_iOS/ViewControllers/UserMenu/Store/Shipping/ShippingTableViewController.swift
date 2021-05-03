@@ -33,6 +33,7 @@ class ShippingTableViewController: UITableViewController {
     var cities: [AddressCity] = []
     var states: [AddressState] = []
     var country: [AddressCountry] = []
+    var userType: PaymentType = .userLogIn
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +92,13 @@ class ShippingTableViewController: UITableViewController {
                }
            }
        }
+    
+    func registerAddress(address: Address) {
+        prepareAddress()
+        self.paymentTableVC.hasAddressSet = true
+        paymentTableVC.address = address
+        self.navigationController?.popViewController(animated: true)
+    }
     
     func setupDropDowns() {
         self.setupCountryDropDown()
@@ -179,8 +187,14 @@ class ShippingTableViewController: UITableViewController {
     }
     
     @IBAction func useAddressButtonTapped(_ sender: Any) {
-        if let address = self.address {
-            self.addAddress(address: address)
+        if userType == .userLogIn {
+            if let address = self.address {
+                self.addAddress(address: address)
+            }
+        } else {
+            if let address = self.address {
+                registerAddress(address: address)
+            }
         }
     }
 }
