@@ -75,8 +75,6 @@ class UserGiftTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        productsCollectionView.collectionViewLayout = layout
-
         getPoolsAndRegistries()
         setNavBar()
         registerCells()
@@ -109,12 +107,6 @@ class UserGiftTableViewController: UIViewController {
     private func registerCells() {
         productsCollectionView.register(UINib(nibName: "UserEventProductCell", bundle: nil), forCellWithReuseIdentifier: "UserEventProductCell")
     }
-    
-    var layout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 150, height: 300)
-        return layout
-    }()
     
     private func setCollectionViewHeight() {
         collectionViewHeight.constant = CGFloat(productsCollectionView.collectionViewLayout.collectionViewContentSize.height)
@@ -404,7 +396,7 @@ extension UserGiftTableViewController: SideFilterSelectionDelegate {
 }
 
 // MARK: Extension Collection View Delegate and Data Source
-extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -456,6 +448,10 @@ extension UserGiftTableViewController: UICollectionViewDelegate, UICollectionVie
             self.productsCollectionView.reloadData()
             self.setCollectionViewHeight()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 150 - 8, height: 280)
     }
 }
 
