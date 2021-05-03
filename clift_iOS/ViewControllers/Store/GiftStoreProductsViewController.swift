@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 protocol SearchProductsDelegate {
     func didAddProductToCart()
@@ -62,6 +63,7 @@ class GiftStoreProductsViewController: UIViewController {
     var queryFromStoreVC = ""
     var fromSearch = false
     var searchProductsDelegate: SearchProductsDelegate!
+    var userType: PaymentType = .userLogIn
     
     private var actualPage = 1
     private var numberOfPages = 0
@@ -76,7 +78,12 @@ class GiftStoreProductsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        getEventAndProducts()
+        setUserType()
+        if userType == .userLogIn {
+            getEventAndProducts()
+        } else {
+            getStoreProductsAsGuest(query: queryFromStoreVC)
+        }
         setNavBar()
         setSubgroupLabel()
         registerCells()
@@ -84,6 +91,17 @@ class GiftStoreProductsViewController: UIViewController {
         selectButton(button: firstMenuButton)
         if fromSearch {
             subgroupView.isHidden = true
+        }
+    }
+    
+    private func setUserType() {
+        let realm = try! Realm()
+        let users = realm.objects(Session.self)
+        
+        if users.first!.accountType == "Host" {
+            userType = .userLogIn
+        } else {
+            userType = .userGuestPurchaseForMeFlow
         }
     }
     
@@ -108,13 +126,14 @@ class GiftStoreProductsViewController: UIViewController {
     
     @objc func didTapCartButton(sender: AnyObject){
         let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "checkoutVC") as! CheckoutViewController
-        vc.paymentType = .userLogIn
+        vc.paymentType = userType
         vc.currentEvent = currentEvent
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     private func setSubgroupLabel() {
         subgroupLabel.text = subgroupNameString.uppercased()
+        filterView.layer.cornerRadius = 10
     }
 
     @objc func didTapSearchButton(sender: AnyObject){
@@ -125,10 +144,6 @@ class GiftStoreProductsViewController: UIViewController {
         }
         
         isSearchBarHidden = !isSearchBarHidden
-    }
-    
-    func setup(event: Event) {
-        filterView.layer.cornerRadius = 10
     }
     
     private func registerCells() {
@@ -234,7 +249,7 @@ extension GiftStoreProductsViewController: UICollectionViewDelegate, UICollectio
         if let cell = productsCollectionView.dequeueReusableCell(withReuseIdentifier: "StoreProductCell", for: indexPath) as? StoreProductCell {
             
             cell.storeProductCellDelegate = self
-            cell.configure(product: products[indexPath.row])
+            cell.configure(product: products[indexPath.row], userType: userType)
             cell.cellWidth = (collectionView.frame.size.width - 25) / 2
             return cell
         }
@@ -247,7 +262,7 @@ extension GiftStoreProductsViewController: UICollectionViewDelegate, UICollectio
         productDetailsVC.currentProduct = products[indexPath.row]
         productDetailsVC.currentEvent = currentEvent
         productDetailsVC.productDetailType = .Product
-        productDetailsVC.paymentType = .userLogIn
+        productDetailsVC.paymentType = userType
         productDetailsVC.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(productDetailsVC, animated: true)
     }
@@ -416,7 +431,8 @@ extension GiftStoreProductsViewController: UISearchBarDelegate {
         if !searchBar.isHidden {
             searchBar.endEditing(true)
             if let query = searchBar.text {
-                getStoreProducts(query: query)
+                queryFromStoreVC = query
+                getStoreProducts(query: queryFromStoreVC)
             }
         }
         searchBar.text = ""
@@ -484,7 +500,39 @@ extension GiftStoreProductsViewController: UIPickerViewDelegate {
 // MARK: Extension REST APIs
 extension GiftStoreProductsViewController {
     
-    func getStoreProducts(query: String = "") {
+    func getStoreProductsAsGuest(query: String) {
+        self.presentLoader()
+        products.removeAll()
+        reloadCollectionView()
+        filtersDic["page"] = actualPage
+        filtersDic["sort_by"] = currentOrder.rawValue
+        filtersDic["q"] = query
+        sharedApiManager.getShopProductsAsGuest(params: filtersDic) { (products,result) in
+            
+            if let response = result {
+                if (response.isSuccess()) {
+                    self.products = products
+                    guard let json = try? JSONSerialization.jsonObject(with: response.data,
+                                                                       options: []) as? [String: Any],
+                          let meta = json["meta"] as? [String: Any],
+                          let pagination = Pagination(JSON: meta) else {
+                        return
+                    }
+                    self.actualPage = pagination.currentPage
+                    self.numberOfPages = pagination.totalPages
+                    self.paginationLabel.text = "Mostrando del \(pagination.from) al \(pagination.to) de \(pagination.totalCount)"
+                    self.reloadCollectionView()
+                }
+            }
+            self.setPaginationMenu()
+            self.setButtonValues()
+            self.addOrDeleteMenuButtonsDependingOnNumberOfPages()
+            self.lastButtonPressed = nil
+            self.dismissLoader()
+        }
+    }
+    
+    func getStoreProductsAsLogInUser(query: String) {
         self.presentLoader()
         products.removeAll()
         reloadCollectionView()
@@ -515,6 +563,14 @@ extension GiftStoreProductsViewController {
             self.dismissLoader()
         }
     }
+    
+    func getStoreProducts(query: String = "") {
+        if userType == .userLogIn {
+            getStoreProductsAsLogInUser(query: query)
+        } else {
+            getStoreProductsAsGuest(query: query)
+        }
+    }
         
     func getEventAndProducts() {
         sharedApiManager.getEvents() { (events, result) in
@@ -523,8 +579,7 @@ extension GiftStoreProductsViewController {
                 if (response.isSuccess()) {
                     if let currentEvent = events?.first {
                         self.currentEvent = currentEvent
-                        self.setup(event: self.currentEvent)
-                        self.getStoreProducts(query: self.queryFromStoreVC)
+                        self.getStoreProductsAsLogInUser(query: self.queryFromStoreVC)
                     }
                 }
             } else {

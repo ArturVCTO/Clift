@@ -319,13 +319,15 @@ extension GiftsSummaryViewController: UITableViewDelegate {
                 if indexPath.row == 0 {
                     presentActionSheet(eventProduct: collaborativeEventsProduct[indexPath.section])
                 } else {
-                    presentEnvelopeActionSheet()
+                    if let orderItem = collaborativeEventsProduct[indexPath.section].orderItems?[indexPath.row] {
+                        presentThanksMessageActionSheet(orderItem: orderItem, eventProduct: collaborativeEventsProduct[indexPath.section])
+                    }
                 }
             } else {
                 presentActionSheet(summaryItem: eventRegistries[indexPath.row])
             }
         case .envelope:
-            print("Soy sobre")
+            presentEnvelopeActionSheet(cashGiftItem: cashGiftItems[indexPath.row])
         }
     }
 }
@@ -334,37 +336,48 @@ extension GiftsSummaryViewController {
     
     func presentActionSheet(summaryItem: GiftSummaryItem? = nil, eventProduct: EventProduct? = nil) {
         
+        var giftStatusHelperOptions = GiftStatusHelperOptions()
+        
+        //Variables that will be used in the options
+        var currentEventProduct = EventProduct()
+        var currentOrderItem = OrderItem()
+        
+        if let summaryItem = summaryItem {
+            giftStatusHelperOptions = GiftStatusHelper.shared.manageSimpleGift(giftSummaryItem: summaryItem)
+            currentEventProduct = summaryItem.eventProduct
+            if let orderItem = currentEventProduct.orderItems?.first {
+                currentOrderItem = orderItem
+            }
+        } else if let eventProduct = eventProduct {
+            giftStatusHelperOptions = GiftStatusHelper.shared.manageCollaborativeGift(eventProduct: eventProduct, orderItem: currentOrderItem)
+            currentEventProduct = eventProduct
+            if let orderItem = currentEventProduct.orderItems?.first {
+                currentOrderItem = orderItem
+            }
+        }
+        
+        //UIAlertActions Declared
         let optionsSheet = UIAlertController(title: "Opciones", message: nil, preferredStyle: .actionSheet)
         optionsSheet.view.tintColor = UIColor(named: "PrimaryBlue")
         
         let convertToCredit = UIAlertAction(title: "CONVERTIR A CRÉDITO",
                                             style: .default,
-                                            handler: { (action) in self.presentConvertToCredit()
+                                            handler: { (action) in self.presentConvertToCredit(product: currentEventProduct)
         })
         
         let requestProduct = UIAlertAction(title: "SOLICITAR PRODUCTO",
                                            style: .default,
-                                           handler: { [weak self] (action) in
-                                            guard let self = self else { return }
-                                            guard let eventProduct = summaryItem?.eventProduct else { return }
-                                            self.presentRequestProduct(product: eventProduct)
+                                           handler: { (action) in self.presentRequestProduct(product: currentEventProduct)
         })
         
         let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO",
                                         style: .default,
-                                        handler: { (action) in self.presentSendMessage()
+                                        handler: { (action) in self.presentSendMessage(orderItem: currentOrderItem, eventProduct: currentEventProduct)
                                         })
         
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
         
-        var giftStatusHelperOptions = GiftStatusHelperOptions()
-        
-        if let summaryItem = summaryItem {
-            giftStatusHelperOptions = GiftStatusHelper.shared.manageSimpleGift(giftSummaryItem: summaryItem)
-        } else if let eventProduct = eventProduct {
-            giftStatusHelperOptions = GiftStatusHelper.shared.manageCollaborativeGift(eventProduct: eventProduct)
-        }
-        
+        //Add Options To OptionSheet
         if giftStatusHelperOptions.credit == .grayIcon {
             optionsSheet.addAction(convertToCredit)
         }
@@ -380,12 +393,12 @@ extension GiftsSummaryViewController {
         
     }
     
-    func presentEnvelopeActionSheet() {
+    func presentThanksMessageActionSheet(orderItem: OrderItem, eventProduct: EventProduct) {
         
         let optionsSheet = UIAlertController(title: "Opciones", message: nil, preferredStyle: .actionSheet)
         optionsSheet.view.tintColor = UIColor(named: "PrimaryBlue")
         
-        let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO", style: .default, handler: {(action) in self.presentSendMessage()})
+        let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO", style: .default, handler: {(action) in self.presentSendMessage(orderItem: orderItem, eventProduct: eventProduct)})
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
         
         optionsSheet.addAction(sendMessage)
@@ -394,16 +407,34 @@ extension GiftsSummaryViewController {
         present(optionsSheet, animated: true, completion: nil)
     }
     
-    func presentConvertToCredit() {
-        print("Ir a convertir a credito")
+    func presentEnvelopeActionSheet(cashGiftItem: CashGiftItem) {
+        
+        let optionsSheet = UIAlertController(title: "Opciones", message: nil, preferredStyle: .actionSheet)
+        optionsSheet.view.tintColor = UIColor(named: "PrimaryBlue")
+        
+        let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO", style: .default, handler: {(action) in self.presentSendMessageEnvelope(cashGiftItem: cashGiftItem)})
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
+        
+        optionsSheet.addAction(sendMessage)
+        optionsSheet.addAction(cancelAction)
+        
+        present(optionsSheet, animated: true, completion: nil)
+    }
+    
+    func presentConvertToCredit(product: EventProduct) {
+        requestCredit(eventProduct: product)
     }
     
     func presentRequestProduct(product: EventProduct) {
         requestShipping(product: product)
     }
     
-    func presentSendMessage() {
-        print("Ir a enviar mensaje de agradecimiento")
+    func presentSendMessage(orderItem: OrderItem, eventProduct: EventProduct) {
+        sendThanksMessage(orderItem: orderItem, eventProduct: eventProduct)
+    }
+    
+    func presentSendMessageEnvelope(cashGiftItem: CashGiftItem) {
+        sendThanksMessageEnvelope(cashGiftItem: cashGiftItem)
     }
 }
 
@@ -426,6 +457,36 @@ extension GiftsSummaryViewController {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "initialGiftShippingVC") as! InitialGiftShippingViewController
         vc.eventProducts = [product]
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func sendThanksMessage(orderItem: OrderItem, eventProduct: EventProduct) {
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "thankGuestVC") as! ThankGuestViewController
+        vc.event = self.event
+        vc.thankType = .SummaryProduct
+        vc.orderItem = orderItem
+        vc.gift = eventProduct
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func sendThanksMessageEnvelope(cashGiftItem: CashGiftItem) {
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "thankGuestVC") as! ThankGuestViewController
+        vc.event = self.event
+        vc.thankType = .Envelope
+        vc.cashGiftItem = cashGiftItem
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func requestCredit(eventProduct: EventProduct) {
+        let convertCreditVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "convertCreditVC") as!
+        ConvertToCreditViewController
+        
+        convertCreditVC.eventProduct = eventProduct
+        convertCreditVC.event = event
+        
+        self.parent?.addChild(convertCreditVC)
+        convertCreditVC.view.frame = self.view.frame
+        self.parent?.view.addSubview(convertCreditVC.view)
+        convertCreditVC.didMove(toParent: self)
     }
 }
 

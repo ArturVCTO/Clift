@@ -103,13 +103,13 @@ extension SummaryGiftsViewController: UITableViewDelegate, UITableViewDataSource
         if (thankedGiftsSegment.selectedSegmentIndex == 0) {
             if #available(iOS 13.0, *) {
                 let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "thankGuestVC") as! ThankGuestViewController
-                vc.summaryGiftsVC = self
+                //vc.summaryGiftsVC = self
                 vc.event = self.event
                 vc.gift = eventProducts[indexPath.row]
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "thankGuestVC") as! ThankGuestViewController
-                vc.summaryGiftsVC = self
+                //vc.summaryGiftsVC = self
                 vc.event = self.event
                 vc.gift = eventProducts[indexPath.row]
                 self.navigationController?.pushViewController(vc, animated: true)

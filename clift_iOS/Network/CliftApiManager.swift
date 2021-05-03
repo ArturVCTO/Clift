@@ -279,7 +279,9 @@ protocol ApiCalls {
     
     func deleteAddress(address: Address, completion: @escaping(EmptyObjectWithErrors?,Response?) -> Void)
     
-    func sendThankMessage(thankMessage: ThankMessage, event: Event, eventProduct: EventProduct, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
+    func sendThankMessage(thankMessage: ThankMessage, event: Event, orderItem: OrderItem, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
+    
+    func sendThankEnvelopeMessage(thankEnvelopeMessage: ThankEnvelopeMessage, event: Event, cashGiftItem: CashGiftItem, completion: @escaping(EmptyObjectWithErrors?, Response?) -> Void)
     
     func addItemToCart(quantity: Int, product: Product, completion: @escaping(CartItem?,Response?) -> Void)
     
@@ -324,6 +326,10 @@ protocol ApiCalls {
                              params: [String: Any]?,
                              completion: @escaping([GiftSummaryItem]?, Response?) -> Void)
     func getOrderItems(event: Event, params: [String: Any]?,completion: @escaping([CashGiftItem]?, Response?) -> Void)
+    
+    func getShopProductsAsGuest(params: [String : Any], completion: @escaping([Product]?, Response?) -> Void)
+    
+    func stripeCheckoutPurchaseForMe(checkout: CheckoutGuest, completion: @escaping(StripeCheckout?, Response?) -> Void)
     
 }
 
@@ -574,8 +580,12 @@ extension CliftApiManager: ApiCalls {
         requestEmptyObject(.deleteAddress(address: address), completion: completion)
     }
     
-    func sendThankMessage(thankMessage: ThankMessage, event: Event, eventProduct: EventProduct, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
-        requestEmptyObject(.sendThankMessage(thankMessage: thankMessage, event: event, eventProduct: eventProduct), completion: completion)
+    func sendThankMessage(thankMessage: ThankMessage, event: Event, orderItem: OrderItem, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.sendThankMessage(thankMessage: thankMessage, event: event, orderItem: orderItem), completion: completion)
+    }
+    
+    func sendThankEnvelopeMessage(thankEnvelopeMessage: ThankEnvelopeMessage, event: Event, cashGiftItem: CashGiftItem, completion: @escaping (EmptyObjectWithErrors?, Response?) -> Void) {
+        requestEmptyObject(.sendThankEnvelopeMessage(thankEnvelopeMessage: thankEnvelopeMessage, event: event, cashGiftItem: cashGiftItem), completion: completion)
     }
     
     func addItemToCart(quantity: Int, product: Product, completion: @escaping (CartItem?, Response?) -> Void) {
@@ -668,6 +678,14 @@ extension CliftApiManager: ApiCalls {
                                                 params: params),
                                                 type: CashGiftItem.self,
                                                 completion: completion, wrapper: "cash_gifts")
+    }
+    
+    func getShopProductsAsGuest(params: [String : Any], completion: @escaping([Product]?, Response?) -> Void) {
+        requestArrayWithResponse(.getShopProductsAsGuest(params: params), type: Product.self, completion: completion, wrapper: "products")
+    }
+    
+    func stripeCheckoutPurchaseForMe(checkout: CheckoutGuest, completion: @escaping (StripeCheckout?, Response?) -> Void) {
+        requestObjectWithResponse(.stripeCheckoutPurchaseForMe(checkout: checkout), type: StripeCheckout.self, completion: completion, wrapper: "")
     }
 }
 

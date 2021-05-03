@@ -1,9 +1,9 @@
 //
-//  ThankMessage.swift
+//  ThankEnvelopeMessage.swift
 //  clift_iOS
 //
-//  Created by Juan Carlos Garza on 1/26/20.
-//  Copyright © 2020 Clift. All rights reserved.
+//  Created by Fernando Limón Flores on 30/04/21.
+//  Copyright © 2021 Clift. All rights reserved.
 //
 
 import Foundation
@@ -12,10 +12,10 @@ import ObjectMapper
 import ObjectMapper_Realm
 import RealmSwift
 
-class ThankMessage: Mappable {
-    var name: [String] = [String]()
+class ThankEnvelopeMessage: Mappable {
+    var name: String? = ""
     var thankMessage: String? = ""
-    var email: [String] = [String]()
+    var email: String? = ""
     
     convenience required init?(map: Map) {
         self.init()
@@ -27,3 +27,4 @@ class ThankMessage: Mappable {
         email <- map["email"]
     }
 }
+

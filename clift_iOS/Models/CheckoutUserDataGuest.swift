@@ -16,7 +16,7 @@ class CheckoutUserDataGuest: Mappable {
     var name: String? = ""
     var lastName: String? = ""
     var email: String? = ""
-    var shippingAddress: String? = ""
+    var shippingAddress: ShippingAddress = ShippingAddress()
     var cellPhoneNumber: String? = ""
     var note: String? = ""
     
