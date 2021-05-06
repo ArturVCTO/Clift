@@ -242,6 +242,9 @@
 		61F0C2D825A3C89700AA58CF /* GuestEventProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */; };
 		61F86AE825B38B4400AFDCE5 /* EnvelopeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F86AE725B38B4400AFDCE5 /* EnvelopeInfoViewController.swift */; };
 		61F86B2125B3AF7700AFDCE5 /* EnvelopeFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61F86B2025B3AF7700AFDCE5 /* EnvelopeFlow.storyboard */; };
+		61FF651C2644AD3500FD02F3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61FF651B2644AD3500FD02F3 /* Profile.storyboard */; };
+		61FF65282644ADFF00FD02F3 /* ProfileBankInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FF65272644ADFF00FD02F3 /* ProfileBankInformationViewController.swift */; };
+		61FF65332644AE6A00FD02F3 /* ProfileHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61FF65322644AE6A00FD02F3 /* ProfileHomeViewController.swift */; };
 		BD5ECC2B251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */; };
 		BD5ECC2C251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */; };
 		BD5ECC2D251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5ECC26251EAA5600A1F45F /* GuestGiftListViewController.swift */; };
@@ -533,6 +536,9 @@
 		61F0C2D625A3C89700AA58CF /* GuestEventProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GuestEventProductCell.xib; sourceTree = "<group>"; };
 		61F86AE725B38B4400AFDCE5 /* EnvelopeInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvelopeInfoViewController.swift; sourceTree = "<group>"; };
 		61F86B2025B3AF7700AFDCE5 /* EnvelopeFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EnvelopeFlow.storyboard; sourceTree = "<group>"; };
+		61FF651B2644AD3500FD02F3 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		61FF65272644ADFF00FD02F3 /* ProfileBankInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBankInformationViewController.swift; sourceTree = "<group>"; };
+		61FF65322644AE6A00FD02F3 /* ProfileHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHomeViewController.swift; sourceTree = "<group>"; };
 		6F4281962B9C2B0148E55DE1 /* Pods-clift_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.debug.xcconfig"; path = "Target Support Files/Pods-clift_iOS/Pods-clift_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		7235FC90FAEF1EDC339B9D02 /* Pods-clift_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.release.xcconfig"; path = "Target Support Files/Pods-clift_iOS/Pods-clift_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		873EC12B38B35B3AFE909E0C /* Pods-clift_iOSUITests.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOSUITests.mock.xcconfig"; path = "Target Support Files/Pods-clift_iOSUITests/Pods-clift_iOSUITests.mock.xcconfig"; sourceTree = "<group>"; };
@@ -1092,6 +1098,7 @@
 		46E85B4E22FB5E93004FA3FE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				61FF651A2644AD1C00FD02F3 /* Profile */,
 				619E838225E5D85D0056D33A /* Store */,
 				61C82A1E25BA6760009F50AF /* Checkout */,
 				BD5ECC25251EAA5600A1F45F /* Guest */,
@@ -1169,6 +1176,32 @@
 				6172B76325C0FDBE00363125 /* PaymentViewController.swift */,
 			);
 			path = Checkout;
+			sourceTree = "<group>";
+		};
+		61FF651A2644AD1C00FD02F3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				61FF65212644AD6E00FD02F3 /* ViewControllers */,
+				61FF65202644AD5C00FD02F3 /* Views */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		61FF65202644AD5C00FD02F3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				61FF651B2644AD3500FD02F3 /* Profile.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		61FF65212644AD6E00FD02F3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				61FF65322644AE6A00FD02F3 /* ProfileHomeViewController.swift */,
+				61FF65272644ADFF00FD02F3 /* ProfileBankInformationViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		82BFC98F06E1C65CE5F6B5EE /* Pods */ = {
@@ -1418,6 +1451,7 @@
 				46987D9C22FA10AD007B2C78 /* Poppins-Regular.ttf in Resources */,
 				61F0C2D825A3C89700AA58CF /* GuestEventProductCell.xib in Resources */,
 				46B5F74323845BB600AFF425 /* Tinos-RegularItalic.ttf in Resources */,
+				61FF651C2644AD3500FD02F3 /* Profile.storyboard in Resources */,
 				4672A89922F88F27001F374F /* LaunchScreen.storyboard in Resources */,
 				F330BDEE2603C1F3009F27B2 /* GiftsSummary.storyboard in Resources */,
 				61C82A2025BA6781009F50AF /* Checkout.storyboard in Resources */,
@@ -1655,6 +1689,7 @@
 				46D377682391CF74004BE93E /* DiscardChangesAlertView.swift in Sources */,
 				6172B76425C0FDBE00363125 /* PaymentViewController.swift in Sources */,
 				61D21B4225A92949009DED75 /* UILabelExtension.swift in Sources */,
+				61FF65282644ADFF00FD02F3 /* ProfileBankInformationViewController.swift in Sources */,
 				46DE69CA235D6944002C2BB8 /* shopFilterTVCell.swift in Sources */,
 				46C724D323C7DA6000F12924 /* AddressState.swift in Sources */,
 				46153CE423C8F6F3005CD395 /* AddAddressViewController.swift in Sources */,
@@ -1786,6 +1821,7 @@
 				4604A32D22FCDA700041F9AA /* ThirdStepOnboardingViewController.swift in Sources */,
 				CEF53FB024F429B500D7C997 /* CollaboratorInfoTableViewCell.swift in Sources */,
 				BD5ECC34251EAA5700A1F45F /* SearchEventTableViewController.swift in Sources */,
+				61FF65332644AE6A00FD02F3 /* ProfileHomeViewController.swift in Sources */,
 				46E1287C2333EFDD00354DB9 /* MainStoreCategoryCollectionViewCell.swift in Sources */,
 				F330BDF92603F364009F27B2 /* SummaryTypeButton.swift in Sources */,
 				465FED112370896B0038D557 /* SummaryRegistryViewController.swift in Sources */,
