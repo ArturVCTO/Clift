@@ -10,21 +10,29 @@ import UIKit
 
 class ProfileBankInformationViewController: UIViewController {
 
+    @IBOutlet var userNameTextField: UITextField!
+    @IBOutlet var bankNameTextField: UITextField!
+    @IBOutlet var accountTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setNavBar()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setNavBar() {
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "TU CUENTA BANCARIA"
+        titleLabel.textColor = .white
+        titleLabel.font = UIFont(name: "Mihan-Regular", size: 16.0)!
+        titleLabel.addCharactersSpacing(5)
+        titleLabel.sizeToFit()
+        navigationItem.titleView = titleLabel
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
-    */
-
+    
+    @IBAction func editButtonPressed(_ sender: customButton) {
+        print("edit")
+    }
 }
