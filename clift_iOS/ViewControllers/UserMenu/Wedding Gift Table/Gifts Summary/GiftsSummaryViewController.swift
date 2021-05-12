@@ -518,12 +518,16 @@ extension GiftsSummaryViewController: ConvertToCreditViewControllerDelegate {
         if isColaborativeSelected {
             if let eventProductIndex = collaborativeEventsProduct.firstIndex(where: {$0.id == eventProduct.id}) {
                 collaborativeEventsProduct[eventProductIndex].status = "credit"
-                tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         } else {
             if let eventProductIndex = eventRegistries.firstIndex(where: {$0.eventProduct.id == eventProduct.id}) {
                 eventRegistries[eventProductIndex].eventProduct.status = "credit"
-                tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
