@@ -482,6 +482,7 @@ extension GiftsSummaryViewController {
         let convertCreditVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "convertCreditVC") as!
         ConvertToCreditViewController
         
+        convertCreditVC.delegate = self
         convertCreditVC.eventProduct = eventProduct
         convertCreditVC.event = event
         
@@ -505,6 +506,23 @@ extension GiftsSummaryViewController: ThankGuestViewControllerDelegate {
         } else {
             if let eventProductIndex = eventRegistries.firstIndex(where: {$0.eventProduct.id == eventProduct.id}) {
                 eventRegistries[eventProductIndex].hasBeenThanked = true
+                tableView.reloadData()
+            }
+        }
+    }
+}
+
+extension GiftsSummaryViewController: ConvertToCreditViewControllerDelegate {
+    
+    func didConvertCredit(eventProduct: EventProduct) {
+        if isColaborativeSelected {
+            if let eventProductIndex = collaborativeEventsProduct.firstIndex(where: {$0.id == eventProduct.id}) {
+                collaborativeEventsProduct[eventProductIndex].status = "credit"
+                tableView.reloadData()
+            }
+        } else {
+            if let eventProductIndex = eventRegistries.firstIndex(where: {$0.eventProduct.id == eventProduct.id}) {
+                eventRegistries[eventProductIndex].eventProduct.status = "credit"
                 tableView.reloadData()
             }
         }
