@@ -104,7 +104,7 @@ class ThankGuestViewController: UIViewController {
             if let response = result {
                 if response.isSuccess() {
                     self.navigationController?.popViewController(animated: true)
-                    self.delegate.didThankGift(orderItem: orderItem, eventProduct: gift)
+                    self.delegate.didThankGift(orderItem: self.orderItem, eventProduct: self.gift)
                     self.navigationController!.showMessage("Mensaje enviado con éxito", type: .success)
                 } else if response.isClientError() {
                     self.showMessage("Hubo un error enviando el correo.", type: .error)
