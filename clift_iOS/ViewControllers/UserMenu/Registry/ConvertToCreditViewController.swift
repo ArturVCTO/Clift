@@ -13,7 +13,7 @@ import Moya
 import GSMessages
 import RealmSwift
 
-protocol ConvertToCreditViewControllerDelegate {
+protocol ConvertToCreditViewControllerDelegate: AnyObject {
     func didConvertCredit(eventProduct: EventProduct)
 }
 
@@ -30,7 +30,7 @@ class ConvertToCreditViewController: UIViewController {
     
     var creditQty = 0.0
     var creditIds: [Dictionary<String,Any>] = []
-    var delegate: ConvertToCreditViewControllerDelegate!
+    weak var delegate: ConvertToCreditViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()

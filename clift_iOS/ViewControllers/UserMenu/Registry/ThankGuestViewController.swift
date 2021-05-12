@@ -16,7 +16,7 @@ enum ThankType {
     case Envelope
 }
 
-protocol ThankGuestViewControllerDelegate {
+protocol ThankGuestViewControllerDelegate: AnyObject {
     func didThankGift(orderItem: OrderItem, eventProduct: EventProduct)
 }
 
@@ -36,7 +36,7 @@ class ThankGuestViewController: UIViewController {
     var selectedFilter = 0
     var thankType: ThankType = .SummaryProduct
     var cashGiftItem = CashGiftItem()
-    var delegate: ThankGuestViewControllerDelegate!
+    weak var delegate: ThankGuestViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
