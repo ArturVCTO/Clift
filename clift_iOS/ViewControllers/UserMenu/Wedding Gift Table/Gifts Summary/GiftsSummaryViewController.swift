@@ -461,6 +461,7 @@ extension GiftsSummaryViewController {
     
     func sendThanksMessage(orderItem: OrderItem, eventProduct: EventProduct) {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "thankGuestVC") as! ThankGuestViewController
+        vc.delegate = self
         vc.event = self.event
         vc.thankType = .SummaryProduct
         vc.orderItem = orderItem
@@ -470,6 +471,7 @@ extension GiftsSummaryViewController {
     
     func sendThanksMessageEnvelope(cashGiftItem: CashGiftItem) {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "thankGuestVC") as! ThankGuestViewController
+        vc.delegate = self
         vc.event = self.event
         vc.thankType = .Envelope
         vc.cashGiftItem = cashGiftItem
@@ -487,6 +489,25 @@ extension GiftsSummaryViewController {
         convertCreditVC.view.frame = self.view.frame
         self.parent?.view.addSubview(convertCreditVC.view)
         convertCreditVC.didMove(toParent: self)
+    }
+}
+
+extension GiftsSummaryViewController: ThankGuestViewControllerDelegate {
+    
+    func didThankGift(orderItem: OrderItem, eventProduct: EventProduct) {
+        if isColaborativeSelected {
+            if let eventProductIndex = collaborativeEventsProduct.firstIndex(where: {$0.id == eventProduct.id}) {
+                if let orderItemIndex = collaborativeEventsProduct[eventProductIndex].orderItems?.firstIndex(where: {$0.id == orderItem.id}) {
+                    collaborativeEventsProduct[eventProductIndex].orderItems?[orderItemIndex].hasBeenThanked = true
+                    tableView.reloadData()
+                }
+            }
+        } else {
+            if let eventProductIndex = eventRegistries.firstIndex(where: {$0.eventProduct.id == eventProduct.id}) {
+                eventRegistries[eventProductIndex].hasBeenThanked = true
+                tableView.reloadData()
+            }
+        }
     }
 }
 

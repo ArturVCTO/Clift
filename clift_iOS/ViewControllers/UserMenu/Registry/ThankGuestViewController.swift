@@ -16,6 +16,10 @@ enum ThankType {
     case Envelope
 }
 
+protocol ThankGuestViewControllerDelegate {
+    func didThankGift(orderItem: OrderItem, eventProduct: EventProduct)
+}
+
 class ThankGuestViewController: UIViewController {
     @IBOutlet weak var giftImage: UIImageView!
     @IBOutlet weak var giftName: UILabel!
@@ -32,6 +36,7 @@ class ThankGuestViewController: UIViewController {
     var selectedFilter = 0
     var thankType: ThankType = .SummaryProduct
     var cashGiftItem = CashGiftItem()
+    var delegate: ThankGuestViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +104,7 @@ class ThankGuestViewController: UIViewController {
             if let response = result {
                 if response.isSuccess() {
                     self.navigationController?.popViewController(animated: true)
+                    self.delegate.didThankGift(orderItem: orderItem, eventProduct: gift)
                     self.navigationController!.showMessage("Mensaje enviado con éxito", type: .success)
                 } else if response.isClientError() {
                     self.showMessage("Hubo un error enviando el correo.", type: .error)
