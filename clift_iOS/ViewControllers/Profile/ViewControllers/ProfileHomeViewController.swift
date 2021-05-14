@@ -7,24 +7,28 @@
 //
 
 import UIKit
+import Moya
 
-class ProfileHomeViewController: UIViewController, UITextFieldDelegate {
+class ProfileHomeViewController: UIViewController {
     
     @IBOutlet weak var bannerPictureImageView: customImageView!
     @IBOutlet weak var profilePictureImageView: customImageView!
     @IBOutlet weak var profileNameTextField: UITextField!
     @IBOutlet weak var profileAddressTextField: UITextField!
-    @IBOutlet weak var profileBankAccountTextField: UITextField!
+    @IBOutlet weak var profileBankAccountButton: UIButton!
     var profileImagePicker: UIImagePickerController?
     var bannerImagePicker: UIImagePickerController?
+    var event = Event()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         profileNameTextField.delegate = self
-        profileAddressTextField.delegate = self
-        profileBankAccountTextField.delegate = self
         setNavBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getEventProfileBank()
     }
     
     func setNavBar() {
@@ -52,9 +56,13 @@ class ProfileHomeViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        // Save
+        updateEvent()
     }
-    
+    @IBAction func bankAccountPressed(_ sender: UIButton) {
+        let productDetailsVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileBankInformationVC") as! ProfileBankInformationViewController
+        productDetailsVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(productDetailsVC, animated: true)
+    }
 }
 
 extension ProfileHomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -103,14 +111,139 @@ extension ProfileHomeViewController: UIImagePickerControllerDelegate, UINavigati
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             if picker == profileImagePicker {
                 profilePictureImageView.image = editedImage
+                event.eventImage = editedImage
                 profileImagePicker = nil
                 
             } else {
                 bannerPictureImageView.image = editedImage
+                event.coverImage = editedImage
                 bannerImagePicker = nil
             }
         }
         
         dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: Extension REST APIs
+extension ProfileHomeViewController {
+    
+    func getEventProfileBank() {
+        sharedApiManager.getEvents() { (events, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    if let currentEvent = events?.first {
+                        sharedApiManager.showEvent(id: currentEvent.id) {(event, result) in
+                            if let response = result {
+                                if (response.isSuccess()) {
+                                    guard let event = event else {
+                                        return
+                                    }
+                                    self.event = event
+                                    if let eventImageURL = URL(string:"\(event.eventImageUrl)") {
+                                        self.profilePictureImageView.kf.setImage(with: eventImageURL)
+                                    }
+                                    
+                                    if let coverImageURL = URL(string:"\(event.coverImageUrl)") {
+                                        self.bannerPictureImageView.kf.setImage(with: coverImageURL)
+                                    }
+                                }
+                            }
+                        }
+
+                        self.profileNameTextField.text = currentEvent.name
+                        print(currentEvent.date)
+                        self.getProfile()
+                    }
+                }
+            } else {
+                self.getProfile()
+            }
+        }
+    }
+    
+    func getProfile() {
+        sharedApiManager.getProfile() { (profile, result) in
+            if let response = result {
+                if response.isSuccess() {
+                    self.profileAddressTextField.text = profile?.onboardingShippingAddress.streetAndNumber
+                    self.getBankAccounts()
+                }
+            } else {
+                self.getBankAccounts()
+            }
+        }
+    }
+    
+    func getBankAccounts() {
+        sharedApiManager.getBankAccounts() { (bankAccounts, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    if let bankAccount = bankAccounts?.first {
+                        self.profileBankAccountButton.setTitle(self.hideAccountNumber(accountNumber: bankAccount.account), for: .normal)
+                    } else {
+                        self.profileBankAccountButton.setTitle("No hay cuenta asociada", for: .normal)
+                    }
+                } else if (response.isClientError()) {
+                    self.showMessage("Hubo un error al cargar las cuentas asociadas. Intente de nuevo más tarde.", type: .error)
+                }
+            }
+        }
+    }
+    
+    func hideAccountNumber(accountNumber: String) -> String {
+        var accountHidden = ""
+        for _ in 1...accountNumber.count - 4 {
+            accountHidden += "*"
+        }
+        accountHidden += accountNumber.suffix(4)
+        return accountHidden
+    }
+    
+    func updateEvent() {
+        var multipartFormData: [MultipartFormData] = self.getEventMultipart()
+        
+        if !(multipartFormData.isEmpty) {
+            sharedApiManager.updateEvent(id: event.id, event: multipartFormData) { (event, result) in
+                if let response = result {
+                    if (response.isSuccess()) {
+                        self.showMessage(NSLocalizedString("Evento actualizado", comment: "Update success"),type: .success)
+                    } else if (response.isClientError()) {
+                        self.showMessage(NSLocalizedString("\(event!.errors.first!)", comment: "Update Error"),type: .error)
+                    } else  {
+                        self.showMessage(NSLocalizedString("Error, intente de nuevo más tarde", comment: "Update Error"),type: .error)
+                    }
+                }
+            }
+        }
+    }
+    
+    func getEventMultipart() -> [MultipartFormData] {
+        var multipartFormData: [MultipartFormData] = []
+        
+        multipartFormData.append(MultipartFormData(provider: .data(((self.event.name.description.data(using: String.Encoding.utf8)! ))),name: "event[name]"))
+        
+        multipartFormData.append(MultipartFormData(provider: .data(((self.event.date.description.data(using: String.Encoding.utf8)! ))),name: "event[date]"))
+        
+        multipartFormData.append(MultipartFormData(provider: .data(((self.event.visibility.description.data(using: String.Encoding.utf8)! ))),name: "event[visibility]"))
+        
+        if (self.event.eventImage != nil) {
+            multipartFormData.append(MultipartFormData(provider: .data((self.event.eventImage?.jpegData(compressionQuality: 1.0))!), name: "event[event_image]", fileName: "image.jpeg", mimeType: "image/jpeg"))
+        }
+        
+        if (self.event.coverImage != nil) {
+            multipartFormData.append(MultipartFormData(provider: .data((self.event.coverImage?.jpegData(compressionQuality: 1.0))!), name: "event[cover_image]", fileName: "image.jpeg", mimeType: "image/jpeg"))
+        }
+        
+        return multipartFormData
+    }
+}
+
+// MARK: Extension UITextFieldDelegate
+extension ProfileHomeViewController: UITextFieldDelegate {
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    
+        event.name = textField.text ?? ""
     }
 }
