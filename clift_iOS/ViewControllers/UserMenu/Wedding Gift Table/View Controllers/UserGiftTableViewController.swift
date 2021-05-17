@@ -76,7 +76,6 @@ class UserGiftTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         productsCollectionView.collectionViewLayout = layout
-
         getPoolsAndRegistries()
         setNavBar()
         registerCells()
@@ -112,7 +111,7 @@ class UserGiftTableViewController: UIViewController {
     
     var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 150, height: 300)
+        layout.estimatedItemSize = CGSize(width: 150, height: 290)
         return layout
     }()
     
