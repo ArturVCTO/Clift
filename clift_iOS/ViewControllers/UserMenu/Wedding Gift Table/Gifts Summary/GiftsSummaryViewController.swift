@@ -21,7 +21,9 @@ class GiftsSummaryViewController: UIViewController {
     var cashGiftItems = [CashGiftItem]()
     var type = GiftType.product
     var isColaborativeSelected = false
-    var endpointParams: [String: Any] = ["collaborative": false]
+    var endpointParams: [String: Any] = ["collaborative": false, "show_all": true]
+    var estimatedRowHeightNonCollaborative: CGFloat = 217
+    var estimatedRowHeightCollaborative: CGFloat = 195
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -61,11 +63,20 @@ class GiftsSummaryViewController: UIViewController {
         getEventProducts()
         getEnvelopes()
         setTapGesture()
+        self.tableView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        tableView.layer.removeAllAnimations()
+        collectionViewHeight.constant = tableView.contentSize.height
+        UIView.animate(withDuration: 0.5) {
+            self.updateViewConstraints()
+        }
     }
     
     func setup() {
         registerCells()
-        tableView.estimatedRowHeight = 205
+        tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
         tableView.delegate = self
@@ -122,8 +133,6 @@ class GiftsSummaryViewController: UIViewController {
                 self.giftCounter.text = self.eventRegistries.count == 1 ? "1 regalo" : "\(self.eventRegistries.count) regalos"
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
-                self.tableView.layoutIfNeeded()
-                self.collectionViewHeight.constant = CGFloat(self.tableView.contentSize.height)
             }
         }
     }
@@ -132,7 +141,7 @@ class GiftsSummaryViewController: UIViewController {
         
         self.presentLoader()
         
-        sharedApiManager.getGiftThanksSummary(event: event, hasBeenThanked: false, hasBeenPaid: false, filters: ["collaborative":true]) { (items, response) in
+        sharedApiManager.getGiftThanksSummary(event: event, hasBeenThanked: false, hasBeenPaid: false, filters: ["collaborative":true, "show_all": true]) { (items, response) in
             guard let items = items else { return }
             self.collaborativeEventsProduct = items
             
@@ -148,7 +157,6 @@ class GiftsSummaryViewController: UIViewController {
                 self.giftCounter.text = self.collaborativeEventsProduct.count == 1 ? "1 regalo" : "\(self.collaborativeEventsProduct.count) regalos"
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
-                self.tableView.layoutIfNeeded()
                 self.collectionViewHeight.constant = CGFloat(self.tableView.contentSize.height)
             }
         }
@@ -165,8 +173,6 @@ class GiftsSummaryViewController: UIViewController {
                 self.dismissLoader()
                 self.tableView.isHidden = false
                 self.tableView.reloadData()
-                self.tableView.layoutIfNeeded()
-                self.collectionViewHeight.constant = CGFloat(self.tableView.contentSize.height)
             }
         }
     }
@@ -199,6 +205,8 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
         endpointParams["status"] = ""
         endpointParams["guest"] = ""
         isColaborativeSelected = false
+        tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
+        tableView.estimatedSectionFooterHeight = 0
         getEventProducts()
     }
     
@@ -207,6 +215,8 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
         endpointParams["collaborative"] = false
         endpointParams["guest"] = ""
         isColaborativeSelected = false
+        tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
+        tableView.estimatedSectionFooterHeight = 0
         getEventProducts()
     }
     
@@ -215,16 +225,22 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
         endpointParams["collaborative"] = false
         endpointParams["guest"] = ""
         isColaborativeSelected = false
+        tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
         getEventProducts()
     }
     
     func collaborativeSelected() {
         isColaborativeSelected = true
+        tableView.estimatedRowHeight = estimatedRowHeightCollaborative
         getEventProductsCollaborative()
     }
 }
 
 extension GiftsSummaryViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.estimatedRowHeight
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         switch self.type {
@@ -311,6 +327,7 @@ extension GiftsSummaryViewController: UITableViewDataSource {
 }
 
 extension GiftsSummaryViewController: UITableViewDelegate {
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch type {
