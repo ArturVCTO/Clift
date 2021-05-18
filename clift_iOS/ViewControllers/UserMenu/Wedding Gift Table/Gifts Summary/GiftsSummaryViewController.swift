@@ -22,6 +22,8 @@ class GiftsSummaryViewController: UIViewController {
     var type = GiftType.product
     var isColaborativeSelected = false
     var endpointParams: [String: Any] = ["collaborative": false, "show_all": true]
+    var estimatedRowHeightNonCollaborative: CGFloat = 217
+    var estimatedRowHeightCollaborative: CGFloat = 195
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -65,7 +67,7 @@ class GiftsSummaryViewController: UIViewController {
     
     func setup() {
         registerCells()
-        tableView.estimatedRowHeight = 205
+        tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = self
         tableView.delegate = self
@@ -199,6 +201,7 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
         endpointParams["status"] = ""
         endpointParams["guest"] = ""
         isColaborativeSelected = false
+        tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
         getEventProducts()
     }
     
@@ -207,6 +210,7 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
         endpointParams["collaborative"] = false
         endpointParams["guest"] = ""
         isColaborativeSelected = false
+        tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
         getEventProducts()
     }
     
@@ -215,11 +219,13 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
         endpointParams["collaborative"] = false
         endpointParams["guest"] = ""
         isColaborativeSelected = false
+        tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
         getEventProducts()
     }
     
     func collaborativeSelected() {
         isColaborativeSelected = true
+        tableView.estimatedRowHeight = estimatedRowHeightCollaborative
         getEventProductsCollaborative()
     }
 }
