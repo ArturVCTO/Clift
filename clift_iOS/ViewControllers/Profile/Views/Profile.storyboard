@@ -457,18 +457,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AF7-SF-ryi">
                                         <rect key="frame" x="0.0" y="91" width="331" height="61"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="BANCO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="208-Tx-MCP">
-                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="BANCO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="208-Tx-MCP">
+                                                <rect key="frame" x="0.0" y="0.0" width="53.5" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XzZ-6r-Q41">
-                                                <rect key="frame" x="0.0" y="30" width="231.5" height="20"/>
-                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="04G-D1-mOy">
                                                 <rect key="frame" x="0.0" y="60" width="331" height="1"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -476,19 +470,29 @@
                                                     <constraint firstAttribute="height" constant="1" id="103-r3-vZx"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vco-S2-in5">
+                                                <rect key="frame" x="0.0" y="32.5" width="231.5" height="17.5"/>
+                                                <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="15"/>
+                                                <state key="normal" title="Button">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="changeBankPressed:" destination="dxx-aJ-XZr" eventType="touchUpInside" id="Smy-XW-K9M"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="61" id="A0t-n9-ufw"/>
+                                            <constraint firstItem="vco-S2-in5" firstAttribute="top" secondItem="208-Tx-MCP" secondAttribute="bottom" constant="15" id="Aow-0h-i9i"/>
                                             <constraint firstAttribute="bottom" secondItem="04G-D1-mOy" secondAttribute="bottom" id="KMK-Tk-PTF"/>
-                                            <constraint firstItem="04G-D1-mOy" firstAttribute="top" secondItem="XzZ-6r-Q41" secondAttribute="bottom" constant="10" id="WOW-XB-Ftd"/>
-                                            <constraint firstItem="XzZ-6r-Q41" firstAttribute="width" secondItem="AF7-SF-ryi" secondAttribute="width" multiplier="0.7" id="Xi3-Jj-gXr"/>
+                                            <constraint firstItem="04G-D1-mOy" firstAttribute="top" secondItem="vco-S2-in5" secondAttribute="bottom" constant="10" id="VD6-gm-Ymk"/>
                                             <constraint firstAttribute="trailing" secondItem="04G-D1-mOy" secondAttribute="trailing" id="aUe-pY-KF2"/>
-                                            <constraint firstItem="XzZ-6r-Q41" firstAttribute="top" secondItem="208-Tx-MCP" secondAttribute="bottom" constant="15" id="asG-M2-EOM"/>
                                             <constraint firstItem="208-Tx-MCP" firstAttribute="leading" secondItem="AF7-SF-ryi" secondAttribute="leading" id="gT1-1O-Eo7"/>
                                             <constraint firstItem="208-Tx-MCP" firstAttribute="top" secondItem="AF7-SF-ryi" secondAttribute="top" id="iBV-x5-Qv7"/>
+                                            <constraint firstItem="vco-S2-in5" firstAttribute="leading" secondItem="AF7-SF-ryi" secondAttribute="leading" id="qao-df-Ezq"/>
                                             <constraint firstItem="04G-D1-mOy" firstAttribute="leading" secondItem="AF7-SF-ryi" secondAttribute="leading" id="vSm-Xe-csc"/>
-                                            <constraint firstItem="XzZ-6r-Q41" firstAttribute="leading" secondItem="AF7-SF-ryi" secondAttribute="leading" id="wqd-lr-Qbs"/>
+                                            <constraint firstItem="vco-S2-in5" firstAttribute="width" secondItem="AF7-SF-ryi" secondAttribute="width" multiplier="0.7" id="vYW-hJ-qIZ"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALq-2E-mex">
@@ -532,9 +536,9 @@
                                         <rect key="frame" x="0.0" y="273" width="331" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WuA-CR-UbW" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
-                                                <rect key="frame" x="10" y="0.0" width="116" height="40"/>
+                                                <rect key="frame" x="10" y="0.0" width="182" height="40"/>
                                                 <color key="backgroundColor" name="PrimaryBlue"/>
-                                                <state key="normal" title="EDITAR">
+                                                <state key="normal" title="GUARDAR CAMBIOS">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -550,7 +554,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="WuA-CR-UbW" firstAttribute="leading" secondItem="5HG-d2-fbI" secondAttribute="leading" constant="10" id="8eW-zJ-pfn"/>
-                                            <constraint firstItem="WuA-CR-UbW" firstAttribute="width" secondItem="5HG-d2-fbI" secondAttribute="width" multiplier="0.35" id="O39-if-9h3"/>
+                                            <constraint firstItem="WuA-CR-UbW" firstAttribute="width" secondItem="5HG-d2-fbI" secondAttribute="width" multiplier="0.55" id="O39-if-9h3"/>
                                             <constraint firstAttribute="bottom" secondItem="WuA-CR-UbW" secondAttribute="bottom" id="her-Og-t0k"/>
                                             <constraint firstAttribute="height" constant="40" id="o8I-i5-sdC"/>
                                             <constraint firstItem="WuA-CR-UbW" firstAttribute="top" secondItem="5HG-d2-fbI" secondAttribute="top" id="zhS-hI-7pj"/>
@@ -574,7 +578,7 @@
                     </view>
                     <connections>
                         <outlet property="accountTextField" destination="34w-Zj-hS3" id="P24-mi-wvL"/>
-                        <outlet property="bankNameTextField" destination="XzZ-6r-Q41" id="0hA-Zh-igA"/>
+                        <outlet property="bankNameButton" destination="vco-S2-in5" id="Ud2-Yz-u2b"/>
                         <outlet property="userNameTextField" destination="ZCw-Cm-hfH" id="dFr-dt-31F"/>
                     </connections>
                 </viewController>
@@ -588,7 +592,7 @@
             <size key="intrinsicContentSize" width="30" height="30"/>
         </designable>
         <designable name="WuA-CR-UbW">
-            <size key="intrinsicContentSize" width="51" height="30"/>
+            <size key="intrinsicContentSize" width="142" height="30"/>
         </designable>
         <designable name="Zex-yn-KLw">
             <size key="intrinsicContentSize" width="143" height="30"/>

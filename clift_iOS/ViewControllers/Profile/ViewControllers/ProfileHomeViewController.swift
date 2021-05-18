@@ -19,6 +19,7 @@ class ProfileHomeViewController: UIViewController {
     var profileImagePicker: UIImagePickerController?
     var bannerImagePicker: UIImagePickerController?
     var event = Event()
+    var currentBankAccount = BankAccount()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,9 +60,10 @@ class ProfileHomeViewController: UIViewController {
         updateEvent()
     }
     @IBAction func bankAccountPressed(_ sender: UIButton) {
-        let productDetailsVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileBankInformationVC") as! ProfileBankInformationViewController
-        productDetailsVC.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(productDetailsVC, animated: true)
+        let bankAccountVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileBankInformationVC") as! ProfileBankInformationViewController
+        bankAccountVC.currentBankAccount = currentBankAccount
+        bankAccountVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.pushViewController(bankAccountVC, animated: true)
     }
 }
 
@@ -180,6 +182,7 @@ extension ProfileHomeViewController {
             if let response = result {
                 if (response.isSuccess()) {
                     if let bankAccount = bankAccounts?.first {
+                        self.currentBankAccount = bankAccount
                         self.profileBankAccountButton.setTitle(self.hideAccountNumber(accountNumber: bankAccount.account), for: .normal)
                     } else {
                         self.profileBankAccountButton.setTitle("No hay cuenta asociada", for: .normal)
