@@ -21,7 +21,7 @@ class GiftsSummaryViewController: UIViewController {
     var cashGiftItems = [CashGiftItem]()
     var type = GiftType.product
     var isColaborativeSelected = false
-    var endpointParams: [String: Any] = ["collaborative": false]
+    var endpointParams: [String: Any] = ["collaborative": false, "show_all": true]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -132,7 +132,7 @@ class GiftsSummaryViewController: UIViewController {
         
         self.presentLoader()
         
-        sharedApiManager.getGiftThanksSummary(event: event, hasBeenThanked: false, hasBeenPaid: false, filters: ["collaborative":true]) { (items, response) in
+        sharedApiManager.getGiftThanksSummary(event: event, hasBeenThanked: false, hasBeenPaid: false, filters: ["collaborative":true, "show_all": true]) { (items, response) in
             guard let items = items else { return }
             self.collaborativeEventsProduct = items
             
