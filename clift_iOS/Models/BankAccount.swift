@@ -14,11 +14,12 @@ import RealmSwift
 
 class BankAccount: Mappable {
     var id = ""
-    var user = User()
-    var rfc = ""
+    //var user = User()
+    //var rfc = ""
     var bank = ""
     var owner = ""
-    var accountName = ""
+    //var accountName = ""
+    var bankName = ""
     var account = ""
     var errors: [String] = []
     
@@ -32,7 +33,8 @@ class BankAccount: Mappable {
         owner <- map["owner"]
         account <- map["account"]
         bank <- map["bank"]
-        accountName <- map["account_name"]
+        bankName <- map["bank_name"]
+        //accountName <- map["account_name"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {

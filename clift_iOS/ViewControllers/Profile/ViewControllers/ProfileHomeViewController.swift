@@ -194,7 +194,7 @@ extension ProfileHomeViewController {
         }
     }
     
-    func hideAccountNumber(accountNumber: String) -> String {
+    private func hideAccountNumber(accountNumber: String) -> String {
         var accountHidden = ""
         for _ in 1...accountNumber.count - 4 {
             accountHidden += "*"
