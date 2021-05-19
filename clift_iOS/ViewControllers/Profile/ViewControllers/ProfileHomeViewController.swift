@@ -8,6 +8,7 @@
 
 import UIKit
 import Moya
+import RealmSwift
 
 class ProfileHomeViewController: UIViewController {
     
@@ -41,6 +42,26 @@ class ProfileHomeViewController: UIViewController {
         titleLabel.sizeToFit()
         navigationItem.titleView = titleLabel
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        let closeSesion = UIBarButtonItem(title: "Cerrar sesión", style: .plain, target: self, action: #selector(logoutButtonTapped(sender:)))
+        navigationItem.rightBarButtonItems = [closeSesion]
+    }
+    
+    @objc func logoutButtonTapped(sender: AnyObject) {
+        sharedApiManager.deleteLogoutSession() { (emptyObjectWithErrors, result) in
+            if let response = result {
+                if(response.isSuccess()) {
+                    let realm = try! Realm()
+                    try! realm.write {
+                        realm.deleteAll()
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.showCreateSessionFlow()
+                    }
+                } else {
+                    self.showMessage(NSLocalizedString("unknownError", comment: "unknownError"), type: .error)
+                }
+            }
+        }
     }
     
     @IBAction func profilePictureButtonPressed(_ sender: Any) {
