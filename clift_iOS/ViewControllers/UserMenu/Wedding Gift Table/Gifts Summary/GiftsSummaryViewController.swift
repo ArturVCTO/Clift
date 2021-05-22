@@ -21,7 +21,7 @@ class GiftsSummaryViewController: UIViewController {
     var cashGiftItems = [CashGiftItem]()
     var type = GiftType.product
     var isColaborativeSelected = false
-    var endpointParams: [String: Any] = ["collaborative": false, "show_all": true]
+    var endpointParams: [String: Any] = ["show_all": true]
     var estimatedRowHeightNonCollaborative: CGFloat = 217
     var estimatedRowHeightCollaborative: CGFloat = 195
     
@@ -201,7 +201,6 @@ extension GiftsSummaryViewController: GiftsAndEvelopStackViewDelegate {
 extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
     
     func allSelected() {
-        endpointParams["collaborative"] = false
         endpointParams["status"] = ""
         endpointParams["guest"] = ""
         isColaborativeSelected = false
@@ -212,7 +211,6 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
     
     func requestedSelected() {
         endpointParams["status"] = "requested"
-        endpointParams["collaborative"] = false
         endpointParams["guest"] = ""
         isColaborativeSelected = false
         tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
@@ -222,7 +220,6 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
     
     func creditSelected() {
         endpointParams["status"] = "declined"
-        endpointParams["collaborative"] = false
         endpointParams["guest"] = ""
         isColaborativeSelected = false
         tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
