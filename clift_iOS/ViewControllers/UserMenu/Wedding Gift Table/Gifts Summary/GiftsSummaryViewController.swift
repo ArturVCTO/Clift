@@ -462,7 +462,6 @@ extension GiftsSummaryViewController: UISearchBarDelegate {
             endpointParams["guest"] = query
             getEventProducts()
         }
-        searchBar.text = ""
     }
 }
 
