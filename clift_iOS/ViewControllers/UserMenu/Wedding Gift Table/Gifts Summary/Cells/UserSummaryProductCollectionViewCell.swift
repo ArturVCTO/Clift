@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol UserSummaryProductCollectionViewCellDelegate {
-    func didTapStarProduct(eventProduct: EventProduct)
-    func didTapStarPool(eventPool: EventPool)
-    func didTapMoreOptions(cellType: ProductCellType, eventPool: EventPool, eventProduct: EventProduct)
+protocol UserSummaryProductTableViewCellDelegate {
+    func didTapDeliveryButton(cellIndex: Int)
+    func didTapCreditButton(cellIndex: Int)
+    func didTapEnvelopeButton(cellIndex: Int)
 }
 
 class UserSummaryProductCollectionViewCell: UITableViewCell {
@@ -22,37 +22,45 @@ class UserSummaryProductCollectionViewCell: UITableViewCell {
     @IBOutlet weak var shopLabel: UILabel!
     @IBOutlet weak var productPriceLabel: UILabel!
     @IBOutlet weak var productQuantityLabel: UILabel!
-    @IBOutlet weak var envelopeImage: UIImageView!
+    @IBOutlet weak var envelopeActionButton: UIButton!
     @IBOutlet weak var deliveryActionButton: UIButton!
     @IBOutlet weak var creditActionButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     
-    var userProductCellDelegate: UserProductCellDelegate!
     var currentEventProduct: EventProduct!
     var currentPool: EventPool!
     var cellType: ProductCellType?
+    var delegate: UserSummaryProductTableViewCellDelegate?
+    var currentCellIndex = -1
     
     
     override func prepareForReuse() {
         super.prepareForReuse()
         productImage.image = UIImage(named: "cashFund")
         shopLabel.isHidden = false
-        envelopeImage.isHidden = false
-        envelopeImage.image = UIImage(named: "icthankgray")
+        envelopeActionButton.isHidden = false
+        envelopeActionButton.setImage(UIImage(named: "icthankgray"), for: .normal)
         deliveryActionButton.isHidden = false
         deliveryActionButton.setImage(UIImage(named: "icdelivergray"), for: .normal)
         creditActionButton.isHidden = false
         creditActionButton.setImage(UIImage(named: "iccreditgray"), for: .normal)
         totalLabel.isHidden = false
         categoryLabel.isHidden = false
+        envelopeActionButton.isEnabled = true
+        creditActionButton.isEnabled = true
+        deliveryActionButton.isEnabled = true
     }
         
-    func configure(cashGiftItem: CashGiftItem? = nil, summaryItem: GiftSummaryItem? = nil) {
+    func configure(cashGiftItem: CashGiftItem? = nil, summaryItem: GiftSummaryItem? = nil, currentIndex: Int = -1, delegate: UserSummaryProductTableViewCellDelegate? = nil) {
         
         switch cellType {
             case .EventProduct:
+                
+                currentCellIndex = currentIndex
+                self.delegate = delegate
+                
                 if let currentSummaryItem = summaryItem {
                     currentEventProduct = currentSummaryItem.eventProduct
 
@@ -119,7 +127,7 @@ class UserSummaryProductCollectionViewCell: UITableViewCell {
                     productPriceLabel.text = "Contribución: \(cashGiftItem.amount) MXN"
                     productQuantityLabel.isHidden = true
                     totalLabel.isHidden = true
-                    envelopeImage.isHidden = true
+                    envelopeActionButton.isHidden = true
                     deliveryActionButton.isHidden = true
                     creditActionButton.isHidden = true
                 }
@@ -134,7 +142,8 @@ class UserSummaryProductCollectionViewCell: UITableViewCell {
         switch giftStatusHelperOptions.credit {
         case .greenIcon:
             let image = UIImage(named: "iccreditgreen")
-            creditActionButton.setImage(image, for: .normal)
+            creditActionButton.isEnabled = false
+            creditActionButton.setImage(image, for: .disabled)
         case .hidden:
             creditActionButton.isHidden = true
         default:
@@ -144,7 +153,8 @@ class UserSummaryProductCollectionViewCell: UITableViewCell {
         switch giftStatusHelperOptions.deliver {
         case .greenIcon:
             let image = UIImage(named: "icdeliveredgreen")
-            deliveryActionButton.setImage(image, for: .normal)
+            deliveryActionButton.isEnabled = false
+            deliveryActionButton.setImage(image, for: .disabled)
         case .hidden:
             deliveryActionButton.isHidden = true
         default:
@@ -153,11 +163,24 @@ class UserSummaryProductCollectionViewCell: UITableViewCell {
         
         switch giftStatusHelperOptions.envelope {
         case .greenIcon:
-            envelopeImage.image = UIImage(named: "icthankgreen")
+            let image = UIImage(named: "icthankgreen")
+            envelopeActionButton.isEnabled = false
+            envelopeActionButton.setImage(image, for: .disabled)
         case .hidden:
-            envelopeImage.isHidden = true
+            envelopeActionButton.isHidden = true
         default:
             break
         }
+    }
+    
+    @IBAction func deliveryButtonPressed(_ sender: Any) {
+        delegate?.didTapDeliveryButton(cellIndex: currentCellIndex)
+    }
+    
+    @IBAction func creditButtonPressed(_ sender: Any) {
+        delegate?.didTapCreditButton(cellIndex: currentCellIndex)
+    }
+    @IBAction func envelopeButtonPressed(_ sender: Any) {
+        delegate?.didTapEnvelopeButton(cellIndex: currentCellIndex)
     }
 }

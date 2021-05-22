@@ -302,7 +302,7 @@ extension GiftsSummaryViewController: UITableViewDataSource {
                         cell.configure(summaryItem: eventRegistries[indexPath.row])
                     } else {
                         cell.cellType = .EventProduct
-                        cell.configure(summaryItem: eventRegistries[indexPath.row])
+                        cell.configure(summaryItem: eventRegistries[indexPath.row],currentIndex: indexPath.row, delegate: self)
                     }
                 }
                 return cell
@@ -547,6 +547,26 @@ extension GiftsSummaryViewController: ConvertToCreditViewControllerDelegate {
                 }
             }
         }
+    }
+}
+
+extension GiftsSummaryViewController: UserSummaryProductTableViewCellDelegate {
+    func didTapDeliveryButton(cellIndex: Int) {
+        presentRequestProduct(product: eventRegistries[cellIndex].eventProduct)
+    }
+    
+    func didTapCreditButton(cellIndex: Int) {
+        presentConvertToCredit(product: eventRegistries[cellIndex].eventProduct)
+    }
+    
+    func didTapEnvelopeButton(cellIndex: Int) {
+        
+        let currentEventProduct = eventRegistries[cellIndex].eventProduct
+        var currentOrderItem = OrderItem()
+        if let orderItem = currentEventProduct.orderItems?.first {
+            currentOrderItem = orderItem
+        }
+        presentSendMessage(orderItem: currentOrderItem, eventProduct: currentEventProduct)
     }
 }
 
