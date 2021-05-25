@@ -140,7 +140,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="20C-eW-st1">
+                                            <searchBar contentMode="redraw" placeholder="Buscar por invitado" translatesAutoresizingMaskIntoConstraints="NO" id="20C-eW-st1">
                                                 <rect key="frame" x="0.0" y="97" width="343" height="56"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>

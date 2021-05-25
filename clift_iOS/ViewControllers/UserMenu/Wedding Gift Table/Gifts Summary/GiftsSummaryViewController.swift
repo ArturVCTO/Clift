@@ -21,7 +21,7 @@ class GiftsSummaryViewController: UIViewController {
     var cashGiftItems = [CashGiftItem]()
     var type = GiftType.product
     var isColaborativeSelected = false
-    var endpointParams: [String: Any] = ["collaborative": false, "show_all": true]
+    var endpointParams: [String: Any] = ["show_all": true]
     var estimatedRowHeightNonCollaborative: CGFloat = 217
     var estimatedRowHeightCollaborative: CGFloat = 195
     
@@ -201,7 +201,6 @@ extension GiftsSummaryViewController: GiftsAndEvelopStackViewDelegate {
 extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
     
     func allSelected() {
-        endpointParams["collaborative"] = false
         endpointParams["status"] = ""
         endpointParams["guest"] = ""
         isColaborativeSelected = false
@@ -212,7 +211,6 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
     
     func requestedSelected() {
         endpointParams["status"] = "requested"
-        endpointParams["collaborative"] = false
         endpointParams["guest"] = ""
         isColaborativeSelected = false
         tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
@@ -222,7 +220,6 @@ extension GiftsSummaryViewController: GiftsTypeStackViewProtocol {
     
     func creditSelected() {
         endpointParams["status"] = "declined"
-        endpointParams["collaborative"] = false
         endpointParams["guest"] = ""
         isColaborativeSelected = false
         tableView.estimatedRowHeight = estimatedRowHeightNonCollaborative
@@ -302,7 +299,7 @@ extension GiftsSummaryViewController: UITableViewDataSource {
                         cell.configure(summaryItem: eventRegistries[indexPath.row])
                     } else {
                         cell.cellType = .EventProduct
-                        cell.configure(summaryItem: eventRegistries[indexPath.row])
+                        cell.configure(summaryItem: eventRegistries[indexPath.row],currentIndex: indexPath.row, delegate: self)
                     }
                 }
                 return cell
@@ -465,7 +462,6 @@ extension GiftsSummaryViewController: UISearchBarDelegate {
             endpointParams["guest"] = query
             getEventProducts()
         }
-        searchBar.text = ""
     }
 }
 
@@ -547,6 +543,26 @@ extension GiftsSummaryViewController: ConvertToCreditViewControllerDelegate {
                 }
             }
         }
+    }
+}
+
+extension GiftsSummaryViewController: UserSummaryProductTableViewCellDelegate {
+    func didTapDeliveryButton(cellIndex: Int) {
+        presentRequestProduct(product: eventRegistries[cellIndex].eventProduct)
+    }
+    
+    func didTapCreditButton(cellIndex: Int) {
+        presentConvertToCredit(product: eventRegistries[cellIndex].eventProduct)
+    }
+    
+    func didTapEnvelopeButton(cellIndex: Int) {
+        
+        let currentEventProduct = eventRegistries[cellIndex].eventProduct
+        var currentOrderItem = OrderItem()
+        if let orderItem = currentEventProduct.orderItems?.first {
+            currentOrderItem = orderItem
+        }
+        presentSendMessage(orderItem: currentOrderItem, eventProduct: currentEventProduct)
     }
 }
 
