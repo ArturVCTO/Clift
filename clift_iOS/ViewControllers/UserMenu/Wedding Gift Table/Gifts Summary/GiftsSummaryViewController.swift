@@ -363,11 +363,10 @@ extension GiftsSummaryViewController {
                 currentOrderItem = orderItem
             }
         } else if let eventProduct = eventProduct {
-            giftStatusHelperOptions = GiftStatusHelper.shared.manageCollaborativeGift(eventProduct: eventProduct, orderItem: currentOrderItem)
             currentEventProduct = eventProduct
-            if let orderItem = currentEventProduct.orderItems?.first {
-                currentOrderItem = orderItem
-            }
+            guard let orderItem = eventProduct.orderItems?.first else { return }
+            currentOrderItem = orderItem
+            giftStatusHelperOptions = GiftStatusHelper.shared.manageCollaborativeGift(eventProduct: currentEventProduct, orderItem: currentOrderItem)
         }
         
         //UIAlertActions Declared
@@ -400,11 +399,14 @@ extension GiftsSummaryViewController {
             optionsSheet.addAction(requestProduct)
         }
         
-        optionsSheet.addAction(sendMessage)
+        if giftStatusHelperOptions.envelope == .grayIcon {
+            optionsSheet.addAction(sendMessage)
+        }
         optionsSheet.addAction(cancelAction)
         
-        present(optionsSheet, animated: true, completion: nil)
-        
+        if optionsSheet.actions.count > 1 {
+            present(optionsSheet, animated: true, completion: nil)
+        }
     }
     
     func presentThanksMessageActionSheet(orderItem: OrderItem, eventProduct: EventProduct) {
@@ -415,10 +417,14 @@ extension GiftsSummaryViewController {
         let sendMessage = UIAlertAction(title: "ENVIAR MENSAJE DE AGRADECIMIENTO", style: .default, handler: {(action) in self.presentSendMessage(orderItem: orderItem, eventProduct: eventProduct)})
         let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel)
         
-        optionsSheet.addAction(sendMessage)
+        if !orderItem.hasBeenThanked {
+            optionsSheet.addAction(sendMessage)
+        }
         optionsSheet.addAction(cancelAction)
         
-        present(optionsSheet, animated: true, completion: nil)
+        if optionsSheet.actions.count > 1 {
+            present(optionsSheet, animated: true, completion: nil)
+        }
     }
     
     func presentEnvelopeActionSheet(cashGiftItem: CashGiftItem) {
