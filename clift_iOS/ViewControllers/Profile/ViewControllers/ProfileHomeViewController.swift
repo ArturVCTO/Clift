@@ -135,6 +135,7 @@ extension ProfileHomeViewController: DatePickerViewDelegate {
     func returnSelectedDate(date: Date) {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
+        formatter.locale = Locale(identifier: "es_MX")
         profileEventDateButton.setTitle(formatter.string(from: date), for: .normal)
     }
 }
