@@ -57,12 +57,12 @@ class ProfileHomeViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func presentDatePicker() {
-        let datePickerView = DatePickerView()
-        datePickerView.delegate = self
-        datePickerView.modalPresentationStyle = .custom
-        datePickerView.transitioningDelegate = self
+        let datePickerVC = DatePickerViewController()
+        datePickerVC.delegate = self
+        datePickerVC.modalPresentationStyle = .custom
+        datePickerVC.transitioningDelegate = self
         
-        self.present(datePickerView, animated: true, completion: nil)
+        self.present(datePickerVC, animated: true, completion: nil)
     }
     
 }
@@ -131,7 +131,7 @@ extension ProfileHomeViewController: UIViewControllerTransitioningDelegate {
     }
 }
 
-extension ProfileHomeViewController: DatePickerViewDelegate {
+extension ProfileHomeViewController: DatePickerViewControllerDelegate {
     func returnSelectedDate(date: Date) {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium

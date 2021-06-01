@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol DatePickerViewDelegate {
+protocol DatePickerViewControllerDelegate {
     func returnSelectedDate(date: Date)
 }
 
-class DatePickerView: UIViewController {
+class DatePickerViewController: UIViewController {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
-    var delegate: DatePickerViewDelegate!
+    var delegate: DatePickerViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()

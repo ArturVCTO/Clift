@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00047E51265EB7F600CCB771 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00047E50265EB7F600CCB771 /* DatePickerView.xib */; };
-		00047E59265EB95F00CCB771 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00047E58265EB95F00CCB771 /* DatePickerView.swift */; };
+		00047E51265EB7F600CCB771 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00047E50265EB7F600CCB771 /* DatePickerViewController.xib */; };
+		00047E59265EB95F00CCB771 /* DatePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00047E58265EB95F00CCB771 /* DatePickerViewController.swift */; };
 		00047E5F265EBBE600CCB771 /* ModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00047E5E265EBBE600CCB771 /* ModalPresentationController.swift */; };
 		0B1F53E52554DDD7003A3F9F /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F53E42554DDD7003A3F9F /* RecoverPasswordViewController.swift */; };
 		0B1F53F02554E0A5003A3F9F /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F53EF2554E0A5003A3F9F /* UIImageExtension.swift */; };
@@ -305,8 +305,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00047E50265EB7F600CCB771 /* DatePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
-		00047E58265EB95F00CCB771 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		00047E50265EB7F600CCB771 /* DatePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
+		00047E58265EB95F00CCB771 /* DatePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerViewController.swift; sourceTree = "<group>"; };
 		00047E5E265EBBE600CCB771 /* ModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalPresentationController.swift; sourceTree = "<group>"; };
 		0B1F53E42554DDD7003A3F9F /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		0B1F53E92554DF69003A3F9F /* Session.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Session.storyboard; sourceTree = "<group>"; };
@@ -681,8 +681,8 @@
 				465C82132361087400DAC090 /* CustomAlertController.swift */,
 				46D377672391CF74004BE93E /* DiscardChangesAlertView.swift */,
 				46462BE123A9296200516A60 /* GradientFontExtension.swift */,
-				00047E50265EB7F600CCB771 /* DatePickerView.xib */,
-				00047E58265EB95F00CCB771 /* DatePickerView.swift */,
+				00047E50265EB7F600CCB771 /* DatePickerViewController.xib */,
+				00047E58265EB95F00CCB771 /* DatePickerViewController.swift */,
 				00047E5E265EBBE600CCB771 /* ModalPresentationController.swift */,
 			);
 			path = "View Extensions";
@@ -1478,7 +1478,7 @@
 				6173DE4E25BBA8C6000476CB /* CheckoutProductCell.xib in Resources */,
 				61AE93CF260AB9FE00E66595 /* StoreCollectionReusableView.xib in Resources */,
 				61BAC511261E8E720070BF1B /* ColaborativeSummaryTableViewCell.xib in Resources */,
-				00047E51265EB7F600CCB771 /* DatePickerView.xib in Resources */,
+				00047E51265EB7F600CCB771 /* DatePickerViewController.xib in Resources */,
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
 				46B5F74623845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */,
 				F35E9CC225C8B4C200B54192 /* GiftsViewController.storyboard in Resources */,
@@ -1787,7 +1787,7 @@
 				46C07A1A23D26E460091CDDA /* StripeApiClient.swift in Sources */,
 				466E99DF246DA62A009E94E3 /* OnboardingShippingAddress.swift in Sources */,
 				CE66B16824EC3AB200AE91C7 /* Pagination.swift in Sources */,
-				00047E59265EB95F00CCB771 /* DatePickerView.swift in Sources */,
+				00047E59265EB95F00CCB771 /* DatePickerViewController.swift in Sources */,
 				463A304E2321785A00C42347 /* ProductInformationTableViewController.swift in Sources */,
 				CE9125A424F830BA00B30F7F /* ThankCollaboratorViewController.swift in Sources */,
 				465C82192362159D00DAC090 /* AddProductByUrlViewController.swift in Sources */,
