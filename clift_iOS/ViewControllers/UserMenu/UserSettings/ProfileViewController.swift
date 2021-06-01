@@ -39,8 +39,8 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func editProfileButtonTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let editProfileVC = storyboard.instantiateViewController(withIdentifier: "editProfileVC") as! EditProfileViewController
+        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let editProfileVC = storyboard.instantiateViewController(withIdentifier: "ProfileHomeViewController") as! ProfileHomeViewController
         self.navigationController?.pushViewController(editProfileVC, animated: true)
     }
     
