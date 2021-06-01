@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         GIDSignIn.sharedInstance()?.delegate = self
         Stripe.setDefaultPublishableKey(Bundle.main.infoDictionary!["STRIPE_PUBLISHABLE_KEY"] as! String)
         IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.previousNextDisplayMode = .alwaysHide
         return true
     }
 

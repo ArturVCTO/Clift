@@ -13,6 +13,10 @@ import Moya
 import GSMessages
 import RealmSwift
 
+protocol ConvertToCreditViewControllerDelegate: AnyObject {
+    func didConvertCredit(eventProduct: EventProduct)
+}
+
 class ConvertToCreditViewController: UIViewController {
 
     @IBOutlet weak var productNameLabel: UILabel!
@@ -26,6 +30,7 @@ class ConvertToCreditViewController: UIViewController {
     
     var creditQty = 0.0
     var creditIds: [Dictionary<String,Any>] = []
+    weak var delegate: ConvertToCreditViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +69,7 @@ class ConvertToCreditViewController: UIViewController {
                 if response.isSuccess(){
                     //self.eventProduct.status = "credit"
                     //self.collectionView.reloadItems(at: [self.selectedIndexPath!])
+                    self.delegate.didConvertCredit(eventProduct: self.eventProduct)
                     self.removeAnimation()
                     self.navigationController?.showMessage(NSLocalizedString("Se ha convertido a crédito satisfactoriamente", comment: "Producto actualizado"), type: .success)
                 }else {
@@ -72,6 +78,7 @@ class ConvertToCreditViewController: UIViewController {
             }
         }
     }
+    
     @IBAction func cancelAction(_ sender: Any) {
         self.removeAnimation()
     }

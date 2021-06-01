@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DatePickerViewController" customModule="CLIFT" customModuleProvider="target">
+            <connections>
+                <outlet property="datePicker" destination="ctd-24-vjb" id="FEG-yB-Rak"/>
+                <outlet property="view" destination="iN0-l3-epB" id="OAJ-7O-4IT"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="237"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="ctd-24-vjb">
+                    <rect key="frame" x="0.0" y="48" width="414" height="181"/>
+                </datePicker>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="aAn-rI-uYu">
+                    <rect key="frame" x="0.0" y="4" width="414" height="44"/>
+                    <items>
+                        <barButtonItem width="325" style="plain" systemItem="fixedSpace" id="Lzd-u1-Wak"/>
+                        <barButtonItem systemItem="done" id="Tma-ee-qoO">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="-1" id="Pb9-Yb-l1h"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ctd-24-vjb" firstAttribute="top" secondItem="aAn-rI-uYu" secondAttribute="bottom" id="8zQ-uy-h6R"/>
+                <constraint firstItem="aAn-rI-uYu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ElL-8X-DDK"/>
+                <constraint firstItem="aAn-rI-uYu" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="GO9-rE-TGs"/>
+                <constraint firstItem="aAn-rI-uYu" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="cyg-rF-K8t"/>
+                <constraint firstItem="ctd-24-vjb" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="qEU-iM-ulp"/>
+                <constraint firstItem="ctd-24-vjb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="uDb-BI-VrC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="ctd-24-vjb" secondAttribute="bottom" constant="8" id="xRo-zs-Wcg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="231.8840579710145" y="10.044642857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

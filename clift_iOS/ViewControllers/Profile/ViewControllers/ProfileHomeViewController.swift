@@ -17,6 +17,8 @@ class ProfileHomeViewController: UIViewController {
     @IBOutlet weak var profileNameTextField: UITextField!
     @IBOutlet weak var profileAddressTextField: UITextField!
     @IBOutlet weak var profileBankAccountButton: UIButton!
+    @IBOutlet weak var profileBankAccountTextField: UITextField!
+    @IBOutlet weak var profileEventDateButton: customButton!
     var profileImagePicker: UIImagePickerController?
     var bannerImagePicker: UIImagePickerController?
     var event = Event()
@@ -74,7 +76,7 @@ class ProfileHomeViewController: UIViewController {
     }
     
     @IBAction func dateButtonPressed(_ sender: Any) {
-        // Calendar
+        presentDatePicker()
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
@@ -85,6 +87,15 @@ class ProfileHomeViewController: UIViewController {
         bankAccountVC.currentBankAccount = currentBankAccount
         bankAccountVC.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(bankAccountVC, animated: true)
+    }
+
+    @objc func presentDatePicker() {
+        let datePickerVC = DatePickerViewController()
+        datePickerVC.delegate = self
+        datePickerVC.modalPresentationStyle = .custom
+        datePickerVC.transitioningDelegate = self
+        
+        self.present(datePickerVC, animated: true, completion: nil)
     }
 }
 
@@ -269,5 +280,20 @@ extension ProfileHomeViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
     
         event.name = textField.text ?? ""
+    }
+}
+
+extension ProfileHomeViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        ModalPresentationController(presentedViewController: presented, presenting: presenting)
+    }
+}
+
+extension ProfileHomeViewController: DatePickerViewControllerDelegate {
+    func returnSelectedDate(date: Date) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.locale = Locale(identifier: "es_MX")
+        profileEventDateButton.setTitle(formatter.string(from: date), for: .normal)
     }
 }
