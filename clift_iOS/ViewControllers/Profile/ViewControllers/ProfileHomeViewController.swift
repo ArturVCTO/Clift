@@ -15,6 +15,7 @@ class ProfileHomeViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var profileNameTextField: UITextField!
     @IBOutlet weak var profileAddressTextField: UITextField!
     @IBOutlet weak var profileBankAccountTextField: UITextField!
+    @IBOutlet weak var profileEventDateButton: customButton!
     var profileImagePicker: UIImagePickerController?
     var bannerImagePicker: UIImagePickerController?
     
@@ -48,11 +49,20 @@ class ProfileHomeViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func dateButtonPressed(_ sender: Any) {
-        // Calendar
+        presentDatePicker()
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         // Save
+    }
+    
+    @objc func presentDatePicker() {
+        let datePickerVC = DatePickerViewController()
+        datePickerVC.delegate = self
+        datePickerVC.modalPresentationStyle = .custom
+        datePickerVC.transitioningDelegate = self
+        
+        self.present(datePickerVC, animated: true, completion: nil)
     }
     
 }
@@ -112,5 +122,20 @@ extension ProfileHomeViewController: UIImagePickerControllerDelegate, UINavigati
         }
         
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ProfileHomeViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        ModalPresentationController(presentedViewController: presented, presenting: presenting)
+    }
+}
+
+extension ProfileHomeViewController: DatePickerViewControllerDelegate {
+    func returnSelectedDate(date: Date) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.locale = Locale(identifier: "es_MX")
+        profileEventDateButton.setTitle(formatter.string(from: date), for: .normal)
     }
 }

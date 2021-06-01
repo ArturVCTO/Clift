@@ -380,6 +380,7 @@
                         <outlet property="bannerPictureImageView" destination="kpL-Vp-4Zp" id="7Iz-c0-Bk3"/>
                         <outlet property="profileAddressTextField" destination="bDM-bU-MKD" id="qo3-yM-phZ"/>
                         <outlet property="profileBankAccountTextField" destination="gAE-rD-5jE" id="Gcc-Gz-cI2"/>
+                        <outlet property="profileEventDateButton" destination="Zex-yn-KLw" id="605-RZ-HeZ"/>
                         <outlet property="profileNameTextField" destination="xmL-Xp-lYu" id="ZJa-ee-AVb"/>
                         <outlet property="profilePictureImageView" destination="scC-Aq-PLj" id="KTT-PF-Zec"/>
                     </connections>
