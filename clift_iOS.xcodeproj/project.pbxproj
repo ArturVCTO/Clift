@@ -281,6 +281,7 @@
 		F34E3BDA2607C07200DC0422 /* OrderProductUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E3BD92607C07200DC0422 /* OrderProductUserData.swift */; };
 		F35E9CC225C8B4C200B54192 /* GiftsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */; };
 		F370B0DD2601800E00608B36 /* GiftsSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F370B0DC2601800E00608B36 /* GiftsSummaryViewController.swift */; };
+		F3825ECC26546B8400016FDF /* SummaryTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3825ECB26546B8400016FDF /* SummaryTableView.swift */; };
 		F38DD6A325D0C58800F7C8D1 /* WeddingProfileProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DD6A225D0C58800F7C8D1 /* WeddingProfileProduct.swift */; };
 /* End PBXBuildFile section */
 
@@ -575,6 +576,7 @@
 		F34E3BD92607C07200DC0422 /* OrderProductUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProductUserData.swift; sourceTree = "<group>"; };
 		F35E9CC125C8B4C200B54192 /* GiftsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GiftsViewController.storyboard; sourceTree = "<group>"; };
 		F370B0DC2601800E00608B36 /* GiftsSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftsSummaryViewController.swift; sourceTree = "<group>"; };
+		F3825ECB26546B8400016FDF /* SummaryTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTableView.swift; sourceTree = "<group>"; };
 		F38DD6A225D0C58800F7C8D1 /* WeddingProfileProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeddingProfileProduct.swift; sourceTree = "<group>"; };
 		FDB342972F83B84300035A71 /* Pods-clift_iOS.mock.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-clift_iOS.mock.xcconfig"; path = "Target Support Files/Pods-clift_iOS/Pods-clift_iOS.mock.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1311,6 +1313,7 @@
 				F330BDFD26040268009F27B2 /* Custom View */,
 				F330BDF22603D3A5009F27B2 /* Models */,
 				F370B0DC2601800E00608B36 /* GiftsSummaryViewController.swift */,
+				F3825ECB26546B8400016FDF /* SummaryTableView.swift */,
 				F330BDED2603C1F3009F27B2 /* GiftsSummary.storyboard */,
 				6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */,
 			);
@@ -1726,6 +1729,7 @@
 				46DC795223E943400013C306 /* ThankYouUser.swift in Sources */,
 				CEF53FB424F4461D00D7C997 /* OrderItem.swift in Sources */,
 				6127D94925B3CF3D00C8250A /* CheckoutEnvelope.swift in Sources */,
+				F3825ECC26546B8400016FDF /* SummaryTableView.swift in Sources */,
 				46E85B5222FB5ED9004FA3FE /* CliftApiManager.swift in Sources */,
 				468258162307261C00D3D49C /* LoginViewController.swift in Sources */,
 				4604A32F22FE18900041F9AA /* FourthStepOnboardingViewController.swift in Sources */,
@@ -1966,7 +1970,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -2095,7 +2099,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -2280,7 +2284,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -2306,7 +2310,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 5MDCA888Q7;
 				INFOPLIST_FILE = clift_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;

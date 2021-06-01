@@ -52,7 +52,7 @@
                                                     <action selector="tableGiftButtonPressed:" destination="Bba-Qi-3RO" eventType="touchUpInside" id="tOq-V2-xir"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeScreenBackgrounPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="rsu-1C-c69">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="rsu-1C-c69">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
                                                 <color key="backgroundColor" red="0.20000000000000001" green="0.18823529410000001" blue="0.23921568630000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -273,7 +273,7 @@
                                                     <constraint firstItem="3Ic-QD-Ki7" firstAttribute="centerY" secondItem="JSw-75-b3l" secondAttribute="centerY" id="mNZ-fA-IwW"/>
                                                 </constraints>
                                             </view>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weddingProfileBannerImage" translatesAutoresizingMaskIntoConstraints="NO" id="plB-uE-bBb">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HomeScreenBackgrounPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="plB-uE-bBb">
                                                 <rect key="frame" x="0.0" y="823" width="375" height="138"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -934,13 +934,13 @@
         </designable>
     </designables>
     <resources>
+        <image name="1" width="1280" height="800"/>
         <image name="HomeScreenBackgrounPlaceholder" width="1451" height="699"/>
         <image name="LeftArrowGuest" width="18" height="20"/>
         <image name="RightArrowGuest" width="18" height="20"/>
         <image name="chevrondowngray" width="10" height="7"/>
         <image name="giftEmptyState" width="244.5" height="245"/>
         <image name="profilePlaceHolder" width="1000" height="1000"/>
-        <image name="weddingProfileBannerImage" width="374" height="138.5"/>
         <image name="wedding_profile_elipse" width="87.5" height="87.5"/>
         <image name="whiteFilter" width="36" height="42.5"/>
         <namedColor name="PrimaryBlue">

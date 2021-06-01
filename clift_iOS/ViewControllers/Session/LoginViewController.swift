@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
     }
     
     func postLoginSession() {
-        if let userEmail = emailSignInTextField.text?.lowercased(), let userPassword = passwordSignInTextField.text {
+        if let userEmail = emailSignInTextField.text?.lowercased().replacingOccurrences(of: " ", with: ""), let userPassword = passwordSignInTextField.text {
             sharedApiManager.login(email: userEmail, password: userPassword) { (session, result) in
                 if let response = result {
                     if response.isSuccess() {

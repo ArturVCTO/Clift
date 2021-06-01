@@ -77,7 +77,6 @@ class GiftStoreProductsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        productsCollectionView.collectionViewLayout = layout
         searchBar.delegate = self
         setUserType()
         if userType == .userLogIn {
@@ -150,12 +149,6 @@ class GiftStoreProductsViewController: UIViewController {
     private func registerCells() {
         productsCollectionView.register(UINib(nibName: "StoreProductCell", bundle: nil), forCellWithReuseIdentifier: "StoreProductCell")
     }
-    
-    var layout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 150, height: 280)
-        return layout
-    }()
     
     private func setCollectionViewHeight() {
         collectionViewHeight.constant = CGFloat(productsCollectionView.collectionViewLayout.collectionViewContentSize.height)
@@ -241,7 +234,7 @@ extension GiftStoreProductsViewController {
 }
 
 // MARK: Extension Collection View Delegate and Data Source
-extension GiftStoreProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension GiftStoreProductsViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -279,6 +272,14 @@ extension GiftStoreProductsViewController: UICollectionViewDelegate, UICollectio
             self.productsCollectionView.reloadData()
             self.setCollectionViewHeight()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 150, height: 280)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.init(top: 0, left: 0, bottom: 8, right: 0)
     }
 }
 

@@ -147,21 +147,27 @@
                                             <constraint firstItem="rhX-NI-Ioy" firstAttribute="centerY" secondItem="RK8-8D-W48" secondAttribute="centerY" id="kae-Y6-Ocr"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="540-O5-Je8">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kyr-Dz-2EA">
                                         <rect key="frame" x="0.0" y="124.5" width="24" height="43.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icthankgray" translatesAutoresizingMaskIntoConstraints="NO" id="PWT-Le-mCS">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axN-2O-1fQ">
                                                 <rect key="frame" x="0.0" y="10" width="24" height="24"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="ZJn-pW-xcW"/>
-                                                    <constraint firstAttribute="width" constant="24" id="hoP-Qu-9dc"/>
+                                                    <constraint firstAttribute="height" constant="24" id="Gn9-NH-UWI"/>
+                                                    <constraint firstAttribute="width" constant="24" id="tbk-fk-Jso"/>
                                                 </constraints>
-                                            </imageView>
+                                                <state key="normal" image="icthankgray"/>
+                                                <state key="disabled" image="iccreditwhite"/>
+                                                <connections>
+                                                    <action selector="envelopeButtonPressed:" destination="aaw-Ha-aex" eventType="touchUpInside" id="VPW-Yb-wpy"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="PWT-Le-mCS" firstAttribute="centerY" secondItem="540-O5-Je8" secondAttribute="centerY" id="1c6-cO-D6g"/>
-                                            <constraint firstItem="PWT-Le-mCS" firstAttribute="centerX" secondItem="540-O5-Je8" secondAttribute="centerX" id="bz7-OT-7Dm"/>
+                                            <constraint firstItem="axN-2O-1fQ" firstAttribute="centerX" secondItem="Kyr-Dz-2EA" secondAttribute="centerX" id="OVz-ge-BO0"/>
+                                            <constraint firstItem="axN-2O-1fQ" firstAttribute="centerY" secondItem="Kyr-Dz-2EA" secondAttribute="centerY" id="i64-lc-kTX"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -184,7 +190,7 @@
                 <outlet property="categoryLabel" destination="ww2-bN-Lx0" id="tu8-OA-ZPc"/>
                 <outlet property="creditActionButton" destination="rhX-NI-Ioy" id="2uI-cP-jdW"/>
                 <outlet property="deliveryActionButton" destination="Cap-nb-ned" id="Cy3-98-fqE"/>
-                <outlet property="envelopeImage" destination="PWT-Le-mCS" id="36Q-NM-wUu"/>
+                <outlet property="envelopeActionButton" destination="axN-2O-1fQ" id="oHY-zD-Jnp"/>
                 <outlet property="nameLabel" destination="Ikb-oe-qmI" id="Pf4-zZ-Qbq"/>
                 <outlet property="productImage" destination="uLr-T8-x5U" id="3ja-BV-Owe"/>
                 <outlet property="productNameLabel" destination="Mof-lm-rez" id="XrF-R1-0zw"/>

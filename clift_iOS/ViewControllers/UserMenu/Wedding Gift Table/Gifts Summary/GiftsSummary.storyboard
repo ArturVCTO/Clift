@@ -140,14 +140,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="20C-eW-st1">
+                                            <searchBar contentMode="redraw" placeholder="Buscar por invitado" translatesAutoresizingMaskIntoConstraints="NO" id="20C-eW-st1">
                                                 <rect key="frame" x="0.0" y="97" width="343" height="56"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mca-Dp-Hh1">
                                                 <rect key="frame" x="0.0" y="161" width="343" height="488"/>
                                                 <subviews>
-                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="osg-Kb-2ql">
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="osg-Kb-2ql" customClass="SummaryTableView">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="488"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" priority="750" constant="488" id="T6c-8h-mFW"/>
