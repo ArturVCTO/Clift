@@ -96,6 +96,7 @@ class ProfileHomeViewController: UIViewController {
         datePickerVC.transitioningDelegate = self
         
         self.present(datePickerVC, animated: true, completion: nil)
+        datePickerVC.datePicker.date = event.date.fullStringToDate()
     }
 }
 
