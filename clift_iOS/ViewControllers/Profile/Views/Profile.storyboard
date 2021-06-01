@@ -38,7 +38,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zRg-K6-PPn" customClass="customView" customModule="CLIFT" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="158"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iccamera" translatesAutoresizingMaskIntoConstraints="NO" id="tsy-PS-Le4">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iccamera" translatesAutoresizingMaskIntoConstraints="NO" id="tsy-PS-Le4">
                                                 <rect key="frame" x="51" y="51" width="312" height="56"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVg-FJ-D6y" userLabel="Banner Button" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
@@ -108,7 +108,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mua-NM-aif" customClass="customView" customModule="CLIFT" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="132" height="132"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iccamera" translatesAutoresizingMaskIntoConstraints="NO" id="3OE-yh-1Hc">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iccamera" translatesAutoresizingMaskIntoConstraints="NO" id="3OE-yh-1Hc">
                                                 <rect key="frame" x="51" y="51" width="30" height="30"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bu-PW-nXL" userLabel="Profile Picture Button" customClass="customButton" customModule="CLIFT" customModuleProvider="target">

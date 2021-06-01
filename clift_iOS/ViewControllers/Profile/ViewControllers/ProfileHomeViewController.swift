@@ -186,7 +186,7 @@ extension ProfileHomeViewController {
                         }
 
                         self.profileNameTextField.text = currentEvent.name
-                        print(currentEvent.date)
+                        self.profileEventDateButton.setTitle(currentEvent.date, for: .normal)
                         self.getProfile()
                     }
                 }
@@ -292,8 +292,9 @@ extension ProfileHomeViewController: UIViewControllerTransitioningDelegate {
 extension ProfileHomeViewController: DatePickerViewControllerDelegate {
     func returnSelectedDate(date: Date) {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
         formatter.locale = Locale(identifier: "es_MX")
+        formatter.dateFormat = "yyyy-MM-dd"
         profileEventDateButton.setTitle(formatter.string(from: date), for: .normal)
+        event.date = formatter.string(from: date)
     }
 }
