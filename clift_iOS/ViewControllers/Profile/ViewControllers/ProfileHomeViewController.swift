@@ -83,10 +83,16 @@ class ProfileHomeViewController: UIViewController {
         updateEvent()
     }
     @IBAction func bankAccountPressed(_ sender: UIButton) {
-        let bankAccountVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileBankInformationVC") as! ProfileBankInformationViewController
-        bankAccountVC.currentBankAccount = currentBankAccount
-        bankAccountVC.modalPresentationStyle = .fullScreen
-        self.navigationController?.pushViewController(bankAccountVC, animated: true)
+        if hasStripeAccount() {
+            let bankAccountVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileBankInformationVC") as! ProfileBankInformationViewController
+            bankAccountVC.currentBankAccount = currentBankAccount
+            bankAccountVC.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(bankAccountVC, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Stripe", message: "Esta cuenta no está asociada a una cuenta de Stripe.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
 
     @objc func presentDatePicker() {
@@ -272,6 +278,21 @@ extension ProfileHomeViewController {
         }
         
         return multipartFormData
+    }
+    
+    func hasStripeAccount() -> Bool {
+        var canShowAccounts = false
+        
+        sharedApiManager.verifyEventPool(event: event) { (profile, result) in
+            if let response = result {
+                if response.isSuccess() {
+                    canShowAccounts = true
+                } else {
+                    canShowAccounts = false
+                }
+            }
+        }
+        return canShowAccounts
     }
 }
 
