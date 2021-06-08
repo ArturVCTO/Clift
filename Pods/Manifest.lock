@@ -1,3 +1,153 @@
-PODFILE CHECKSUM: b83bac6bd9efe3a8b5c12b9e9d4b1f746856f532
+PODS:
+  - Alamofire (4.8.2)
+  - AppAuth (1.2.0):
+    - AppAuth/Core (= 1.2.0)
+    - AppAuth/ExternalUserAgent (= 1.2.0)
+  - AppAuth/Core (1.2.0)
+  - AppAuth/ExternalUserAgent (1.2.0)
+  - Auk (11.0.0):
+    - moa
+  - DropDown (2.3.13)
+  - GoogleMaps (3.3.0):
+    - GoogleMaps/Maps (= 3.3.0)
+  - GoogleMaps/Base (3.3.0)
+  - GoogleMaps/Maps (3.3.0):
+    - GoogleMaps/Base
+  - GoogleSignIn (5.0.0):
+    - AppAuth (~> 1.1)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GSMessages (1.7.2)
+  - GTMAppAuth (1.0.0):
+    - AppAuth/Core (~> 1.0)
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.2.2):
+    - GTMSessionFetcher/Full (= 1.2.2)
+  - GTMSessionFetcher/Core (1.2.2)
+  - GTMSessionFetcher/Full (1.2.2):
+    - GTMSessionFetcher/Core (= 1.2.2)
+  - ImageSlideshow (1.8.0):
+    - ImageSlideshow/Core (= 1.8.0)
+  - ImageSlideshow/Core (1.8.0)
+  - IQKeyboardManagerSwift (6.5.6)
+  - Kingfisher (5.7.0)
+  - moa (12.0.0)
+  - Moya (11.0.2):
+    - Moya/Core (= 11.0.2)
+  - Moya-ObjectMapper/Core (2.7):
+    - Moya (~> 11)
+    - ObjectMapper (~> 3.3)
+  - Moya-ObjectMapper/RxSwift (2.7):
+    - Moya-ObjectMapper/Core
+    - RxSwift (~> 4.1)
+  - Moya/Core (11.0.2):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (11.0.2):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - ObjectMapper (3.5.1)
+  - "ObjectMapper+Realm (0.6)":
+    - ObjectMapper
+    - RealmSwift
+  - Realm (3.17.3):
+    - Realm/Headers (= 3.17.3)
+  - Realm/Headers (3.17.3)
+  - RealmSwift (3.17.3):
+    - Realm (= 3.17.3)
+  - Result (3.2.4)
+  - RxSwift (4.5.0)
+  - SDWebImage (5.10.4):
+    - SDWebImage/Core (= 5.10.4)
+  - SDWebImage/Core (5.10.4)
+  - SideMenu (6.1.4)
+  - Stripe (21.4.0):
+    - Stripe/Stripe3DS2 (= 21.4.0)
+  - Stripe/Stripe3DS2 (21.4.0)
+  - SwiftSoup (2.2.1)
+  - TextFieldEffects (1.6.0)
+  - "UITextField+Shake (1.2.1)"
 
-COCOAPODS: 1.5.3
+DEPENDENCIES:
+  - Auk (~> 11.0)
+  - DropDown
+  - GoogleMaps
+  - GoogleSignIn
+  - GSMessages
+  - ImageSlideshow (~> 1.8)
+  - IQKeyboardManagerSwift
+  - Kingfisher (~> 5.0)
+  - moa (~> 12.0)
+  - Moya-ObjectMapper/RxSwift
+  - Moya/RxSwift (~> 11.0)
+  - "ObjectMapper+Realm"
+  - RealmSwift
+  - SDWebImage (~> 5.0)
+  - SideMenu
+  - Stripe (~> 21.4)
+  - SwiftSoup
+  - TextFieldEffects
+  - "UITextField+Shake (~> 1.2)"
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AppAuth
+    - Auk
+    - DropDown
+    - GoogleMaps
+    - GoogleSignIn
+    - GSMessages
+    - GTMAppAuth
+    - GTMSessionFetcher
+    - ImageSlideshow
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - moa
+    - Moya
+    - Moya-ObjectMapper
+    - ObjectMapper
+    - "ObjectMapper+Realm"
+    - Realm
+    - RealmSwift
+    - Result
+    - RxSwift
+    - SDWebImage
+    - SideMenu
+    - Stripe
+    - SwiftSoup
+    - TextFieldEffects
+    - "UITextField+Shake"
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  AppAuth: bce82c76043657c99d91e7882e8a9e1a93650cd4
+  Auk: 7cc533252e2caaaa36b2be19c0b799f6057c365a
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  GoogleMaps: cfee83da305b9aaeccf92c24ac79df11c3003492
+  GoogleSignIn: a62edd0516721d2a3db1259a5681b91f9b41c06a
+  GSMessages: 05bedc25bd278a1bf4260d6de526de0fc84cfef7
+  GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
+  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+  ImageSlideshow: 197130fe349aafa9446f54277c792551d41eadf9
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  Kingfisher: c7d211b54f1f30d8060aadab177d52b4349c825b
+  moa: e2346f12de6c65bbca4d103950d45db9e46785ef
+  Moya: a725035953bc1c0eb1be505ab903984501d82440
+  Moya-ObjectMapper: 441caa307b527331fde59e2577adc632a16f1255
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  "ObjectMapper+Realm": 4cf44ed3202a73f08594e21e13eb3f8aa9b5a664
+  Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
+  RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
+  SideMenu: 7e7f16f229c8d160830e5449308f6562821d762d
+  Stripe: 7c594b943abb65cf7bc28e37fd5124e65db3ce9e
+  SwiftSoup: a91d3c96ecb6f8f13005552ef60f9075aae4a7f3
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
+  "UITextField+Shake": 298ac5a0f239d731bdab999b19b628c956ca0ac3
+
+PODFILE CHECKSUM: 3a010de07a9d81cc34478811aa545b852fbf253e
+
+COCOAPODS: 1.10.0

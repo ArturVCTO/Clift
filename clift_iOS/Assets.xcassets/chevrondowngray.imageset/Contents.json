@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "chevrondowngray.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "scale" : "2x",
+      "filename" : "chevrondowngray@2x.png",
+      "idiom" : "universal"
+    },
+    {
+      "filename" : "chevrondowngray@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

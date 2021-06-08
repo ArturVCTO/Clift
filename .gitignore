@@ -1,0 +1,16 @@
+
+*.xcuserstate
+*.xcuserdatad
+.DS_Store
+build/
+*.pbxuser
+Pods/
+.Trashes
+*.swp
+*.lock
+*~.nib
+DerivedData/
+build/
+Podfile.lock
+Pods/*
+./Pods

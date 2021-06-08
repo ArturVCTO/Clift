@@ -1,0 +1,1450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "233572EC-6A11-4DFA-A085-E86F0B6F5C1F"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "29791435-6AF3-47E0-AEDE-6CB4E488B90C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/Onboarding/RootOnboardingViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "onboardingViewControllers"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4614A049-E41B-42ED-A5F7-200E4FF1FAE4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIViewController.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1"
+            endingLineNumber = "1"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A85338A4-141F-4B65-8153-FDA86EFF55A3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Invitations/InvitationsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "385"
+            endingLineNumber = "385"
+            landmarkName = "contactPicker(_:didSelect:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A927D363-C8A9-4E59-80A2-BAF17B07524B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Models/Event.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "mapping(map:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC31EAA0-AAC6-4470-B98B-C1C03F9A8782"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Models/Event.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "mapping(map:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5FFBC3D-5ED4-4F25-B409-E6025E6A726E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Network/CliftApiManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6626535B-FEE2-45EE-87D6-F1E054292819"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Network/CliftApiManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "6626535B-FEE2-45EE-87D6-F1E054292819 - add0d944620759db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "default argument 4 of CLIFT.CliftApiManager.(requestArrayWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;Swift.Array&lt;A&gt;&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String, additionalSteps: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "6626535B-FEE2-45EE-87D6-F1E054292819 - cfbc284e7a9ba34f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CLIFT.CliftApiManager.(requestArrayWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;Swift.Array&lt;A&gt;&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String, additionalSteps: Swift.Optional&lt;() -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "137"
+                  endingLineNumber = "137"
+                  offsetFromSymbolStart = "275">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BA14A22-743D-42F8-BFCE-3F78F57A6142"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Models/Event.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "mapping(map:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FE8A83FF-779A-4B44-A8D4-FC3BFB5AB232"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "661"
+            endingLineNumber = "661"
+            landmarkName = "ProductsRegistryViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "FE8A83FF-779A-4B44-A8D4-FC3BFB5AB232 - e1c2e438801b7af1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CLIFT.ProductsRegistryViewController.loadGiftedAndThanked() -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "359"
+                  endingLineNumber = "359"
+                  offsetFromSymbolStart = "892">
+               </Location>
+               <Location
+                  uuid = "FE8A83FF-779A-4B44-A8D4-FC3BFB5AB232 - 357d2fd525d3793b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;CLIFT.EventProduct&gt;&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; () in CLIFT.ProductsRegistryViewController.loadGiftedAndThanked() -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "360"
+                  endingLineNumber = "360"
+                  offsetFromSymbolStart = "252">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A6DF1DC4-1616-4BE7-A2B7-A1BD51CB9FB7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Cells/EventProductCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "setup(eventProduct:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0C55D5D-FA3F-4854-92CC-BD72CA406690"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Cells/EventProductCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "setup(eventProduct:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA4DFDB3-4CFB-47A2-8B45-CC7902EC9EB7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Cells/EventProductCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "setup(eventProduct:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C80ACBF4-F9C9-4679-A79E-85234DC1854A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "533"
+            endingLineNumber = "533"
+            landmarkName = "ProductsRegistryViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "C80ACBF4-F9C9-4679-A79E-85234DC1854A - 6e99031391f14fb3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CLIFT.ProductsRegistryViewController.updateEventPoolToImportant(event: CLIFT.Event, eventPool: CLIFT.EventPool, importantBool: Swift.Bool) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "261"
+                  endingLineNumber = "261"
+                  offsetFromSymbolStart = "256">
+               </Location>
+               <Location
+                  uuid = "C80ACBF4-F9C9-4679-A79E-85234DC1854A - 35a57cb7f6c9cfa2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;CLIFT.EventPool&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; () in CLIFT.ProductsRegistryViewController.updateEventPoolToImportant(event: CLIFT.Event, eventPool: CLIFT.EventPool, importantBool: Swift.Bool) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "262"
+                  endingLineNumber = "262"
+                  offsetFromSymbolStart = "137">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "854C2A92-C49B-4144-BAA3-49B31DF9E264"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Network/CliftApiManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C39FE9E9-34D1-4D6F-9670-DD45F085F9C7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Network/CliftApi.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "path"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2F21B233-FC4F-41B6-AA39-EBB7BC2C3789"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Network/CliftApi.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
+            landmarkName = "task"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "792AA4B6-59D2-41BD-8B6F-D521017BBB9B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "importantActionButtonPressed(alert:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8CD59FA4-7E41-4409-AEE6-6E593FF5EA1D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "importantActionButtonPressed(alert:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C44890B-0D28-4989-8C40-403A39AD4C11"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "loadEvent()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AFA91FBF-8210-4A02-8554-3D342F1407C9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "626"
+            endingLineNumber = "626"
+            landmarkName = "ProductsRegistryViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "AFA91FBF-8210-4A02-8554-3D342F1407C9 - 1c3dbeef03f53516"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CLIFT.ProductsRegistryViewController.getEventPools(event: CLIFT.Event) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "321"
+                  endingLineNumber = "321"
+                  offsetFromSymbolStart = "225">
+               </Location>
+               <Location
+                  uuid = "AFA91FBF-8210-4A02-8554-3D342F1407C9 - d6dd9b8166ae8292"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;CLIFT.EventPool&gt;&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; () in CLIFT.ProductsRegistryViewController.getEventPools(event: CLIFT.Event) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "322"
+                  endingLineNumber = "322"
+                  offsetFromSymbolStart = "137">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "36168A21-79B3-44E1-B13E-7F42161D071A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "522"
+            endingLineNumber = "522"
+            landmarkName = "updateEventProductToImportant(eventProduct:importantBool:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC59E01B-94E4-4D30-BABF-F5D60C8808EA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "526"
+            endingLineNumber = "526"
+            landmarkName = "updateEventProductToImportant(eventProduct:importantBool:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DBD53D34-06B1-47AA-BBBA-F839DD56E8CD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Models/Pagination.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "mapping(map:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D1596C8E-988A-4033-978B-E94E4ED415CF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Models/Pagination.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "mapping(map:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "899DDA36-8E90-4F73-B2F1-599331363506"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "574"
+            endingLineNumber = "574"
+            landmarkName = "ProductsRegistryViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "899DDA36-8E90-4F73-B2F1-599331363506 - 2521173026c88ceb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CLIFT.ProductsRegistryViewController.getEventProducts(event: CLIFT.Event, available: Swift.String, gifted: Swift.String, filters: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "337"
+                  endingLineNumber = "337"
+                  offsetFromSymbolStart = "306">
+               </Location>
+               <Location
+                  uuid = "899DDA36-8E90-4F73-B2F1-599331363506 - 633ae18e0ea38fb0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;CLIFT.EventProduct&gt;&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; () in CLIFT.ProductsRegistryViewController.getEventProducts(event: CLIFT.Event, available: Swift.String, gifted: Swift.String, filters: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "338"
+                  endingLineNumber = "338"
+                  offsetFromSymbolStart = "17">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D317CC4-7198-48D5-B05C-CAEDCFC79E14"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Models/Pagination.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "mapping(map:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "24159A42-2B0A-4F23-A3C1-776332605134"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Network/CliftApiManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - 8e7d5d01842e4632"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Category&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - 2889d5212f42e0f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.User&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - 5242eb20a2b9c0f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Event&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - eb07a4991161456"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.StripeCheckout&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - cfd6f83ea4021122"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Pagination&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - 19e4a289244e633"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.EventPool&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - ccf313b9b13e9d1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.EventProduct&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - cfd6f83ea4021122"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Invitation&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - e9e61b853e5851c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Session&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - 4244c6380fb6f8a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.EventGuestAnalytics&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - e9e61b853e5851c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Address&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "24159A42-2B0A-4F23-A3C1-776332605134 - 8e7d5d01842e4632"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.CartItem&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Network/CliftApiManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - 8e7d5d01842e4632"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Category&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - 2889d5212f42e0f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.User&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - 5242eb20a2b9c0f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Event&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - eb07a4991161456"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.StripeCheckout&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - cfd6f83ea4021122"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Pagination&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - 19e4a289244e633"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.EventPool&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - ccf313b9b13e9d1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.EventProduct&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - cfd6f83ea4021122"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Invitation&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - e9e61b853e5851c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Session&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - 4244c6380fb6f8a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.EventGuestAnalytics&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - e9e61b853e5851c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Address&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "67DE5132-6C4D-4F61-A43D-BABEDB55B7A3 - 8e7d5d01842e4632"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.CartItem&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/Network/CliftApiManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - 8e7d5d01842e4632"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Category&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - 2889d5212f42e0f4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.User&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - 5242eb20a2b9c0f5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Event&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - eb07a4991161456"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.StripeCheckout&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - cfd6f83ea4021122"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Pagination&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - 19e4a289244e633"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.EventPool&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - ccf313b9b13e9d1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.EventProduct&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - cfd6f83ea4021122"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Invitation&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - e9e61b853e5851c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Session&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - 4244c6380fb6f8a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.EventGuestAnalytics&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - e9e61b853e5851c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.Address&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+               <Location
+                  uuid = "D2725B50-820E-4E73-B846-46D5B4FBA6A2 - 8e7d5d01842e4632"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead, Arg[4] = Exploded&gt; of generic specialization &lt;CLIFT.CartItem&gt; of CLIFT.CliftApiManager.(requestObjectWithResponse in _75EDF858CC6D2D0A3354C4DD802B6127)&lt;A where A: ObjectMapper.Mappable&gt;(_: CLIFT.CliftApi, type: A.Type, completion: (Swift.Optional&lt;A&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; (), wrapper: Swift.String) -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/Network/CliftApiManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "95"
+                  endingLineNumber = "95"
+                  offsetFromSymbolStart = "499">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "393F719F-5516-44B9-BF32-B2FF51A3EBF8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "404"
+            endingLineNumber = "404"
+            landmarkName = "actionButtonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "714D2C4C-9FA5-43BF-869B-C7CC7F3751AF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "542"
+            endingLineNumber = "542"
+            landmarkName = "updateEventPoolToImportant(event:eventPool:importantBool:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4170499F-5B8F-4B31-8969-282DC8237ED5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "543"
+            endingLineNumber = "543"
+            landmarkName = "updateEventPoolToImportant(event:eventPool:importantBool:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "20FF5FB2-7495-4E5D-8A99-60CAE46E6E74"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/CollaboratorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9FF333F-FADC-4023-ADB5-A1B14CEC168C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/CollaboratorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "41B23C49-826D-47FB-A80D-64702693EAB2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/ProductsRegistryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "addCollaboratorsView(alert:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5DD15DE9-DE4E-4DDB-8117-40F4E460C4D1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Add Products/AddCashFundViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "textFieldDidBeginEditing(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "11DE2B4F-3EFB-4B65-A74D-AE45AE81FD9C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Add Products/AddCashFundViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "keyboardWillShow(notification:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E3697689-E875-4387-A735-F45D1F0AD385"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Add Products/AddCashFundViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "keyboardWillShow(notification:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FCB2702B-F5C5-4302-ACFB-068E0E0069FE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Add Products/AddCashFundViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "keyboardDidShow(notification:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "67F1E2E6-D229-4D6B-9668-668FD90D20CB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Gift Shipping/GiftShippingTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "sendShippingRequest()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "67F1E2E6-D229-4D6B-9668-668FD90D20CB - 85936c1d1998602f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CLIFT.GiftShippingTableViewController.sendShippingRequest() -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/ViewControllers/UserMenu/Registry/Gift%20Shipping/GiftShippingTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "67F1E2E6-D229-4D6B-9668-668FD90D20CB - 260abd7c15d7efe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;CLIFT.EmptyObjectWithErrors&gt;, Swift.Optional&lt;Moya.Response&gt;) -&gt; () in CLIFT.GiftShippingTableViewController.sendShippingRequest() -&gt; ()"
+                  moduleName = "CLIFT"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lizzieguajardo/Documents/CLIFT/ios/clift_iOS/ViewControllers/UserMenu/Registry/Gift%20Shipping/GiftShippingTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "188">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "047C9A33-F307-43AA-AF90-52D3518284AE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/UserSettings/Addresses/AddAddressViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "setupCityDropDown()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1FC27CE0-4F18-4CC8-AC12-D491E28234FE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/PaymentsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "getCredits(event:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2172ACAF-367B-4FC5-89A4-F5F02A015468"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "clift_iOS/ViewControllers/UserMenu/Registry/Payments/MyCreditsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "getTotalAmount()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E2511E8-8409-4AAE-B0FE-44CDCF4F67BF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../../../Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIViewController.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

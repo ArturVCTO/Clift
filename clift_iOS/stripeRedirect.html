@@ -1,0 +1,30 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <body>
+        <div class="payment-block">
+            <button id="submit">Redirigir a Stripe</button>
+        </div>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('pk_test_izajufoCXbe5RPVrnP5uhDng00zRtPCXLh');
+    </script>
+    <style>
+        #submit {
+            background-color: #b1d3f6;
+            color: white;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            vertical-align: middle;
+            height: 35px;
+            padding: 0px 16px;
+        }
+    
+        .payment-block {
+            width: 100%
+            text-align: center;
+        }
+    </style>
+    </body>
+</html>
+

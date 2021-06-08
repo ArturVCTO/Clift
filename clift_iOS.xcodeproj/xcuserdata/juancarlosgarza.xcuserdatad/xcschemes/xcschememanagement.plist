@@ -7,7 +7,25 @@
 		<key>clift_iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>16</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>4672A88A22F88F25001F374F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4672A89E22F88F27001F374F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4672A8A922F88F27001F374F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
