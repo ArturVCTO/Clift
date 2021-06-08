@@ -40,10 +40,6 @@ class ProfileBankInformationViewController: UIViewController {
     }
     
     func setView() {
-        bankNameView.layer.cornerRadius = 5
-        bankNameView.layer.borderWidth = 1
-        bankNameView.layer.borderColor = UIColor.lightGray.cgColor
-        
         if currentBankAccount.id != "" {
             userNameTextField.text = currentBankAccount.owner
             bankNameButton.setTitle(currentBankAccount.bankName, for: .normal)
@@ -87,7 +83,7 @@ class ProfileBankInformationViewController: UIViewController {
         bankDropDown.show()
     }
     @IBAction func editButtonPressed(_ sender: customButton) {
-        currentBankAccount.owner = userNameTextField.text ?? ""
+        currentBankAccount.owner = userNameTextField.text?.uppercased() ?? ""
         currentBankAccount.account = accountTextField.text ?? ""
         //If id is empty from previous VC is because there are not accounts associated with the profile
         if currentBankAccount.id == "" {
