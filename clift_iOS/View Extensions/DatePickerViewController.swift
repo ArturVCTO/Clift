@@ -10,6 +10,7 @@ import UIKit
 
 protocol DatePickerViewControllerDelegate {
     func returnSelectedDate(date: Date)
+    func datePickerChanged(picker: UIDatePicker)
 }
 
 class DatePickerViewController: UIViewController {
@@ -38,6 +39,7 @@ class DatePickerViewController: UIViewController {
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         delegate.returnSelectedDate(date: datePicker.date)
+        delegate.datePickerChanged(picker: self.datePicker)
         dismiss(animated: true, completion: nil)
     }
     

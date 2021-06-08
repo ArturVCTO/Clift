@@ -96,7 +96,7 @@ class ProfileHomeViewController: UIViewController {
         datePickerVC.transitioningDelegate = self
         
         self.present(datePickerVC, animated: true, completion: nil)
-        datePickerVC.datePicker.date = event.date.fullStringToDate()
+        datePickerVC.datePicker.date = event.date.stringToDate()
     }
 }
 
@@ -186,8 +186,8 @@ extension ProfileHomeViewController {
                             }
                         }
 
-                        self.profileNameTextField.text = currentEvent.name
-                        self.profileEventDateButton.setTitle(currentEvent.date, for: .normal)
+                        self.profileNameTextField.text = currentEvent.name.uppercased()
+                        self.profileEventDateButton.setTitle(currentEvent.date.formateStringDate(format: "dd MMMM YYYY").uppercased(), for: .normal)
                         self.getProfile()
                     }
                 }
@@ -201,7 +201,7 @@ extension ProfileHomeViewController {
         sharedApiManager.getProfile() { (profile, result) in
             if let response = result {
                 if response.isSuccess() {
-                    self.profileAddressTextField.text = profile?.onboardingShippingAddress.streetAndNumber
+                    self.profileAddressTextField.text = profile?.onboardingShippingAddress.streetAndNumber.uppercased()
                     self.getBankAccounts()
                 }
             } else {
@@ -218,7 +218,7 @@ extension ProfileHomeViewController {
                         self.currentBankAccount = bankAccount
                         self.profileBankAccountButton.setTitle(self.hideAccountNumber(accountNumber: bankAccount.account), for: .normal)
                     } else {
-                        self.profileBankAccountButton.setTitle("No hay cuenta asociada", for: .normal)
+                        self.profileBankAccountButton.setTitle("NO HAY CUENTA ASOCIADA", for: .normal)
                     }
                 } else if (response.isClientError()) {
                     self.showMessage("Hubo un error al cargar las cuentas asociadas. Intente de nuevo más tarde.", type: .error)
@@ -291,11 +291,21 @@ extension ProfileHomeViewController: UIViewControllerTransitioningDelegate {
 }
 
 extension ProfileHomeViewController: DatePickerViewControllerDelegate {
-    func returnSelectedDate(date: Date) {
+    func datePickerChanged(picker: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "es_MX")
         formatter.dateFormat = "yyyy-MM-dd"
-        profileEventDateButton.setTitle(formatter.string(from: date), for: .normal)
-        event.date = formatter.string(from: date)
+        event.date = formatter.string(from: picker.date)
+    }
+    
+    func returnSelectedDate(date: Date) {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "es_MX")
+        formatter.dateFormat = "dd MMMM YYYY"
+        
+        let dateString = formatter.string(from: date).uppercased()
+        
+        event.date = dateString
+        profileEventDateButton.setTitle(dateString, for: .normal)
     }
 }
