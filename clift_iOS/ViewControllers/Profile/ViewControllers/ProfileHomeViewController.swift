@@ -23,6 +23,7 @@ class ProfileHomeViewController: UIViewController {
     var bannerImagePicker: UIImagePickerController?
     var event = Event()
     var currentBankAccount = BankAccount()
+    var userIsVerified = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +84,7 @@ class ProfileHomeViewController: UIViewController {
         updateEvent()
     }
     @IBAction func bankAccountPressed(_ sender: UIButton) {
-        if hasStripeAccount() {
+        if userIsVerified {
             let bankAccountVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileBankInformationVC") as! ProfileBankInformationViewController
             bankAccountVC.currentBankAccount = currentBankAccount
             bankAccountVC.modalPresentationStyle = .fullScreen
@@ -209,9 +210,11 @@ extension ProfileHomeViewController {
                 if response.isSuccess() {
                     self.profileAddressTextField.text = profile?.onboardingShippingAddress.streetAndNumber.uppercased()
                     self.getBankAccounts()
+                    self.hasStripeAccount()
                 }
             } else {
                 self.getBankAccounts()
+                self.hasStripeAccount()
             }
         }
     }
@@ -280,19 +283,22 @@ extension ProfileHomeViewController {
         return multipartFormData
     }
     
-    func hasStripeAccount() -> Bool {
-        var canShowAccounts = false
-        
+    func hasStripeAccount() {
         sharedApiManager.verifyEventPool(event: event) { (profile, result) in
             if let response = result {
                 if response.isSuccess() {
-                    canShowAccounts = true
+                    if let user = profile {
+                        if user.verified {
+                            self.userIsVerified = true
+                        } else {
+                            self.userIsVerified = false
+                        }
+                    }
                 } else {
-                    canShowAccounts = false
+                    print("UNSUCCESSFUL RESPONSE")
                 }
             }
         }
-        return canShowAccounts
     }
 }
 
