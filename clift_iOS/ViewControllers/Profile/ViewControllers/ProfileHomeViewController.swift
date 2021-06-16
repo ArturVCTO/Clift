@@ -196,6 +196,7 @@ extension ProfileHomeViewController {
                         self.profileNameTextField.text = currentEvent.name.uppercased()
                         self.profileEventDateButton.setTitle(currentEvent.date.formateStringDate(format: "dd MMMM YYYY").uppercased(), for: .normal)
                         self.getProfile()
+                        self.hasStripeAccount(currentEvent)
                     }
                 }
             } else {
@@ -210,11 +211,9 @@ extension ProfileHomeViewController {
                 if response.isSuccess() {
                     self.profileAddressTextField.text = profile?.onboardingShippingAddress.streetAndNumber.uppercased()
                     self.getBankAccounts()
-                    self.hasStripeAccount()
                 }
             } else {
                 self.getBankAccounts()
-                self.hasStripeAccount()
             }
         }
     }
@@ -283,8 +282,8 @@ extension ProfileHomeViewController {
         return multipartFormData
     }
     
-    func hasStripeAccount() {
-        sharedApiManager.verifyEventPool(event: event) { (profile, result) in
+    func hasStripeAccount(_ currentEvent: Event) {
+        sharedApiManager.verifyEventPool(event: currentEvent) { (profile, result) in
             if let response = result {
                 if response.isSuccess() {
                     if let user = profile {
@@ -295,7 +294,7 @@ extension ProfileHomeViewController {
                         }
                     }
                 } else {
-                    print("UNSUCCESSFUL RESPONSE")
+                    self.userIsVerified = false
                 }
             }
         }

@@ -637,7 +637,7 @@ extension CliftApiManager: ApiCalls {
     }
     
     func verifyEventPool(event: Event, completion: @escaping (VerifiedResponse?, Response?) -> Void) {
-        requestObjectWithResponse(.verifyEventPool(event: event), type: VerifiedResponse.self, completion: completion, wrapper: "verified")
+        requestObjectWithResponse(.verifyEventPool(event: event), type: VerifiedResponse.self, completion: completion, wrapper: "")
     }
     
     func getCities(stateId: String, completion: @escaping ([AddressCity]?, Response?) -> Void) {
