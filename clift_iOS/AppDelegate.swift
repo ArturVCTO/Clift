@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         // Override point for customization after application launch.
         GIDSignIn.sharedInstance()?.clientID = "659271946310-ab43ccokoq7uijrd53rgcojp0o07n9ch.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self
-        Stripe.setDefaultPublishableKey(Bundle.main.infoDictionary!["STRIPE_PUBLISHABLE_KEY"] as! String)
+        StripeAPI.defaultPublishableKey = Bundle.main.infoDictionary!["STRIPE_PUBLISHABLE_KEY"] as! String
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.previousNextDisplayMode = .alwaysHide
         return true
