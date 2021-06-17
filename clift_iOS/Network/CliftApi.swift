@@ -106,8 +106,8 @@ enum CliftApi {
 
 extension CliftApi: TargetType {
     var baseURL: URL {
-        return URL(string: Bundle.main.infoDictionary!["API_BASE_URL_ENDPOINT"]
-            as! String)!
+        return URL(string: "https://canary.cliftapp.com/"/*Bundle.main.infoDictionary!["API_BASE_URL_ENDPOINT"]
+            as! String*/)!
     }
     
     var path: String {
@@ -439,7 +439,7 @@ extension CliftApi: TargetType {
         case .stripeCheckoutEnvelope(_,_,let checkout):
             return .requestParameters(parameters: ["event_pool": checkout.toJSON()], encoding: JSONEncoding.default)
         case .stripeCheckoutGuest(_,let checkout):
-            return .requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
+            return .requestCompositeParameters(bodyParameters: ["checkout": checkout.toJSON()], bodyEncoding: JSONEncoding.default, urlParameters: ["platform":"mobile"])//.requestParameters(parameters: ["checkout": checkout.toJSON()], encoding: JSONEncoding.default)
         case .addItemToCartGuest(let quantity,let product):
             return .requestParameters(parameters: ["shopping_cart_item": ["quantity": quantity, "wishable_type": "Product", "event_product_id": product.id,"is_collaborative":"false"]], encoding: JSONEncoding.default)
         case .getSummaryAllEvents(event: _ , params: let params):
