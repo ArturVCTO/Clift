@@ -16,6 +16,7 @@ class StripeCheckout: Mappable {
     var id: String? = ""
     var successUrl: String? = ""
     var cancelUrl: String? = ""
+    var clientSecret: String = ""
     
     convenience required init?(map: Map) {
         self.init()
@@ -23,7 +24,8 @@ class StripeCheckout: Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-       successUrl <- map["success_url"]
+        successUrl <- map["success_url"]
         cancelUrl <- map["cancel_url"]
+        clientSecret <- map["client_secret"]
     }
 }
