@@ -207,6 +207,9 @@
 		612A99BA263367550035D744 /* ShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612A99B9263367550035D744 /* ShippingAddress.swift */; };
 		613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */; };
 		6147EA2C263BCF36008BB72D /* ThankEnvelopeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */; };
+		61488FD7267C319400C1003F /* CustomPaymentCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61488FD6267C319400C1003F /* CustomPaymentCardViewController.swift */; };
+		61488FDD267C3DBC00C1003F /* CustomPaymentCardImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61488FDB267C3DBC00C1003F /* CustomPaymentCardImageCell.swift */; };
+		61488FDE267C3DBC00C1003F /* CustomPaymentCardImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61488FDC267C3DBC00C1003F /* CustomPaymentCardImageCell.xib */; };
 		6152F3A2261FE8F500B349FE /* GifyStatusHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */; };
 		6152F3AF2620249300B349FE /* CashGiftItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152F3AE2620249300B349FE /* CashGiftItem.swift */; };
 		615C982925CE0E39002DB95E /* UserEventProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615C982725CE0E39002DB95E /* UserEventProductCell.swift */; };
@@ -499,6 +502,9 @@
 		612A99B9263367550035D744 /* ShippingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddress.swift; sourceTree = "<group>"; };
 		613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankEnvelopeMessage.swift; sourceTree = "<group>"; };
+		61488FD6267C319400C1003F /* CustomPaymentCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPaymentCardViewController.swift; sourceTree = "<group>"; };
+		61488FDB267C3DBC00C1003F /* CustomPaymentCardImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPaymentCardImageCell.swift; sourceTree = "<group>"; };
+		61488FDC267C3DBC00C1003F /* CustomPaymentCardImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPaymentCardImageCell.xib; sourceTree = "<group>"; };
 		6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifyStatusHelper.swift; sourceTree = "<group>"; };
 		6152F3AE2620249300B349FE /* CashGiftItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashGiftItem.swift; sourceTree = "<group>"; };
 		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventProductCell.swift; sourceTree = "<group>"; };
@@ -1131,6 +1137,8 @@
 			children = (
 				46C07A1723D228C70091CDDA /* CheckoutProductCell.swift */,
 				6173DE4C25BBA8C6000476CB /* CheckoutProductCell.xib */,
+				61488FDB267C3DBC00C1003F /* CustomPaymentCardImageCell.swift */,
+				61488FDC267C3DBC00C1003F /* CustomPaymentCardImageCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1169,6 +1177,7 @@
 				61C82A1F25BA6781009F50AF /* Checkout.storyboard */,
 				46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */,
 				6172B76325C0FDBE00363125 /* PaymentViewController.swift */,
+				61488FD6267C319400C1003F /* CustomPaymentCardViewController.swift */,
 			);
 			path = Checkout;
 			sourceTree = "<group>";
@@ -1436,6 +1445,7 @@
 				46441B7723CE852C00F5FCD2 /* Mihan-Regular.ttf in Resources */,
 				0B61742F2574BB5900FD7EAC /* Guest.storyboard in Resources */,
 				6173DE4E25BBA8C6000476CB /* CheckoutProductCell.xib in Resources */,
+				61488FDE267C3DBC00C1003F /* CustomPaymentCardImageCell.xib in Resources */,
 				61AE93CF260AB9FE00E66595 /* StoreCollectionReusableView.xib in Resources */,
 				61BAC511261E8E720070BF1B /* ColaborativeSummaryTableViewCell.xib in Resources */,
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
@@ -1605,6 +1615,7 @@
 				46D3777123972DDD004BE93E /* Invitation.swift in Sources */,
 				46831C0E23DA4079004BAAC1 /* PaymentConfirmationViewController.swift in Sources */,
 				61AE93C5260A837800E66595 /* GiftStoreViewController.swift in Sources */,
+				61488FD7267C319400C1003F /* CustomPaymentCardViewController.swift in Sources */,
 				46403A8F23E0A425007866B8 /* GiftShippingConfirmationViewController.swift in Sources */,
 				464D1CCE2410137600CBC546 /* CashOutFundsViewController.swift in Sources */,
 				61F0C2D725A3C89700AA58CF /* GuestEventProductCell.swift in Sources */,
@@ -1732,6 +1743,7 @@
 				46DE69C6235A3E2A002C2BB8 /* FirstFilterCollectionViewController.swift in Sources */,
 				462F9F34230F00820014CD9E /* RootViewController.swift in Sources */,
 				4604A33322FE1F600041F9AA /* RootOnboardingViewController.swift in Sources */,
+				61488FDD267C3DBC00C1003F /* CustomPaymentCardImageCell.swift in Sources */,
 				465167AB237A178F00755077 /* EventRegistrySummary.swift in Sources */,
 				46EC9DA22331493D00950139 /* ProductCollectionViewCell.swift in Sources */,
 				46DE69882358175F002C2BB8 /* ColorExtension.swift in Sources */,

@@ -524,6 +524,36 @@
             </objects>
             <point key="canvasLocation" x="13483" y="-3643"/>
         </scene>
+        <!--Custom Payment Card View Controller-->
+        <scene sceneID="ze5-gb-ZMl">
+            <objects>
+                <viewController storyboardIdentifier="CustomPaymentCardVC" id="KHu-U8-eGn" customClass="CustomPaymentCardViewController" customModule="CLIFT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZGJ-SD-eh8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nMn-yO-e12">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wce-QO-0O8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nMn-yO-e12" firstAttribute="leading" secondItem="Wce-QO-0O8" secondAttribute="leading" id="F7A-cw-kSA"/>
+                            <constraint firstItem="Wce-QO-0O8" firstAttribute="trailing" secondItem="nMn-yO-e12" secondAttribute="trailing" id="GEc-jp-MCY"/>
+                            <constraint firstItem="nMn-yO-e12" firstAttribute="top" secondItem="Wce-QO-0O8" secondAttribute="top" id="tVD-Vm-hRd"/>
+                            <constraint firstItem="Wce-QO-0O8" firstAttribute="bottom" secondItem="nMn-yO-e12" secondAttribute="bottom" id="tyI-ZB-qrh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableview" destination="nMn-yO-e12" id="CkW-Q3-GSA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pqz-yJ-3c3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="14559" y="-3643"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="CpZ-6J-Wwc">
