@@ -9,18 +9,29 @@
 import UIKit
 import Stripe
 
+protocol CustomPaymentCardViewControllerDelegate {
+    func CustomPaymentCardViewControllerDidCancel()
+    func CustomPaymentCardViewControllerDidPay(billingDetails: STPPaymentMethodBillingDetails, methodCardParams: STPPaymentMethodCardParams)
+}
+
 class CustomPaymentCardViewController: UIViewController {
 
     @IBOutlet weak var tableview: UITableView!
     
     var referenceCustomPaymentCardImageCell: CustomPaymentCardImageCell?
-    
+    var addressFieldsArray: [StripeBillingInformation] = [.name,.email,.cellphoneNumber,.address,.ZIP,.city,.state]
+    var billingDetails = STPPaymentMethodBillingDetails()
+    let address = STPPaymentMethodAddress()
+    var methodCardParams = STPPaymentMethodCardParams()
+    var delegate: CustomPaymentCardViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setTableView()
         registerCells()
         setNavBar()
+        address.country = "MX"
     }
     
     private func setTableView() {
@@ -31,6 +42,7 @@ class CustomPaymentCardViewController: UIViewController {
     private func registerCells() {
         tableview.register(UINib(nibName: "CustomPaymentCardImageCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentCardImageCell")
         tableview.register(UINib(nibName: "CustomPaymentCardFieldCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentCardFieldCell")
+        tableview.register(UINib(nibName: "CustomPaymentAddressCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentAddressCell")
     }
     
     private func setNavBar() {
@@ -52,11 +64,12 @@ class CustomPaymentCardViewController: UIViewController {
             title: "", style: .plain, target: nil, action: nil)
     }
     
-    @objc func didTapCancel(sender: AnyObject){
-        print("Cancel")
+    @objc func didTapCancel(sender: AnyObject) {
+        delegate?.CustomPaymentCardViewControllerDidCancel()
     }
-    @objc func didTapDone(sender: AnyObject){
-        print("Done")
+    @objc func didTapDone(sender: AnyObject) {
+        billingDetails.address = address
+        delegate?.CustomPaymentCardViewControllerDidPay(billingDetails: billingDetails, methodCardParams: methodCardParams)
     }
 }
 
@@ -131,7 +144,7 @@ extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataS
         case 1:
             return 1
         case 2:
-            return 5
+            return addressFieldsArray.count
         default:
             return 0
         }
@@ -151,7 +164,11 @@ extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataS
                 return cell
             }
         case 2:
-            return UITableViewCell()
+            if let cell = tableview.dequeueReusableCell(withIdentifier: "CustomPaymentAddressCell", for: indexPath) as? CustomPaymentAddressCell {
+                cell.delegate = self
+                cell.configure(type: addressFieldsArray[indexPath.row])
+                return cell
+            }
         default:
             return UITableViewCell()
         }
@@ -172,8 +189,33 @@ extension CustomPaymentCardViewController: CustomPaymentCardFieldCellDelegate {
     func paymentCardTextFieldDidChange(textField: STPPaymentCardTextField) {
         if textField.isValid {
             navigationItem.rightBarButtonItem?.isEnabled = true
+            methodCardParams = textField.cardParams
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
+}
+
+// MARK: CustomPaymentAddressCellDelegate
+extension CustomPaymentCardViewController: CustomPaymentAddressCellDelegate {
+    func userTyping(type: StripeBillingInformation, value: String) {
+        switch type {
+        case .name:
+            billingDetails.name = value
+        case .email:
+            billingDetails.email = value
+        case .cellphoneNumber:
+            billingDetails.phone = value
+        case .address:
+            address.line1 = value
+        case .ZIP:
+            address.postalCode = value
+        case .city:
+            address.city = value
+        case .state:
+            address.state = value
+        default:
+            break
         }
     }
 }
