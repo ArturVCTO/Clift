@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Stripe
 
 class PaymentViewController: UIViewController {
     
@@ -14,7 +15,6 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var cellphoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    //@IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var subtotalLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -27,6 +27,7 @@ class PaymentViewController: UIViewController {
     var userData = CheckoutUserDataGuest()
     var currentEvent = Event()
     var firstMessage = true
+    var stripeObject = StripeCheckout()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,22 +63,50 @@ class PaymentViewController: UIViewController {
         }
     }
     
-    func pay() {
+    func presentCardView() {
+        let viewController = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "CustomPaymentCardVC") as! CustomPaymentCardViewController
+        viewController.delegate = self
+        let navigationController = UINavigationController(rootViewController: viewController)
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    func createPaymentIntent() {
         sharedApiManager.stripeCheckoutGuest(event: self.currentEvent , checkout: self.checkoutObject) { (stripe, result) in
             if let response = result {
                 if response.isSuccess() {
-                    if #available(iOS 13.0, *) {
-                        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "stripeCheckoutVC") as! StripeCheckoutViewController
-                        vc.checkoutSessionId = stripe!.id!
-                        vc.successUrl = stripe!.successUrl!
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    } else {
-                        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "stripeCheckoutVC") as! StripeCheckoutViewController
-                        vc.checkoutSessionId = stripe!.id!
-                        vc.successUrl = stripe!.successUrl!
-                        self.navigationController?.pushViewController(vc, animated: true)
+
+                    self.presentCardView()
+                    if let stripeObject = stripe {
+                        self.stripeObject = stripeObject
                     }
                 }
+            }
+        }
+    }
+    
+    func confirmPaymentIntent(stripeObject: StripeCheckout, billingDetails: STPPaymentMethodBillingDetails?, cardInfo: STPPaymentMethodCardParams) {
+        
+        let paymentIntentParams = STPPaymentIntentParams(clientSecret: stripeObject.clientSecret)
+        
+        let paymentMethodParams = STPPaymentMethodParams(card: cardInfo, billingDetails: billingDetails, metadata: nil)
+        
+        paymentIntentParams.paymentMethodParams = paymentMethodParams
+        
+        STPPaymentHandler.shared().confirmPayment(paymentIntentParams, with: self) { (status, paymentIntent, error) in
+            switch (status) {
+            case .failed:
+                print("Payment failed")
+                print(error?.localizedDescription ?? "")
+                break
+            case .canceled:
+                print("Payment canceled")
+                break
+            case .succeeded:
+                print("Payment succeeded")
+                break
+            @unknown default:
+                fatalError()
+                break
             }
         }
     }
@@ -115,7 +144,7 @@ class PaymentViewController: UIViewController {
         checkoutObject.userDataGuest.cellPhoneNumber = cellphoneText
         checkoutObject.userDataGuest.note = messageText
         
-        pay()
+        createPaymentIntent()
     }
 }
 
@@ -127,5 +156,22 @@ extension PaymentViewController: UITextViewDelegate {
             messageTextView.textColor = UIColor.black
             firstMessage = false
         }
+    }
+}
+
+extension PaymentViewController: STPAuthenticationContext {
+    func authenticationPresentingViewController() -> UIViewController {
+        return self
+    }
+}
+
+extension PaymentViewController: CustomPaymentCardViewControllerDelegate {
+    func CustomPaymentCardViewControllerDidCancel() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func CustomPaymentCardViewControllerDidPay(billingDetails: STPPaymentMethodBillingDetails, methodCardParams: STPPaymentMethodCardParams) {
+        confirmPaymentIntent(stripeObject: stripeObject, billingDetails: billingDetails, cardInfo: methodCardParams)
+        dismiss(animated: true, completion: nil)
     }
 }
