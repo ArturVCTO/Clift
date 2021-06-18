@@ -212,6 +212,8 @@
 		61488FDE267C3DBC00C1003F /* CustomPaymentCardImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61488FDC267C3DBC00C1003F /* CustomPaymentCardImageCell.xib */; };
 		61488FE6267C69BB00C1003F /* CustomPaymentCardFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61488FE4267C69BB00C1003F /* CustomPaymentCardFieldCell.swift */; };
 		61488FE7267C69BB00C1003F /* CustomPaymentCardFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61488FE5267C69BB00C1003F /* CustomPaymentCardFieldCell.xib */; };
+		61488FED267C7BF100C1003F /* CustomPaymentAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61488FEB267C7BF100C1003F /* CustomPaymentAddressCell.swift */; };
+		61488FEE267C7BF100C1003F /* CustomPaymentAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61488FEC267C7BF100C1003F /* CustomPaymentAddressCell.xib */; };
 		6152F3A2261FE8F500B349FE /* GifyStatusHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */; };
 		6152F3AF2620249300B349FE /* CashGiftItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152F3AE2620249300B349FE /* CashGiftItem.swift */; };
 		615C982925CE0E39002DB95E /* UserEventProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615C982725CE0E39002DB95E /* UserEventProductCell.swift */; };
@@ -509,6 +511,8 @@
 		61488FDC267C3DBC00C1003F /* CustomPaymentCardImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPaymentCardImageCell.xib; sourceTree = "<group>"; };
 		61488FE4267C69BB00C1003F /* CustomPaymentCardFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPaymentCardFieldCell.swift; sourceTree = "<group>"; };
 		61488FE5267C69BB00C1003F /* CustomPaymentCardFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPaymentCardFieldCell.xib; sourceTree = "<group>"; };
+		61488FEB267C7BF100C1003F /* CustomPaymentAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPaymentAddressCell.swift; sourceTree = "<group>"; };
+		61488FEC267C7BF100C1003F /* CustomPaymentAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPaymentAddressCell.xib; sourceTree = "<group>"; };
 		6152F3A1261FE8F500B349FE /* GifyStatusHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifyStatusHelper.swift; sourceTree = "<group>"; };
 		6152F3AE2620249300B349FE /* CashGiftItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashGiftItem.swift; sourceTree = "<group>"; };
 		615C982725CE0E39002DB95E /* UserEventProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEventProductCell.swift; sourceTree = "<group>"; };
@@ -1145,6 +1149,8 @@
 				61488FDC267C3DBC00C1003F /* CustomPaymentCardImageCell.xib */,
 				61488FE4267C69BB00C1003F /* CustomPaymentCardFieldCell.swift */,
 				61488FE5267C69BB00C1003F /* CustomPaymentCardFieldCell.xib */,
+				61488FEB267C7BF100C1003F /* CustomPaymentAddressCell.swift */,
+				61488FEC267C7BF100C1003F /* CustomPaymentAddressCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1434,6 +1440,7 @@
 				CE8D41C424BCB9ED005FA091 /* Tinos-Bold.ttf in Resources */,
 				46987D9B22FA10AD007B2C78 /* Poppins-Bold.ttf in Resources */,
 				46987D9C22FA10AD007B2C78 /* Poppins-Regular.ttf in Resources */,
+				61488FEE267C7BF100C1003F /* CustomPaymentAddressCell.xib in Resources */,
 				61F0C2D825A3C89700AA58CF /* GuestEventProductCell.xib in Resources */,
 				46B5F74323845BB600AFF425 /* Tinos-RegularItalic.ttf in Resources */,
 				4672A89922F88F27001F374F /* LaunchScreen.storyboard in Resources */,
@@ -1746,6 +1753,7 @@
 				46153CE223C8F6AC005CD395 /* AddressesTableViewController.swift in Sources */,
 				463A30502321790200C42347 /* ProductViewController.swift in Sources */,
 				462A6B4222FC88170045C94E /* FirstStepOnboardingViewController.swift in Sources */,
+				61488FED267C7BF100C1003F /* CustomPaymentAddressCell.swift in Sources */,
 				460A1D932375EB2900311876 /* EventPoolCell.swift in Sources */,
 				BD5ECC2B251EAA5700A1F45F /* GuestGiftListViewController.swift in Sources */,
 				46DE69C6235A3E2A002C2BB8 /* FirstFilterCollectionViewController.swift in Sources */,
