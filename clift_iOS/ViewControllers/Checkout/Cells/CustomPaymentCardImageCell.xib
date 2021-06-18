@@ -39,6 +39,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cardFormImageView" destination="xRc-6O-e7c" id="MNk-AK-fQp"/>
+            </connections>
             <point key="canvasLocation" x="163.768115942029" y="146.98660714285714"/>
         </tableViewCell>
     </objects>

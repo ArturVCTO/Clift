@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Stripe
 
 class CustomPaymentCardViewController: UIViewController {
 
     @IBOutlet weak var tableview: UITableView!
+    
+    var referenceCustomPaymentCardImageCell: CustomPaymentCardImageCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,7 @@ class CustomPaymentCardViewController: UIViewController {
     
     private func registerCells() {
         tableview.register(UINib(nibName: "CustomPaymentCardImageCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentCardImageCell")
+        tableview.register(UINib(nibName: "CustomPaymentCardFieldCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentCardFieldCell")
     }
     
     private func setNavBar() {
@@ -43,6 +47,7 @@ class CustomPaymentCardViewController: UIViewController {
         let doneButton = UIBarButtonItem(title: "Pagar", style: .done, target: self, action: #selector(didTapDone(sender:)))
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = doneButton
+        navigationItem.rightBarButtonItem?.isEnabled = false
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "", style: .plain, target: nil, action: nil)
     }
@@ -137,16 +142,38 @@ extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataS
         switch indexPath.section {
         case 0:
             if let cell = tableview.dequeueReusableCell(withIdentifier: "CustomPaymentCardImageCell", for: indexPath) as? CustomPaymentCardImageCell {
-                
+                referenceCustomPaymentCardImageCell = cell
                 return cell
             }
         case 1:
-            return UITableViewCell()
+            if let cell = tableview.dequeueReusableCell(withIdentifier: "CustomPaymentCardFieldCell", for: indexPath) as? CustomPaymentCardFieldCell {
+                cell.delegate = self
+                return cell
+            }
         case 2:
             return UITableViewCell()
         default:
             return UITableViewCell()
         }
         return UITableViewCell()
+    }
+}
+
+// MARK: CustomPaymentCardFieldCellDelegate
+extension CustomPaymentCardViewController: CustomPaymentCardFieldCellDelegate {
+    func didBeginEditingCVC() {
+        referenceCustomPaymentCardImageCell?.animateCardImage(newCardPosition: .backCard)
+    }
+    
+    func didEndEditingCVC() {
+        referenceCustomPaymentCardImageCell?.animateCardImage(newCardPosition: .frontCard)
+    }
+    
+    func paymentCardTextFieldDidChange(textField: STPPaymentCardTextField) {
+        if textField.isValid {
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        } else {
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
     }
 }

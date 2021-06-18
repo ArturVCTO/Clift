@@ -8,17 +8,30 @@
 
 import UIKit
 
+enum cardPosition: String {
+    case frontCard = "cardFormFront"
+    case backCard = "cardFormBack"
+}
+
 class CustomPaymentCardImageCell: UITableViewCell {
 
+    @IBOutlet weak var cardFormImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
+    func animateCardImage(newCardPosition: cardPosition) {
+        let newImage = UIImage(named: newCardPosition.rawValue)
+        let animationTransition: UIView.AnimationOptions = newCardPosition == .frontCard ? .transitionFlipFromLeft : .transitionFlipFromRight
+        
+        UIView.transition(
+            with: cardFormImageView,
+            duration: 0.2,
+            options: animationTransition,
+            animations: {
+                self.cardFormImageView.image = newImage
+            })
+    }
 }
