@@ -23,6 +23,8 @@ class ProfileHomeViewController: UIViewController {
     var bannerImagePicker: UIImagePickerController?
     var event = Event()
     var currentBankAccount = BankAccount()
+    var userIsVerified = false
+    var response = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,10 +85,18 @@ class ProfileHomeViewController: UIViewController {
         updateEvent()
     }
     @IBAction func bankAccountPressed(_ sender: UIButton) {
+        guard userIsVerified else {
+            let alert = UIAlertController(title: "Stripe", message: "Esta cuenta no está asociada a una cuenta de Stripe.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
         let bankAccountVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ProfileBankInformationVC") as! ProfileBankInformationViewController
         bankAccountVC.currentBankAccount = currentBankAccount
         bankAccountVC.modalPresentationStyle = .fullScreen
         self.navigationController?.pushViewController(bankAccountVC, animated: true)
+        
     }
 
     @objc func presentDatePicker() {
@@ -164,6 +174,8 @@ extension ProfileHomeViewController: UIImagePickerControllerDelegate, UINavigati
 extension ProfileHomeViewController {
     
     func getEventProfileBank() {
+        self.presentLoader()
+        
         sharedApiManager.getEvents() { (events, result) in
             if let response = result {
                 if (response.isSuccess()) {
@@ -185,10 +197,14 @@ extension ProfileHomeViewController {
                                 }
                             }
                         }
-
-                        self.profileNameTextField.text = currentEvent.name.uppercased()
-                        self.profileEventDateButton.setTitle(currentEvent.date.formateStringDate(format: "dd MMMM YYYY").uppercased(), for: .normal)
-                        self.getProfile()
+                        
+                        DispatchQueue.main.async {
+                            self.dismissLoader()
+                            self.profileNameTextField.text = currentEvent.name.uppercased()
+                            self.profileEventDateButton.setTitle(currentEvent.date.formateStringDate(format: "dd MMMM YYYY").uppercased(), for: .normal)
+                            self.getProfile()
+                            self.hasStripeAccount(currentEvent)
+                        }
                     }
                 }
             } else {
@@ -198,11 +214,16 @@ extension ProfileHomeViewController {
     }
     
     func getProfile() {
+        self.presentLoader()
+        
         sharedApiManager.getProfile() { (profile, result) in
             if let response = result {
                 if response.isSuccess() {
-                    self.profileAddressTextField.text = profile?.onboardingShippingAddress.streetAndNumber.uppercased()
-                    self.getBankAccounts()
+                    DispatchQueue.main.async {
+                        self.dismissLoader()
+                        self.profileAddressTextField.text = profile?.onboardingShippingAddress.streetAndNumber.uppercased()
+                        self.getBankAccounts()
+                    }
                 }
             } else {
                 self.getBankAccounts()
@@ -211,15 +232,21 @@ extension ProfileHomeViewController {
     }
     
     func getBankAccounts() {
+        self.presentLoader()
+        
         sharedApiManager.getBankAccounts() { (bankAccounts, result) in
             if let response = result {
                 if (response.isSuccess()) {
-                    if let bankAccount = bankAccounts?.first {
-                        self.currentBankAccount = bankAccount
-                        self.profileBankAccountButton.setTitle(self.hideAccountNumber(accountNumber: bankAccount.account), for: .normal)
-                    } else {
-                        self.profileBankAccountButton.setTitle("NO HAY CUENTA ASOCIADA", for: .normal)
+                    DispatchQueue.main.async {
+                        self.dismissLoader()
+                        if let bankAccount = bankAccounts?.first {
+                            self.currentBankAccount = bankAccount
+                            self.profileBankAccountButton.setTitle(self.hideAccountNumber(accountNumber: bankAccount.account), for: .normal)
+                        } else {
+                            self.profileBankAccountButton.setTitle("NO HAY CUENTA ASOCIADA", for: .normal)
+                        }
                     }
+                    
                 } else if (response.isClientError()) {
                     self.showMessage("Hubo un error al cargar las cuentas asociadas. Intente de nuevo más tarde.", type: .error)
                 }
@@ -272,6 +299,26 @@ extension ProfileHomeViewController {
         }
         
         return multipartFormData
+    }
+    
+    func hasStripeAccount(_ currentEvent: Event) {
+        sharedApiManager.verifyEventPool(event: currentEvent) { (profile, result) in
+            guard let response = result else { return }
+            
+            guard response.isSuccess() else {
+                self.userIsVerified = false
+                return
+            }
+            
+            guard let user = profile else { return }
+            
+            if user.verified {
+                self.userIsVerified = true
+            } else {
+                self.userIsVerified = false
+            }
+            
+        }
     }
 }
 
