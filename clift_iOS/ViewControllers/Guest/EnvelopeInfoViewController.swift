@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Stripe
 
 class EnvelopeInfoViewController: UIViewController {
     
@@ -24,6 +25,7 @@ class EnvelopeInfoViewController: UIViewController {
     var currentEvent: Event = Event()
     var checkoutObject = CheckoutEnvelope()
     var firstMessage = true
+    var stripeObject = StripeCheckout()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,22 +44,49 @@ class EnvelopeInfoViewController: UIViewController {
         messageTextView.layer.borderColor = UIColor.lightGray.cgColor
     }
     
-    func pay() {
+    func presentCardView() {
+        let viewController = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "CustomPaymentCardVC") as! CustomPaymentCardViewController
+        viewController.delegate = self
+        let navigationController = UINavigationController(rootViewController: viewController)
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    func createPaymentIntent() {
         sharedApiManager.stripeCheckoutEnvelope(event: currentEvent, pool: currentEventPool, checkout: checkoutObject) { (stripe, result) in
             if let response = result {
                 if response.isSuccess() {
-                    if #available(iOS 13.0, *) {
-                        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "stripeCheckoutVC") as! StripeCheckoutViewController
-                        vc.checkoutSessionId = stripe!.id!
-                        vc.successUrl = stripe!.successUrl!
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    } else {
-                        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "stripeCheckoutVC") as! StripeCheckoutViewController
-                        vc.checkoutSessionId = stripe!.id!
-                        vc.successUrl = stripe!.successUrl!
-                        self.navigationController?.pushViewController(vc, animated: true)
+                    self.presentCardView()
+                    if let stripeObject = stripe {
+                        self.stripeObject = stripeObject
                     }
                 }
+            }
+        }
+    }
+    
+    func confirmPaymentIntent(stripeObject: StripeCheckout, billingDetails: STPPaymentMethodBillingDetails?, cardInfo: STPPaymentMethodCardParams) {
+        
+        let paymentIntentParams = STPPaymentIntentParams(clientSecret: stripeObject.clientSecret)
+        
+        let paymentMethodParams = STPPaymentMethodParams(card: cardInfo, billingDetails: billingDetails, metadata: nil)
+        
+        paymentIntentParams.paymentMethodParams = paymentMethodParams
+        
+        STPPaymentHandler.shared().confirmPayment(paymentIntentParams, with: self) { (status, paymentIntent, error) in
+            switch (status) {
+            case .failed:
+                print("Payment failed")
+                print(error?.localizedDescription ?? "")
+                break
+            case .canceled:
+                print("Payment canceled")
+                break
+            case .succeeded:
+                print("Payment succeeded")
+                break
+            @unknown default:
+                fatalError()
+                break
             }
         }
     }
@@ -100,7 +129,8 @@ class EnvelopeInfoViewController: UIViewController {
         checkoutObject.userData.email = emailText
         checkoutObject.userData.cellPhoneNumber = cellphoneText
         checkoutObject.userData.note = messageText
-        pay()
+        
+        createPaymentIntent()
     }
     
     @IBAction func didTapAcceptButton(_ sender: UIButton) {
@@ -123,5 +153,22 @@ extension EnvelopeInfoViewController: UITextViewDelegate {
             messageTextView.textColor = UIColor.black
             firstMessage = false
         }
+    }
+}
+
+extension EnvelopeInfoViewController: STPAuthenticationContext {
+    func authenticationPresentingViewController() -> UIViewController {
+        return self
+    }
+}
+
+extension EnvelopeInfoViewController: CustomPaymentCardViewControllerDelegate {
+    func CustomPaymentCardViewControllerDidCancel() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func CustomPaymentCardViewControllerDidPay(billingDetails: STPPaymentMethodBillingDetails, methodCardParams: STPPaymentMethodCardParams) {
+        confirmPaymentIntent(stripeObject: stripeObject, billingDetails: billingDetails, cardInfo: methodCardParams)
+        dismiss(animated: true, completion: nil)
     }
 }
