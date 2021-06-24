@@ -26,6 +26,7 @@ class EnvelopeInfoViewController: UIViewController {
     var checkoutObject = CheckoutEnvelope()
     var firstMessage = true
     var stripeObject = StripeCheckout()
+    var totalAmount = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,7 +124,7 @@ class EnvelopeInfoViewController: UIViewController {
             return
         }
         
-        checkoutObject.amount = Double(amountText)
+        checkoutObject.amount = totalAmount
         checkoutObject.userData.name = nameText
         checkoutObject.userData.lastName = lastNameText
         checkoutObject.userData.email = emailText
@@ -141,7 +142,14 @@ class EnvelopeInfoViewController: UIViewController {
 extension EnvelopeInfoViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        amountLabel.text = "$ \(amountTextField.text ?? "")"
+        let amount = Double(amountTextField.text ?? "0.0")
+        if let amount = amount {
+            let stripeCommission = amount * 0.036 + 3
+            let total = stripeCommission + amount
+            let totalRounded = Double(round(100 * total) / 100)
+            totalAmount = totalRounded
+            amountLabel.text = "$ \(totalRounded)"
+        }
     }
 }
 
