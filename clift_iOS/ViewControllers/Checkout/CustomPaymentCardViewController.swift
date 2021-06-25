@@ -128,8 +128,10 @@ extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataS
         switch section {
         case 1:
             label.text = "Tarjeta"
+            label.font = UIFont(name: "Mihan-Regular", size: 16.0)!
         case 2:
             label.text = "Dirección de facturación"
+            label.font = UIFont(name: "Mihan-Regular", size: 16.0)!
         default:
             break
         }
@@ -161,12 +163,14 @@ extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataS
         case 1:
             if let cell = tableview.dequeueReusableCell(withIdentifier: "CustomPaymentCardFieldCell", for: indexPath) as? CustomPaymentCardFieldCell {
                 cell.delegate = self
+                cell.cardField.font = UIFont(name: "Mihan-Regular", size: 15.0)!
                 return cell
             }
         case 2:
             if let cell = tableview.dequeueReusableCell(withIdentifier: "CustomPaymentAddressCell", for: indexPath) as? CustomPaymentAddressCell {
                 cell.delegate = self
                 cell.configure(type: addressFieldsArray[indexPath.row])
+                cell.addressInfoTextField.font = UIFont(name: "Mihan-Regular", size: 15.0)!
                 return cell
             }
         default:
