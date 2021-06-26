@@ -21,8 +21,8 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var acceptPaymentButton: UIButton!
     
     var products: [CartItem] = []
-    var totalAmount: Int?
-    var subtotalAmount: Int?
+    var totalAmount: Double?
+    var subtotalAmount: Double?
     var checkoutObject = CheckoutGuest()
     var userData = CheckoutUserDataGuest()
     var currentEvent = Event()
