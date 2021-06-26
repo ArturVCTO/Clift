@@ -17,6 +17,7 @@ class EventProduct: Mappable {
     var name = ""
     var status = ""
     var event = Event()
+    var eventId = ""
     var product = Product()
     var externalProduct = ExternalProduct()
     var gifted_quantity = Int()
@@ -45,6 +46,7 @@ class EventProduct: Mappable {
         id <- map["id"]
         name <- map["name"]
         event <- map["event"]
+        eventId <- map["event_id"]
         product <- map["product"]
         quantity <- map["quantity"]
         gifted_quantity <- map ["gifted_quantity"]

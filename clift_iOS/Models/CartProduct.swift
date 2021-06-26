@@ -12,7 +12,11 @@ import ObjectMapper
 import ObjectMapper_Realm
 import RealmSwift
 
-class CartItem: Mappable {
+class CartItem: Mappable, CustomStringConvertible {
+    var description: String {
+        return "CartItem #\(id) (\(product?.shop.name ?? ""))"
+    }
+    
     var id = ""
     var name: String? = ""
     var wishableType: String? = ""
@@ -20,6 +24,7 @@ class CartItem: Mappable {
     var productCost: Int? = 0
     var availableStatus: Bool? = false
     var product: Product? = nil
+    var eventProduct: EventProduct? = nil
     
     convenience required init?(map: Map) {
         self.init()
@@ -28,6 +33,7 @@ class CartItem: Mappable {
     func mapping(map: Map) {
         id <- map["id"]
         product <- map["product"]
+        eventProduct <- map["event_product"]
         name <- map["name"]
         quantity <- map["quantity"]
         productCost <- map["cost"]

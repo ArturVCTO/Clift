@@ -20,6 +20,9 @@ class Shop: Mappable {
     var products: [Product] = []
     var isActive = false
     var shipsNational = false
+    var shippingCost = ""
+    var shippingCostNational = ""
+    var shopAddress: ShopAddress = ShopAddress()
     
     var errors: [String] = []
     
@@ -35,6 +38,9 @@ class Shop: Mappable {
         documents <- map["documents"]
         isActive <- map["is_active"]
         shipsNational <- map["ships_national"]
+        shippingCost <- map["shipping_cost"]
+        shippingCostNational <- map["shipping_cost_national"]
+        shopAddress <- map["shop_address"]
         
         if let unwrappedErrors = map.JSON["errors"] as? [String] {
             for error in unwrappedErrors {

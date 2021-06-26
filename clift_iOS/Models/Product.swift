@@ -29,7 +29,8 @@ class Product: Mappable {
     var inStock = false
     var stock = 0
     var isInEvent = false
-    var shippingCost = 0
+    var shippingCost = ""
+    var shippingCostNational = ""
     var shipping = false
     var shop = Shop()
     var categories: [Category] = []
@@ -53,6 +54,7 @@ class Product: Mappable {
         description <- map["description"]
         specs <- map["specs"]
         shippingCost <- map["shipping_cost"]
+        shippingCostNational <- map["shipping_cost_national"]
         shipping <- map["shipping"]
         color <- map["color"]
         stock <- map["stock"]

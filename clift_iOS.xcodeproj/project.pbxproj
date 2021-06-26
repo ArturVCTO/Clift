@@ -232,6 +232,7 @@
 		619E838925E5E51F0056D33A /* GiftStoreCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E838825E5E51F0056D33A /* GiftStoreCategoryViewController.swift */; };
 		619E839725E5F21A0056D33A /* StoreCategoryAndGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E839525E5F21A0056D33A /* StoreCategoryAndGroupCell.swift */; };
 		619E839825E5F21A0056D33A /* StoreCategoryAndGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 619E839625E5F21A0056D33A /* StoreCategoryAndGroupCell.xib */; };
+		619E871A268406B700AB7A0D /* EventAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619E8719268406B700AB7A0D /* EventAddress.swift */; };
 		61AE93C5260A837800E66595 /* GiftStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE93C4260A837800E66595 /* GiftStoreViewController.swift */; };
 		61AE93CE260AB9FE00E66595 /* StoreCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AE93CC260AB9FE00E66595 /* StoreCollectionReusableView.swift */; };
 		61AE93CF260AB9FE00E66595 /* StoreCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61AE93CD260AB9FE00E66595 /* StoreCollectionReusableView.xib */; };
@@ -241,6 +242,7 @@
 		61BAC511261E8E720070BF1B /* ColaborativeSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BAC50F261E8E720070BF1B /* ColaborativeSummaryTableViewCell.xib */; };
 		61BAC517261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BAC515261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.swift */; };
 		61BAC518261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61BAC516261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.xib */; };
+		61C4040F268557F100582194 /* ShopAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C4040E268557F100582194 /* ShopAddress.swift */; };
 		61C82A2025BA6781009F50AF /* Checkout.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61C82A1F25BA6781009F50AF /* Checkout.storyboard */; };
 		61D21B4225A92949009DED75 /* UILabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D21B4125A92949009DED75 /* UILabelExtension.swift */; };
 		61D3F86525B0060500EEF709 /* FilterSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D3F86425B0060500EEF709 /* FilterSelectionViewController.swift */; };
@@ -531,6 +533,7 @@
 		619E838825E5E51F0056D33A /* GiftStoreCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStoreCategoryViewController.swift; sourceTree = "<group>"; };
 		619E839525E5F21A0056D33A /* StoreCategoryAndGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCategoryAndGroupCell.swift; sourceTree = "<group>"; };
 		619E839625E5F21A0056D33A /* StoreCategoryAndGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreCategoryAndGroupCell.xib; sourceTree = "<group>"; };
+		619E8719268406B700AB7A0D /* EventAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAddress.swift; sourceTree = "<group>"; };
 		61AE93C4260A837800E66595 /* GiftStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftStoreViewController.swift; sourceTree = "<group>"; };
 		61AE93CC260AB9FE00E66595 /* StoreCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreCollectionReusableView.swift; sourceTree = "<group>"; };
 		61AE93CD260AB9FE00E66595 /* StoreCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreCollectionReusableView.xib; sourceTree = "<group>"; };
@@ -540,6 +543,7 @@
 		61BAC50F261E8E720070BF1B /* ColaborativeSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColaborativeSummaryTableViewCell.xib; sourceTree = "<group>"; };
 		61BAC515261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstColaborativeSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		61BAC516261E92ED0070BF1B /* FirstColaborativeSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstColaborativeSummaryTableViewCell.xib; sourceTree = "<group>"; };
+		61C4040E268557F100582194 /* ShopAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopAddress.swift; sourceTree = "<group>"; };
 		61C82A1F25BA6781009F50AF /* Checkout.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Checkout.storyboard; sourceTree = "<group>"; };
 		61D21B4125A92949009DED75 /* UILabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtension.swift; sourceTree = "<group>"; };
 		61D3F86425B0060500EEF709 /* FilterSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionViewController.swift; sourceTree = "<group>"; };
@@ -1022,6 +1026,8 @@
 				6185BEC225C3989400557579 /* CheckoutUserDataGuest.swift */,
 				612A99B9263367550035D744 /* ShippingAddress.swift */,
 				6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */,
+				619E8719268406B700AB7A0D /* EventAddress.swift */,
+				61C4040E268557F100582194 /* ShopAddress.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1654,6 +1660,7 @@
 				612A99BA263367550035D744 /* ShippingAddress.swift in Sources */,
 				464D1CC62410130200CBC546 /* BankAccount.swift in Sources */,
 				61488FE6267C69BB00C1003F /* CustomPaymentCardFieldCell.swift in Sources */,
+				61C4040F268557F100582194 /* ShopAddress.swift in Sources */,
 				46029C56232804B7008A8EAE /* PriceRangeTableViewCell.swift in Sources */,
 				6167D6DA25EF176E0010410F /* StoreProductCell.swift in Sources */,
 				46167736232AFB7000A6CAB9 /* ProductSubcategoryCollectionViewCell.swift in Sources */,
@@ -1688,6 +1695,7 @@
 				46C724D323C7DA6000F12924 /* AddressState.swift in Sources */,
 				46153CE423C8F6F3005CD395 /* AddAddressViewController.swift in Sources */,
 				F32A8D9E25D08A5E00BE01AE /* WeddingProfileProductsView.swift in Sources */,
+				619E871A268406B700AB7A0D /* EventAddress.swift in Sources */,
 				462EB0BB2316C6C30084C3C7 /* Progress.swift in Sources */,
 				613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */,
 				465FED172373DE1A0038D557 /* ExternalProduct.swift in Sources */,
