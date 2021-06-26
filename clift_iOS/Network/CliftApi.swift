@@ -97,6 +97,7 @@ enum CliftApi {
     case getGuestToken
     case getEventsSearch(query: String)
     case getRegistriesGuest(event: Event,filters: [String:Any],orderBy: String, query: String)
+    case getEventAddress(eventId: String)
     case stripeCheckoutEnvelope(event: Event,pool: EventPool,checkout: CheckoutEnvelope)
     case stripeCheckoutGuest(event: Event,checkout: CheckoutGuest)
     case addItemToCartGuest(quantity: Int,product: EventProduct)
@@ -106,8 +107,8 @@ enum CliftApi {
 
 extension CliftApi: TargetType {
     var baseURL: URL {
-        return URL(string: "https://canary.cliftapp.com/"/*Bundle.main.infoDictionary!["API_BASE_URL_ENDPOINT"]
-            as! String*/)!
+        return URL(string: Bundle.main.infoDictionary!["API_BASE_URL_ENDPOINT"]
+            as! String)!
     }
     
     var path: String {
@@ -269,6 +270,8 @@ extension CliftApi: TargetType {
             return "events/finder"
         case .getRegistriesGuest(let event,_,_,_):
             return "event_registries/\(event.id)"
+        case .getEventAddress(let eventId):
+            return "events/\(eventId)/address"
         case.stripeCheckoutEnvelope(let event,let pool,_):
             return "checkout/\(event.id)/event_pool/\(pool.id)"
         case.stripeCheckoutGuest(let event,_):
@@ -290,7 +293,7 @@ extension CliftApi: TargetType {
         switch self {
         case .postLoginSession,.recoverPassword,.getGuestToken,.postUser,.addProductToRegistry,.createExternalProducts,.createEventPools,.createInvitation,.addGuest,.addGuests,.sendInvitation,.createBankAccount,.addAddress,.convertToCredits,.stripeCheckout,.completeStripeAccount,.stripeCheckoutEnvelope,.stripeCheckoutGuest,.stripeCheckoutPurchaseForMe:
             return .post
-        case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getProductsAsLoggedInUserLessParams, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest, .getSummaryAllEvents, .getOrderItems, .getShopProductsAsGuest:
+        case .getInterests,.getProfile,.getEvents,.getEventsSearch,.showEvent,.getProducts,.getCategory,.getCategories,.getShops,.getGroups,.getSubgroups,.getGroup,.getSubgroup, .getBrands, .getProductsAsLoggedInUser, .getProductsAsLoggedInUserLessParams, .getColors,.getEventProducts,.getEventProductsPagination,.getEventPools,.getEventSummary,.getInvitationTemplates,.getGuests,.getGuestAnalytics,.getBankAccounts,.getBankAccount,.getAddresses,.getAddress,.getCartItems,.createShoppingCart,.getGiftThanksSummary,.getGiftThanksSummaryPagination,.getCredits,.getCreditMovements,.verifyEventPool,.getStates,.getCities,.getRegistriesGuest, .getEventAddress, .getSummaryAllEvents, .getOrderItems, .getShopProductsAsGuest:
             return .get
         case .updateProfile,.updateEvent,.updateEventProductAsImportant,.updateEventProductQuantity,.updateEventProductThankMessage,.updateEventPoolAsImportant,.updateEventProductAsCollaborative,.updateInvitation, .updateGuests,.updateBankAccount,.updateAddress, .setDefaultAddress,.deleteAddress,.sendThankMessage,.addItemToCart,.updateCartQuantity,.requestGifts, .addItemToCartGuest, .sendThankEnvelopeMessage:
             return .put
@@ -436,6 +439,8 @@ extension CliftApi: TargetType {
             let price = filters["price"] ?? ""
             let page = filters["page"] ?? 1
             return .requestParameters(parameters: ["shop": shop,"category": category,"price_range": price,"sort_by": orderBy, "page": page, "q": query], encoding: URLEncoding.default)
+        case .getEventAddress(_):
+            return .requestPlain
         case .stripeCheckoutEnvelope(_,_,let checkout):
             return .requestParameters(parameters: ["event_pool": checkout.toJSON()], encoding: JSONEncoding.default)
         case .stripeCheckoutGuest(_,let checkout):

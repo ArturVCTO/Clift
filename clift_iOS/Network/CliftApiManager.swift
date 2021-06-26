@@ -316,6 +316,8 @@ protocol ApiCalls {
     //GUEST FUNCTIONS
     func getRegistriesGuest(event: Event, filters: [String:Any], orderBy: String, query: String, completion:  @escaping([EventProduct]?, Response?)->Void)
     
+    func getEventAddress(eventId: String, completion:  @escaping(EventAddress?, Response?)->Void)
+    
     func stripeCheckoutEnvelope(event: Event, pool:EventPool, checkout: CheckoutEnvelope, completion: @escaping(StripeCheckout?, Response?) -> Void)
     
     func stripeCheckoutGuest(event: Event, checkout: CheckoutGuest, completion: @escaping(StripeCheckout?, Response?) -> Void)
@@ -651,6 +653,10 @@ extension CliftApiManager: ApiCalls {
     //GUEST CALLS
     func getRegistriesGuest(event: Event, filters: [String:Any],orderBy: String, query: String, completion:  @escaping([EventProduct]?, Response?)->Void){
         requestArrayWithResponse(.getRegistriesGuest(event: event, filters: filters, orderBy: orderBy, query: query), type: EventProduct.self, completion: completion, wrapper: "registries")
+    }
+    
+    func getEventAddress(eventId: String, completion:  @escaping(EventAddress?, Response?)->Void) {
+        requestObjectWithResponse(.getEventAddress(eventId: eventId), type: EventAddress.self, completion: completion, wrapper: "address")
     }
     
     func stripeCheckoutEnvelope(event: Event, pool: EventPool, checkout: CheckoutEnvelope, completion: @escaping (StripeCheckout?, Response?) -> Void) {
