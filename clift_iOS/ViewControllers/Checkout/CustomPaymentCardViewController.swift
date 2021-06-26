@@ -15,9 +15,20 @@ protocol CustomPaymentCardViewControllerDelegate {
 }
 
 class CustomPaymentCardViewController: UIViewController {
+    
+    static func makeCustomPaymentCardViewController(subtotalAmount: Double?, totalAmount: Double, delegate: CustomPaymentCardViewControllerDelegate) -> CustomPaymentCardViewController {
+        let viewController = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "CustomPaymentCardVC") as! CustomPaymentCardViewController
+        
+        viewController.subtotalAmount = subtotalAmount
+        viewController.totalAmount = totalAmount
+        viewController.delegate = delegate
+        return viewController
+    }
 
     @IBOutlet weak var tableview: UITableView!
     
+    var subtotalAmount: Double?
+    var totalAmount = 0.0
     var referenceCustomPaymentCardImageCell: CustomPaymentCardImageCell?
     var addressFieldsArray: [StripeBillingInformation] = [.name,.email,.cellphoneNumber,.address,.ZIP,.city,.state]
     var billingDetails = STPPaymentMethodBillingDetails()
@@ -43,6 +54,7 @@ class CustomPaymentCardViewController: UIViewController {
         tableview.register(UINib(nibName: "CustomPaymentCardImageCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentCardImageCell")
         tableview.register(UINib(nibName: "CustomPaymentCardFieldCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentCardFieldCell")
         tableview.register(UINib(nibName: "CustomPaymentAddressCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentAddressCell")
+        tableview.register(UINib(nibName: "CustomPaymentAmountPreviewCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentAmountPreviewCell")
     }
     
     private func setNavBar() {
@@ -77,7 +89,7 @@ class CustomPaymentCardViewController: UIViewController {
 extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -145,6 +157,8 @@ extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataS
             return 1
         case 2:
             return addressFieldsArray.count
+        case 3:
+            return 1
         default:
             return 0
         }
@@ -167,6 +181,11 @@ extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataS
             if let cell = tableview.dequeueReusableCell(withIdentifier: "CustomPaymentAddressCell", for: indexPath) as? CustomPaymentAddressCell {
                 cell.delegate = self
                 cell.configure(type: addressFieldsArray[indexPath.row])
+                return cell
+            }
+        case 3:
+            if let cell = tableview.dequeueReusableCell(withIdentifier: "CustomPaymentAmountPreviewCell", for: indexPath) as? CustomPaymentAmountPreviewCell {
+                cell.configure(subtotalAmount: subtotalAmount, totalAmount: totalAmount)
                 return cell
             }
         default:
