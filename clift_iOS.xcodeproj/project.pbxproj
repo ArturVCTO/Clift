@@ -206,6 +206,8 @@
 		6127D96E25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */; };
 		612A99BA263367550035D744 /* ShippingAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612A99B9263367550035D744 /* ShippingAddress.swift */; };
 		613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */; };
+		6140D5262687A416008DA35B /* CustomPaymentAmountPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6140D5242687A416008DA35B /* CustomPaymentAmountPreviewCell.swift */; };
+		6140D5272687A416008DA35B /* CustomPaymentAmountPreviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6140D5252687A416008DA35B /* CustomPaymentAmountPreviewCell.xib */; };
 		6147EA2C263BCF36008BB72D /* ThankEnvelopeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */; };
 		61488FD7267C319400C1003F /* CustomPaymentCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61488FD6267C319400C1003F /* CustomPaymentCardViewController.swift */; };
 		61488FDD267C3DBC00C1003F /* CustomPaymentCardImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61488FDB267C3DBC00C1003F /* CustomPaymentCardImageCell.swift */; };
@@ -507,6 +509,8 @@
 		6127D96D25B3E97F00C8250A /* CheckoutUserDataEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutUserDataEnvelope.swift; sourceTree = "<group>"; };
 		612A99B9263367550035D744 /* ShippingAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddress.swift; sourceTree = "<group>"; };
 		613745E925AE72E0000E6812 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		6140D5242687A416008DA35B /* CustomPaymentAmountPreviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPaymentAmountPreviewCell.swift; sourceTree = "<group>"; };
+		6140D5252687A416008DA35B /* CustomPaymentAmountPreviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPaymentAmountPreviewCell.xib; sourceTree = "<group>"; };
 		6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThankEnvelopeMessage.swift; sourceTree = "<group>"; };
 		61488FD6267C319400C1003F /* CustomPaymentCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPaymentCardViewController.swift; sourceTree = "<group>"; };
 		61488FDB267C3DBC00C1003F /* CustomPaymentCardImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPaymentCardImageCell.swift; sourceTree = "<group>"; };
@@ -1157,6 +1161,8 @@
 				61488FE5267C69BB00C1003F /* CustomPaymentCardFieldCell.xib */,
 				61488FEB267C7BF100C1003F /* CustomPaymentAddressCell.swift */,
 				61488FEC267C7BF100C1003F /* CustomPaymentAddressCell.xib */,
+				6140D5242687A416008DA35B /* CustomPaymentAmountPreviewCell.swift */,
+				6140D5252687A416008DA35B /* CustomPaymentAmountPreviewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1459,6 +1465,7 @@
 				46B5F74C23845BB600AFF425 /* Tinos-Regular.ttf in Resources */,
 				61488FE7267C69BB00C1003F /* CustomPaymentCardFieldCell.xib in Resources */,
 				46987D9922FA10AD007B2C78 /* Poppins-Medium.ttf in Resources */,
+				6140D5272687A416008DA35B /* CustomPaymentAmountPreviewCell.xib in Resources */,
 				61F86B2125B3AF7700AFDCE5 /* EnvelopeFlow.storyboard in Resources */,
 				464D1CC4241012EC00CBC546 /* clabe.json in Resources */,
 				6167D6DB25EF176E0010410F /* StoreProductCell.xib in Resources */,
@@ -1695,6 +1702,7 @@
 				46C724D323C7DA6000F12924 /* AddressState.swift in Sources */,
 				46153CE423C8F6F3005CD395 /* AddAddressViewController.swift in Sources */,
 				F32A8D9E25D08A5E00BE01AE /* WeddingProfileProductsView.swift in Sources */,
+				6140D5262687A416008DA35B /* CustomPaymentAmountPreviewCell.swift in Sources */,
 				619E871A268406B700AB7A0D /* EventAddress.swift in Sources */,
 				462EB0BB2316C6C30084C3C7 /* Progress.swift in Sources */,
 				613745EA25AE72E0000E6812 /* UIViewControllerExtension.swift in Sources */,
