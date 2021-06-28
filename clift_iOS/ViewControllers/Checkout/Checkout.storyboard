@@ -606,7 +606,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIL-bs-sEw" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
-                                <rect key="frame" x="132" y="638" width="150" height="38"/>
+                                <rect key="frame" x="132" y="608" width="150" height="38"/>
                                 <color key="backgroundColor" red="0.69411764710000001" green="0.82745098039999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="AVG-E8-6l2"/>
@@ -638,7 +638,7 @@
                         <constraints>
                             <constraint firstItem="r2o-LG-tuC" firstAttribute="centerX" secondItem="CI1-FX-dfM" secondAttribute="centerX" id="268-yU-fIW"/>
                             <constraint firstItem="PNy-ch-KbU" firstAttribute="top" secondItem="r2o-LG-tuC" secondAttribute="bottom" constant="30" id="JYC-a2-OPm"/>
-                            <constraint firstItem="hIL-bs-sEw" firstAttribute="top" secondItem="SW3-kr-7jc" secondAttribute="bottom" constant="80" id="Oqp-yY-fBg"/>
+                            <constraint firstItem="hIL-bs-sEw" firstAttribute="top" secondItem="SW3-kr-7jc" secondAttribute="bottom" constant="50" id="Oqp-yY-fBg"/>
                             <constraint firstItem="us3-Iz-nOK" firstAttribute="top" secondItem="gfK-PM-bsU" secondAttribute="top" constant="20" id="Ryc-av-n0Z"/>
                             <constraint firstItem="6gd-re-q1a" firstAttribute="leading" secondItem="gfK-PM-bsU" secondAttribute="leading" constant="30" id="TpZ-aK-NlX"/>
                             <constraint firstItem="SW3-kr-7jc" firstAttribute="top" secondItem="6gd-re-q1a" secondAttribute="bottom" constant="35" id="WSL-KY-WxQ"/>
