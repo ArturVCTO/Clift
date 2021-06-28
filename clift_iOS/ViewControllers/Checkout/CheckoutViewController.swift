@@ -120,44 +120,52 @@ class CheckoutViewController: UIViewController {
     
     @IBAction func goToPaymentCheckoutVC(_ sender: Any) {
         if #available(iOS 13.0, *) {
-            
-            switch paymentType {
-            case .userLogIn, .userGuestPurchaseForMeFlow:
-                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "paymentTableVC") as! PaymentTableViewController
-                vc.userType = paymentType
-                vc.products = self.cartItems
-                vc.totalAmount = self.totalAmount
-                vc.subtotalAmount = self.subTotalAmount
-                self.navigationController?.pushViewController(vc, animated: true)
-                
-            case .userGuest:
-                let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(identifier: "PaymentVC") as! PaymentViewController
-                vc.products = self.cartItems
-                vc.currentEvent = currentEvent
-                vc.totalAmount = self.totalAmount
-                vc.subtotalAmount = self.subTotalAmount
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+            let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(identifier: "PaymentSuccessViewController") as! PaymentSuccessViewController
+            self.present(vc, animated: true, completion: nil)
         } else {
-            
-            switch paymentType {
-            case .userLogIn, .userGuestPurchaseForMeFlow:
-                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "paymentTableVC") as! PaymentTableViewController
-                vc.userType = paymentType
-                vc.products = self.cartItems
-                vc.totalAmount = self.totalAmount
-                vc.subtotalAmount = self.subTotalAmount
-                self.navigationController?.pushViewController(vc, animated: true)
-            
-            case .userGuest:
-                let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentViewController
-                vc.products = self.cartItems
-                vc.currentEvent = currentEvent
-                vc.totalAmount = self.totalAmount
-                vc.subtotalAmount = self.subTotalAmount
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+            // Fallback on earlier versions
         }
+        
+        
+//        if #available(iOS 13.0, *) {
+//            
+//            switch paymentType {
+//            case .userLogIn, .userGuestPurchaseForMeFlow:
+//                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "paymentTableVC") as! PaymentTableViewController
+//                vc.userType = paymentType
+//                vc.products = self.cartItems
+//                vc.totalAmount = self.totalAmount
+//                vc.subtotalAmount = self.subTotalAmount
+//                self.navigationController?.pushViewController(vc, animated: true)
+//                
+//            case .userGuest:
+//                let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(identifier: "PaymentVC") as! PaymentViewController
+//                vc.products = self.cartItems
+//                vc.currentEvent = currentEvent
+//                vc.totalAmount = self.totalAmount
+//                vc.subtotalAmount = self.subTotalAmount
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+//        } else {
+//            
+//            switch paymentType {
+//            case .userLogIn, .userGuestPurchaseForMeFlow:
+//                let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "paymentTableVC") as! PaymentTableViewController
+//                vc.userType = paymentType
+//                vc.products = self.cartItems
+//                vc.totalAmount = self.totalAmount
+//                vc.subtotalAmount = self.subTotalAmount
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            
+//            case .userGuest:
+//                let vc = UIStoryboard.init(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "PaymentVC") as! PaymentViewController
+//                vc.products = self.cartItems
+//                vc.currentEvent = currentEvent
+//                vc.totalAmount = self.totalAmount
+//                vc.subtotalAmount = self.subTotalAmount
+//                self.navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
     }
 }
 extension CheckoutViewController: UITableViewDataSource, UITableViewDelegate {
