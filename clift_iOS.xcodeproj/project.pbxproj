@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		008D9FC8268A2F7E00214DB6 /* PaymentSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008D9FC7268A2F7E00214DB6 /* PaymentSuccessViewController.swift */; };
 		0B1F53E52554DDD7003A3F9F /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F53E42554DDD7003A3F9F /* RecoverPasswordViewController.swift */; };
 		0B1F53F02554E0A5003A3F9F /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F53EF2554E0A5003A3F9F /* UIImageExtension.swift */; };
 		0B1F54122554E493003A3F9F /* Session.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1F53E92554DF69003A3F9F /* Session.storyboard */; };
@@ -307,6 +308,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		008D9FC7268A2F7E00214DB6 /* PaymentSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessViewController.swift; sourceTree = "<group>"; };
 		0B1F53E42554DDD7003A3F9F /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		0B1F53E92554DF69003A3F9F /* Session.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Session.storyboard; sourceTree = "<group>"; };
 		0B1F53EF2554E0A5003A3F9F /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -1188,6 +1190,7 @@
 				6173DE4A25BBA874000476CB /* Cells */,
 				61C82A1F25BA6781009F50AF /* Checkout.storyboard */,
 				46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */,
+				008D9FC7268A2F7E00214DB6 /* PaymentSuccessViewController.swift */,
 				6172B76325C0FDBE00363125 /* PaymentViewController.swift */,
 				61488FD6267C319400C1003F /* CustomPaymentCardViewController.swift */,
 			);
@@ -1742,6 +1745,7 @@
 				46C724CF23C7D9B300F12924 /* Address.swift in Sources */,
 				46403A9123E0A686007866B8 /* GiftShippingTableViewController.swift in Sources */,
 				46831C1023DB9752004BAAC1 /* SummaryGiftsViewController.swift in Sources */,
+				008D9FC8268A2F7E00214DB6 /* PaymentSuccessViewController.swift in Sources */,
 				462F9F30230DAC990014CD9E /* DateFormatter.swift in Sources */,
 				4604A339230331A60041F9AA /* Event.swift in Sources */,
 				F330BE022604028F009F27B2 /* GiftsAndEnvelopesStackView.swift in Sources */,
