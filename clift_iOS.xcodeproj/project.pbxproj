@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		008D9FC8268A2F7E00214DB6 /* PaymentSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008D9FC7268A2F7E00214DB6 /* PaymentSuccessViewController.swift */; };
+		00F3B74E268BDC250083E551 /* PaymentSuccess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00F3B74D268BDC250083E551 /* PaymentSuccess.storyboard */; };
 		0B1F53E52554DDD7003A3F9F /* RecoverPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F53E42554DDD7003A3F9F /* RecoverPasswordViewController.swift */; };
 		0B1F53F02554E0A5003A3F9F /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F53EF2554E0A5003A3F9F /* UIImageExtension.swift */; };
 		0B1F54122554E493003A3F9F /* Session.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B1F53E92554DF69003A3F9F /* Session.storyboard */; };
@@ -309,6 +310,7 @@
 
 /* Begin PBXFileReference section */
 		008D9FC7268A2F7E00214DB6 /* PaymentSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessViewController.swift; sourceTree = "<group>"; };
+		00F3B74D268BDC250083E551 /* PaymentSuccess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentSuccess.storyboard; sourceTree = "<group>"; };
 		0B1F53E42554DDD7003A3F9F /* RecoverPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverPasswordViewController.swift; sourceTree = "<group>"; };
 		0B1F53E92554DF69003A3F9F /* Session.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Session.storyboard; sourceTree = "<group>"; };
 		0B1F53EF2554E0A5003A3F9F /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
@@ -619,6 +621,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00F3B74C268BDBE70083E551 /* Payment Success */ = {
+			isa = PBXGroup;
+			children = (
+				00F3B74D268BDC250083E551 /* PaymentSuccess.storyboard */,
+				008D9FC7268A2F7E00214DB6 /* PaymentSuccessViewController.swift */,
+			);
+			path = "Payment Success";
+			sourceTree = "<group>";
+		};
 		116233B1E4C67FE84E4C930D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +651,7 @@
 		461316B9232177110048AB5B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				00F3B74C268BDBE70083E551 /* Payment Success */,
 				463A304C2321784900C42347 /* Products */,
 			);
 			path = Shared;
@@ -1190,7 +1202,6 @@
 				6173DE4A25BBA874000476CB /* Cells */,
 				61C82A1F25BA6781009F50AF /* Checkout.storyboard */,
 				46BFA8BF23D0EFEC008D6B72 /* CheckoutViewController.swift */,
-				008D9FC7268A2F7E00214DB6 /* PaymentSuccessViewController.swift */,
 				6172B76325C0FDBE00363125 /* PaymentViewController.swift */,
 				61488FD6267C319400C1003F /* CustomPaymentCardViewController.swift */,
 			);
@@ -1465,6 +1476,7 @@
 				61488FDE267C3DBC00C1003F /* CustomPaymentCardImageCell.xib in Resources */,
 				61AE93CF260AB9FE00E66595 /* StoreCollectionReusableView.xib in Resources */,
 				61BAC511261E8E720070BF1B /* ColaborativeSummaryTableViewCell.xib in Resources */,
+				00F3B74E268BDC250083E551 /* PaymentSuccess.storyboard in Resources */,
 				4672A89622F88F27001F374F /* Assets.xcassets in Resources */,
 				46B5F74623845BB600AFF425 /* Tinos-BoldItalic.ttf in Resources */,
 				F35E9CC225C8B4C200B54192 /* GiftsViewController.storyboard in Resources */,

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Tinos-Regular.ttf">
+            <string>Tinos-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Payment Success View Controller-->
+        <scene sceneID="8Ov-QI-ehM">
+            <objects>
+                <viewController storyboardIdentifier="PaymentSuccessViewController" id="jlG-pF-YGJ" customClass="PaymentSuccessViewController" customModule="CLIFT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9tA-OE-M5B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYt-Va-TZ8" customClass="customView" customModule="CLIFT" customModuleProvider="target">
+                                <rect key="frame" x="122" y="194" width="170" height="170"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottle" translatesAutoresizingMaskIntoConstraints="NO" id="9If-Kj-ecg">
+                                        <rect key="frame" x="25" y="25" width="120" height="120"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.37813347580000001" green="0.83024144170000003" blue="0.58035773040000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="9If-Kj-ecg" firstAttribute="leading" secondItem="WYt-Va-TZ8" secondAttribute="leading" constant="25" id="7bq-4X-LWh"/>
+                                    <constraint firstItem="9If-Kj-ecg" firstAttribute="top" secondItem="WYt-Va-TZ8" secondAttribute="top" constant="25" id="CkN-Hq-Erd"/>
+                                    <constraint firstAttribute="width" constant="170" id="LQz-bd-6LX"/>
+                                    <constraint firstAttribute="bottom" secondItem="9If-Kj-ecg" secondAttribute="bottom" constant="25" id="RdM-5j-FYo"/>
+                                    <constraint firstAttribute="trailing" secondItem="9If-Kj-ecg" secondAttribute="trailing" constant="25" id="goV-M3-yni"/>
+                                    <constraint firstAttribute="height" constant="170" id="wTi-Cl-XvY"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="85"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Pago realizado con éxito!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EOm-31-TAE">
+                                <rect key="frame" x="75.5" y="394" width="263.5" height="28"/>
+                                <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Se le notificará a los creadores del evento de su compra." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQI-6w-og0">
+                                <rect key="frame" x="30" y="445" width="354" height="55.5"/>
+                                <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Orden:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBg-J2-6eB">
+                                <rect key="frame" x="179" y="535.5" width="56" height="22.5"/>
+                                <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKm-Wc-rIV" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
+                                <rect key="frame" x="132" y="608" width="150" height="38"/>
+                                <color key="backgroundColor" red="0.69411764710000001" green="0.82745098039999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="TGH-jl-qFl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="IR A INICIO">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="9"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="goToMainMenuButtonTapped:" destination="jlG-pF-YGJ" eventType="touchUpInside" id="Nww-uh-HAD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6x-F2-9o3">
+                                <rect key="frame" x="372" y="64" width="22" height="23"/>
+                                <state key="normal" image="blackCross"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="jlG-pF-YGJ" eventType="touchUpInside" id="Euz-xE-xA1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="dKA-0O-2Za"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YQI-6w-og0" firstAttribute="top" secondItem="EOm-31-TAE" secondAttribute="bottom" constant="23" id="062-2m-DSy"/>
+                            <constraint firstItem="e6x-F2-9o3" firstAttribute="top" secondItem="dKA-0O-2Za" secondAttribute="top" constant="20" id="5gl-HS-h1R"/>
+                            <constraint firstItem="xBg-J2-6eB" firstAttribute="top" secondItem="YQI-6w-og0" secondAttribute="bottom" constant="35" id="7g8-J4-rvV"/>
+                            <constraint firstItem="WYt-Va-TZ8" firstAttribute="top" secondItem="dKA-0O-2Za" secondAttribute="top" constant="150" id="96v-LU-CbL"/>
+                            <constraint firstItem="dKA-0O-2Za" firstAttribute="trailing" secondItem="e6x-F2-9o3" secondAttribute="trailing" constant="20" id="DvQ-nS-PmN"/>
+                            <constraint firstItem="xBg-J2-6eB" firstAttribute="centerX" secondItem="9tA-OE-M5B" secondAttribute="centerX" id="KK8-XV-RzQ"/>
+                            <constraint firstItem="EOm-31-TAE" firstAttribute="top" secondItem="WYt-Va-TZ8" secondAttribute="bottom" constant="30" id="NIb-if-Mcx"/>
+                            <constraint firstItem="EOm-31-TAE" firstAttribute="centerX" secondItem="9tA-OE-M5B" secondAttribute="centerX" id="OPE-yH-D9h"/>
+                            <constraint firstItem="WYt-Va-TZ8" firstAttribute="centerX" secondItem="9tA-OE-M5B" secondAttribute="centerX" id="TLL-79-Sum"/>
+                            <constraint firstItem="dKA-0O-2Za" firstAttribute="trailing" secondItem="YQI-6w-og0" secondAttribute="trailing" constant="30" id="V8U-gm-fYF"/>
+                            <constraint firstItem="iKm-Wc-rIV" firstAttribute="top" secondItem="xBg-J2-6eB" secondAttribute="bottom" constant="50" id="fUa-7N-Nyp"/>
+                            <constraint firstItem="iKm-Wc-rIV" firstAttribute="centerX" secondItem="9tA-OE-M5B" secondAttribute="centerX" id="wIG-Ak-hP8"/>
+                            <constraint firstItem="YQI-6w-og0" firstAttribute="leading" secondItem="dKA-0O-2Za" secondAttribute="leading" constant="30" id="zWJ-QM-Kw1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="orderNumberLabel" destination="xBg-J2-6eB" id="QIf-xu-3CQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R92-si-5dV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="15515.942028985508" y="-3643.5267857142853"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="iKm-Wc-rIV">
+            <size key="intrinsicContentSize" width="101" height="38"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="blackCross" width="22.5" height="23"/>
+        <image name="bottle" width="57" height="57"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
