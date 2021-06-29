@@ -23,12 +23,16 @@ class CheckoutViewController: UIViewController {
     @IBOutlet weak var shippingLabel: UILabel!
     @IBOutlet weak var stripeCommissionLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
+    @IBOutlet weak var addressStackView: UIStackView!
+    @IBOutlet weak var addressNameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     var cartItems: [CartItem] = []
     var totalAmount: Double?
     var subTotalAmount: Double?
     var paymentType: PaymentType = .userLogIn
     var currentEvent = Event()
+    var address: Address?
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +62,12 @@ class CheckoutViewController: UIViewController {
                 if (response.isSuccess()) {
                     if let optCartItems = cartItems {
                         self.cartItems = optCartItems
-                        if self.cartItems.count > 0 {
-                            self.getEventAddress(eventId: cartItems?.first?.eventProduct?.eventId ?? "")
+                        if self.paymentType == .userLogIn {
+                            self.getAddresses()
+                        } else {
+                            if self.cartItems.count > 0 {
+                                self.getEventAddress(eventId: cartItems?.first?.eventProduct?.eventId ?? "")
+                            }
                         }
                         self.checkoutProductTableView.reloadData()
                         if fromDelete {
@@ -84,6 +92,27 @@ class CheckoutViewController: UIViewController {
                     }
                 } else {
                     self.showMessage("Error al obtener información del evento", type: .error)
+                }
+            }
+        }
+    }
+    
+    func getAddresses() {
+        sharedApiManager.getAddresses() { (addresses, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    let address = addresses?.filter {
+                        $0.isDefault == true
+                    }
+                    self.address = address?.first
+                    
+                    if let currentAddress = self.address {
+                        self.getTotalAmountAndSubtotal(cartItems: self.cartItems, eventId: currentAddress.state.id)
+                        self.addressNameLabel.text = (currentAddress.firstName ?? "") + " " + (currentAddress.lastName ?? "")
+                        self.addressLabel.text = "\(currentAddress.streetAndNumber ?? "") \(currentAddress.city.name ?? "") \(currentAddress.state.name ?? "") \(currentAddress.country.name ?? "") \(currentAddress.zipCode ?? "")"
+                    } else {
+                        self.addressStackView.isHidden = true
+                    }
                 }
             }
         }
