@@ -175,7 +175,7 @@ extension ProfileHomeViewController {
     
     func getEventProfileBank() {
         self.presentLoader()
-        
+        setupDefaultUI()
         sharedApiManager.getEvents() { (events, result) in
             if let response = result {
                 if (response.isSuccess()) {
@@ -187,11 +187,10 @@ extension ProfileHomeViewController {
                                         return
                                     }
                                     self.event = event
-                                    if let eventImageURL = URL(string:"\(event.eventImageUrl)") {
+                                    if let eventImageURL = URL(string:event.eventImageUrl) {
                                         self.profilePictureImageView.kf.setImage(with: eventImageURL)
                                     }
-                                    
-                                    if let coverImageURL = URL(string:"\(event.coverImageUrl)") {
+                                    if let coverImageURL = URL(string:event.coverImageUrl) {
                                         self.bannerPictureImageView.kf.setImage(with: coverImageURL)
                                     }
                                 }
@@ -211,6 +210,10 @@ extension ProfileHomeViewController {
                 self.getProfile()
             }
         }
+    }
+    
+    private func setupDefaultUI() {
+        self.bannerPictureImageView.image = UIImage(named: "1")
     }
     
     func getProfile() {
