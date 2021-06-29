@@ -191,9 +191,12 @@ extension ProfileHomeViewController {
                                         self.profilePictureImageView.kf.setImage(with: eventImageURL)
                                     }
                                     
-                                    if let coverImageURL = URL(string:"\(event.coverImageUrl)") {
-                                        self.bannerPictureImageView.kf.setImage(with: coverImageURL)
+                                    guard let coverImageURL = URL(string:"\(event.coverImageUrl)") else {
+                                        self.bannerPictureImageView.image = UIImage(named: "1")
+                                        return
                                     }
+                                    
+                                    self.bannerPictureImageView.kf.setImage(with: coverImageURL)
                                 }
                             }
                         }
