@@ -1,8 +1,8 @@
 //
-//  EventAddress.swift
+//  ShopAddress.swift
 //  clift_iOS
 //
-//  Created by Fernando Limón Flores on 23/06/21.
+//  Created by Fernando Limón Flores on 24/06/21.
 //  Copyright © 2021 Clift. All rights reserved.
 //
 
@@ -12,7 +12,7 @@ import ObjectMapper
 import ObjectMapper_Realm
 import RealmSwift
 
-class EventAddress: Mappable {
+class ShopAddress: Mappable {
     var addressState: AddressState = AddressState()
     
     convenience required init?(map: Map) {

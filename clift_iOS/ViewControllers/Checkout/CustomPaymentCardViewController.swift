@@ -15,15 +15,27 @@ protocol CustomPaymentCardViewControllerDelegate {
 }
 
 class CustomPaymentCardViewController: UIViewController {
+    
+    static func makeCustomPaymentCardViewController(subtotalAmount: Double?, totalAmount: Double, delegate: CustomPaymentCardViewControllerDelegate) -> CustomPaymentCardViewController {
+        let viewController = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "CustomPaymentCardVC") as! CustomPaymentCardViewController
+        
+        viewController.subtotalAmount = subtotalAmount
+        viewController.totalAmount = totalAmount
+        viewController.delegate = delegate
+        return viewController
+    }
 
     @IBOutlet weak var tableview: UITableView!
     
+    var subtotalAmount: Double?
+    var totalAmount = 0.0
     var referenceCustomPaymentCardImageCell: CustomPaymentCardImageCell?
     var addressFieldsArray: [StripeBillingInformation] = [.name,.email,.cellphoneNumber,.address,.ZIP,.city,.state]
     var billingDetails = STPPaymentMethodBillingDetails()
     let address = STPPaymentMethodAddress()
     var methodCardParams = STPPaymentMethodCardParams()
     var delegate: CustomPaymentCardViewControllerDelegate?
+    var payButtonEnable = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +55,8 @@ class CustomPaymentCardViewController: UIViewController {
         tableview.register(UINib(nibName: "CustomPaymentCardImageCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentCardImageCell")
         tableview.register(UINib(nibName: "CustomPaymentCardFieldCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentCardFieldCell")
         tableview.register(UINib(nibName: "CustomPaymentAddressCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentAddressCell")
+        tableview.register(UINib(nibName: "CustomPaymentAmountPreviewCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentAmountPreviewCell")
+        tableview.register(UINib(nibName: "CustomPaymentPayButtonCell", bundle: nil), forCellReuseIdentifier: "CustomPaymentPayButtonCell")
     }
     
     private func setNavBar() {
@@ -56,10 +70,8 @@ class CustomPaymentCardViewController: UIViewController {
         self.navigationItem.titleView = titleLabel
         
         let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(didTapCancel(sender:)))
-        let doneButton = UIBarButtonItem(title: "Pagar", style: .done, target: self, action: #selector(didTapDone(sender:)))
+
         navigationItem.leftBarButtonItem = cancelButton
-        navigationItem.rightBarButtonItem = doneButton
-        navigationItem.rightBarButtonItem?.isEnabled = false
         navigationItem.backBarButtonItem = UIBarButtonItem(
             title: "", style: .plain, target: nil, action: nil)
     }
@@ -67,17 +79,13 @@ class CustomPaymentCardViewController: UIViewController {
     @objc func didTapCancel(sender: AnyObject) {
         delegate?.CustomPaymentCardViewControllerDidCancel()
     }
-    @objc func didTapDone(sender: AnyObject) {
-        billingDetails.address = address
-        delegate?.CustomPaymentCardViewControllerDidPay(billingDetails: billingDetails, methodCardParams: methodCardParams)
-    }
 }
 
 // MARK: UITableViewDelegate And UITableViewDataSource
 extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 5
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -128,10 +136,10 @@ extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataS
         switch section {
         case 1:
             label.text = "Tarjeta"
-            label.font = UIFont(name: "Mihan-Regular", size: 16.0)!
         case 2:
             label.text = "Dirección de facturación"
-            label.font = UIFont(name: "Mihan-Regular", size: 16.0)!
+        case 3:
+            label.text = "Importe"
         default:
             break
         }
@@ -147,6 +155,10 @@ extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataS
             return 1
         case 2:
             return addressFieldsArray.count
+        case 3:
+            return 1
+        case 4:
+            return 1
         default:
             return 0
         }
@@ -163,14 +175,22 @@ extension CustomPaymentCardViewController: UITableViewDelegate, UITableViewDataS
         case 1:
             if let cell = tableview.dequeueReusableCell(withIdentifier: "CustomPaymentCardFieldCell", for: indexPath) as? CustomPaymentCardFieldCell {
                 cell.delegate = self
-                cell.cardField.font = UIFont(name: "Mihan-Regular", size: 15.0)!
                 return cell
             }
         case 2:
             if let cell = tableview.dequeueReusableCell(withIdentifier: "CustomPaymentAddressCell", for: indexPath) as? CustomPaymentAddressCell {
                 cell.delegate = self
                 cell.configure(type: addressFieldsArray[indexPath.row])
-                cell.addressInfoTextField.font = UIFont(name: "Mihan-Regular", size: 15.0)!
+                return cell
+            }
+        case 3:
+            if let cell = tableview.dequeueReusableCell(withIdentifier: "CustomPaymentAmountPreviewCell", for: indexPath) as? CustomPaymentAmountPreviewCell {
+                cell.configure(subtotalAmount: subtotalAmount, totalAmount: totalAmount)
+                return cell
+            }
+        case 4:
+            if let cell = tableview.dequeueReusableCell(withIdentifier: "CustomPaymentPayButtonCell", for: indexPath) as? CustomPaymentPayButtonCell {
+                cell.configure(delegate: self)
                 return cell
             }
         default:
@@ -192,10 +212,10 @@ extension CustomPaymentCardViewController: CustomPaymentCardFieldCellDelegate {
     
     func paymentCardTextFieldDidChange(textField: STPPaymentCardTextField) {
         if textField.isValid {
-            navigationItem.rightBarButtonItem?.isEnabled = true
+            payButtonEnable = true
             methodCardParams = textField.cardParams
         } else {
-            navigationItem.rightBarButtonItem?.isEnabled = false
+            payButtonEnable = false
         }
     }
 }
@@ -220,6 +240,18 @@ extension CustomPaymentCardViewController: CustomPaymentAddressCellDelegate {
             address.state = value
         default:
             break
+        }
+    }
+}
+
+// MARK: CustomPaymentPayButtonCellDelegate
+extension CustomPaymentCardViewController: CustomPaymentPayButtonCellDelegate {
+    func didTapPayButton() {
+        if payButtonEnable {
+            billingDetails.address = address
+            delegate?.CustomPaymentCardViewControllerDidPay(billingDetails: billingDetails, methodCardParams: methodCardParams)
+        } else {
+            self.showMessage(NSLocalizedString("Falta información para procesar el pago.", comment: ""),type: .error)
         }
     }
 }

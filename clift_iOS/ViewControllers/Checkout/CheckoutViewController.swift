@@ -20,11 +20,13 @@ class CheckoutViewController: UIViewController {
     
     @IBOutlet weak var checkoutProductTableView: UITableView!
     @IBOutlet weak var subtotalLabel: UILabel!
+    @IBOutlet weak var shippingLabel: UILabel!
+    @IBOutlet weak var stripeCommissionLabel: UILabel!
     @IBOutlet weak var totalAmountLabel: UILabel!
     
     var cartItems: [CartItem] = []
-    var totalAmount: Int?
-    var subTotalAmount: Int?
+    var totalAmount: Double?
+    var subTotalAmount: Double?
     var paymentType: PaymentType = .userLogIn
     var currentEvent = Event()
         
@@ -32,13 +34,13 @@ class CheckoutViewController: UIViewController {
         super.viewDidLoad()
         setUINavBar()
         registerCells()
-        self.tableViewSetup()
-        self.view.addSubview(checkoutProductTableView)
-        self.checkoutProductTableView.delegate = self
-        self.checkoutProductTableView.dataSource = self
-        self.checkoutProductTableView.translatesAutoresizingMaskIntoConstraints = false
-        self.checkoutProductTableView.reloadData()
-        self.getCartItems()
+        tableViewSetup()
+        view.addSubview(checkoutProductTableView)
+        checkoutProductTableView.delegate = self
+        checkoutProductTableView.dataSource = self
+        checkoutProductTableView.translatesAutoresizingMaskIntoConstraints = false
+        checkoutProductTableView.reloadData()
+        getCartItems()
     }
     
     private func setUINavBar() {
@@ -56,7 +58,9 @@ class CheckoutViewController: UIViewController {
                 if (response.isSuccess()) {
                     if let optCartItems = cartItems {
                         self.cartItems = optCartItems
-                        self.getTotalAmountAndSubtotal(cartItems: optCartItems)
+                        if self.cartItems.count > 0 {
+                            self.getEventAddress(eventId: cartItems?.first?.eventProduct?.eventId ?? "")
+                        }
                         self.checkoutProductTableView.reloadData()
                         if fromDelete {
                             self.checkIfProductsExistsInCart()
@@ -66,6 +70,20 @@ class CheckoutViewController: UIViewController {
                     self.showMessage("Hubo un error cargando el carrito de compras.", type: .error)
                 } else {
                     self.showMessage("Hubo un error cargando el carrito de compras.", type: .error)
+                }
+            }
+        }
+    }
+    
+    func getEventAddress(eventId: String) {
+        sharedApiManager.getEventAddress(eventId: eventId) { (eventAddress, result) in
+            if let response = result {
+                if (response.isSuccess()) {
+                    if let eventAddress = eventAddress {
+                        self.getTotalAmountAndSubtotal(cartItems: self.cartItems, eventId: eventAddress.addressState.id)
+                    }
+                } else {
+                    self.showMessage("Error al obtener información del evento", type: .error)
                 }
             }
         }
@@ -94,18 +112,48 @@ class CheckoutViewController: UIViewController {
         self.checkoutProductTableView.separatorStyle = .singleLine
     }
     
-    func getTotalAmountAndSubtotal(cartItems: [CartItem]) {
-        var newResult = Int()
-        let totalAmount = cartItems.reduce(0) { result, cartItem in
+    func getTotalAmountAndSubtotal(cartItems: [CartItem], eventId: String) {
+        var newResult = Double()
+        let productsAmount: Double = cartItems.reduce(0.0) { result, cartItem in
             if let quantity = cartItem.quantity, let productPrice = cartItem.product?.price {
-                newResult = result + (productPrice * quantity)
+                newResult = result + (Double(productPrice) * Double(quantity))
             }
             return newResult
         }
-        self.totalAmountLabel.text = "\(self.getPriceStringFormat(value: Double(totalAmount))) MXN"
-        self.subtotalLabel.text = "\(self.getPriceStringFormat(value: Double(totalAmount))) MXN"
+        
+        let shippingAmount = calculateShipping(cartItems: cartItems, eventId: eventId)
+        var stripeCommission = (productsAmount + shippingAmount) * 0.038 + 6
+        stripeCommission = Double(round(100 * stripeCommission) / 100)
+        let totalAmount = productsAmount + stripeCommission + shippingAmount
+        self.subTotalAmount = productsAmount
         self.totalAmount = totalAmount
-        self.subTotalAmount = totalAmount
+        subtotalLabel.text = "\(self.getPriceStringFormat(value: productsAmount)) MXN"
+        shippingLabel.text = "\(self.getPriceStringFormat(value: shippingAmount)) MXN"
+        stripeCommissionLabel.text = "\(self.getPriceStringFormat(value: stripeCommission)) MXN"
+        totalAmountLabel.text = "\(self.getPriceStringFormat(value: totalAmount)) MXN"
+        
+    }
+    
+    func calculateShipping(cartItems: [CartItem], eventId: String) -> Double {
+        
+        let storeItems = Dictionary(grouping: cartItems, by: {$0.product?.shop.name})
+        var shippingAmount = 0.0
+        for (_, value) in storeItems {
+            let isLocalShipping = eventId == value.first?.product?.shop.shopAddress.addressState.id
+            var shopAmount = 0.0
+            
+            for item in value {
+                let productCost = isLocalShipping ? Double(item.product?.shippingCost ?? "0.0") : Double(item.product?.shippingCostNational ?? "0.0")
+                let shopCost = isLocalShipping ? Double(item.product?.shop.shippingCost ?? "0.0") : Double(item.product?.shop.shippingCostNational ?? "0.0")
+                let greaterCost = (productCost! < shopCost! ? shopCost : productCost)!
+                
+                if greaterCost > shopAmount {
+                    shopAmount = greaterCost
+                }
+            }
+            shippingAmount += shopAmount
+        }
+        return shippingAmount
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {

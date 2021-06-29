@@ -17,8 +17,8 @@ class PaymentTableViewController: UITableViewController {
     var userData = CheckoutUserData()
     @IBOutlet weak var subtotalLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
-    var totalAmount: Int?
-    var subtotalAmount: Int?
+    var totalAmount: Double?
+    var subtotalAmount: Double?
     var currentEvent = Event()
     var hasAddressSet = false
     var userType: PaymentType = .userLogIn

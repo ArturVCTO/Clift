@@ -46,8 +46,7 @@ class EnvelopeInfoViewController: UIViewController {
     }
     
     func presentCardView() {
-        let viewController = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "CustomPaymentCardVC") as! CustomPaymentCardViewController
-        viewController.delegate = self
+        let viewController = CustomPaymentCardViewController.makeCustomPaymentCardViewController(subtotalAmount: nil, totalAmount: totalAmount, delegate: self)
         let navigationController = UINavigationController(rootViewController: viewController)
         present(navigationController, animated: true, completion: nil)
     }

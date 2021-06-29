@@ -23,8 +23,8 @@ class MyStripeApiClient: NSObject, STPCustomerEphemeralKeyProvider {
     
      static let sharedClient = MyStripeApiClient()
       var baseURL: URL {
-             return URL(string: "https://canary.cliftapp.com/"/*Bundle.main.infoDictionary!["API_BASE_URL_ENDPOINT"]
-                 as! String*/)!
+             return URL(string: Bundle.main.infoDictionary!["API_BASE_URL_ENDPOINT"]
+                 as! String)!
          }
        
        func createPaymentIntent(cartProduct: [CartItem], shippingMethod: Address?, country: String? = nil, completion: @escaping ((Result<String, Error>) -> Void)) {

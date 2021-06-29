@@ -21,8 +21,8 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var acceptPaymentButton: UIButton!
     
     var products: [CartItem] = []
-    var totalAmount: Int?
-    var subtotalAmount: Int?
+    var totalAmount: Double?
+    var subtotalAmount: Double?
     var checkoutObject = CheckoutGuest()
     var userData = CheckoutUserDataGuest()
     var currentEvent = Event()
@@ -46,7 +46,7 @@ class PaymentViewController: UIViewController {
     }
     
     func loadTotalAndSubtotal() {
-        self.subtotalLabel.text = "\((getPriceStringFormat(value: Double(subtotalAmount ?? 0))))"
+        self.subtotalLabel.text = "\((getPriceStringFormat(value: Double(subtotalAmount ?? 0)))) MXN"
         self.totalLabel.text = "\((getPriceStringFormat(value: Double(totalAmount ?? 0))))"
     }
     
@@ -64,13 +64,13 @@ class PaymentViewController: UIViewController {
     }
     
     func presentCardView() {
-        let viewController = UIStoryboard(name: "Checkout", bundle: nil).instantiateViewController(withIdentifier: "CustomPaymentCardVC") as! CustomPaymentCardViewController
-        viewController.delegate = self
+        let viewController = CustomPaymentCardViewController.makeCustomPaymentCardViewController(subtotalAmount: subtotalAmount ?? 0.0, totalAmount: totalAmount ?? 0.0, delegate: self)
         let navigationController = UINavigationController(rootViewController: viewController)
         present(navigationController, animated: true, completion: nil)
     }
     
     func createPaymentIntent() {
+        self.presentLoader()
         sharedApiManager.stripeCheckoutGuest(event: self.currentEvent , checkout: self.checkoutObject) { (stripe, result) in
             if let response = result {
                 if response.isSuccess() {
@@ -80,6 +80,7 @@ class PaymentViewController: UIViewController {
                         self.stripeObject = stripeObject
                     }
                 }
+                self.dismissLoader()
             }
         }
     }
