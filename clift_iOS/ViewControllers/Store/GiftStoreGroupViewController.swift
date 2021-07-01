@@ -37,6 +37,7 @@ class GiftStoreGroupViewController: UIViewController {
         titleLabel.sizeToFit()
         navigationItem.titleView = titleLabel
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "TODOS", style: .plain, target: self, action: #selector(presentAllProducts))
     }
     
     private func registerCells() {
@@ -68,6 +69,14 @@ class GiftStoreGroupViewController: UIViewController {
         giftStoreProductsVC.navBarTitle = category.name
         giftStoreProductsVC.subgroupNameString = category.groups[selectedGroupIndex].subgroups[subgroupIndex].name
         giftStoreProductsVC.filtersDic["subgroup"] = category.groups[selectedGroupIndex].subgroups[subgroupIndex].id
+        self.navigationController?.pushViewController(giftStoreProductsVC, animated: true)
+    }
+    
+    @objc func presentAllProducts() {
+        let giftStoreProductsVC = UIStoryboard(name: "GiftStore", bundle: nil).instantiateViewController(withIdentifier: "GiftStoreProductsVC") as! GiftStoreProductsViewController
+        giftStoreProductsVC.modalPresentationStyle = .fullScreen
+        giftStoreProductsVC.navBarTitle = "TODOS"
+        giftStoreProductsVC.filtersDic["category"] = category.id
         self.navigationController?.pushViewController(giftStoreProductsVC, animated: true)
     }
 }
