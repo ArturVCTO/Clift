@@ -70,6 +70,7 @@ class PaymentViewController: UIViewController {
     }
     
     func createPaymentIntent() {
+        self.presentLoader()
         sharedApiManager.stripeCheckoutGuest(event: self.currentEvent , checkout: self.checkoutObject) { (stripe, result) in
             if let response = result {
                 if response.isSuccess() {
@@ -79,6 +80,7 @@ class PaymentViewController: UIViewController {
                         self.stripeObject = stripeObject
                     }
                 }
+                self.dismissLoader()
             }
         }
     }
