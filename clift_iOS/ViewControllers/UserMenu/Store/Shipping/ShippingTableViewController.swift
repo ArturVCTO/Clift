@@ -11,9 +11,13 @@ import UIKit
 import TextFieldEffects
 import DropDown
 
+protocol ShippingTableViewControllerDelegate {
+    func didTypeAddress(address: Address)
+}
+
 class ShippingTableViewController: UITableViewController {
-    var hasAddressSet = false
-    var paymentTableVC: PaymentTableViewController!
+    //var hasAddressSet = false
+    //var paymentTableVC: PaymentTableViewController!
     @IBOutlet weak var nameTextField: HoshiTextField!
     @IBOutlet weak var cellphoneTextField: HoshiTextField!
     @IBOutlet weak var emailTextField: HoshiTextField!
@@ -34,6 +38,7 @@ class ShippingTableViewController: UITableViewController {
     var states: [AddressState] = []
     var country: [AddressCountry] = []
     var userType: PaymentType = .userLogIn
+    var delegate: ShippingTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,10 +86,13 @@ class ShippingTableViewController: UITableViewController {
     
     func addAddress(address: Address) {
         prepareAddress()
+        //delegate?.didTypeAddress(address: address)
+        self.navigationController?.popViewController(animated: true)
            sharedApiManager.addAddress(address: address) { (createdAddress, result) in
                if let response = result {
                    if (response.isSuccess()) {
-                    self.paymentTableVC.hasAddressSet = true
+                    //self.paymentTableVC.hasAddressSet = true
+                    self.delegate?.didTypeAddress(address: address)
                        self.navigationController?.popViewController(animated: true)
                    } else {
                        self.showMessage("\(createdAddress?.errors.first ?? "Error en forma")", type: .error)
@@ -95,8 +103,8 @@ class ShippingTableViewController: UITableViewController {
     
     func registerAddress(address: Address) {
         prepareAddress()
-        self.paymentTableVC.hasAddressSet = true
-        paymentTableVC.address = address
+        //self.paymentTableVC.hasAddressSet = true
+        //paymentTableVC.address = address
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -187,15 +195,15 @@ class ShippingTableViewController: UITableViewController {
     }
     
     @IBAction func useAddressButtonTapped(_ sender: Any) {
-        if userType == .userLogIn {
+        if userType == .userLogIn || userType == .userGuestPurchaseForMeFlow {
             if let address = self.address {
                 self.addAddress(address: address)
             }
-        } else {
+        } /*else {
             if let address = self.address {
                 registerAddress(address: address)
             }
-        }
+        }*/
     }
 }
 extension ShippingTableViewController: UITextFieldDelegate {

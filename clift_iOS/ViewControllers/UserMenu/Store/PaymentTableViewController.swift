@@ -147,12 +147,12 @@ class PaymentTableViewController: UITableViewController {
         if #available(iOS 13.0, *) {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "shippingTableVC") as! ShippingTableViewController
             vc.userType = userType
-            vc.paymentTableVC = self
+            //vc.paymentTableVC = self
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "shippingTableVC") as! ShippingTableViewController
             vc.userType = userType
-            vc.paymentTableVC = self
+            //vc.paymentTableVC = self
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
