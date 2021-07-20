@@ -226,6 +226,7 @@
 		6167D6DA25EF176E0010410F /* StoreProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6167D6D825EF176E0010410F /* StoreProductCell.swift */; };
 		6167D6DB25EF176E0010410F /* StoreProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6167D6D925EF176E0010410F /* StoreProductCell.xib */; };
 		6169708625A7DE85009F6EB9 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6169708525A7DE85009F6EB9 /* UIViewExtension.swift */; };
+		6170B6E2268BF88000A5D82F /* ShippingCost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6170B6E1268BF88000A5D82F /* ShippingCost.swift */; };
 		6172B76425C0FDBE00363125 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6172B76325C0FDBE00363125 /* PaymentViewController.swift */; };
 		6173DE4E25BBA8C6000476CB /* CheckoutProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6173DE4C25BBA8C6000476CB /* CheckoutProductCell.xib */; };
 		6185BEBE25C396F300557579 /* CheckoutGuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6185BEBD25C396F300557579 /* CheckoutGuest.swift */; };
@@ -531,6 +532,7 @@
 		6167D6D825EF176E0010410F /* StoreProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreProductCell.swift; sourceTree = "<group>"; };
 		6167D6D925EF176E0010410F /* StoreProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StoreProductCell.xib; sourceTree = "<group>"; };
 		6169708525A7DE85009F6EB9 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		6170B6E1268BF88000A5D82F /* ShippingCost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingCost.swift; sourceTree = "<group>"; };
 		6172B76325C0FDBE00363125 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		6173DE4C25BBA8C6000476CB /* CheckoutProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckoutProductCell.xib; sourceTree = "<group>"; };
 		6185BEBD25C396F300557579 /* CheckoutGuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutGuest.swift; sourceTree = "<group>"; };
@@ -1036,6 +1038,7 @@
 				6147EA2B263BCF36008BB72D /* ThankEnvelopeMessage.swift */,
 				619E8719268406B700AB7A0D /* EventAddress.swift */,
 				61C4040E268557F100582194 /* ShopAddress.swift */,
+				6170B6E1268BF88000A5D82F /* ShippingCost.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1671,6 +1674,7 @@
 				460836A92386FF890052E73A /* InvitationTemplatesViewController.swift in Sources */,
 				4604A32B22FCDA4B0041F9AA /* SecondStepOnboardingViewController.swift in Sources */,
 				462A289D238C51CD002ECAF3 /* InvitationEditFormTableViewController.swift in Sources */,
+				6170B6E2268BF88000A5D82F /* ShippingCost.swift in Sources */,
 				612A99BA263367550035D744 /* ShippingAddress.swift in Sources */,
 				464D1CC62410130200CBC546 /* BankAccount.swift in Sources */,
 				61488FE6267C69BB00C1003F /* CustomPaymentCardFieldCell.swift in Sources */,

@@ -17,6 +17,7 @@ class Checkout: Mappable {
     var cartItemIds: [String] = []
     var userData: CheckoutUserData?
     var message: String? = ""
+    var shippingCost: [ShippingCost] = []
     
     convenience required init?(map: Map) {
         self.init()
@@ -27,5 +28,6 @@ class Checkout: Mappable {
         cartItemIds <- map["shopping_cart_items"]
         userData <- map["user_data"]
         message <- map["message"]
+        shippingCost <- map["shipping_cost"]
     }
 }

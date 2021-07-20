@@ -13,19 +13,21 @@ import ObjectMapper_Realm
 import RealmSwift
 
 class CheckoutUserData: Mappable {
-    var id: String? = ""
-    var email: String? = ""
     var shippingAddress: String? = ""
+    var email: String? = ""
     var cellPhoneNumber: String? = ""
+    var name: String? = ""
+    var lastName: String? = ""
     
     convenience required init?(map: Map) {
         self.init()
     }
     
     func mapping(map: Map) {
-        id <- map["id"]
-        email <- map["email"]
         shippingAddress <- map["shipping_address"]
+        email <- map["email"]
         cellPhoneNumber <- map["cell_phone_number"]
+        name <- map["name"]
+        lastName <- map["last_name"]
     }
 }
