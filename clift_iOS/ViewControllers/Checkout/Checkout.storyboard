@@ -79,18 +79,11 @@
                                 <rect key="frame" x="0.0" y="177.5" width="414" height="684.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="Al5-qJ-lvk">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="270"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="310"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YzN-jp-MYu">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="2"/>
-                                            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="2" id="97U-JG-Ejy"/>
-                                            </constraints>
-                                        </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hsp-Tm-zu1">
-                                            <rect key="frame" x="20" y="12" width="374" height="258"/>
+                                            <rect key="frame" x="20" y="0.0" width="374" height="310"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resumen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQE-WM-Nnh">
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="22.5"/>
@@ -226,8 +219,35 @@
                                                         <constraint firstItem="CpZ-6J-Wwc" firstAttribute="width" secondItem="QVZ-wn-HQz" secondAttribute="width" multiplier="1.25" id="4Qt-fv-st7"/>
                                                     </constraints>
                                                 </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFx-Wy-rcs">
+                                                    <rect key="frame" x="0.0" y="248.5" width="374" height="30"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybJ-Sw-Cl2">
+                                                            <rect key="frame" x="0.0" y="0.0" width="208" height="30"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        </view>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5Y-4v-zNg" customClass="customButton" customModule="CLIFT" customModuleProvider="target">
+                                                            <rect key="frame" x="208" y="0.0" width="166" height="30"/>
+                                                            <color key="backgroundColor" red="0.69411764710000001" green="0.82745098039999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <state key="normal" title="NUEVA DIRECCIÓN">
+                                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </state>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <action selector="newAddressPressed:" destination="hbH-lg-q19" eventType="touchUpInside" id="cLJ-uq-No9"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="e5Y-4v-zNg" firstAttribute="width" secondItem="ybJ-Sw-Cl2" secondAttribute="width" multiplier="0.8" id="jfM-aw-HfS"/>
+                                                    </constraints>
+                                                </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6E-7P-785">
-                                                    <rect key="frame" x="0.0" y="248.5" width="374" height="9.5"/>
+                                                    <rect key="frame" x="0.0" y="288.5" width="374" height="21.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 </view>
                                             </subviews>
@@ -235,12 +255,9 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
-                                        <constraint firstItem="YzN-jp-MYu" firstAttribute="width" secondItem="Hsp-Tm-zu1" secondAttribute="width" id="KUM-xB-hzW"/>
-                                        <constraint firstItem="Hsp-Tm-zu1" firstAttribute="top" secondItem="YzN-jp-MYu" secondAttribute="bottom" constant="10" id="UQS-Sb-sea"/>
+                                        <constraint firstItem="Hsp-Tm-zu1" firstAttribute="top" secondItem="Al5-qJ-lvk" secondAttribute="top" id="CPq-jc-C9c"/>
                                         <constraint firstItem="Hsp-Tm-zu1" firstAttribute="leading" secondItem="Al5-qJ-lvk" secondAttribute="leading" constant="20" id="cOE-k2-YYB"/>
-                                        <constraint firstItem="YzN-jp-MYu" firstAttribute="top" secondItem="Al5-qJ-lvk" secondAttribute="top" id="elg-vq-6Rj"/>
                                         <constraint firstAttribute="bottom" secondItem="Hsp-Tm-zu1" secondAttribute="bottom" id="fZ9-mA-dXS"/>
-                                        <constraint firstItem="YzN-jp-MYu" firstAttribute="leading" secondItem="Hsp-Tm-zu1" secondAttribute="leading" id="j9K-by-sQc"/>
                                         <constraint firstAttribute="trailing" secondItem="Hsp-Tm-zu1" secondAttribute="trailing" constant="20" id="y6c-5T-Y4p"/>
                                     </constraints>
                                 </view>
@@ -271,6 +288,7 @@
                         <outlet property="addressNameLabel" destination="uhR-p5-kMi" id="FDn-g9-aaA"/>
                         <outlet property="addressStackView" destination="8xb-y0-eh0" id="kP1-dq-Z6F"/>
                         <outlet property="checkoutProductTableView" destination="zb4-0e-I8a" id="cth-SQ-9Cd"/>
+                        <outlet property="newAddressButton" destination="e5Y-4v-zNg" id="5S5-vP-kpG"/>
                         <outlet property="shippingLabel" destination="dcB-hD-aoS" id="VlV-YL-9BZ"/>
                         <outlet property="stripeCommissionLabel" destination="Kw4-ne-Jbf" id="WiI-6a-0ib"/>
                         <outlet property="subtotalLabel" destination="QH0-H8-hmi" id="jEt-4k-5lc"/>
@@ -382,13 +400,13 @@
                                                         <rect key="frame" x="20" y="0.0" width="374" height="86"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mensaje para la pareja" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ft-02-Vwc">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="28"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="29.5"/>
                                                                 <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="25"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Escribe un breve mensaje" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WVF-av-H6r">
-                                                                <rect key="frame" x="0.0" y="48" width="374" height="38"/>
+                                                                <rect key="frame" x="0.0" y="49.5" width="374" height="36.5"/>
                                                                 <color key="backgroundColor" red="0.91372549020000005" green="0.91764705879999997" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <color key="textColor" systemColor="systemGray2Color"/>
                                                                 <fontDescription key="fontDescription" name="Mihan-Regular" family="Mihan" pointSize="17"/>
@@ -452,13 +470,13 @@
                                                                                                 <rect key="frame" x="0.0" y="58.5" width="182" height="49"/>
                                                                                                 <subviews>
                                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKa-Jv-xd7">
-                                                                                                        <rect key="frame" x="0.0" y="13.5" width="35" height="22.5"/>
+                                                                                                        <rect key="frame" x="0.0" y="13" width="39" height="23.5"/>
                                                                                                         <fontDescription key="fontDescription" name="Tinos-Bold" family="Tinos" pointSize="20"/>
                                                                                                         <nil key="textColor"/>
                                                                                                         <nil key="highlightedColor"/>
                                                                                                     </label>
                                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MXN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWG-Sy-Gaa">
-                                                                                                        <rect key="frame" x="45" y="13.5" width="47" height="22.5"/>
+                                                                                                        <rect key="frame" x="49" y="13" width="44.5" height="23.5"/>
                                                                                                         <fontDescription key="fontDescription" name="Tinos-Regular" family="Tinos" pointSize="20"/>
                                                                                                         <nil key="textColor"/>
                                                                                                         <nil key="highlightedColor"/>
@@ -605,6 +623,9 @@
     <designables>
         <designable name="CpZ-6J-Wwc">
             <size key="intrinsicContentSize" width="178" height="30"/>
+        </designable>
+        <designable name="e5Y-4v-zNg">
+            <size key="intrinsicContentSize" width="133" height="30"/>
         </designable>
     </designables>
     <resources>
